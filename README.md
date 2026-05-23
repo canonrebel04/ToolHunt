@@ -41,6 +41,32 @@ query → BGE-M3 embedding (ONNX) + FAISS (top 198) + BM25
 
 ---
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/cyberytti/ToolHunt/main/docs/logo/ToolHunt_logo.png" alt="ToolHunt Logo" width="600"/>
+</p>
+
+---
+
+## 🎥 Live Demo
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/cyberytti/ToolHunt/main/docs/showcase_video/ToolHunt_showcase_video.gif" alt="ToolHunt Demo" width="800"/>
+</p>
+
+---
+
+## 📸 Screenshots
+
+### Main Search Interface
+![Main Search Interface](https://raw.githubusercontent.com/cyberytti/ToolHunt/main/docs/showcase_images/Screenshot%20from%202025-09-04%2015-57-39.png)
+*Cyberpunk-styled main interface*
+
+### Search Results
+![Search Results Display](https://raw.githubusercontent.com/cyberytti/ToolHunt/main/docs/showcase_images/Screenshot%20from%202025-09-04%2015-58-40.png)
+*Intelligent tool categorization with detailed descriptions*
+
+---
+
 ## 🛠️ Technology Stack
 
 ### Search Pipeline
