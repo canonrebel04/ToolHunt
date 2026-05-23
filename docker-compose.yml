@@ -1,0 +1,10 @@
+services:
+  toolhunt:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      # Persist the SQLite database outside the container
+      - ./backend/database:/app/backend/database
+    environment:
+      - PYTHONUNBUFFERED=1
