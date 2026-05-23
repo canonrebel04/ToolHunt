@@ -136,14 +136,11 @@ ToolHunt/
 
 ```bash
 # Clone the repository
-git clone git@github.com:canonrebel04/ToolHunt.git
+git clone https://github.com/canonrebel04/ToolHunt.git
 cd ToolHunt
 
 # Install dependencies
 pip install -r requirements.txt
-
-# Run tests (40 tests, 0.14s — no model downloads needed)
-python3 -m pytest tests/ -q
 
 # Launch ToolHunt
 python app.py
