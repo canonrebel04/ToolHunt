@@ -1,0 +1,8 @@
+torch>=1.13.0
+sentence-transformers
+langchain
+langchain-huggingface
+langchain-community
+faiss-cpu
+rank_bm25
+flask

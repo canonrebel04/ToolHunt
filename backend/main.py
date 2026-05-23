@@ -1,6 +1,36 @@
-import csv
-from pathlib import Path
-from .semantic_search import search
+from .hybrid_search import search
+import sqlite3
+from sentence_transformers import SentenceTransformer
+
+
+# Download from the 🤗 Hub
+model = SentenceTransformer("sentence-transformers/all-MiniLM-L12-v2")
+
+
+
+def rank_results(all_matched_tools_data,query):
+    temp_descriptions=[]
+    final_output_list=[]
+    ranked_results={}
+    for d in all_matched_tools_data:
+        text=f"name:{d[0]} description:{d[1]}"
+        # print (text.lower())
+        temp_descriptions.append(text.lower())
+    # print (temp_descriptions)
+    query_embeddings = model.encode_query(query)
+    document_embeddings = model.encode_document(temp_descriptions)
+    similarities = model.similarity(query_embeddings, document_embeddings)
+    for r in range(len(similarities[0])):
+        # print (f"{temp_descriptions[r]} {similarities[0][r]:.4f}")
+        # print (f"{all_matched_tools_data[r]} {similarities[0][r]:.4f}")
+        ranked_results[all_matched_tools_data[r]]=similarities[0][r].item()
+        # print("\n\n")
+    # Optional: sort by similarity score (highest first)
+    sorted_results = sorted(ranked_results.items(), key=lambda x: x[1], reverse=True)
+
+    for (name, description, url), score in sorted_results:
+        final_output_list.append(((name, description, url)))
+    return (final_output_list)
 
 
 def find_indices(primary_list, query_list):
@@ -24,20 +54,39 @@ def find_indices(primary_list, query_list):
     return indices
 
 
-csv_path = Path("backend/database/tool_list_database.csv")
-with csv_path.open(newline='', encoding="utf-8") as f:
-    tools = list(csv.reader(f))        # includes header
-    header, *tools = tools             # split header / body if you want
-print("Loaded", len(tools), "rows")
+
+conn = sqlite3.connect('backend/database/tools.db')
+cursor = conn.cursor()
+
+# # Create table
+# cursor.execute('''
+#     CREATE TABLE IF NOT EXISTS tools (
+#         name TEXT,
+#         description TEXT,
+#         url TEXT
+#     )
+# ''')
+
+
+# # Insert values:
+#     cursor.execute('''
+#         INSERT INTO tools (name, description, url)
+#         VALUES (?, ?, ?)
+#     ''', (name,tool's description, url))
 
 
 descriptions=[]
 final_outputs_list=[]
 
-
-for r in tools:
-    text=f"{r[0]} {r[1]}"
+cursor.execute("SELECT * FROM tools")
+tools=cursor.fetchall()
+for row in tools:
+    text=f"{row[0]} {row[1]}"
     descriptions.append(text.lower())
+
+# Commit changes and close connection
+conn.commit()
+conn.close()
 
 
 
@@ -62,7 +111,7 @@ def search_tool(query):
     for index in matching_indices:
         matching_tools_data.append(tools[index])
 
-    return matching_tools_data
+    return rank_results(matching_tools_data,query)
 
 
 
