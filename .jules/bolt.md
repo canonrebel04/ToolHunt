@@ -1,0 +1,3 @@
+## 2025-03-09 - O(1) Hash Map Optimization in List Searches
+**Learning:** Found an O(N*M) bottleneck in `backend/main.py:find_indices()` which used `list.index()` in a loop to find multiple elements in a large list (~2860 tools). This function is called on every search query to map retrieved results back to database objects.
+**Action:** Replaced O(N*M) naive `list.index()` search with an O(N+M) dictionary lookup (Hash Map). Ensure hash map creation correctly mimics `list.index()` behavior by only storing the *first* occurrence of any duplicate item. Always clean up temporary benchmark scripts used to measure optimizations before creating a pull request.
