@@ -1,6 +1,11 @@
 ## Download the required model for semantic search
 from sentence_transformers import SentenceTransformer
 import os
+import subprocess
+import sys
+import threading
+import time
+from pyngrok import ngrok
 sentences = ["This is an example sentence", "Each sentence is converted"]
 
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L12-v2')
@@ -8,19 +13,14 @@ embeddings = model.encode(sentences)
 print(embeddings)
 
 ## Download dependencises
-!git clone https://github.com/cyberytti/ToolHunt
+subprocess.run(['git', 'clone', 'https://github.com/cyberytti/ToolHunt'], check=True)
 os.chdir("ToolHunt")
-!pip install -r requirements.txt
-!pip install pyngrok
+subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'], check=True)
+subprocess.run([sys.executable, '-m', 'pip', 'install', 'pyngrok'], check=True)
 
 # =========================
 # Directly Run ToolHunt in Colab (Debugging Mode)
 # =========================
-
-import sys
-import threading
-import time
-from pyngrok import ngrok
 
 # --- 1. Set up paths and environment ---
 project_root = "/content" # Standard Colab working directory
