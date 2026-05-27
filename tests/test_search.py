@@ -68,7 +68,6 @@ class TestSearchEndpoint:
         # Flask returns 400 for bad JSON body — but our route logic won't be reached
         # Instead test via a mock that raises during search_tool
         from unittest.mock import patch
-        from backend.main import search_tool as _original
         with patch("app.routes.search_tool", side_effect=RuntimeError("DB down")):
             response = client.post(
                 "/search",
@@ -168,8 +167,8 @@ class TestSearchEndpoint:
     # ── Cache tests ────────────────────────────────────────────────────
 
     def test_repeated_identical_query_is_cached(self, client):
-        """Repeated identical queries should hit the cache (search_tool called once)."""
         from backend.main import search_tool as _original_search
+        """Repeated identical queries should hit the cache (search_tool called once)."""
         with patch("app.routes.search_tool", wraps=_original_search) as mock_search:
             # First call — should call search_tool
             response1 = client.post(
@@ -193,8 +192,8 @@ class TestSearchEndpoint:
             ), "Expected second identical query to hit cache (search_tool not called)"
 
     def test_different_query_bypasses_cache(self, client):
-        """A different query should call search_tool again (cache miss)."""
         from backend.main import search_tool as _original_search
+        """A different query should call search_tool again (cache miss)."""
         with patch("app.routes.search_tool", wraps=_original_search) as mock_search:
             # First query
             client.post(
@@ -268,7 +267,7 @@ class TestSearchEndpoint:
             from app.extensions import cache
             cache.clear()
 
-            response = client.post(
+            client.post(
                 "/search",
                 data=json.dumps({"query": "<script>alert('xss')</script>"}),
                 content_type="application/json",
