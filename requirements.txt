@@ -1,7 +1,8 @@
 sentence-transformers[onnx]
-optimum-onnxruntime
+optimum[onnxruntime]
 langchain
 langchain-community
 faiss-cpu
 rank_bm25
 flask
+Flask-Caching
