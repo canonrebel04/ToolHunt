@@ -8,8 +8,11 @@ yet used (e.g., during test collection with mocked backends).
 
 import sqlite3
 import threading
+import logging
 
 from .hybrid_search import search
+
+logger = logging.getLogger(__name__)
 
 # Module-level cache for lazy-loaded tool data
 _tools = None
@@ -34,21 +37,20 @@ def _load_tools():
         if _tools is not None:
             return
 
-        conn = sqlite3.connect("backend/database/tools.db")
+        conn = sqlite3.connect("backend/database/tools.db", timeout=10)
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA synchronous=NORMAL")
         cursor = conn.cursor()
 
-        descriptions = []
-        cursor.execute("SELECT * FROM tools")
-        tools = cursor.fetchall()
-        for row in tools:
+        _tools = cursor.execute("SELECT * FROM tools").fetchall()
+        _descriptions = []
+        for row in _tools:
             text = f"{row[0]} {row[1]}"
-            descriptions.append(text.lower())
+            _descriptions.append(text.lower())
 
         conn.commit()
         conn.close()
-
-        _tools = tools
-        _descriptions = descriptions
+        logger.info("Loaded %d tools from database (WAL mode)", len(_tools))
 
 
 def find_indices(primary_list, query_list):

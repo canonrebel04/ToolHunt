@@ -91,3 +91,16 @@ class TestLazyLoading:
 
         assert id(self.real_main._tools) == tools_id_first
         assert id(self.real_main._descriptions) == descs_id_first
+
+    def test_wal_mode_enabled(self):
+        """Verify PRAGMA journal_mode is WAL after _load_tools()."""
+        # Ensure it's loaded
+        self.real_main.search_tool("test query")
+
+        # Check actual database mode
+        import sqlite3
+        conn = sqlite3.connect("backend/database/tools.db")
+        cursor = conn.cursor()
+        mode = cursor.execute("PRAGMA journal_mode").fetchone()[0]
+        conn.close()
+        assert mode.lower() == "wal"

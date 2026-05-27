@@ -1,8 +1,9 @@
 sentence-transformers[onnx]
-optimum-onnxruntime
+
 langchain
 langchain-community
 faiss-cpu
 rank_bm25
 flask
 gunicorn
+Flask-Compress>=1.0

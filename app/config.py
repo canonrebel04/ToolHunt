@@ -8,6 +8,12 @@ class Config:
     CACHE_TYPE = 'SimpleCache'  # In-memory cache, no Redis needed
     CACHE_DEFAULT_TIMEOUT = 300  # 5 minutes
 
+    # Compression config
+    COMPRESS_ALGORITHM = 'gzip'
+    COMPRESS_LEVEL = 6
+    COMPRESS_MIN_SIZE = 500
+    COMPRESS_MIMETYPES = ['text/html', 'text/css', 'application/json', 'application/javascript']
+
 
 class TestingConfig(Config):
     """Configuration used during test runs."""

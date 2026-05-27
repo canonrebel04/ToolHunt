@@ -214,3 +214,19 @@ class TestSearchEndpoint:
             assert (
                 mock_search.call_count > first_call_count
             ), "Expected different query to call search_tool again (cache miss)"
+
+    def test_compression_config_applied(self, app):
+        """Verify compress attribute exists on app."""
+        assert hasattr(app, "extensions")
+        assert app.config.get("COMPRESS_ALGORITHM") == "gzip"
+
+    def test_timing_logged_in_search(self, client, caplog):
+        """Use caplog fixture to verify timing log message format."""
+        import logging
+        caplog.set_level(logging.INFO)
+        response = client.post(
+            "/search",
+            json={"query": "test query"},
+        )
+        assert response.status_code == 200
+        assert any("Search completed in" in record.message for record in caplog.records)

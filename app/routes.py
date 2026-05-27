@@ -1,6 +1,7 @@
 """Application routes defined as a Flask Blueprint."""
 
 import logging
+import time
 
 from flask import Blueprint, render_template, request, jsonify
 from backend.main import search_tool
@@ -79,6 +80,7 @@ def search_tools():
     -------
     JSON response with sliced results, pagination metadata, or structured error.
     """
+    start_time = time.time()
     data = request.get_json(silent=True)
     if data is None:
         return _error_response(
@@ -141,6 +143,10 @@ def search_tools():
 
         # Cache the response for subsequent identical requests
         cache.set(cache_key, response, timeout=300)
+
+        elapsed = time.time() - start_time
+        logger.info("Search completed in %.3fs | query=%r limit=%s offset=%s results=%s",
+                    elapsed, query, limit, offset, len(formatted_results))
 
         return response
 
