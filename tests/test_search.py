@@ -60,7 +60,7 @@ class TestSearchEndpoint:
     def test_error_response_has_code_and_retryable(self, client):
         """Error responses should include 'code' and 'retryable' fields."""
         # Trigger an error via invalid JSON
-        response = client.post(
+        client.post(
             "/search",
             data="not json",
             content_type="application/json",
