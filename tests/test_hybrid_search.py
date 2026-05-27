@@ -363,3 +363,44 @@ class TestSearchCaching:
             f"FAISS count increased from {faiss_after_first} to "
             f"{self.__class__._faiss_call_count} on third search (should be cached)"
         )
+
+class TestSearchLimits:
+    @classmethod
+    def setup_class(cls):
+        import sys
+        mock = sys.modules.pop("backend.hybrid_search", None)
+        for key in list(sys.modules.keys()):
+            if "hybrid_search" in key and key != "backend.hybrid_search":
+                sys.modules.pop(key, None)
+        from backend import hybrid_search  # noqa: F811
+        cls.hybrid_search = hybrid_search
+        if mock is not None:
+            sys.modules["backend.hybrid_search"] = mock
+
+    def test_search_limits_reranker_input(self):
+        """Verify only up to 20 docs passed to reranker."""
+        from unittest.mock import patch
+        import types
+
+        # Create 30 fake results
+        docs = [types.SimpleNamespace(page_content=f"doc{i}") for i in range(30)]
+
+        # We need to mock faiss_vectorstore and bm25_retriever which are returned by _ensure_indexes
+        class FakeFAISS:
+            def similarity_search_with_score(self, query, k):
+                return []
+        class FakeBM25:
+            def get_relevant_documents(self, query):
+                return []
+
+        with patch.object(self.hybrid_search, 'rerank', return_value=[]) as mock_rerank, \
+             patch.object(self.hybrid_search, 'reciprocal_rank_fusion', return_value=docs), \
+             patch.object(self.hybrid_search, '_ensure_indexes', return_value=(FakeBM25(), FakeFAISS())):
+
+            self.hybrid_search.search(["dummy"], "query")
+
+            mock_rerank.assert_called_once()
+            args, kwargs = mock_rerank.call_args
+
+            passed_candidates = args[1]
+            assert len(passed_candidates) == 20, "rerank should only receive 20 docs"

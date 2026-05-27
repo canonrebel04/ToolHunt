@@ -89,8 +89,8 @@ def search_tools():
         )
 
     query = data.get('query', '')
-    limit = data.get('limit', 10)
-    offset = data.get('offset', 0)
+    limit = min(int(data.get('limit', 10)), 50)  # Cap at 50
+    offset = max(int(data.get('offset', 0)), 0)  # No negative offset
 
     if not query:
         return _error_response(

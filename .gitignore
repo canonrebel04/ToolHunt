@@ -8,3 +8,4 @@ htmlcov/
 .coverage
 .coverage.*
 .codegraph/
+backend/__pycache__/

@@ -38,7 +38,7 @@ def _load_tools():
         cursor = conn.cursor()
 
         descriptions = []
-        cursor.execute("SELECT * FROM tools")
+        cursor.execute("SELECT name, description, url FROM tools")
         tools = cursor.fetchall()
         for row in tools:
             text = f"{row[0]} {row[1]}"
@@ -62,13 +62,14 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    # Build position lookup once
+    position_map = {item: idx for idx, item in enumerate(primary_list)}
+
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        idx = position_map.get(query_item)
+        if idx is not None:
+            indices.append(idx)
     return indices
 
 

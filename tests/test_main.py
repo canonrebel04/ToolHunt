@@ -91,3 +91,32 @@ class TestLazyLoading:
 
         assert id(self.real_main._tools) == tools_id_first
         assert id(self.real_main._descriptions) == descs_id_first
+
+    def test_find_indices_optimized(self):
+        """Verify find_indices returns correct matching behavior."""
+        primary_list = ["a", "b", "c", "d", "e"]
+        query_list = ["c", "a", "z", "e"]
+
+        # Original behaviour returns indices in order of query_list:
+        # "c" -> 2, "a" -> 0, "z" -> missing, "e" -> 4
+        # Result: [2, 0, 4]
+        indices = self.real_main.find_indices(primary_list, query_list)
+
+        assert indices == [2, 0, 4], "Optimized find_indices should match old behavior."
+
+
+def test_limit_enforced(client):
+    """Verify limit capped at 50 and offset cannot be negative."""
+    import json
+    response = client.post(
+        "/search",
+        data=json.dumps({"query": "network", "limit": 100, "offset": -5}),
+        content_type="application/json",
+    )
+    assert response.status_code == 200
+    data = response.get_json()
+
+    # 50 max cap
+    assert len(data["results"]) <= 50
+    # Make sure we got results to confirm no crash happened with offset=-5
+    assert "results" in data

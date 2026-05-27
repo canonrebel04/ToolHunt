@@ -166,7 +166,7 @@ def search(doc_list, query, similarity_threshold=0.5):
     rrf_results = reciprocal_rank_fusion(filtered_results, bm25_results, k=60)
 
     # Cross-encoder reranker on top-20 RRF candidates for finer-grained relevance
-    top_candidates = rrf_results[:20] if len(rrf_results) > 20 else rrf_results
+    top_candidates = rrf_results[:20]
     reranked = rerank(query, top_candidates, top_k=10)
 
     return [doc.page_content for doc in reranked]
