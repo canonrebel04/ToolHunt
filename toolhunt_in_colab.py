@@ -8,10 +8,10 @@ embeddings = model.encode(sentences)
 print(embeddings)
 
 ## Download dependencises
-!git clone https://github.com/cyberytti/ToolHunt
+# !git clone https://github.com/cyberytti/ToolHunt
 os.chdir("ToolHunt")
-!pip install -r requirements.txt
-!pip install pyngrok
+# !pip install -r requirements.txt
+# !pip install pyngrok
 
 # =========================
 # Directly Run ToolHunt in Colab (Debugging Mode)
