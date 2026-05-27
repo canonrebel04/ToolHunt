@@ -1,5 +1,5 @@
 sentence-transformers[onnx]
-optimum-onnxruntime
+optimum[onnxruntime]
 langchain
 langchain-community
 faiss-cpu
