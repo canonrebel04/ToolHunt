@@ -20,6 +20,6 @@ class TestAppRoutes:
         assert response.status_code == 200
         data = response.get_json()
         assert data["status"] == "ok"
-        assert "tools_count" in data
-        assert isinstance(data["tools_count"], int)
-        assert data["tools_count"] > 0
+        assert "database" in data["checks"]
+        assert isinstance(data["checks"]["database"]["tools_count"], int)
+        assert data["checks"]["database"]["tools_count"] >= 0

@@ -73,28 +73,57 @@ def index():
     return render_template('index.html')
 
 
-@main_bp.route('/health')
+@main_bp.route("/health", methods=["GET"])
 def health():
-    """Health-check endpoint.
+    """Enhanced health check with component status."""
+    status = {"status": "ok"}
+    checks = {}
 
-    Returns the server status and the count of tools available in the
-    search backend so the frontend can decide whether to attempt searches.
-    """
+    # Database check
     try:
-        # Use a broad query to get a sense of database health
-        all_results = search_tool("*")
-        tools_count = len(all_results)
-    except Exception:
-        logger.exception("Health check: search_tool failed")
-        return jsonify({
-            "status": "degraded",
-            "tools_count": 0,
-        }), 200
+        from backend.main import _load_tools, _tools
+        _load_tools()
+        checks["database"] = {
+            "status": "ok",
+            "tools_count": len(_tools) if _tools else 0
+        }
+    except Exception as e:
+        checks["database"] = {"status": "degraded", "error": str(e)}
+        status["status"] = "degraded"
 
-    return jsonify({
-        "status": "ok",
-        "tools_count": tools_count,
-    })
+    # Model check
+    try:
+        from backend.hybrid_search import model
+        checks["model"] = {
+            "status": "ok",
+            "type": type(model).__name__,
+            "backend": "onnx"
+        }
+    except Exception as e:
+        checks["model"] = {"status": "degraded", "error": str(e)}
+        status["status"] = "degraded"
+
+    # Cache check
+    try:
+        from app.extensions import cache
+        cache.set("__health_check__", "ok", timeout=5)
+        cache_hit = cache.get("__health_check__")
+        checks["cache"] = {
+            "status": "ok" if cache_hit == "ok" else "degraded",
+            "type": type(cache).__name__
+        }
+    except Exception as e:
+        checks["cache"] = {"status": "degraded", "error": str(e)}
+        if status["status"] == "ok":
+            status["status"] = "degraded"
+
+    # Uptime
+    import time
+    checks["uptime"] = time.time()
+
+    status["checks"] = checks
+    status_code = 200 if status["status"] == "ok" else 503
+    return jsonify(status), status_code
 
 
 @main_bp.route('/search', methods=['POST'])

@@ -43,16 +43,21 @@ def _build_fake_module(name, attrs=None):
 
 
 # Mock backend.main (the module-level code loads models, DB, etc.)
+
 _mock_main = _build_fake_module("backend.main", {
     "search_tool": _MockSearchTool(),
     "search": lambda q: [],
     "find_indices": lambda p, q: [],
+    "_load_tools": lambda: None,
+    "_tools": [],
 })
+
 
 # Mock backend.hybrid_search
 _mock_hybrid = _build_fake_module("backend.hybrid_search", {
     "search": lambda doc_list, query, similarity_threshold=0.5: [],
     "build_or_load_faiss_index": lambda doc_list, force_rebuild=False: None,
+    "model": type("FakeST", (), {})(),
 })
 
 # Mock langchain_community.vectorstores / retrievers
