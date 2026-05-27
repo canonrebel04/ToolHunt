@@ -149,8 +149,32 @@ def search_tools():
         )
 
     query = sanitize_query(data.get('query', ''))
-    limit = data.get('limit', 10)
-    offset = data.get('offset', 0)
+
+    try:
+        limit = int(data.get('limit', 10))
+        offset = int(data.get('offset', 0))
+    except (ValueError, TypeError):
+        return _error_response(
+            "Invalid pagination parameters",
+            code="BAD_REQUEST",
+            retryable=False,
+            status=400,
+        )
+
+    if limit < 1 or limit > 100:
+        return _error_response(
+            "Limit must be between 1 and 100",
+            code="BAD_REQUEST",
+            retryable=False,
+            status=400,
+        )
+    if offset < 0:
+        return _error_response(
+            "Offset must be non-negative",
+            code="BAD_REQUEST",
+            retryable=False,
+            status=400,
+        )
 
     if not query:
         return _error_response(

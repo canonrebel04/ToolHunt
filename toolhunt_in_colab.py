@@ -20,6 +20,7 @@ os.chdir("ToolHunt")
 import sys
 import threading
 import time
+import getpass
 from pyngrok import ngrok
 
 # --- 1. Set up paths and environment ---
@@ -40,7 +41,9 @@ print(f"ToolHunt dir: {toolhunt_dir}")
 print(f"sys.path (relevant parts): {[p for p in sys.path if 'content' in p]}")
 
 # Set ngrok token
-ngrok.set_auth_token('your ngrok auth')
+print("Please enter your ngrok authtoken (input will be hidden):")
+ngrok_token = getpass.getpass()
+ngrok.set_auth_token(ngrok_token)
 
 # --- 2. Import and run Flask app ---
 try:
