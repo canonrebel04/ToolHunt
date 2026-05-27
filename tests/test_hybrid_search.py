@@ -327,7 +327,7 @@ class TestSearchCaching:
         doc_list = ["tool one for searching", "tool two scanning"]
 
         # First search — indexes are built/loaded
-        result1 = self.hybrid_search.search(doc_list, "search")
+        self.hybrid_search.search(doc_list, "search")
         bm25_after_first = self.__class__._bm25_call_count
         faiss_after_first = self.__class__._faiss_call_count
 
@@ -343,7 +343,7 @@ class TestSearchCaching:
         )
 
         # Second search with same doc_list — counts must NOT increase
-        result2 = self.hybrid_search.search(doc_list, "scanning")
+        self.hybrid_search.search(doc_list, "scanning")
         assert self.__class__._bm25_call_count == bm25_after_first, (
             f"BM25 count increased from {bm25_after_first} to "
             f"{self.__class__._bm25_call_count} on second search (should be cached)"
@@ -354,7 +354,7 @@ class TestSearchCaching:
         )
 
         # Third search — counts must still NOT increase
-        result3 = self.hybrid_search.search(doc_list, "tool")
+        self.hybrid_search.search(doc_list, "tool")
         assert self.__class__._bm25_call_count == bm25_after_first, (
             f"BM25 count increased from {bm25_after_first} to "
             f"{self.__class__._bm25_call_count} on third search (should be cached)"
