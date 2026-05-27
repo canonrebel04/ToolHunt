@@ -1,5 +1,6 @@
 """ToolHunt Flask application factory."""
 
+import logging
 import os
 from flask import Flask
 from app.extensions import cache
@@ -19,6 +20,13 @@ def create_app(config_class=None):
     Flask
         Configured Flask application instance.
     """
+    # Configure structured logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S',
+    )
+
     # Determine the project root (one level above this package)
     _root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 

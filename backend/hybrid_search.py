@@ -1,9 +1,13 @@
+import logging
+import os
+import threading
+
 from sentence_transformers import SentenceTransformer
 from langchain_community.vectorstores import FAISS
 from langchain_community.retrievers import BM25Retriever
 from backend.reranker import rerank
-import os
-import threading
+
+logger = logging.getLogger(__name__)
 
 
 class EmbeddingWrapper:
@@ -37,10 +41,10 @@ _index_lock = threading.Lock()
 
 def build_or_load_faiss_index(doc_list, force_rebuild=False):
     if os.path.exists(FAISS_INDEX_PATH) and not force_rebuild:
-        print("Loading FAISS index from disk...")
+        logger.info("Loading FAISS index from disk...")
         vectorstore = FAISS.load_local(FAISS_INDEX_PATH, embedding, allow_dangerous_deserialization=True)
     else:
-        print("Building FAISS index...")
+        logger.info("Building FAISS index...")
         vectorstore = FAISS.from_texts(doc_list, embedding)
         vectorstore.save_local(FAISS_INDEX_PATH)
     return vectorstore

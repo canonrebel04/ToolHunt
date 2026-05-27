@@ -55,6 +55,48 @@ class TestSearchEndpoint:
         data = response.get_json()
         assert "error" in data
 
+    # ── Structured error response tests ───────────────────────────────────
+
+    def test_error_response_has_code_and_retryable(self, client):
+        """Error responses should include 'code' and 'retryable' fields."""
+        # Trigger an error via invalid JSON
+        response = client.post(
+            "/search",
+            data="not json",
+            content_type="application/json",
+        )
+        # Flask returns 400 for bad JSON body — but our route logic won't be reached
+        # Instead test via a mock that raises during search_tool
+        from unittest.mock import patch
+        from backend.main import search_tool as _original
+        with patch("app.routes.search_tool", side_effect=RuntimeError("DB down")):
+            response = client.post(
+                "/search",
+                data=json.dumps({"query": "network scanner"}),
+                content_type="application/json",
+            )
+        assert response.status_code == 500
+        data = response.get_json()
+        assert "error" in data
+        assert "code" in data
+        assert data["code"] == "SEARCH_FAILED"
+        assert "retryable" in data
+        assert data["retryable"] is True
+
+    def test_error_response_with_retryable_false(self, client):
+        """400 errors should be non-retryable."""
+        response = client.post(
+            "/search",
+            data=json.dumps({"query": ""}),
+            content_type="application/json",
+        )
+        assert response.status_code == 400
+        data = response.get_json()
+        assert "error" in data
+        # 400 errors should also have code/retryable for consistency
+        assert "code" in data
+        assert data["retryable"] is False
+
     # ── Pagination tests ─────────────────────────────────────────────
 
     def test_default_limit_is_applied(self, client):
