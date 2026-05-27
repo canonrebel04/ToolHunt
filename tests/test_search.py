@@ -68,7 +68,6 @@ class TestSearchEndpoint:
         # Flask returns 400 for bad JSON body — but our route logic won't be reached
         # Instead test via a mock that raises during search_tool
         from unittest.mock import patch
-        from backend.main import search_tool as _original
         with patch("app.routes.search_tool", side_effect=RuntimeError("DB down")):
             response = client.post(
                 "/search",
@@ -164,6 +163,64 @@ class TestSearchEndpoint:
         assert len(data["results"]) == 3
         assert data["has_more"] is True
         assert data["total"] == 15
+
+    def test_invalid_limit_type_returns_400(self, client):
+        """Non-integer limit should return a 400 error."""
+        response = client.post(
+            "/search",
+            data=json.dumps({"query": "test query", "limit": "invalid"}),
+            content_type="application/json",
+        )
+        assert response.status_code == 400
+        data = response.get_json()
+        assert "error" in data
+        assert data["error"] == "Invalid pagination parameters"
+
+    def test_out_of_bounds_limit_returns_400(self, client):
+        """Limit greater than 100 or less than 1 should return a 400 error."""
+        response = client.post(
+            "/search",
+            data=json.dumps({"query": "test query", "limit": 101}),
+            content_type="application/json",
+        )
+        assert response.status_code == 400
+        data = response.get_json()
+        assert "error" in data
+        assert data["error"] == "Limit must be between 1 and 100"
+
+        response = client.post(
+            "/search",
+            data=json.dumps({"query": "test query", "limit": 0}),
+            content_type="application/json",
+        )
+        assert response.status_code == 400
+        data = response.get_json()
+        assert "error" in data
+        assert data["error"] == "Limit must be between 1 and 100"
+
+    def test_invalid_offset_type_returns_400(self, client):
+        """Non-integer offset should return a 400 error."""
+        response = client.post(
+            "/search",
+            data=json.dumps({"query": "test query", "offset": "invalid"}),
+            content_type="application/json",
+        )
+        assert response.status_code == 400
+        data = response.get_json()
+        assert "error" in data
+        assert data["error"] == "Invalid pagination parameters"
+
+    def test_negative_offset_returns_400(self, client):
+        """Negative offset should return a 400 error."""
+        response = client.post(
+            "/search",
+            data=json.dumps({"query": "test query", "offset": -1}),
+            content_type="application/json",
+        )
+        assert response.status_code == 400
+        data = response.get_json()
+        assert "error" in data
+        assert data["error"] == "Offset must be non-negative"
 
     # ── Cache tests ────────────────────────────────────────────────────
 
@@ -268,7 +325,7 @@ class TestSearchEndpoint:
             from app.extensions import cache
             cache.clear()
 
-            response = client.post(
+            client.post(
                 "/search",
                 data=json.dumps({"query": "<script>alert('xss')</script>"}),
                 content_type="application/json",
