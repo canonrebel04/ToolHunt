@@ -60,7 +60,7 @@ class TestSearchEndpoint:
     def test_error_response_has_code_and_retryable(self, client):
         """Error responses should include 'code' and 'retryable' fields."""
         # Trigger an error via invalid JSON
-        response = client.post(
+        client.post(
             "/search",
             data="not json",
             content_type="application/json",
@@ -68,7 +68,6 @@ class TestSearchEndpoint:
         # Flask returns 400 for bad JSON body — but our route logic won't be reached
         # Instead test via a mock that raises during search_tool
         from unittest.mock import patch
-        from backend.main import search_tool as _original
         with patch("app.routes.search_tool", side_effect=RuntimeError("DB down")):
             response = client.post(
                 "/search",
