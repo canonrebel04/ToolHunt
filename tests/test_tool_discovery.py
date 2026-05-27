@@ -1,4 +1,3 @@
-import pytest
 from unittest.mock import patch, MagicMock
 from backend.tool_discovery import (
     discover_new_tools,

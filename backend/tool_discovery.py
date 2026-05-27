@@ -4,6 +4,10 @@ import re
 import sqlite3
 import time
 import logging
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from update_database import DatabaseUpdater
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -60,12 +64,6 @@ def check_existing(name):
         return False
 
 
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from update_database import DatabaseUpdater
-import sys
 
 
 def discover_new_tools(dry_run=False, sources=None):
@@ -141,7 +139,7 @@ if __name__ == "__main__":
     dry_run = "--dry-run" in sys.argv
     print(f"Starting Tool Discovery (Dry Run: {dry_run})...")
     result = discover_new_tools(dry_run=dry_run)
-    print(f"\nTool Discovery Report:")
+    print("\nTool Discovery Report:")
     print(f"  Scanned: {result['scanned']}")
     print(f"  Added:   {result['added']}")
     print(f"  Skipped: {result['skipped_duplicates']}")

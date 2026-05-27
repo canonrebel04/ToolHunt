@@ -46,7 +46,8 @@ def build_or_load_faiss_index(doc_list, force_rebuild=False):
     else:
         logger.info("Building FAISS index...")
         vectorstore = FAISS.from_texts(doc_list, embedding)
-        vectorstore.save_local(FAISS_INDEX_PATH)
+        if hasattr(vectorstore, "save_local"):
+            vectorstore.save_local(FAISS_INDEX_PATH)
     return vectorstore
 
 

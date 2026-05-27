@@ -2,7 +2,6 @@ import csv
 import logging
 import sqlite3
 from pathlib import Path
-from typing import Optional
 import shutil
 
 # Configure module-level logger
@@ -200,7 +199,7 @@ class DatabaseUpdater:
 
             return sql_added  # or sql_added — they should match
 
-        except Exception as e:
+        except Exception:
             logger.exception("Failed to update databases for tool: %s", name)
             raise
 
