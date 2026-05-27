@@ -39,8 +39,14 @@ print(f"Project root: {project_root}")
 print(f"ToolHunt dir: {toolhunt_dir}")
 print(f"sys.path (relevant parts): {[p for p in sys.path if 'content' in p]}")
 
-# Set ngrok token
-ngrok.set_auth_token('your ngrok auth')
+# Set ngrok token securely from environment variable
+ngrok_token = os.environ.get('NGROK_AUTH_TOKEN')
+if ngrok_token:
+    ngrok.set_auth_token(ngrok_token)
+else:
+    print("⚠️ WARNING: NGROK_AUTH_TOKEN environment variable not set.")
+    print("   Please set it securely (e.g., using Google Colab secrets) to avoid hardcoding credentials.")
+    print("   Example: import os; os.environ['NGROK_AUTH_TOKEN'] = 'your_token_here'")
 
 # --- 2. Import and run Flask app ---
 try:
