@@ -1,9 +1,12 @@
 """Application routes defined as a Flask Blueprint."""
 
 import logging
+import sys
 
 from flask import Blueprint, render_template, request, jsonify
-from backend.main import search_tool
+from backend.main import search_tool, _load_tools
+
+
 from app.extensions import cache
 
 main_bp = Blueprint('main', __name__)
@@ -51,10 +54,10 @@ def health():
     """
     try:
         # Use a broad query to get a sense of database health
-        all_results = search_tool("*")
-        tools_count = len(all_results)
+        _load_tools()
+        tools_count = len(sys.modules['backend.main']._tools)
     except Exception:
-        logger.exception("Health check: search_tool failed")
+        logger.exception("Health check: loading tools failed")
         return jsonify({
             "status": "degraded",
             "tools_count": 0,

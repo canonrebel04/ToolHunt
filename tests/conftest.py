@@ -47,6 +47,8 @@ _mock_main = _build_fake_module("backend.main", {
     "search_tool": _MockSearchTool(),
     "search": lambda q: [],
     "find_indices": lambda p, q: [],
+    "_load_tools": lambda: None,
+    "_tools": [1] * 2860,
 })
 
 # Mock backend.hybrid_search
