@@ -1,3 +1,4 @@
+from unittest.mock import patch
 """Tests for structured logging setup across the application.
 
 Verifies that:
@@ -169,11 +170,13 @@ class TestSearchLoggingIntegration:
             "Expected query info in search request log"
         assert "5" in log_text or "limit" in log_text.lower()
 
-    def test_cache_hit_logged(self, client, caplog):
+    @patch('app.routes.cache')
+    def test_cache_hit_logged(self, mock_cache, client, caplog):
         """A cache hit should be logged."""
         import json
 
         with caplog.at_level(logging.INFO, logger="app.routes"):
+            mock_cache.get.return_value = None
             # First call — cache miss
             client.post(
                 "/search",
@@ -181,6 +184,8 @@ class TestSearchLoggingIntegration:
                 content_type="application/json",
             )
 
+            from flask import jsonify
+            mock_cache.get.return_value = jsonify({'results': [], 'has_more': False, 'total': 0})
             # Second identical call — cache hit
             client.post(
                 "/search",

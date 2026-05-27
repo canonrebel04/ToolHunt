@@ -3,7 +3,7 @@
 import logging
 import os
 from flask import Flask
-from app.extensions import cache
+from app.extensions import cache, cors
 
 
 def create_app(config_class=None):
@@ -44,6 +44,7 @@ def create_app(config_class=None):
 
     # Initialize extensions
     cache.init_app(app)
+    cors.init_app(app, origins=app.config.get('CORS_ORIGINS', ['*']))
 
     from app.routes import main_bp
     app.register_blueprint(main_bp)

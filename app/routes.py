@@ -5,6 +5,8 @@ import logging
 from flask import Blueprint, render_template, request, jsonify
 from backend.main import search_tool
 from app.extensions import cache
+from app.audit_logger import log_search_event, log_error_event, log_rate_limit_event
+import time
 
 main_bp = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
@@ -34,6 +36,21 @@ def _error_response(message, code="UNKNOWN", retryable=False, status=500):
         "code": code,
         "retryable": retryable,
     }), status
+
+
+@main_bp.after_request
+def add_security_headers(response):
+    response.headers['Content-Security-Policy'] = (
+        "default-src 'self'; "
+        "script-src 'self' https://cdnjs.cloudflare.com; "
+        "style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; "
+        "font-src 'self' https://cdnjs.cloudflare.com data:; "
+        "img-src 'self' data: https://raw.githubusercontent.com; "
+        "connect-src 'self'; "
+        "frame-ancestors 'none'; "
+        "form-action 'self'"
+    )
+    return response
 
 
 @main_bp.route('/')
@@ -116,6 +133,7 @@ def search_tools():
     )
 
     try:
+        start_time = time.time()
         all_results = search_tool(query)
         total = len(all_results)
 
@@ -142,10 +160,16 @@ def search_tools():
         # Cache the response for subsequent identical requests
         cache.set(cache_key, response, timeout=300)
 
+        duration_ms = (time.time() - start_time) * 1000
+        ip = request.remote_addr or 'unknown'
+        log_search_event(ip, query, total, duration_ms)
+
         return response
 
     except Exception as e:
         logger.exception("Search failed: query=%r limit=%s offset=%s", query, limit, offset)
+        ip = request.remote_addr or 'unknown'
+        log_error_event(ip, '/search', str(e))
         return _error_response(
             str(e),
             code="SEARCH_FAILED",

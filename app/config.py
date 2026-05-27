@@ -7,6 +7,7 @@ class Config:
     TESTING = False
     CACHE_TYPE = 'SimpleCache'  # In-memory cache, no Redis needed
     CACHE_DEFAULT_TIMEOUT = 300  # 5 minutes
+    CORS_ORIGINS = ['http://localhost:5000', 'http://127.0.0.1:5000']
 
 
 class TestingConfig(Config):
@@ -21,3 +22,4 @@ class ProductionConfig(Config):
     CACHE_TYPE = 'RedisCache'
     CACHE_REDIS_URL = 'redis://localhost:6379/0'
     CACHE_DEFAULT_TIMEOUT = 300
+    CORS_ORIGINS = ['https://your-domain.com']

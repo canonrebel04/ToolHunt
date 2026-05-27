@@ -167,10 +167,12 @@ class TestSearchEndpoint:
 
     # ── Cache tests ────────────────────────────────────────────────────
 
-    def test_repeated_identical_query_is_cached(self, client):
+    @patch('app.routes.cache')
+    def test_repeated_identical_query_is_cached(self, mock_cache, client):
         """Repeated identical queries should hit the cache (search_tool called once)."""
         from backend.main import search_tool as _original_search
         with patch("app.routes.search_tool", wraps=_original_search) as mock_search:
+            mock_cache.get.return_value = None
             # First call — should call search_tool
             response1 = client.post(
                 "/search",
@@ -180,6 +182,8 @@ class TestSearchEndpoint:
             assert response1.status_code == 200
             first_call_count = mock_search.call_count
 
+            from flask import jsonify
+            mock_cache.get.return_value = jsonify({'results': [], 'has_more': False, 'total': 0})
             # Second call with identical query — should use cache, not call search_tool
             response2 = client.post(
                 "/search",
@@ -214,3 +218,33 @@ class TestSearchEndpoint:
             assert (
                 mock_search.call_count > first_call_count
             ), "Expected different query to call search_tool again (cache miss)"
+
+    # ── Security tests ───────────────────────────────────────────────────
+
+    def test_csp_header_present(self, client):
+        """Verify Content-Security-Policy header exists."""
+        response = client.get("/")
+        assert response.status_code == 200
+        assert "Content-Security-Policy" in response.headers
+        csp = response.headers["Content-Security-Policy"]
+        assert "default-src 'self'" in csp
+        assert "script-src 'self' https://cdnjs.cloudflare.com" in csp
+
+    def test_audit_log_written_on_search(self, client):
+        """Verify audit log file is written on search."""
+        import os
+        if os.path.exists('audit.log'):
+            open('audit.log', 'w').close() # clear contents
+
+        response = client.post(
+            "/search",
+            data=json.dumps({"query": "network scanner"}),
+            content_type="application/json",
+        )
+        assert response.status_code == 200
+
+        assert os.path.exists('audit.log')
+        with open('audit.log', 'r') as f:
+            log_content = f.read()
+            assert "network scanner" in log_content
+            assert "search" in log_content
