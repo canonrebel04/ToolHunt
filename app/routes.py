@@ -5,10 +5,41 @@ import logging
 from flask import Blueprint, render_template, request, jsonify
 from backend.main import search_tool
 from app.extensions import cache
+from app.rate_limiter import rate_limiter
+import re
 
 main_bp = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
 
+
+
+@main_bp.after_request
+def add_security_headers(response):
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    response.headers['Permissions-Policy'] = 'geolocation=(), microphone=(), camera=()'
+    return response
+
+
+@main_bp.before_request
+def check_rate_limit():
+    if request.endpoint == 'main.search_tools':
+        ip = request.remote_addr or 'unknown'
+        if not rate_limiter.is_allowed(ip):
+            from flask import jsonify
+            return jsonify({"error": "Rate limit exceeded", "code": "RATE_LIMITED", "retryable": True}), 429
+
+
+def sanitize_query(query: str) -> str:
+    """Strip HTML tags and limit length."""
+    if not query or not query.strip():
+        return ""
+    clean = re.sub(r'<[^>]+>', '', query)
+    clean = clean.strip()[:200]
+    return clean
 
 def _error_response(message, code="UNKNOWN", retryable=False, status=500):
     """Build a structured error response.
@@ -42,28 +73,57 @@ def index():
     return render_template('index.html')
 
 
-@main_bp.route('/health')
+@main_bp.route("/health", methods=["GET"])
 def health():
-    """Health-check endpoint.
+    """Enhanced health check with component status."""
+    status = {"status": "ok"}
+    checks = {}
 
-    Returns the server status and the count of tools available in the
-    search backend so the frontend can decide whether to attempt searches.
-    """
+    # Database check
     try:
-        # Use a broad query to get a sense of database health
-        all_results = search_tool("*")
-        tools_count = len(all_results)
-    except Exception:
-        logger.exception("Health check: search_tool failed")
-        return jsonify({
-            "status": "degraded",
-            "tools_count": 0,
-        }), 200
+        from backend.main import _load_tools, _tools
+        _load_tools()
+        checks["database"] = {
+            "status": "ok",
+            "tools_count": len(_tools) if _tools else 0
+        }
+    except Exception as e:
+        checks["database"] = {"status": "degraded", "error": str(e)}
+        status["status"] = "degraded"
 
-    return jsonify({
-        "status": "ok",
-        "tools_count": tools_count,
-    })
+    # Model check
+    try:
+        from backend.hybrid_search import model
+        checks["model"] = {
+            "status": "ok",
+            "type": type(model).__name__,
+            "backend": "onnx"
+        }
+    except Exception as e:
+        checks["model"] = {"status": "degraded", "error": str(e)}
+        status["status"] = "degraded"
+
+    # Cache check
+    try:
+        from app.extensions import cache
+        cache.set("__health_check__", "ok", timeout=5)
+        cache_hit = cache.get("__health_check__")
+        checks["cache"] = {
+            "status": "ok" if cache_hit == "ok" else "degraded",
+            "type": type(cache).__name__
+        }
+    except Exception as e:
+        checks["cache"] = {"status": "degraded", "error": str(e)}
+        if status["status"] == "ok":
+            status["status"] = "degraded"
+
+    # Uptime
+    import time
+    checks["uptime"] = time.time()
+
+    status["checks"] = checks
+    status_code = 200 if status["status"] == "ok" else 503
+    return jsonify(status), status_code
 
 
 @main_bp.route('/search', methods=['POST'])
@@ -88,7 +148,7 @@ def search_tools():
             status=400,
         )
 
-    query = data.get('query', '')
+    query = sanitize_query(data.get('query', ''))
     limit = data.get('limit', 10)
     offset = data.get('offset', 0)
 
@@ -101,7 +161,8 @@ def search_tools():
         )
 
     # Generate cache key from request parameters
-    cache_key = f"search:{query}:{limit}:{offset}"
+    query_str = query if query else ''
+    cache_key = f"search:{query_str}:{limit}:{offset}"
     cached_response = cache.get(cache_key)
     if cached_response is not None:
         logger.info(

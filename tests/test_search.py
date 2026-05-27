@@ -213,3 +213,64 @@ class TestSearchEndpoint:
             assert (
                 mock_search.call_count > first_call_count
             ), "Expected different query to call search_tool again (cache miss)"
+
+    # ── Security tests ─────────────────────────────────────────────────
+
+    def test_security_headers_present(self, client):
+        """Responses should include expected security headers."""
+        response = client.get("/")
+        assert response.headers.get("X-Content-Type-Options") == "nosniff"
+        assert response.headers.get("X-Frame-Options") == "DENY"
+        assert response.headers.get("X-XSS-Protection") == "1; mode=block"
+        assert response.headers.get("Strict-Transport-Security") == "max-age=31536000; includeSubDomains"
+        assert response.headers.get("Referrer-Policy") == "strict-origin-when-cross-origin"
+        assert response.headers.get("Permissions-Policy") == "geolocation=(), microphone=(), camera=()"
+
+    def test_rate_limiter_blocks_excess(self, client):
+        """More than 30 requests should trigger a 429 error."""
+        # Clean rate limiter state for tests
+        from app.rate_limiter import rate_limiter
+        rate_limiter._requests.clear()
+
+        # Send 30 requests (should succeed/400 but not 429)
+        for _ in range(30):
+            response = client.post(
+                "/search",
+                data=json.dumps({"query": "test"}),
+                content_type="application/json",
+            )
+            assert response.status_code != 429
+
+        # 31st request should be blocked
+        response = client.post(
+            "/search",
+            data=json.dumps({"query": "test"}),
+            content_type="application/json",
+        )
+        assert response.status_code == 429
+        data = response.get_json()
+        assert data.get("code") == "RATE_LIMITED"
+
+
+    def test_input_sanitization_strips_html(self, client):
+        """HTML tags in the query should be stripped."""
+        from unittest.mock import patch
+
+        # We need to make sure the rate limiter isn't blocking us.
+        from app.rate_limiter import rate_limiter
+        rate_limiter._requests.clear()
+
+        with patch("app.routes.search_tool") as mock_search:
+            mock_search.return_value = []
+
+            # Use cache.clear() to ensure cache miss if any
+            from app.extensions import cache
+            cache.clear()
+
+            client.post(
+                "/search",
+                data=json.dumps({"query": "<script>alert('xss')</script>"}),
+                content_type="application/json",
+            )
+
+            mock_search.assert_called_once_with("alert('xss')")
