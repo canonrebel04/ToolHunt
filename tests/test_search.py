@@ -55,6 +55,17 @@ class TestSearchEndpoint:
         data = response.get_json()
         assert "error" in data
 
+    def test_invalid_json_returns_400(self, client):
+        """Invalid JSON in request body should return 400 error."""
+        response = client.post(
+            "/search",
+            data="not json",
+            content_type="application/json",
+        )
+        assert response.status_code == 400
+        data = response.get_json()
+        assert data["error"] == "Invalid JSON body"
+
     # ── Structured error response tests ───────────────────────────────────
 
     def test_error_response_has_code_and_retryable(self, client):
