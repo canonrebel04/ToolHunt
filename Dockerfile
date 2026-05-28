@@ -28,6 +28,11 @@ COPY . .
 # Ensure the database directory exists (for bind-mount persistence at runtime)
 RUN mkdir -p /app/backend/database
 
+# Create a non-root user and change ownership
+RUN useradd -m -s /bin/bash appuser && chown -R appuser:appuser /app
+
+USER appuser
+
 # Expose the port Gunicorn will listen on
 EXPOSE 5000
 
