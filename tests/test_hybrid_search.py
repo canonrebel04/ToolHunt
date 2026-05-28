@@ -232,6 +232,13 @@ class TestEmbeddingWrapper:
         """EmbeddingWrapper class should be defined in hybrid_search."""
         assert hasattr(self.hybrid_search, 'EmbeddingWrapper')
 
+
+    def test_init_assigns_model(self):
+        """__init__ should correctly assign the model attribute."""
+        dummy_model = "dummy_model_instance"
+        wrapper = self.hybrid_search.EmbeddingWrapper(dummy_model)
+        assert wrapper.model == dummy_model
+
     def test_embed_query_returns_1024_dim(self):
         """embed_query should return a 1024-dimensional vector (BGE-M3)."""
         wrapper = self.hybrid_search.EmbeddingWrapper(
@@ -327,7 +334,7 @@ class TestSearchCaching:
         doc_list = ["tool one for searching", "tool two scanning"]
 
         # First search — indexes are built/loaded
-        result1 = self.hybrid_search.search(doc_list, "search")
+        self.hybrid_search.search(doc_list, "search")
         bm25_after_first = self.__class__._bm25_call_count
         faiss_after_first = self.__class__._faiss_call_count
 
@@ -343,7 +350,7 @@ class TestSearchCaching:
         )
 
         # Second search with same doc_list — counts must NOT increase
-        result2 = self.hybrid_search.search(doc_list, "scanning")
+        self.hybrid_search.search(doc_list, "scanning")
         assert self.__class__._bm25_call_count == bm25_after_first, (
             f"BM25 count increased from {bm25_after_first} to "
             f"{self.__class__._bm25_call_count} on second search (should be cached)"
@@ -354,7 +361,7 @@ class TestSearchCaching:
         )
 
         # Third search — counts must still NOT increase
-        result3 = self.hybrid_search.search(doc_list, "tool")
+        self.hybrid_search.search(doc_list, "tool")
         assert self.__class__._bm25_call_count == bm25_after_first, (
             f"BM25 count increased from {bm25_after_first} to "
             f"{self.__class__._bm25_call_count} on third search (should be cached)"
