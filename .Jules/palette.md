@@ -1,0 +1,3 @@
+## 2024-05-28 - Improve Keyboard Navigation and Screen Reader Experience
+**Learning:** Found that `.fallback-category-tile` (which acts as a button) and various links and buttons lacked `:focus-visible` styles, making keyboard navigation difficult to track. Also discovered that dynamic search updates in `#resultsCount` weren't announced to screen readers.
+**Action:** Next time, always ensure elements that act as buttons or links have `:focus-visible` outline styles, and use `aria-live` for dynamic text regions that update without a page refresh.

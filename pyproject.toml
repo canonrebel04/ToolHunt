@@ -18,3 +18,8 @@ dependencies = [
 testpaths = ["tests"]
 pythonpath = ["backend", "."]
 filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+exclude = [
+    "toolhunt_in_colab.py"
+]
