@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_descriptions_map = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _descriptions_map
 
     # Fast path: already loaded
     if _tools is not None:
@@ -38,17 +39,21 @@ def _load_tools():
         cursor = conn.cursor()
 
         descriptions = []
+        descriptions_map = {}
         cursor.execute("SELECT * FROM tools")
         tools = cursor.fetchall()
-        for row in tools:
-            text = f"{row[0]} {row[1]}"
-            descriptions.append(text.lower())
+        for idx, row in enumerate(tools):
+            text = f"{row[0]} {row[1]}".lower()
+            descriptions.append(text)
+            if text not in descriptions_map:
+                descriptions_map[text] = idx
 
         conn.commit()
         conn.close()
 
         _tools = tools
         _descriptions = descriptions
+        _descriptions_map = descriptions_map
 
 
 def find_indices(primary_list, query_list):
@@ -63,12 +68,20 @@ def find_indices(primary_list, query_list):
         list: A list of indices where query elements are found in primary list
     """
     indices = []
-    for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+    # Use cached O(1) map if searching in _descriptions, else fallback to building map
+    if primary_list is _descriptions and _descriptions_map is not None:
+        for query_item in query_list:
+            if query_item in _descriptions_map:
+                indices.append(_descriptions_map[query_item])
+    else:
+        # Fallback O(N) map build for other lists
+        primary_map = {}
+        for idx, item in enumerate(primary_list):
+            if item not in primary_map:
+                primary_map[item] = idx
+        for query_item in query_list:
+            if query_item in primary_map:
+                indices.append(primary_map[query_item])
     return indices
 
 
