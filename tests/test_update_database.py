@@ -31,7 +31,7 @@ def test_update_db_duplicate(temp_updater):
         mock_faiss.assert_called_once()
 
 def test_update_db_no_invalidate(temp_updater):
-    with patch.object(temp_updater, 'update_sql_db', return_value=True) as mock_sql, \
+    with patch.object(temp_updater, 'update_sql_db', return_value=True), \
          patch.object(temp_updater, 'remove_faiss_embeddings') as mock_faiss:
 
         result = temp_updater.update_db("Test", "Desc", "http://test", invalidate_faiss=False)
