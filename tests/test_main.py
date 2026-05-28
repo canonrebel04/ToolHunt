@@ -151,3 +151,10 @@ class TestFindIndices:
         query = ["b", "a", "b"]
         indices = self.real_main.find_indices(primary, query)
         assert indices == [1, 0, 1]
+
+    def test_find_indices_exception_handling(self):
+        """Elements in query missing from primary should trigger exception handling path."""
+        primary = ["a", "b", "c"]
+        query = ["z", "x", "y"]
+        indices = self.real_main.find_indices(primary, query)
+        assert indices == []
