@@ -67,6 +67,8 @@ class _FakeFAISSInstance:
         # Return empty results: each result is (Document, distance)
         # We need to import Document here since it's what search() returns
         return []
+    def save_local(self, path):
+        pass
 
 class _FakeFAISS:
     """Mimics the FAISS class with load_local and from_texts classmethods."""
@@ -87,6 +89,8 @@ class _FakeBM25Instance:
     """Mimics a BM25 retriever instance with the methods search() uses."""
     def get_relevant_documents(self, query):
         return []
+    def save_local(self, path):
+        pass
 
 
 class _FakeBM25:
