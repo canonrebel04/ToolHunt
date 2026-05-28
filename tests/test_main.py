@@ -4,7 +4,6 @@ Verifies that the tool database is loaded on first search_tool() call,
 not at module import time.
 """
 import sys
-import pytest
 
 
 class TestLazyLoading:
@@ -54,7 +53,7 @@ class TestLazyLoading:
         self.real_main._descriptions = None
 
         # This should trigger lazy loading
-        result = self.real_main.search_tool("test")
+        self.real_main.search_tool("test")
 
         # After search, tools should be loaded
         assert self.real_main._tools is not None
@@ -151,3 +150,101 @@ class TestFindIndices:
         query = ["b", "a", "b"]
         indices = self.real_main.find_indices(primary, query)
         assert indices == [1, 0, 1]
+
+class TestLoadTools:
+    """Verify behavior of _load_tools function in backend.main."""
+
+    @classmethod
+    def setup_class(cls):
+        """Load the REAL backend.main module for testing."""
+        # Save the mock so we can restore it
+        cls._mock_main = sys.modules.pop("backend.main", None)
+        # Clear any cached submodule references
+        for key in list(sys.modules.keys()):
+            if key.startswith("backend.main") and key != "backend.main":
+                sys.modules.pop(key, None)
+
+        # Now import the real module
+        import backend.main  # noqa: F811
+        cls.real_main = backend.main
+
+    @classmethod
+    def teardown_class(cls):
+        """Restore the mock for other tests."""
+        if cls._mock_main is not None:
+            sys.modules["backend.main"] = cls._mock_main
+
+    def setup_method(self):
+        """Reset the module-level state before each test."""
+        self.real_main._tools = None
+        self.real_main._descriptions = None
+
+    def test_load_tools_from_db(self, tmp_path, monkeypatch):
+        """Verify _load_tools reads from SQLite and parses descriptions correctly."""
+        import sqlite3
+
+        # Create a temporary SQLite database
+        db_path = tmp_path / "test_tools.db"
+        conn = sqlite3.connect(db_path)
+        c = conn.cursor()
+        c.execute("CREATE TABLE tools (name TEXT, description TEXT, url TEXT, category TEXT)")
+        c.execute("INSERT INTO tools VALUES ('Tool1', 'A test Tool', 'http://t1', 'Cat1')")
+        c.execute("INSERT INTO tools VALUES ('NMAP', 'Network Scanner', 'http://nmap', 'Network')")
+        conn.commit()
+        conn.close()
+
+        # Mock sqlite3.connect to intercept the hardcoded path
+        original_connect = sqlite3.connect
+        def mock_connect(database, *args, **kwargs):
+            # Regardless of the requested path, open our temp DB
+            return original_connect(db_path, *args, **kwargs)
+
+        monkeypatch.setattr(sqlite3, "connect", mock_connect)
+
+        # Call _load_tools
+        self.real_main._load_tools()
+
+        # Verify _tools contains the inserted rows
+        assert self.real_main._tools is not None
+        assert len(self.real_main._tools) == 2
+        assert self.real_main._tools[0] == ('Tool1', 'A test Tool', 'http://t1', 'Cat1')
+        assert self.real_main._tools[1] == ('NMAP', 'Network Scanner', 'http://nmap', 'Network')
+
+        # Verify _descriptions parses as f"{row[0]} {row[1]}".lower()
+        assert self.real_main._descriptions is not None
+        assert len(self.real_main._descriptions) == 2
+        assert self.real_main._descriptions[0] == "tool1 a test tool"
+        assert self.real_main._descriptions[1] == "nmap network scanner"
+
+    def test_load_tools_fast_path(self, monkeypatch):
+        """Verify _load_tools does nothing if _tools is already populated."""
+        import sqlite3
+
+        # Preset the module state to simulate already loaded
+        mock_tools = [('Preloaded', 'Test', 'url', 'cat')]
+        self.real_main._tools = mock_tools
+        self.real_main._descriptions = ["preloaded test"]
+
+        # Track if connect is called
+        connect_called = False
+        def mock_connect(*args, **kwargs):
+            nonlocal connect_called
+            connect_called = True
+            # Return a mock connection just in case
+            class MockConn:
+                def cursor(self): return self
+                def execute(self, *a): pass
+                def fetchall(self): return []
+                def commit(self): pass
+                def close(self): pass
+            return MockConn()
+
+        monkeypatch.setattr(sqlite3, "connect", mock_connect)
+
+        # Call _load_tools
+        self.real_main._load_tools()
+
+        # Verify it early-returned and did not touch the database
+        assert not connect_called
+        assert self.real_main._tools == mock_tools
+        assert self.real_main._descriptions == ["preloaded test"]
