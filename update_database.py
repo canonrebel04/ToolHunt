@@ -20,6 +20,7 @@ class DatabaseUpdater:
         self.csv_file = Path(csv_file)
         self.sql_db_file = Path(sql_db_file)
         self.faiss_dir = Path(faiss_dir)
+        self._existing_tools_cache = None
 
         # Ensure parent directories exist
         self.csv_file.parent.mkdir(parents=True, exist_ok=True)
@@ -39,6 +40,14 @@ class DatabaseUpdater:
                 )
             """)
             conn.commit()
+
+    def _load_existing_tools(self) -> None:
+        """Load all existing tool names into the cache if not already loaded."""
+        if self._existing_tools_cache is None:
+            with sqlite3.connect(self.sql_db_file) as conn:
+                cursor = conn.cursor()
+                cursor.execute("SELECT LOWER(name) FROM tools")
+                self._existing_tools_cache = {row[0] for row in cursor.fetchall()}
 
     def update_csv_db(
         self,
@@ -119,23 +128,23 @@ class DatabaseUpdater:
         if not name_norm:
             raise ValueError("Tool name cannot be empty or whitespace-only.")
 
+        if check_duplicate:
+            self._load_existing_tools()
+            if name_norm.lower() in self._existing_tools_cache:
+                logger.info("Skipped duplicate tool in SQL DB: '%s'", name_norm)
+                return False
+
         with sqlite3.connect(self.sql_db_file) as conn:
             cursor = conn.cursor()
-
-            if check_duplicate:
-                cursor.execute(
-                    "SELECT 1 FROM tools WHERE LOWER(name) = LOWER(?) LIMIT 1",
-                    (name_norm,)
-                )
-                if cursor.fetchone():
-                    logger.info("Skipped duplicate tool in SQL DB: '%s'", name_norm)
-                    return False
 
             cursor.execute(
                 "INSERT INTO tools (name, description, url) VALUES (?, ?, ?)",
                 (name_norm, description.strip(), url.strip())
             )
             conn.commit()
+
+        if self._existing_tools_cache is not None:
+            self._existing_tools_cache.add(name_norm.lower())
 
         logger.debug("Inserted tool into SQL DB: %s", name_norm)
         return True
@@ -199,7 +208,7 @@ class DatabaseUpdater:
 
             return sql_added  # or sql_added — they should match
 
-        except Exception as e:
+        except Exception:
             logger.exception("Failed to update databases for tool: %s", name)
             raise
 
