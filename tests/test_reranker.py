@@ -6,7 +6,6 @@ so the real reranker module will use the mocked CrossEncoder during tests.
 import sys
 import types
 from unittest import mock
-import pytest
 
 
 class TestReranker:

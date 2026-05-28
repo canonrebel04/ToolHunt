@@ -199,7 +199,7 @@ class DatabaseUpdater:
 
             return sql_added  # or sql_added — they should match
 
-        except Exception as e:
+        except Exception:
             logger.exception("Failed to update databases for tool: %s", name)
             raise
 
@@ -219,5 +219,5 @@ try:
         print("Tool added successfully.")
     else:
         print("Tool was a duplicate and skipped.")
-except Exception as e:
-    print(f"Update failed: {e}")
+except Exception:
+    print("Update failed")
