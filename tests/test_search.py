@@ -68,7 +68,6 @@ class TestSearchEndpoint:
         # Flask returns 400 for bad JSON body — but our route logic won't be reached
         # Instead test via a mock that raises during search_tool
         from unittest.mock import patch
-        from backend.main import search_tool as _original
         with patch("app.routes.search_tool", side_effect=RuntimeError("DB down")):
             response = client.post(
                 "/search",
@@ -275,3 +274,19 @@ class TestSearchEndpoint:
             )
 
             mock_search.assert_called_once_with("alert('xss')")
+
+    def test_search_exception_returns_500_and_logs(self, client):
+        """Mock backend.main.search_tool to raise an Exception and verify the error JSON."""
+        from unittest.mock import patch
+
+        with patch("app.routes.search_tool", side_effect=Exception("Simulated search failure")):
+            response = client.post(
+                "/search",
+                json={"query": "test query"},
+                content_type="application/json",
+            )
+            assert response.status_code == 500
+            data = response.get_json()
+            assert data["error"] == "Simulated search failure"
+            assert data["code"] == "SEARCH_FAILED"
+            assert data["retryable"] is True
