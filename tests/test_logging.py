@@ -207,3 +207,12 @@ class TestSearchLoggingIntegration:
 
         assert response.status_code == 500
         assert "search failed" in caplog.text or "error" in caplog.text.lower()
+
+    def test_search_timing_logged(self, client, caplog):
+        """Verify search completion time is logged."""
+        import logging
+        caplog.set_level(logging.INFO)
+        client.post('/search', json={'query': 'nmap'})
+
+        timing_logged = any("Search completed in" in record.message for record in caplog.records)
+        assert timing_logged, "Expected search completion timing to be logged"

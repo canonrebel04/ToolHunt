@@ -3,7 +3,7 @@
 import logging
 import os
 from flask import Flask
-from app.extensions import cache
+from app.extensions import cache, compress
 
 
 def create_app(config_class=None):
@@ -44,6 +44,7 @@ def create_app(config_class=None):
 
     # Initialize extensions
     cache.init_app(app)
+    compress.init_app(app)
 
     from app.routes import main_bp
     app.register_blueprint(main_bp)

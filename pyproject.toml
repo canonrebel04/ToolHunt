@@ -10,6 +10,7 @@ dependencies = [
     "langchain>=0.3.27",
     "langchain-community>=0.3.29",
     "rank-bm25>=0.2.2",
+    "Flask-Compress>=1.0",
     "sentence-transformers[onnx]>=5.1.0",
     "optimum-onnxruntime>=1.20",
 ]

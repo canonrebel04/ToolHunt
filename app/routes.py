@@ -3,6 +3,7 @@
 import logging
 
 from flask import Blueprint, render_template, request, jsonify
+import time
 from backend.main import search_tool
 from app.extensions import cache
 
@@ -79,6 +80,7 @@ def search_tools():
     -------
     JSON response with sliced results, pagination metadata, or structured error.
     """
+    start_time = time.time()
     data = request.get_json(silent=True)
     if data is None:
         return _error_response(
@@ -104,10 +106,12 @@ def search_tools():
     cache_key = f"search:{query}:{limit}:{offset}"
     cached_response = cache.get(cache_key)
     if cached_response is not None:
+        elapsed = time.time() - start_time
         logger.info(
             "Cache HIT  | query=%r limit=%s offset=%s",
             query, limit, offset,
         )
+        logger.info("Search completed in %.2fs | query=%r limit=%s offset=%s", elapsed, query, limit, offset)
         return cached_response
 
     logger.info(
@@ -141,6 +145,9 @@ def search_tools():
 
         # Cache the response for subsequent identical requests
         cache.set(cache_key, response, timeout=300)
+
+        elapsed = time.time() - start_time
+        logger.info("Search completed in %.2fs | query=%r limit=%s offset=%s", elapsed, query, limit, offset)
 
         return response
 
