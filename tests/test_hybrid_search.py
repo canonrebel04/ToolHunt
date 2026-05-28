@@ -213,6 +213,127 @@ class TestReciprocalRankFusion:
         assert "similarity_threshold" in params
 
 
+
+
+class TestBuildOrLoadFaissIndex:
+    """Test building or loading FAISS index and handling exceptions."""
+
+    @classmethod
+    def setup_class(cls):
+        """Load the REAL hybrid_search module."""
+        mock = sys.modules.pop("backend.hybrid_search", None)
+        for key in list(sys.modules.keys()):
+            if "hybrid_search" in key and key != "backend.hybrid_search":
+                sys.modules.pop(key, None)
+        from backend import hybrid_search  # noqa: F811
+        cls.hybrid_search = hybrid_search
+        if mock is not None:
+            sys.modules["backend.hybrid_search"] = mock
+
+    def test_build_or_load_index_builds_when_not_exists(self, monkeypatch):
+        """If FAISS_INDEX_PATH does not exist, it should build a new index."""
+        doc_list = ["doc1", "doc2"]
+
+        # Mock os.path.exists to return False
+        monkeypatch.setattr("os.path.exists", lambda x: False)
+
+        # Track calls to FAISS methods
+        calls = []
+        class MockVectorStore:
+            def save_local(self, path):
+                calls.append("save_local")
+
+        def mock_from_texts(texts, embedding):
+            calls.append("from_texts")
+            return MockVectorStore()
+
+        monkeypatch.setattr(self.hybrid_search.FAISS, "from_texts", mock_from_texts)
+
+        self.hybrid_search.build_or_load_faiss_index(doc_list)
+
+        assert "from_texts" in calls
+        assert "save_local" in calls
+        assert "load_local" not in calls
+
+    def test_build_or_load_index_loads_when_exists(self, monkeypatch):
+        """If FAISS_INDEX_PATH exists, it should load the index."""
+        doc_list = ["doc1", "doc2"]
+
+        # Mock os.path.exists to return True
+        monkeypatch.setattr("os.path.exists", lambda x: True)
+
+        # Track calls to FAISS methods
+        calls = []
+        class MockVectorStore:
+            pass
+
+        def mock_load_local(path, embedding, allow_dangerous_deserialization=False):
+            calls.append("load_local")
+            return MockVectorStore()
+
+        monkeypatch.setattr(self.hybrid_search.FAISS, "load_local", mock_load_local)
+
+        self.hybrid_search.build_or_load_faiss_index(doc_list)
+
+        assert "load_local" in calls
+        assert "from_texts" not in calls
+
+    def test_build_or_load_index_force_rebuild(self, monkeypatch):
+        """If force_rebuild=True, it should build a new index even if it exists."""
+        doc_list = ["doc1", "doc2"]
+
+        # Mock os.path.exists to return True
+        monkeypatch.setattr("os.path.exists", lambda x: True)
+
+        # Track calls to FAISS methods
+        calls = []
+        class MockVectorStore:
+            def save_local(self, path):
+                calls.append("save_local")
+
+        def mock_from_texts(texts, embedding):
+            calls.append("from_texts")
+            return MockVectorStore()
+
+        monkeypatch.setattr(self.hybrid_search.FAISS, "from_texts", mock_from_texts)
+
+        self.hybrid_search.build_or_load_faiss_index(doc_list, force_rebuild=True)
+
+        assert "from_texts" in calls
+        assert "save_local" in calls
+        assert "load_local" not in calls
+
+    def test_build_or_load_index_exception_fallback(self, monkeypatch, caplog):
+        """If FAISS.load_local raises an Exception, it should fallback to rebuilding the index."""
+        doc_list = ["doc1", "doc2"]
+
+        # Mock os.path.exists to return True
+        monkeypatch.setattr("os.path.exists", lambda x: True)
+
+        # Mock load_local to raise an Exception
+        def mock_load_local(path, embedding, allow_dangerous_deserialization=False):
+            raise RuntimeError("Corrupted index")
+
+        monkeypatch.setattr(self.hybrid_search.FAISS, "load_local", mock_load_local)
+
+        # Track calls to FAISS.from_texts and save_local
+        calls = []
+        class MockVectorStore:
+            def save_local(self, path):
+                calls.append("save_local")
+
+        def mock_from_texts(texts, embedding):
+            calls.append("from_texts")
+            return MockVectorStore()
+
+        monkeypatch.setattr(self.hybrid_search.FAISS, "from_texts", mock_from_texts)
+
+        self.hybrid_search.build_or_load_faiss_index(doc_list)
+
+        assert "from_texts" in calls
+        assert "save_local" in calls
+        assert "Failed to load FAISS index from disk: Corrupted index. Rebuilding..." in caplog.text
+
 class TestEmbeddingWrapper:
     """Test the EmbeddingWrapper that adapts SentenceTransformer to FAISS interface."""
 
@@ -327,7 +448,7 @@ class TestSearchCaching:
         doc_list = ["tool one for searching", "tool two scanning"]
 
         # First search — indexes are built/loaded
-        result1 = self.hybrid_search.search(doc_list, "search")
+        self.hybrid_search.search(doc_list, "search")
         bm25_after_first = self.__class__._bm25_call_count
         faiss_after_first = self.__class__._faiss_call_count
 
@@ -343,7 +464,7 @@ class TestSearchCaching:
         )
 
         # Second search with same doc_list — counts must NOT increase
-        result2 = self.hybrid_search.search(doc_list, "scanning")
+        self.hybrid_search.search(doc_list, "scanning")
         assert self.__class__._bm25_call_count == bm25_after_first, (
             f"BM25 count increased from {bm25_after_first} to "
             f"{self.__class__._bm25_call_count} on second search (should be cached)"
@@ -354,7 +475,7 @@ class TestSearchCaching:
         )
 
         # Third search — counts must still NOT increase
-        result3 = self.hybrid_search.search(doc_list, "tool")
+        self.hybrid_search.search(doc_list, "tool")
         assert self.__class__._bm25_call_count == bm25_after_first, (
             f"BM25 count increased from {bm25_after_first} to "
             f"{self.__class__._bm25_call_count} on third search (should be cached)"
