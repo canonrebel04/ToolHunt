@@ -68,6 +68,10 @@ class _FakeFAISSInstance:
         # We need to import Document here since it's what search() returns
         return []
 
+    def save_local(self, path):
+        """Mock save_local to prevent AttributeError during tests."""
+        pass
+
 class _FakeFAISS:
     """Mimics the FAISS class with load_local and from_texts classmethods."""
     @classmethod
