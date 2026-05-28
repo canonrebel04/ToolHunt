@@ -149,8 +149,21 @@ def search_tools():
         )
 
     query = sanitize_query(data.get('query', ''))
-    limit = data.get('limit', 10)
-    offset = data.get('offset', 0)
+
+    try:
+        limit = int(data.get('limit', 10))
+        offset = int(data.get('offset', 0))
+    except (ValueError, TypeError):
+        return _error_response(
+            "Invalid limit or offset format",
+            code="BAD_REQUEST",
+            retryable=False,
+            status=400,
+        )
+
+    # Enforce bounds
+    limit = max(1, min(100, limit))
+    offset = max(0, offset)
 
     if not query:
         return _error_response(
