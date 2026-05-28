@@ -42,7 +42,7 @@ _index_lock = threading.Lock()
 def build_or_load_faiss_index(doc_list, force_rebuild=False):
     if os.path.exists(FAISS_INDEX_PATH) and not force_rebuild:
         logger.info("Loading FAISS index from disk...")
-        vectorstore = FAISS.load_local(FAISS_INDEX_PATH, embedding, allow_dangerous_deserialization=True)
+        vectorstore = FAISS.load_local(FAISS_INDEX_PATH, embedding, allow_dangerous_deserialization=False)
     else:
         logger.info("Building FAISS index...")
         vectorstore = FAISS.from_texts(doc_list, embedding)
