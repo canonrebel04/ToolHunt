@@ -55,6 +55,17 @@ class TestSearchEndpoint:
         data = response.get_json()
         assert "error" in data
 
+    def test_invalid_json_returns_400(self, client):
+        """Invalid JSON in request body should return 400 error."""
+        response = client.post(
+            "/search",
+            data="not json",
+            content_type="application/json",
+        )
+        assert response.status_code == 400
+        data = response.get_json()
+        assert data["error"] == "Invalid JSON body"
+
     # ── Structured error response tests ───────────────────────────────────
 
     def test_error_response_has_code_and_retryable(self, client):
@@ -68,7 +79,6 @@ class TestSearchEndpoint:
         # Flask returns 400 for bad JSON body — but our route logic won't be reached
         # Instead test via a mock that raises during search_tool
         from unittest.mock import patch
-        from backend.main import search_tool as _original
         with patch("app.routes.search_tool", side_effect=RuntimeError("DB down")):
             response = client.post(
                 "/search",
@@ -268,7 +278,7 @@ class TestSearchEndpoint:
             from app.extensions import cache
             cache.clear()
 
-            response = client.post(
+            client.post(
                 "/search",
                 data=json.dumps({"query": "<script>alert('xss')</script>"}),
                 content_type="application/json",
