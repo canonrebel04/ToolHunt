@@ -25,30 +25,30 @@
 
         <div class="search-container">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Enter attack vector, security domain, or tool functionality... e.g., 'sql injection scanner', 'network enumeration'">
+                <input type="text" id="searchInput" aria-label="Search tools" placeholder="Enter attack vector, security domain, or tool functionality... e.g., 'sql injection scanner', 'network enumeration'">
                 <button id="searchButton">
-                    <i class="fas fa-crosshairs"></i> Hunt Tools
+                    <i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools
                 </button>
             </div>
             <div class="examples">
-                <button type="button" class="example-tag"><i class="fas fa-network-wired"></i> network scanner</button>
-                <button type="button" class="example-tag"><i class="fas fa-key"></i> password cracker</button>
-                <button type="button" class="example-tag"><i class="fas fa-shield-virus"></i> vulnerability scanner</button>
-                <button type="button" class="example-tag"><i class="fas fa-globe"></i> web application security</button>
-                <button type="button" class="example-tag"><i class="fas fa-search"></i> digital forensics</button>
-                <button type="button" class="example-tag"><i class="fas fa-user-secret"></i> penetration testing</button>
+                <button type="button" class="example-tag"><i class="fas fa-network-wired" aria-hidden="true"></i> network scanner</button>
+                <button type="button" class="example-tag"><i class="fas fa-key" aria-hidden="true"></i> password cracker</button>
+                <button type="button" class="example-tag"><i class="fas fa-shield-virus" aria-hidden="true"></i> vulnerability scanner</button>
+                <button type="button" class="example-tag"><i class="fas fa-globe" aria-hidden="true"></i> web application security</button>
+                <button type="button" class="example-tag"><i class="fas fa-search" aria-hidden="true"></i> digital forensics</button>
+                <button type="button" class="example-tag"><i class="fas fa-user-secret" aria-hidden="true"></i> penetration testing</button>
             </div>
         </div>
 
         <div class="loading" id="loadingIndicator">
             <div class="spinner"></div>
-            <h3><i class="fas fa-crosshairs"></i> Scanning Arsenal...</h3>
+            <h3><i class="fas fa-crosshairs" aria-hidden="true"></i> Scanning Arsenal...</h3>
             <p>Analyzing cybersecurity tool database</p>
         </div>
 
         <div class="results-container" id="resultsContainer">
             <div class="results-header">
-                <div class="results-count" id="resultsCount">Ready to hunt cybersecurity tools</div>
+                <div class="results-count" id="resultsCount" aria-live="polite">Ready to hunt cybersecurity tools</div>
                 
             </div>
             <div class="tools-grid" id="toolsGrid">
