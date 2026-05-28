@@ -232,6 +232,13 @@ class TestEmbeddingWrapper:
         """EmbeddingWrapper class should be defined in hybrid_search."""
         assert hasattr(self.hybrid_search, 'EmbeddingWrapper')
 
+
+    def test_init_assigns_model(self):
+        """__init__ should correctly assign the model attribute."""
+        dummy_model = "dummy_model_instance"
+        wrapper = self.hybrid_search.EmbeddingWrapper(dummy_model)
+        assert wrapper.model == dummy_model
+
     def test_embed_query_returns_1024_dim(self):
         """embed_query should return a 1024-dimensional vector (BGE-M3)."""
         wrapper = self.hybrid_search.EmbeddingWrapper(
