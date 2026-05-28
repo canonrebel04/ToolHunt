@@ -42,7 +42,9 @@ _index_lock = threading.Lock()
 def build_or_load_faiss_index(doc_list, force_rebuild=False):
     if os.path.exists(FAISS_INDEX_PATH) and not force_rebuild:
         logger.info("Loading FAISS index from disk...")
-        vectorstore = FAISS.load_local(FAISS_INDEX_PATH, embedding, allow_dangerous_deserialization=True)
+        vectorstore = FAISS.load_local(
+            FAISS_INDEX_PATH, embedding, allow_dangerous_deserialization=True
+        )
     else:
         logger.info("Building FAISS index...")
         vectorstore = FAISS.from_texts(doc_list, embedding)
@@ -70,6 +72,45 @@ def _ensure_indexes(doc_list):
                 _bm25_retriever = BM25Retriever.from_texts(doc_list)
                 _faiss_vectorstore = build_or_load_faiss_index(doc_list)
     return _bm25_retriever, _faiss_vectorstore
+
+
+def _build_rank_map(results):
+    """Build a map of document content to its 1-based rank."""
+    return {doc.page_content: idx + 1 for idx, doc in enumerate(results)}
+
+
+def _collect_unique_docs(faiss_results, bm25_results):
+    """Collect all unique documents keyed by page_content."""
+    all_docs = {}
+    for doc in faiss_results:
+        all_docs[doc.page_content] = doc
+    for doc in bm25_results:
+        if doc.page_content not in all_docs:
+            all_docs[doc.page_content] = doc
+    return all_docs
+
+
+def _score_and_sort_docs(all_docs, faiss_ranks, bm25_ranks, k):
+    """Compute RRF scores and sort documents descending."""
+    scored_docs = []
+    for doc in all_docs.values():
+        faiss_rank = faiss_ranks.get(doc.page_content)
+        bm25_rank = bm25_ranks.get(doc.page_content)
+
+        score = 0.0
+        if faiss_rank is not None:
+            score += 1.0 / (k + faiss_rank)
+        if bm25_rank is not None:
+            score += 1.0 / (k + bm25_rank)
+
+        doc.metadata = (
+            dict(doc.metadata) if hasattr(doc, "metadata") and doc.metadata else {}
+        )
+        doc.metadata["rrf_score"] = score
+        scored_docs.append((score, doc))
+
+    scored_docs.sort(key=lambda x: (-x[0], x[1].page_content))
+    return [doc for _, doc in scored_docs]
 
 
 def reciprocal_rank_fusion(faiss_results, bm25_results, k=60):
@@ -100,44 +141,11 @@ def reciprocal_rank_fusion(faiss_results, bm25_results, k=60):
     if not faiss_results and not bm25_results:
         return []
 
-    # Build rank maps: {page_content: rank} (1-based)
-    faiss_ranks = {
-        doc.page_content: idx + 1
-        for idx, doc in enumerate(faiss_results)
-    }
-    bm25_ranks = {
-        doc.page_content: idx + 1
-        for idx, doc in enumerate(bm25_results)
-    }
+    faiss_ranks = _build_rank_map(faiss_results)
+    bm25_ranks = _build_rank_map(bm25_results)
+    all_docs = _collect_unique_docs(faiss_results, bm25_results)
 
-    # Collect all unique documents keyed by page_content,
-    # keeping the first occurrence (FAISS preference for tie-breaking)
-    all_docs = {}
-    for doc in faiss_results:
-        all_docs[doc.page_content] = doc
-    for doc in bm25_results:
-        if doc.page_content not in all_docs:
-            all_docs[doc.page_content] = doc
-
-    # Compute RRF scores and sort
-    scored_docs = []
-    for doc in all_docs.values():
-        faiss_rank = faiss_ranks.get(doc.page_content)
-        bm25_rank = bm25_ranks.get(doc.page_content)
-
-        score = 0.0
-        if faiss_rank is not None:
-            score += 1.0 / (k + faiss_rank)
-        if bm25_rank is not None:
-            score += 1.0 / (k + bm25_rank)
-
-        doc.metadata = dict(doc.metadata) if hasattr(doc, 'metadata') and doc.metadata else {}
-        doc.metadata['rrf_score'] = score
-        scored_docs.append((score, doc))
-
-    # Sort by RRF score descending, tie-break by content for stability
-    scored_docs.sort(key=lambda x: (-x[0], x[1].page_content))
-    return [doc for _, doc in scored_docs]
+    return _score_and_sort_docs(all_docs, faiss_ranks, bm25_ranks, k)
 
 
 def search(doc_list, query, similarity_threshold=0.5):
