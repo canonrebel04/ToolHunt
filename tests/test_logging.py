@@ -115,7 +115,6 @@ class TestAppInitLogging:
         at module import time (before create_app is called).
         """
         # The root logger should have its default state
-        root = logging.getLogger()
         # basicConfig is a no-op if handlers already configured,
         # so we just verify the handler count is reasonable
         # (pytest adds its own handlers, so we can't assert 0)
