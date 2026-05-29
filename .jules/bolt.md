@@ -1,0 +1,3 @@
+## 2026-05-29 - O(N*M) Array Search on Hot Path
+**Learning:** Using `list.index()` inside a loop (like `find_indices` processing top-k search results against a 2,860 item list) results in an O(N*M) time complexity. Benchmarking showed this takes 3.0s per 1000 calls. Python list value equality (`!=`) actually has a fast-path for identical objects in memory, meaning it does not default to O(N) comparisons if the pointers match.
+**Action:** Replace `list.index()` inside loops by building an intermediate index dictionary mapping items to indices in O(N) time, and then perform O(1) dictionary lookups inside the loop (0.009s per 1000 calls).

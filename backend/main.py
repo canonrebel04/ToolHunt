@@ -62,13 +62,16 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    index_map = {}
+    for i, item in enumerate(primary_list):
+        if item not in index_map:
+            index_map[item] = i
+
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in index_map:
+            indices.append(index_map[query_item])
+
     return indices
 
 
