@@ -153,6 +153,8 @@ _MODULE_MOCKS = {
 
 def pytest_configure(config):
     """Insert mock modules before any test collection."""
+    import os
+    os.environ['SECRET_KEY'] = 'test-secret'
     for name, mod in _MODULE_MOCKS.items():
         sys.modules[name] = mod
 
