@@ -1,0 +1,4 @@
+## 2024-05-30 - Unvalidated Pagination Parameters in API Route
+**Vulnerability:** The `/search` endpoint accepted `limit` and `offset` as string values from JSON without casting them to integers, causing `TypeError` during list slicing and potentially unhandled 500 errors. No bounds were enforced, allowing arbitrarily large `limit` requests which could cause resource exhaustion (DoS).
+**Learning:** Even internal API inputs from a tightly-coupled frontend must be strictly typed and bounded on the backend, as they represent the application boundary. Relying on default fallbacks (e.g., `data.get('limit', 10)`) doesn't protect against explicit malicious input like `{"limit": 100000}`.
+**Prevention:** Always apply defensive programming to API endpoints: explicitly cast inputs (`int()`), use `try/except` for validation failures returning `400 Bad Request`, and enforce strict operational bounds (e.g., `min()`, `max()`).
