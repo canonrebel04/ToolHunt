@@ -1,5 +1,7 @@
 """Configuration classes for the ToolHunt Flask application."""
 
+import os
+
 
 class Config:
     """Base configuration."""
@@ -17,7 +19,7 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     """Configuration for production deployments."""
-    SECRET_KEY = 'change-this-in-production'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     CACHE_TYPE = 'RedisCache'
     CACHE_REDIS_URL = 'redis://localhost:6379/0'
     CACHE_DEFAULT_TIMEOUT = 300
