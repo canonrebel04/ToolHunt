@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_description_to_index = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _description_to_index
 
     # Fast path: already loaded
     if _tools is not None:
@@ -49,6 +50,8 @@ def _load_tools():
 
         _tools = tools
         _descriptions = descriptions
+        # Create a hash map for fast O(1) lookups
+        _description_to_index = {desc: i for i, desc in enumerate(descriptions)}
 
 
 def find_indices(primary_list, query_list):
@@ -63,6 +66,15 @@ def find_indices(primary_list, query_list):
         list: A list of indices where query elements are found in primary list
     """
     indices = []
+
+    # Fast path for static module-level cache
+    if primary_list is _descriptions and _description_to_index is not None:
+        for query_item in query_list:
+            index = _description_to_index.get(query_item)
+            if index is not None:
+                indices.append(index)
+        return indices
+
     for query_item in query_list:
         try:
             index = primary_list.index(query_item)
