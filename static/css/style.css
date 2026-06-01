@@ -234,6 +234,15 @@ header p {
     transform: translateY(0);
 }
 
+.search-box button:focus-visible,
+.example-tag:focus-visible,
+.tool-link:focus-visible,
+.load-more:focus-visible,
+.retry-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 255, 136, 0.6);
+}
+
 .examples {
     display: flex;
     flex-wrap: wrap;
