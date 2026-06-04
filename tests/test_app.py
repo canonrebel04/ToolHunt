@@ -1,6 +1,5 @@
 """Smoke tests for the ToolHunt Flask application."""
 
-import pytest
 
 
 class TestAppRoutes:
