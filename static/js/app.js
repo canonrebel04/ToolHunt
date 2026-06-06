@@ -309,10 +309,10 @@ function showOfflineFallback() {
             </p>
             <div class="fallback-categories">
                 ${FALLBACK_CATEGORIES.map(cat => `
-                    <div class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};">
+                    <button type="button" class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};">
                         <i class="fas ${cat.icon}"></i>
                         <span>${cat.name}</span>
-                    </div>
+                    </button>
                 `).join('')}
             </div>
             <button class="retry-btn retry-btn-primary" onclick="retrySearch()">
@@ -404,7 +404,7 @@ function displayResults(tools, reset = true) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${tool.link || '#'}" target="_blank" class="tool-link" aria-label="${tool.link ? 'Access Tool: ' + (tool.name || 'Unknown Tool') : 'No link available for ' + (tool.name || 'Unknown Tool')}" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
@@ -449,7 +449,7 @@ function appendResults(tools) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${tool.link || '#'}" target="_blank" class="tool-link" aria-label="${tool.link ? 'Access Tool: ' + (tool.name || 'Unknown Tool') : 'No link available for ' + (tool.name || 'Unknown Tool')}" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>

@@ -257,11 +257,12 @@ header p {
     position: relative;
 }
 
-.example-tag:hover {
+.example-tag:hover, .example-tag:focus-visible {
     background: rgba(0, 255, 136, 0.2);
     border-color: var(--primary);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+    outline: none;
 }
 
 .results-container {
