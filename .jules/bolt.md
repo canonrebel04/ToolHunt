@@ -1,0 +1,3 @@
+## 2025-03-05 - Python Hash Map Lookups vs C-based List Methods
+**Learning:** For small dataset subset matching (like searching through a list of ~3,000 items with a top_k limit of 10-20), on-the-fly dictionary creation overhead outpaces the generic O(N) list `.index()` scan implemented in C. However, caching the lookup map (`{item: index}`) at the module-level provides an O(1) fast-path when the underlying dataset pointer identity matches (`list is static_cache`).
+**Action:** When working with lazy-loaded or statically cached lists in Python backend logic, always consider creating a corresponding index hash map for lookups instead of invoking `.index()`. Use the `is` keyword for fast identity checking to seamlessly fall back to dynamic execution safely.
