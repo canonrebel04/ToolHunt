@@ -8,3 +8,6 @@ htmlcov/
 .coverage
 .coverage.*
 .codegraph/
+
+# Agent files
+.jules/
