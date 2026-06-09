@@ -1,0 +1,3 @@
+## 2026-06-09 - Optimize array lookups with O(1) hash map fast-path
+**Learning:** For functions like `find_indices` that accept generic lists and perform O(N) `.index()` scans, passing large static datasets (like a module-level cached list of 2,860 descriptions) becomes a major bottleneck. However, converting it entirely to a dictionary inside the function penalizes smaller dynamic lists with dictionary creation overhead.
+**Action:** When optimizing array lookups for static module-level datasets, construct the hash map once during module load/lazy-load and use Python's `is` operator (e.g., `primary_list is _descriptions`) inside generic functions to provide an O(1) fast-path for the static dataset, preserving the native C `.index()` scan speed for small dynamic lists.
