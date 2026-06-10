@@ -22,6 +22,20 @@
     font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 }
 
+/* Accessibility: Clear focus indicators for keyboard navigation */
+*:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+
+input:focus-visible,
+button:focus-visible,
+a:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 4px;
+}
+
 body {
     background: 
         radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
