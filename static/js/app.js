@@ -264,14 +264,14 @@ function showRetryError(message, attempt) {
     const remaining = MAX_RETRIES - attempt;
     toolsGrid.innerHTML = `
         <div class="no-results error-state">
-            <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+            <i class="fas fa-exclamation-triangle" style="color: var(--danger);" aria-hidden="true"></i>
             <h3 style="color: var(--danger);">Connection Error</h3>
             <p>${message}</p>
             <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
-                <i class="fas fa-info-circle"></i> Retry attempt ${attempt} of ${MAX_RETRIES}
+                <i class="fas fa-info-circle" aria-hidden="true"></i> Retry attempt ${attempt} of ${MAX_RETRIES}
             </p>
-            <button class="retry-btn" onclick="retrySearch()">
-                <i class="fas fa-sync-alt"></i> Retry Search
+            <button class="retry-btn" onclick="retrySearch()" aria-label="Retry Search">
+                <i class="fas fa-sync-alt" aria-hidden="true"></i> Retry Search
             </button>
             ${remaining > 0 ? `<p style="margin-top: 8px; font-size: 0.8rem; color: var(--gray);">${remaining} retr${remaining !== 1 ? 'ies' : 'y'} remaining</p>` : ''}
         </div>
@@ -281,53 +281,60 @@ function showRetryError(message, attempt) {
 function showTimeoutError() {
     toolsGrid.innerHTML = `
         <div class="no-results error-state">
-            <i class="fas fa-hourglass-end" style="color: var(--warning);"></i>
+            <i class="fas fa-hourglass-end" style="color: var(--warning);" aria-hidden="true"></i>
             <h3 style="color: var(--warning);">Request Timed Out</h3>
             <p>The search request took too long to respond (over ${FETCH_TIMEOUT_MS / 1000} seconds).</p>
             <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
-                <i class="fas fa-info-circle"></i> The backend may be overloaded or unreachable
+                <i class="fas fa-info-circle" aria-hidden="true"></i> The backend may be overloaded or unreachable
             </p>
-            <button class="retry-btn" onclick="retrySearch()">
-                <i class="fas fa-sync-alt"></i> Retry Search
+            <button class="retry-btn" onclick="retrySearch()" aria-label="Retry Search">
+                <i class="fas fa-sync-alt" aria-hidden="true"></i> Retry Search
             </button>
         </div>
     `;
     resultsContainer.style.display = 'block';
     if (resultsCount) {
-        resultsCount.innerHTML = `<i class="fas fa-hourglass-end"></i> Request timed out`;
+        resultsCount.innerHTML = `<i class="fas fa-hourglass-end" aria-hidden="true"></i> Request timed out`;
     }
 }
 
 function showOfflineFallback() {
     toolsGrid.innerHTML = `
         <div class="no-results error-state offline-fallback">
-            <i class="fas fa-wifi-slash" style="color: var(--gray);"></i>
+            <i class="fas fa-wifi-slash" style="color: var(--gray);" aria-hidden="true"></i>
             <h3 style="color: var(--gray);">Offline Mode</h3>
             <p>The backend is currently unavailable after ${MAX_RETRIES} retry attempts.</p>
             <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
-                <i class="fas fa-info-circle"></i> Try browsing by category below:
+                <i class="fas fa-info-circle" aria-hidden="true"></i> Try browsing by category below:
             </p>
             <div class="fallback-categories">
                 ${FALLBACK_CATEGORIES.map(cat => `
-                    <div class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};">
-                        <i class="fas ${cat.icon}"></i>
+                    <div class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};" tabindex="0" role="button" aria-label="Browse ${cat.name} category">
+                        <i class="fas ${cat.icon}" aria-hidden="true"></i>
                         <span>${cat.name}</span>
                     </div>
                 `).join('')}
             </div>
-            <button class="retry-btn retry-btn-primary" onclick="retrySearch()">
-                <i class="fas fa-sync-alt"></i> Try Again
+            <button class="retry-btn retry-btn-primary" onclick="retrySearch()" aria-label="Try Again">
+                <i class="fas fa-sync-alt" aria-hidden="true"></i> Try Again
             </button>
         </div>
     `;
 
     // Attach click handlers to fallback category tiles
     document.querySelectorAll('.fallback-category-tile').forEach(tile => {
-        tile.addEventListener('click', () => {
+        const handler = () => {
             const query = tile.dataset.category;
             searchInput.value = query;
             retryCount = 0;  // Reset retry count for fresh search
             performSearch(true);
+        };
+        tile.addEventListener('click', handler);
+        tile.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handler();
+            }
         });
     });
 }
@@ -336,16 +343,16 @@ function showOfflineFallback() {
 
 function updateResultsCount() {
     if (currentTotal === 0) {
-        resultsCount.innerHTML = `<i class="fas fa-search-minus"></i> No tools found in arsenal`;
+        resultsCount.innerHTML = `<i class="fas fa-search-minus" aria-hidden="true"></i> No tools found in arsenal`;
         return;
     }
     const shown = toolsGrid.querySelectorAll('.tool-card').length;
     if (shown === currentTotal) {
-        resultsCount.innerHTML = `<i class="fas fa-crosshairs"></i> Showing all ${currentTotal} cybersecurity tool${currentTotal !== 1 ? 's' : ''} in arsenal`;
+        resultsCount.innerHTML = `<i class="fas fa-crosshairs" aria-hidden="true"></i> Showing all ${currentTotal} cybersecurity tool${currentTotal !== 1 ? 's' : ''} in arsenal`;
     } else {
         const from = currentOffset + 1;
         const to = currentOffset + shown;
-        resultsCount.innerHTML = `<i class="fas fa-crosshairs"></i> Showing ${from}-${to} of ${currentTotal} cybersecurity tool${currentTotal !== 1 ? 's' : ''} in arsenal`;
+        resultsCount.innerHTML = `<i class="fas fa-crosshairs" aria-hidden="true"></i> Showing ${from}-${to} of ${currentTotal} cybersecurity tool${currentTotal !== 1 ? 's' : ''} in arsenal`;
     }
 }
 
@@ -376,7 +383,7 @@ function displayResults(tools, reset = true) {
     if (sortedTools.length === 0 && reset) {
         toolsGrid.innerHTML = `
             <div class="no-results">
-                <i class="fas fa-search-minus"></i>
+                <i class="fas fa-search-minus" aria-hidden="true"></i>
                 <h3>No Tools Found in Arsenal</h3>
                 <p>No cybersecurity tools match your query. Try different keywords like:</p>
                 <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
@@ -404,8 +411,8 @@ function displayResults(tools, reset = true) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;" aria-disabled="true"' : ''} aria-label="${tool.link ? 'Access Tool ' + (tool.name || 'Unknown Tool') : 'No Link Available for ' + (tool.name || 'Unknown Tool')}">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
         `;
@@ -449,8 +456,8 @@ function appendResults(tools) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;" aria-disabled="true"' : ''} aria-label="${tool.link ? 'Access Tool ' + (tool.name || 'Unknown Tool') : 'No Link Available for ' + (tool.name || 'Unknown Tool')}">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
         `;
@@ -479,7 +486,8 @@ function updateLoadMoreButton() {
 
     const loadMoreBtn = document.createElement('button');
     loadMoreBtn.className = 'load-more';
-    loadMoreBtn.innerHTML = '<i class="fas fa-arrow-down"></i> Load More Tools';
+    loadMoreBtn.setAttribute('aria-label', 'Load More Tools');
+    loadMoreBtn.innerHTML = '<i class="fas fa-arrow-down" aria-hidden="true"></i> Load More Tools';
     loadMoreBtn.addEventListener('click', () => {
         currentOffset += PAGE_LIMIT;
         performSearch(false);
@@ -503,11 +511,11 @@ function getCategoryClass(category) {
 function showError(message) {
     toolsGrid.innerHTML = `
         <div class="no-results">
-            <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+            <i class="fas fa-exclamation-triangle" style="color: var(--danger);" aria-hidden="true"></i>
             <h3 style="color: var(--danger);">System Error</h3>
             <p>${message}</p>
             <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
-                <i class="fas fa-info-circle"></i> Check network connection and try again
+                <i class="fas fa-info-circle" aria-hidden="true"></i> Check network connection and try again
             </p>
         </div>
     `;
@@ -517,6 +525,7 @@ function showError(message) {
 function showAlert(message, type = 'info') {
     // Create alert element
     const alert = document.createElement('div');
+    alert.setAttribute('role', 'alert');
     alert.style.cssText = `
         position: fixed;
         top: 20px;
@@ -531,7 +540,7 @@ function showAlert(message, type = 'info') {
         border: 2px solid ${type === 'warning' ? '#ffaa00' : '#00ff88'};
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     `;
-    alert.innerHTML = `<i class="fas fa-${type === 'warning' ? 'exclamation-triangle' : 'info-circle'}\"></i> ${message}`;
+    alert.innerHTML = `<i class="fas fa-${type === 'warning' ? 'exclamation-triangle' : 'info-circle'}" aria-hidden="true"></i> ${message}`;
 
     document.body.appendChild(alert);
 

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="security-icons">
+    <div class="security-icons" aria-hidden="true">
         <i class="fas fa-shield-alt"></i>
         <i class="fas fa-bug"></i>
         <i class="fas fa-lock"></i>
@@ -16,33 +16,33 @@
 
     <div class="container">
         <header>
-            <h1><i class="fas fa-search"></i> ToolHunt</h1>
+            <h1><i class="fas fa-search" aria-hidden="true"></i> ToolHunt</h1>
             <p>Advanced Cybersecurity Arsenal Discovery Platform</p>
             <div class="cyber-badge">
-                <i class="fas fa-terminal"></i> Penetration Testing • Digital Forensics • Security Analysis
+                <i class="fas fa-terminal" aria-hidden="true"></i> Penetration Testing • Digital Forensics • Security Analysis
             </div>
         </header>
 
         <div class="search-container">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Enter attack vector, security domain, or tool functionality... e.g., 'sql injection scanner', 'network enumeration'">
-                <button id="searchButton">
-                    <i class="fas fa-crosshairs"></i> Hunt Tools
+                <input type="text" id="searchInput" aria-label="Search for cybersecurity tools" placeholder="Enter attack vector, security domain, or tool functionality... e.g., 'sql injection scanner', 'network enumeration'">
+                <button id="searchButton" aria-label="Search Tools">
+                    <i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools
                 </button>
             </div>
             <div class="examples">
-                <button type="button" class="example-tag"><i class="fas fa-network-wired"></i> network scanner</button>
-                <button type="button" class="example-tag"><i class="fas fa-key"></i> password cracker</button>
-                <button type="button" class="example-tag"><i class="fas fa-shield-virus"></i> vulnerability scanner</button>
-                <button type="button" class="example-tag"><i class="fas fa-globe"></i> web application security</button>
-                <button type="button" class="example-tag"><i class="fas fa-search"></i> digital forensics</button>
-                <button type="button" class="example-tag"><i class="fas fa-user-secret"></i> penetration testing</button>
+                <button type="button" class="example-tag" aria-label="Search for network scanner tools"><i class="fas fa-network-wired" aria-hidden="true"></i> network scanner</button>
+                <button type="button" class="example-tag" aria-label="Search for password cracker tools"><i class="fas fa-key" aria-hidden="true"></i> password cracker</button>
+                <button type="button" class="example-tag" aria-label="Search for vulnerability scanner tools"><i class="fas fa-shield-virus" aria-hidden="true"></i> vulnerability scanner</button>
+                <button type="button" class="example-tag" aria-label="Search for web application security tools"><i class="fas fa-globe" aria-hidden="true"></i> web application security</button>
+                <button type="button" class="example-tag" aria-label="Search for digital forensics tools"><i class="fas fa-search" aria-hidden="true"></i> digital forensics</button>
+                <button type="button" class="example-tag" aria-label="Search for penetration testing tools"><i class="fas fa-user-secret" aria-hidden="true"></i> penetration testing</button>
             </div>
         </div>
 
-        <div class="loading" id="loadingIndicator">
-            <div class="spinner"></div>
-            <h3><i class="fas fa-crosshairs"></i> Scanning Arsenal...</h3>
+        <div class="loading" id="loadingIndicator" aria-live="polite">
+            <div class="spinner" aria-hidden="true"></div>
+            <h3><i class="fas fa-crosshairs" aria-hidden="true"></i> Scanning Arsenal...</h3>
             <p>Analyzing cybersecurity tool database</p>
         </div>
 
@@ -59,10 +59,10 @@
 
     <div class="status-bar">
         <div class="status-left">
-            <i class="fas fa-terminal"></i> ToolHunt v2.0 - Cybersecurity Arsenal
+            <i class="fas fa-terminal" aria-hidden="true"></i> ToolHunt v2.0 - Cybersecurity Arsenal
         </div>
         <div class="status-right">
-            <i class="fas fa-shield-alt"></i> Secure • <i class="fas fa-clock"></i> <span id="currentTime"></span>
+            <i class="fas fa-shield-alt" aria-hidden="true"></i> Secure • <i class="fas fa-clock" aria-hidden="true"></i> <span id="currentTime"></span>
         </div>
     </div>
 
