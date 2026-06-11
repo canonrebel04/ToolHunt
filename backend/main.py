@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_desc_to_idx = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _desc_to_idx
 
     # Fast path: already loaded
     if _tools is not None:
@@ -47,28 +48,43 @@ def _load_tools():
         conn.commit()
         conn.close()
 
-        _tools = tools
         _descriptions = descriptions
 
+        # Build O(1) lookup dictionary for fast index resolution, keeping the first
+        # occurrence of duplicates to match list.index() behavior.
+        # We build it backwards so earlier items overwrite later ones.
+        _desc_to_idx = {desc: idx for idx, desc in reversed(list(enumerate(descriptions)))}
 
-def find_indices(primary_list, query_list):
+        # Assign _tools LAST so the double-checked lock fast path
+        # doesn't trigger before _desc_to_idx is populated.
+        _tools = tools
+
+
+def find_indices(primary_list, query_list, lookup_dict=None):
     """
     Find the indices of elements from query_list in primary_list.
 
     Args:
         primary_list (list): The list to search in
         query_list (list): The list of elements to search for
+        lookup_dict (dict, optional): Precomputed dictionary mapping list elements
+                                      to their indices for O(1) lookups.
 
     Returns:
         list: A list of indices where query elements are found in primary list
     """
     indices = []
-    for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+    if lookup_dict is not None:
+        for query_item in query_list:
+            if query_item in lookup_dict:
+                indices.append(lookup_dict[query_item])
+    else:
+        for query_item in query_list:
+            try:
+                index = primary_list.index(query_item)
+                indices.append(index)
+            except ValueError:
+                pass
     return indices
 
 
@@ -93,7 +109,7 @@ def search_tool(query):
     matching_descriptions = search(_descriptions, query.lower())
 
     # Find the indices of these matching descriptions in the main descriptions list
-    matching_indices = find_indices(_descriptions, matching_descriptions)
+    matching_indices = find_indices(_descriptions, matching_descriptions, _desc_to_idx)
 
     # Collect the full tool data for each matching index (preserving RRF order)
     matching_tools_data = []
