@@ -2,6 +2,10 @@
 __pycache__/
 *.py[cod]
 
+# Agent directories
+.jules/
+.Jules/
+
 # Testing
 .pytest_cache/
 htmlcov/
