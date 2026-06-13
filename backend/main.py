@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_descriptions_index = None
 _lock = threading.Lock()
 
 
@@ -47,8 +48,19 @@ def _load_tools():
         conn.commit()
         conn.close()
 
-        _tools = tools
+        # Precompute an O(1) lookup map for indices.
+        # Iterate in reverse to keep standard .index() behavior (first occurrence).
+        descriptions_index = {}
+        for idx, val in reversed(list(enumerate(descriptions))):
+            descriptions_index[val] = idx
+
+        # Assign dependent structures first
         _descriptions = descriptions
+        global _descriptions_index
+        _descriptions_index = descriptions_index
+
+        # Fast-path check variable MUST be assigned last
+        _tools = tools
 
 
 def find_indices(primary_list, query_list):
@@ -63,6 +75,15 @@ def find_indices(primary_list, query_list):
         list: A list of indices where query elements are found in primary list
     """
     indices = []
+
+    # Fast path for static module-level list to avoid dict creation overhead
+    if primary_list is _descriptions and _descriptions_index is not None:
+        for query_item in query_list:
+            if query_item in _descriptions_index:
+                indices.append(_descriptions_index[query_item])
+        return indices
+
+    # Slower fallback for arbitrary dynamic lists
     for query_item in query_list:
         try:
             index = primary_list.index(query_item)
