@@ -1,0 +1,3 @@
+## 2024-06-14 - Python O(1) Index Lookups
+**Learning:** `list.index()` calls within a loop over a large array (e.g. 2800+ items) create an N^2 bottleneck. However, optimizing this by dynamically building dictionaries inside utility functions incurs too much initialization overhead for small query lists. Precomputing an index map `_descriptions_index` during module lazy-loading, combined with an `is` fast-path identity check, bridges the gap. Iterating with `reversed()` is necessary to mimic `list.index()`'s behavior correctly for duplicates (first instance wins).
+**Action:** Use pre-computed hash-maps with `is` checks to accelerate `list.index()` calls on static module-level datasets without penalizing generic list lookups.
