@@ -8,3 +8,6 @@ htmlcov/
 .coverage
 .coverage.*
 .codegraph/
+
+# Agent operational logs
+.jules/
