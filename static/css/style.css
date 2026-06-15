@@ -22,6 +22,18 @@
     font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 }
 
+/* Ensure keyboard accessibility in dark theme */
+*:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+input:focus-visible,
+select:focus-visible {
+    /* Inputs already have their own focus box-shadows */
+    outline: none;
+}
+
 body {
     background: 
         radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
