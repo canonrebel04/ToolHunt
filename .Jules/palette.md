@@ -1,0 +1,3 @@
+## 2024-06-16 - Global Focus Visible Styles for Dark Themes
+**Learning:** Default browser focus rings are often invisible against dark backgrounds and when custom outlines are added, applying them globally via `*:focus-visible` ensures keyboard navigation accessibility for all interactive elements. However, avoid adding shape properties like `border-radius` to the global selector, as it will break specific component shapes (like forcing circular buttons to appear square).
+**Action:** Use global `*:focus-visible` with `outline` and `outline-offset` for dark-themed apps, but omit physical shape properties to maintain component integrity.
