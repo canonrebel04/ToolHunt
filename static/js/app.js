@@ -315,8 +315,8 @@ function showOfflineFallback() {
                     </div>
                 `).join('')}
             </div>
-            <button class="retry-btn retry-btn-primary" onclick="retrySearch()">
-                <i class="fas fa-sync-alt"></i> Try Again
+            <button class="retry-btn retry-btn-primary" onclick="retrySearch()" aria-label="Try Search Again">
+                <i class="fas fa-sync-alt" aria-hidden="true"></i> Try Again
             </button>
         </div>
     `;
@@ -404,8 +404,8 @@ function displayResults(tools, reset = true) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a href="${tool.link || '#'}" target="_blank" class="tool-link" aria-label="${tool.link ? 'Access ' + tool.name : 'No Link Available'}" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
         `;
@@ -449,8 +449,8 @@ function appendResults(tools) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a href="${tool.link || '#'}" target="_blank" class="tool-link" aria-label="${tool.link ? 'Access ' + tool.name : 'No Link Available'}" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
         `;
