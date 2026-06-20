@@ -395,6 +395,9 @@ function displayResults(tools, reset = true) {
         // Determine category class for styling
         const categoryClass = getCategoryClass(tool.category);
 
+        // Escape name for aria-label safely to avoid breaking template strings
+        const safeName = (tool.name || 'Unknown Tool').replace(/"/g, '&quot;');
+
         toolCard.innerHTML = `
             <div class="card-header">
                 <h3>${tool.name || 'Unknown Tool'}</h3>
@@ -404,8 +407,8 @@ function displayResults(tools, reset = true) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;" aria-disabled="true" tabindex="-1"' : ''} aria-label="${tool.link ? 'Access Tool: ' + safeName : 'No Link Available for ' + safeName}">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
         `;
@@ -440,6 +443,9 @@ function appendResults(tools) {
 
         const categoryClass = getCategoryClass(tool.category);
 
+        // Escape name for aria-label safely
+        const safeName = (tool.name || 'Unknown Tool').replace(/"/g, '&quot;');
+
         toolCard.innerHTML = `
             <div class="card-header">
                 <h3>${tool.name || 'Unknown Tool'}</h3>
@@ -449,8 +455,8 @@ function appendResults(tools) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;" aria-disabled="true" tabindex="-1"' : ''} aria-label="${tool.link ? 'Access Tool: ' + safeName : 'No Link Available for ' + safeName}">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
         `;

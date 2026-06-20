@@ -1,0 +1,3 @@
+## 2024-11-20 - Ensure Keyboard Focus Styles Do Not Break Component Physical Boundaries
+**Learning:** When applying global `*:focus-visible` styles to enhance keyboard accessibility, applying physical shape attributes like `border-radius: 4px;` can unintentionally override specific component shapes, making circular buttons look square when focused or cutting into custom shapes.
+**Action:** When adding focus outlines globally, strictly limit properties to visual outlines, such as `outline`, `outline-offset`, and `box-shadow`, without enforcing physical shape properties.
