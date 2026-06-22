@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_descriptions_map = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _descriptions_map
 
     # Fast path: already loaded
     if _tools is not None:
@@ -47,8 +48,12 @@ def _load_tools():
         conn.commit()
         conn.close()
 
-        _tools = tools
+        # Build index map cache iteratively in reverse so earlier duplicates take precedence
+        descriptions_map = {val: idx for idx, val in reversed(list(enumerate(descriptions)))}
+
         _descriptions = descriptions
+        _descriptions_map = descriptions_map
+        _tools = tools
 
 
 def find_indices(primary_list, query_list):
@@ -62,13 +67,20 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    # Fast path for the cached descriptions list using O(1) hash map lookup
+    if primary_list is _descriptions and _descriptions_map is not None:
+        indices = []
+        for query_item in query_list:
+            if query_item in _descriptions_map:
+                indices.append(_descriptions_map[query_item])
+        return indices
+
+    # Fallback for dynamic lists: build O(1) hash map lookup on the fly
+    primary_map = {val: idx for idx, val in reversed(list(enumerate(primary_list)))}
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in primary_map:
+            indices.append(primary_map[query_item])
     return indices
 
 
