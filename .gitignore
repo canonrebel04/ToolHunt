@@ -8,3 +8,5 @@ htmlcov/
 .coverage
 .coverage.*
 .codegraph/
+.Jules/
+node_modules/
