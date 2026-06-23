@@ -62,13 +62,14 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    # Create O(1) lookup dictionary. By processing in reverse order,
+    # we ensure that the first occurrence of an item overwrites subsequent ones,
+    # maintaining equivalence with list.index() behavior for duplicates.
+    val_to_idx = {val: idx for idx, val in reversed(list(enumerate(primary_list)))}
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in val_to_idx:
+            indices.append(val_to_idx[query_item])
     return indices
 
 
