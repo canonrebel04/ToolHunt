@@ -47,7 +47,6 @@ def _build_fake_module(name, attrs=None):
 _mock_main = _build_fake_module("backend.main", {
     "search_tool": _MockSearchTool(),
     "search": lambda q: [],
-    "find_indices": lambda p, q: [],
     "_load_tools": lambda: None,
     "_tools": [],
 })
