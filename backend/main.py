@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_description_to_index = None
 _lock = threading.Lock()
 
 
@@ -47,8 +48,15 @@ def _load_tools():
         conn.commit()
         conn.close()
 
-        _tools = tools
+        # O(1) hash map to optimize post-retrieval index lookups
+        index_map = {}
+        for idx, val in reversed(list(enumerate(descriptions))):
+            index_map[val] = idx
+
+        global _description_to_index
         _descriptions = descriptions
+        _description_to_index = index_map
+        _tools = tools
 
 
 def find_indices(primary_list, query_list):
@@ -62,13 +70,19 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    # Use cached O(1) map for the primary database search path
+    if primary_list is _descriptions and _description_to_index is not None:
+        lookup = _description_to_index
+    else:
+        # Build an O(1) map on the fly for generic lists (like in tests)
+        lookup = {}
+        for idx, val in reversed(list(enumerate(primary_list))):
+            lookup[val] = idx
+
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in lookup:
+            indices.append(lookup[query_item])
     return indices
 
 
