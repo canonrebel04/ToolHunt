@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_descriptions_to_index = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _descriptions_to_index
 
     # Fast path: already loaded
     if _tools is not None:
@@ -47,8 +48,16 @@ def _load_tools():
         conn.commit()
         conn.close()
 
-        _tools = tools
+        # Build an O(1) reverse index map.
+        # Iterate backwards so that earlier items overwrite later ones,
+        # ensuring we return the *first* occurrence just like list.index()
+        descriptions_to_index = {}
+        for idx, val in reversed(list(enumerate(descriptions))):
+            descriptions_to_index[val] = idx
+
         _descriptions = descriptions
+        _descriptions_to_index = descriptions_to_index
+        _tools = tools
 
 
 def find_indices(primary_list, query_list):
@@ -62,13 +71,17 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    # Build an O(1) reverse index map.
+    # Iterate backwards so that earlier items overwrite later ones,
+    # ensuring we return the *first* occurrence just like list.index()
+    primary_to_index = {}
+    for idx, val in reversed(list(enumerate(primary_list))):
+        primary_to_index[val] = idx
+
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in primary_to_index:
+            indices.append(primary_to_index[query_item])
     return indices
 
 
@@ -92,8 +105,11 @@ def search_tool(query):
     # Find matching tool descriptions based on the query (returned in RRF order)
     matching_descriptions = search(_descriptions, query.lower())
 
-    # Find the indices of these matching descriptions in the main descriptions list
-    matching_indices = find_indices(_descriptions, matching_descriptions)
+    # Find the indices of these matching descriptions using the O(1) module-level cache
+    matching_indices = []
+    for desc in matching_descriptions:
+        if desc in _descriptions_to_index:
+            matching_indices.append(_descriptions_to_index[desc])
 
     # Collect the full tool data for each matching index (preserving RRF order)
     matching_tools_data = []
