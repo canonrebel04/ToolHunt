@@ -62,14 +62,11 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
-    indices = []
-    for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
-    return indices
+    # Build a lookup mapping value -> index.
+    # We build it in reverse order so that earlier occurrences overwrite later ones,
+    # preserving the behavior of list.index() returning the first occurrence.
+    lookup = {val: idx for idx, val in reversed(list(enumerate(primary_list)))}
+    return [lookup[q] for q in query_list if q in lookup]
 
 
 def search_tool(query):
