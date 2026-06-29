@@ -88,7 +88,8 @@ def health():
             "tools_count": len(_tools) if _tools else 0
         }
     except Exception as e:
-        checks["database"] = {"status": "degraded", "error": str(e)}
+        logger.exception("Health check failed for database: %s", str(e))
+        checks["database"] = {"status": "degraded", "error": "Database check failed"}
         status["status"] = "degraded"
 
     # Model check
@@ -100,7 +101,8 @@ def health():
             "backend": "onnx"
         }
     except Exception as e:
-        checks["model"] = {"status": "degraded", "error": str(e)}
+        logger.exception("Health check failed for model: %s", str(e))
+        checks["model"] = {"status": "degraded", "error": "Model check failed"}
         status["status"] = "degraded"
 
     # Cache check
@@ -113,7 +115,8 @@ def health():
             "type": type(cache).__name__
         }
     except Exception as e:
-        checks["cache"] = {"status": "degraded", "error": str(e)}
+        logger.exception("Health check failed for cache: %s", str(e))
+        checks["cache"] = {"status": "degraded", "error": "Cache check failed"}
         if status["status"] == "ok":
             status["status"] = "degraded"
 
@@ -206,9 +209,9 @@ def search_tools():
         return response
 
     except Exception as e:
-        logger.exception("Search failed: query=%r limit=%s offset=%s", query, limit, offset)
+        logger.exception("Search failed: query=%r limit=%s offset=%s - Exception: %s", query, limit, offset, str(e))
         return _error_response(
-            str(e),
+            "An error occurred during search. Please try again later.",
             code="SEARCH_FAILED",
             retryable=True,
             status=500,
