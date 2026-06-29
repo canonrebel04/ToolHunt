@@ -1,0 +1,3 @@
+## 2024-03-24 - [Title]
+**Learning:** O(N*M) lookups inside list searches are slow and `list.index()` calls can bottleneck large DB lists. We should build an inverse index dict. When elements could have duplicates and `list.index()` expects the first occurrence, the correct way to construct an inverse index is to iterate `for idx, val in reversed(list(enumerate(list))): dict[val] = idx` so that first occurrences overwrite later ones.
+**Action:** Always prefer hash maps for O(1) lookups over `list.index()` when making repetitive checks on a large array, and correctly preserve duplicate logic using `reversed(list(enumerate(...)))`.

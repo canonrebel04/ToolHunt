@@ -62,13 +62,16 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    # O(N) hash map lookup to avoid O(N^2) list.index() performance bottlenecks
+    primary_dict = {}
+    for idx, val in reversed(list(enumerate(primary_list))):
+        primary_dict[val] = idx
+
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in primary_dict:
+            indices.append(primary_dict[query_item])
+
     return indices
 
 
