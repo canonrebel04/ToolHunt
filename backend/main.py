@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_description_to_index = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _description_to_index
 
     # Fast path: already loaded
     if _tools is not None:
@@ -47,8 +48,16 @@ def _load_tools():
         conn.commit()
         conn.close()
 
-        _tools = tools
+        # Build O(1) lookup dictionary for indices, preserving the first occurrence
+        description_to_index = {}
+        for idx, desc in enumerate(descriptions):
+            if desc not in description_to_index:
+                description_to_index[desc] = idx
+
+        # Set all caches, ensuring the fast-path variable (_tools) is assigned last
         _descriptions = descriptions
+        _description_to_index = description_to_index
+        _tools = tools
 
 
 def find_indices(primary_list, query_list):
@@ -63,12 +72,24 @@ def find_indices(primary_list, query_list):
         list: A list of indices where query elements are found in primary list
     """
     indices = []
+
+    # Fast path for the common case where we're querying the cached descriptions
+    if primary_list is _descriptions and _description_to_index is not None:
+        for query_item in query_list:
+            if query_item in _description_to_index:
+                indices.append(_description_to_index[query_item])
+        return indices
+
+    # General path using a temporary O(1) hash map for arbitrary lists
+    primary_to_index = {}
+    for idx, item in enumerate(primary_list):
+        if item not in primary_to_index:
+            primary_to_index[item] = idx
+
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in primary_to_index:
+            indices.append(primary_to_index[query_item])
+
     return indices
 
 

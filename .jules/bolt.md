@@ -1,0 +1,3 @@
+## 2024-07-01 - [O(1) Cache Lookup alongside Lazy-loaded Data]
+**Learning:** When using double-checked locking to lazily load O(N) data lists, it's crucial to precompute and cache O(1) lookup mappings (like list index mapping) within the same synchronized block, rather than repeatedly calculating them or relying on O(N^2) list.index() lookups on every query. The fast-path condition variable (e.g., _tools) must be assigned last.
+**Action:** When creating lazy-loaded module-level structures, evaluate if downstream operations use inefficient list scanning methods and precompute an index mapping dict. Always set the fast-path variable last to prevent race conditions that would allow other threads to read incomplete dependent caches.
