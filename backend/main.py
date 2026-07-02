@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_description_to_index = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _description_to_index
 
     # Fast path: already loaded
     if _tools is not None:
@@ -47,8 +48,17 @@ def _load_tools():
         conn.commit()
         conn.close()
 
-        _tools = tools
+        # Build an O(1) lookup dictionary for descriptions
+        # Preserve first occurrence to match list.index() behavior
+        desc_to_idx = {}
+        for idx, desc in enumerate(descriptions):
+            if desc not in desc_to_idx:
+                desc_to_idx[desc] = idx
+
         _descriptions = descriptions
+        _description_to_index = desc_to_idx
+        # Assign _tools last to ensure thread safety
+        _tools = tools
 
 
 def find_indices(primary_list, query_list):
@@ -63,6 +73,16 @@ def find_indices(primary_list, query_list):
         list: A list of indices where query elements are found in primary list
     """
     indices = []
+
+    # If checking the main descriptions list, use the cached O(1) dictionary lookup
+    if _descriptions is not None and primary_list is _descriptions and _description_to_index is not None:
+        for query_item in query_list:
+            index = _description_to_index.get(query_item)
+            if index is not None:
+                indices.append(index)
+        return indices
+
+    # Fallback to O(M*N) list.index() if not searching main cached descriptions
     for query_item in query_list:
         try:
             index = primary_list.index(query_item)
