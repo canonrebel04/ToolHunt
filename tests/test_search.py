@@ -267,7 +267,7 @@ class TestSearchEndpoint:
             from app.extensions import cache
             cache.clear()
 
-            response = client.post(
+            client.post(
                 "/search",
                 data=json.dumps({"query": "<script>alert('xss')</script>"}),
                 content_type="application/json",
