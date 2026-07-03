@@ -5,11 +5,8 @@ Verifies that:
 2. Logging level can be controlled
 3. Log output is captured at the right levels
 """
-import io
 import logging
 import sys
-import types
-import pytest
 
 
 class TestHybridSearchLogging:

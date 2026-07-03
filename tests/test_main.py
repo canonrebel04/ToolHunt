@@ -4,7 +4,6 @@ Verifies that the tool database is loaded on first search_tool() call,
 not at module import time.
 """
 import sys
-import pytest
 
 
 class TestLazyLoading:

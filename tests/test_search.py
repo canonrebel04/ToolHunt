@@ -68,7 +68,6 @@ class TestSearchEndpoint:
         # Flask returns 400 for bad JSON body — but our route logic won't be reached
         # Instead test via a mock that raises during search_tool
         from unittest.mock import patch
-        from backend.main import search_tool as _original
         with patch("app.routes.search_tool", side_effect=RuntimeError("DB down")):
             response = client.post(
                 "/search",
