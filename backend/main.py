@@ -63,12 +63,16 @@ def find_indices(primary_list, query_list):
         list: A list of indices where query elements are found in primary list
     """
     indices = []
+    # Build a lookup dictionary to avoid O(N) list.index() inside the loop.
+    # We only store the first index to match list.index() behavior exactly.
+    mapping = {}
+    for idx, val in enumerate(primary_list):
+        if val not in mapping:
+            mapping[val] = idx
+
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in mapping:
+            indices.append(mapping[query_item])
     return indices
 
 
