@@ -87,7 +87,7 @@ def health():
             "status": "ok",
             "tools_count": len(_tools) if _tools else 0
         }
-    except Exception as e:
+    except Exception:
         logger.error("Database check failed", exc_info=True)
         checks["database"] = {"status": "degraded", "error": "Database check failed"}
         status["status"] = "degraded"
@@ -100,7 +100,7 @@ def health():
             "type": type(model).__name__,
             "backend": "onnx"
         }
-    except Exception as e:
+    except Exception:
         logger.error("Model check failed", exc_info=True)
         checks["model"] = {"status": "degraded", "error": "Model check failed"}
         status["status"] = "degraded"
@@ -114,7 +114,7 @@ def health():
             "status": "ok" if cache_hit == "ok" else "degraded",
             "type": type(cache).__name__
         }
-    except Exception as e:
+    except Exception:
         logger.error("Cache check failed", exc_info=True)
         checks["cache"] = {"status": "degraded", "error": "Cache check failed"}
         if status["status"] == "ok":
@@ -208,7 +208,7 @@ def search_tools():
 
         return response
 
-    except Exception as e:
+    except Exception:
         logger.exception("Search failed: query=%r limit=%s offset=%s", query, limit, offset)
         return _error_response(
             "An internal error occurred during search",
