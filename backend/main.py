@@ -62,13 +62,17 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    # Build an O(1) lookup map, preserving the first occurrence of duplicates
+    primary_map = {}
+    for idx, val in enumerate(primary_list):
+        if val not in primary_map:
+            primary_map[val] = idx
+
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in primary_map:
+            indices.append(primary_map[query_item])
+
     return indices
 
 
