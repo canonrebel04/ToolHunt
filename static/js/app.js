@@ -1,3 +1,14 @@
+// Utility: escape HTML to prevent XSS
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
 // DOM Elements
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
@@ -262,11 +273,12 @@ function retrySearch() {
 
 function showRetryError(message, attempt) {
     const remaining = MAX_RETRIES - attempt;
+    const safeMessage = escapeHTML(message);
     toolsGrid.innerHTML = `
         <div class="no-results error-state">
             <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
             <h3 style="color: var(--danger);">Connection Error</h3>
-            <p>${message}</p>
+            <p>${safeMessage}</p>
             <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
                 <i class="fas fa-info-circle"></i> Retry attempt ${attempt} of ${MAX_RETRIES}
             </p>
@@ -393,19 +405,27 @@ function displayResults(tools, reset = true) {
         toolCard.className = 'tool-card';
 
         // Determine category class for styling
-        const categoryClass = getCategoryClass(tool.category);
+        const categoryClass = escapeHTML(getCategoryClass(tool.category));
+
+        const safeName = escapeHTML(tool.name || 'Unknown Tool');
+        const safeCategory = escapeHTML(tool.category || 'Uncategorized');
+        const safeDescription = escapeHTML(tool.description || 'No description available');
+        const safeLink = escapeHTML(tool.link || '#');
+        const isLinkDisabled = !tool.link;
+        const linkStyle = isLinkDisabled ? 'style="opacity: 0.5; pointer-events: none;"' : '';
+        const linkText = isLinkDisabled ? 'No Link Available' : 'Access Tool';
 
         toolCard.innerHTML = `
             <div class="card-header">
-                <h3>${tool.name || 'Unknown Tool'}</h3>
-                <span class="category ${categoryClass}">${tool.category || 'Uncategorized'}</span>
+                <h3>${safeName}</h3>
+                <span class="category ${categoryClass}">${safeCategory}</span>
             </div>
             <div class="card-body">
-                <p>${tool.description || 'No description available'}</p>
+                <p>${safeDescription}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a href="${safeLink}" target="_blank" class="tool-link" ${linkStyle}>
+                    <i class="fas fa-external-link-alt"></i> ${linkText}
                 </a>
             </div>
         `;
@@ -438,19 +458,27 @@ function appendResults(tools) {
         const toolCard = document.createElement('div');
         toolCard.className = 'tool-card';
 
-        const categoryClass = getCategoryClass(tool.category);
+        const categoryClass = escapeHTML(getCategoryClass(tool.category));
+
+        const safeName = escapeHTML(tool.name || 'Unknown Tool');
+        const safeCategory = escapeHTML(tool.category || 'Uncategorized');
+        const safeDescription = escapeHTML(tool.description || 'No description available');
+        const safeLink = escapeHTML(tool.link || '#');
+        const isLinkDisabled = !tool.link;
+        const linkStyle = isLinkDisabled ? 'style="opacity: 0.5; pointer-events: none;"' : '';
+        const linkText = isLinkDisabled ? 'No Link Available' : 'Access Tool';
 
         toolCard.innerHTML = `
             <div class="card-header">
-                <h3>${tool.name || 'Unknown Tool'}</h3>
-                <span class="category ${categoryClass}">${tool.category || 'Uncategorized'}</span>
+                <h3>${safeName}</h3>
+                <span class="category ${categoryClass}">${safeCategory}</span>
             </div>
             <div class="card-body">
-                <p>${tool.description || 'No description available'}</p>
+                <p>${safeDescription}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a href="${safeLink}" target="_blank" class="tool-link" ${linkStyle}>
+                    <i class="fas fa-external-link-alt"></i> ${linkText}
                 </a>
             </div>
         `;
@@ -501,11 +529,12 @@ function getCategoryClass(category) {
 
 // Show error with cybersecurity theme
 function showError(message) {
+    const safeMessage = escapeHTML(message);
     toolsGrid.innerHTML = `
         <div class="no-results">
             <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
             <h3 style="color: var(--danger);">System Error</h3>
-            <p>${message}</p>
+            <p>${safeMessage}</p>
             <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
                 <i class="fas fa-info-circle"></i> Check network connection and try again
             </p>
@@ -531,7 +560,8 @@ function showAlert(message, type = 'info') {
         border: 2px solid ${type === 'warning' ? '#ffaa00' : '#00ff88'};
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     `;
-    alert.innerHTML = `<i class="fas fa-${type === 'warning' ? 'exclamation-triangle' : 'info-circle'}\"></i> ${message}`;
+    const safeMessage = escapeHTML(message);
+    alert.innerHTML = `<i class="fas fa-${type === 'warning' ? 'exclamation-triangle' : 'info-circle'}\"></i> ${safeMessage}`;
 
     document.body.appendChild(alert);
 
