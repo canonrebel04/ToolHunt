@@ -54,6 +54,7 @@ def _load_tools():
 def find_indices(primary_list, query_list):
     """
     Find the indices of elements from query_list in primary_list.
+    Optimized to O(n) using a hash map lookup instead of O(n^2) list.index().
 
     Args:
         primary_list (list): The list to search in
@@ -62,13 +63,18 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    # Pre-compute first occurrences in primary_list to map item -> index
+    primary_indices = {}
+    for idx, val in enumerate(primary_list):
+        if val not in primary_indices:
+            primary_indices[val] = idx
+
+    # Lookup indices for query_list items
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in primary_indices:
+            indices.append(primary_indices[query_item])
+
     return indices
 
 
