@@ -1,4 +1,4 @@
-## 2024-07-10 - Fixed Hardcoded Secret Key
+## 2024-07-10 - Fixed Hardcoded Secret Key (Updated)
 **Vulnerability:** The Flask application's `SECRET_KEY` was hardcoded to a static string in both development and production configurations.
-**Learning:** Hardcoded secret keys allow attackers to forge session cookies or tamper with signed data.
-**Prevention:** Always use environment variables for sensitive configuration values, and enforce their presence in production configurations.
+**Learning:** Checking for environment variables at the class level in config.py fails immediately on import when using the testing framework (pytest) because the `ProductionConfig` class is imported and evaluated before the app is instantiated or configurations are dynamically chosen, causing tests using `TestingConfig` to crash if `SECRET_KEY` isn't globally set.
+**Prevention:** Perform the required environment variable validation dynamically during application initialization (e.g., in `create_app` inside `app/__init__.py`) where the actual `config_class` being used is known, rather than statically at class definition time in `config.py`.
