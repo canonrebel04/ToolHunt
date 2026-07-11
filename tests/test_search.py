@@ -225,6 +225,7 @@ class TestSearchEndpoint:
         assert response.headers.get("Strict-Transport-Security") == "max-age=31536000; includeSubDomains"
         assert response.headers.get("Referrer-Policy") == "strict-origin-when-cross-origin"
         assert response.headers.get("Permissions-Policy") == "geolocation=(), microphone=(), camera=()"
+        assert response.headers.get("Content-Security-Policy") == "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:;"
 
     def test_rate_limiter_blocks_excess(self, client):
         """More than 30 requests should trigger a 429 error."""
