@@ -22,6 +22,11 @@
     font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 }
 
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
 body {
     background: 
         radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
