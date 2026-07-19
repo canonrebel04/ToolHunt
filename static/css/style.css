@@ -234,6 +234,11 @@ header p {
     transform: translateY(0);
 }
 
+.search-box button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--dark), 0 0 0 6px var(--primary);
+}
+
 .examples {
     display: flex;
     flex-wrap: wrap;
@@ -262,6 +267,11 @@ header p {
     border-color: var(--primary);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+}
+
+.example-tag:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--dark), 0 0 0 6px var(--primary);
 }
 
 .results-container {
@@ -365,6 +375,11 @@ header p {
 
 .load-more:active {
     transform: translateY(0);
+}
+
+.load-more:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--dark), 0 0 0 6px var(--primary);
 }
 
 .load-more i {
@@ -498,6 +513,11 @@ header p {
 .tool-link:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
+}
+
+.tool-link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--dark), 0 0 0 6px var(--primary);
 }
 
 .no-results {
@@ -722,6 +742,11 @@ header p {
 
 .retry-btn:active {
     transform: translateY(0);
+}
+
+.retry-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--dark), 0 0 0 6px var(--primary);
 }
 
 .retry-btn i {
