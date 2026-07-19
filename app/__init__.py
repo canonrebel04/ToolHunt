@@ -42,6 +42,10 @@ def create_app(config_class=None):
 
     app.config.from_object(config_class)
 
+    config_name = config_class if isinstance(config_class, str) else getattr(config_class, '__name__', '')
+    if 'ProductionConfig' in config_name and not app.config.get('SECRET_KEY'):
+        raise ValueError("SECRET_KEY environment variable is required for production")
+
     # Initialize extensions
     cache.init_app(app)
 
