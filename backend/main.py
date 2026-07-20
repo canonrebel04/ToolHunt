@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_description_to_index = None
 _lock = threading.Lock()
 
 
@@ -38,38 +39,23 @@ def _load_tools():
         cursor = conn.cursor()
 
         descriptions = []
+        description_to_index = {}
         cursor.execute("SELECT * FROM tools")
         tools = cursor.fetchall()
-        for row in tools:
-            text = f"{row[0]} {row[1]}"
-            descriptions.append(text.lower())
+        # ⚡ Bolt Optimization: Build O(1) hash map lookup for tool indices
+        for idx, row in enumerate(tools):
+            text = f"{row[0]} {row[1]}".lower()
+            descriptions.append(text)
+            if text not in description_to_index:
+                description_to_index[text] = idx
 
         conn.commit()
         conn.close()
 
-        _tools = tools
+        global _description_to_index
         _descriptions = descriptions
-
-
-def find_indices(primary_list, query_list):
-    """
-    Find the indices of elements from query_list in primary_list.
-
-    Args:
-        primary_list (list): The list to search in
-        query_list (list): The list of elements to search for
-
-    Returns:
-        list: A list of indices where query elements are found in primary list
-    """
-    indices = []
-    for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
-    return indices
+        _description_to_index = description_to_index
+        _tools = tools
 
 
 def search_tool(query):
@@ -92,12 +78,11 @@ def search_tool(query):
     # Find matching tool descriptions based on the query (returned in RRF order)
     matching_descriptions = search(_descriptions, query.lower())
 
-    # Find the indices of these matching descriptions in the main descriptions list
-    matching_indices = find_indices(_descriptions, matching_descriptions)
-
     # Collect the full tool data for each matching index (preserving RRF order)
+    # ⚡ Bolt Optimization: Use O(1) hash map lookup instead of O(n) list index
     matching_tools_data = []
-    for index in matching_indices:
-        matching_tools_data.append(_tools[index])
+    for desc in matching_descriptions:
+        if desc in _description_to_index:
+            matching_tools_data.append(_tools[_description_to_index[desc]])
 
     return matching_tools_data
