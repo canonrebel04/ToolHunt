@@ -309,10 +309,10 @@ function showOfflineFallback() {
             </p>
             <div class="fallback-categories">
                 ${FALLBACK_CATEGORIES.map(cat => `
-                    <div class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};">
+                    <button type="button" class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};">
                         <i class="fas ${cat.icon}"></i>
                         <span>${cat.name}</span>
-                    </div>
+                    </button>
                 `).join('')}
             </div>
             <button class="retry-btn retry-btn-primary" onclick="retrySearch()">
