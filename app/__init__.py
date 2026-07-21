@@ -40,6 +40,10 @@ def create_app(config_class=None):
         from app.config import Config
         config_class = Config
 
+    if getattr(config_class, '__name__', '') == 'ProductionConfig':
+        if not os.environ.get('SECRET_KEY'):
+            raise ValueError("SECRET_KEY environment variable must be set for production deployments.")
+
     app.config.from_object(config_class)
 
     # Initialize extensions
