@@ -809,3 +809,14 @@ header p {
 .offline-fallback .retry-btn {
     margin-top: 15px;
 }
+
+/* Accessibility focus styles */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible,
+select:focus-visible,
+.example-tag:focus-visible,
+.fallback-category-tile:focus-visible {
+    outline: 3px solid var(--primary) !important;
+    outline-offset: 3px !important;
+}
