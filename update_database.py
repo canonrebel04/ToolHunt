@@ -1,8 +1,8 @@
 import csv
 import logging
+import shutil
 import sqlite3
 from pathlib import Path
-import shutil
 
 # Configure module-level logger
 logger = logging.getLogger(__name__)
