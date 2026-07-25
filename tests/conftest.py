@@ -5,8 +5,8 @@ Mocks the heavy ML/search backend so tests run fast without models or dependenci
 
 import sys
 import types
-import pytest
 
+import pytest
 
 # ── Mock heavy backend modules before app.py is imported ──────────────
 
