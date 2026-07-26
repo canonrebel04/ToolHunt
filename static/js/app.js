@@ -309,7 +309,7 @@ function showOfflineFallback() {
             </p>
             <div class="fallback-categories">
                 ${FALLBACK_CATEGORIES.map(cat => `
-                    <div class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};">
+                    <div class="fallback-category-tile" role="button" tabindex="0" aria-label="Search for ${cat.name} tools" data-category="${cat.query}" style="--cat-color: ${cat.color};">
                         <i class="fas ${cat.icon}"></i>
                         <span>${cat.name}</span>
                     </div>
@@ -323,11 +323,18 @@ function showOfflineFallback() {
 
     // Attach click handlers to fallback category tiles
     document.querySelectorAll('.fallback-category-tile').forEach(tile => {
-        tile.addEventListener('click', () => {
+        const handler = () => {
             const query = tile.dataset.category;
             searchInput.value = query;
             retryCount = 0;  // Reset retry count for fresh search
             performSearch(true);
+        };
+        tile.addEventListener('click', handler);
+        tile.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handler();
+            }
         });
     });
 }
