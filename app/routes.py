@@ -1,12 +1,13 @@
 """Application routes defined as a Flask Blueprint."""
 
 import logging
+import re
 
-from flask import Blueprint, render_template, request, jsonify
-from backend.main import search_tool
+from flask import Blueprint, jsonify, render_template, request
+
 from app.extensions import cache
 from app.rate_limiter import rate_limiter
-import re
+from backend.main import search_tool
 
 main_bp = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
