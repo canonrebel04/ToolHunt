@@ -2,7 +2,9 @@
 
 import logging
 import os
+
 from flask import Flask
+
 from app.extensions import cache
 
 
@@ -41,6 +43,10 @@ def create_app(config_class=None):
         config_class = Config
 
     app.config.from_object(config_class)
+
+    # SECURITY: Ensure SECRET_KEY is set via environment variable in production
+    if getattr(config_class, '__name__', '') == 'ProductionConfig' and not os.environ.get('SECRET_KEY'):
+        raise ValueError("SECRET_KEY environment variable is required in production")
 
     # Initialize extensions
     cache.init_app(app)
