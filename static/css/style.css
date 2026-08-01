@@ -809,3 +809,12 @@ header p {
 .offline-fallback .retry-btn {
     margin-top: 15px;
 }
+
+/* ── Accessibility ─────────────────────────────────────────────────── */
+
+.fallback-category-tile:focus-visible {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.4);
+    transform: translateY(-5px);
+}
