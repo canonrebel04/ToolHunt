@@ -4,6 +4,7 @@
 import os
 import secrets
 
+
 class Config:
     """Base configuration."""
     # SECURITY: Prevent hardcoded secrets by loading from env vars, using a cryptographically secure fallback
