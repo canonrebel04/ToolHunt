@@ -1,4 +1,5 @@
-## 2025-02-23 - Hardcoded Flask Secret Key
-**Vulnerability:** Hardcoded Flask SECRET_KEY in configuration files.
-**Learning:** Hardcoding a secret key in version control exposes the application to session hijacking. The key should always be dynamically loaded from the environment with a secure, random fallback if none is provided.
-**Prevention:** Use `os.environ.get('SECRET_KEY', secrets.token_hex(32))` to securely configure the secret key in Flask applications and avoid committing secrets in code.
+
+## 2025-02-23 - Overreaching Lint Formatting
+**Vulnerability:** Global auto-formatting can strip test suppression comments and cause CI pipelines to fail if bounded constraints (e.g. 50 lines max) are strict.
+**Learning:** Broad tools like `ruff check . --fix` blindly modify files you aren't intending to touch, causing unrelated regressions or failing CI jobs due to unexpected changes like deleting `# noqa: F811` that tests relied on.
+**Prevention:** Fix linter errors explicitly using targeted file paths and targeted rules, prioritizing minimal manual adjustments over global scripts.
