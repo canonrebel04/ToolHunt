@@ -809,3 +809,30 @@ header p {
 .offline-fallback .retry-btn {
     margin-top: 15px;
 }
+
+/* ── Accessibility: Keyboard Focus Styles ──────────────────────────── */
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    border-radius: 4px;
+    transition: outline-offset 0.1s ease;
+}
+
+/* Ensure buttons keep their own border radius */
+button:focus-visible,
+.tool-link:focus-visible,
+.example-tag:focus-visible,
+.fallback-category-tile:focus-visible {
+    border-radius: inherit;
+}
+
+input:focus-visible,
+select:focus-visible {
+    border-radius: 12px; /* match existing input border radius */
+}
