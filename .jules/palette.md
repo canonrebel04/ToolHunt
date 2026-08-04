@@ -1,0 +1,3 @@
+## 2024-05-24 - Enhancing Keyboard Accessibility with :focus-visible
+**Learning:** Adding visible focus states specifically for keyboard navigation (`:focus-visible`) significantly improves accessibility for users relying on keyboards without negatively impacting the visual experience for mouse users (which a generic `:focus` state sometimes does). It is important to ensure these focus states are clearly visible against the background.
+**Action:** Always include `:focus-visible` styles for interactive elements (buttons, inputs, links, etc.) to ensure a baseline of keyboard accessibility in UI projects.
