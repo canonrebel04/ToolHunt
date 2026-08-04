@@ -1,14 +1,13 @@
 """Configuration classes for the ToolHunt Flask application."""
 
 import os
-import secrets
 
 
 class Config:
     """Base configuration."""
     # SECURITY: Using environment variable for SECRET_KEY to avoid hardcoded secrets.
-    # Fallback to a securely generated random hex for local dev so that sessions persist across reloads.
-    SECRET_KEY = os.environ.get('SECRET_KEY', secrets.token_hex(32))
+    # Fallback to a static string 'dev' for local development.
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'dev')
     TESTING = False
     CACHE_TYPE = 'SimpleCache'  # In-memory cache, no Redis needed
     CACHE_DEFAULT_TIMEOUT = 300  # 5 minutes
@@ -22,6 +21,7 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     """Configuration for production deployments."""
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     CACHE_TYPE = 'RedisCache'
     CACHE_REDIS_URL = 'redis://localhost:6379/0'
     CACHE_DEFAULT_TIMEOUT = 300
