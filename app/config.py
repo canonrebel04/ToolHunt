@@ -2,6 +2,7 @@
 
 import os
 
+
 class Config:
     """Base configuration."""
     # SECURITY: Using environment variable for SECRET_KEY to prevent hardcoded secrets.
