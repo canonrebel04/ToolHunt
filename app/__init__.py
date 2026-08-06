@@ -42,6 +42,9 @@ def create_app(config_class=None):
 
     app.config.from_object(config_class)
 
+    if config_class.__name__ == 'ProductionConfig' and app.config.get('SECRET_KEY') == 'default-dev-key':
+        raise ValueError("No SECRET_KEY set for Flask application in production")
+
     # Initialize extensions
     cache.init_app(app)
 
