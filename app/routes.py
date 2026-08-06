@@ -21,6 +21,7 @@ def add_security_headers(response):
     response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     response.headers['Permissions-Policy'] = 'geolocation=(), microphone=(), camera=()'
+    response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:;"
     return response
 
 
@@ -152,8 +153,24 @@ def search_tools():
         )
 
     query = sanitize_query(data.get('query', ''))
-    limit = data.get('limit', 10)
-    offset = data.get('offset', 0)
+
+    try:
+        limit = int(data.get('limit', 10))
+        offset = int(data.get('offset', 0))
+    except (ValueError, TypeError):
+        return _error_response(
+            "Invalid limit or offset parameter",
+            code="BAD_REQUEST",
+            retryable=False,
+            status=400,
+        )
+
+    if limit > 100:
+        limit = 100
+    if limit < 1:
+        limit = 10
+    if offset < 0:
+        offset = 0
 
     if not query:
         return _error_response(
