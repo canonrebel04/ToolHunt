@@ -309,10 +309,10 @@ function showOfflineFallback() {
             </p>
             <div class="fallback-categories">
                 ${FALLBACK_CATEGORIES.map(cat => `
-                    <div class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};">
-                        <i class="fas ${cat.icon}"></i>
+                    <button type="button" class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};">
+                        <i class="fas ${cat.icon}" aria-hidden="true"></i>
                         <span>${cat.name}</span>
-                    </div>
+                    </button>
                 `).join('')}
             </div>
             <button class="retry-btn retry-btn-primary" onclick="retrySearch()">
@@ -404,9 +404,15 @@ function displayResults(tools, reset = true) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                ${tool.link ? `
+                <a href="${tool.link}" target="_blank" class="tool-link">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> Access Tool
                 </a>
+                ` : `
+                <a role="link" aria-disabled="true" tabindex="-1" class="tool-link" style="opacity: 0.5; pointer-events: none;">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> No Link Available
+                </a>
+                `}
             </div>
         `;
 
@@ -449,9 +455,15 @@ function appendResults(tools) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                ${tool.link ? `
+                <a href="${tool.link}" target="_blank" class="tool-link">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> Access Tool
                 </a>
+                ` : `
+                <a role="link" aria-disabled="true" tabindex="-1" class="tool-link" style="opacity: 0.5; pointer-events: none;">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> No Link Available
+                </a>
+                `}
             </div>
         `;
 
