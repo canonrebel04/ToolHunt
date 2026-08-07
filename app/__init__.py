@@ -42,6 +42,11 @@ def create_app(config_class=None):
 
     app.config.from_object(config_class)
 
+    # SECURITY: Ensure that production environments explicitly set the secret key.
+    # We validate here rather than in ProductionConfig to avoid import-time crashes during tests/dev.
+    if app.debug is False and app.config.get('TESTING') is False and app.config.get('SECRET_KEY') == 'default-insecure-dev-key':
+        raise ValueError("SECRET_KEY environment variable is not set for production!")
+
     # Initialize extensions
     cache.init_app(app)
 
