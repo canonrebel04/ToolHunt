@@ -1,0 +1,3 @@
+## 2025-09-04 - [Performance Bottleneck: find_indices O(N*M) -> O(N)]
+**Learning:** `find_indices` was performing O(N*M) list lookups via `list.index(query_item)` inside a loop over `query_list`. In Python, `.index()` takes O(N) time and since it is done for every item in `query_list` (length M), this makes it O(N*M). Building a dictionary map of `primary_list` items to their indices brings the lookup time to O(1) inside the loop, resulting in a significantly faster operation, particularly when primary list size (N=2860) is large.
+**Action:** Replace `list.index` in loops with dictionary lookups (hash maps) for converting `O(N*M)` nested loops into `O(N+M)` operations.
