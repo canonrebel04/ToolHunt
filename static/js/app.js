@@ -122,6 +122,10 @@ function performSearch(resetOffset = true) {
         resultsContainer.style.display = 'none';
     }
 
+    // Disable search button
+    searchButton.disabled = true;
+    searchButton.setAttribute('aria-disabled', 'true');
+
     // Create new AbortController for this request
     currentAbortController = new AbortController();
     const signal = currentAbortController.signal;
@@ -134,6 +138,8 @@ function performSearch(resetOffset = true) {
         }
         loadingIndicator.style.display = 'none';
         resultsContainer.style.display = 'block';
+        searchButton.disabled = false;
+        searchButton.setAttribute('aria-disabled', 'false');
         showTimeoutError();
     }, FETCH_TIMEOUT_MS);
 
@@ -201,6 +207,8 @@ function performSearch(resetOffset = true) {
         loadingIndicator.style.display = 'none';
         resultsContainer.style.display = 'block';
         currentAbortController = null;
+        searchButton.disabled = false;
+        searchButton.setAttribute('aria-disabled', 'false');
     })
     .catch(error => {
         // Clear timeout if still active
@@ -211,6 +219,8 @@ function performSearch(resetOffset = true) {
 
         loadingIndicator.style.display = 'none';
         currentAbortController = null;
+        searchButton.disabled = false;
+        searchButton.setAttribute('aria-disabled', 'false');
 
         // Ignore abort errors triggered by new search or manual abort
         if (error && error.name === 'AbortError') {

@@ -826,3 +826,19 @@ header p {
 .offline-fallback .retry-btn {
     margin-top: 15px;
 }
+
+/* Disabled state for search button */
+.search-box button:disabled,
+.search-box button[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    background: var(--gray);
+    color: var(--darker);
+}
+
+.search-box button:disabled::before,
+.search-box button[aria-disabled="true"]::before {
+    display: none;
+}
