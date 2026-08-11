@@ -45,9 +45,8 @@ def create_app(config_class=None):
     app.config.from_object(config_class)
 
     # SECURITY: Ensure a secure SECRET_KEY is set in production without falling back to a default
-    if not app.debug and not app.config.get('TESTING'):
-        if not app.config.get('SECRET_KEY') or app.config.get('SECRET_KEY') == 'dev':
-            raise ValueError("A secure SECRET_KEY must be set in production environments")
+    if not app.debug and not app.config.get('TESTING') and (not app.config.get('SECRET_KEY') or app.config.get('SECRET_KEY') == 'dev'):
+        raise ValueError("A secure SECRET_KEY must be set in production environments")
 
     # Initialize extensions
     cache.init_app(app)
