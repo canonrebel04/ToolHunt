@@ -62,13 +62,20 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    # ⚡ BOLT PERFORMANCE OPTIMIZATION
+    # Replaced O(N^2) nested loop via `.index()` with O(N) hash map lookup.
+    # We iterate first to populate a dictionary matching `.index()` behavior
+    # (recording the first occurrence of an item).
+    # Expected impact: Reduces finding indices from O(N*M) to O(N+M)
+    lookup = {}
+    for idx, item in enumerate(primary_list):
+        if item not in lookup:
+            lookup[item] = idx
+
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in lookup:
+            indices.append(lookup[query_item])
     return indices
 
 
