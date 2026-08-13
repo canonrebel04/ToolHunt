@@ -25,7 +25,7 @@ class TestLazyLoading:
                 sys.modules.pop(key, None)
 
         # Now import the real module
-        import backend.main  # noqa: F811
+        import backend.main
         cls.real_main = backend.main
 
     @classmethod
@@ -105,7 +105,7 @@ class TestFindIndices:
                 sys.modules.pop(key, None)
 
         # Now import the real module
-        import backend.main  # noqa: F811
+        import backend.main
         cls.real_main = backend.main
 
     @classmethod

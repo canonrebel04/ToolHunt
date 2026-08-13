@@ -18,7 +18,7 @@ class TestMockInfrastructure:
 
     def test_sentence_transformers_is_mocked(self):
         """sentence_transformers should be our fake module."""
-        import sentence_transformers  # noqa: F811
+        import sentence_transformers
         model = sentence_transformers.SentenceTransformer("fake")
         emb = model.encode_query("hello")
         assert isinstance(emb, list)
