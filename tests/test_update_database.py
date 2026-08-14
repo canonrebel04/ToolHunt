@@ -1,6 +1,9 @@
 import sqlite3
+
 import pytest
+
 from update_database import DatabaseUpdater
+
 
 @pytest.fixture
 def db_updater(tmp_path):
