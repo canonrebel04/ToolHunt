@@ -4,7 +4,8 @@ import os
 
 class Config:
     """Base configuration."""
-    SECRET_KEY = 'dev'
+    # SECURITY: Using environment variable for SECRET_KEY to avoid hardcoded secrets.
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-fallback-key')
     TESTING = False
     CACHE_TYPE = 'SimpleCache'  # In-memory cache, no Redis needed
     CACHE_DEFAULT_TIMEOUT = 300  # 5 minutes
