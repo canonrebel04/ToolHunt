@@ -2,7 +2,9 @@
 
 import logging
 import os
+
 from flask import Flask
+
 from app.extensions import cache
 
 
@@ -43,9 +45,8 @@ def create_app(config_class=None):
     app.config.from_object(config_class)
 
     # SECURITY: Fail securely if production environment lacks a secure SECRET_KEY
-    if app.debug is False and app.config.get('TESTING') is False:
-        if app.config.get('SECRET_KEY') in (None, 'dev', ''):
-            raise ValueError("A secure SECRET_KEY must be set in the production environment.")
+    if app.debug is False and app.config.get('TESTING') is False and app.config.get('SECRET_KEY') in (None, 'dev', ''):
+        raise ValueError("A secure SECRET_KEY must be set in the production environment.")
 
     # Initialize extensions
     cache.init_app(app)
