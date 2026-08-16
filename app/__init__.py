@@ -2,7 +2,9 @@
 
 import logging
 import os
+
 from flask import Flask
+
 from app.extensions import cache
 
 
@@ -43,9 +45,8 @@ def create_app(config_class=None):
     app.config.from_object(config_class)
 
     # SECURITY: Ensure SECRET_KEY is set in production to prevent session tampering
-    if app.debug is False and app.config.get('TESTING') is False:
-        if not app.config.get('SECRET_KEY'):
-            raise RuntimeError("SECRET_KEY must be set in production.")
+    if app.debug is False and app.config.get('TESTING') is False and not app.config.get('SECRET_KEY'):
+        raise RuntimeError("SECRET_KEY must be set in production.")
 
     # Initialize extensions
     cache.init_app(app)
