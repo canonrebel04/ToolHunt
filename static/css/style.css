@@ -251,6 +251,19 @@ header p {
     transform: translateY(0);
 }
 
+.search-box button:disabled {
+    background: linear-gradient(135deg, var(--gray), #555);
+    color: #999;
+    cursor: not-allowed;
+    transform: translateY(0);
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+.search-box button:disabled::before {
+    display: none;
+}
+
 .examples {
     display: flex;
     flex-wrap: wrap;

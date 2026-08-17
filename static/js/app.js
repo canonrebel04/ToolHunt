@@ -118,6 +118,11 @@ function performSearch(resetOffset = true) {
     // Show loading indicator
     loadingIndicator.style.display = 'block';
     loadingIndicator.querySelector('h3').textContent = 'Scanning Arsenal...';
+
+    // Disable search button
+    searchButton.disabled = true;
+    searchButton.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Scanning...';
+
     if (resetOffset) {
         resultsContainer.style.display = 'none';
     }
@@ -133,6 +138,11 @@ function performSearch(resetOffset = true) {
             currentAbortController = null;
         }
         loadingIndicator.style.display = 'none';
+
+        // Restore search button
+        searchButton.disabled = false;
+        searchButton.innerHTML = '<i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools';
+
         resultsContainer.style.display = 'block';
         showTimeoutError();
     }, FETCH_TIMEOUT_MS);
@@ -199,6 +209,11 @@ function performSearch(resetOffset = true) {
 
         // Hide loading, show results
         loadingIndicator.style.display = 'none';
+
+        // Restore search button
+        searchButton.disabled = false;
+        searchButton.innerHTML = '<i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools';
+
         resultsContainer.style.display = 'block';
         currentAbortController = null;
     })
@@ -210,6 +225,11 @@ function performSearch(resetOffset = true) {
         }
 
         loadingIndicator.style.display = 'none';
+
+        // Restore search button
+        searchButton.disabled = false;
+        searchButton.innerHTML = '<i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools';
+
         currentAbortController = null;
 
         // Ignore abort errors triggered by new search or manual abort
