@@ -62,13 +62,17 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
+    # ⚡ Bolt: Replaced O(N*M) list.index() with O(N+M) dictionary lookup for faster searching
+    # Expected performance impact: Improves search index resolution from O(N*M) to O(N+M) time complexity
+    lookup = {}
+    for idx, item in enumerate(primary_list):
+        if item not in lookup:
+            lookup[item] = idx
+
     indices = []
     for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
+        if query_item in lookup:
+            indices.append(lookup[query_item])
     return indices
 
 
