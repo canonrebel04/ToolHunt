@@ -21,7 +21,7 @@ class TestHybridSearchLogging:
                 sys.modules.pop(key, None)
 
         try:
-            import backend.hybrid_search  # noqa: F811
+            import backend.hybrid_search
             assert hasattr(backend.hybrid_search, 'logger'), \
                 "Expected module-level 'logger' in hybrid_search"
             assert isinstance(backend.hybrid_search.logger, logging.Logger), \
@@ -119,7 +119,6 @@ class TestAppInitLogging:
         # basicConfig is a no-op if handlers already configured,
         # so we just verify the handler count is reasonable
         # (pytest adds its own handlers, so we can't assert 0)
-        pass
 
     def test_routes_logger_name(self):
         """The routes logger should be named 'app.routes'."""
@@ -135,7 +134,7 @@ class TestAppInitLogging:
                 sys.modules.pop(key, None)
 
         try:
-            import backend.hybrid_search  # noqa: F811
+            import backend.hybrid_search
             assert backend.hybrid_search.logger.name == "backend.hybrid_search", \
                 f"Expected logger name 'backend.hybrid_search', " \
                 f"got '{backend.hybrid_search.logger.name}'"
