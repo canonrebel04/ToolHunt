@@ -230,5 +230,5 @@ try:
         print("Tool added successfully.")
     else:
         print("Tool was a duplicate and skipped.")
-except Exception as e:
+except Exception as e:  # noqa: BLE001
     print(f"Update failed: {e}")
