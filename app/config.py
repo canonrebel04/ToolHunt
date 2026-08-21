@@ -1,10 +1,12 @@
 import os
+
 """Configuration classes for the ToolHunt Flask application."""
 
 
 class Config:
     """Base configuration."""
-    SECRET_KEY = 'dev'
+    # SECURITY: Prevent hardcoded secret key, but keep default 'dev' for local testing
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'dev')
     TESTING = False
     CACHE_TYPE = 'SimpleCache'  # In-memory cache, no Redis needed
     CACHE_DEFAULT_TIMEOUT = 300  # 5 minutes
