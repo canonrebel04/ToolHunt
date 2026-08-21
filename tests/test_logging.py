@@ -193,8 +193,7 @@ class TestSearchLoggingIntegration:
         import json
         from unittest.mock import patch
 
-        with caplog.at_level(logging.ERROR, logger="app.routes"):
-            with patch("app.routes.search_tool", side_effect=RuntimeError("search failed")):
+        with caplog.at_level(logging.ERROR, logger="app.routes"), patch("app.routes.search_tool", side_effect=RuntimeError("search failed")):
                 response = client.post(
                     "/search",
                     data=json.dumps({"query": "error test"}),
