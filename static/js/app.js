@@ -404,9 +404,13 @@ function displayResults(tools, reset = true) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
-                </a>
+                ${tool.link ?
+                `<a href="${tool.link}" target="_blank" class="tool-link" aria-label="Access ${tool.name}">
+                    <i class="fas fa-external-link-alt"></i> Access Tool
+                </a>` :
+                `<a aria-disabled="true" tabindex="-1" class="tool-link" style="opacity: 0.5; pointer-events: none;">
+                    <i class="fas fa-external-link-alt"></i> No Link Available
+                </a>`}
             </div>
         `;
 
@@ -449,9 +453,13 @@ function appendResults(tools) {
                 <p>${tool.description || 'No description available'}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
-                </a>
+                ${tool.link ?
+                `<a href="${tool.link}" target="_blank" class="tool-link" aria-label="Access ${tool.name}">
+                    <i class="fas fa-external-link-alt"></i> Access Tool
+                </a>` :
+                `<a aria-disabled="true" tabindex="-1" class="tool-link" style="opacity: 0.5; pointer-events: none;">
+                    <i class="fas fa-external-link-alt"></i> No Link Available
+                </a>`}
             </div>
         `;
 

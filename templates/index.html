@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <div class="loading" id="loadingIndicator">
+        <div class="loading" id="loadingIndicator" role="status" aria-live="polite">
             <div class="spinner"></div>
             <h3><i class="fas fa-crosshairs" aria-hidden="true"></i> Scanning Arsenal...</h3>
             <p>Analyzing cybersecurity tool database</p>
@@ -49,7 +49,7 @@
 
         <div class="results-container" id="resultsContainer">
             <div class="results-header">
-                <div class="results-count" id="resultsCount">Ready to hunt cybersecurity tools</div>
+                <div class="results-count" id="resultsCount" aria-live="polite" aria-atomic="true">Ready to hunt cybersecurity tools</div>
                 
             </div>
             <div class="tools-grid" id="toolsGrid">
