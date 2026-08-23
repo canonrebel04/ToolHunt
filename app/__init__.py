@@ -42,6 +42,12 @@ def create_app(config_class=None):
 
     app.config.from_object(config_class)
 
+    # SECURITY: Ensure production environments have a strong, non-default SECRET_KEY
+    if app.debug is False and app.config.get('TESTING') is False:
+        secret_key = app.config.get('SECRET_KEY')
+        if not secret_key or secret_key == 'dev':
+            raise ValueError("A strong SECRET_KEY is required in production.")
+
     # Initialize extensions
     cache.init_app(app)
 
