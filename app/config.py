@@ -4,7 +4,8 @@ import os
 
 class Config:
     """Base configuration."""
-    SECRET_KEY = 'dev'
+    # SECURITY: Use environment variable for SECRET_KEY with a static non-production fallback
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'local-dev-not-for-production')
     TESTING = False
     CACHE_TYPE = 'SimpleCache'  # In-memory cache, no Redis needed
     CACHE_DEFAULT_TIMEOUT = 300  # 5 minutes
