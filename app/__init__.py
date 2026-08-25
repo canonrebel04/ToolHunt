@@ -2,7 +2,9 @@
 
 import logging
 import os
+
 from flask import Flask
+
 from app.extensions import cache
 
 
@@ -47,5 +49,9 @@ def create_app(config_class=None):
 
     from app.routes import main_bp
     app.register_blueprint(main_bp)
+
+    # SECURITY: Ensure a secure SECRET_KEY is set in production
+    if app.debug is False and app.config.get('TESTING') is False and (not app.config.get('SECRET_KEY') or app.config.get('SECRET_KEY') == 'dev'):
+        raise ValueError("A secure SECRET_KEY is required in production.")
 
     return app
