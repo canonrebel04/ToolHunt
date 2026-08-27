@@ -1,12 +1,13 @@
 """Application routes defined as a Flask Blueprint."""
 
 import logging
+import re
 
-from flask import Blueprint, render_template, request, jsonify
-from backend.main import search_tool
+from flask import Blueprint, jsonify, render_template, request
+
 from app.extensions import cache
 from app.rate_limiter import rate_limiter
-import re
+from backend.main import search_tool
 
 main_bp = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
@@ -165,12 +166,10 @@ def search_tools():
             status=400,
         )
 
-    if limit > 100:
-        limit = 100
+    limit = min(limit, 100)
     if limit < 1:
         limit = 10
-    if offset < 0:
-        offset = 0
+    offset = max(offset, 0)
 
     if not query:
         return _error_response(
