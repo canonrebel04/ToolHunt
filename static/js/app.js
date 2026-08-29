@@ -1,3 +1,19 @@
+// ── Security Helpers ──────────────────────────────────────────────────
+
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>'"]/g, function(tag) {
+        const charsToReplace = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        };
+        return charsToReplace[tag] || tag;
+    });
+}
+
 // DOM Elements
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
@@ -395,16 +411,21 @@ function displayResults(tools, reset = true) {
         // Determine category class for styling
         const categoryClass = getCategoryClass(tool.category);
 
+        const safeName = escapeHTML(tool.name || 'Unknown Tool');
+        const safeCategory = escapeHTML(tool.category || 'Uncategorized');
+        const safeDesc = escapeHTML(tool.description || 'No description available');
+        const safeLink = tool.link ? escapeHTML(tool.link) : '#';
+
         toolCard.innerHTML = `
             <div class="card-header">
-                <h3>${tool.name || 'Unknown Tool'}</h3>
-                <span class="category ${categoryClass}">${tool.category || 'Uncategorized'}</span>
+                <h3>${safeName}</h3>
+                <span class="category ${categoryClass}">${safeCategory}</span>
             </div>
             <div class="card-body">
-                <p>${tool.description || 'No description available'}</p>
+                <p>${safeDesc}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${safeLink}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
@@ -440,16 +461,21 @@ function appendResults(tools) {
 
         const categoryClass = getCategoryClass(tool.category);
 
+        const safeName = escapeHTML(tool.name || 'Unknown Tool');
+        const safeCategory = escapeHTML(tool.category || 'Uncategorized');
+        const safeDesc = escapeHTML(tool.description || 'No description available');
+        const safeLink = tool.link ? escapeHTML(tool.link) : '#';
+
         toolCard.innerHTML = `
             <div class="card-header">
-                <h3>${tool.name || 'Unknown Tool'}</h3>
-                <span class="category ${categoryClass}">${tool.category || 'Uncategorized'}</span>
+                <h3>${safeName}</h3>
+                <span class="category ${categoryClass}">${safeCategory}</span>
             </div>
             <div class="card-body">
-                <p>${tool.description || 'No description available'}</p>
+                <p>${safeDesc}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${safeLink}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
