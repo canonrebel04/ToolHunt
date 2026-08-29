@@ -1,8 +1,8 @@
 import csv
 import logging
+import shutil
 import sqlite3
 from pathlib import Path
-import shutil
 
 # Configure module-level logger
 logger = logging.getLogger(__name__)
@@ -230,5 +230,5 @@ try:
         print("Tool added successfully.")
     else:
         print("Tool was a duplicate and skipped.")
-except Exception as e:
+except sqlite3.Error as e:
     print(f"Update failed: {e}")
