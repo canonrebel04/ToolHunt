@@ -88,12 +88,14 @@ exampleTags.forEach(tag => {
     });
 });
 
-sortOptions.addEventListener('change', () => {
-    const query = searchInput.value.trim();
-    if (query && toolsGrid.children.length > 0 && !toolsGrid.querySelector('.no-results')) {
-        performSearch(); // Re-search with current query to re-sort
-    }
-});
+if (sortOptions) {
+    sortOptions.addEventListener('change', () => {
+        const query = searchInput.value.trim();
+        if (query && toolsGrid.children.length > 0 && !toolsGrid.querySelector('.no-results')) {
+            performSearch(); // Re-search with current query to re-sort
+        }
+    });
+}
 
 // ── Search Function with retry, abort, timeout ───────────────────────
 
