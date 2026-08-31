@@ -584,7 +584,8 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === '/' && document.activeElement !== searchInput) {
+            const activeTag = document.activeElement.tagName;
+            if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(activeTag)) {
                 e.preventDefault();
                 searchInput.focus();
             }
