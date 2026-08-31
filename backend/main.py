@@ -62,14 +62,13 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
-    indices = []
-    for query_item in query_list:
-        try:
-            index = primary_list.index(query_item)
-            indices.append(index)
-        except ValueError:
-            pass
-    return indices
+    # ⚡ Bolt: Cache index lookup for O(1) retrieval instead of O(N) list.index(). Reduces time complexity from O(N*M) to O(N+M)
+    primary_dict = {}
+    for idx, item in enumerate(primary_list):
+        if item not in primary_dict:
+            primary_dict[item] = idx
+
+    return [primary_dict[q] for q in query_list if q in primary_dict]
 
 
 def search_tool(query):
