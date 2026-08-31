@@ -582,6 +582,14 @@ window.addEventListener('DOMContentLoaded', () => {
         searchInput.addEventListener('blur', () => {
             searchInput.parentElement.style.transform = 'scale(1)';
         });
+
+        document.addEventListener('keydown', (e) => {
+            const activeTag = document.activeElement ? document.activeElement.tagName : '';
+            if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(activeTag)) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
     }
 
     // Optionally check backend health silently on page load
