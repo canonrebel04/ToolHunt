@@ -2,10 +2,9 @@ import logging
 import os
 import threading
 
-from langchain_community.retrievers import BM25Retriever
-from langchain_community.vectorstores import FAISS
 from sentence_transformers import SentenceTransformer
-
+from langchain_community.vectorstores import FAISS
+from langchain_community.retrievers import BM25Retriever
 from backend.reranker import rerank
 
 logger = logging.getLogger(__name__)

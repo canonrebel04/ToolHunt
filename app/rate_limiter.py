@@ -1,7 +1,6 @@
 import time
 from collections import defaultdict
 
-
 class RateLimiter:
     """Simple in-memory sliding window rate limiter."""
 

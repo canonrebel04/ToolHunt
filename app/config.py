@@ -1,5 +1,4 @@
 import os
-
 """Configuration classes for the ToolHunt Flask application."""
 
 

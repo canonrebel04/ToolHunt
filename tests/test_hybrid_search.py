@@ -6,7 +6,6 @@ temporarily removed to allow this).
 """
 import sys
 import types
-
 import pytest
 
 
@@ -31,7 +30,7 @@ class TestReciprocalRankFusion:
                 sys.modules.pop(key, None)
 
         # Now import the real module
-        from backend import hybrid_search
+        from backend import hybrid_search  # noqa: F811
         cls.hybrid_search = hybrid_search
 
         # Restore mock for other tests that depend on it
@@ -224,7 +223,7 @@ class TestEmbeddingWrapper:
         for key in list(sys.modules.keys()):
             if "hybrid_search" in key and key != "backend.hybrid_search":
                 sys.modules.pop(key, None)
-        from backend import hybrid_search
+        from backend import hybrid_search  # noqa: F811
         cls.hybrid_search = hybrid_search
         if mock is not None:
             sys.modules["backend.hybrid_search"] = mock
@@ -298,7 +297,7 @@ class TestSearchCaching:
         FAISS.from_texts = classmethod(spy_faiss_from_texts)
 
         # Now import the real module (the spies are active before import)
-        from backend import hybrid_search
+        from backend import hybrid_search  # noqa: F811
         cls.hybrid_search = hybrid_search
 
         # Restore mock for other tests that depend on it

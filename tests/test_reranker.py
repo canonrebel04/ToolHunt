@@ -26,7 +26,7 @@ class TestReranker:
                 sys.modules.pop(key, None)
 
         # Now import the real module
-        from backend import reranker
+        from backend import reranker  # noqa: F811
         cls.reranker = reranker
 
         # Restore mock for other tests that depend on it
