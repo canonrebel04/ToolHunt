@@ -2,7 +2,9 @@
 
 import logging
 import os
+
 from flask import Flask
+
 from app.extensions import cache
 
 
@@ -41,6 +43,10 @@ def create_app(config_class=None):
         config_class = Config
 
     app.config.from_object(config_class)
+
+    # SECURITY: Ensure SECRET_KEY is set in production to prevent cookie forgery
+    if not app.debug and not app.config.get('TESTING') and not app.config.get('SECRET_KEY'):
+        raise ValueError("No SECRET_KEY set for Flask application")
 
     # Initialize extensions
     cache.init_app(app)
