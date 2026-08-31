@@ -582,6 +582,13 @@ window.addEventListener('DOMContentLoaded', () => {
         searchInput.addEventListener('blur', () => {
             searchInput.parentElement.style.transform = 'scale(1)';
         });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
     }
 
     // Optionally check backend health silently on page load
