@@ -101,37 +101,23 @@ def reciprocal_rank_fusion(faiss_results, bm25_results, k=60):
     if not faiss_results and not bm25_results:
         return []
 
-    # Build rank maps: {page_content: rank} (1-based)
-    faiss_ranks = {
-        doc.page_content: idx + 1
-        for idx, doc in enumerate(faiss_results)
-    }
-    bm25_ranks = {
-        doc.page_content: idx + 1
-        for idx, doc in enumerate(bm25_results)
-    }
+    # ⚡ Bolt: Optimize RRF fusion loop by directly accumulating scores in a single pass over each list, reducing dictionary lookups and redundant iterations
+    doc_scores = {doc.page_content: 1.0 / (k + idx + 1) for idx, doc in enumerate(faiss_results)}
+    all_docs = {doc.page_content: doc for doc in faiss_results}
 
-    # Collect all unique documents keyed by page_content,
-    # keeping the first occurrence (FAISS preference for tie-breaking)
-    all_docs = {}
-    for doc in faiss_results:
-        all_docs[doc.page_content] = doc
-    for doc in bm25_results:
-        if doc.page_content not in all_docs:
-            all_docs[doc.page_content] = doc
+    for idx, doc in enumerate(bm25_results):
+        bm25_score = 1.0 / (k + idx + 1)
+        pc = doc.page_content
+        if pc in doc_scores:
+            doc_scores[pc] += bm25_score
+        else:
+            doc_scores[pc] = bm25_score
+            all_docs[pc] = doc
 
-    # Compute RRF scores and sort
+    # Apply metadata and prepare for sorting
     scored_docs = []
-    for doc in all_docs.values():
-        faiss_rank = faiss_ranks.get(doc.page_content)
-        bm25_rank = bm25_ranks.get(doc.page_content)
-
-        score = 0.0
-        if faiss_rank is not None:
-            score += 1.0 / (k + faiss_rank)
-        if bm25_rank is not None:
-            score += 1.0 / (k + bm25_rank)
-
+    for pc, score in doc_scores.items():
+        doc = all_docs[pc]
         doc.metadata = dict(doc.metadata) if hasattr(doc, 'metadata') and doc.metadata else {}
         doc.metadata['rrf_score'] = score
         scored_docs.append((score, doc))
