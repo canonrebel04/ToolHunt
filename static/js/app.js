@@ -15,6 +15,27 @@ let currentTotal = 0;
 let currentHasMore = false;
 const PAGE_LIMIT = 10;
 
+// 🛡️ Sentinel: Sanitize output to prevent XSS
+function escapeHtml(unsafe) {
+    if (!unsafe) return '';
+    return unsafe
+         .toString()
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+}
+
+function sanitizeUrl(url) {
+    if (!url) return '#';
+    let sanitized = url.toString().trim();
+    while (/^(javascript|vbscript|data):/i.test(sanitized)) {
+        sanitized = sanitized.replace(/^(javascript|vbscript|data):/i, '');
+    }
+    return escapeHtml(sanitized);
+}
+
 // ── Error boundary state ─────────────────────────────────────────────
 
 let retryCount = 0;
@@ -397,14 +418,14 @@ function displayResults(tools, reset = true) {
 
         toolCard.innerHTML = `
             <div class="card-header">
-                <h3>${tool.name || 'Unknown Tool'}</h3>
-                <span class="category ${categoryClass}">${tool.category || 'Uncategorized'}</span>
+                <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
+                <span class="category ${escapeHtml(categoryClass)}">${escapeHtml(tool.category || 'Uncategorized')}</span>
             </div>
             <div class="card-body">
-                <p>${tool.description || 'No description available'}</p>
+                <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${sanitizeUrl(tool.link || '#')}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
@@ -442,14 +463,14 @@ function appendResults(tools) {
 
         toolCard.innerHTML = `
             <div class="card-header">
-                <h3>${tool.name || 'Unknown Tool'}</h3>
-                <span class="category ${categoryClass}">${tool.category || 'Uncategorized'}</span>
+                <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
+                <span class="category ${escapeHtml(categoryClass)}">${escapeHtml(tool.category || 'Uncategorized')}</span>
             </div>
             <div class="card-body">
-                <p>${tool.description || 'No description available'}</p>
+                <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${sanitizeUrl(tool.link || '#')}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
