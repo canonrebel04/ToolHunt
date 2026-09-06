@@ -115,9 +115,18 @@ function performSearch(resetOffset = true) {
     // Abort any previous in-flight request to prevent race conditions
     abortInFlightRequest();
 
-    // Show loading indicator
+    // Show loading indicator and disable inputs
     loadingIndicator.style.display = 'block';
     loadingIndicator.querySelector('h3').textContent = 'Scanning Arsenal...';
+
+    searchButton.disabled = true;
+    searchButton.style.opacity = '0.7';
+    searchButton.style.cursor = 'not-allowed';
+    searchButton.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Hunting...';
+    searchInput.disabled = true;
+    searchInput.style.opacity = '0.7';
+    searchInput.style.cursor = 'not-allowed';
+
     if (resetOffset) {
         resultsContainer.style.display = 'none';
     }
@@ -134,6 +143,15 @@ function performSearch(resetOffset = true) {
         }
         loadingIndicator.style.display = 'none';
         resultsContainer.style.display = 'block';
+
+        searchButton.disabled = false;
+        searchButton.style.opacity = '1';
+        searchButton.style.cursor = 'pointer';
+        searchButton.innerHTML = '<i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools';
+        searchInput.disabled = false;
+        searchInput.style.opacity = '1';
+        searchInput.style.cursor = 'text';
+
         showTimeoutError();
     }, FETCH_TIMEOUT_MS);
 
@@ -201,6 +219,14 @@ function performSearch(resetOffset = true) {
         loadingIndicator.style.display = 'none';
         resultsContainer.style.display = 'block';
         currentAbortController = null;
+
+        searchButton.disabled = false;
+        searchButton.style.opacity = '1';
+        searchButton.style.cursor = 'pointer';
+        searchButton.innerHTML = '<i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools';
+        searchInput.disabled = false;
+        searchInput.style.opacity = '1';
+        searchInput.style.cursor = 'text';
     })
     .catch(error => {
         // Clear timeout if still active
@@ -217,6 +243,14 @@ function performSearch(resetOffset = true) {
             // Only show error if this was a timeout, not a user-initiated abort
             return;
         }
+
+        searchButton.disabled = false;
+        searchButton.style.opacity = '1';
+        searchButton.style.cursor = 'pointer';
+        searchButton.innerHTML = '<i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools';
+        searchInput.disabled = false;
+        searchInput.style.opacity = '1';
+        searchInput.style.cursor = 'text';
 
         console.error('Error:', error);
 
