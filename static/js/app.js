@@ -395,16 +395,17 @@ function displayResults(tools, reset = true) {
         // Determine category class for styling
         const categoryClass = getCategoryClass(tool.category);
 
+        // Security: Sanitize HTML to prevent XSS
         toolCard.innerHTML = `
             <div class="card-header">
-                <h3>${tool.name || 'Unknown Tool'}</h3>
-                <span class="category ${categoryClass}">${tool.category || 'Uncategorized'}</span>
+                <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
+                <span class="category ${categoryClass}">${escapeHtml(tool.category || 'Uncategorized')}</span>
             </div>
             <div class="card-body">
-                <p>${tool.description || 'No description available'}</p>
+                <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
@@ -440,16 +441,17 @@ function appendResults(tools) {
 
         const categoryClass = getCategoryClass(tool.category);
 
+        // Security: Sanitize HTML to prevent XSS
         toolCard.innerHTML = `
             <div class="card-header">
-                <h3>${tool.name || 'Unknown Tool'}</h3>
-                <span class="category ${categoryClass}">${tool.category || 'Uncategorized'}</span>
+                <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
+                <span class="category ${categoryClass}">${escapeHtml(tool.category || 'Uncategorized')}</span>
             </div>
             <div class="card-body">
-                <p>${tool.description || 'No description available'}</p>
+                <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
@@ -463,6 +465,31 @@ function appendResults(tools) {
     });
 
     updateLoadMoreButton();
+}
+
+// Security: Sanitize HTML to prevent XSS
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>"']/g, function(match) {
+        const escapeMap = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        };
+        return escapeMap[match];
+    });
+}
+
+// Security: Validate URLs to prevent javascript: execution
+function sanitizeUrl(url) {
+    if (!url) return '#';
+    const trimmed = String(url).trim().toLowerCase();
+    if (trimmed.startsWith('javascript:') || trimmed.startsWith('data:') || trimmed.startsWith('vbscript:')) {
+        return '#';
+    }
+    return url;
 }
 
 // Update the load more button visibility
