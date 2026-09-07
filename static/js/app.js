@@ -118,6 +118,16 @@ function performSearch(resetOffset = true) {
     // Show loading indicator
     loadingIndicator.style.display = 'block';
     loadingIndicator.querySelector('h3').textContent = 'Scanning Arsenal...';
+
+    // Disable search button and show loading state
+    const searchBtn = document.getElementById('searchButton');
+    if (searchBtn) {
+        searchBtn.disabled = true;
+        searchBtn.style.opacity = '0.7';
+        searchBtn.style.cursor = 'not-allowed';
+        searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Hunting...';
+    }
+
     if (resetOffset) {
         resultsContainer.style.display = 'none';
     }
@@ -135,6 +145,15 @@ function performSearch(resetOffset = true) {
         loadingIndicator.style.display = 'none';
         resultsContainer.style.display = 'block';
         showTimeoutError();
+
+        // Restore search button
+        const searchBtn = document.getElementById('searchButton');
+        if (searchBtn) {
+            searchBtn.disabled = false;
+            searchBtn.style.opacity = '1';
+            searchBtn.style.cursor = 'pointer';
+            searchBtn.innerHTML = '<i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools';
+        }
     }, FETCH_TIMEOUT_MS);
 
     // Build the request body and store for retry
@@ -201,6 +220,15 @@ function performSearch(resetOffset = true) {
         loadingIndicator.style.display = 'none';
         resultsContainer.style.display = 'block';
         currentAbortController = null;
+
+        // Restore search button
+        const searchBtn = document.getElementById('searchButton');
+        if (searchBtn) {
+            searchBtn.disabled = false;
+            searchBtn.style.opacity = '1';
+            searchBtn.style.cursor = 'pointer';
+            searchBtn.innerHTML = '<i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools';
+        }
     })
     .catch(error => {
         // Clear timeout if still active
@@ -241,6 +269,15 @@ function performSearch(resetOffset = true) {
         // Update results count for error state
         if (resultsCount) {
             resultsCount.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Search failed`;
+        }
+
+        // Restore search button
+        const searchBtn = document.getElementById('searchButton');
+        if (searchBtn) {
+            searchBtn.disabled = false;
+            searchBtn.style.opacity = '1';
+            searchBtn.style.cursor = 'pointer';
+            searchBtn.innerHTML = '<i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools';
         }
     });
 }
