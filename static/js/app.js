@@ -1,3 +1,24 @@
+// Security sanitization functions
+function escapeHtml(unsafe) {
+    if (!unsafe) return '';
+    return String(unsafe)
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+}
+
+function sanitizeUrl(url) {
+    if (!url) return '';
+    // Prevent javascript:, vbscript:, data: protocols
+    const sanitized = String(url).trim();
+    if (/^(?:javascript|vbscript|data):/i.test(sanitized)) {
+        return '#';
+    }
+    return sanitized;
+}
+
 // DOM Elements
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
@@ -397,14 +418,14 @@ function displayResults(tools, reset = true) {
 
         toolCard.innerHTML = `
             <div class="card-header">
-                <h3>${tool.name || 'Unknown Tool'}</h3>
-                <span class="category ${categoryClass}">${tool.category || 'Uncategorized'}</span>
+                <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
+                <span class="category ${categoryClass}">${escapeHtml(tool.category || 'Uncategorized')}</span>
             </div>
             <div class="card-body">
-                <p>${tool.description || 'No description available'}</p>
+                <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
@@ -442,14 +463,14 @@ function appendResults(tools) {
 
         toolCard.innerHTML = `
             <div class="card-header">
-                <h3>${tool.name || 'Unknown Tool'}</h3>
-                <span class="category ${categoryClass}">${tool.category || 'Uncategorized'}</span>
+                <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
+                <span class="category ${categoryClass}">${escapeHtml(tool.category || 'Uncategorized')}</span>
             </div>
             <div class="card-body">
-                <p>${tool.description || 'No description available'}</p>
+                <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${tool.link || '#'}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
