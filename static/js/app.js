@@ -122,6 +122,14 @@ function performSearch(resetOffset = true) {
         resultsContainer.style.display = 'none';
     }
 
+    // Disable search button and show loading state
+    searchButton.disabled = true;
+    searchButton.setAttribute('aria-busy', 'true');
+    searchButton.style.opacity = '0.7';
+    searchButton.style.cursor = 'not-allowed';
+    const originalButtonContent = searchButton.innerHTML;
+    searchButton.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Hunting...';
+
     // Create new AbortController for this request
     currentAbortController = new AbortController();
     const signal = currentAbortController.signal;
@@ -134,6 +142,11 @@ function performSearch(resetOffset = true) {
         }
         loadingIndicator.style.display = 'none';
         resultsContainer.style.display = 'block';
+        searchButton.disabled = false;
+        searchButton.removeAttribute('aria-busy');
+        searchButton.style.opacity = '1';
+        searchButton.style.cursor = 'pointer';
+        searchButton.innerHTML = originalButtonContent;
         showTimeoutError();
     }, FETCH_TIMEOUT_MS);
 
@@ -201,6 +214,11 @@ function performSearch(resetOffset = true) {
         loadingIndicator.style.display = 'none';
         resultsContainer.style.display = 'block';
         currentAbortController = null;
+        searchButton.disabled = false;
+        searchButton.removeAttribute('aria-busy');
+        searchButton.style.opacity = '1';
+        searchButton.style.cursor = 'pointer';
+        searchButton.innerHTML = originalButtonContent;
     })
     .catch(error => {
         // Clear timeout if still active
@@ -242,6 +260,12 @@ function performSearch(resetOffset = true) {
         if (resultsCount) {
             resultsCount.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Search failed`;
         }
+
+        searchButton.disabled = false;
+        searchButton.removeAttribute('aria-busy');
+        searchButton.style.opacity = '1';
+        searchButton.style.cursor = 'pointer';
+        searchButton.innerHTML = originalButtonContent;
     });
 }
 
