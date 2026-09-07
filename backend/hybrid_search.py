@@ -152,13 +152,13 @@ def search(doc_list, query, similarity_threshold=0.5):
     )
 
     # Filter FAISS results by similarity threshold
-    # Convert L2 distance to similarity: similarity = 1 / (1 + distance)
-    # This maps distance [0, ∞) to similarity (0, 1]
-    filtered_results = []
-    for doc, distance in faiss_results_with_scores:
-        similarity = 1.0 / (1.0 + distance)
-        if similarity >= similarity_threshold:
-            filtered_results.append(doc)
+    # ⚡ Bolt: Calculate max distance once to avoid O(N) division operations in loop
+    # similarity = 1 / (1 + distance) => distance <= (1 / similarity) - 1
+    max_distance = (1.0 / similarity_threshold) - 1.0 if similarity_threshold > 0 else float('inf')
+    filtered_results = [
+        doc for doc, distance in faiss_results_with_scores
+        if distance <= max_distance
+    ]
 
     # Get BM25 results (they don't have similarity scores in the same way)
     bm25_results = bm25_retriever.get_relevant_documents(query)
