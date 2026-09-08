@@ -459,8 +459,8 @@ function displayResults(tools, reset = true) {
                 <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a ${tool.link ? `href="${escapeHtml(sanitizeUrl(tool.link))}" target="_blank"` : `style="opacity: 0.5; pointer-events: none;" aria-disabled="true" tabindex="-1" title="This tool does not have an external link available"`} class="tool-link">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
         `;
@@ -504,8 +504,8 @@ function appendResults(tools) {
                 <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a ${tool.link ? `href="${escapeHtml(sanitizeUrl(tool.link))}" target="_blank"` : `style="opacity: 0.5; pointer-events: none;" aria-disabled="true" tabindex="-1" title="This tool does not have an external link available"`} class="tool-link">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
         `;
