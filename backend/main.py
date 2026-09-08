@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_descriptions_dict = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _descriptions_dict
 
     # Fast path: already loaded
     if _tools is not None:
@@ -47,8 +48,18 @@ def _load_tools():
         conn.commit()
         conn.close()
 
-        _tools = tools
+        # ⚡ Bolt: Cache mapping to avoid O(N) dict creation on every search
+        # Construct the dictionary locally before assigning to global
+        local_descriptions_dict = {}
+        for idx, item in enumerate(descriptions):
+            if item not in local_descriptions_dict:
+                local_descriptions_dict[item] = idx
+
+        # Assign in specific order to avoid race conditions.
+        # _tools acts as the readiness indicator for the fast path.
+        _descriptions_dict = local_descriptions_dict
         _descriptions = descriptions
+        _tools = tools
 
 
 def find_indices(primary_list, query_list):
@@ -62,11 +73,14 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
-    # ⚡ Bolt: Cache index lookup for O(1) retrieval instead of O(N) list.index(). Reduces time complexity from O(N*M) to O(N+M)
-    primary_dict = {}
-    for idx, item in enumerate(primary_list):
-        if item not in primary_dict:
-            primary_dict[item] = idx
+    # ⚡ Bolt: Use global cached index mapping for O(1) retrieval, avoiding O(N) dict creation per query.
+    if primary_list is _descriptions and _descriptions_dict is not None:
+        primary_dict = _descriptions_dict
+    else:
+        primary_dict = {}
+        for idx, item in enumerate(primary_list):
+            if item not in primary_dict:
+                primary_dict[item] = idx
 
     return [primary_dict[q] for q in query_list if q in primary_dict]
 
