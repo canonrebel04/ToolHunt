@@ -11,9 +11,11 @@ function escapeHtml(unsafe) {
 
 function sanitizeUrl(url) {
     if (!url) return '';
+    // SECURITY: Strip all control chars/whitespace to prevent bypasses like java\tscript:
     // Prevent javascript:, vbscript:, data: protocols
+    const stripped = String(url).replace(/[\x00-\x20]/g, '');
     const sanitized = String(url).trim();
-    if (/^(?:javascript|vbscript|data):/i.test(sanitized)) {
+    if (/^(?:javascript|vbscript|data):/i.test(stripped)) {
         return '#';
     }
     return sanitized;
