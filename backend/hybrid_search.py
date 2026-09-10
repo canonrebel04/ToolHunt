@@ -101,37 +101,20 @@ def reciprocal_rank_fusion(faiss_results, bm25_results, k=60):
     if not faiss_results and not bm25_results:
         return []
 
-    # Build rank maps: {page_content: rank} (1-based)
-    faiss_ranks = {
-        doc.page_content: idx + 1
-        for idx, doc in enumerate(faiss_results)
-    }
-    bm25_ranks = {
-        doc.page_content: idx + 1
-        for idx, doc in enumerate(bm25_results)
-    }
+    # Compute RRF scores in a single pass map to avoid redundant loops
+    # ⚡ Bolt: Cache index lookup and score simultaneously in O(N+M)
+    scored_map = {}
+    for idx, doc in enumerate(faiss_results):
+        scored_map[doc.page_content] = [1.0 / (k + idx + 1), doc]
 
-    # Collect all unique documents keyed by page_content,
-    # keeping the first occurrence (FAISS preference for tie-breaking)
-    all_docs = {}
-    for doc in faiss_results:
-        all_docs[doc.page_content] = doc
-    for doc in bm25_results:
-        if doc.page_content not in all_docs:
-            all_docs[doc.page_content] = doc
+    for idx, doc in enumerate(bm25_results):
+        if doc.page_content in scored_map:
+            scored_map[doc.page_content][0] += 1.0 / (k + idx + 1)
+        else:
+            scored_map[doc.page_content] = [1.0 / (k + idx + 1), doc]
 
-    # Compute RRF scores and sort
     scored_docs = []
-    for doc in all_docs.values():
-        faiss_rank = faiss_ranks.get(doc.page_content)
-        bm25_rank = bm25_ranks.get(doc.page_content)
-
-        score = 0.0
-        if faiss_rank is not None:
-            score += 1.0 / (k + faiss_rank)
-        if bm25_rank is not None:
-            score += 1.0 / (k + bm25_rank)
-
+    for score, doc in scored_map.values():
         doc.metadata = dict(doc.metadata) if hasattr(doc, 'metadata') and doc.metadata else {}
         doc.metadata['rrf_score'] = score
         scored_docs.append((score, doc))
