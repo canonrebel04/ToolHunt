@@ -459,7 +459,7 @@ function displayResults(tools, reset = true) {
                 <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="No link available for this tool"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
@@ -504,7 +504,7 @@ function appendResults(tools) {
                 <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="No link available for this tool"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
