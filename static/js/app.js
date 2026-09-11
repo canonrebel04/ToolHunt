@@ -13,7 +13,8 @@ function sanitizeUrl(url) {
     if (!url) return '';
     // Prevent javascript:, vbscript:, data: protocols
     const sanitized = String(url).trim();
-    if (/^(?:javascript|vbscript|data):/i.test(sanitized)) {
+    const noWhitespace = sanitized.replace(/[\x00-\x20]/g, '');
+    if (/^(?:javascript|vbscript|data):/i.test(noWhitespace)) {
         return '#';
     }
     return sanitized;
