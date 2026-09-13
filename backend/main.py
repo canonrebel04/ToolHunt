@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_descriptions_to_idx = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _descriptions_to_idx
 
     # Fast path: already loaded
     if _tools is not None:
@@ -38,17 +39,22 @@ def _load_tools():
         cursor = conn.cursor()
 
         descriptions = []
+        descriptions_to_idx = {}
         cursor.execute("SELECT * FROM tools")
         tools = cursor.fetchall()
-        for row in tools:
+        for idx, row in enumerate(tools):
             text = f"{row[0]} {row[1]}"
-            descriptions.append(text.lower())
+            desc = text.lower()
+            descriptions.append(desc)
+            if desc not in descriptions_to_idx:
+                descriptions_to_idx[desc] = idx
 
         conn.commit()
         conn.close()
 
-        _tools = tools
         _descriptions = descriptions
+        _descriptions_to_idx = descriptions_to_idx
+        _tools = tools
 
 
 def find_indices(primary_list, query_list):
@@ -62,7 +68,12 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
-    # ⚡ Bolt: Cache index lookup for O(1) retrieval instead of O(N) list.index(). Reduces time complexity from O(N*M) to O(N+M)
+    # ⚡ Bolt: Use globally cached lookup dictionary instead of rebuilding O(N) map per query. Reduces overhead per query.
+    # Fallback to building dict if the fast path global cache isn't applicable (for tests passing arbitrary lists)
+    global _descriptions_to_idx
+    if primary_list is _descriptions and _descriptions_to_idx is not None:
+        return [_descriptions_to_idx[q] for q in query_list if q in _descriptions_to_idx]
+
     primary_dict = {}
     for idx, item in enumerate(primary_list):
         if item not in primary_dict:
