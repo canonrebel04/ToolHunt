@@ -70,7 +70,6 @@ def find_indices(primary_list, query_list):
     """
     # ⚡ Bolt: Use globally cached lookup dictionary instead of rebuilding O(N) map per query. Reduces overhead per query.
     # Fallback to building dict if the fast path global cache isn't applicable (for tests passing arbitrary lists)
-    global _descriptions_to_idx
     if primary_list is _descriptions and _descriptions_to_idx is not None:
         return [_descriptions_to_idx[q] for q in query_list if q in _descriptions_to_idx]
 
