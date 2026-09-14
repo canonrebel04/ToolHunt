@@ -69,7 +69,6 @@ def find_indices(primary_list, query_list):
     """
     # ⚡ Bolt: Use globally cached map if searching the main tool descriptions.
     # Reduces per-query time complexity from O(N+M) (rebuilding dict) to O(M).
-    global _descriptions, _description_to_index
     if _descriptions is not None and primary_list is _descriptions and _description_to_index is not None:
         return [_description_to_index[q] for q in query_list if q in _description_to_index]
 
