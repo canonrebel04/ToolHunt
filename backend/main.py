@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_description_to_index = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _description_to_index
 
     # Fast path: already loaded
     if _tools is not None:
@@ -38,17 +39,22 @@ def _load_tools():
         cursor = conn.cursor()
 
         descriptions = []
+        desc_to_idx = {}
         cursor.execute("SELECT * FROM tools")
         tools = cursor.fetchall()
-        for row in tools:
-            text = f"{row[0]} {row[1]}"
-            descriptions.append(text.lower())
+        for idx, row in enumerate(tools):
+            text = f"{row[0]} {row[1]}".lower()
+            descriptions.append(text)
+            if text not in desc_to_idx:
+                desc_to_idx[text] = idx
 
         conn.commit()
         conn.close()
 
-        _tools = tools
         _descriptions = descriptions
+        _description_to_index = desc_to_idx
+        # ⚡ Bolt: Assign _tools last to prevent race conditions on fast path
+        _tools = tools
 
 
 def find_indices(primary_list, query_list):
@@ -62,7 +68,10 @@ def find_indices(primary_list, query_list):
     Returns:
         list: A list of indices where query elements are found in primary list
     """
-    # ⚡ Bolt: Cache index lookup for O(1) retrieval instead of O(N) list.index(). Reduces time complexity from O(N*M) to O(N+M)
+    # ⚡ Bolt: Use global cached index mapping if primary_list is _descriptions
+    if primary_list is _descriptions and _description_to_index is not None:
+        return [_description_to_index[q] for q in query_list if q in _description_to_index]
+
     primary_dict = {}
     for idx, item in enumerate(primary_list):
         if item not in primary_dict:
