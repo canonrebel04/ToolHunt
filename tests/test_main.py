@@ -45,6 +45,9 @@ class TestLazyLoading:
         assert self.real_main._descriptions is None, (
             "Expected _descriptions to be None at import time (lazy load)"
         )
+        assert getattr(self.real_main, "_descriptions_index", None) is None, (
+            "Expected _descriptions_index to be None at import time (lazy load)"
+        )
 
     def test_tools_loaded_after_search_call(self):
         """After first search_tool() call, _tools should be populated."""
@@ -63,6 +66,8 @@ class TestLazyLoading:
         """After first search_tool() call, _descriptions should be populated."""
         assert self.real_main._descriptions is not None
         assert len(self.real_main._descriptions) > 0
+        assert self.real_main._descriptions_index is not None
+        assert len(self.real_main._descriptions_index) > 0
 
     def test_multiple_calls_do_not_reload(self):
         """Multiple search_tool() calls should use cached tools, not reload."""
