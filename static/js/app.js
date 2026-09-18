@@ -12,11 +12,12 @@ function escapeHtml(unsafe) {
 function sanitizeUrl(url) {
     if (!url) return '';
     // Prevent javascript:, vbscript:, data: protocols
-    const sanitized = String(url).trim();
-    if (/^(?:javascript|vbscript|data):/i.test(sanitized)) {
+    // Strip control characters and whitespace before testing to prevent bypasses
+    const stripped = String(url).replace(/[\x00-\x20]/g, '');
+    if (/^(?:javascript|vbscript|data):/i.test(stripped)) {
         return '#';
     }
-    return sanitized;
+    return String(url).trim();
 }
 
 // DOM Elements
