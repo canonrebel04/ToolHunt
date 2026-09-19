@@ -321,7 +321,7 @@ function showRetryError(message, attempt) {
         <div class="no-results error-state">
             <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
             <h3 style="color: var(--danger);">Connection Error</h3>
-            <p>${message}</p>
+            <p>${escapeHtml(message)}</p>
             <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
                 <i class="fas fa-info-circle"></i> Retry attempt ${attempt} of ${MAX_RETRIES}
             </p>
@@ -560,7 +560,7 @@ function showError(message) {
         <div class="no-results">
             <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
             <h3 style="color: var(--danger);">System Error</h3>
-            <p>${message}</p>
+            <p>${escapeHtml(message)}</p>
             <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
                 <i class="fas fa-info-circle"></i> Check network connection and try again
             </p>

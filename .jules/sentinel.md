@@ -6,3 +6,7 @@
 **Vulnerability:** User input values (tool name, description, link) were injected directly into innerHTML in static/js/app.js, exposing the app to DOM-based XSS and attribute breakout attacks.
 **Learning:** When injecting dynamic content into the DOM using innerHTML, developers must sanitize text context and HTML attributes. Protocol stripping alone is insufficient for anchor hrefs.
 **Prevention:** Always HTML-escape variables injected into templates and combine it with specific protocol sanitizers for link attributes.
+## YYYY-MM-DD - Fix DOM-based XSS in error messages
+**Vulnerability:** User input values and server messages were injected directly into innerHTML in static/js/app.js (showError, showRetryError), exposing the app to DOM-based XSS attacks.
+**Learning:** Even seemingly internal messages like error strings must be escaped if they pass through user-controlled execution paths or when injecting into innerHTML.
+**Prevention:** Always HTML-escape variables injected into templates before rendering using innerHTML.
