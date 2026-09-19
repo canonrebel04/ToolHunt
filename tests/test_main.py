@@ -51,6 +51,7 @@ class TestLazyLoading:
         # Reset to ensure clean state
         self.real_main._tools = None
         self.real_main._descriptions = None
+        self.real_main._description_to_index = None
 
         # This should trigger lazy loading
         self.real_main.search_tool("test")
@@ -80,6 +81,7 @@ class TestLazyLoading:
         assert id(self.real_main._descriptions) == descs_id_first, (
             "Expected _descriptions to be the same object after second call (cached)"
         )
+        assert self.real_main._description_to_index is not None, "Expected _description_to_index to be populated"
 
     def test_third_call_still_cached(self):
         """Third call should also use cached tools."""
@@ -114,39 +116,36 @@ class TestFindIndices:
         if cls._mock_main is not None:
             sys.modules["backend.main"] = cls._mock_main
 
+    def setup_method(self):
+        """Setup test dictionary before each test"""
+        self.real_main._description_to_index = {"a": 0, "b": 1, "c": 2, "d": 3}
+
     def test_find_all_elements(self):
         """All query items present in primary list should return their indices."""
-        primary = ["a", "b", "c", "d"]
         query = ["b", "d"]
-        indices = self.real_main.find_indices(primary, query)
+        indices = self.real_main.find_indices(query)
         assert indices == [1, 3]
 
     def test_ignore_missing_elements(self):
         """Elements in query missing from primary should be safely ignored."""
-        primary = ["a", "b", "c"]
         query = ["a", "z", "c", "x"]
-        indices = self.real_main.find_indices(primary, query)
+        indices = self.real_main.find_indices(query)
         assert indices == [0, 2]
 
     def test_empty_lists(self):
         """Empty lists should return empty results without error."""
-        # Both empty
-        assert self.real_main.find_indices([], []) == []
-        # Empty primary
-        assert self.real_main.find_indices([], ["a", "b"]) == []
-        # Empty query
-        assert self.real_main.find_indices(["a", "b"], []) == []
+        assert self.real_main.find_indices([]) == []
 
     def test_duplicates_in_primary(self):
-        """If primary has duplicates, .index() returns the first occurrence."""
-        primary = ["a", "b", "c", "b", "d"]
+        """If primary has duplicates, dictionary uses first occurrence index."""
+        # Simulating duplicate 'b' behavior
+        self.real_main._description_to_index = {"a": 0, "b": 1, "c": 2, "d": 4}
         query = ["b", "c"]
-        indices = self.real_main.find_indices(primary, query)
+        indices = self.real_main.find_indices(query)
         assert indices == [1, 2]
 
     def test_duplicates_in_query(self):
         """If query has duplicates, the same index should be returned multiple times."""
-        primary = ["a", "b", "c"]
         query = ["b", "a", "b"]
-        indices = self.real_main.find_indices(primary, query)
+        indices = self.real_main.find_indices(query)
         assert indices == [1, 0, 1]
