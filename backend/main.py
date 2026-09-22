@@ -70,7 +70,6 @@ def find_indices(primary_list, query_list):
         list: A list of indices where query elements are found in primary list
     """
     # ⚡ Bolt: Use globally cached lookup dictionary for O(1) retrieval without rebuilding it
-    global _descriptions_idx
     if primary_list is _descriptions and _descriptions_idx is not None:
         return [_descriptions_idx[q] for q in query_list if q in _descriptions_idx]
 
