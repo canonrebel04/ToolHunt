@@ -1,0 +1,3 @@
+## 2024-05-14 - Global Caching in Thread-Safe Lazy Loaders
+**Learning:** Rebuilding a dictionary dynamically (`{item: idx for ...}`) inside a highly frequent operation (`find_indices`) scales terribly for large N. Moving the initialization to a thread-safe lazy-loader block (`_load_tools`) and querying it as a global dictionary yields an immediate O(N) to O(1) performance boost on hot search paths.
+**Action:** When inspecting iterative dictionary or list operations inside core logic functions, look up the stack. If the source data is static or lazily-loaded once, cache the computed structures at the source (globally or object-level) to avoid redundant allocation and iteration.
