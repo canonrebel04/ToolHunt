@@ -50,6 +50,7 @@ _mock_main = _build_fake_module("backend.main", {
     "find_indices": lambda p, q: [],
     "_load_tools": lambda: None,
     "_tools": [],
+    "_descriptions_index": {},
 })
 
 
