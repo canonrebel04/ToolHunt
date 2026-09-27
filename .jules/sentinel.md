@@ -6,3 +6,7 @@
 **Vulnerability:** User input values (tool name, description, link) were injected directly into innerHTML in static/js/app.js, exposing the app to DOM-based XSS and attribute breakout attacks.
 **Learning:** When injecting dynamic content into the DOM using innerHTML, developers must sanitize text context and HTML attributes. Protocol stripping alone is insufficient for anchor hrefs.
 **Prevention:** Always HTML-escape variables injected into templates and combine it with specific protocol sanitizers for link attributes.
+## YYYY-MM-DD - Fix XSS bypass in protocol sanitization
+**Vulnerability:** The sanitizeUrl function in static/js/app.js used a regex test that could be bypassed using control characters or whitespace (e.g., java\tscript:).
+**Learning:** When implementing protocol sanitization, stripping control characters and whitespace before regex testing is necessary to prevent bypasses.
+**Prevention:** Always strip all control characters and whitespace (e.g., replace(/[\x00-\x20]/g, '')) before testing URLs against restricted protocol regexes.
