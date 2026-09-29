@@ -13,7 +13,9 @@ function sanitizeUrl(url) {
     if (!url) return '';
     // Prevent javascript:, vbscript:, data: protocols
     const sanitized = String(url).trim();
-    if (/^(?:javascript|vbscript|data):/i.test(sanitized)) {
+    // Strip all control characters and whitespace for regex testing to prevent bypasses
+    const testUrl = sanitized.replace(/[\x00-\x20]/g, '');
+    if (/^(?:javascript|vbscript|data):/i.test(testUrl)) {
         return '#';
     }
     return sanitized;
