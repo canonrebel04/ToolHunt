@@ -199,9 +199,12 @@ def search_tools():
         all_results = search_tool(query)
         total = len(all_results)
 
+        # Apply pagination slice before formatting to optimize
+        sliced_results = all_results[offset:offset + limit]
+
         # Convert results to a more JSON-friendly format
         formatted_results = []
-        for tool in all_results:
+        for tool in sliced_results:
             formatted_results.append({
                 'name': tool[0],
                 'description': tool[1],
@@ -209,12 +212,10 @@ def search_tools():
                 'category': tool[3] if len(tool) > 3 else ''
             })
 
-        # Apply pagination slice
-        sliced = formatted_results[offset:offset + limit]
         has_more = (offset + limit) < total
 
         response = jsonify({
-            'results': sliced,
+            'results': formatted_results,
             'has_more': has_more,
             'total': total
         })
