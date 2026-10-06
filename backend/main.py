@@ -14,6 +14,7 @@ from .hybrid_search import search
 # Module-level cache for lazy-loaded tool data
 _tools = None
 _descriptions = None
+_description_to_index = None
 _lock = threading.Lock()
 
 
@@ -23,7 +24,7 @@ def _load_tools():
     Uses double-checked locking for thread safety.
     Only executes once; subsequent calls are no-ops.
     """
-    global _tools, _descriptions
+    global _tools, _descriptions, _description_to_index
 
     # Fast path: already loaded
     if _tools is not None:
@@ -47,8 +48,11 @@ def _load_tools():
         conn.commit()
         conn.close()
 
-        _tools = tools
+        description_to_index = {desc: idx for idx, desc in enumerate(descriptions)}
+
+        _description_to_index = description_to_index
         _descriptions = descriptions
+        _tools = tools
 
 
 def find_indices(primary_list, query_list):
@@ -91,8 +95,8 @@ def search_tool(query):
     # Find matching tool descriptions based on the query (returned in RRF order)
     matching_descriptions = search(_descriptions, query.lower())
 
-    # Find the indices of these matching descriptions in the main descriptions list
-    matching_indices = find_indices(_descriptions, matching_descriptions)
+    # Find the indices of these matching descriptions using O(1) dictionary lookup
+    matching_indices = [_description_to_index[desc] for desc in matching_descriptions if desc in _description_to_index]
 
     # Collect the full tool data for each matching index (preserving RRF order)
     matching_tools_data = []

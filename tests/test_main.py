@@ -45,12 +45,16 @@ class TestLazyLoading:
         assert self.real_main._descriptions is None, (
             "Expected _descriptions to be None at import time (lazy load)"
         )
+        assert self.real_main._description_to_index is None, (
+            "Expected _description_to_index to be None at import time"
+        )
 
     def test_tools_loaded_after_search_call(self):
         """After first search_tool() call, _tools should be populated."""
         # Reset to ensure clean state
         self.real_main._tools = None
         self.real_main._descriptions = None
+        self.real_main._description_to_index = None
 
         # This should trigger lazy loading
         self.real_main.search_tool("test")
@@ -63,12 +67,15 @@ class TestLazyLoading:
         """After first search_tool() call, _descriptions should be populated."""
         assert self.real_main._descriptions is not None
         assert len(self.real_main._descriptions) > 0
+        assert self.real_main._description_to_index is not None
+        assert len(self.real_main._description_to_index) > 0
 
     def test_multiple_calls_do_not_reload(self):
         """Multiple search_tool() calls should use cached tools, not reload."""
         # Get the id of the first loaded tools list
         tools_id_first = id(self.real_main._tools)
         descs_id_first = id(self.real_main._descriptions)
+        index_id_first = id(self.real_main._description_to_index)
 
         # Call search again
         self.real_main.search_tool("another query")
@@ -80,16 +87,21 @@ class TestLazyLoading:
         assert id(self.real_main._descriptions) == descs_id_first, (
             "Expected _descriptions to be the same object after second call (cached)"
         )
+        assert id(self.real_main._description_to_index) == index_id_first, (
+            "Expected _description_to_index to be the same object"
+        )
 
     def test_third_call_still_cached(self):
         """Third call should also use cached tools."""
         tools_id_first = id(self.real_main._tools)
         descs_id_first = id(self.real_main._descriptions)
+        index_id_first = id(self.real_main._description_to_index)
 
         self.real_main.search_tool("yet another query")
 
         assert id(self.real_main._tools) == tools_id_first
         assert id(self.real_main._descriptions) == descs_id_first
+        assert id(self.real_main._description_to_index) == index_id_first
 
 class TestFindIndices:
     """Verify correct behavior of find_indices function."""
