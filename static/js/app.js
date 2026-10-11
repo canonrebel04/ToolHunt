@@ -102,9 +102,8 @@ searchInput.addEventListener('keypress', (e) => {
 exampleTags.forEach(tag => {
     tag.addEventListener('click', () => {
         const tagText = tag.textContent.trim();
-        // Remove icon and extract just the text
-        const cleanText = tagText.split(' ').slice(1).join(' ');
-        searchInput.value = cleanText;
+        // The icon does not contribute textContent, so we don't need to split/slice.
+        searchInput.value = tagText;
         performSearch();
     });
 });
@@ -459,7 +458,7 @@ function displayResults(tools, reset = true) {
                 <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="Tool link is currently unavailable"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
@@ -504,7 +503,7 @@ function appendResults(tools) {
                 <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; pointer-events: none;"' : ''}>
+                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="Tool link is currently unavailable"' : ''}>
                     <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
                 </a>
             </div>
