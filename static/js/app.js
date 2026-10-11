@@ -12,7 +12,7 @@ function escapeHtml(unsafe) {
 function sanitizeUrl(url) {
     if (!url) return '';
     // Prevent javascript:, vbscript:, data: protocols
-    const sanitized = String(url).trim();
+    const sanitized = String(url).trim().replace(/[\x00-\x20]/g, '');
     if (/^(?:javascript|vbscript|data):/i.test(sanitized)) {
         return '#';
     }
@@ -321,7 +321,7 @@ function showRetryError(message, attempt) {
         <div class="no-results error-state">
             <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
             <h3 style="color: var(--danger);">Connection Error</h3>
-            <p>${message}</p>
+            <p>${escapeHtml(message)}</p>
             <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
                 <i class="fas fa-info-circle"></i> Retry attempt ${attempt} of ${MAX_RETRIES}
             </p>
@@ -560,7 +560,7 @@ function showError(message) {
         <div class="no-results">
             <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
             <h3 style="color: var(--danger);">System Error</h3>
-            <p>${message}</p>
+            <p>${escapeHtml(message)}</p>
             <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
                 <i class="fas fa-info-circle"></i> Check network connection and try again
             </p>
@@ -586,7 +586,7 @@ function showAlert(message, type = 'info') {
         border: 2px solid ${type === 'warning' ? '#ffaa00' : '#00ff88'};
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     `;
-    alert.innerHTML = `<i class="fas fa-${type === 'warning' ? 'exclamation-triangle' : 'info-circle'}\"></i> ${message}`;
+    alert.innerHTML = `<i class="fas fa-${type === 'warning' ? 'exclamation-triangle' : 'info-circle'}\"></i> ${escapeHtml(message)}`;
 
     document.body.appendChild(alert);
 
