@@ -10,3 +10,7 @@
 **Vulnerability:** Error messages containing user-controlled input were injected directly into innerHTML without sanitization, and URL protocol sanitizer was bypassable with control characters.
 **Learning:** When injecting dynamic content into the DOM using innerHTML (even in error handlers like showAlert or showError), developers must sanitize text context. Protocol stripping alone is insufficient if control characters aren't stripped first.
 **Prevention:** Always HTML-escape variables injected into templates and combine it with specific protocol sanitizers that strip control characters first.
+## 2026-10-12 - [Sanitization Normalization Order Bypass]
+**Vulnerability:** XSS bypass caused by applying normalization (`.trim()`) before stripping control characters in URL sanitization.
+**Learning:** Unicode spaces (like `\xa0`) survive `.trim()` and can bypass protocol regex checks (like `javascript:`) if control characters are stripped *after* trimming. The final stripped string executes as a script but evades the regex.
+**Prevention:** Always normalize (`.trim()`) inputs *after* stripping invalid or control characters to ensure the resulting string cannot conceal malicious payloads.

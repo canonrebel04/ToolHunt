@@ -12,7 +12,7 @@ function escapeHtml(unsafe) {
 function sanitizeUrl(url) {
     if (!url) return '';
     // Prevent javascript:, vbscript:, data: protocols
-    const sanitized = String(url).trim().replace(/[\x00-\x20]/g, '');
+    const sanitized = String(url).replace(/[\x00-\x20]/g, '').trim();
     if (/^(?:javascript|vbscript|data):/i.test(sanitized)) {
         return '#';
     }
