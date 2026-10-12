@@ -442,6 +442,7 @@ function displayResults(tools, reset = true) {
     }
 
     // Populate tools grid
+    const fragment = document.createDocumentFragment();
     sortedTools.forEach((tool, index) => {
         const toolCard = document.createElement('div');
         toolCard.className = 'tool-card';
@@ -469,8 +470,9 @@ function displayResults(tools, reset = true) {
         toolCard.style.animation = 'fadeInUp 0.6s ease forwards';
         toolCard.style.opacity = '0';
 
-        toolsGrid.appendChild(toolCard);
+        fragment.appendChild(toolCard);
     });
+    toolsGrid.appendChild(fragment);
 
     // Handle load more button
     updateLoadMoreButton();
@@ -488,6 +490,7 @@ function appendResults(tools) {
     }
 
     const existingCards = toolsGrid.querySelectorAll('.tool-card').length;
+    const fragment = document.createDocumentFragment();
     sortedTools.forEach((tool, index) => {
         const toolCard = document.createElement('div');
         toolCard.className = 'tool-card';
@@ -513,8 +516,9 @@ function appendResults(tools) {
         toolCard.style.animation = 'fadeInUp 0.6s ease forwards';
         toolCard.style.opacity = '0';
 
-        toolsGrid.appendChild(toolCard);
+        fragment.appendChild(toolCard);
     });
+    toolsGrid.appendChild(fragment);
 
     updateLoadMoreButton();
 }
