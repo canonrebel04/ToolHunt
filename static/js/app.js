@@ -535,6 +535,10 @@ function updateLoadMoreButton() {
     loadMoreBtn.className = 'load-more';
     loadMoreBtn.innerHTML = '<i class="fas fa-arrow-down"></i> Load More Tools';
     loadMoreBtn.addEventListener('click', () => {
+        loadMoreBtn.disabled = true;
+        loadMoreBtn.style.opacity = '0.7';
+        loadMoreBtn.style.cursor = 'not-allowed';
+        loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Loading...';
         currentOffset += PAGE_LIMIT;
         performSearch(false);
     });
@@ -571,6 +575,8 @@ function showError(message) {
 function showAlert(message, type = 'info') {
     // Create alert element
     const alert = document.createElement('div');
+    alert.setAttribute('role', 'alert');
+    alert.setAttribute('aria-live', 'assertive');
     alert.style.cssText = `
         position: fixed;
         top: 20px;
