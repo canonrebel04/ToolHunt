@@ -571,6 +571,8 @@ function showError(message) {
 function showAlert(message, type = 'info') {
     // Create alert element
     const alert = document.createElement('div');
+    alert.setAttribute('role', 'alert');
+    alert.setAttribute('aria-live', 'assertive');
     alert.style.cssText = `
         position: fixed;
         top: 20px;
