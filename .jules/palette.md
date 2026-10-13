@@ -7,3 +7,6 @@
 ## 2026-10-12 - [Accessible Alerts]
 **Learning:** Found that alert messages lacked ARIA roles, preventing screen readers from automatically announcing them to the user.
 **Action:** Always add `role="alert"` and `aria-live="assertive"` to dynamically created alert messages.
+## 2026-10-13 - Actionable Empty States
+**Learning:** Users who encounter zero search results often abandon the search if the suggestions are just static text. Converting static examples into clickable actions directly reduces friction and helps users discover valid content faster.
+**Action:** Always make empty state suggestions interactive components (like buttons or links) that trigger the suggested action immediately.

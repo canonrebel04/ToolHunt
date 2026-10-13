@@ -434,7 +434,10 @@ function displayResults(tools, reset = true) {
                 <h3>No Tools Found in Arsenal</h3>
                 <p>No cybersecurity tools match your query. Try different keywords like:</p>
                 <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-                    <span style="background: rgba(0, 255, 136, 0.1); padding: 8px 15px; border-radius: 15px; font-size: 0.9rem;">• scanner • enumeration • exploit • forensics •</span>
+                    <button type="button" class="example-tag" onclick="document.getElementById('searchInput').value='scanner'; performSearch();">scanner</button>
+                    <button type="button" class="example-tag" onclick="document.getElementById('searchInput').value='enumeration'; performSearch();">enumeration</button>
+                    <button type="button" class="example-tag" onclick="document.getElementById('searchInput').value='exploit'; performSearch();">exploit</button>
+                    <button type="button" class="example-tag" onclick="document.getElementById('searchInput').value='forensics'; performSearch();">forensics</button>
                 </div>
             </div>
         `;
