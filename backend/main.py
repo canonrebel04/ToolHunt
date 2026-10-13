@@ -6,6 +6,7 @@ cost of loading all 2,860 tools when the module is imported but not
 yet used (e.g., during test collection with mocked backends).
 """
 
+import functools
 import sqlite3
 import threading
 
@@ -78,6 +79,7 @@ def find_indices(primary_list, query_list):
     return [primary_dict[q] for q in query_list if q in primary_dict]
 
 
+@functools.lru_cache(maxsize=128)
 def search_tool(query):
     """
     Searches for tools based on a query and returns the matching tool data
