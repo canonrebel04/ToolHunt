@@ -1,0 +1,33 @@
+2026-10-14 10:48:08 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cpu
+2026-10-14 10:48:08 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: BAAI/bge-m3
+ * Debug mode: off
+2026-10-14 10:48:13 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-10-14 10:48:13 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2026-10-14 10:48:50 [INFO] werkzeug: 127.0.0.1 - - [14/Oct/2026 10:48:50] "GET / HTTP/1.1" 200 -
+2026-10-14 10:48:51 [INFO] werkzeug: 127.0.0.1 - - [14/Oct/2026 10:48:51] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-10-14 10:48:51 [INFO] werkzeug: 127.0.0.1 - - [14/Oct/2026 10:48:51] "GET /static/js/app.js HTTP/1.1" 200 -
+2026-10-14 10:48:54 [INFO] app.routes: Cache MISS | query='network' limit=10 offset=0
+2026-10-14 10:48:54 [INFO] backend.hybrid_search: Loading FAISS index from disk...
+2026-10-14 10:48:54 [INFO] faiss.loader: Loading faiss with AVX2 support.
+2026-10-14 10:48:55 [INFO] faiss.loader: Successfully loaded faiss with AVX2 support.
+2026-10-14 10:48:55 [WARNING] langchain_community.vectorstores.faiss: `embedding_function` is expected to be an Embeddings object, support for passing in a function will soon be removed.
+2026-10-14 10:48:55 [ERROR] app.routes: Search failed: query='network' limit=10 offset=0
+Traceback (most recent call last):
+  File "/app/app/routes.py", line 199, in search_tools
+    all_results = search_tool(query)
+                  ^^^^^^^^^^^^^^^^^^
+  File "/app/backend/main.py", line 101, in search_tool
+    matching_descriptions = search(_descriptions, query.lower())
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/hybrid_search.py", line 150, in search
+    faiss_results_with_scores = faiss_vectorstore.similarity_search_with_score(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 268, in _embed_query
+    return self.embedding_function(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'EmbeddingWrapper' object is not callable
+2026-10-14 10:48:55 [INFO] werkzeug: 127.0.0.1 - - [14/Oct/2026 10:48:55] "[35m[1mPOST /search HTTP/1.1[0m" 500 -

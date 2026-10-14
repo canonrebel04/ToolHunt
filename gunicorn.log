@@ -1,0 +1,10 @@
+[2026-10-14 10:45:55 +0000] [51986] [INFO] Starting gunicorn 26.2.0
+[2026-10-14 10:45:55 +0000] [51986] [INFO] Listening at: http://127.0.0.1:5000 (51986)
+[2026-10-14 10:45:55 +0000] [51986] [INFO] Using worker: sync
+[2026-10-14 10:45:55 +0000] [52082] [INFO] Booting worker with pid: 52082
+[2026-10-14 10:45:55 +0000] [51986] [INFO] Control socket listening at /home/jules/.gunicorn/gunicorn.ctl
+2026-10-14 10:46:15 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cpu
+2026-10-14 10:46:15 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: BAAI/bge-m3
+[2026-10-14 10:47:45 +0000] [51986] [INFO] Handling signal: term
+[2026-10-14 10:47:46 +0000] [52082] [INFO] Worker exiting (pid: 52082)
+[2026-10-14 10:47:48 +0000] [51986] [INFO] Shutting down: Master

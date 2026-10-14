@@ -363,10 +363,10 @@ function showOfflineFallback() {
             </p>
             <div class="fallback-categories">
                 ${FALLBACK_CATEGORIES.map(cat => `
-                    <div class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};">
-                        <i class="fas ${cat.icon}"></i>
+                    <button type="button" class="fallback-category-tile" data-category="${cat.query}" style="--cat-color: ${cat.color};">
+                        <i class="fas ${cat.icon}" aria-hidden="true"></i>
                         <span>${cat.name}</span>
-                    </div>
+                    </button>
                 `).join('')}
             </div>
             <button class="retry-btn retry-btn-primary" onclick="retrySearch()">
@@ -462,8 +462,9 @@ function displayResults(tools, reset = true) {
                 <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="Tool link is currently unavailable"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" rel="noopener noreferrer" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="Tool link is currently unavailable"' : ''}>
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                    <span class="visually-hidden">(opens in a new tab)</span>
                 </a>
             </div>
         `;
@@ -509,8 +510,9 @@ function appendResults(tools) {
                 <p>${escapeHtml(tool.description || 'No description available')}</p>
             </div>
             <div class="card-footer">
-                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="Tool link is currently unavailable"' : ''}>
-                    <i class="fas fa-external-link-alt"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" rel="noopener noreferrer" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="Tool link is currently unavailable"' : ''}>
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
+                    <span class="visually-hidden">(opens in a new tab)</span>
                 </a>
             </div>
         `;
