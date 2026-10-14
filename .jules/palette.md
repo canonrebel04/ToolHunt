@@ -10,3 +10,6 @@
 ## 2026-10-13 - Actionable Empty States
 **Learning:** Users who encounter zero search results often abandon the search if the suggestions are just static text. Converting static examples into clickable actions directly reduces friction and helps users discover valid content faster.
 **Action:** Always make empty state suggestions interactive components (like buttons or links) that trigger the suggested action immediately.
+## 2026-10-14 - Screen Reader Context for External Links
+**Learning:** When using target="_blank" for external links, visual users see a new tab open, but screen reader users lose context entirely. Using a visually-hidden span like `<span class="visually-hidden">(opens in a new tab)</span>` preserves this critical navigation context for non-visual users.
+**Action:** Always append visually hidden text to indicate external link behavior, and pair it with rel="noopener noreferrer" for security.
