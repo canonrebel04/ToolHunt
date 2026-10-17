@@ -9,6 +9,7 @@ class Config:
     TESTING = False
     CACHE_TYPE = 'SimpleCache'  # In-memory cache, no Redis needed
     CACHE_DEFAULT_TIMEOUT = 300  # 5 minutes
+    MAX_CONTENT_LENGTH = 1 * 1024 * 1024  # Limit request body to 1MB to prevent DoS
 
 
 class TestingConfig(Config):
