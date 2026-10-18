@@ -13,3 +13,7 @@
 ## 2026-10-14 - Screen Reader Context for External Links
 **Learning:** When using target="_blank" for external links, visual users see a new tab open, but screen reader users lose context entirely. Using a visually-hidden span like `<span class="visually-hidden">(opens in a new tab)</span>` preserves this critical navigation context for non-visual users.
 **Action:** Always append visually hidden text to indicate external link behavior, and pair it with rel="noopener noreferrer" for security.
+
+## 2026-10-15 - [Defensive Event Listener Binding]
+**Learning:** Found that directly calling `addEventListener` on elements queried by ID causes a crash if the element is missing from the DOM, breaking all subsequent JS logic.
+**Action:** Always wrap event listener bindings in an `if (element)` check or check if the element exists before adding event listeners to prevent breaking the script if the UI component is removed or missing.
