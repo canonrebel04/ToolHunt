@@ -9,9 +9,15 @@ class RateLimiter:
         self.max_requests = max_requests
         self.window_seconds = window_seconds
         self._requests = defaultdict(list)
+        self._last_cleanup = time.time()
 
     def is_allowed(self, ip: str) -> bool:
         now = time.time()
+
+        if getattr(self, '_last_cleanup', 0) < now - self.window_seconds:
+            self.cleanup()
+            self._last_cleanup = now
+
         window_start = now - self.window_seconds
         # Prune old entries for this IP
         self._requests[ip] = [t for t in self._requests[ip] if t > window_start]
