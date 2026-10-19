@@ -51,6 +51,10 @@ def create_app(config_class=None):
     # Initialize extensions
     cache.init_app(app)
 
+    # Trust the single reverse proxy for rate limiting (Docker)
+    from werkzeug.middleware.proxy_fix import ProxyFix
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
+
     from app.routes import main_bp
     app.register_blueprint(main_bp)
 

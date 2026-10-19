@@ -18,3 +18,7 @@
 **Vulnerability:** The RateLimiter cached requests but never invoked its `cleanup()` method, causing an unbounded memory leak when tracking requests from numerous unique IPs.
 **Learning:** In-memory caches or rate limiters that store state per-client must have an active eviction strategy or periodically purge stale entries to prevent Denial of Service (DoS) via memory exhaustion.
 **Prevention:** Always verify that cleanup routines are actually invoked, either asynchronously or lazily during regular request processing, when implementing custom in-memory caching mechanisms.
+## 2025-05-18 - X-Forwarded-For Rate Limiting Spoofing
+**Vulnerability:** The rate limiter blindly trusted the `request.remote_addr` without applying `ProxyFix`, meaning behind a proxy all requests share the proxy's IP. A naive fix of manually parsing `X-Forwarded-For` and trusting the leftmost IP introduces an IP spoofing bypass.
+**Learning:** In Flask/Werkzeug applications running behind reverse proxies (like Docker/Gunicorn), manually parsing proxy headers is strongly discouraged and insecure. An attacker can append a fake IP to the `X-Forwarded-For` header.
+**Prevention:** Always use `werkzeug.middleware.proxy_fix.ProxyFix` and configure it with exactly the number of trusted upstream proxies (e.g., `x_for=1`) to securely handle proxy headers.
