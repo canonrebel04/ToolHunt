@@ -14,3 +14,7 @@
 **Vulnerability:** XSS bypass caused by applying normalization (`.trim()`) before stripping control characters in URL sanitization.
 **Learning:** Unicode spaces (like `\xa0`) survive `.trim()` and can bypass protocol regex checks (like `javascript:`) if control characters are stripped *after* trimming. The final stripped string executes as a script but evades the regex.
 **Prevention:** Always normalize (`.trim()`) inputs *after* stripping invalid or control characters to ensure the resulting string cannot conceal malicious payloads.
+## 2026-10-13 - Rate Limiter Memory Leak (DoS)
+**Vulnerability:** The RateLimiter cached requests but never invoked its `cleanup()` method, causing an unbounded memory leak when tracking requests from numerous unique IPs.
+**Learning:** In-memory caches or rate limiters that store state per-client must have an active eviction strategy or periodically purge stale entries to prevent Denial of Service (DoS) via memory exhaustion.
+**Prevention:** Always verify that cleanup routines are actually invoked, either asynchronously or lazily during regular request processing, when implementing custom in-memory caching mechanisms.
