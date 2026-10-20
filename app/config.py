@@ -10,6 +10,8 @@ class Config:
     CACHE_TYPE = 'SimpleCache'  # In-memory cache, no Redis needed
     CACHE_DEFAULT_TIMEOUT = 300  # 5 minutes
     MAX_CONTENT_LENGTH = 1 * 1024 * 1024  # Limit request body to 1MB to prevent DoS
+    # Configures whether the app is behind a reverse proxy (e.g. Nginx, Docker)
+    USE_PROXY_FIX = os.environ.get('USE_PROXY_FIX', 'false').lower() == 'true'
 
 
 class TestingConfig(Config):
