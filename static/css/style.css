@@ -202,7 +202,7 @@ header p {
 }
 
 .search-box input::placeholder {
-    color: #666;
+    color: var(--gray);
     font-style: italic;
 }
 
