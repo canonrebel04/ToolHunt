@@ -17,3 +17,6 @@
 ## 2026-10-15 - [Defensive Event Listener Binding]
 **Learning:** Found that directly calling `addEventListener` on elements queried by ID causes a crash if the element is missing from the DOM, breaking all subsequent JS logic.
 **Action:** Always wrap event listener bindings in an `if (element)` check or check if the element exists before adding event listeners to prevent breaking the script if the UI component is removed or missing.
+## 2024-05-24 - Hiding decorative icons in aria-live regions
+**Learning:** When injecting dynamic content into aria-live regions, screen readers will redundantly read the class names or unicode values of font-awesome icons if they are not explicitly hidden, causing excessive noise.
+**Action:** Always ensure dynamically injected decorative icons include `aria-hidden="true"` within JavaScript template literals.
