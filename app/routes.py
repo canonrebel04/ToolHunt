@@ -1,7 +1,7 @@
 """Application routes defined as a Flask Blueprint."""
 
+import html
 import logging
-import re
 
 from flask import Blueprint, jsonify, render_template, request
 
@@ -36,10 +36,10 @@ def check_rate_limit():
 
 
 def sanitize_query(query: str) -> str:
-    """Strip HTML tags and limit length."""
+    """Escape HTML tags and limit length."""
     if not query or not query.strip():
         return ""
-    clean = re.sub(r'<[^>]+>', '', query)
+    clean = html.escape(query)
     clean = clean.strip()[:200]
     return clean
 

@@ -22,3 +22,7 @@
 **Vulnerability:** Trusting request.remote_addr directly behind a reverse proxy without Werkzeug ProxyFix allows IP spoofing and bypassing IP-based rate limits.
 **Learning:** When deployed behind reverse proxies, frameworks like Flask default to remote_addr being the proxy IP, but if trusting proxy headers directly in code, it is vulnerable. Must use ProxyFix.
 **Prevention:** Always wrap the WSGI app with werkzeug.middleware.proxy_fix.ProxyFix with appropriate x_for=1 parameters to securely extract client IPs.
+## 2026-10-21 - Fix XSS sanitization bypass in backend
+**Vulnerability:** The `sanitize_query` function used a regex (`<[^>]+>`) to strip HTML tags, which could be bypassed using nested tags (e.g. `<<script>script>alert(1)</script>`) resulting in executable tags after stripping.
+**Learning:** Naive regex tag stripping is fragile and easily bypassed. HTML entities must be escaped rather than stripped to prevent interpretation by the browser, even if rendering logic isn't immediately vulnerable.
+**Prevention:** Use standard libraries like `html.escape()` for input sanitization instead of custom regex replacements.
