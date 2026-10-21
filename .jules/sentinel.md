@@ -18,3 +18,7 @@
 **Vulnerability:** The RateLimiter cached requests but never invoked its `cleanup()` method, causing an unbounded memory leak when tracking requests from numerous unique IPs.
 **Learning:** In-memory caches or rate limiters that store state per-client must have an active eviction strategy or periodically purge stale entries to prevent Denial of Service (DoS) via memory exhaustion.
 **Prevention:** Always verify that cleanup routines are actually invoked, either asynchronously or lazily during regular request processing, when implementing custom in-memory caching mechanisms.
+## 2026-10-14 - IP Spoofing via missing ProxyFix
+**Vulnerability:** Trusting request.remote_addr directly behind a reverse proxy without Werkzeug ProxyFix allows IP spoofing and bypassing IP-based rate limits.
+**Learning:** When deployed behind reverse proxies, frameworks like Flask default to remote_addr being the proxy IP, but if trusting proxy headers directly in code, it is vulnerable. Must use ProxyFix.
+**Prevention:** Always wrap the WSGI app with werkzeug.middleware.proxy_fix.ProxyFix with appropriate x_for=1 parameters to securely extract client IPs.

@@ -4,6 +4,7 @@ import logging
 import os
 
 from flask import Flask
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from app.extensions import cache
 
@@ -47,6 +48,11 @@ def create_app(config_class=None):
     # SECURITY: Ensure SECRET_KEY is set in production to prevent cookie forgery
     if not app.debug and not app.config.get('TESTING') and not app.config.get('SECRET_KEY'):
         raise ValueError("No SECRET_KEY set for Flask application")
+
+    # SECURITY: Trust reverse proxy headers securely, but only when configured.
+    # Blindly trusting proxy headers without a real proxy introduces an IP spoofing vulnerability.
+    if app.config.get('USE_PROXY_FIX'):
+        app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
 
     # Initialize extensions
     cache.init_app(app)
