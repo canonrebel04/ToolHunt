@@ -249,6 +249,15 @@ function performSearch(resetOffset = true) {
         searchInput.disabled = false;
         searchInput.style.opacity = '1';
         searchInput.style.cursor = 'text';
+
+        // Re-enable load more button if it exists
+        const loadMoreBtn = document.querySelector('.load-more');
+        if (loadMoreBtn) {
+            loadMoreBtn.disabled = false;
+            loadMoreBtn.style.opacity = '1';
+            loadMoreBtn.style.cursor = 'pointer';
+            loadMoreBtn.innerHTML = '<i class="fas fa-arrow-down" aria-hidden="true"></i> Load More Tools';
+        }
     })
     .catch(error => {
         // Clear timeout if still active
@@ -273,6 +282,15 @@ function performSearch(resetOffset = true) {
         searchInput.disabled = false;
         searchInput.style.opacity = '1';
         searchInput.style.cursor = 'text';
+
+        // Re-enable load more button if it exists
+        const loadMoreBtn = document.querySelector('.load-more');
+        if (loadMoreBtn) {
+            loadMoreBtn.disabled = false;
+            loadMoreBtn.style.opacity = '1';
+            loadMoreBtn.style.cursor = 'pointer';
+            loadMoreBtn.innerHTML = '<i class="fas fa-arrow-down" aria-hidden="true"></i> Load More Tools';
+        }
 
         console.error('Error:', error);
 
@@ -546,6 +564,10 @@ function updateLoadMoreButton() {
     loadMoreBtn.className = 'load-more';
     loadMoreBtn.innerHTML = '<i class="fas fa-arrow-down" aria-hidden="true"></i> Load More Tools';
     loadMoreBtn.addEventListener('click', () => {
+        loadMoreBtn.disabled = true;
+        loadMoreBtn.style.opacity = '0.7';
+        loadMoreBtn.style.cursor = 'not-allowed';
+        loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Loading...';
         currentOffset += PAGE_LIMIT;
         performSearch(false);
     });
