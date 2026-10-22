@@ -20,3 +20,7 @@
 ## 2024-05-24 - Hiding decorative icons in aria-live regions
 **Learning:** When injecting dynamic content into aria-live regions, screen readers will redundantly read the class names or unicode values of font-awesome icons if they are not explicitly hidden, causing excessive noise.
 **Action:** Always ensure dynamically injected decorative icons include `aria-hidden="true"` within JavaScript template literals.
+
+## 2024-06-25 - [Inline Validation and Focus Management]
+**Learning:** Found that showing an alert for an empty search query is insufficient for accessibility, as users may not immediately know which field is invalid. Setting `aria-invalid` and immediately shifting focus back to the input ensures screen reader users are properly guided.
+**Action:** Always use `aria-invalid="true"`, visual cues, and focus management (shifting focus to the invalid field) for inline form validation.

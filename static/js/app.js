@@ -94,10 +94,14 @@ updateTime();
 setInterval(updateTime, 1000);
 
 // Event Listeners
-searchButton.addEventListener('click', performSearch);
-searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') performSearch();
-});
+if (searchButton) {
+    searchButton.addEventListener('click', performSearch);
+}
+if (searchInput) {
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') performSearch();
+    });
+}
 
 exampleTags.forEach(tag => {
     tag.addEventListener('click', () => {
@@ -124,6 +128,11 @@ function performSearch(resetOffset = true) {
 
     if (!query) {
         showAlert('Please enter a search query to hunt for tools', 'warning');
+        if (searchInput) {
+            searchInput.setAttribute('aria-invalid', 'true');
+            searchInput.style.borderColor = '#ffaa00';
+            searchInput.focus();
+        }
         return;
     }
 
@@ -656,6 +665,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // Add typing effect to search input
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
+            e.target.removeAttribute('aria-invalid');
             if (e.target.value.length > 0) {
                 e.target.style.borderColor = 'rgba(0, 255, 136, 0.5)';
             } else {
