@@ -252,8 +252,8 @@ class TestSearchEndpoint:
         assert data.get("code") == "RATE_LIMITED"
 
 
-    def test_input_sanitization_strips_html(self, client):
-        """HTML tags in the query should be stripped."""
+    def test_input_sanitization_escapes_html(self, client):
+        """HTML tags in the query should be escaped."""
         from unittest.mock import patch
 
         # We need to make sure the rate limiter isn't blocking us.
@@ -273,4 +273,4 @@ class TestSearchEndpoint:
                 content_type="application/json",
             )
 
-            mock_search.assert_called_once_with("alert('xss')")
+            mock_search.assert_called_once_with("&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;")
