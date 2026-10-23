@@ -251,6 +251,11 @@ function performSearch(resetOffset = true) {
         resultsContainer.style.display = 'block';
         currentAbortController = null;
 
+        if (resetOffset && resultsCount) {
+            resultsCount.setAttribute('tabindex', '-1');
+            resultsCount.focus();
+        }
+
         searchButton.disabled = false;
         searchButton.style.opacity = '1';
         searchButton.style.cursor = 'pointer';
@@ -550,9 +555,23 @@ function appendResults(tools) {
         toolCard.style.animation = 'fadeInUp 0.6s ease forwards';
         toolCard.style.opacity = '0';
 
+        // Make the card focusable if it's the first appended item to manage focus
+        if (index === 0) {
+            toolCard.setAttribute('tabindex', '-1');
+            toolCard.id = `appended-card-${existingCards}`;
+        }
+
         fragment.appendChild(toolCard);
     });
     toolsGrid.appendChild(fragment);
+
+    // Focus the first newly appended item for accessibility
+    if (sortedTools.length > 0) {
+        const firstNewCard = document.getElementById(`appended-card-${existingCards}`);
+        if (firstNewCard) {
+            firstNewCard.focus();
+        }
+    }
 
     updateLoadMoreButton();
 }
@@ -664,12 +683,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Add typing effect to search input
     if (searchInput) {
+        const shortcutHint = document.getElementById('shortcutHint');
+
         searchInput.addEventListener('input', (e) => {
             e.target.removeAttribute('aria-invalid');
             if (e.target.value.length > 0) {
                 e.target.style.borderColor = 'rgba(0, 255, 136, 0.5)';
+                if (shortcutHint) shortcutHint.classList.add('hidden');
             } else {
                 e.target.style.borderColor = 'var(--border)';
+                if (shortcutHint) shortcutHint.classList.remove('hidden');
             }
         });
 

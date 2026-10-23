@@ -25,8 +25,11 @@
 
         <div class="search-container" role="search">
             <div class="search-box">
-                <label for="searchInput" class="visually-hidden">Search for cybersecurity tools</label>
-                <input type="search" id="searchInput" placeholder="Search tools... e.g. 'sql injection' (Press '/' to focus)">
+                <div class="input-wrapper">
+                    <label for="searchInput" class="visually-hidden">Search for cybersecurity tools</label>
+                    <input type="search" id="searchInput" placeholder="Search tools... e.g. 'sql injection' (Press '/' to focus)">
+                    <kbd class="shortcut-hint" id="shortcutHint" aria-hidden="true">/</kbd>
+                </div>
                 <button id="searchButton" aria-label="Hunt Tools">
                     <i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools
                 </button>

@@ -178,9 +178,34 @@ header p {
     align-items: center;
 }
 
-.search-box input {
+.input-wrapper {
+    position: relative;
     flex: 1;
-    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+}
+
+.shortcut-hint {
+    position: absolute;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--gray);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    border: 1px solid var(--border);
+    font-weight: bold;
+}
+
+.shortcut-hint.hidden {
+    opacity: 0;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 20px 60px 20px 30px;
     border: 2px solid var(--border);
     border-radius: 15px;
     background: rgba(20, 20, 20, 0.8);
