@@ -24,3 +24,6 @@
 ## 2024-06-25 - [Inline Validation and Focus Management]
 **Learning:** Found that showing an alert for an empty search query is insufficient for accessibility, as users may not immediately know which field is invalid. Setting `aria-invalid` and immediately shifting focus back to the input ensures screen reader users are properly guided.
 **Action:** Always use `aria-invalid="true"`, visual cues, and focus management (shifting focus to the invalid field) for inline form validation.
+## 2024-05-15 - [Keyboard Focus Strategy]
+**Learning:** When loading async content (like search results) via vanilla JS, users relying on screen readers lose context if focus stays on the loading button. Shifting focus to an ARIA live region or the newly loaded content resolves this.
+**Action:** Always programmatically manage `.focus()` after async DOM updates in custom vanilla JS applications to maintain a seamless keyboard navigation flow.
