@@ -203,14 +203,16 @@ def search_tools():
         sliced_results = all_results[offset:offset + limit]
 
         # Convert results to a more JSON-friendly format
-        formatted_results = []
-        for tool in sliced_results:
-            formatted_results.append({
+        # ⚡ Bolt: Use list comprehension for faster mapping instead of append() loop
+        formatted_results = [
+            {
                 'name': tool[0],
                 'description': tool[1],
                 'link': tool[2] if len(tool) > 2 else '',
                 'category': tool[3] if len(tool) > 3 else ''
-            })
+            }
+            for tool in sliced_results
+        ]
 
         has_more = (offset + limit) < total
 

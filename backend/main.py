@@ -104,8 +104,5 @@ def search_tool(query):
     matching_indices = [_descriptions_dict[q] for q in matching_descriptions if q in _descriptions_dict]
 
     # Collect the full tool data for each matching index (preserving RRF order)
-    matching_tools_data = []
-    for index in matching_indices:
-        matching_tools_data.append(_tools[index])
-
-    return matching_tools_data
+    # ⚡ Bolt: Use list comprehension for faster mapping instead of append() loop
+    return [_tools[index] for index in matching_indices]
