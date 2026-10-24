@@ -39,12 +39,10 @@ def _load_tools():
         conn = sqlite3.connect("backend/database/tools.db")
         cursor = conn.cursor()
 
-        descriptions = []
         cursor.execute("SELECT * FROM tools")
         tools = cursor.fetchall()
-        for row in tools:
-            text = f"{row[0]} {row[1]}"
-            descriptions.append(text.lower())
+        # ⚡ Bolt: Use list comprehension for faster mapping instead of append() loop
+        descriptions = [f"{row[0]} {row[1]}".lower() for row in tools]
 
         conn.commit()
         conn.close()
