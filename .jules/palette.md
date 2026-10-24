@@ -27,3 +27,7 @@
 ## 2024-05-15 - [Keyboard Focus Strategy]
 **Learning:** When loading async content (like search results) via vanilla JS, users relying on screen readers lose context if focus stays on the loading button. Shifting focus to an ARIA live region or the newly loaded content resolves this.
 **Action:** Always programmatically manage `.focus()` after async DOM updates in custom vanilla JS applications to maintain a seamless keyboard navigation flow.
+
+## 2026-10-24 - Respecting Prefers-Reduced-Motion
+**Learning:** Found that the application uses continuous, glowing, or moving animations (like gridMove, float, blink) without respecting user OS preferences, which can cause severe motion sickness for users with vestibular disorders.
+**Action:** Always include a `@media (prefers-reduced-motion: reduce)` block to disable or safely scale back continuous animations and transitions.
