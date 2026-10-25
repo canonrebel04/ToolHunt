@@ -22,3 +22,7 @@
 **Vulnerability:** Trusting request.remote_addr directly behind a reverse proxy without Werkzeug ProxyFix allows IP spoofing and bypassing IP-based rate limits.
 **Learning:** When deployed behind reverse proxies, frameworks like Flask default to remote_addr being the proxy IP, but if trusting proxy headers directly in code, it is vulnerable. Must use ProxyFix.
 **Prevention:** Always wrap the WSGI app with werkzeug.middleware.proxy_fix.ProxyFix with appropriate x_for=1 parameters to securely extract client IPs.
+## 2026-10-21 - Escape on output, not on input
+**Vulnerability:** `sanitize_query` used a regex (`<[^>]+>`) to strip HTML tags, which is bypassable with nested tags and gives a false sense of safety.
+**Learning:** Escaping the query on input (`html.escape()`) breaks search for `&`, quotes and `<`/`>`. The query is never rendered as HTML by the server (JSON responses + nosniff); the frontend sets it via `input.value` and escapes all result fields with `escapeHtml()`.
+**Prevention:** Keep input as raw text for searching; escape only at the point of HTML output (Jinja autoescape, `textContent`/`escapeHtml`).

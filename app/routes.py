@@ -1,7 +1,6 @@
 """Application routes defined as a Flask Blueprint."""
 
 import logging
-import re
 
 from flask import Blueprint, jsonify, render_template, request
 
@@ -36,12 +35,20 @@ def check_rate_limit():
 
 
 def sanitize_query(query: str) -> str:
-    """Strip HTML tags and limit length."""
-    if not query or not query.strip():
+    """Normalize a search query: trim whitespace, drop control characters, cap length.
+
+    The query is deliberately NOT HTML-escaped here. It is only ever used as
+    search input and is never rendered into HTML by the server (responses are
+    JSON). Escaping happens on output instead: the frontend writes the query
+    back via ``input.value`` and escapes every result field with
+    ``escapeHtml()`` before inserting it into the DOM. Escaping here would make
+    searches containing ``&``, quotes or ``<``/``>`` look for HTML entities.
+    """
+    if not isinstance(query, str) or not query.strip():
         return ""
-    clean = re.sub(r'<[^>]+>', '', query)
-    clean = clean.strip()[:200]
-    return clean
+    clean = "".join(ch for ch in query if ch.isprintable() or ch == " ")
+    return clean.strip()[:200]
+
 
 def _error_response(message, code="UNKNOWN", retryable=False, status=500):
     """Build a structured error response.
