@@ -861,3 +861,30 @@ header p {
         scroll-behavior: auto !important;
     }
 }
+
+/* ── Category filter chips (All / Security / General) ── */
+.category-filter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0 5px;
+    flex-wrap: wrap;
+}
+.category-chip {
+    background: transparent;
+    border: 1px solid var(--gray, #888);
+    color: var(--gray, #aaa);
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+.category-chip:hover,
+.category-chip:focus-visible { border-color: #00d4ff; color: #00d4ff; outline: none; }
+.category-chip.active { border-color: #00ff88; color: #0a0a0a; background: #00ff88; }
+.badges { display: inline-flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.category.security { border-color: #ff3366; color: #ff3366; }
+.category.general { border-color: #00d4ff; color: #00d4ff; }
+.category.subcategory { opacity: 0.85; }

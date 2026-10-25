@@ -10,27 +10,41 @@ import pytest
 
 # ── Mock heavy backend modules before app.py is imported ──────────────
 
+_MOCK_TOOLS = [
+    ("nmap", "Network discovery and security scanning tool", "https://nmap.org", "security", "Network"),
+    ("sqlmap", "Automatic SQL injection and database takeover tool", "https://sqlmap.org", "security", "Web"),
+    ("metasploit", "Penetration testing framework", "https://metasploit.com", "security", "Exploitation"),
+    ("burpsuite", "Web application security testing platform", "https://portswigger.net", "security", "Web"),
+    ("wireshark", "Network protocol analyzer", "https://wireshark.org", "security", "Network"),
+    ("john", "Password cracking tool", "https://openwall.com/john", "security", "Password"),
+    ("hydra", "Parallelized network login cracker", "https://github.com/vanhauser-thc/thc-hydra", "security", "Password"),
+    ("aircrack-ng", "WiFi security auditing suite", "https://aircrack-ng.org", "security", "Network"),
+    ("gobuster", "Directory/file enumeration tool", "https://github.com/OJ/gobuster", "security", "Web"),
+    ("nikto", "Web server vulnerability scanner", "https://cirt.net/Nikto2", "security", "Vulnerability"),
+    ("hashcat", "Advanced password recovery tool", "https://hashcat.net", "security", "Password"),
+    ("openvas", "Open-source vulnerability scanner", "https://openvas.org", "security", "Vulnerability"),
+    ("volatility", "Memory forensics framework", "https://volatilityfoundation.org", "security", "Forensics"),
+    ("ripgrep", "Recursively search directories for a regex pattern", "https://github.com/BurntSushi/ripgrep", "general", "Files"),
+    ("ab-av1", "AV1 video encoding with automatic VMAF-targeted crf search", "https://github.com/alexheretic/ab-av1", "general", "Media"),
+]
+
+MOCK_TOOL_DICTS = [
+    {"id": n, "name": n, "description": d, "url": u, "category": c, "subcategory": sc,
+     "repo_url": "", "tags": [], "sources": ["test"], "language": "", "license": "",
+     "stars": None, "last_commit": "", "archived": 0, "first_seen": "", "updated_at": ""}
+    for n, d, u, c, sc in _MOCK_TOOLS
+]
+
+
 class _MockSearchTool:
     """Stand-in for backend.main.search_tool that returns canned results."""
 
-    def __call__(self, query):
-        return [
-            ("nmap", "Network discovery and security scanning tool", "https://nmap.org", "Network"),
-            ("sqlmap", "Automatic SQL injection and database takeover tool", "https://sqlmap.org", "Web"),
-            ("metasploit", "Penetration testing framework", "https://metasploit.com", "Exploitation"),
-            ("burpsuite", "Web application security testing platform", "https://portswigger.net", "Web"),
-            ("wireshark", "Network protocol analyzer", "https://wireshark.org", "Network"),
-            ("john", "Password cracking tool", "https://openwall.com/john", "Password"),
-            ("hydra", "Parallelized network login cracker", "https://github.com/vanhauser-thc/thc-hydra", "Password"),
-            ("aircrack-ng", "WiFi security auditing suite", "https://aircrack-ng.org", "Network"),
-            ("gobuster", "Directory/file enumeration tool", "https://github.com/OJ/gobuster", "Web"),
-            ("nikto", "Web server vulnerability scanner", "https://cirt.net/Nikto2", "Vulnerability"),
-            ("hashcat", "Advanced password recovery tool", "https://hashcat.net", "Password"),
-            ("openvas", "Open-source vulnerability scanner", "https://openvas.org", "Vulnerability"),
-            ("volatility", "Memory forensics framework", "https://volatilityfoundation.org", "Forensics"),
-            ("sherlock", "Social media username investigation tool", "https://github.com/sherlock-project/sherlock", "Forensics"),
-            ("theharvester", "Email and domain reconnaissance tool", "https://github.com/laramies/theHarvester", "Reconnaissance"),
-        ]
+    def __call__(self, query, category="all"):
+        return [t for t in MOCK_TOOL_DICTS if category == "all" or t["category"] == category]
+
+
+def _mock_get_tool(tool_id):
+    return next((dict(t) for t in MOCK_TOOL_DICTS if t["id"] == tool_id), None)
 
 
 def _build_fake_module(name, attrs=None):
@@ -46,6 +60,7 @@ def _build_fake_module(name, attrs=None):
 
 _mock_main = _build_fake_module("backend.main", {
     "search_tool": _MockSearchTool(),
+    "get_tool": _mock_get_tool,
     "search": lambda q: [],
     "find_indices": lambda p, q: [],
     "_load_tools": lambda: None,
@@ -55,7 +70,7 @@ _mock_main = _build_fake_module("backend.main", {
 
 # Mock backend.hybrid_search
 _mock_hybrid = _build_fake_module("backend.hybrid_search", {
-    "search": lambda doc_list, query, similarity_threshold=0.5: [],
+    "search": lambda doc_list, query, similarity_threshold=0.5, allowed=None, top_k=10: [],
     "build_or_load_faiss_index": lambda doc_list, force_rebuild=False: None,
     "model": type("FakeST", (), {})(),
 })
@@ -154,10 +169,49 @@ _MODULE_MOCKS = {
 }
 
 
+# ── Keep the real data files out of reach ─────────────────────────────
+# Tests read a *copy* of tools.db and write any FAISS index to a temp dir.
+# pytest_sessionfinish also fails the run if the real files changed anyway.
+import hashlib
+import os
+import shutil
+import tempfile
+from pathlib import Path
+
+_REPO = Path(__file__).resolve().parent.parent
+_PROTECTED = [
+    _REPO / "backend" / "database" / "tools.db",
+    _REPO / "backend" / "faiss_index" / "index.faiss",
+    _REPO / "backend" / "faiss_index" / "index.pkl",
+    _REPO / "backend" / "faiss_index" / "index_meta.json",
+]
+_TMP = Path(tempfile.mkdtemp(prefix="toolhunt-tests-"))
+
+
+def _fingerprint():
+    return {str(p): (hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None) for p in _PROTECTED}
+
+
 def pytest_configure(config):
-    """Insert mock modules before any test collection."""
+    """Insert mock modules before any test collection; point data paths at temp copies."""
+    config._toolhunt_fp = _fingerprint()
+    real_db = _REPO / "backend" / "database" / "tools.db"
+    if real_db.exists():
+        shutil.copy(real_db, _TMP / "tools.db")
+    os.environ["TOOLHUNT_DB"] = str(_TMP / "tools.db")
+    os.environ["TOOLHUNT_INDEX_DIR"] = str(_TMP / "faiss_index")
+    os.environ.setdefault("TOOLHUNT_DOCS_DIR", str(_REPO / "data" / "docs"))
     for name, mod in _MODULE_MOCKS.items():
         sys.modules[name] = mod
+
+
+def pytest_sessionfinish(session, exitstatus):
+    before = getattr(session.config, "_toolhunt_fp", None)
+    shutil.rmtree(_TMP, ignore_errors=True)
+    if before is not None and _fingerprint() != before:
+        changed = [p for p, h in _fingerprint().items() if before.get(p) != h]
+        print(f"\nERROR: tests modified real data files: {changed}")
+        session.exitstatus = 1
 
 
 # ── Flask test client fixture ────────────────────────────────────────

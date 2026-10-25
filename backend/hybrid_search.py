@@ -1,11 +1,15 @@
+import contextlib
+import json
 import logging
 import os
 import threading
+from pathlib import Path
 
 from langchain_community.retrievers import BM25Retriever
 from langchain_community.vectorstores import FAISS
 from sentence_transformers import SentenceTransformer
 
+from backend.indexing import MODEL_NAME, doc_list_hash
 from backend.reranker import rerank
 
 logger = logging.getLogger(__name__)
@@ -28,10 +32,14 @@ class EmbeddingWrapper:
         return self.model.encode(texts).tolist()
 
 
-model = SentenceTransformer("BAAI/bge-m3", backend="onnx")
+model = SentenceTransformer(MODEL_NAME, backend="onnx")
 embedding = EmbeddingWrapper(model)
-FAISS_INDEX_PATH = "./backend/faiss_index"  # Directory to save/load FAISS index
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+# Directory to save/load the FAISS index (override with TOOLHUNT_INDEX_DIR, e.g. in tests)
+FAISS_INDEX_PATH = os.environ.get("TOOLHUNT_INDEX_DIR", str(_REPO_ROOT / "backend" / "faiss_index"))
+INDEX_META_FILE = "index_meta.json"
 FAISS_INITIAL_K = 198  # Number of initial candidates from FAISS before RRF fusion
+BM25_K = 100  # Number of BM25 candidates before RRF fusion (LangChain default is only 4)
 
 # Module-level cache for BM25 and FAISS indexes (built once, reused on every search)
 _bm25_retriever = None
@@ -40,14 +48,53 @@ _cached_doc_list = None
 _index_lock = threading.Lock()
 
 
+def _read_index_hash(index_dir):
+    try:
+        with open(os.path.join(index_dir, INDEX_META_FILE), encoding="utf-8") as f:
+            return json.load(f).get("doc_hash")
+    except (OSError, ValueError):
+        return None
+
+
+@contextlib.contextmanager
+def _build_lock(index_dir):
+    """Cross-process lock so several gunicorn workers don't rebuild the index at once."""
+    os.makedirs(index_dir, exist_ok=True)
+    try:
+        import fcntl
+    except ImportError:  # pragma: no cover - non-POSIX
+        yield
+        return
+    with open(os.path.join(index_dir, ".build.lock"), "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(lock, fcntl.LOCK_UN)
+
+
 def build_or_load_faiss_index(doc_list, force_rebuild=False):
-    if os.path.exists(FAISS_INDEX_PATH) and not force_rebuild:
+    """Load the on-disk FAISS index if it matches ``doc_list``, else (re)build and save it.
+
+    A stale index (tools added/changed since it was built) is detected via the
+    hash stored in ``index_meta.json`` and rebuilt automatically.
+    """
+    index_dir = FAISS_INDEX_PATH
+    want = doc_list_hash(doc_list)
+    index_file = os.path.join(index_dir, "index.faiss")
+    if not force_rebuild and os.path.exists(index_file) and _read_index_hash(index_dir) == want:
         logger.info("Loading FAISS index from disk...")
-        vectorstore = FAISS.load_local(FAISS_INDEX_PATH, embedding, allow_dangerous_deserialization=True)
-    else:
-        logger.info("Building FAISS index...")
+        return FAISS.load_local(index_dir, embedding, allow_dangerous_deserialization=True)
+
+    with _build_lock(index_dir):
+        # Another worker may have finished the rebuild while we waited.
+        if not force_rebuild and os.path.exists(index_file) and _read_index_hash(index_dir) == want:
+            return FAISS.load_local(index_dir, embedding, allow_dangerous_deserialization=True)
+        logger.info("Building FAISS index for %d documents (stale or missing)...", len(doc_list))
         vectorstore = FAISS.from_texts(doc_list, embedding)
-        vectorstore.save_local(FAISS_INDEX_PATH)
+        vectorstore.save_local(index_dir)
+        with open(os.path.join(index_dir, INDEX_META_FILE), "w", encoding="utf-8") as f:
+            json.dump({"doc_hash": want, "model": MODEL_NAME, "count": len(doc_list)}, f, indent=2)
     return vectorstore
 
 
@@ -69,6 +116,7 @@ def _ensure_indexes(doc_list):
             if _bm25_retriever is None or _cached_doc_list != doc_list:
                 _cached_doc_list = doc_list
                 _bm25_retriever = BM25Retriever.from_texts(doc_list)
+                _bm25_retriever.k = BM25_K
                 _faiss_vectorstore = build_or_load_faiss_index(doc_list)
     return _bm25_retriever, _faiss_vectorstore
 
@@ -141,7 +189,13 @@ def reciprocal_rank_fusion(faiss_results, bm25_results, k=60):
     return [doc for _, doc in scored_docs]
 
 
-def search(doc_list, query, similarity_threshold=0.5):
+def search(doc_list, query, similarity_threshold=0.5, allowed=None, top_k=10):
+    """Hybrid search over ``doc_list``.
+
+    ``allowed``: optional set of doc texts to restrict results to (used for the
+    security/general category filter). Filtering happens before RRF/reranking
+    so the reranker only sees eligible documents.
+    """
     # Use cached BM25 and FAISS indexes (built once at module level)
     bm25_retriever, faiss_vectorstore = _ensure_indexes(doc_list)
 
@@ -163,11 +217,15 @@ def search(doc_list, query, similarity_threshold=0.5):
     # Get BM25 results (they don't have similarity scores in the same way)
     bm25_results = bm25_retriever.get_relevant_documents(query)
 
+    if allowed is not None:
+        filtered_results = [d for d in filtered_results if d.page_content in allowed]
+        bm25_results = [d for d in bm25_results if d.page_content in allowed]
+
     # Apply Reciprocal Rank Fusion with k=60
     rrf_results = reciprocal_rank_fusion(filtered_results, bm25_results, k=60)
 
     # Cross-encoder reranker on top-20 RRF candidates for finer-grained relevance
     top_candidates = rrf_results[:20] if len(rrf_results) > 20 else rrf_results
-    reranked = rerank(query, top_candidates, top_k=10)
+    reranked = rerank(query, top_candidates, top_k=top_k)
 
     return [doc.page_content for doc in reranked]

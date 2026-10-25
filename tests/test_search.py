@@ -270,7 +270,7 @@ class TestSearchEndpoint:
                     data=json.dumps({"query": q}),
                     content_type="application/json",
                 )
-                mock_search.assert_called_once_with(q)
+                mock_search.assert_called_once_with(q, "all")
 
     def test_query_not_reflected_as_html(self, client):
         """The search response is JSON and never echoes the query as HTML."""

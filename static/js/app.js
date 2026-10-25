@@ -111,6 +111,22 @@ exampleTags.forEach(tag => {
     });
 });
 
+// ── Category filter (All / Security / General) ─────────────────────
+let currentCategory = 'all';
+document.querySelectorAll('.category-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+        currentCategory = chip.dataset.category || 'all';
+        document.querySelectorAll('.category-chip').forEach(c => {
+            const on = c === chip;
+            c.classList.toggle('active', on);
+            c.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        if (searchInput.value.trim()) {
+            performSearch();
+        }
+    });
+});
+
 if (sortOptions) {
     sortOptions.addEventListener('change', () => {
         const query = searchInput.value.trim();
@@ -188,6 +204,7 @@ function performSearch(resetOffset = true) {
     // Build the request body and store for retry
     const body = JSON.stringify({
         query: currentQuery,
+        category: currentCategory,
         limit: PAGE_LIMIT,
         offset: currentOffset
     });
@@ -449,7 +466,7 @@ function displayResults(tools, reset = true) {
 
     switch(sortBy) {
         case 'category':
-            sortedTools.sort((a, b) => (a.category || 'Uncategorized').localeCompare(b.category || 'Uncategorized'));
+            sortedTools.sort((a, b) => `${a.category || ''}/${a.subcategory || ''}`.localeCompare(`${b.category || ''}/${b.subcategory || ''}`));
             break;
         // 'relevance' keeps original order (from search)
     }
@@ -484,12 +501,12 @@ function displayResults(tools, reset = true) {
         toolCard.className = 'tool-card';
 
         // Determine category class for styling
-        const categoryClass = getCategoryClass(tool.category);
+        const categoryClass = getCategoryClass(tool.subcategory);
 
         toolCard.innerHTML = `
             <div class="card-header">
                 <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
-                <span class="category ${categoryClass}">${escapeHtml(tool.category || 'Uncategorized')}</span>
+                ${categoryBadges(tool, categoryClass)}
             </div>
             <div class="card-body">
                 <p>${escapeHtml(tool.description || 'No description available')}</p>
@@ -522,7 +539,7 @@ function appendResults(tools) {
 
     switch(sortBy) {
         case 'category':
-            sortedTools.sort((a, b) => (a.category || 'Uncategorized').localeCompare(b.category || 'Uncategorized'));
+            sortedTools.sort((a, b) => `${a.category || ''}/${a.subcategory || ''}`.localeCompare(`${b.category || ''}/${b.subcategory || ''}`));
             break;
     }
 
@@ -532,12 +549,12 @@ function appendResults(tools) {
         const toolCard = document.createElement('div');
         toolCard.className = 'tool-card';
 
-        const categoryClass = getCategoryClass(tool.category);
+        const categoryClass = getCategoryClass(tool.subcategory);
 
         toolCard.innerHTML = `
             <div class="card-header">
                 <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
-                <span class="category ${categoryClass}">${escapeHtml(tool.category || 'Uncategorized')}</span>
+                ${categoryBadges(tool, categoryClass)}
             </div>
             <div class="card-body">
                 <p>${escapeHtml(tool.description || 'No description available')}</p>
@@ -599,6 +616,17 @@ function updateLoadMoreButton() {
         performSearch(false);
     });
     toolsGrid.parentNode.appendChild(loadMoreBtn);
+}
+
+// Category + subcategory badges (all values escaped)
+function categoryBadges(tool, categoryClass) {
+    const main = (tool.category || '').toLowerCase();
+    const label = main === 'general' ? 'General' : (main === 'security' ? 'Security' : 'Uncategorized');
+    let html = `<span class="category ${main === 'general' ? 'general' : 'security'}">${escapeHtml(label)}</span>`;
+    if (tool.subcategory) {
+        html += ` <span class="category subcategory ${categoryClass}">${escapeHtml(tool.subcategory)}</span>`;
+    }
+    return `<span class="badges">${html}</span>`;
 }
 
 // Get category class for styling
