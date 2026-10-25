@@ -251,8 +251,8 @@ class TestEmbeddingWrapper:
         assert len(vecs[0]) == 1024
         assert len(vecs[1]) == 1024
 
-    def test_onnx_backend_used(self):
-        """SentenceTransformer should be initialized with backend='onnx'."""
+    def test_model_is_wrapped(self):
+        """The module-level SentenceTransformer is exposed through EmbeddingWrapper."""
         # The model is already created at module level; we verify by checking
         # the module's model attribute exists and is wrapped by EmbeddingWrapper
         assert hasattr(self.hybrid_search, 'embedding')

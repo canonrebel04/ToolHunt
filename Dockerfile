@@ -18,8 +18,8 @@ RUN pip install --no-cache-dir -r requirements-docker.txt
 # Pre-download the sentence-transformers model during build
 # so it doesn't slow down the first request at runtime
 RUN python -c "from sentence_transformers import SentenceTransformer; \
-               print('Downloading BAAI/bge-m3 (ONNX)...'); \
-               model = SentenceTransformer('BAAI/bge-m3', backend='onnx'); \
+               print('Downloading BAAI/bge-m3...'); \
+               model = SentenceTransformer('BAAI/bge-m3'); \
                print('Model downloaded successfully.')"
 
 # Copy the rest of the application
