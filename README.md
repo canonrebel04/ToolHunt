@@ -190,6 +190,12 @@ python -m docgen.run --kali-cache /tmp/kali.tgz --tldr-cache /tmp/tldr.zip
 
 AI enrichment (Tier 2) is optional — see below.
 
+
+## 🔎 Search index (enriched)
+
+Search embeds more than the one-line description. For each tool the index text is
+`name + description + category/tags + Tier-1 summary/highlights/subcommand names + top flag names & descriptions + example commands` (truncated ~2k chars). Changing that shape bumps `INDEX_TEXT_VERSION` so FAISS rebuilds automatically (Docker build runs `python -m backend.build_index`). Offline eval queries live in `data/eval/search_queries.json`.
+
 ## 🤖 AI docs (Tier 2)
 
 Pluggable LLM enrichment on top of Tier 1. **Flags are never invented** — the model may only rewrite summaries, highlights, flag descriptions, and examples; every example is checked against the Tier-1 flag set before it is saved.
