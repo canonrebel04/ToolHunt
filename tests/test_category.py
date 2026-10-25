@@ -99,30 +99,14 @@ class TestHybridFilterAndStaleness:
         self.hs.build_or_load_faiss_index(["one"])        # fresh -> load
         self.hs.build_or_load_faiss_index(["one", "two"])  # stale -> rebuild
         assert calls == ["build", "load", "build"]
+        # an index whose vector size doesn't match the model is rebuilt even if the hash matches
+        Store.index = SimpleNamespace(d=384)
+        monkeypatch.setattr(self.hs, "_embedding_dim", lambda: 1024)
+        calls.clear()
+        self.hs.build_or_load_faiss_index(["one", "two"])
+        assert calls == ["load", "load", "build"]
         meta = json.loads((tmp_path / "index_meta.json").read_text())
         assert meta["count"] == 2
-
-
-def test_committed_index_meta_matches_db():
-    """The committed FAISS index metadata must describe the committed tools.db."""
-    from pathlib import Path
-
-    from backend import db
-
-    root = Path(__file__).resolve().parent.parent
-    meta_file = root / "backend" / "faiss_index" / "index_meta.json"
-    if not meta_file.exists():
-        pytest.skip("no committed index")
-    mock = sys.modules.pop("backend.hybrid_search", None)
-    try:
-        from backend import hybrid_search
-    finally:
-        if mock is not None:
-            sys.modules["backend.hybrid_search"] = mock
-    conn = db.connect()  # conftest points this at a temp copy of the committed tools.db
-    texts = [f"{t['name']} {t['description']}".lower() for t in db.load_tools(conn)]
-    conn.close()
-    assert json.loads(meta_file.read_text())["doc_hash"] == hybrid_search.doc_list_hash(texts)
 
 
 def test_index_page_has_category_chips(client):

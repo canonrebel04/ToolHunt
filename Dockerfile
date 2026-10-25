@@ -28,6 +28,9 @@ COPY . .
 # Ensure the database directory exists (for bind-mount persistence at runtime)
 RUN mkdir -p /app/backend/database
 
+# Embed all tools at build time so containers start with a fresh index
+RUN python -m backend.build_index
+
 # Expose the port Gunicorn will listen on
 EXPOSE 5000
 
