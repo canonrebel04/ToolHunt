@@ -73,6 +73,24 @@ def _build_lock(index_dir):
             fcntl.flock(lock, fcntl.LOCK_UN)
 
 
+def _embedding_dim():
+    try:
+        return int(model.get_sentence_embedding_dimension())
+    except (AttributeError, TypeError, ValueError):  # model stub without the method
+        return None
+
+
+def _load_if_compatible(index_dir):
+    """Load the saved index, or return None if its vector size doesn't match the model."""
+    store = FAISS.load_local(index_dir, embedding, allow_dangerous_deserialization=True)
+    want_dim = _embedding_dim()
+    have_dim = getattr(getattr(store, "index", None), "d", None)
+    if isinstance(want_dim, int) and isinstance(have_dim, int) and want_dim != have_dim:
+        logger.warning("FAISS index dim %s != model dim %s; rebuilding", have_dim, want_dim)
+        return None
+    return store
+
+
 def build_or_load_faiss_index(doc_list, force_rebuild=False):
     """Load the on-disk FAISS index if it matches ``doc_list``, else (re)build and save it.
 
@@ -84,17 +102,22 @@ def build_or_load_faiss_index(doc_list, force_rebuild=False):
     index_file = os.path.join(index_dir, "index.faiss")
     if not force_rebuild and os.path.exists(index_file) and _read_index_hash(index_dir) == want:
         logger.info("Loading FAISS index from disk...")
-        return FAISS.load_local(index_dir, embedding, allow_dangerous_deserialization=True)
+        store = _load_if_compatible(index_dir)
+        if store is not None:
+            return store
 
     with _build_lock(index_dir):
         # Another worker may have finished the rebuild while we waited.
         if not force_rebuild and os.path.exists(index_file) and _read_index_hash(index_dir) == want:
-            return FAISS.load_local(index_dir, embedding, allow_dangerous_deserialization=True)
+            store = _load_if_compatible(index_dir)
+            if store is not None:
+                return store
         logger.info("Building FAISS index for %d documents (stale or missing)...", len(doc_list))
         vectorstore = FAISS.from_texts(doc_list, embedding)
         vectorstore.save_local(index_dir)
         with open(os.path.join(index_dir, INDEX_META_FILE), "w", encoding="utf-8") as f:
-            json.dump({"doc_hash": want, "model": MODEL_NAME, "count": len(doc_list)}, f, indent=2)
+            json.dump({"doc_hash": want, "model": MODEL_NAME, "dim": _embedding_dim(),
+                       "count": len(doc_list)}, f, indent=2)
     return vectorstore
 
 

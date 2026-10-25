@@ -177,7 +177,7 @@ curl -s localhost:5000/api/tools/nmap
 ```
 
 Add a tool by hand: `python update_database.py NAME "DESCRIPTION" URL --category general`.
-The search index notices the tool list changed (`backend/faiss_index/index_meta.json`) and rebuilds itself on next start.
+The FAISS search index is a build artifact (not in git): the Docker build runs `python -m backend.build_index`, and locally the index is built on the first search and rebuilt automatically whenever the tool list changes.
 
 ## 🧪 Testing
 

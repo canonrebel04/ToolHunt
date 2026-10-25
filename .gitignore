@@ -8,3 +8,6 @@ htmlcov/
 .coverage
 .coverage.*
 .codegraph/
+
+# FAISS index is a build artifact (python -m backend.build_index / Docker build)
+backend/faiss_index/
