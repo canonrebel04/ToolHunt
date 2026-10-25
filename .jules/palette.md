@@ -31,3 +31,6 @@
 ## 2026-10-24 - Respecting Prefers-Reduced-Motion
 **Learning:** Found that the application uses continuous, glowing, or moving animations (like gridMove, float, blink) without respecting user OS preferences, which can cause severe motion sickness for users with vestibular disorders.
 **Action:** Always include a `@media (prefers-reduced-motion: reduce)` block to disable or safely scale back continuous animations and transitions.
+## 2026-10-25 - Form Elements for Search Inputs
+**Learning:** Wrapping search inputs and buttons in a `<form>` element automatically triggers the native 'Search' action key on mobile virtual keyboards and correctly activates forms mode for screen readers, providing a significantly better cross-device experience than standalone input/button pairs.
+**Action:** Always wrap search input and button combinations in a `<form>` tag and listen to the `submit` event rather than click/keypress events.
