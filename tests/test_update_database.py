@@ -75,30 +75,23 @@ def test_update_sql_db_skips_duplicate(db_updater):
 
     assert count == 1
 
-def test_update_sql_db_bypasses_duplicate_check(db_updater):
-    """Test that duplicates are inserted when check_duplicate=False."""
-    result1 = db_updater.update_sql_db(
-        name="DupTool",
-        description="Original desc",
-        url="http://url"
-    )
-    assert result1 is True
-
-    result2 = db_updater.update_sql_db(
-        name="duptool",
-        description="New desc",
-        url="http://newurl",
-        check_duplicate=False
-    )
-
-    assert result2 is True
+def test_update_sql_db_without_duplicate_check_updates_in_place(db_updater):
+    """Tool ids are unique in schema v2: check_duplicate=False updates the existing row."""
+    assert db_updater.update_sql_db(name="DupTool", description="Original desc", url="http://url") is True
+    assert db_updater.update_sql_db(
+        name="duptool", description="New desc", url="http://newurl", check_duplicate=False
+    ) is True
 
     with sqlite3.connect(db_updater.sql_db_file) as conn:
-        cursor = conn.cursor()
-        cursor.execute("SELECT COUNT(*) FROM tools WHERE LOWER(name)='duptool'")
-        count = cursor.fetchone()[0]
+        rows = conn.execute("SELECT description, url FROM tools WHERE LOWER(name)='duptool'").fetchall()
 
-    assert count == 2
+    assert rows == [("New desc", "http://newurl")]
+
+
+def test_update_sql_db_sets_category(db_updater):
+    assert db_updater.update_sql_db(name="ripgrep", description="grep", url="u", category="general")
+    with sqlite3.connect(db_updater.sql_db_file) as conn:
+        assert conn.execute("SELECT category FROM tools WHERE id='ripgrep'").fetchone() == ("general",)
 
 
 def test_import_has_no_side_effects(tmp_path):

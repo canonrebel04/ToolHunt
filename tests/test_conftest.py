@@ -14,7 +14,7 @@ class TestMockInfrastructure:
         assert hasattr(bm, "search_tool")
         result = bm.search_tool("test")
         assert len(result) > 0
-        assert result[0][0] == "nmap"
+        assert result[0]["name"] == "nmap"
 
     def test_sentence_transformers_is_mocked(self):
         """sentence_transformers should be our fake module."""

@@ -6,7 +6,7 @@ from flask import Blueprint, jsonify, render_template, request
 
 from app.extensions import cache
 from app.rate_limiter import rate_limiter
-from backend.main import search_tool
+from backend.main import get_tool, search_tool
 
 main_bp = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
@@ -48,6 +48,21 @@ def sanitize_query(query: str) -> str:
         return ""
     clean = "".join(ch for ch in query if ch.isprintable() or ch == " ")
     return clean.strip()[:200]
+
+
+CATEGORIES = ("all", "security", "general")
+
+
+def format_tool(tool):
+    """Public JSON shape of a search result."""
+    return {
+        'id': tool.get('id', ''),
+        'name': tool.get('name', ''),
+        'description': tool.get('description', ''),
+        'link': tool.get('url', ''),
+        'category': tool.get('category', ''),
+        'subcategory': tool.get('subcategory', ''),
+    }
 
 
 def _error_response(message, code="UNKNOWN", retryable=False, status=500):
@@ -146,6 +161,7 @@ def search_tools():
         query (str): The search query string.
         limit (int, optional): Max results per page (default: 10).
         offset (int, optional): Pagination offset (default: 0).
+        category (str, optional): 'all' (default), 'security' or 'general'.
 
     Returns
     -------
@@ -161,6 +177,15 @@ def search_tools():
         )
 
     query = sanitize_query(data.get('query', ''))
+
+    category = str(data.get('category') or 'all').strip().lower()
+    if category not in CATEGORIES:
+        return _error_response(
+            "Invalid category (use all, security or general)",
+            code="BAD_REQUEST",
+            retryable=False,
+            status=400,
+        )
 
     try:
         limit = int(data.get('limit', 10))
@@ -188,7 +213,7 @@ def search_tools():
 
     # Generate cache key from request parameters
     query_str = query if query else ''
-    cache_key = f"search:{query_str}:{limit}:{offset}"
+    cache_key = f"search:{category}:{query_str}:{limit}:{offset}"
     cached_response = cache.get(cache_key)
     if cached_response is not None:
         logger.info(
@@ -203,23 +228,13 @@ def search_tools():
     )
 
     try:
-        all_results = search_tool(query)
+        all_results = search_tool(query, category)
         total = len(all_results)
 
         # Apply pagination slice before formatting to optimize
         sliced_results = all_results[offset:offset + limit]
 
-        # Convert results to a more JSON-friendly format
-        # ⚡ Bolt: Use list comprehension for faster mapping instead of append() loop
-        formatted_results = [
-            {
-                'name': tool[0],
-                'description': tool[1],
-                'link': tool[2] if len(tool) > 2 else '',
-                'category': tool[3] if len(tool) > 3 else ''
-            }
-            for tool in sliced_results
-        ]
+        formatted_results = [format_tool(tool) for tool in sliced_results]
 
         has_more = (offset + limit) < total
 
@@ -242,3 +257,22 @@ def search_tools():
             retryable=True,
             status=500,
         )
+
+
+@main_bp.route('/api/tools/<tool_id>', methods=['GET'])
+def tool_detail(tool_id):
+    """Return the full record for one tool."""
+    tool_id = (tool_id or '').strip().lower()[:100]
+    try:
+        tool = get_tool(tool_id)
+    except Exception:
+        logger.exception("Tool lookup failed: id=%r", tool_id)
+        return _error_response("An internal error occurred.", code="LOOKUP_FAILED", retryable=True, status=500)
+    if tool is None:
+        return _error_response("Tool not found", code="NOT_FOUND", retryable=False, status=404)
+    out = format_tool(tool)
+    for key in ('repo_url', 'tags', 'sources', 'language', 'license', 'stars', 'last_commit',
+                'archived', 'first_seen', 'updated_at'):
+        out[key] = tool.get(key)
+    out['archived'] = bool(out['archived'])
+    return jsonify(out)

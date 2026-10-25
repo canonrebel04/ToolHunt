@@ -162,6 +162,23 @@ Open [`toolhunt_in_colab.py`](toolhunt_in_colab.py) in Colab with a T4 GPU runti
 
 ---
 
+## 🗂️ Categories & API
+
+Every tool is either **security** (pentest/forensics/etc.) or **general** (everyday CLI tools).
+The UI has **All / Security / General CLI** filter chips (All is the default).
+
+```bash
+# Search (category: all | security | general, default all)
+curl -s -X POST localhost:5000/search -H 'Content-Type: application/json' \
+  -d '{"query": "port scanner", "category": "security", "limit": 10}'
+
+# Full record for one tool
+curl -s localhost:5000/api/tools/nmap
+```
+
+Add a tool by hand: `python update_database.py NAME "DESCRIPTION" URL --category general`.
+The search index notices the tool list changed (`backend/faiss_index/index_meta.json`) and rebuilds itself on next start.
+
 ## 🧪 Testing
 
 **40 tests, 0.14s runtime** — all ML modules are mocked via `conftest.py`, so tests run without downloading models.
