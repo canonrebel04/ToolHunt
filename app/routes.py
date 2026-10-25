@@ -4,9 +4,11 @@ import logging
 
 from flask import Blueprint, jsonify, render_template, request
 
+from app.explain import explain_command
 from app.extensions import cache
 from app.rate_limiter import rate_limiter
 from backend.main import get_tool, search_tool
+from docgen import schema as doc_schema
 
 main_bp = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
@@ -294,3 +296,53 @@ def tool_docs(tool_id):
     if doc is None:
         return _error_response("No documentation yet", code="NO_DOCS", retryable=False, status=404)
     return jsonify(doc)
+
+
+
+def _load_doc_for(tool):
+    """Best-effort Tier-1 doc lookup by canonical id then request id."""
+    if not tool:
+        return None
+    return doc_schema.load_doc(tool["id"]) or doc_schema.load_doc(tool.get("id", "").lower())
+
+
+@main_bp.route("/tool/<tool_id>", methods=["GET"])
+def tool_page(tool_id):
+    """Server-rendered tool detail page (shareable URL; works without JS)."""
+    tool_id = (tool_id or "").strip().lower()[:100]
+    try:
+        tool = get_tool(tool_id)
+    except Exception:
+        logger.exception("Tool page lookup failed: id=%r", tool_id)
+        return _error_response("An internal error occurred.", code="LOOKUP_FAILED", retryable=True, status=500)
+    if tool is None:
+        return render_template("tool_missing.html", tool_id=tool_id), 404
+    out = format_tool(tool)
+    for key in ("repo_url", "tags", "sources", "language", "license", "stars", "last_commit",
+                "archived", "first_seen", "updated_at"):
+        out[key] = tool.get(key)
+    out["archived"] = bool(out.get("archived"))
+    doc = _load_doc_for(tool) or doc_schema.empty_doc(tool["id"], tool.get("name") or tool["id"])
+    return render_template("tool_detail.html", tool=out, doc=doc)
+
+
+@main_bp.route("/api/tools/<tool_id>/explain", methods=["POST"])
+def tool_explain(tool_id):
+    """Annotate a pasted command using the tool's verified flags JSON."""
+    tool_id = (tool_id or "").strip().lower()[:100]
+    data = request.get_json(silent=True) or {}
+    command = data.get("command", "")
+    if not isinstance(command, str) or not command.strip():
+        return _error_response("No command provided", code="BAD_REQUEST", retryable=False, status=400)
+    if len(command) > 2000:
+        return _error_response("Command too long", code="BAD_REQUEST", retryable=False, status=400)
+    try:
+        tool = get_tool(tool_id)
+        if tool is None:
+            return _error_response("Tool not found", code="NOT_FOUND", retryable=False, status=404)
+        doc = _load_doc_for(tool)
+        result = explain_command(command, doc)
+    except Exception:
+        logger.exception("Explain failed: id=%r", tool_id)
+        return _error_response("An internal error occurred.", code="LOOKUP_FAILED", retryable=True, status=500)
+    return jsonify(result)

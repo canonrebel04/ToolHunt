@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool not found — ToolHunt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="tool-detail-page">
+    <main class="container tool-detail-container">
+        <h1>Tool not found</h1>
+        <p>No tool with id <code>{{ tool_id }}</code>.</p>
+        <p><a href="{{ url_for('main.index') }}">Back to search</a></p>
+    </main>
+</body>
+</html>

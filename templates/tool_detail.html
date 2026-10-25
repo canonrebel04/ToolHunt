@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ tool.name }} — ToolHunt</title>
+    <meta name="description" content="{{ tool.description or doc.summary or '' }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="tool-detail-page">
+    <main class="container tool-detail-container">
+        <p class="detail-back"><a href="{{ url_for('main.index') }}"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to search</a></p>
+
+        <header class="detail-header">
+            <h1>{{ tool.name }}</h1>
+            <div class="badges">
+                {% if tool.category %}
+                <span class="category {{ tool.category }}">{{ tool.category }}</span>
+                {% endif %}
+                {% if tool.subcategory %}
+                <span class="category subcategory">{{ tool.subcategory }}</span>
+                {% endif %}
+                {% if tool.language %}
+                <span class="category subcategory">{{ tool.language }}</span>
+                {% endif %}
+                {% if tool.stars %}
+                <span class="category subcategory"><i class="fas fa-star" aria-hidden="true"></i> {{ tool.stars }}</span>
+                {% endif %}
+            </div>
+            <p class="detail-summary">{{ doc.summary or tool.description or 'No summary yet.' }}</p>
+            <div class="detail-links">
+                {% if tool.link %}
+                <a class="tool-link inline" href="{{ tool.link }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Home</a>
+                {% endif %}
+                {% if tool.repo_url %}
+                <a class="tool-link inline secondary" href="{{ tool.repo_url }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Repo</a>
+                {% endif %}
+            </div>
+            {% if doc.highlights %}
+            <ul class="highlight-chips">
+                {% for h in doc.highlights[:8] %}
+                <li>{{ h }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </header>
+
+        {% if doc.install %}
+        <section class="detail-section" aria-labelledby="install-heading">
+            <h2 id="install-heading"><i class="fas fa-download" aria-hidden="true"></i> Install</h2>
+            <div class="install-tabs" role="tablist">
+                {% for item in doc.install %}
+                <button type="button" class="install-tab{% if loop.first %} active{% endif %}" role="tab"
+                        data-panel="install-{{ loop.index0 }}" aria-selected="{{ 'true' if loop.first else 'false' }}">
+                    {{ item.method or 'cmd' }}
+                </button>
+                {% endfor %}
+            </div>
+            {% for item in doc.install %}
+            <div class="install-panel{% if loop.first %} active{% endif %}" id="install-{{ loop.index0 }}" role="tabpanel">
+                <pre class="code-block"><code>{{ item.cmd }}</code></pre>
+                <button type="button" class="copy-btn" data-copy="{{ item.cmd }}"><i class="fas fa-copy" aria-hidden="true"></i> Copy</button>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        {% if doc.usage or doc.examples %}
+        <section class="detail-section" aria-labelledby="quickstart-heading">
+            <h2 id="quickstart-heading"><i class="fas fa-bolt" aria-hidden="true"></i> Quick start</h2>
+            {% if doc.usage %}
+            <pre class="code-block"><code>{{ doc.usage }}</code></pre>
+            {% endif %}
+            {% for ex in doc.examples[:5] %}
+            <div class="example-row">
+                <pre class="code-block"><code>{{ ex.cmd }}</code></pre>
+                {% if ex.explanation %}<p class="example-note">{{ ex.explanation }}</p>{% endif %}
+                <button type="button" class="copy-btn" data-copy="{{ ex.cmd }}"><i class="fas fa-copy" aria-hidden="true"></i> Copy</button>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        {% if doc.subcommands %}
+        <section class="detail-section" aria-labelledby="sub-heading">
+            <h2 id="sub-heading"><i class="fas fa-sitemap" aria-hidden="true"></i> Subcommands</h2>
+            <ul class="subcommand-list">
+                {% for s in doc.subcommands %}
+                <li>
+                    <code>{{ s.name if s is mapping else s }}</code>
+                    {% if s is mapping and s.description %}<span>{{ s.description }}</span>{% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+        {% if doc.flags %}
+        <section class="detail-section" aria-labelledby="flags-heading">
+            <h2 id="flags-heading"><i class="fas fa-flag" aria-hidden="true"></i> Flags <span class="muted">({{ doc.flags|length }})</span></h2>
+            <label class="flag-filter-label" for="flagFilter">Filter flags</label>
+            <input type="search" id="flagFilter" class="flag-filter" placeholder="Filter flags… e.g. thorough, -i, input" autocomplete="off">
+            <div class="flags-table-wrap">
+                <table class="flags-table" id="flagsTable">
+                    <thead>
+                        <tr><th>Flag</th><th>Description</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        {% for f in doc.flags %}
+                        <tr data-flag-search="{{ (f.name or '') ~ ' ' ~ (f.short or '') ~ ' ' ~ (f.description or '') ~ ' ' ~ (f.section or '') }}">
+                            <td class="flag-names">
+                                {% if f.short %}<code>{{ f.short }}</code>{% endif %}
+                                {% if f.name %}<code>{{ f.name }}</code>{% endif %}
+                                {% if f.arg %}<span class="flag-arg">{{ f.arg }}</span>{% endif %}
+                                {% if f.required %}<span class="flag-req">required</span>{% endif %}
+                                {% if f.section %}<span class="flag-section">{{ f.section }}</span>{% endif %}
+                            </td>
+                            <td>{{ f.description }}</td>
+                            <td>{% if f.example %}<button type="button" class="copy-btn small" data-copy="{{ f.example }}" title="Copy example"><i class="fas fa-copy" aria-hidden="true"></i></button>{% endif %}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="detail-section" aria-labelledby="explainer-heading">
+            <h2 id="explainer-heading"><i class="fas fa-magic" aria-hidden="true"></i> Command explainer</h2>
+            <p class="muted">Paste a command — each flag is annotated from verified help (never invented).</p>
+            <form id="explainForm" class="explain-form" data-tool-id="{{ tool.id }}">
+                <label for="explainInput" class="visually-hidden">Command to explain</label>
+                <input type="text" id="explainInput" name="command" placeholder="e.g. {{ tool.name }} --help" autocomplete="off" spellcheck="false">
+                <button type="submit"><i class="fas fa-search" aria-hidden="true"></i> Explain</button>
+            </form>
+            <div id="explainResult" class="explain-result" hidden></div>
+        </section>
+
+        {% if doc.sources or doc.see_also %}
+        <section class="detail-section" aria-labelledby="meta-heading">
+            <h2 id="meta-heading"><i class="fas fa-info-circle" aria-hidden="true"></i> Sources</h2>
+            {% if doc.sources %}
+            <ul class="source-list">
+                {% for s in doc.sources %}<li>{{ s }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+            {% if doc.verified and doc.verified.flags_from_help %}
+            <p class="verified-badge"><i class="fas fa-check-circle" aria-hidden="true"></i> Flags verified from real help output</p>
+            {% endif %}
+            {% if doc.see_also %}
+            <p>See also:
+                {% for sid in doc.see_also %}
+                <a href="{{ url_for('main.tool_page', tool_id=sid) }}">{{ sid }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            {% endif %}
+            <p><a href="https://github.com/canonrebel04/ToolHunt/issues/new?title=docs:{{ tool.id }}" rel="noopener noreferrer" target="_blank">Report a problem</a></p>
+        </section>
+        {% endif %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/detail.js') }}"></script>
+</body>
+</html>
