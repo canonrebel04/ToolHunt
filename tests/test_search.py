@@ -252,25 +252,51 @@ class TestSearchEndpoint:
         assert data.get("code") == "RATE_LIMITED"
 
 
-    def test_input_sanitization_escapes_html(self, client):
-        """HTML tags in the query should be escaped."""
+    def test_query_passed_raw_to_search(self, client):
+        """Special characters must reach the search unescaped (escaping is done on output)."""
         from unittest.mock import patch
 
-        # We need to make sure the rate limiter isn't blocking us.
+        from app.extensions import cache
         from app.rate_limiter import rate_limiter
         rate_limiter._requests.clear()
+        cache.clear()
 
         with patch("app.routes.search_tool") as mock_search:
             mock_search.return_value = []
+            for q in ["AT&T scanner", "\"sql injection\"", "<script>alert('xss')</script>"]:
+                mock_search.reset_mock()
+                client.post(
+                    "/search",
+                    data=json.dumps({"query": q}),
+                    content_type="application/json",
+                )
+                mock_search.assert_called_once_with(q)
 
-            # Use cache.clear() to ensure cache miss if any
-            from app.extensions import cache
-            cache.clear()
+    def test_query_not_reflected_as_html(self, client):
+        """The search response is JSON and never echoes the query as HTML."""
+        from unittest.mock import patch
 
-            client.post(
+        from app.extensions import cache
+        from app.rate_limiter import rate_limiter
+        rate_limiter._requests.clear()
+        cache.clear()
+
+        payload = "<script>alert('xss')</script>"
+        with patch("app.routes.search_tool") as mock_search:
+            mock_search.return_value = []
+            response = client.post(
                 "/search",
-                data=json.dumps({"query": "<script>alert('xss')</script>"}),
+                data=json.dumps({"query": payload}),
                 content_type="application/json",
             )
+        assert response.mimetype == "application/json"
+        assert response.headers.get("X-Content-Type-Options") == "nosniff"
+        assert b"<script>" not in response.data
 
-            mock_search.assert_called_once_with("&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;")
+    def test_sanitize_query_normalizes(self):
+        from app.routes import sanitize_query
+        assert sanitize_query("  nmap  ") == "nmap"
+        assert sanitize_query("a\x00b\nc") == "abc"
+        assert sanitize_query(None) == ""
+        assert sanitize_query(123) == ""
+        assert len(sanitize_query("x" * 500)) == 200
