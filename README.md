@@ -179,9 +179,31 @@ curl -s localhost:5000/api/tools/nmap
 Add a tool by hand: `python update_database.py NAME "DESCRIPTION" URL --category general`.
 The FAISS search index is a build artifact (not in git): the Docker build runs `python -m backend.build_index`, and locally the index is built on the first search and rebuilt automatically whenever the tool list changes.
 
+## 🔭 Automatic discovery
+
+A weekly GitHub Action (`.github/workflows/discovery.yml`, Mondays 06:17 UTC, or run it by hand from the Actions tab) collects tools from:
+
+| Source | Category |
+|---|---|
+| [BlackArch](https://github.com/BlackArch/blackarch-site) tool list | security (subcategory = BlackArch group) |
+| [Kali tools](https://www.kali.org/tools/) | security |
+| GitHub topics (`pentesting`, `osint`, `fuzzing`, `red-team`… ≥300★) | security |
+| Most-installed [Homebrew](https://formulae.brew.sh/) formulae (libraries skipped) | general |
+| [toolleeo/cli-apps](https://github.com/toolleeo/cli-apps) | general |
+| GitHub topics (`cli`, `terminal`, `command-line-tool`, ≥3000★) | general |
+
+New tools must pass quality gates (real description; for non-curated sources: not a fork, not archived, enough stars, not abandoned). Duplicates are merged by name, alias, or repo, and a tool listed by any security source stays **security**. Stars, last-commit date and archived status are refreshed for every GitHub-hosted tool. The job runs the tests, opens a PR with a summary, merges it automatically, and rebuilds the Docker image. At most 1,500 new tools are added per run (best-scored first).
+
+Run it locally (writes to the DB; `--dry-run` to preview):
+
+```bash
+GITHUB_TOKEN=$(gh auth token) python -m discovery.run --dry-run --report /tmp/report.md
+python -m discovery.run --sources blackarch,kali   # subset, no token needed
+```
+
 ## 🧪 Testing
 
-**40 tests, 0.14s runtime** — all ML modules are mocked via `conftest.py`, so tests run without downloading models.
+**120 tests, under 1s** — all ML modules are mocked via `conftest.py`, so tests run without downloading models.
 
 ```bash
 # Run all tests

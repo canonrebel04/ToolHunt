@@ -1,0 +1,90 @@
+name: Weekly tool discovery
+
+# Finds new security + general CLI tools (BlackArch, Kali, Homebrew, cli-apps,
+# GitHub topics), refreshes stars/archived status, and opens a PR that is
+# merged automatically once the in-job tests and lint pass.
+on:
+  schedule:
+    - cron: '17 6 * * 1'   # Mondays 06:17 UTC
+  workflow_dispatch:
+    inputs:
+      max_new:
+        description: 'Max new tools to add this run'
+        default: '1500'
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest ruff
+          pip install -r requirements.txt
+
+      - name: Run discovery
+        run: |
+          before=$(python -c "import sqlite3;print(sqlite3.connect('backend/database/tools.db').execute('select count(*) from tools').fetchone()[0])")
+          python -m discovery.run --max-new "${{ github.event.inputs.max_new || '1500' }}" --report "$RUNNER_TEMP/report.md"
+          after=$(python -c "import sqlite3;print(sqlite3.connect('backend/database/tools.db').execute('select count(*) from tools').fetchone()[0])")
+          echo "tools: $before -> $after"
+          if [ "$after" -lt "$before" ]; then echo "::error::tool count dropped"; exit 1; fi
+          cat "$RUNNER_TEMP/report.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet -- backend/database/tools.db; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+          # Discovery must only ever touch the DB.
+          other=$(git status --porcelain | grep -v ' backend/database/tools.db$' || true)
+          if [ -n "$other" ]; then echo "::error::unexpected changes: $other"; exit 1; fi
+
+      - name: Tests and lint (gate for auto-merge)
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          python -m pytest tests/ -q
+          ruff check . --ignore=E501,W291
+
+      - name: Open PR and merge
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          branch="discovery/$(date -u +%Y-%m-%d)-${{ github.run_id }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add backend/database/tools.db
+          git commit -m "Weekly tool discovery $(date -u +%Y-%m-%d)"
+          git push origin "$branch"
+          url=$(gh pr create --base main --head "$branch" \
+                --title "Weekly tool discovery $(date -u +%Y-%m-%d)" --body-file "$RUNNER_TEMP/report.md")
+          echo "PR: $url"
+          # PRs opened with GITHUB_TOKEN don't trigger other workflows, so the
+          # tests above are the merge gate.
+          gh pr merge "$url" --squash --delete-branch
+
+      - name: Rebuild Docker image (search index is built in the image)
+        if: steps.diff.outputs.changed == 'true'
+        run: gh workflow run docker.yml --ref main
