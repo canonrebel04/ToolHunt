@@ -32,7 +32,11 @@ class EmbeddingWrapper:
         return self.model.encode(texts).tolist()
 
 
-model = SentenceTransformer(MODEL_NAME, backend="onnx")
+# BAAI/bge-m3's ONNX export outputs `sentence_embedding`/`token_embeddings`, not the
+# `last_hidden_state` sentence-transformers' ONNX backend expects (KeyError on
+# encode), so default to the regular torch backend.
+EMBED_BACKEND = os.environ.get("TOOLHUNT_EMBED_BACKEND", "torch")
+model = SentenceTransformer(MODEL_NAME, backend=EMBED_BACKEND)
 embedding = EmbeddingWrapper(model)
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 # Directory to save/load the FAISS index (override with TOOLHUNT_INDEX_DIR, e.g. in tests)
