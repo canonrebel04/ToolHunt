@@ -1,0 +1,41 @@
+{
+  "id": "sonar-scanner",
+  "name": "sonar-scanner",
+  "schema_version": 1,
+  "summary": "Generic CLI tool to launch project analysis on SonarQube servers.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "sonar-scanner",
+      "explanation": "Scan a project with configuration file in your project's root directory named `sonar-project.properties`",
+      "source": "tldr:sonar-scanner"
+    },
+    {
+      "cmd": "sonar-scanner --define <project.settings=myproject.properties>",
+      "explanation": "Scan a project using configuration file other than `sonar-project.properties`",
+      "source": "tldr:sonar-scanner"
+    },
+    {
+      "cmd": "sonar-scanner --debug",
+      "explanation": "Print debugging information",
+      "source": "tldr:sonar-scanner"
+    },
+    {
+      "cmd": "sonar-scanner --help",
+      "explanation": "Display help",
+      "source": "tldr:sonar-scanner"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/sonar-scanner.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "id": "bloodhound-ce-python",
+  "name": "bloodhound-ce-python",
+  "schema_version": 1,
+  "summary": "Python data collector for Bloodhound community edition (v5)",
+  "highlights": [
+    "-c — Which information to collect. Supported: Group, LocalAdmin, Session, Trusts, Default (all ",
+    "-d — Domain to query.",
+    "-u — Username. Format: username[@domain]; If the domain is unspecified, the current domain is u",
+    "-p — Password",
+    "-k — Use kerberos ccache file",
+    "--hashes — LM:NLTM hashes",
+    "-no-pass — don't ask for password (useful for -k)",
+    "--auth-method — Authentication methods. Force Kerberos or NTLM only or use auto for Kerberos with NTLM fal"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bloodhound-ce-python"
+    }
+  ],
+  "usage": "bloodhound-ce-python [-h] [-c COLLECTIONMETHOD] [-d DOMAIN] [-v]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "bloodhound-ce-python --help"
+    },
+    {
+      "name": "--collectionmethod",
+      "short": "-c",
+      "aliases": [],
+      "arg": "COLLECTIONMETHOD",
+      "required": false,
+      "description": "Which information to collect. Supported: Group, LocalAdmin, Session, Trusts, Default (all previous), DCOnly (no computer connections), DCOM, RDP,PSRemote, LoggedOn, Container, ObjectProps, ACL, All (all except LoggedOn). You can specify more than one by separating them with a comma. (default: Default)",
+      "default": "Default",
+      "example": "bloodhound-ce-python --collectionmethod <collectionmethod>"
+    },
+    {
+      "name": "--domain",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Domain to query.",
+      "default": "",
+      "example": "bloodhound-ce-python --domain <domain>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable verbose output",
+      "default": "",
+      "example": "bloodhound-ce-python -v"
+    },
+    {
+      "name": "--username",
+      "short": "-u",
+      "aliases": [],
+      "arg": "USERNAME",
+      "required": false,
+      "description": "Username. Format: username[@domain]; If the domain is unspecified, the current domain is used.",
+      "default": "",
+      "example": "bloodhound-ce-python --username <username>"
+    },
+    {
+      "name": "--password",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PASSWORD",
+      "required": false,
+      "description": "Password",
+      "default": "",
+      "example": "bloodhound-ce-python --password <password>"
+    },
+    {
+      "name": "--kerberos",
+      "short": "-k",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use kerberos ccache file",
+      "default": "",
+      "example": "bloodhound-ce-python --kerberos"
+    },
+    {
+      "name": "--hashes",
+      "short": "",
+      "aliases": [],
+      "arg": "HASHES",
+      "required": false,
+      "description": "LM:NLTM hashes",
+      "default": "",
+      "example": "bloodhound-ce-python --hashes <hashes>"
+    },
+    {
+      "name": "-no-pass",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't ask for password (useful for -k)",
+      "default": "",
+      "example": "bloodhound-ce-python -no-pass"
+    },
+    {
+      "name": "--auth-method",
+      "short": "",
+      "aliases": [],
+      "arg": "{auto,ntlm,kerberos}",
+      "required": false,
+      "description": "Authentication methods. Force Kerberos or NTLM only or use auto for Kerberos with NTLM fallback",
+      "default": "",
+      "example": "bloodhound-ce-python --auth-method <auto,ntlm,kerberos>"
+    },
+    {
+      "name": "--nameserver",
+      "short": "-ns",
+      "aliases": [],
+      "arg": "NAMESERVER",
+      "required": false,
+      "description": "Alternative name server to use for queries",
+      "default": "",
+      "example": "bloodhound-ce-python --nameserver <nameserver>"
+    },
+    {
+      "name": "--dns-tcp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use TCP instead of UDP for DNS queries",
+      "default": "",
+      "example": "bloodhound-ce-python --dns-tcp"
+    },
+    {
+      "name": "--dns-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "DNS_TIMEOUT",
+      "required": false,
+      "description": "DNS query timeout in seconds (default: 3)",
+      "default": "3",
+      "example": "bloodhound-ce-python --dns-timeout <dns_timeout>"
+    },
+    {
+      "name": "--domain-controller",
+      "short": "-dc",
+      "aliases": [],
+      "arg": "HOST",
+      "required": false,
+      "description": "Override which DC to query (hostname)",
+      "default": "",
+      "example": "bloodhound-ce-python --domain-controller <host>"
+    },
+    {
+      "name": "--global-catalog",
+      "short": "-gc",
+      "aliases": [],
+      "arg": "HOST",
+      "required": false,
+      "description": "Override which GC to query (hostname)",
+      "default": "",
+      "example": "bloodhound-ce-python --global-catalog <host>"
+    },
+    {
+      "name": "--workers",
+      "short": "-w",
+      "aliases": [],
+      "arg": "WORKERS",
+      "required": false,
+      "description": "Number of workers for computer enumeration (default: 10)",
+      "default": "10",
+      "example": "bloodhound-ce-python --workers <workers>"
+    },
+    {
+      "name": "--exclude-dcs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip DCs during computer enumeration",
+      "default": "",
+      "example": "bloodhound-ce-python --exclude-dcs"
+    },
+    {
+      "name": "--disable-pooling",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't use subprocesses for ACL parsing (only for debugging purposes)",
+      "default": "",
+      "example": "bloodhound-ce-python --disable-pooling"
+    },
+    {
+      "name": "--disable-autogc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't automatically select a Global Catalog (use only if it gives errors)",
+      "default": "",
+      "example": "bloodhound-ce-python --disable-autogc"
+    },
+    {
+      "name": "--zip",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Compress the JSON output files into a zip archive",
+      "default": "",
+      "example": "bloodhound-ce-python --zip"
+    },
+    {
+      "name": "--computerfile",
+      "short": "",
+      "aliases": [],
+      "arg": "COMPUTERFILE",
+      "required": false,
+      "description": "File containing computer FQDNs to use as allowlist for any computer based methods",
+      "default": "",
+      "example": "bloodhound-ce-python --computerfile <computerfile>"
+    },
+    {
+      "name": "--cachefile",
+      "short": "",
+      "aliases": [],
+      "arg": "CACHEFILE",
+      "required": false,
+      "description": "Cache file (experimental)",
+      "default": "",
+      "example": "bloodhound-ce-python --cachefile <cachefile>"
+    },
+    {
+      "name": "--ldap-channel-binding",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use LDAP Channel Binding (will force ldaps protocol to be used)",
+      "default": "",
+      "example": "bloodhound-ce-python --ldap-channel-binding"
+    },
+    {
+      "name": "--use-ldaps",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use LDAP over TLS on port 636 by default",
+      "default": "",
+      "example": "bloodhound-ce-python --use-ldaps"
+    },
+    {
+      "name": "--outputprefix",
+      "short": "-op",
+      "aliases": [],
+      "arg": "PREFIX_NAME",
+      "required": false,
+      "description": "String to prepend to output file names",
+      "default": "",
+      "example": "bloodhound-ce-python --outputprefix <prefix_name>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

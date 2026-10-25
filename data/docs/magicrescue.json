@@ -1,0 +1,94 @@
+{
+  "id": "magicrescue",
+  "name": "magicrescue",
+  "schema_version": 1,
+  "summary": "Find and recover deleted files on block devices",
+  "highlights": [
+    "-b — Only consider files starting at a multiple of BLOCKSIZE.",
+    "-d — Mandatory. Output directory for found files.",
+    "-r — Mandatory. Recipe name, file or directory.",
+    "-I — Read input file names from this file (\"-\" for stdin)",
+    "-M — Produce machine-readable output to stdout.",
+    "-O — Resume from specified offset (hex or decimal) in the first device."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install magicrescue"
+    }
+  ],
+  "usage": "magicrescue [-I FILE] [-M MODE] [-O [+-=][0x]OFFSET] [-b BLOCKSIZE]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only consider files starting at a multiple of BLOCKSIZE.",
+      "default": "",
+      "example": "magicrescue -b"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Mandatory. Output directory for found files.",
+      "default": "",
+      "example": "magicrescue -d"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Mandatory. Recipe name, file or directory.",
+      "default": "",
+      "example": "magicrescue -r"
+    },
+    {
+      "name": "-I",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read input file names from this file (\"-\" for stdin)",
+      "default": "",
+      "example": "magicrescue -I"
+    },
+    {
+      "name": "-M",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Produce machine-readable output to stdout.",
+      "default": "",
+      "example": "magicrescue -M"
+    },
+    {
+      "name": "-O",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Resume from specified offset (hex or decimal) in the first device.",
+      "default": "",
+      "example": "magicrescue -O"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

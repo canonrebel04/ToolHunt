@@ -1,0 +1,26 @@
+{
+  "id": "sprayingtoolkit",
+  "name": "sprayingtoolkit",
+  "schema_version": 1,
+  "summary": "Scripts to make password spraying attacks against Lync/S4B & OWA a lot quicker, less painful and more efficient.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sprayingtoolkit"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

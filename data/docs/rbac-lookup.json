@@ -1,0 +1,46 @@
+{
+  "id": "rbac-lookup",
+  "name": "rbac-lookup",
+  "schema_version": 1,
+  "summary": "A CLI that allows you to easily find Kubernetes roles and cluster roles bound to any user.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "rbac-lookup",
+      "explanation": "View all RBAC bindings",
+      "source": "tldr:rbac-lookup"
+    },
+    {
+      "cmd": "rbac-lookup <search_term>",
+      "explanation": "View RBAC bindings that match a given expression",
+      "source": "tldr:rbac-lookup"
+    },
+    {
+      "cmd": "rbac-lookup --output wide",
+      "explanation": "View all RBAC bindings along with the source role binding",
+      "source": "tldr:rbac-lookup"
+    },
+    {
+      "cmd": "rbac-lookup --kind <user|group|serviceaccount>",
+      "explanation": "View all RBAC bindings filtered by subject",
+      "source": "tldr:rbac-lookup"
+    },
+    {
+      "cmd": "rbac-lookup --gke",
+      "explanation": "View all RBAC bindings along with IAM roles (if you are using GKE)",
+      "source": "tldr:rbac-lookup"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/rbac-lookup.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

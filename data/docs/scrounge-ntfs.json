@@ -1,0 +1,61 @@
+{
+  "id": "scrounge-ntfs",
+  "name": "scrounge-ntfs",
+  "schema_version": 1,
+  "summary": "Data recovery program for NTFS file systems",
+  "highlights": [
+    "-m — Offset to mft (in sectors)",
+    "-c — Cluster size (in sectors, default of 8)",
+    "-o — Directory to put scrounged files in"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install scrounge-ntfs"
+    }
+  ],
+  "usage": "scrounge-ntfs -l disk",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Offset to mft (in sectors)",
+      "default": "",
+      "example": "scrounge-ntfs -m"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Cluster size (in sectors, default of 8)",
+      "default": "",
+      "example": "scrounge-ntfs -c"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Directory to put scrounged files in",
+      "default": "",
+      "example": "scrounge-ntfs -o"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

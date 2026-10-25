@@ -1,0 +1,392 @@
+{
+  "id": "subfinder",
+  "name": "subfinder",
+  "schema_version": 1,
+  "summary": "Modular subdomain discovery tool that can discover massive amounts of valid subdomains for any target.",
+  "highlights": [
+    "-list — file containing list of domains for subdomain discovery",
+    "-recursive — use only sources that can handle subdomains recursively rather than both recursive and non",
+    "-all — use all sources for enumeration (slow)",
+    "-rate-limit — maximum number of http requests to send per second (global)",
+    "-rate-limits — maximum number of http requests to send per second for providers in key=value format (-rls",
+    "-t — number of concurrent goroutines for resolving (-active only) (default 10)",
+    "-update — update subfinder to latest version",
+    "-disable-update-check — disable automatic subfinder update check"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install subfinder"
+    }
+  ],
+  "usage": "subfinder [flags]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-list",
+      "short": "",
+      "aliases": [
+        "-dL"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "file containing list of domains for subdomain discovery",
+      "default": "",
+      "example": "subfinder -list <string>"
+    },
+    {
+      "name": "-recursive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use only sources that can handle subdomains recursively rather than both recursive and non-recursive sources",
+      "default": "",
+      "example": "subfinder -recursive"
+    },
+    {
+      "name": "-all",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use all sources for enumeration (slow)",
+      "default": "",
+      "example": "subfinder -all"
+    },
+    {
+      "name": "-rate-limit",
+      "short": "",
+      "aliases": [
+        "-rl"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "maximum number of http requests to send per second (global)",
+      "default": "",
+      "example": "subfinder -rate-limit <int>"
+    },
+    {
+      "name": "-rate-limits",
+      "short": "",
+      "aliases": [
+        "-rls"
+      ],
+      "arg": "value",
+      "required": false,
+      "description": "maximum number of http requests to send per second for providers in key=value format (-rls hackertarget=10/m) (default [\"github=30/m\", \"fullhunt=60/m\", \"pugrecon=10/s\", \"robtex=18446744073709551615/ms\", \"securitytrails=1/s\", \"shodan=1/s\", \"virustotal=4/m\", \"hackertarget=2/s\", \"waybackarchive=15/m\", \"whoisxmlapi=50/s\", \"securitytrails=2/s\", \"sitedossier=8/m\", \"netlas=1/s\", \"github=83/m\", \"hudsonrock=5/s\", \"urlscan=1/s\"])",
+      "default": "[\"github=30/m\", \"fullhunt=60/m\", \"pugrecon=10/s\", \"robtex=18446744073709551615/ms\", \"securitytrails=1/s\", \"shodan=1/s\", \"virustotal=4/m\", \"hackertarget=2/s\", \"waybackarchive=15/m\", \"whoisxmlapi=50/s\", \"securitytrails=2/s\", \"sitedossier=8/m\", \"netlas=1/s\", \"github=83/m\", \"hudsonrock=5/s\", \"urlscan=1/s",
+      "example": "subfinder -rate-limits <value>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "number of concurrent goroutines for resolving (-active only) (default 10)",
+      "default": "10",
+      "example": "subfinder -t <int>"
+    },
+    {
+      "name": "-update",
+      "short": "",
+      "aliases": [
+        "-up"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "update subfinder to latest version",
+      "default": "",
+      "example": "subfinder -update"
+    },
+    {
+      "name": "-disable-update-check",
+      "short": "",
+      "aliases": [
+        "-duc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable automatic subfinder update check",
+      "default": "",
+      "example": "subfinder -disable-update-check"
+    },
+    {
+      "name": "-output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "file to write output to",
+      "default": "",
+      "example": "subfinder -output <string>"
+    },
+    {
+      "name": "-json",
+      "short": "",
+      "aliases": [
+        "-oJ"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "write output in JSONL(ines) format",
+      "default": "",
+      "example": "subfinder -json"
+    },
+    {
+      "name": "-output-dir",
+      "short": "",
+      "aliases": [
+        "-oD"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "directory to write output (-dL only)",
+      "default": "",
+      "example": "subfinder -output-dir <string>"
+    },
+    {
+      "name": "-collect-sources",
+      "short": "",
+      "aliases": [
+        "-cs"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "include all sources in the output (-json only)",
+      "default": "",
+      "example": "subfinder -collect-sources"
+    },
+    {
+      "name": "-oI",
+      "short": "",
+      "aliases": [
+        "-ip"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "include host IP in output (-active only)",
+      "default": "",
+      "example": "subfinder -oI"
+    },
+    {
+      "name": "-config",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "flag config file (default \"/root/.config/subfinder/config.yaml\")",
+      "default": "/root/.config/subfinder/config.yaml",
+      "example": "subfinder -config <string>"
+    },
+    {
+      "name": "-provider-config",
+      "short": "",
+      "aliases": [
+        "-pc"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "provider config file (default \"/root/.config/subfinder/provider-config.yaml\")",
+      "default": "/root/.config/subfinder/provider-config.yaml",
+      "example": "subfinder -provider-config <string>"
+    },
+    {
+      "name": "-rlist",
+      "short": "",
+      "aliases": [
+        "-rL"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "file containing list of resolvers to use",
+      "default": "",
+      "example": "subfinder -rlist <string>"
+    },
+    {
+      "name": "-active",
+      "short": "",
+      "aliases": [
+        "-nW"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "display active subdomains only",
+      "default": "",
+      "example": "subfinder -active"
+    },
+    {
+      "name": "-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "http proxy to use with subfinder",
+      "default": "",
+      "example": "subfinder -proxy <string>"
+    },
+    {
+      "name": "-exclude-ip",
+      "short": "",
+      "aliases": [
+        "-ei"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "exclude IPs from the list of domains",
+      "default": "",
+      "example": "subfinder -exclude-ip"
+    },
+    {
+      "name": "-max-results",
+      "short": "",
+      "aliases": [
+        "-mr"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "limit the number of results per source (0 = unlimited; honored by paginating sources)",
+      "default": "",
+      "example": "subfinder -max-results <int>"
+    },
+    {
+      "name": "-silent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show only subdomains in output",
+      "default": "",
+      "example": "subfinder -silent"
+    },
+    {
+      "name": "-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show version of subfinder",
+      "default": "",
+      "example": "subfinder -version"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show verbose output",
+      "default": "",
+      "example": "subfinder -v"
+    },
+    {
+      "name": "-no-color",
+      "short": "",
+      "aliases": [
+        "-nc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable color in output",
+      "default": "",
+      "example": "subfinder -no-color"
+    },
+    {
+      "name": "-list-sources",
+      "short": "",
+      "aliases": [
+        "-ls"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "list all available sources (-oJ for JSON)",
+      "default": "",
+      "example": "subfinder -list-sources"
+    },
+    {
+      "name": "-stats",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "report source statistics",
+      "default": "",
+      "example": "subfinder -stats"
+    },
+    {
+      "name": "-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "seconds to wait before timing out (default 30)",
+      "default": "30",
+      "example": "subfinder -timeout <int>"
+    },
+    {
+      "name": "-max-time",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "minutes to wait for enumeration results (default 10)",
+      "default": "10",
+      "example": "subfinder -max-time <int>"
+    },
+    {
+      "name": "-response-size-read",
+      "short": "",
+      "aliases": [
+        "-rsr"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "max response body size to read in bytes from passive sources (0 = unlimited)",
+      "default": "",
+      "example": "subfinder -response-size-read <int>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "subfinder -domain <example.com>",
+      "explanation": "Find subdomains for a specific domain",
+      "source": "tldr:subfinder",
+      "verified": false
+    },
+    {
+      "cmd": "subfinder -silent -domain <example.com>",
+      "explanation": "Show only the subdomains found",
+      "source": "tldr:subfinder",
+      "verified": false
+    },
+    {
+      "cmd": "subfinder -active -domain <example.com>",
+      "explanation": "Show only active subdomains",
+      "source": "tldr:subfinder",
+      "verified": false
+    },
+    {
+      "cmd": "subfinder -all -domain <example.com>",
+      "explanation": "Use all sources for enumeration",
+      "source": "tldr:subfinder",
+      "verified": false
+    },
+    {
+      "cmd": "subfinder -r <8.8.8.8,1.1.1.1,...> -domain <example.com>",
+      "explanation": "Use a given comma-separated list of [r]esolvers",
+      "source": "tldr:subfinder",
+      "verified": false
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/subfinder.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

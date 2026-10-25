@@ -1,0 +1,105 @@
+{
+  "id": "dmitry",
+  "name": "dmitry",
+  "schema_version": 1,
+  "summary": "Deepmagic Information Gathering Tool.",
+  "highlights": [
+    "-o — Save output to %host.txt or to file specified by -o file",
+    "-i — Perform a whois lookup on the IP address of a host",
+    "-w — Perform a whois lookup on the domain name of a host",
+    "-n — Retrieve Netcraft.com information on a host",
+    "-s — Perform a search for possible subdomains",
+    "-e — Perform a search for possible email addresses",
+    "-p — Perform a TCP port scan on a host"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dmitry"
+    }
+  ],
+  "usage": "dmitry [-winsepfb] [-t 0-9] [-o %host.txt] host",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Save output to %host.txt or to file specified by -o file",
+      "default": "",
+      "example": "dmitry -o"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform a whois lookup on the IP address of a host",
+      "default": "",
+      "example": "dmitry -i"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform a whois lookup on the domain name of a host",
+      "default": "",
+      "example": "dmitry -w"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve Netcraft.com information on a host",
+      "default": "",
+      "example": "dmitry -n"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform a search for possible subdomains",
+      "default": "",
+      "example": "dmitry -s"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform a search for possible email addresses",
+      "default": "",
+      "example": "dmitry -e"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform a TCP port scan on a host",
+      "default": "",
+      "example": "dmitry -p"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

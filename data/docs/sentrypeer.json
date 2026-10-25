@@ -1,0 +1,236 @@
+{
+  "id": "sentrypeer",
+  "name": "sentrypeer",
+  "schema_version": 1,
+  "summary": "Protect SIP Servers from bad actors.",
+  "highlights": [
+    "-f — Set 'sentrypeer.db' location or use SENTRYPEER_DB_FILE env",
+    "-j — Enable json logging or use SENTRYPEER_JSON_LOG env",
+    "-p — Enable Peer to Peer mode or use SENTRYPEER_PEER_TO_PEER env",
+    "-b — Set Peer to Peer bootstrap node or use SENTRYPEER_BOOTSTRAP_NODE env",
+    "-i — Set OAuth 2 client ID or use SENTRYPEER_OAUTH2_CLIENT_ID env to get a Bearer token for Web",
+    "-c — Set OAuth 2 client secret or use SENTRYPEER_OAUTH2_CLIENT_SECRET env to get a Bearer token",
+    "-a — Enable RESTful API mode or use SENTRYPEER_API env",
+    "-w — Set WebHook URL for bad actor json POSTs or use SENTRYPEER_WEBHOOK_URL env"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sentrypeer"
+    }
+  ],
+  "usage": "sentrypeer [OPTIONS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<DB_FILE>",
+      "required": false,
+      "description": "Set 'sentrypeer.db' location or use SENTRYPEER_DB_FILE env",
+      "default": "",
+      "example": "sentrypeer -f <DB_FILE>"
+    },
+    {
+      "name": "-j",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable json logging or use SENTRYPEER_JSON_LOG env",
+      "default": "",
+      "example": "sentrypeer -j"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable Peer to Peer mode or use SENTRYPEER_PEER_TO_PEER env",
+      "default": "",
+      "example": "sentrypeer -p"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "<BOOTSTRAP_NODE>",
+      "required": false,
+      "description": "Set Peer to Peer bootstrap node or use SENTRYPEER_BOOTSTRAP_NODE env",
+      "default": "",
+      "example": "sentrypeer -b <BOOTSTRAP_NODE>"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<CLIENT_ID>",
+      "required": false,
+      "description": "Set OAuth 2 client ID or use SENTRYPEER_OAUTH2_CLIENT_ID env to get a Bearer token for WebHook",
+      "default": "",
+      "example": "sentrypeer -i <CLIENT_ID>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "<CLIENT_SECRET>",
+      "required": false,
+      "description": "Set OAuth 2 client secret or use SENTRYPEER_OAUTH2_CLIENT_SECRET env to get a Bearer token for WebHook",
+      "default": "",
+      "example": "sentrypeer -c <CLIENT_SECRET>"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable RESTful API mode or use SENTRYPEER_API env",
+      "default": "",
+      "example": "sentrypeer -a"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<WEBHOOK_URL>",
+      "required": false,
+      "description": "Set WebHook URL for bad actor json POSTs or use SENTRYPEER_WEBHOOK_URL env",
+      "default": "",
+      "example": "sentrypeer -w <WEBHOOK_URL>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable SIP responsive mode or use SENTRYPEER_SIP_RESPONSIVE env",
+      "default": "",
+      "example": "sentrypeer -r"
+    },
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable SIP mode completely or use SENTRYPEER_SIP_DISABLE env",
+      "default": "",
+      "example": "sentrypeer -R"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "<JSON_LOG_FILE>",
+      "required": false,
+      "description": "Set JSON logfile (default './sentrypeer_json.log') location or use SENTRYPEER_JSON_LOG_FILE env",
+      "default": "./sentrypeer_json.log",
+      "example": "sentrypeer -l <JSON_LOG_FILE>"
+    },
+    {
+      "name": "-N",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable Rust powered TCP, UDP and TLS or use SENTRYPEER_TLS_DISABLE env",
+      "default": "",
+      "example": "sentrypeer -N"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<TLS_CERT_FILE>",
+      "required": false,
+      "description": "Set TLS cert location (default './cert.pem') or use SENTRYPEER_CERT env",
+      "default": "./cert.pem",
+      "example": "sentrypeer -t <TLS_CERT_FILE>"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "<TLS_KEY_FILE>",
+      "required": false,
+      "description": "Set TLS key location (default './key.pem') or use SENTRYPEER_KEY env",
+      "default": "./key.pem",
+      "example": "sentrypeer -k <TLS_KEY_FILE>"
+    },
+    {
+      "name": "-z",
+      "short": "",
+      "aliases": [],
+      "arg": "<TLS_LISTEN_ADDRESS>",
+      "required": false,
+      "description": "Set TLS listen address (default '0.0.0.0:5061') or use SENTRYPEER_TLS_LISTEN_ADDRESS env",
+      "default": "0.0.0.0:5061",
+      "example": "sentrypeer -z <TLS_LISTEN_ADDRESS>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable syslog logging or use SENTRYPEER_SYSLOG env",
+      "default": "",
+      "example": "sentrypeer -s"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable verbose logging or use SENTRYPEER_VERBOSE env",
+      "default": "",
+      "example": "sentrypeer -v"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable debug mode or use SENTRYPEER_DEBUG env",
+      "default": "",
+      "example": "sentrypeer -d"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print help",
+      "default": "",
+      "example": "sentrypeer --help"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version",
+      "default": "",
+      "example": "sentrypeer --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

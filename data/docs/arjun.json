@@ -1,0 +1,263 @@
+{
+  "id": "arjun",
+  "name": "arjun",
+  "schema_version": 1,
+  "summary": "HTTP parameter discovery suite.",
+  "highlights": [
+    "-u — Target URL",
+    "-o — Path for json output file.",
+    "-oT — Path for text output file.",
+    "-oB — Output to Burp Suite Proxy. Default is 127.0.0.1:8080.",
+    "-d — Delay between requests in seconds. (default: 0)",
+    "-t — Number of concurrent threads. (default: 5)",
+    "-w — Wordlist file path. (default: {arjundir}/db/large.txt)",
+    "-m — Request method to use: GET/POST/XML/JSON. (default: GET)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install arjun"
+    }
+  ],
+  "usage": "arjun [-h] [-u URL] [-o JSON_FILE] [-oT TEXT_FILE] [-oB [BURP_PROXY]]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "arjun --help"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Target URL",
+      "default": "",
+      "example": "arjun -u <url>"
+    },
+    {
+      "name": "-oJ",
+      "short": "-o",
+      "aliases": [],
+      "arg": "JSON_FILE",
+      "required": false,
+      "description": "Path for json output file.",
+      "default": "",
+      "example": "arjun -oJ <json_file>"
+    },
+    {
+      "name": "-oT",
+      "short": "",
+      "aliases": [],
+      "arg": "TEXT_FILE",
+      "required": false,
+      "description": "Path for text output file.",
+      "default": "",
+      "example": "arjun -oT <text_file>"
+    },
+    {
+      "name": "-oB",
+      "short": "",
+      "aliases": [],
+      "arg": "[BURP_PROXY]",
+      "required": false,
+      "description": "Output to Burp Suite Proxy. Default is 127.0.0.1:8080.",
+      "default": "",
+      "example": "arjun -oB <burp_proxy>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "Delay between requests in seconds. (default: 0)",
+      "default": "0",
+      "example": "arjun -d <delay>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "Number of concurrent threads. (default: 5)",
+      "default": "5",
+      "example": "arjun -t <threads>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "WORDLIST",
+      "required": false,
+      "description": "Wordlist file path. (default: {arjundir}/db/large.txt)",
+      "default": "{arjundir}/db/large.txt",
+      "example": "arjun -w <wordlist>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "METHOD",
+      "required": false,
+      "description": "Request method to use: GET/POST/XML/JSON. (default: GET)",
+      "default": "GET",
+      "example": "arjun -m <method>"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "[IMPORT_FILE]",
+      "required": false,
+      "description": "Import target URLs from file.",
+      "default": "",
+      "example": "arjun -i <import_file>"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "HTTP request timeout in seconds. (default: 15)",
+      "default": "15",
+      "example": "arjun -T <timeout>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "CHUNKS",
+      "required": false,
+      "description": "Chunk size. The number of parameters to be sent at once",
+      "default": "",
+      "example": "arjun -c <chunks>"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Quiet mode. No output.",
+      "default": "",
+      "example": "arjun -q"
+    },
+    {
+      "name": "--rate-limit",
+      "short": "",
+      "aliases": [],
+      "arg": "RATE_LIMIT",
+      "required": false,
+      "description": "Max number of requests to be sent out per second (default: 9999)",
+      "default": "9999",
+      "example": "arjun --rate-limit <rate_limit>"
+    },
+    {
+      "name": "--headers",
+      "short": "",
+      "aliases": [],
+      "arg": "[HEADERS]",
+      "required": false,
+      "description": "Add headers. Separate multiple headers with a new line.",
+      "default": "",
+      "example": "arjun --headers <headers>"
+    },
+    {
+      "name": "--passive",
+      "short": "",
+      "aliases": [],
+      "arg": "[PASSIVE]",
+      "required": false,
+      "description": "Collect parameter names from passive sources like wayback, commoncrawl and otx.",
+      "default": "",
+      "example": "arjun --passive <passive>"
+    },
+    {
+      "name": "--stable",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prefer stability over speed.",
+      "default": "",
+      "example": "arjun --stable"
+    },
+    {
+      "name": "--include",
+      "short": "",
+      "aliases": [],
+      "arg": "INCLUDE",
+      "required": false,
+      "description": "Include this data in every request.",
+      "default": "",
+      "example": "arjun --include <include>"
+    },
+    {
+      "name": "--disable-redirects",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable redirects",
+      "default": "",
+      "example": "arjun --disable-redirects"
+    },
+    {
+      "name": "--casing",
+      "short": "",
+      "aliases": [],
+      "arg": "CASING",
+      "required": false,
+      "description": "casing style for params e.g. like_this, likeThis, likethis",
+      "default": "",
+      "example": "arjun --casing <casing>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "arjun -u <https://example.com/page.php>",
+      "explanation": "Scan a URL for GET parameters",
+      "source": "tldr:arjun"
+    },
+    {
+      "cmd": "arjun -u <https://example.com/api> -m POST",
+      "explanation": "Scan using POST method",
+      "source": "tldr:arjun"
+    },
+    {
+      "cmd": "arjun -u <https://example.com> -o <path/to/output.json>",
+      "explanation": "Save discovered parameters to a JSON file",
+      "source": "tldr:arjun"
+    },
+    {
+      "cmd": "arjun -u <https://example.com> -w <path/to/wordlist.txt>",
+      "explanation": "Use a custom wordlist",
+      "source": "tldr:arjun"
+    },
+    {
+      "cmd": "arjun -u <https://example.com> -d <2>",
+      "explanation": "Increase request delay by specific amount of seconds to avoid rate limiting",
+      "source": "tldr:arjun"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/arjun.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

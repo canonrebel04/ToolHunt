@@ -1,0 +1,26 @@
+{
+  "id": "mimikatz",
+  "name": "mimikatz",
+  "schema_version": 1,
+  "summary": "A little tool to play with Windows security.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install mimikatz"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

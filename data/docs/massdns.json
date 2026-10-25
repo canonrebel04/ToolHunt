@@ -1,0 +1,374 @@
+{
+  "id": "massdns",
+  "name": "massdns",
+  "schema_version": 1,
+  "summary": "A high-performance DNS stub resolver in C.",
+  "highlights": [
+    "-b — --bindto Bind to IP address and port. (Default: 0.0.0.0:0)",
+    "--busy-poll — Use busy-wait polling instead of epoll.",
+    "-c — --resolve-count Number of resolves for a name before giving up. (Default: 50)",
+    "--drop-group — Group to drop privileges to when running as root. (Default: nogroup)",
+    "--drop-user — User to drop privileges to when running as root. (Default: nobody)",
+    "--extended-input — Input names are followed by a space-separated list of resolvers. These are used before fal",
+    "--filter — Only output packets with the specified response code.",
+    "--flush — Flush the output file whenever a response was received."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install massdns"
+    }
+  ],
+  "usage": "massdns [options] [domainlist]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--bindto Bind to IP address and port. (Default: 0.0.0.0:0)",
+      "default": "0.0.0.0:0",
+      "example": "massdns -b"
+    },
+    {
+      "name": "--busy-poll",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use busy-wait polling instead of epoll.",
+      "default": "",
+      "example": "massdns --busy-poll"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--resolve-count Number of resolves for a name before giving up. (Default: 50)",
+      "default": "50",
+      "example": "massdns -c"
+    },
+    {
+      "name": "--drop-group",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Group to drop privileges to when running as root. (Default: nogroup)",
+      "default": "nogroup",
+      "example": "massdns --drop-group"
+    },
+    {
+      "name": "--drop-user",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "User to drop privileges to when running as root. (Default: nobody)",
+      "default": "nobody",
+      "example": "massdns --drop-user"
+    },
+    {
+      "name": "--extended-input",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Input names are followed by a space-separated list of resolvers. These are used before falling back to the resolvers file.",
+      "default": "",
+      "example": "massdns --extended-input"
+    },
+    {
+      "name": "--filter",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only output packets with the specified response code.",
+      "default": "",
+      "example": "massdns --filter"
+    },
+    {
+      "name": "--flush",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Flush the output file whenever a response was received.",
+      "default": "",
+      "example": "massdns --flush"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--help Show this help.",
+      "default": "",
+      "example": "massdns -h"
+    },
+    {
+      "name": "--ignore",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not output packets with the specified response code.",
+      "default": "",
+      "example": "massdns --ignore"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--interval Interval in milliseconds to wait between multiple resolves of the same domain. (Default: 500)",
+      "default": "500",
+      "example": "massdns -i"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--error-log Error log file path. (Default: /dev/stderr)",
+      "default": "/dev/stderr",
+      "example": "massdns -l"
+    },
+    {
+      "name": "--norecurse",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use non-recursive queries. Useful for DNS cache snooping.",
+      "default": "",
+      "example": "massdns --norecurse"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--output Flags for output formatting.",
+      "default": "",
+      "example": "massdns -o"
+    },
+    {
+      "name": "--predictable",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use resolvers incrementally. Useful for resolver tests.",
+      "default": "",
+      "example": "massdns --predictable"
+    },
+    {
+      "name": "--processes",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Number of processes to be used for resolving. (Default: 1)",
+      "default": "1",
+      "example": "massdns --processes"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--quiet Quiet mode.",
+      "default": "",
+      "example": "massdns -q"
+    },
+    {
+      "name": "--rand-src-ipv6",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use a random IPv6 address from the specified subnet for each query.",
+      "default": "",
+      "example": "massdns --rand-src-ipv6"
+    },
+    {
+      "name": "--rcvbuf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Size of the receive buffer in bytes.",
+      "default": "",
+      "example": "massdns --rcvbuf"
+    },
+    {
+      "name": "--retry",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Unacceptable DNS response codes. (Default: All codes but NOERROR or NXDOMAIN)",
+      "default": "All codes but NOERROR or NXDOMAIN",
+      "example": "massdns --retry"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--resolvers Text file containing DNS resolvers.",
+      "default": "",
+      "example": "massdns -r"
+    },
+    {
+      "name": "--root",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not drop privileges when running as root. Not recommended.",
+      "default": "",
+      "example": "massdns --root"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--hashmap-size Number of concurrent lookups. (Default: 10000)",
+      "default": "10000",
+      "example": "massdns -s"
+    },
+    {
+      "name": "--sndbuf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Size of the send buffer in bytes.",
+      "default": "",
+      "example": "massdns --sndbuf"
+    },
+    {
+      "name": "--status-format",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Format for real-time status updates, json or ansi (Default: ansi)",
+      "default": "ansi",
+      "example": "massdns --status-format"
+    },
+    {
+      "name": "--sticky",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not switch the resolver when retrying.",
+      "default": "",
+      "example": "massdns --sticky"
+    },
+    {
+      "name": "--socket-count",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Socket count per process. (Default: 1)",
+      "default": "1",
+      "example": "massdns --socket-count"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--type Record type to be resolved. (Default: A)",
+      "default": "A",
+      "example": "massdns -t"
+    },
+    {
+      "name": "--verify-ip",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verify IP addresses of incoming replies.",
+      "default": "",
+      "example": "massdns --verify-ip"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--outfile Write to the specified output file instead of standard output.",
+      "default": "",
+      "example": "massdns -w"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "massdns --resolvers <path/to/resolvers.txt> <path/to/domains.txt>",
+      "explanation": "Resolve `A` records for domains in a file using specified resolvers",
+      "source": "tldr:massdns",
+      "verified": false
+    },
+    {
+      "cmd": "massdns --resolvers <path/to/resolvers.txt> --type <A|AAAA|NS|MX|TXT> --outfile <path/to/output.txt> <path/to/domains.txt>",
+      "explanation": "Resolve a specific record type and write results to a file",
+      "source": "tldr:massdns",
+      "verified": false
+    },
+    {
+      "cmd": "massdns --resolvers <path/to/resolvers.txt> --output S <path/to/domains.txt>",
+      "explanation": "Resolve domains with simple text output format",
+      "source": "tldr:massdns",
+      "verified": false
+    },
+    {
+      "cmd": "massdns --resolvers <path/to/resolvers.txt> --output J <path/to/domains.txt>",
+      "explanation": "Resolve domains with JSON output format",
+      "source": "tldr:massdns",
+      "verified": false
+    },
+    {
+      "cmd": "massdns --resolvers <path/to/resolvers.txt> --hashmap-size <10000> <path/to/domains.txt>",
+      "explanation": "Resolve domains with a custom number of concurrent lookups",
+      "source": "tldr:massdns",
+      "verified": false
+    },
+    {
+      "cmd": "massdns --resolvers <path/to/resolvers.txt> --quiet <path/to/domains.txt>",
+      "explanation": "Resolve domains in quiet mode, suppressing status output",
+      "source": "tldr:massdns",
+      "verified": false
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/massdns.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

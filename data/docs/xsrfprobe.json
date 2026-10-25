@@ -1,0 +1,326 @@
+{
+  "id": "xsrfprobe",
+  "name": "xsrfprobe",
+  "schema_version": 1,
+  "summary": "The Prime Cross Site Request Forgery Audit and Exploitation Toolkit.",
+  "highlights": [
+    "-u — Main URL to test",
+    "-c — Cookie value to be requested with each successive request. If there are multiple cookies, ",
+    "-o — Output directory where files to be stored. Default is the output/ folder where all files g",
+    "-d — Time delay between requests in seconds. Default is zero.",
+    "-q — Set the DEBUG mode to quiet. Report only when vulnerabilities are found. Minimal output wi",
+    "-H — Comma separated list of custom headers you'd want to use. For example: ``--headers \"Accept",
+    "-v — Increase the verbosity of the output (e.g., -vv is more than -v).",
+    "-t — HTTP request timeout value in seconds. The entered value may be either in floating point d"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install xsrfprobe"
+    }
+  ],
+  "usage": "xsrfprobe -u <url> <args>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Main URL to test",
+      "default": "",
+      "example": "xsrfprobe --url <url>"
+    },
+    {
+      "name": "--cookie",
+      "short": "-c",
+      "aliases": [],
+      "arg": "COOKIE",
+      "required": false,
+      "description": "Cookie value to be requested with each successive request. If there are multiple cookies, separate them with commas. For example: `-c PHPSESSID=i837c5n83u4, _gid=jdhfbuysf`.",
+      "default": "",
+      "example": "xsrfprobe --cookie <cookie>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "Output directory where files to be stored. Default is the output/ folder where all files generated will be stored.",
+      "default": "",
+      "example": "xsrfprobe --output <output>"
+    },
+    {
+      "name": "--delay",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "Time delay between requests in seconds. Default is zero.",
+      "default": "",
+      "example": "xsrfprobe --delay <delay>"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set the DEBUG mode to quiet. Report only when vulnerabilities are found. Minimal output will be printed on screen.",
+      "default": "",
+      "example": "xsrfprobe --quiet"
+    },
+    {
+      "name": "--headers",
+      "short": "-H",
+      "aliases": [],
+      "arg": "HEADERS",
+      "required": false,
+      "description": "Comma separated list of custom headers you'd want to use. For example: ``--headers \"Accept=text/php, X-Requested-With=XHR\"``.",
+      "default": "",
+      "example": "xsrfprobe --headers <headers>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Increase the verbosity of the output (e.g., -vv is more than -v).",
+      "default": "",
+      "example": "xsrfprobe --verbose"
+    },
+    {
+      "name": "--timeout",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "HTTP request timeout value in seconds. The entered value may be either in floating point decimal or an integer. Example: ``--timeout 10.0``",
+      "default": "",
+      "example": "xsrfprobe --timeout <timeout>"
+    },
+    {
+      "name": "--exclude",
+      "short": "-E",
+      "aliases": [],
+      "arg": "EXCLUDE",
+      "required": false,
+      "description": "Comma-separated paths / file containing paths (separated by newlines) to exclude when crawling and scanning.",
+      "default": "",
+      "example": "xsrfprobe --exclude <exclude>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "USER_AGENT",
+      "required": false,
+      "description": "Custom user-agent to be used. Only one user-agent can be specified.",
+      "default": "",
+      "example": "xsrfprobe --user-agent <user_agent>"
+    },
+    {
+      "name": "--max-chars",
+      "short": "",
+      "aliases": [],
+      "arg": "MAXCHARS",
+      "required": false,
+      "description": "Maximum allowed character length for the custom token value to be generated. For example: `--max-chars 5`. Default value is 6.",
+      "default": "",
+      "example": "xsrfprobe --max-chars <maxchars>"
+    },
+    {
+      "name": "--crawl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Crawl the whole site and simultaneously test all discovered endpoints for CSRF.",
+      "default": "",
+      "example": "xsrfprobe --crawl"
+    },
+    {
+      "name": "--max-urls",
+      "short": "",
+      "aliases": [],
+      "arg": "MAX_URLS",
+      "required": false,
+      "description": "Maximum number of URLs to crawl (with --crawl). 0 means unlimited. Default: 200.",
+      "default": "",
+      "example": "xsrfprobe --max-urls <max_urls>"
+    },
+    {
+      "name": "--max-depth",
+      "short": "",
+      "aliases": [],
+      "arg": "MAX_DEPTH",
+      "required": false,
+      "description": "Maximum link depth to crawl from the seed URL (with --crawl). 0 means unlimited. Default: 5.",
+      "default": "",
+      "example": "xsrfprobe --max-depth <max_depth>"
+    },
+    {
+      "name": "--crawl-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "CRAWL_TIMEOUT",
+      "required": false,
+      "description": "Wall-clock time budget for crawling in seconds (with --crawl). 0 means unlimited. Default: 0.",
+      "default": "",
+      "example": "xsrfprobe --crawl-timeout <crawl_timeout>"
+    },
+    {
+      "name": "--no-analysis",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip the Post-Scan Analysis of Tokens which were gathered during requests",
+      "default": "",
+      "example": "xsrfprobe --no-analysis"
+    },
+    {
+      "name": "--skip-poc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip the PoC Form Generation of POST-Based Cross Site Request Forgeries.",
+      "default": "",
+      "example": "xsrfprobe --skip-poc"
+    },
+    {
+      "name": "--no-verify",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not verify SSL certificates with requests.",
+      "default": "",
+      "example": "xsrfprobe --no-verify"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print out requests and responses while making requests.",
+      "default": "",
+      "example": "xsrfprobe --debug"
+    },
+    {
+      "name": "--random-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use random user-agents for making requests.",
+      "default": "",
+      "example": "xsrfprobe --random-agent"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display the version of XSRFProbe and exit.",
+      "default": "",
+      "example": "xsrfprobe --version"
+    },
+    {
+      "name": "--json",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output the results into a JSON file.",
+      "default": "",
+      "example": "xsrfprobe --json"
+    },
+    {
+      "name": "--force-header-tests",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run Referer/Origin header tests even when an anti-CSRF token is confirmed enforced. Research/opt-in only: bypass requests still carry a valid token, so results on token-protected endpoints are false positives.",
+      "default": "",
+      "example": "xsrfprobe --force-header-tests"
+    },
+    {
+      "name": "--browser",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable headless Firefox browser for SameSite and browser-dependent tests.",
+      "default": "",
+      "example": "xsrfprobe --browser"
+    },
+    {
+      "name": "--auto-validate-poc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Auto-validate generated PoC files in headless browser (requires --browser).",
+      "default": "",
+      "example": "xsrfprobe --auto-validate-poc"
+    },
+    {
+      "name": "--geckodriver-path",
+      "short": "",
+      "aliases": [],
+      "arg": "GECKODRIVER_PATH",
+      "required": false,
+      "description": "Path to geckodriver binary. Default: assumes geckodriver is in PATH.",
+      "default": "",
+      "example": "xsrfprobe --geckodriver-path <geckodriver_path>"
+    },
+    {
+      "name": "--browser-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "BROWSER_TIMEOUT",
+      "required": false,
+      "description": "Page load timeout for headless browser in seconds. Default: 30.",
+      "default": "",
+      "example": "xsrfprobe --browser-timeout <browser_timeout>"
+    },
+    {
+      "name": "--enum-subdomains",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable subdomain enumeration via crt.sh for SameSite=Strict sibling domain bypass tests.",
+      "default": "",
+      "example": "xsrfprobe --enum-subdomains"
+    },
+    {
+      "name": "--no-form-submit",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not submit forms during scanning. Only perform passive token detection.",
+      "default": "",
+      "example": "xsrfprobe --no-form-submit"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

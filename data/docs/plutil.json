@@ -1,0 +1,46 @@
+{
+  "id": "plutil",
+  "name": "plutil",
+  "schema_version": 1,
+  "summary": "Converts .plist files between binary and UTF (editable) text formats.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "plutil -p <file1.plist file2.plist ...>",
+      "explanation": "Display the contents of one or more plist files in human-readable format",
+      "source": "tldr:plutil"
+    },
+    {
+      "cmd": "plutil -convert xml1 <file1.plist file2.plist ...>",
+      "explanation": "Convert one or more plist files to XML format, overwriting the original files in-place",
+      "source": "tldr:plutil"
+    },
+    {
+      "cmd": "plutil -convert binary1 <file1.plist file2.plist ...>",
+      "explanation": "Convert one or more plist files to binary format, overwriting the original files in-place",
+      "source": "tldr:plutil"
+    },
+    {
+      "cmd": "plutil -convert <xml1|binary1|json|swift|objc> <path/to/file.plist> -o <path/to/new_file.plist>",
+      "explanation": "Convert a plist file to a different format, writing to a new file",
+      "source": "tldr:plutil"
+    },
+    {
+      "cmd": "plutil -convert <xml1|binary1|json|swift|objc> <path/to/file.plist> -o -",
+      "explanation": "Convert a plist file to a different format, writing to `stdout`",
+      "source": "tldr:plutil"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/osx/plutil.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

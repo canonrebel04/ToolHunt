@@ -1,0 +1,104 @@
+{
+  "id": "amass",
+  "name": "amass",
+  "schema_version": 1,
+  "summary": "In-depth subdomain enumeration written in Go.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install amass"
+    }
+  ],
+  "usage": "amass [assoc|engine|enum|subs|track|viz] [options]",
+  "subcommands": [
+    {
+      "name": "assoc",
+      "description": "Query the OAM along the walk defined by the triples"
+    },
+    {
+      "name": "engine",
+      "description": "Run the Amass collection engine to populate the OAM database"
+    },
+    {
+      "name": "enum",
+      "description": "Interface with the engine that performs enumerations"
+    },
+    {
+      "name": "subs",
+      "description": "Analyze and present discovered subdomains and associated data"
+    },
+    {
+      "name": "track",
+      "description": "Analyze OAM data to identify newly discovered assets"
+    },
+    {
+      "name": "viz",
+      "description": "Analyze OAM data to generate graph visualizations"
+    }
+  ],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show the program usage message",
+      "default": "",
+      "example": "amass -h"
+    },
+    {
+      "name": "-help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show the program usage message",
+      "default": "",
+      "example": "amass -help"
+    },
+    {
+      "name": "-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print the Amass version number",
+      "default": "",
+      "example": "amass -version"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "amass <intel|enum> <options>",
+      "explanation": "Execute an Amass subcommand",
+      "source": "tldr:amass"
+    },
+    {
+      "cmd": "amass -help",
+      "explanation": "Display help",
+      "source": "tldr:amass"
+    },
+    {
+      "cmd": "amass <intel|enum> -help",
+      "explanation": "Display help on an Amass subcommand",
+      "source": "tldr:amass"
+    },
+    {
+      "cmd": "amass -version",
+      "explanation": "Display version",
+      "source": "tldr:amass"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/amass.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

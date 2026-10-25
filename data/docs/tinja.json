@@ -1,0 +1,223 @@
+{
+  "id": "tinja",
+  "name": "tinja",
+  "schema_version": 1,
+  "summary": "CLI tool for testing web pages for template injection vulnerabilities.",
+  "highlights": [
+    "--config — set the path for a config file to be read",
+    "-c — add custom cookie(s)",
+    "--csti — enable scanning for Client-Side Template Injections using a headless browser",
+    "--escapereport — escape HTML special chars in the JSON report",
+    "-H — add custom header(s)",
+    "--precedinglength — how many chars shall be memorized, when getting the preceding chars of a body reflection p",
+    "--proxycertpath — set the path for the certificate of the proxy",
+    "--proxyurl — set the URL of the proxy"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install tinja"
+    }
+  ],
+  "usage": "tinja [flags]",
+  "subcommands": [
+    {
+      "name": "help",
+      "description": "Help about any command"
+    },
+    {
+      "name": "jsonl",
+      "description": "Scan using a JSONL file"
+    },
+    {
+      "name": "raw",
+      "description": "Scan using a Raw file"
+    },
+    {
+      "name": "url",
+      "description": "Scan a single or multiple URLs"
+    }
+  ],
+  "flags": [
+    {
+      "name": "--config",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "set the path for a config file to be read",
+      "default": "",
+      "example": "tinja --config <string>"
+    },
+    {
+      "name": "--cookie",
+      "short": "-c",
+      "aliases": [],
+      "arg": "strings",
+      "required": false,
+      "description": "add custom cookie(s)",
+      "default": "",
+      "example": "tinja --cookie <strings>"
+    },
+    {
+      "name": "--csti",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable scanning for Client-Side Template Injections using a headless browser",
+      "default": "",
+      "example": "tinja --csti"
+    },
+    {
+      "name": "--escapereport",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "escape HTML special chars in the JSON report",
+      "default": "",
+      "example": "tinja --escapereport"
+    },
+    {
+      "name": "--header",
+      "short": "-H",
+      "aliases": [],
+      "arg": "strings",
+      "required": false,
+      "description": "add custom header(s)",
+      "default": "",
+      "example": "tinja --header <strings>"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "help for tinja",
+      "default": "",
+      "example": "tinja --help"
+    },
+    {
+      "name": "--precedinglength",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "how many chars shall be memorized, when getting the preceding chars of a body reflection point (default 30)",
+      "default": "30",
+      "example": "tinja --precedinglength <int>"
+    },
+    {
+      "name": "--proxycertpath",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "set the path for the certificate of the proxy",
+      "default": "",
+      "example": "tinja --proxycertpath <string>"
+    },
+    {
+      "name": "--proxyurl",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "set the URL of the proxy",
+      "default": "",
+      "example": "tinja --proxyurl <string>"
+    },
+    {
+      "name": "--ratelimit",
+      "short": "-r",
+      "aliases": [],
+      "arg": "float",
+      "required": false,
+      "description": "number of requests per seconds. 0 is infinite (default 0)",
+      "default": "0",
+      "example": "tinja --ratelimit <float>"
+    },
+    {
+      "name": "--reportpath",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "set the path for a report to be generated",
+      "default": "",
+      "example": "tinja --reportpath <string>"
+    },
+    {
+      "name": "--subsequentlength",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "how many chars shall be memorized, when getting the subsequent chars of a body reflection point (default 30)",
+      "default": "30",
+      "example": "tinja --subsequentlength <int>"
+    },
+    {
+      "name": "--testheaders",
+      "short": "",
+      "aliases": [],
+      "arg": "strings",
+      "required": false,
+      "description": "headers to test. E.g. --testheaders Host,Origin,X-Forwarded-For",
+      "default": "",
+      "example": "tinja --testheaders <strings>"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "seconds until timeout (default 15)",
+      "default": "15",
+      "example": "tinja --timeout <int>"
+    },
+    {
+      "name": "--useragentchrome",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set chrome as user-agent. Default user-agent is 'TInjA v1.2.0'",
+      "default": "",
+      "example": "tinja --useragentchrome"
+    },
+    {
+      "name": "--verbosity",
+      "short": "-v",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "verbosity of the output. 0 = quiet, 1 = default, 2 = verbose (default 1)",
+      "default": "1",
+      "example": "tinja --verbosity <int>"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "version for tinja",
+      "default": "",
+      "example": "tinja --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,796 @@
+{
+  "id": "commix",
+  "name": "commix",
+  "schema_version": 1,
+  "summary": "Automated All-in-One OS Command Injection and Exploitation Tool.",
+  "highlights": [
+    "-s — Load session from a stored (.sqlite) file.",
+    "--flush-session — Flush session files for current target.",
+    "--ignore-session — Ignore results stored in session file.",
+    "-t — Log all HTTP traffic into a textual file.",
+    "--batch — Never ask for user input, use the default behaviour.",
+    "--skip-heuristics — Skip heuristic detection for code injection.",
+    "--codec — Force codec for character encoding (e.g. 'ascii').",
+    "--charset — Time-related injection charset (e.g. '0123456789abcdef')."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install commix"
+    }
+  ],
+  "usage": "commix [option(s)]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show help and exit.",
+      "default": "",
+      "example": "commix --help"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "VERBOSE",
+      "required": false,
+      "description": "Verbosity level (0-4, Default: 0).",
+      "default": "",
+      "example": "commix -v <verbose>"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show version number and exit.",
+      "default": "",
+      "example": "commix --version"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "SESSION_FILE",
+      "required": false,
+      "description": "Load session from a stored (.sqlite) file.",
+      "default": "",
+      "example": "commix -s <session_file>"
+    },
+    {
+      "name": "--flush-session",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Flush session files for current target.",
+      "default": "",
+      "example": "commix --flush-session"
+    },
+    {
+      "name": "--ignore-session",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore results stored in session file.",
+      "default": "",
+      "example": "commix --ignore-session"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "TRAFFIC_FILE",
+      "required": false,
+      "description": "Log all HTTP traffic into a textual file.",
+      "default": "",
+      "example": "commix -t <traffic_file>"
+    },
+    {
+      "name": "--batch",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Never ask for user input, use the default behaviour.",
+      "default": "",
+      "example": "commix --batch"
+    },
+    {
+      "name": "--skip-heuristics",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip heuristic detection for code injection.",
+      "default": "",
+      "example": "commix --skip-heuristics"
+    },
+    {
+      "name": "--codec",
+      "short": "",
+      "aliases": [],
+      "arg": "CODEC",
+      "required": false,
+      "description": "Force codec for character encoding (e.g. 'ascii').",
+      "default": "",
+      "example": "commix --codec <codec>"
+    },
+    {
+      "name": "--charset",
+      "short": "",
+      "aliases": [],
+      "arg": "CHARSET",
+      "required": false,
+      "description": "Time-related injection charset (e.g. '0123456789abcdef').",
+      "default": "",
+      "example": "commix --charset <charset>"
+    },
+    {
+      "name": "--check-internet",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check internet connection before assessing the target.",
+      "default": "",
+      "example": "commix --check-internet"
+    },
+    {
+      "name": "--answers",
+      "short": "",
+      "aliases": [],
+      "arg": "ANSWERS",
+      "required": false,
+      "description": "Set predefined answers (e.g. 'quit=N,follow=N').",
+      "default": "",
+      "example": "commix --answers <answers>"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Target URL.",
+      "default": "",
+      "example": "commix --url <url>"
+    },
+    {
+      "name": "--url-reload",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Reload target URL after command execution.",
+      "default": "",
+      "example": "commix --url-reload"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "LOGFILE",
+      "required": false,
+      "description": "Parse target from HTTP proxy log file.",
+      "default": "",
+      "example": "commix -l <logfile>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "BULKFILE",
+      "required": false,
+      "description": "Scan multiple targets given in a textual file.",
+      "default": "",
+      "example": "commix -m <bulkfile>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "REQUESTFILE",
+      "required": false,
+      "description": "Load HTTP request from a file.",
+      "default": "",
+      "example": "commix -r <requestfile>"
+    },
+    {
+      "name": "--crawl",
+      "short": "",
+      "aliases": [],
+      "arg": "CRAWLDEPTH",
+      "required": false,
+      "description": "Crawl the website starting from the target URL (Default: 1).",
+      "default": "1",
+      "example": "commix --crawl <crawldepth>"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "SITEMAP_URL",
+      "required": false,
+      "description": "Parse target(s) from remote sitemap(.xml) file.",
+      "default": "",
+      "example": "commix -x <sitemap_url>"
+    },
+    {
+      "name": "--method",
+      "short": "",
+      "aliases": [],
+      "arg": "METHOD",
+      "required": false,
+      "description": "Force usage of given HTTP method (e.g. 'PUT').",
+      "default": "",
+      "example": "commix --method <method>"
+    },
+    {
+      "name": "--host",
+      "short": "",
+      "aliases": [],
+      "arg": "HOST",
+      "required": false,
+      "description": "HTTP Host header.",
+      "default": "",
+      "example": "commix --host <host>"
+    },
+    {
+      "name": "--referer",
+      "short": "",
+      "aliases": [],
+      "arg": "REFERER",
+      "required": false,
+      "description": "HTTP Referer header.",
+      "default": "",
+      "example": "commix --referer <referer>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "AGENT",
+      "required": false,
+      "description": "HTTP User-Agent header.",
+      "default": "",
+      "example": "commix --user-agent <agent>"
+    },
+    {
+      "name": "--random-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use a randomly selected HTTP User-Agent header.",
+      "default": "",
+      "example": "commix --random-agent"
+    },
+    {
+      "name": "--param-del",
+      "short": "",
+      "aliases": [],
+      "arg": "PDEL",
+      "required": false,
+      "description": "Set character for splitting parameter values.",
+      "default": "",
+      "example": "commix --param-del <pdel>"
+    },
+    {
+      "name": "--cookie",
+      "short": "",
+      "aliases": [],
+      "arg": "COOKIE",
+      "required": false,
+      "description": "HTTP Cookie header.",
+      "default": "",
+      "example": "commix --cookie <cookie>"
+    },
+    {
+      "name": "--cookie-del",
+      "short": "",
+      "aliases": [],
+      "arg": "CDEL",
+      "required": false,
+      "description": "Set character for splitting cookie values.",
+      "default": "",
+      "example": "commix --cookie-del <cdel>"
+    },
+    {
+      "name": "--http1.0",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force requests to use the HTTP/1.0 protocol.",
+      "default": "",
+      "example": "commix --http1.0"
+    },
+    {
+      "name": "--hea",
+      "short": "-H",
+      "aliases": [],
+      "arg": "HEADER",
+      "required": false,
+      "description": "Extra header (e.g. 'X-Forwarded-For: 127.0.0.1').",
+      "default": "",
+      "example": "commix --hea <header>"
+    },
+    {
+      "name": "--headers",
+      "short": "",
+      "aliases": [],
+      "arg": "HEADERS",
+      "required": false,
+      "description": "Extra headers (e.g. 'Accept-Language: fr\\nETag: 123').",
+      "default": "",
+      "example": "commix --headers <headers>"
+    },
+    {
+      "name": "--proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "Use a proxy to connect to the target URL.",
+      "default": "",
+      "example": "commix --proxy <proxy>"
+    },
+    {
+      "name": "--tor",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use the Tor network.",
+      "default": "",
+      "example": "commix --tor"
+    },
+    {
+      "name": "--tor-check",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check to see if Tor is used properly.",
+      "default": "",
+      "example": "commix --tor-check"
+    },
+    {
+      "name": "--force-ssl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force usage of SSL/HTTPS.",
+      "default": "",
+      "example": "commix --force-ssl"
+    },
+    {
+      "name": "--ignore-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore system default proxy settings.",
+      "default": "",
+      "example": "commix --ignore-proxy"
+    },
+    {
+      "name": "--ignore-redirects",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore redirection attempts.",
+      "default": "",
+      "example": "commix --ignore-redirects"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "Seconds to wait before timeout connection (Default: 30).",
+      "default": "30",
+      "example": "commix --timeout <timeout>"
+    },
+    {
+      "name": "--retries",
+      "short": "",
+      "aliases": [],
+      "arg": "RETRIES",
+      "required": false,
+      "description": "Retries when the connection timeouts (Default: 3).",
+      "default": "3",
+      "example": "commix --retries <retries>"
+    },
+    {
+      "name": "--drop-set-cookie",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore Set-Cookie header from response.",
+      "default": "",
+      "example": "commix --drop-set-cookie"
+    },
+    {
+      "name": "--all",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve everything.",
+      "default": "",
+      "example": "commix --all"
+    },
+    {
+      "name": "--current-user",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve current user name.",
+      "default": "",
+      "example": "commix --current-user"
+    },
+    {
+      "name": "--hostname",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve current hostname.",
+      "default": "",
+      "example": "commix --hostname"
+    },
+    {
+      "name": "--is-root",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check if the current user have root privileges.",
+      "default": "",
+      "example": "commix --is-root"
+    },
+    {
+      "name": "--is-admin",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check if the current user have admin privileges.",
+      "default": "",
+      "example": "commix --is-admin"
+    },
+    {
+      "name": "--sys-info",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve system information.",
+      "default": "",
+      "example": "commix --sys-info"
+    },
+    {
+      "name": "--users",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve system users.",
+      "default": "",
+      "example": "commix --users"
+    },
+    {
+      "name": "--passwords",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve system users password hashes.",
+      "default": "",
+      "example": "commix --passwords"
+    },
+    {
+      "name": "--privileges",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve system users privileges.",
+      "default": "",
+      "example": "commix --privileges"
+    },
+    {
+      "name": "--ps-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve PowerShell's version number.",
+      "default": "",
+      "example": "commix --ps-version"
+    },
+    {
+      "name": "--shellshock",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The 'shellshock' injection module.",
+      "default": "",
+      "example": "commix --shellshock"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "TEST_PARAMETER",
+      "required": false,
+      "description": "Testable parameter(s).",
+      "default": "",
+      "example": "commix -p <test_parameter>"
+    },
+    {
+      "name": "--suffix",
+      "short": "",
+      "aliases": [],
+      "arg": "SUFFIX",
+      "required": false,
+      "description": "Injection payload suffix string.",
+      "default": "",
+      "example": "commix --suffix <suffix>"
+    },
+    {
+      "name": "--prefix",
+      "short": "",
+      "aliases": [],
+      "arg": "PREFIX",
+      "required": false,
+      "description": "Injection payload prefix string.",
+      "default": "",
+      "example": "commix --prefix <prefix>"
+    },
+    {
+      "name": "--technique",
+      "short": "",
+      "aliases": [],
+      "arg": "TECH",
+      "required": false,
+      "description": "Specify injection technique(s) to use.",
+      "default": "",
+      "example": "commix --technique <tech>"
+    },
+    {
+      "name": "--skip-technique",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Specify injection technique(s) to skip.",
+      "default": "",
+      "example": "commix --skip-technique"
+    },
+    {
+      "name": "--maxlen",
+      "short": "",
+      "aliases": [],
+      "arg": "MAXLEN",
+      "required": false,
+      "description": "Set the max length of output for time-related injection techniques (Default: 10000 chars).",
+      "default": "10000 chars",
+      "example": "commix --maxlen <maxlen>"
+    },
+    {
+      "name": "--delay",
+      "short": "",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "Seconds to delay between each HTTP request.",
+      "default": "",
+      "example": "commix --delay <delay>"
+    },
+    {
+      "name": "--time-sec",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMESEC",
+      "required": false,
+      "description": "Seconds to delay the OS response.",
+      "default": "",
+      "example": "commix --time-sec <timesec>"
+    },
+    {
+      "name": "--os-cmd",
+      "short": "",
+      "aliases": [],
+      "arg": "OS_CMD",
+      "required": false,
+      "description": "Execute a single operating system command.",
+      "default": "",
+      "example": "commix --os-cmd <os_cmd>"
+    },
+    {
+      "name": "--os",
+      "short": "",
+      "aliases": [],
+      "arg": "OS",
+      "required": false,
+      "description": "Force back-end operating system (e.g. 'Windows' or 'Unix').",
+      "default": "",
+      "example": "commix --os <os>"
+    },
+    {
+      "name": "--tamper",
+      "short": "",
+      "aliases": [],
+      "arg": "TAMPER",
+      "required": false,
+      "description": "Use given script(s) for tampering injection data.",
+      "default": "",
+      "example": "commix --tamper <tamper>"
+    },
+    {
+      "name": "--level",
+      "short": "",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Level of tests to perform (1-3, Default: 1).",
+      "default": "",
+      "example": "commix --level <level>"
+    },
+    {
+      "name": "--skip-calc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip the mathematic calculation during the detection phase.",
+      "default": "",
+      "example": "commix --skip-calc"
+    },
+    {
+      "name": "--skip-empty",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip testing the parameter(s) with empty value(s).",
+      "default": "",
+      "example": "commix --skip-empty"
+    },
+    {
+      "name": "--smart",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform thorough tests only if positive heuristic(s).",
+      "default": "",
+      "example": "commix --smart"
+    },
+    {
+      "name": "--ignore-depende",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore all required third-party library dependencies.",
+      "default": "",
+      "example": "commix --ignore-depende"
+    },
+    {
+      "name": "--list-tampers",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display list of available tamper scripts.",
+      "default": "",
+      "example": "commix --list-tampers"
+    },
+    {
+      "name": "--alert",
+      "short": "",
+      "aliases": [],
+      "arg": "ALERT",
+      "required": false,
+      "description": "Run host OS command(s) when injection point is found.",
+      "default": "",
+      "example": "commix --alert <alert>"
+    },
+    {
+      "name": "--no-logging",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable logging to a file.",
+      "default": "",
+      "example": "commix --no-logging"
+    },
+    {
+      "name": "--purge",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Safely remove all content from commix data directory.",
+      "default": "",
+      "example": "commix --purge"
+    },
+    {
+      "name": "--skip-waf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip heuristic detection of WAF/IPS protection.",
+      "default": "",
+      "example": "commix --skip-waf"
+    },
+    {
+      "name": "--mobile",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Imitate smartphone through HTTP User-Agent header.",
+      "default": "",
+      "example": "commix --mobile"
+    },
+    {
+      "name": "--offline",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Work in offline mode.",
+      "default": "",
+      "example": "commix --offline"
+    },
+    {
+      "name": "--wizard",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Simple wizard interface for beginner users.",
+      "default": "",
+      "example": "commix --wizard"
+    },
+    {
+      "name": "--disable-coloring",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable console output coloring.",
+      "default": "",
+      "example": "commix --disable-coloring"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

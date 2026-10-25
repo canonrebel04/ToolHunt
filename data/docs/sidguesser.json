@@ -1,0 +1,59 @@
+{
+  "id": "sidguesser",
+  "name": "sidguesser",
+  "schema_version": 1,
+  "summary": "Guesses sids/instances against an Oracle database according to a predefined dictionary file.",
+  "highlights": [
+    "-m — findfirst OR findall(default)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sidguesser"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "<mode>",
+      "required": false,
+      "description": "findfirst OR findall(default)",
+      "default": "ault",
+      "example": "sidguess -m <mode>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show usage and exit",
+      "default": "",
+      "example": "sidguess -h"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Increase verbosity",
+      "default": "",
+      "example": "sidguess -v"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

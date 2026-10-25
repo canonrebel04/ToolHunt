@@ -1,0 +1,149 @@
+{
+  "id": "ftester",
+  "name": "ftester",
+  "schema_version": 1,
+  "summary": "A tool designed for testing firewall filtering policies and Intrusion Detection System (IDS) capabilities.",
+  "highlights": [
+    "-f — -c <source_ip>:<source_port>:<dest_ip>:<dest_port>:<flags>:<protocol>:<tos>"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ftester"
+    }
+  ],
+  "usage": "ftest [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<conf_file>",
+      "required": false,
+      "description": "-c <source_ip>:<source_port>:<dest_ip>:<dest_port>:<flags>:<protocol>:<tos>",
+      "default": "",
+      "example": "ftest -f <conf_file>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "<verbose>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -v <verbose>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "<delay, 0.25 = 250 ms>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -d <delay, 0.25 = 250 ms>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "<sleep time, 1 = 1 s>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -s <sleep time, 1 = 1 s>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "<evasion method>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -e <evasion method>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<ids_ttl>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -t <ids_ttl>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<reset connection>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -r <reset connection>"
+    },
+    {
+      "name": "-F",
+      "short": "",
+      "aliases": [],
+      "arg": "<end connection>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -F <end connection>"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "<IP fragments number, es. 4|IP fragments size, es. 16b>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -g <IP fragments number, es. 4|IP fragments size, es. 16b>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<TCP segments number, es. 4|TCP segments size, es 6b>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -p <TCP segments number, es. 4|TCP segments size, es 6b>"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "<cksum value, es. 60000>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -k <cksum value, es. 60000>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "<marker>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "ftest -m <marker>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

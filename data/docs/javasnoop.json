@@ -1,0 +1,26 @@
+{
+  "id": "javasnoop",
+  "name": "javasnoop",
+  "schema_version": 1,
+  "summary": "A tool that lets you intercept methods, alter data and otherwise hack Java applications running on your computer",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install javasnoop"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

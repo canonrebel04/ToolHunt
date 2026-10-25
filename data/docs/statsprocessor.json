@@ -1,0 +1,196 @@
+{
+  "id": "statsprocessor",
+  "name": "statsprocessor",
+  "schema_version": 1,
+  "summary": "A high-performance word-generator based on per-position Markov-attack.",
+  "highlights": [
+    "--pw-min — Start incrementing at NUM",
+    "--pw-max — Stop incrementing at NUM",
+    "--markov-disable — Emulates maskprocessor output",
+    "--markov-classic — No per-position tables",
+    "--threshold — Filter out chars after NUM chars added Set to 0 to disable",
+    "--combinations — Calculate number of combinations",
+    "--hex-charset — Assume charset is given in hex",
+    "-s — skip number of words (for restore)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install statsprocessor"
+    }
+  ],
+  "usage": "sp32 [options]... hcstat-file [filter-mask]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version",
+      "default": "",
+      "example": "sp32 --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print help",
+      "default": "",
+      "example": "sp32 --help"
+    },
+    {
+      "name": "--pw-min",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Start incrementing at NUM",
+      "default": "",
+      "example": "sp32 --pw-min <num>"
+    },
+    {
+      "name": "--pw-max",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Stop incrementing at NUM",
+      "default": "",
+      "example": "sp32 --pw-max <num>"
+    },
+    {
+      "name": "--markov-disable",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Emulates maskprocessor output",
+      "default": "",
+      "example": "sp32 --markov-disable"
+    },
+    {
+      "name": "--markov-classic",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "No per-position tables",
+      "default": "",
+      "example": "sp32 --markov-classic"
+    },
+    {
+      "name": "--threshold",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Filter out chars after NUM chars added Set to 0 to disable",
+      "default": "",
+      "example": "sp32 --threshold <num>"
+    },
+    {
+      "name": "--combinations",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Calculate number of combinations",
+      "default": "",
+      "example": "sp32 --combinations"
+    },
+    {
+      "name": "--hex-charset",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Assume charset is given in hex",
+      "default": "",
+      "example": "sp32 --hex-charset"
+    },
+    {
+      "name": "--skip",
+      "short": "-s",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "skip number of words (for restore)",
+      "default": "",
+      "example": "sp32 --skip <num>"
+    },
+    {
+      "name": "--limit",
+      "short": "-l",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "limit number of words (for distributed)",
+      "default": "",
+      "example": "sp32 --limit <num>"
+    },
+    {
+      "name": "--output-file",
+      "short": "-o",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Output-file",
+      "default": "",
+      "example": "sp32 --output-file <file>"
+    },
+    {
+      "name": "--custom-charset1",
+      "short": "-1",
+      "aliases": [],
+      "arg": "CS",
+      "required": false,
+      "description": "User-defineable charsets",
+      "default": "",
+      "example": "sp32 --custom-charset1 <cs>"
+    },
+    {
+      "name": "--custom-charset2",
+      "short": "-2",
+      "aliases": [],
+      "arg": "CS",
+      "required": false,
+      "description": "Example:",
+      "default": "",
+      "example": "sp32 --custom-charset2 <cs>"
+    },
+    {
+      "name": "--custom-charset3",
+      "short": "-3",
+      "aliases": [],
+      "arg": "CS",
+      "required": false,
+      "description": "--custom-charset1=?dabcdef",
+      "default": "",
+      "example": "sp32 --custom-charset3 <cs>"
+    },
+    {
+      "name": "--custom-charset4",
+      "short": "-4",
+      "aliases": [],
+      "arg": "CS",
+      "required": false,
+      "description": "sets charset ?1 to 0123456789abcdef",
+      "default": "",
+      "example": "sp32 --custom-charset4 <cs>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,732 @@
+{
+  "id": "john",
+  "name": "john",
+  "schema_version": 1,
+  "summary": "Active password cracking tool",
+  "highlights": [
+    "--single-wordlist — *Short* wordlist with static seed words/morphemes",
+    "--single-user-seed — Wordlist with seeds per username (user:password[s] format)",
+    "--single-pair-max — Override max. number of word pairs generated (6)",
+    "--no-single-pair — Disable single word pair generation",
+    "--rules-skip-nop — Skip any NOP \":\" rules (you already ran w/o rules)",
+    "--loopback[ — Like --wordlist, but extract words from a .pot file",
+    "--mem-file-size — Size threshold for wordlist preload (default 2048 MB)",
+    "--dupe-suppression — Suppress all dupes in wordlist (and force preload)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install john"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install john-data"
+    }
+  ],
+  "usage": "john [OPTIONS] [PASSWORD-FILES]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print usage summary",
+      "default": "",
+      "example": "john --help"
+    },
+    {
+      "name": "--single-wordlist",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "*Short* wordlist with static seed words/morphemes",
+      "default": "",
+      "example": "john --single-wordlist <file>"
+    },
+    {
+      "name": "--single-user-seed",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Wordlist with seeds per username (user:password[s] format)",
+      "default": "",
+      "example": "john --single-user-seed <file>"
+    },
+    {
+      "name": "--single-pair-max",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Override max. number of word pairs generated (6)",
+      "default": "",
+      "example": "john --single-pair-max <n>"
+    },
+    {
+      "name": "--no-single-pair",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable single word pair generation",
+      "default": "",
+      "example": "john --no-single-pair"
+    },
+    {
+      "name": "--rules-skip-nop",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip any NOP \":\" rules (you already ran w/o rules)",
+      "default": "",
+      "example": "john --rules-skip-nop"
+    },
+    {
+      "name": "--loopback[",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Like --wordlist, but extract words from a .pot file",
+      "default": "",
+      "example": "john --loopback[ <file>"
+    },
+    {
+      "name": "--mem-file-size",
+      "short": "",
+      "aliases": [],
+      "arg": "SIZE",
+      "required": false,
+      "description": "Size threshold for wordlist preload (default 2048 MB)",
+      "default": "2048 MB",
+      "example": "john --mem-file-size <size>"
+    },
+    {
+      "name": "--dupe-suppression",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Suppress all dupes in wordlist (and force preload)",
+      "default": "",
+      "example": "john --dupe-suppression"
+    },
+    {
+      "name": "--incremental[",
+      "short": "",
+      "aliases": [],
+      "arg": "MODE",
+      "required": false,
+      "description": "\"Incremental\" mode [using section MODE]",
+      "default": "",
+      "example": "john --incremental[ <mode>"
+    },
+    {
+      "name": "--incremental-charcount",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Override CharCount for incremental mode",
+      "default": "",
+      "example": "john --incremental-charcount <n>"
+    },
+    {
+      "name": "--external",
+      "short": "",
+      "aliases": [],
+      "arg": "MODE",
+      "required": false,
+      "description": "External mode or word filter",
+      "default": "",
+      "example": "john --external <mode>"
+    },
+    {
+      "name": "--mask[",
+      "short": "",
+      "aliases": [],
+      "arg": "MASK",
+      "required": false,
+      "description": "Mask mode using MASK (or default from john.conf)",
+      "default": "",
+      "example": "john --mask[ <mask>"
+    },
+    {
+      "name": "--markov[",
+      "short": "",
+      "aliases": [],
+      "arg": "OPTIONS",
+      "required": false,
+      "description": "\"Markov\" mode (see doc/MARKOV)",
+      "default": "",
+      "example": "john --markov[ <options>"
+    },
+    {
+      "name": "--mkv-stats",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "\"Markov\" stats file",
+      "default": "",
+      "example": "john --mkv-stats <file>"
+    },
+    {
+      "name": "--prince[",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "PRINCE mode, read words from FILE",
+      "default": "",
+      "example": "john --prince[ <file>"
+    },
+    {
+      "name": "--prince-loopback[",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Fetch words from a .pot file",
+      "default": "",
+      "example": "john --prince-loopback[ <file>"
+    },
+    {
+      "name": "--prince-elem-cnt-min",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Minimum number of elements per chain (1)",
+      "default": "",
+      "example": "john --prince-elem-cnt-min <n>"
+    },
+    {
+      "name": "--prince-skip",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Initial skip",
+      "default": "",
+      "example": "john --prince-skip <n>"
+    },
+    {
+      "name": "--prince-limit",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Limit number of candidates generated",
+      "default": "",
+      "example": "john --prince-limit <n>"
+    },
+    {
+      "name": "--prince-wl-dist-len",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Calculate length distribution from wordlist",
+      "default": "",
+      "example": "john --prince-wl-dist-len"
+    },
+    {
+      "name": "--prince-wl-max",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Load only N words from input wordlist",
+      "default": "",
+      "example": "john --prince-wl-max <n>"
+    },
+    {
+      "name": "--prince-case-permute",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Permute case of first letter",
+      "default": "",
+      "example": "john --prince-case-permute"
+    },
+    {
+      "name": "--prince-mmap",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Memory-map infile (not available with case permute)",
+      "default": "",
+      "example": "john --prince-mmap"
+    },
+    {
+      "name": "--prince-keyspace",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Just show total keyspace that would be produced (disregarding skip and limit)",
+      "default": "",
+      "example": "john --prince-keyspace"
+    },
+    {
+      "name": "--subsets[",
+      "short": "",
+      "aliases": [],
+      "arg": "CHARSET",
+      "required": false,
+      "description": "\"Subsets\" mode (see doc/SUBSETS)",
+      "default": "",
+      "example": "john --subsets[ <charset>"
+    },
+    {
+      "name": "--subsets-required",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "The N first characters of \"subsets\" charset are the \"required set\"",
+      "default": "",
+      "example": "john --subsets-required <n>"
+    },
+    {
+      "name": "--subsets-min-diff",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Minimum unique characters in subset",
+      "default": "",
+      "example": "john --subsets-min-diff <n>"
+    },
+    {
+      "name": "--subsets-prefer-short",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prefer shorter candidates over smaller subsets",
+      "default": "",
+      "example": "john --subsets-prefer-short"
+    },
+    {
+      "name": "--subsets-prefer-small",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prefer smaller subsets over shorter candidates",
+      "default": "",
+      "example": "john --subsets-prefer-small"
+    },
+    {
+      "name": "--make-charset",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Make a charset, FILE will be overwritten",
+      "default": "",
+      "example": "john --make-charset <file>"
+    },
+    {
+      "name": "--stdout[",
+      "short": "",
+      "aliases": [],
+      "arg": "LENGTH",
+      "required": false,
+      "description": "Just output candidate passwords [cut at LENGTH]",
+      "default": "",
+      "example": "john --stdout[ <length>"
+    },
+    {
+      "name": "--session",
+      "short": "",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Give a new session the NAME",
+      "default": "",
+      "example": "john --session <name>"
+    },
+    {
+      "name": "--status[",
+      "short": "",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Print status of a session [called NAME]",
+      "default": "",
+      "example": "john --status[ <name>"
+    },
+    {
+      "name": "--restore[",
+      "short": "",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Restore an interrupted session [called NAME]",
+      "default": "",
+      "example": "john --restore[ <name>"
+    },
+    {
+      "name": "--progress-every",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Emit a status line every N seconds",
+      "default": "",
+      "example": "john --progress-every <n>"
+    },
+    {
+      "name": "--show[",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show cracked passwords [if =left, then uncracked]",
+      "default": "",
+      "example": "john --show["
+    },
+    {
+      "name": "--test[",
+      "short": "",
+      "aliases": [],
+      "arg": "TIME",
+      "required": false,
+      "description": "Run tests and benchmarks for TIME seconds each (if TIME is explicitly 0, test w/o benchmark)",
+      "default": "",
+      "example": "john --test[ <time>"
+    },
+    {
+      "name": "--stress-test[",
+      "short": "",
+      "aliases": [],
+      "arg": "TIME",
+      "required": false,
+      "description": "Loop self tests forever",
+      "default": "",
+      "example": "john --stress-test[ <time>"
+    },
+    {
+      "name": "--test-full",
+      "short": "",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Run more thorough self-tests",
+      "default": "",
+      "example": "john --test-full <level>"
+    },
+    {
+      "name": "--no-mask",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Used with --test for alternate benchmark w/o mask",
+      "default": "",
+      "example": "john --no-mask"
+    },
+    {
+      "name": "--skip-self-tests",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip self tests",
+      "default": "",
+      "example": "john --skip-self-tests"
+    },
+    {
+      "name": "--fork",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Fork N processes",
+      "default": "",
+      "example": "john --fork <n>"
+    },
+    {
+      "name": "--save-memory",
+      "short": "",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Enable memory saving, at LEVEL 1..3",
+      "default": "",
+      "example": "john --save-memory <level>"
+    },
+    {
+      "name": "--log-stderr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Log to screen instead of file",
+      "default": "",
+      "example": "john --log-stderr"
+    },
+    {
+      "name": "--verbosity",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Change verbosity (1-5 or 6 for debug, default 3)",
+      "default": "",
+      "example": "john --verbosity <n>"
+    },
+    {
+      "name": "--no-log",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables creation and writing to john.log file",
+      "default": "",
+      "example": "john --no-log"
+    },
+    {
+      "name": "--bare-always-valid",
+      "short": "",
+      "aliases": [],
+      "arg": "Y",
+      "required": false,
+      "description": "Treat bare hashes as valid (Y/N)",
+      "default": "",
+      "example": "john --bare-always-valid <y>"
+    },
+    {
+      "name": "--catch-up",
+      "short": "",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Catch up with existing (paused) session NAME",
+      "default": "",
+      "example": "john --catch-up <name>"
+    },
+    {
+      "name": "--config",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Use FILE instead of john.conf or john.ini",
+      "default": "",
+      "example": "john --config <file>"
+    },
+    {
+      "name": "--encoding",
+      "short": "",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Input encoding (eg. UTF-8, ISO-8859-1). See also doc/ENCODINGS.",
+      "default": "",
+      "example": "john --encoding <name>"
+    },
+    {
+      "name": "--input-encoding",
+      "short": "",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Input encoding (alias for --encoding)",
+      "default": "",
+      "example": "john --input-encoding <name>"
+    },
+    {
+      "name": "--internal-codepage",
+      "short": "",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Codepage used in rules/masks (see doc/ENCODINGS)",
+      "default": "",
+      "example": "john --internal-codepage <name>"
+    },
+    {
+      "name": "--target-encoding",
+      "short": "",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Output encoding (used by format)",
+      "default": "",
+      "example": "john --target-encoding <name>"
+    },
+    {
+      "name": "--force-tty",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set up terminal for reading keystrokes even if we're not the foreground process",
+      "default": "",
+      "example": "john --force-tty"
+    },
+    {
+      "name": "--field-separator-char",
+      "short": "",
+      "aliases": [],
+      "arg": "C",
+      "required": false,
+      "description": "Use 'C' instead of the ':' in input and pot files",
+      "default": "",
+      "example": "john --field-separator-char <c>"
+    },
+    {
+      "name": "--list",
+      "short": "",
+      "aliases": [],
+      "arg": "WHAT",
+      "required": false,
+      "description": "List capabilities, see --list=help or doc/OPTIONS",
+      "default": "",
+      "example": "john --list <what>"
+    },
+    {
+      "name": "--length",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Shortcut for --min-len=N --max-len=N",
+      "default": "",
+      "example": "john --length <n>"
+    },
+    {
+      "name": "--min-length",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Request a minimum candidate length in bytes",
+      "default": "",
+      "example": "john --min-length <n>"
+    },
+    {
+      "name": "--max-length",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Request a maximum candidate length in bytes",
+      "default": "",
+      "example": "john --max-length <n>"
+    },
+    {
+      "name": "--mkpc",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Request a lower max. keys per crypt",
+      "default": "",
+      "example": "john --mkpc <n>"
+    },
+    {
+      "name": "--no-loader-dupecheck",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable the dupe checking when loading hashes",
+      "default": "",
+      "example": "john --no-loader-dupecheck"
+    },
+    {
+      "name": "--pot",
+      "short": "",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Pot file to use",
+      "default": "",
+      "example": "john --pot <name>"
+    },
+    {
+      "name": "--regen-lost-salts",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "Brute force unknown salts (see doc/OPTIONS)",
+      "default": "",
+      "example": "john --regen-lost-salts <n>"
+    },
+    {
+      "name": "--reject-printable",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Reject printable binaries",
+      "default": "",
+      "example": "john --reject-printable"
+    },
+    {
+      "name": "--tune",
+      "short": "",
+      "aliases": [],
+      "arg": "HOW",
+      "required": false,
+      "description": "Tuning options (auto/report/N)",
+      "default": "",
+      "example": "john --tune <how>"
+    },
+    {
+      "name": "--subformat",
+      "short": "",
+      "aliases": [],
+      "arg": "FORMAT",
+      "required": false,
+      "description": "Pick a benchmark format for --format=crypt",
+      "default": "",
+      "example": "john --subformat <format>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "john <path/to/hashes.txt>",
+      "explanation": "Crack password hashes",
+      "source": "tldr:john"
+    },
+    {
+      "cmd": "john --show <path/to/hashes.txt>",
+      "explanation": "Show passwords cracked",
+      "source": "tldr:john"
+    },
+    {
+      "cmd": "john --list=formats",
+      "explanation": "List available hash formats",
+      "source": "tldr:john"
+    },
+    {
+      "cmd": "john --restore=<path/to/mycrack.rec>",
+      "explanation": "Restore an interrupted cracking session from a state file, e.g. `mycrack.rec`",
+      "source": "tldr:john"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/john.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "id": "eyewitness",
+  "name": "eyewitness",
+  "schema_version": 1,
+  "summary": "Designed to take screenshots of websites, provide some server header info, and identify default credentials if possible.",
+  "highlights": [
+    "--web — HTTP Screenshot using Selenium",
+    "--no-dns — Skip DNS resolution when connecting to websites",
+    "--no-prompt — Don't prompt to open the report",
+    "--show-selenium — Show display for selenium",
+    "--resolve — Resolve IP/Hostname for targets",
+    "--add-http-ports — Comma-separated additional port(s) to assume are http (e.g. '8018,8028')",
+    "--add-https-ports — Comma-separated additional port(s) to assume are https (e.g. '8018,8028')",
+    "--only-ports — Comma-separated list of exclusive ports to use (e.g. '80,8080')"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install eyewitness"
+    }
+  ],
+  "usage": "EyeWitness.py [--web] [-f Filename] [-x Filename.xml]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--web",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "HTTP Screenshot using Selenium",
+      "default": "",
+      "example": "eyewitness --web"
+    },
+    {
+      "name": "--no-dns",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip DNS resolution when connecting to websites",
+      "default": "",
+      "example": "eyewitness --no-dns"
+    },
+    {
+      "name": "--no-prompt",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't prompt to open the report",
+      "default": "",
+      "example": "eyewitness --no-prompt"
+    },
+    {
+      "name": "--show-selenium",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show display for selenium",
+      "default": "",
+      "example": "eyewitness --show-selenium"
+    },
+    {
+      "name": "--resolve",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Resolve IP/Hostname for targets",
+      "default": "",
+      "example": "eyewitness --resolve"
+    },
+    {
+      "name": "--add-http-ports",
+      "short": "",
+      "aliases": [],
+      "arg": "ADD_HTTP_PORTS",
+      "required": false,
+      "description": "Comma-separated additional port(s) to assume are http (e.g. '8018,8028')",
+      "default": "",
+      "example": "eyewitness --add-http-ports <add_http_ports>"
+    },
+    {
+      "name": "--add-https-ports",
+      "short": "",
+      "aliases": [],
+      "arg": "ADD_HTTPS_PORTS",
+      "required": false,
+      "description": "Comma-separated additional port(s) to assume are https (e.g. '8018,8028')",
+      "default": "",
+      "example": "eyewitness --add-https-ports <add_https_ports>"
+    },
+    {
+      "name": "--only-ports",
+      "short": "",
+      "aliases": [],
+      "arg": "ONLY_PORTS",
+      "required": false,
+      "description": "Comma-separated list of exclusive ports to use (e.g. '80,8080')",
+      "default": "",
+      "example": "eyewitness --only-ports <only_ports>"
+    },
+    {
+      "name": "--prepend-https",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prepend http:// and https:// to URLs without either",
+      "default": "",
+      "example": "eyewitness --prepend-https"
+    },
+    {
+      "name": "--selenium-log-path",
+      "short": "",
+      "aliases": [],
+      "arg": "SELENIUM_LOG_PATH",
+      "required": false,
+      "description": "Selenium geckodriver log path",
+      "default": "",
+      "example": "eyewitness --selenium-log-path <selenium_log_path>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

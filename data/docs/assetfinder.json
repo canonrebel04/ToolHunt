@@ -1,0 +1,39 @@
+{
+  "id": "assetfinder",
+  "name": "assetfinder",
+  "schema_version": 1,
+  "summary": "Find domains and subdomains potentially related to a given domain.",
+  "highlights": [
+    "-subs-only — Only include subdomains of search domain"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install assetfinder"
+    }
+  ],
+  "usage": "of assetfinder:",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-subs-only",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only include subdomains of search domain",
+      "default": "",
+      "example": "assetfinder -subs-only"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

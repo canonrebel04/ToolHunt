@@ -1,0 +1,61 @@
+{
+  "id": "prowler",
+  "name": "prowler",
+  "schema_version": 1,
+  "summary": "Tool for AWS security assessment, auditing and hardening.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "prowler <provider>",
+      "explanation": "Run an AWS, Azure, GCP, Kubernetes - as provider - audit with default checks",
+      "source": "tldr:prowler"
+    },
+    {
+      "cmd": "prowler <provider> --list-checks",
+      "explanation": "Show all available checks for a specific provider",
+      "source": "tldr:prowler"
+    },
+    {
+      "cmd": "prowler <provider> --list-services",
+      "explanation": "Show all available services for a specific provider",
+      "source": "tldr:prowler"
+    },
+    {
+      "cmd": "prowler <provider> --output-modes <csv,json-asff,html,...>",
+      "explanation": "Generate output in multiple formats, including JSON-ASFF for AWS Security Hub",
+      "source": "tldr:prowler"
+    },
+    {
+      "cmd": "prowler <provider> --verbose",
+      "explanation": "Execute in verbose mode",
+      "source": "tldr:prowler"
+    },
+    {
+      "cmd": "prowler <provider> --status <PASS,FAIL,MANUAL>",
+      "explanation": "Filter findings by status",
+      "source": "tldr:prowler"
+    },
+    {
+      "cmd": "prowler --help",
+      "explanation": "Display help",
+      "source": "tldr:prowler"
+    },
+    {
+      "cmd": "prowler --version",
+      "explanation": "Display version",
+      "source": "tldr:prowler"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/prowler.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

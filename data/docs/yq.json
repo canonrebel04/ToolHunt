@@ -1,0 +1,67 @@
+{
+  "id": "yq",
+  "name": "yq",
+  "schema_version": 1,
+  "summary": "A lightweight and portable YAML processor.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "brew",
+      "cmd": "brew install yq"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "yq eval <path/to/file.yaml>",
+      "explanation": "Output a YAML file, in pretty-print format (v4+)",
+      "source": "tldr:yq"
+    },
+    {
+      "cmd": "yq read <path/to/file.yaml> --colors",
+      "explanation": "Output a YAML file, in pretty-print format (v3)",
+      "source": "tldr:yq"
+    },
+    {
+      "cmd": "yq eval '.[0]' <path/to/file.yaml>",
+      "explanation": "Output the first element in a YAML file that contains only an array (v4+)",
+      "source": "tldr:yq"
+    },
+    {
+      "cmd": "yq read <path/to/file.yaml> '[0]'",
+      "explanation": "Output the first element in a YAML file that contains only an array (v3)",
+      "source": "tldr:yq"
+    },
+    {
+      "cmd": "yq eval '.<key> = \"<value>\"' --inplace <path/to/file.yaml>",
+      "explanation": "Set (or overwrite) a key to a value in a file (v4+)",
+      "source": "tldr:yq"
+    },
+    {
+      "cmd": "yq write --inplace <path/to/file.yaml> '<key>' '<value>'",
+      "explanation": "Set (or overwrite) a key to a value in a file (v3)",
+      "source": "tldr:yq"
+    },
+    {
+      "cmd": "yq eval-all 'select(filename == \"<path/to/file1.yaml>\") * select(filename == \"<path/to/file2.yaml>\")' <path/to/file1.yaml> <path/to/file2.yaml>",
+      "explanation": "Merge two files and print to `stdout` (v4+)",
+      "source": "tldr:yq"
+    },
+    {
+      "cmd": "yq merge <path/to/file1.yaml> <path/to/file2.yaml> --colors",
+      "explanation": "Merge two files and print to `stdout` (v3)",
+      "source": "tldr:yq"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "package-install",
+    "tldr:pages/common/yq.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

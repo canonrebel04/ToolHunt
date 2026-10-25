@@ -1,0 +1,226 @@
+{
+  "id": "unblob",
+  "name": "unblob",
+  "schema_version": 1,
+  "summary": "Extract files from any kind of container formats.",
+  "highlights": [
+    "-e — Extract the files to this directory. Will be created if doesn't exist.",
+    "-f — Force extraction even if outputs already exist (they are removed).",
+    "-P — Load plugins from the provided path.",
+    "-S — Skip processing files with given magic prefix. The provided values are appended to unblob'",
+    "--skip-extension — Skip processing files with given extension [default: .rlib]",
+    "--clear-skip-magics — Clear unblob's own skip magic list.",
+    "--report — File to store metadata generated during the extraction process (in JSON format).",
+    "--log — File to save logs (in text format). Defaults to unblob.log."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install unblob"
+    }
+  ],
+  "usage": "unblob [OPTIONS] FILE",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--extract-dir",
+      "short": "-e",
+      "aliases": [],
+      "arg": "DIRECTORY",
+      "required": false,
+      "description": "Extract the files to this directory. Will be created if doesn't exist.",
+      "default": "",
+      "example": "unblob --extract-dir <directory>"
+    },
+    {
+      "name": "--force",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force extraction even if outputs already exist (they are removed).",
+      "default": "",
+      "example": "unblob --force"
+    },
+    {
+      "name": "--plugins-path",
+      "short": "-P",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Load plugins from the provided path.",
+      "default": "",
+      "example": "unblob --plugins-path <path>"
+    },
+    {
+      "name": "--skip-magic",
+      "short": "-S",
+      "aliases": [],
+      "arg": "TEXT",
+      "required": false,
+      "description": "Skip processing files with given magic prefix. The provided values are appended to unblob's own skip magic list unless --clear- skip-magic is provided. [default: BFLT, Erlang BEAM file, GIF, GNU message catalog, HP Printer Job Language, JPEG, Java module image, MPEG, MS Windows icon resource, Macromedia Flash data, Microsoft Excel, Microsoft PowerPoint, Microsoft Word, OpenDocument, PDF document, PNG, SQLite, TrueType Font data, Web Open Font Format, Windows Embedded CE binary image, Xilinx BIT data, compiled Java class, magic binary file, python]",
+      "default": "BFLT, Erlang BEAM file, GIF, GNU message catalog, HP Printer Job Language, JPEG, Java module image, MPEG, MS Windows icon resource, Macromedia Flash data, Microsoft Excel, Microsoft PowerPoint, Microsoft Word, OpenDocument, PDF document, PNG, SQLite, TrueType Font data, Web Open Font Format, Windows Embedded CE binary image, Xilinx BIT data, compiled Java class, magic binary file, python",
+      "example": "unblob --skip-magic <text>"
+    },
+    {
+      "name": "--skip-extension",
+      "short": "",
+      "aliases": [],
+      "arg": "TEXT",
+      "required": false,
+      "description": "Skip processing files with given extension [default: .rlib]",
+      "default": ".rlib",
+      "example": "unblob --skip-extension <text>"
+    },
+    {
+      "name": "--clear-skip-magics",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Clear unblob's own skip magic list.",
+      "default": "",
+      "example": "unblob --clear-skip-magics"
+    },
+    {
+      "name": "--report",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "File to store metadata generated during the extraction process (in JSON format).",
+      "default": "",
+      "example": "unblob --report <path>"
+    },
+    {
+      "name": "--log",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "File to save logs (in text format). Defaults to unblob.log.",
+      "default": "",
+      "example": "unblob --log <path>"
+    },
+    {
+      "name": "--skip-extraction",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only carve chunks and skip further extraction",
+      "default": "",
+      "example": "unblob --skip-extraction"
+    },
+    {
+      "name": "--no-sandbox",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable Landlock sandboxing (useful for breakpoint-based debugging).",
+      "default": "",
+      "example": "unblob --no-sandbox"
+    },
+    {
+      "name": "--keep-extracted-chunks",
+      "short": "-k",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Keep extracted chunks",
+      "default": "",
+      "example": "unblob --keep-extracted-chunks"
+    },
+    {
+      "name": "--delete-extracted-files",
+      "short": "",
+      "aliases": [],
+      "arg": "TEXT",
+      "required": false,
+      "description": "Delete fully extracted intermediate files (whole-file chunks only). Use 'selected:<handler1,handler2>' (comma- separated) to restrict deletions to specific handlers. [default: none]",
+      "default": "none",
+      "example": "unblob --delete-extracted-files <text>"
+    },
+    {
+      "name": "--carve-suffix",
+      "short": "",
+      "aliases": [],
+      "arg": "TEXT",
+      "required": false,
+      "description": "Carve directory name is source file + this suffix. NOTE: carving is skipped when the whole file is of a known type [default: _extract]",
+      "default": "_extract",
+      "example": "unblob --carve-suffix <text>"
+    },
+    {
+      "name": "--extract-suffix",
+      "short": "",
+      "aliases": [],
+      "arg": "TEXT",
+      "required": false,
+      "description": "Extraction directory name is source file + this suffix [default: _extract]",
+      "default": "_extract",
+      "example": "unblob --extract-suffix <text>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbosity level, counting, maximum level: 3 (use: -v, -vv, -vvv)",
+      "default": "",
+      "example": "unblob --verbose"
+    },
+    {
+      "name": "--show-external-dependencies",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Shows commands needs to be available for unblob to work properly",
+      "default": "",
+      "example": "unblob --show-external-dependencies"
+    },
+    {
+      "name": "--build-handlers-doc",
+      "short": "",
+      "aliases": [],
+      "arg": "TEXT",
+      "required": false,
+      "description": "Build handlers markdown documentation",
+      "default": "",
+      "example": "unblob --build-handlers-doc <text>"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Shows unblob version",
+      "default": "",
+      "example": "unblob --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this message and exit.",
+      "default": "",
+      "example": "unblob --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "id": "maltego",
+  "name": "maltego",
+  "schema_version": 1,
+  "summary": "An open source intelligence and forensics application, enabling to easily gather information about DNS, domains, IP addresses, websites, persons, etc.",
+  "highlights": [
+    "--fontsize — set the base font size of the user interface, in points",
+    "--userdir — use specified directory to store user settings",
+    "--cachedir — use specified directory to store user cache, must be different from userdir",
+    "--nosplash — do not show the splash screen"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install maltego"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--updates",
+      "short": "-u",
+      "aliases": [],
+      "arg": "<arg>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "maltego --updates <arg>"
+    },
+    {
+      "name": "--hub",
+      "short": "-h",
+      "aliases": [],
+      "arg": "<arg>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "maltego --hub <arg>"
+    },
+    {
+      "name": "--serverHttpAllowed",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "maltego --serverHttpAllowed"
+    },
+    {
+      "name": "--cloudDebug",
+      "short": "-z",
+      "aliases": [],
+      "arg": "<arg>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "maltego --cloudDebug <arg>"
+    },
+    {
+      "name": "--cloud",
+      "short": "-c",
+      "aliases": [],
+      "arg": "<arg>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "maltego --cloud <arg>"
+    },
+    {
+      "name": "--automationPort",
+      "short": "-p",
+      "aliases": [],
+      "arg": "<arg>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "maltego --automationPort <arg>"
+    },
+    {
+      "name": "--machine",
+      "short": "-m",
+      "aliases": [],
+      "arg": "<arg>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "maltego --machine <arg>"
+    },
+    {
+      "name": "--v3ProtocolDisabled",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "maltego --v3ProtocolDisabled"
+    },
+    {
+      "name": "--import",
+      "short": "-i",
+      "aliases": [],
+      "arg": "<arg>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "maltego --import <arg>"
+    },
+    {
+      "name": "--fontsize",
+      "short": "",
+      "aliases": [],
+      "arg": "<size>",
+      "required": false,
+      "description": "set the base font size of the user interface, in points",
+      "default": "",
+      "example": "maltego --fontsize <size>"
+    },
+    {
+      "name": "--userdir",
+      "short": "",
+      "aliases": [],
+      "arg": "<path>",
+      "required": false,
+      "description": "use specified directory to store user settings",
+      "default": "",
+      "example": "maltego --userdir <path>"
+    },
+    {
+      "name": "--cachedir",
+      "short": "",
+      "aliases": [],
+      "arg": "<path>",
+      "required": false,
+      "description": "use specified directory to store user cache, must be different from userdir",
+      "default": "",
+      "example": "maltego --cachedir <path>"
+    },
+    {
+      "name": "--nosplash",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not show the splash screen",
+      "default": "",
+      "example": "maltego --nosplash"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

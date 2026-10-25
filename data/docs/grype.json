@@ -1,0 +1,61 @@
+{
+  "id": "grype",
+  "name": "grype",
+  "schema_version": 1,
+  "summary": "A vulnerability scanner for container images and filesystems.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "grype <image:tag>",
+      "explanation": "Scan a container image",
+      "source": "tldr:grype"
+    },
+    {
+      "cmd": "grype <image:tag> --output <json|table|cyclonedx|cyclonedx-json|sarif|template>",
+      "explanation": "Scan an image and display results in a specific format",
+      "source": "tldr:grype"
+    },
+    {
+      "cmd": "grype <image:tag> --only-fixed",
+      "explanation": "Scan an image, ignoring unfixed vulnerabilities",
+      "source": "tldr:grype"
+    },
+    {
+      "cmd": "grype <image:tag> --fail-on <negligible|low|medium|high|critical>",
+      "explanation": "Scan an image and fail on vulnerabilities with a severity at or above the given level",
+      "source": "tldr:grype"
+    },
+    {
+      "cmd": "grype <path/to/directory> --file <path/to/report>",
+      "explanation": "Scan a local directory and save the report to a file",
+      "source": "tldr:grype"
+    },
+    {
+      "cmd": "grype db update",
+      "explanation": "Update the vulnerability database",
+      "source": "tldr:grype"
+    },
+    {
+      "cmd": "grype db status",
+      "explanation": "Display the current database status",
+      "source": "tldr:grype"
+    },
+    {
+      "cmd": "grype --help",
+      "explanation": "Display help",
+      "source": "tldr:grype"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/grype.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

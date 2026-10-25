@@ -1,0 +1,136 @@
+{
+  "id": "s3scanner",
+  "name": "s3scanner",
+  "schema_version": 1,
+  "summary": "A tool to find open S3 buckets in AWS or other cloud providers.",
+  "highlights": [
+    "-bucket — string Name of bucket to check.",
+    "-bucket-file — string File of bucket names to check.",
+    "-mq — Connect to RabbitMQ to get buckets. Requires config file key \"mq\". Default: \"false\"",
+    "-db — Save results to a Postgres database. Requires config file key \"db.uri\". Default: \"false\"",
+    "-json — Print logs to stdout in JSON format instead of human-readable. Default: \"false\"",
+    "-enumerate — Enumerate bucket objects (can be time-consuming). Default: \"false\"",
+    "-provider — string Object storage provider: aws, custom, digitalocean, dreamhost, gcp, linode - custom",
+    "-threads — int Number of threads to scan with. Default: \"4\""
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install s3scanner"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-bucket",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "string Name of bucket to check.",
+      "default": "",
+      "example": "s3scanner -bucket"
+    },
+    {
+      "name": "-bucket-file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "string File of bucket names to check.",
+      "default": "",
+      "example": "s3scanner -bucket-file"
+    },
+    {
+      "name": "-mq",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Connect to RabbitMQ to get buckets. Requires config file key \"mq\". Default: \"false\"",
+      "default": "",
+      "example": "s3scanner -mq"
+    },
+    {
+      "name": "-db",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Save results to a Postgres database. Requires config file key \"db.uri\". Default: \"false\"",
+      "default": "",
+      "example": "s3scanner -db"
+    },
+    {
+      "name": "-json",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print logs to stdout in JSON format instead of human-readable. Default: \"false\"",
+      "default": "",
+      "example": "s3scanner -json"
+    },
+    {
+      "name": "-enumerate",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enumerate bucket objects (can be time-consuming). Default: \"false\"",
+      "default": "",
+      "example": "s3scanner -enumerate"
+    },
+    {
+      "name": "-provider",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "string Object storage provider: aws, custom, digitalocean, dreamhost, gcp, linode - custom requires config file. Default: \"aws\"",
+      "default": "",
+      "example": "s3scanner -provider"
+    },
+    {
+      "name": "-threads",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "int Number of threads to scan with. Default: \"4\"",
+      "default": "",
+      "example": "s3scanner -threads"
+    },
+    {
+      "name": "-verbose",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable verbose logging. Default: \"false\"",
+      "default": "",
+      "example": "s3scanner -verbose"
+    },
+    {
+      "name": "-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version Default: \"false\"",
+      "default": "",
+      "example": "s3scanner -version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

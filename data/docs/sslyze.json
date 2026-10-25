@@ -1,0 +1,396 @@
+{
+  "id": "sslyze",
+  "name": "sslyze",
+  "schema_version": 1,
+  "summary": "Python tool for analyzing the configuration of SSL servers and for identifying misconfigurations.",
+  "highlights": [
+    "--custom_tls_config — Path to a JSON file containing a specific TLS configuration to check the server against, f",
+    "--mozilla_config — Shortcut to queue various scan commands needed to check the server's TLS configurations ag",
+    "--update_trust_stores — Update the default trust stores used by SSLyze. The latest stores will be downloaded from ",
+    "--cert — Client certificate chain filename. The certificates must be in PEM format and must be sort",
+    "--key — Client private key filename.",
+    "--keyform — Client private key format. DER or PEM (default).",
+    "--pass — Client private key passphrase.",
+    "--json_out — Write the scan results as a JSON document to the file JSON_FILE. If JSON_FILE is set to '-"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sslyze"
+    }
+  ],
+  "usage": "sslyze [-h] [--update_trust_stores] [--cert CERTIFICATE_FILE]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "sslyze --help"
+    },
+    {
+      "name": "--custom_tls_config",
+      "short": "",
+      "aliases": [],
+      "arg": "CUSTOM_TLS_CONFIG",
+      "required": false,
+      "description": "Path to a JSON file containing a specific TLS configuration to check the server against, following Mozilla's format. Cannot be used with --mozilla_config.",
+      "default": "",
+      "example": "sslyze --custom_tls_config <custom_tls_config>"
+    },
+    {
+      "name": "--mozilla_config",
+      "short": "",
+      "aliases": [],
+      "arg": "{modern,intermediate,old,disable}",
+      "required": false,
+      "description": "Shortcut to queue various scan commands needed to check the server's TLS configurations against one of Mozilla's recommended TLS configurations. Set to \"intermediate\" by default. Use \"disable\" to disable this check.",
+      "default": "",
+      "example": "sslyze --mozilla_config <modern,intermediate,old,disable>"
+    },
+    {
+      "name": "--update_trust_stores",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update the default trust stores used by SSLyze. The latest stores will be downloaded from https://github.c om/nabla-c0d3/trust_stores_observatory. This option is meant to be used separately, and will silence any other command line option supplied to SSLyze.",
+      "default": "",
+      "example": "sslyze --update_trust_stores"
+    },
+    {
+      "name": "--cert",
+      "short": "",
+      "aliases": [],
+      "arg": "CERTIFICATE_FILE",
+      "required": false,
+      "description": "Client certificate chain filename. The certificates must be in PEM format and must be sorted starting with the subject's client certificate, followed by intermediate CA certificates if applicable.",
+      "default": "",
+      "example": "sslyze --cert <certificate_file>"
+    },
+    {
+      "name": "--key",
+      "short": "",
+      "aliases": [],
+      "arg": "KEY_FILE",
+      "required": false,
+      "description": "Client private key filename.",
+      "default": "",
+      "example": "sslyze --key <key_file>"
+    },
+    {
+      "name": "--keyform",
+      "short": "",
+      "aliases": [],
+      "arg": "KEY_FORMAT",
+      "required": false,
+      "description": "Client private key format. DER or PEM (default).",
+      "default": "ault",
+      "example": "sslyze --keyform <key_format>"
+    },
+    {
+      "name": "--pass",
+      "short": "",
+      "aliases": [],
+      "arg": "PASSPHRASE",
+      "required": false,
+      "description": "Client private key passphrase.",
+      "default": "",
+      "example": "sslyze --pass <passphrase>"
+    },
+    {
+      "name": "--json_out",
+      "short": "",
+      "aliases": [],
+      "arg": "JSON_FILE",
+      "required": false,
+      "description": "Write the scan results as a JSON document to the file JSON_FILE. If JSON_FILE is set to '-', the JSON output will instead be printed to stdout. The resulting JSON file is a serialized version of the ScanResult objects described in SSLyze's Python API: the nodes and attributes will be the same. See https://nabla- c0d3.github.io/sslyze/documentation/available-scan- commands.html for more details.",
+      "default": "",
+      "example": "sslyze --json_out <json_file>"
+    },
+    {
+      "name": "--targets_in",
+      "short": "",
+      "aliases": [],
+      "arg": "TARGET_FILE",
+      "required": false,
+      "description": "Read the list of targets to scan from the file TARGET_FILE. It should contain one host:port per line.",
+      "default": "",
+      "example": "sslyze --targets_in <target_file>"
+    },
+    {
+      "name": "--quiet",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not output anything to stdout; useful when using --json_out.",
+      "default": "",
+      "example": "sslyze --quiet"
+    },
+    {
+      "name": "--slow_connection",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Greatly reduce the number of concurrent connections initiated by SSLyze. This will make the scans slower but more reliable if the connection between your host and the server is slow, or if the server cannot handle many concurrent connections. Enable this option if you are getting a lot of timeouts or errors.",
+      "default": "",
+      "example": "sslyze --slow_connection"
+    },
+    {
+      "name": "--https_tunnel",
+      "short": "",
+      "aliases": [],
+      "arg": "PROXY_SETTINGS",
+      "required": false,
+      "description": "Tunnel all traffic to the target server(s) through an HTTP CONNECT proxy. HTTP_TUNNEL should be the proxy's URL: 'http://USER:PW@HOST:PORT/'. For proxies requiring authentication, only Basic Authentication is supported.",
+      "default": "",
+      "example": "sslyze --https_tunnel <proxy_settings>"
+    },
+    {
+      "name": "--starttls",
+      "short": "",
+      "aliases": [],
+      "arg": "PROTOCOL",
+      "required": false,
+      "description": "Perform a StartTLS handshake when connecting to the target server(s). StartTLS should be one of: auto, smtp, xmpp, xmpp_server, pop3, imap, ftp, ldap, rdp, postgres. The 'auto' option will cause SSLyze to deduce the protocol (ftp, imap, etc.) from the supplied port number, for each target server.",
+      "default": "",
+      "example": "sslyze --starttls <protocol>"
+    },
+    {
+      "name": "--xmpp_to",
+      "short": "",
+      "aliases": [],
+      "arg": "HOSTNAME",
+      "required": false,
+      "description": "Optional setting for STARTTLS XMPP. XMPP_TO should be the hostname to be put in the 'to' attribute of the XMPP stream. Default is the server's hostname.",
+      "default": "",
+      "example": "sslyze --xmpp_to <hostname>"
+    },
+    {
+      "name": "--sni",
+      "short": "",
+      "aliases": [],
+      "arg": "SERVER_NAME_INDICATION",
+      "required": false,
+      "description": "Use Server Name Indication to specify the hostname to connect to. Will only affect TLS 1.0+ connections.",
+      "default": "",
+      "example": "sslyze --sni <server_name_indication>"
+    },
+    {
+      "name": "--robot",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for the ROBOT vulnerability.",
+      "default": "",
+      "example": "sslyze --robot"
+    },
+    {
+      "name": "--certinfo",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve and analyze a server's certificate(s) to verify its validity.",
+      "default": "",
+      "example": "sslyze --certinfo"
+    },
+    {
+      "name": "--certinfo_ca_file",
+      "short": "",
+      "aliases": [],
+      "arg": "CERTINFO_CA_FILE",
+      "required": false,
+      "description": "To be used with --certinfo. Path to a file containing root certificates in PEM format that will be used to verify the validity of the server's certificate.",
+      "default": "",
+      "example": "sslyze --certinfo_ca_file <certinfo_ca_file>"
+    },
+    {
+      "name": "--sslv2",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for SSL 2.0 support.",
+      "default": "",
+      "example": "sslyze --sslv2"
+    },
+    {
+      "name": "--sslv3",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for SSL 3.0 support.",
+      "default": "",
+      "example": "sslyze --sslv3"
+    },
+    {
+      "name": "--compression",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for TLS compression support, which can be leveraged to perform a CRIME attack.",
+      "default": "",
+      "example": "sslyze --compression"
+    },
+    {
+      "name": "--http_headers",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for the presence of security-related HTTP headers.",
+      "default": "",
+      "example": "sslyze --http_headers"
+    },
+    {
+      "name": "--elliptic_curves",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for supported elliptic curves.",
+      "default": "",
+      "example": "sslyze --elliptic_curves"
+    },
+    {
+      "name": "--tlsv1",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for TLS 1.0 support.",
+      "default": "",
+      "example": "sslyze --tlsv1"
+    },
+    {
+      "name": "--reneg",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for insecure TLS renegotiation and client-initiated renegotiation.",
+      "default": "",
+      "example": "sslyze --reneg"
+    },
+    {
+      "name": "--early_data",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for TLS 1.3 early data support.",
+      "default": "",
+      "example": "sslyze --early_data"
+    },
+    {
+      "name": "--fallback",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for the TLS_FALLBACK_SCSV mechanism to prevent downgrade attacks.",
+      "default": "",
+      "example": "sslyze --fallback"
+    },
+    {
+      "name": "--ems",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for TLS Extended Master Secret extension support.",
+      "default": "",
+      "example": "sslyze --ems"
+    },
+    {
+      "name": "--tlsv1_1",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for TLS 1.1 support.",
+      "default": "",
+      "example": "sslyze --tlsv1_1"
+    },
+    {
+      "name": "--heartbleed",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for the OpenSSL Heartbleed vulnerability.",
+      "default": "",
+      "example": "sslyze --heartbleed"
+    },
+    {
+      "name": "--resum",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for TLS 1.2 session resumption support using session IDs and TLS tickets.",
+      "default": "",
+      "example": "sslyze --resum"
+    },
+    {
+      "name": "--resum_attempts",
+      "short": "",
+      "aliases": [],
+      "arg": "RESUM_ATTEMPTS",
+      "required": false,
+      "description": "To be used with --resum. Number of session resumptions (both with Session IDs and TLS Tickets) that SSLyze should attempt. The default value is 5, but a higher value such as 100 can be used to get a more accurate measure of how often session resumption succeeds or fails with the server.",
+      "default": "",
+      "example": "sslyze --resum_attempts <resum_attempts>"
+    },
+    {
+      "name": "--tlsv1_2",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for TLS 1.2 support.",
+      "default": "",
+      "example": "sslyze --tlsv1_2"
+    },
+    {
+      "name": "--tlsv1_3",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for TLS 1.3 support.",
+      "default": "",
+      "example": "sslyze --tlsv1_3"
+    },
+    {
+      "name": "--openssl_ccs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Test a server for the OpenSSL CCS Injection vulnerability (CVE-2014-0224).",
+      "default": "",
+      "example": "sslyze --openssl_ccs"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "id": "rifiuti2",
+  "name": "rifiuti2",
+  "schema_version": 1,
+  "summary": "A rewrite of rifiuti, a great tool from Foundstone folks for analyzing Windows Recycle Bin INFO2 file.",
+  "highlights": [
+    "--help-all — Show all help options",
+    "--help-format — Show output formatting options",
+    "-o — Write output to FILE",
+    "-z — Present deletion time in time zone of local system (default is UTC)",
+    "-l — Show legacy (8.3) path if available and specify its CODEPAGE"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install rifiuti2"
+    }
+  ],
+  "usage": "rifiuti2 [OPTION…] INFO2",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show help options",
+      "default": "",
+      "example": "rifiuti2 --help"
+    },
+    {
+      "name": "--help-all",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show all help options",
+      "default": "",
+      "example": "rifiuti2 --help-all"
+    },
+    {
+      "name": "--help-format",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show output formatting options",
+      "default": "",
+      "example": "rifiuti2 --help-format"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Write output to FILE",
+      "default": "",
+      "example": "rifiuti2 --output <file>"
+    },
+    {
+      "name": "--localtime",
+      "short": "-z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Present deletion time in time zone of local system (default is UTC)",
+      "default": "is UTC",
+      "example": "rifiuti2 --localtime"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version information and exit",
+      "default": "",
+      "example": "rifiuti2 --version"
+    },
+    {
+      "name": "--legacy-filename",
+      "short": "-l",
+      "aliases": [],
+      "arg": "CODEPAGE",
+      "required": false,
+      "description": "Show legacy (8.3) path if available and specify its CODEPAGE",
+      "default": "",
+      "example": "rifiuti2 --legacy-filename <codepage>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

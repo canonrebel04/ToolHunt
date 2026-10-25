@@ -1,0 +1,176 @@
+{
+  "id": "uniscan",
+  "name": "uniscan",
+  "schema_version": 1,
+  "summary": "A simple Remote File Include, Local File Include and Remote Command Execution vulnerability scanner.",
+  "highlights": [
+    "-u — <url> example: https://www.example.com/",
+    "-f — <file> list of url's",
+    "-b — Uniscan go to background",
+    "-q — Enable Directory checks",
+    "-w — Enable File checks",
+    "-e — Enable robots.txt and sitemap.xml check",
+    "-d — Enable Dynamic checks",
+    "-s — Enable Static checks"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install uniscan"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "help",
+      "default": "",
+      "example": "uniscan -h"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<url> example: https://www.example.com/",
+      "default": "",
+      "example": "uniscan -u"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<file> list of url's",
+      "default": "",
+      "example": "uniscan -f"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Uniscan go to background",
+      "default": "",
+      "example": "uniscan -b"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable Directory checks",
+      "default": "",
+      "example": "uniscan -q"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable File checks",
+      "default": "",
+      "example": "uniscan -w"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable robots.txt and sitemap.xml check",
+      "default": "",
+      "example": "uniscan -e"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable Dynamic checks",
+      "default": "",
+      "example": "uniscan -d"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable Static checks",
+      "default": "",
+      "example": "uniscan -s"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable Stress checks",
+      "default": "",
+      "example": "uniscan -r"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<dork> Bing search",
+      "default": "",
+      "example": "uniscan -i"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<dork> Google search",
+      "default": "",
+      "example": "uniscan -o"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Web fingerprint",
+      "default": "",
+      "example": "uniscan -g"
+    },
+    {
+      "name": "-j",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Server fingerprint",
+      "default": "",
+      "example": "uniscan -j"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

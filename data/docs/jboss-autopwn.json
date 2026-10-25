@@ -1,0 +1,176 @@
+{
+  "id": "jboss-autopwn",
+  "name": "jboss-autopwn",
+  "schema_version": 1,
+  "summary": "A JBoss script for obtaining remote shell access.",
+  "highlights": [
+    "-b — allow broadcasts",
+    "-G — source-routing pointer: 4, 8, 12, ...",
+    "-k — set keepalive option on socket",
+    "-l — listen mode, for inbound connects",
+    "-n — numeric-only IP addresses, no DNS",
+    "-o — hex dump of traffic",
+    "-p — local port number",
+    "-r — randomize local and remote ports"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install jboss-autopwn"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "allow broadcasts",
+      "default": "",
+      "example": "jboss-linux -b"
+    },
+    {
+      "name": "-G",
+      "short": "",
+      "aliases": [],
+      "arg": "num",
+      "required": false,
+      "description": "source-routing pointer: 4, 8, 12, ...",
+      "default": "",
+      "example": "jboss-linux -G <num>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "this cruft",
+      "default": "",
+      "example": "jboss-linux -h"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set keepalive option on socket",
+      "default": "",
+      "example": "jboss-linux -k"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "listen mode, for inbound connects",
+      "default": "",
+      "example": "jboss-linux -l"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "numeric-only IP addresses, no DNS",
+      "default": "",
+      "example": "jboss-linux -n"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "hex dump of traffic",
+      "default": "",
+      "example": "jboss-linux -o <file>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "port",
+      "required": false,
+      "description": "local port number",
+      "default": "",
+      "example": "jboss-linux -p <port>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "randomize local and remote ports",
+      "default": "",
+      "example": "jboss-linux -r"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "answer TELNET negotiation",
+      "default": "",
+      "example": "jboss-linux -t"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "UDP mode",
+      "default": "",
+      "example": "jboss-linux -u"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose [use twice to be more verbose]",
+      "default": "",
+      "example": "jboss-linux -v"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Send CRLF as line-ending",
+      "default": "",
+      "example": "jboss-linux -C"
+    },
+    {
+      "name": "-z",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "zero-I/O mode [used for scanning]",
+      "default": "",
+      "example": "jboss-linux -z"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

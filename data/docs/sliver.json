@@ -1,0 +1,78 @@
+{
+  "id": "sliver",
+  "name": "sliver",
+  "schema_version": 1,
+  "summary": "Opensource C2 framework.",
+  "highlights": [
+    "--rc — path to rc script file"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sliver"
+    }
+  ],
+  "usage": "sliver-client [flags]",
+  "subcommands": [
+    {
+      "name": "completion",
+      "description": "Generate the autocompletion script for the specified shell"
+    },
+    {
+      "name": "console",
+      "description": "Start the sliver client console"
+    },
+    {
+      "name": "help",
+      "description": "Help about any command"
+    },
+    {
+      "name": "implant",
+      "description": "Implant commands"
+    },
+    {
+      "name": "import",
+      "description": "Import a client configuration file"
+    },
+    {
+      "name": "mcp",
+      "description": "Start the MCP stdio server"
+    },
+    {
+      "name": "version",
+      "description": "Print version and exit"
+    }
+  ],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "help for sliver-client",
+      "default": "",
+      "example": "sliver-client --help"
+    },
+    {
+      "name": "--rc",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "path to rc script file",
+      "default": "",
+      "example": "sliver-client --rc <string>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "id": "sublist3r",
+  "name": "sublist3r",
+  "schema_version": 1,
+  "summary": "A Fast subdomains enumeration tool for penetration testers.",
+  "highlights": [
+    "-d — Domain name to enumerate it's subdomains",
+    "-b — Enable the subbrute bruteforce module",
+    "-p — Scan the found subdomains against specified tcp ports",
+    "-v — Enable Verbosity and display results in realtime",
+    "-t — Number of threads to use for subbrute bruteforce",
+    "-e — Specify a comma-separated list of search engines",
+    "-o — Save the results to text file",
+    "-n — Output without color"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sublist3r"
+    }
+  ],
+  "usage": "sublist3r [-h] -d DOMAIN [-b [BRUTEFORCE]] [-p PORTS] [-v [VERBOSE]]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "sublist3r --help"
+    },
+    {
+      "name": "--domain",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Domain name to enumerate it's subdomains",
+      "default": "",
+      "example": "sublist3r --domain <domain>"
+    },
+    {
+      "name": "--bruteforce",
+      "short": "-b",
+      "aliases": [],
+      "arg": "[BRUTEFORCE]",
+      "required": false,
+      "description": "Enable the subbrute bruteforce module",
+      "default": "",
+      "example": "sublist3r --bruteforce <bruteforce>"
+    },
+    {
+      "name": "--ports",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PORTS",
+      "required": false,
+      "description": "Scan the found subdomains against specified tcp ports",
+      "default": "",
+      "example": "sublist3r --ports <ports>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "[VERBOSE]",
+      "required": false,
+      "description": "Enable Verbosity and display results in realtime",
+      "default": "",
+      "example": "sublist3r --verbose <verbose>"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "Number of threads to use for subbrute bruteforce",
+      "default": "",
+      "example": "sublist3r --threads <threads>"
+    },
+    {
+      "name": "--engines",
+      "short": "-e",
+      "aliases": [],
+      "arg": "ENGINES",
+      "required": false,
+      "description": "Specify a comma-separated list of search engines",
+      "default": "",
+      "example": "sublist3r --engines <engines>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "Save the results to text file",
+      "default": "",
+      "example": "sublist3r --output <output>"
+    },
+    {
+      "name": "--no-color",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output without color",
+      "default": "",
+      "example": "sublist3r --no-color"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "sublist3r --domain <domain_name>",
+      "explanation": "Find subdomains for a domain",
+      "source": "tldr:sublist3r"
+    },
+    {
+      "cmd": "sublist3r --domain <domain_name> --bruteforce",
+      "explanation": "Find subdomains for a domain, also enabling brute force search",
+      "source": "tldr:sublist3r"
+    },
+    {
+      "cmd": "sublist3r --domain <domain_name> --output <path/to/output_file>",
+      "explanation": "Save the found subdomains to a text file",
+      "source": "tldr:sublist3r"
+    },
+    {
+      "cmd": "sublist3r --help",
+      "explanation": "Display help",
+      "source": "tldr:sublist3r"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/sublist3r.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

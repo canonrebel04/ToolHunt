@@ -1,0 +1,156 @@
+{
+  "id": "rtlsdr-scanner",
+  "name": "rtlsdr-scanner",
+  "schema_version": 1,
+  "summary": "A cross platform Python frequency scanning GUI for the OsmoSDR rtl-sdr library.",
+  "highlights": [
+    "-s — Start frequency (MHz)",
+    "-e — End frequency (MHz)",
+    "-w — Number of sweeps",
+    "-p — Delay between sweeps (s)",
+    "-g — Gain (dB)",
+    "-d — Dwell time (seconds)",
+    "-f — FFT bins",
+    "-l — Local oscillator offset"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install rtlsdr-scanner"
+    }
+  ],
+  "usage": "rtlsdr_scan.py [-h] [-s START] [-e END] [-w SWEEPS] [-p DELAY]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "rtlsdr-scanner --help"
+    },
+    {
+      "name": "--start",
+      "short": "-s",
+      "aliases": [],
+      "arg": "START",
+      "required": false,
+      "description": "Start frequency (MHz)",
+      "default": "",
+      "example": "rtlsdr-scanner --start <start>"
+    },
+    {
+      "name": "--end",
+      "short": "-e",
+      "aliases": [],
+      "arg": "END",
+      "required": false,
+      "description": "End frequency (MHz)",
+      "default": "",
+      "example": "rtlsdr-scanner --end <end>"
+    },
+    {
+      "name": "--sweeps",
+      "short": "-w",
+      "aliases": [],
+      "arg": "SWEEPS",
+      "required": false,
+      "description": "Number of sweeps",
+      "default": "",
+      "example": "rtlsdr-scanner --sweeps <sweeps>"
+    },
+    {
+      "name": "--delay",
+      "short": "-p",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "Delay between sweeps (s)",
+      "default": "",
+      "example": "rtlsdr-scanner --delay <delay>"
+    },
+    {
+      "name": "--gain",
+      "short": "-g",
+      "aliases": [],
+      "arg": "GAIN",
+      "required": false,
+      "description": "Gain (dB)",
+      "default": "",
+      "example": "rtlsdr-scanner --gain <gain>"
+    },
+    {
+      "name": "--dwell",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DWELL",
+      "required": false,
+      "description": "Dwell time (seconds)",
+      "default": "",
+      "example": "rtlsdr-scanner --dwell <dwell>"
+    },
+    {
+      "name": "--fft",
+      "short": "-f",
+      "aliases": [],
+      "arg": "FFT",
+      "required": false,
+      "description": "FFT bins",
+      "default": "",
+      "example": "rtlsdr-scanner --fft <fft>"
+    },
+    {
+      "name": "--lo",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LO",
+      "required": false,
+      "description": "Local oscillator offset",
+      "default": "",
+      "example": "rtlsdr-scanner --lo <lo>"
+    },
+    {
+      "name": "--conf",
+      "short": "-c",
+      "aliases": [],
+      "arg": "CONF",
+      "required": false,
+      "description": "Load a config file",
+      "default": "",
+      "example": "rtlsdr-scanner --conf <conf>"
+    },
+    {
+      "name": "--index",
+      "short": "-i",
+      "aliases": [],
+      "arg": "INDEX",
+      "required": false,
+      "description": "Device index (from 0)",
+      "default": "",
+      "example": "rtlsdr-scanner --index <index>"
+    },
+    {
+      "name": "--remote",
+      "short": "-r",
+      "aliases": [],
+      "arg": "REMOTE",
+      "required": false,
+      "description": "Server IP and port",
+      "default": "",
+      "example": "rtlsdr-scanner --remote <remote>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

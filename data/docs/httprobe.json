@@ -1,0 +1,106 @@
+{
+  "id": "httprobe",
+  "name": "httprobe",
+  "schema_version": 1,
+  "summary": "Take a list of domains and probe for working HTTP and HTTPS servers",
+  "highlights": [
+    "-c — set the concurrency level (split equally between HTTPS and HTTP requests) (default 20)",
+    "-method — HTTP method to use (default \"GET\")",
+    "-p — add additional probe (proto:port)",
+    "-prefer-https — only try plain HTTP if HTTPS fails",
+    "-s — skip the default probes (http:80 and https:443)",
+    "-t — timeout (milliseconds) (default 10000)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install httprobe"
+    }
+  ],
+  "usage": "of httprobe:",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "set the concurrency level (split equally between HTTPS and HTTP requests) (default 20)",
+      "default": "20",
+      "example": "httprobe -c <int>"
+    },
+    {
+      "name": "-method",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "HTTP method to use (default \"GET\")",
+      "default": "GET",
+      "example": "httprobe -method <string>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "value",
+      "required": false,
+      "description": "add additional probe (proto:port)",
+      "default": "",
+      "example": "httprobe -p <value>"
+    },
+    {
+      "name": "-prefer-https",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "only try plain HTTP if HTTPS fails",
+      "default": "",
+      "example": "httprobe -prefer-https"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "skip the default probes (http:80 and https:443)",
+      "default": "",
+      "example": "httprobe -s"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "timeout (milliseconds) (default 10000)",
+      "default": "10000",
+      "example": "httprobe -t <int>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "cat <input_file> | httprobe",
+      "explanation": "Probe a list of domains from a text file",
+      "source": "tldr:httprobe"
+    },
+    {
+      "cmd": "cat <input_file> | httprobe -p <https:2222>",
+      "explanation": "Probe additional ports with a given protocol",
+      "source": "tldr:httprobe"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/httprobe.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

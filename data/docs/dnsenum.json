@@ -1,0 +1,206 @@
+{
+  "id": "dnsenum",
+  "name": "dnsenum",
+  "schema_version": 1,
+  "summary": "Script that enumerates DNS information from a domain, attempts zone transfers, performs a brute force dictionary style attack, and then performs reverse look-ups on the results.",
+  "highlights": [
+    "--dnsserver — <server> Use this DNS server for A, NS and MX queries.",
+    "--enum — Shortcut option equivalent to --threads 5 -s 15 -w.",
+    "--noreverse — Skip the reverse lookup operations.",
+    "--nocolor — Disable ANSIColor output.",
+    "--private — Show and save private ips at the end of the file domain_ips.txt.",
+    "--subfile — Write all valid subdomains to this file.",
+    "--threads — The number of threads that will perform different queries.",
+    "-v — Be verbose: show all the progress and all the error messages."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dnsenum"
+    }
+  ],
+  "usage": "dnsenum [Options] <domain>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--dnsserver",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<server> Use this DNS server for A, NS and MX queries.",
+      "default": "",
+      "example": "dnsenum --dnsserver"
+    },
+    {
+      "name": "--enum",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Shortcut option equivalent to --threads 5 -s 15 -w.",
+      "default": "",
+      "example": "dnsenum --enum"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print this help message.",
+      "default": "",
+      "example": "dnsenum --help"
+    },
+    {
+      "name": "--noreverse",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip the reverse lookup operations.",
+      "default": "",
+      "example": "dnsenum --noreverse"
+    },
+    {
+      "name": "--nocolor",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable ANSIColor output.",
+      "default": "",
+      "example": "dnsenum --nocolor"
+    },
+    {
+      "name": "--private",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show and save private ips at the end of the file domain_ips.txt.",
+      "default": "",
+      "example": "dnsenum --private"
+    },
+    {
+      "name": "--subfile",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Write all valid subdomains to this file.",
+      "default": "",
+      "example": "dnsenum --subfile <file>"
+    },
+    {
+      "name": "--threads",
+      "short": "",
+      "aliases": [],
+      "arg": "<value>",
+      "required": false,
+      "description": "The number of threads that will perform different queries.",
+      "default": "",
+      "example": "dnsenum --threads <value>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Be verbose: show all the progress and all the error messages.",
+      "default": "",
+      "example": "dnsenum --verbose"
+    },
+    {
+      "name": "--pages",
+      "short": "-p",
+      "aliases": [],
+      "arg": "<value>",
+      "required": false,
+      "description": "The number of google search pages to process when scraping names, the default is 5 pages, the -s switch must be specified.",
+      "default": "",
+      "example": "dnsenum --pages <value>"
+    },
+    {
+      "name": "--scrap",
+      "short": "-s",
+      "aliases": [],
+      "arg": "<value>",
+      "required": false,
+      "description": "The maximum number of subdomains that will be scraped from Google (default 15).",
+      "default": "15",
+      "example": "dnsenum --scrap <value>"
+    },
+    {
+      "name": "--file",
+      "short": "-f",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Read subdomains from this file to perform brute force. (Takes priority over default dns.txt)",
+      "default": "",
+      "example": "dnsenum --file <file>"
+    },
+    {
+      "name": "--update",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<a|g|r|z> Update the file specified with the -f switch with valid subdomains. a (all) Update using all results. g Update using only google scraping results. r Update using only reverse lookup results. z Update using only zonetransfer results.",
+      "default": "",
+      "example": "dnsenum --update"
+    },
+    {
+      "name": "--recursion",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Recursion on subdomains, brute force all discovered subdomains that have an NS record.",
+      "default": "",
+      "example": "dnsenum --recursion"
+    },
+    {
+      "name": "--delay",
+      "short": "-d",
+      "aliases": [],
+      "arg": "<value>",
+      "required": false,
+      "description": "The maximum value of seconds to wait between whois queries, the value is defined randomly, default: 3s.",
+      "default": "",
+      "example": "dnsenum --delay <value>"
+    },
+    {
+      "name": "--whois",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform the whois queries on c class network ranges. **Warning**: this can generate very large netranges and it will take lot of time to perform reverse lookups.",
+      "default": "",
+      "example": "dnsenum --whois"
+    },
+    {
+      "name": "--exclude",
+      "short": "-e",
+      "aliases": [],
+      "arg": "<regexp>",
+      "required": false,
+      "description": "Exclude PTR records that match the regexp expression from reverse lookup results, useful on invalid hostnames.",
+      "default": "",
+      "example": "dnsenum --exclude <regexp>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

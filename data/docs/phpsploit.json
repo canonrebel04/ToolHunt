@@ -1,0 +1,114 @@
+{
+  "id": "phpsploit",
+  "name": "phpsploit",
+  "schema_version": 1,
+  "summary": "Stealth post-exploitation framework.",
+  "highlights": [
+    "-c — use alternative configuration file",
+    "-l — load session file",
+    "-t — set remote TARGET URL",
+    "-s — run commands from file (disables interactive mode)",
+    "-e — run phpsploit command (disables interactive mode)",
+    "-i — force interactive mode if unset by `-e` or `-s`"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install phpsploit"
+    }
+  ],
+  "usage": "phpsploit [-h] [-v] [-c <FILE>] [-l <SESSION>] [-t <URL>] [-s <FILE>]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "phpsploit --help"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "output version information and exit",
+      "default": "",
+      "example": "phpsploit --version"
+    },
+    {
+      "name": "--config",
+      "short": "-c",
+      "aliases": [],
+      "arg": "<FILE>",
+      "required": false,
+      "description": "use alternative configuration file",
+      "default": "",
+      "example": "phpsploit --config <FILE>"
+    },
+    {
+      "name": "--load",
+      "short": "-l",
+      "aliases": [],
+      "arg": "<SESSION>",
+      "required": false,
+      "description": "load session file",
+      "default": "",
+      "example": "phpsploit --load <SESSION>"
+    },
+    {
+      "name": "--target",
+      "short": "-t",
+      "aliases": [],
+      "arg": "<URL>",
+      "required": false,
+      "description": "set remote TARGET URL",
+      "default": "",
+      "example": "phpsploit --target <URL>"
+    },
+    {
+      "name": "--source",
+      "short": "-s",
+      "aliases": [],
+      "arg": "<FILE>",
+      "required": false,
+      "description": "run commands from file (disables interactive mode)",
+      "default": "",
+      "example": "phpsploit --source <FILE>"
+    },
+    {
+      "name": "--eval",
+      "short": "-e",
+      "aliases": [],
+      "arg": "<CMD>",
+      "required": false,
+      "description": "run phpsploit command (disables interactive mode)",
+      "default": "",
+      "example": "phpsploit --eval <CMD>"
+    },
+    {
+      "name": "--interactive",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "force interactive mode if unset by `-e` or `-s`",
+      "default": "",
+      "example": "phpsploit --interactive"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

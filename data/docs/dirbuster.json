@@ -1,0 +1,163 @@
+{
+  "id": "dirbuster",
+  "name": "dirbuster",
+  "schema_version": 1,
+  "summary": "An application designed to brute force directories and files names on web/application servers",
+  "highlights": [
+    "-l — The Word list to use for the list based brute force. Default: /home/kali/kali-www/bin/kali",
+    "-g — Only use GET requests. Default Not Set",
+    "-e — File Extention list eg asp,aspx. Default: php",
+    "-t — Number of connection threads to use. Default: 10",
+    "-s — Start point of the scan. Default: /",
+    "-P — Don't Parse html, Default: Not Set",
+    "-R — Don't be recursive, Default: Not Set",
+    "-r — File to save report to. Default: /home/kali/kali-www/bin/kali-tools/tool-output/dirbuster/"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dirbuster"
+    }
+  ],
+  "usage": "java -jar DirBuster-1.0-RC1 -u <URL http://example.com/> [Options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display this help message",
+      "default": "",
+      "example": "dirbuster -h"
+    },
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Start DirBuster in headless mode (no gui), report will be auto saved on exit",
+      "default": "",
+      "example": "dirbuster -H"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "<Word list to use>",
+      "required": false,
+      "description": "The Word list to use for the list based brute force. Default: /home/kali/kali-www/bin/kali-tools/tool-output/dirbuster/directory-list-2.3-small.txt",
+      "default": "",
+      "example": "dirbuster -l <Word list to use>"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only use GET requests. Default Not Set",
+      "default": "",
+      "example": "dirbuster -g"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "<File Extention list>",
+      "required": false,
+      "description": "File Extention list eg asp,aspx. Default: php",
+      "default": "",
+      "example": "dirbuster -e <File Extention list>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<Number of Threads>",
+      "required": false,
+      "description": "Number of connection threads to use. Default: 10",
+      "default": "",
+      "example": "dirbuster -t <Number of Threads>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "<Start point>",
+      "required": false,
+      "description": "Start point of the scan. Default: /",
+      "default": "",
+      "example": "dirbuster -s <Start point>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose output, Default: Not set",
+      "default": "",
+      "example": "dirbuster -v"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't Parse html, Default: Not Set",
+      "default": "",
+      "example": "dirbuster -P"
+    },
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't be recursive, Default: Not Set",
+      "default": "",
+      "example": "dirbuster -R"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<location>",
+      "required": false,
+      "description": "File to save report to. Default: /home/kali/kali-www/bin/kali-tools/tool-output/dirbuster/DirBuster-Report-[hostname]-[port].txt",
+      "default": "",
+      "example": "dirbuster -r <location>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "dirbuster -e <txt,html>",
+      "explanation": "Set the file extension list",
+      "source": "tldr:dirbuster"
+    },
+    {
+      "cmd": "dirbuster -v",
+      "explanation": "Enable verbose output",
+      "source": "tldr:dirbuster"
+    },
+    {
+      "cmd": "dirbuster -r <path/to/report.txt>",
+      "explanation": "Set the report location",
+      "source": "tldr:dirbuster"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/dirbuster.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "galleta",
+  "name": "galleta",
+  "schema_version": 1,
+  "summary": "Examine the contents of the IE's cookie files for forensic purposes",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install galleta"
+    }
+  ],
+  "usage": "galleta [options] <filename>",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

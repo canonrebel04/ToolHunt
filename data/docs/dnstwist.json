@@ -1,0 +1,236 @@
+{
+  "id": "dnstwist",
+  "name": "dnstwist",
+  "schema_version": 1,
+  "summary": "Domain name permutation engine for detecting typo squatting, phishing and corporate espionage.",
+  "highlights": [
+    "-a — Print all DNS records instead of the first ones",
+    "-b — Determine HTTP and SMTP service banners",
+    "-d — Generate more domains using dictionary FILE",
+    "-f — Output format: cli, csv, json, list (default: cli)",
+    "--fuzzers — Use only selected fuzzing algorithms (separated with commas)",
+    "-g — Lookup for GeoIP location",
+    "--lsh — Evaluate web page similarity with LSH algorithm: ssdeep, tlsh (default: ssdeep)",
+    "--lsh-url — Override URL to fetch the original web page from"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dnstwist"
+    }
+  ],
+  "usage": "/usr/bin/dnstwist [OPTION]... DOMAIN",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--all",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print all DNS records instead of the first ones",
+      "default": "",
+      "example": "dnstwist --all"
+    },
+    {
+      "name": "--banners",
+      "short": "-b",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Determine HTTP and SMTP service banners",
+      "default": "",
+      "example": "dnstwist --banners"
+    },
+    {
+      "name": "--dictionary",
+      "short": "-d",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Generate more domains using dictionary FILE",
+      "default": "",
+      "example": "dnstwist --dictionary <file>"
+    },
+    {
+      "name": "--format",
+      "short": "-f",
+      "aliases": [],
+      "arg": "FORMAT",
+      "required": false,
+      "description": "Output format: cli, csv, json, list (default: cli)",
+      "default": "cli",
+      "example": "dnstwist --format <format>"
+    },
+    {
+      "name": "--fuzzers",
+      "short": "",
+      "aliases": [],
+      "arg": "LIST",
+      "required": false,
+      "description": "Use only selected fuzzing algorithms (separated with commas)",
+      "default": "",
+      "example": "dnstwist --fuzzers <list>"
+    },
+    {
+      "name": "--geoip",
+      "short": "-g",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Lookup for GeoIP location",
+      "default": "",
+      "example": "dnstwist --geoip"
+    },
+    {
+      "name": "--lsh",
+      "short": "",
+      "aliases": [],
+      "arg": "[LSH]",
+      "required": false,
+      "description": "Evaluate web page similarity with LSH algorithm: ssdeep, tlsh (default: ssdeep)",
+      "default": "ssdeep",
+      "example": "dnstwist --lsh <lsh>"
+    },
+    {
+      "name": "--lsh-url",
+      "short": "",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Override URL to fetch the original web page from",
+      "default": "",
+      "example": "dnstwist --lsh-url <url>"
+    },
+    {
+      "name": "--mxcheck",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check if MX host can be used to intercept emails",
+      "default": "",
+      "example": "dnstwist --mxcheck"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Save output to FILE",
+      "default": "",
+      "example": "dnstwist --output <file>"
+    },
+    {
+      "name": "--registered",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show only registered domain names",
+      "default": "",
+      "example": "dnstwist --registered"
+    },
+    {
+      "name": "--unregistered",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show only unregistered domain names",
+      "default": "",
+      "example": "dnstwist --unregistered"
+    },
+    {
+      "name": "--phash",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Render web pages and evaluate visual similarity",
+      "default": "",
+      "example": "dnstwist --phash"
+    },
+    {
+      "name": "--phash-url",
+      "short": "",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Override URL to render the original web page from",
+      "default": "",
+      "example": "dnstwist --phash-url <url>"
+    },
+    {
+      "name": "--screenshots",
+      "short": "",
+      "aliases": [],
+      "arg": "DIR",
+      "required": false,
+      "description": "Save web page screenshots into DIR",
+      "default": "",
+      "example": "dnstwist --screenshots <dir>"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Start specified NUM of threads (default: 10)",
+      "default": "10",
+      "example": "dnstwist --threads <num>"
+    },
+    {
+      "name": "--whois",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Lookup WHOIS database for creation date and registrar",
+      "default": "",
+      "example": "dnstwist --whois"
+    },
+    {
+      "name": "--tld",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Swap TLD for the original domain from FILE",
+      "default": "",
+      "example": "dnstwist --tld <file>"
+    },
+    {
+      "name": "--nameservers",
+      "short": "",
+      "aliases": [],
+      "arg": "LIST",
+      "required": false,
+      "description": "DNS or DoH servers to query (separated with commas)",
+      "default": "",
+      "example": "dnstwist --nameservers <list>"
+    },
+    {
+      "name": "--useragent",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "Set User-Agent STRING (default: Mozilla/5.0 (linux 64-bit) dnstwist/20250130)",
+      "default": "Mozilla/5.0 (linux 64-bit",
+      "example": "dnstwist --useragent <string>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

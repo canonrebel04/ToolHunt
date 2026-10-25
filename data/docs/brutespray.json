@@ -1,0 +1,176 @@
+{
+  "id": "brutespray",
+  "name": "brutespray",
+  "schema_version": 1,
+  "summary": "Brute-Forcing from Nmap output - Automatically attempts default creds on found services.",
+  "highlights": [
+    "-C — Specify a combo wordlist deiminated by ':', example: user1:password",
+    "-P — Print found hosts parsed from provided host and file arguments",
+    "-S — List all supported services",
+    "-T — Number of hosts to bruteforce at the same time (default 5)",
+    "-f — File to parse; Supported: Nmap, Nessus, Nexpose, Lists, etc",
+    "-o — Directory containing successful attempts (default \"brutespray-output\")",
+    "-p — Password or password file to use for bruteforce",
+    "-q — Suppress the banner"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install brutespray"
+    }
+  ],
+  "usage": "of brutespray:",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Specify a combo wordlist deiminated by ':', example: user1:password",
+      "default": "",
+      "example": "brutespray -C <string>"
+    },
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Target in the format service://host:port, CIDR ranges supported, default port will be used if not specified",
+      "default": "",
+      "example": "brutespray -H <string>"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print found hosts parsed from provided host and file arguments",
+      "default": "",
+      "example": "brutespray -P"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List all supported services",
+      "default": "",
+      "example": "brutespray -S"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Number of hosts to bruteforce at the same time (default 5)",
+      "default": "5",
+      "example": "brutespray -T <int>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "File to parse; Supported: Nmap, Nessus, Nexpose, Lists, etc",
+      "default": "",
+      "example": "brutespray -f <string>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Directory containing successful attempts (default \"brutespray-output\")",
+      "default": "brutespray-output",
+      "example": "brutespray -o <string>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Password or password file to use for bruteforce",
+      "default": "",
+      "example": "brutespray -p <string>"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Suppress the banner",
+      "default": "",
+      "example": "brutespray -q"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Amount of times to retry after receiving connection failed (default 3)",
+      "default": "3",
+      "example": "brutespray -r <int>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Service type: ssh, ftp, smtp, etc; Default all (default \"all\")",
+      "default": "all",
+      "example": "brutespray -s <string>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Number of threads to use (default 10)",
+      "default": "10",
+      "example": "brutespray -t <int>"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Username or user list to bruteforce",
+      "default": "",
+      "example": "brutespray -u <string>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "duration",
+      "required": false,
+      "description": "Set timeout of bruteforce attempts (default 5s)",
+      "default": "5s",
+      "example": "brutespray -w <duration>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

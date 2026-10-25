@@ -1,0 +1,226 @@
+{
+  "id": "plecost",
+  "name": "plecost",
+  "schema_version": 1,
+  "summary": "Wordpress finger printer Tool.",
+  "highlights": [
+    "-v — verbosity level: -v, -vv, -vvv.",
+    "-o — report file with extension: xml|json",
+    "--hostname — set custom hostname for the HTTP request",
+    "-np — do not try to find plugins versions",
+    "-nc — do not check Wordpress connectivity",
+    "-nv — do not check Wordpress version",
+    "-f — force to scan even although not wordpress installation detected",
+    "-j — jackass mode: unlimited connections to remote host"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install plecost"
+    }
+  ],
+  "usage": "plecost [-h] [-v] [-o OUTPUT_FILE] [--hostname HOSTNAME] [-np] [-nc]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "plecost --help"
+    },
+    {
+      "name": "--verbosity",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbosity level: -v, -vv, -vvv.",
+      "default": "",
+      "example": "plecost --verbosity"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "OUTPUT_FILE",
+      "required": false,
+      "description": "report file with extension: xml|json",
+      "default": "",
+      "example": "plecost -o <output_file>"
+    },
+    {
+      "name": "--hostname",
+      "short": "",
+      "aliases": [],
+      "arg": "HOSTNAME",
+      "required": false,
+      "description": "set custom hostname for the HTTP request",
+      "default": "",
+      "example": "plecost --hostname <hostname>"
+    },
+    {
+      "name": "--no-plugins",
+      "short": "-np",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not try to find plugins versions",
+      "default": "",
+      "example": "plecost --no-plugins"
+    },
+    {
+      "name": "--no-check-wordpress",
+      "short": "-nc",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not check Wordpress connectivity",
+      "default": "",
+      "example": "plecost --no-check-wordpress"
+    },
+    {
+      "name": "--no-wordpress-version",
+      "short": "-nv",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not check Wordpress version",
+      "default": "",
+      "example": "plecost --no-wordpress-version"
+    },
+    {
+      "name": "--force-scan",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "force to scan even although not wordpress installation detected",
+      "default": "",
+      "example": "plecost --force-scan"
+    },
+    {
+      "name": "--jackass-modes",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "jackass mode: unlimited connections to remote host",
+      "default": "",
+      "example": "plecost --jackass-modes"
+    },
+    {
+      "name": "--wordlist",
+      "short": "-w",
+      "aliases": [],
+      "arg": "WORDLIST",
+      "required": false,
+      "description": "set custom word list. Default 200 most common",
+      "default": "",
+      "example": "plecost --wordlist <wordlist>"
+    },
+    {
+      "name": "--list-wordlist",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "list embedded available word list",
+      "default": "",
+      "example": "plecost --list-wordlist"
+    },
+    {
+      "name": "--concurrency",
+      "short": "-c",
+      "aliases": [],
+      "arg": "CONCURRENCY",
+      "required": false,
+      "description": "number of parallel processes.",
+      "default": "",
+      "example": "plecost --concurrency <concurrency>"
+    },
+    {
+      "name": "-nb",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't display banner",
+      "default": "",
+      "example": "plecost -nb"
+    },
+    {
+      "name": "--update-cve",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update CVE database.",
+      "default": "",
+      "example": "plecost --update-cve"
+    },
+    {
+      "name": "--update-plugins",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update plugins.",
+      "default": "",
+      "example": "plecost --update-plugins"
+    },
+    {
+      "name": "--update-all",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update CVE, plugins, and core.",
+      "default": "",
+      "example": "plecost --update-all"
+    },
+    {
+      "name": "--show-plugins",
+      "short": "-sp",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display plugins in database",
+      "default": "",
+      "example": "plecost --show-plugins"
+    },
+    {
+      "name": "--plugin-cves",
+      "short": "-vp",
+      "aliases": [],
+      "arg": "SHOW_PLUGIN_CVES",
+      "required": false,
+      "description": "display CVEs for plugin",
+      "default": "",
+      "example": "plecost --plugin-cves <show_plugin_cves>"
+    },
+    {
+      "name": "--cve",
+      "short": "",
+      "aliases": [],
+      "arg": "CVE_DETAILS",
+      "required": false,
+      "description": "display details of CVE",
+      "default": "",
+      "example": "plecost --cve <cve_details>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

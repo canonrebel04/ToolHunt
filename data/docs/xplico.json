@@ -1,0 +1,26 @@
+{
+  "id": "xplico",
+  "name": "xplico",
+  "schema_version": 1,
+  "summary": "Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT).",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install xplico"
+    }
+  ],
+  "usage": "xplico [-v] [-c <config_file>] [-h] [-s] [-g] [-l] [-i <prot>] -m <capute_module>",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "cariddi",
+  "name": "cariddi",
+  "schema_version": 1,
+  "summary": "Take a list of domains, crawl urls and scan for endpoints, secrets, api keys, file extensions, token.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "cat <path/to/urls.txt> | cariddi -s -sf <path/to/custom_secrets.txt> -json",
+      "explanation": "Hunt for secrets using custom `regex`es and output results in JSON",
+      "source": "tldr:cariddi"
+    },
+    {
+      "cmd": "cat <path/to/urls.txt> | cariddi -e -c <250> -t <15> -plain",
+      "explanation": "Hunt for juicy endpoints with high concurrency and timeout with plain output results",
+      "source": "tldr:cariddi"
+    },
+    {
+      "cmd": "cat <path/to/urls.txt> | cariddi -debug -sr -ot <path/to/debug_output.txt>",
+      "explanation": "Crawl with debug mode and store HTTP responses and output results in `txt` file",
+      "source": "tldr:cariddi"
+    },
+    {
+      "cmd": "cat <path/to/urls.txt> | cariddi -intensive -proxy <http://127.0.0.1:8080> -rua -oh <path/to/intensive_crawl.html>",
+      "explanation": "Perform an intensive crawl with a proxy and random user agent and output results in `html` file",
+      "source": "tldr:cariddi"
+    },
+    {
+      "cmd": "cat <path/to/urls.txt> | cariddi -err -info -d <3> -cache",
+      "explanation": "Hunt for errors and useful information with a custom delay and use `.cariddi_cache` folder as cache",
+      "source": "tldr:cariddi"
+    },
+    {
+      "cmd": "cariddi -examples",
+      "explanation": "Show example uses",
+      "source": "tldr:cariddi"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/cariddi.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

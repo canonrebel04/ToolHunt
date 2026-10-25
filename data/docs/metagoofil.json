@@ -1,0 +1,156 @@
+{
+  "id": "metagoofil",
+  "name": "metagoofil",
+  "schema_version": 1,
+  "summary": "An information gathering tool designed for extracting metadata of public documents.",
+  "highlights": [
+    "-d — Domain to search.",
+    "-e — Delay (in seconds) between searches. If it's too small Google may block your IP, too big a",
+    "-f — Save the html links to a file. no -f = Do not save links -f = Save links to html_links_<TI",
+    "-i — Number of seconds to wait before timeout for unreachable/stale pages. Default: 15",
+    "-l — Maximum results to search. Default: 100",
+    "-n — Maximum number of files to download per filetype. Default: 100",
+    "-o — Directory to save downloaded files. Default is current working directory, \".\"",
+    "-r — Number of downloader threads. Default: 8"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install metagoofil"
+    }
+  ],
+  "usage": "metagoofil.py [-h] -d DOMAIN [-e DELAY] [-f [SAVE_FILE]]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "metagoofil --help"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Domain to search.",
+      "default": "",
+      "example": "metagoofil -d <domain>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "Delay (in seconds) between searches. If it's too small Google may block your IP, too big and your search may take a while. Default: 30.0",
+      "default": "",
+      "example": "metagoofil -e <delay>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "[SAVE_FILE]",
+      "required": false,
+      "description": "Save the html links to a file. no -f = Do not save links -f = Save links to html_links_<TIMESTAMP>.txt -f SAVE_FILE = Save links to SAVE_FILE",
+      "default": "",
+      "example": "metagoofil -f <save_file>"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "URL_TIMEOUT",
+      "required": false,
+      "description": "Number of seconds to wait before timeout for unreachable/stale pages. Default: 15",
+      "default": "",
+      "example": "metagoofil -i <url_timeout>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "SEARCH_MAX",
+      "required": false,
+      "description": "Maximum results to search. Default: 100",
+      "default": "",
+      "example": "metagoofil -l <search_max>"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "DOWNLOAD_FILE_LIMIT",
+      "required": false,
+      "description": "Maximum number of files to download per filetype. Default: 100",
+      "default": "",
+      "example": "metagoofil -n <download_file_limit>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "SAVE_DIRECTORY",
+      "required": false,
+      "description": "Directory to save downloaded files. Default is current working directory, \".\"",
+      "default": "",
+      "example": "metagoofil -o <save_directory>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER_OF_THREADS",
+      "required": false,
+      "description": "Number of downloader threads. Default: 8",
+      "default": "",
+      "example": "metagoofil -r <number_of_threads>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE_TYPES",
+      "required": false,
+      "description": "file_types to download (pdf,doc,xls,ppt,odp,ods,docx,xlsx,pptx). To search all 17,576 three-letter file extensions, type \"ALL\"",
+      "default": "",
+      "example": "metagoofil -t <file_types>"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "[USER_AGENT]",
+      "required": false,
+      "description": "User-Agent for file retrieval against -d domain. no -u = \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\" -u = Randomize User-Agent -u \"My custom user agent 2.0\" = Your customized User-Agent",
+      "default": "",
+      "example": "metagoofil -u <user_agent>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Download the files, instead of just viewing search results.",
+      "default": "",
+      "example": "metagoofil -w"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

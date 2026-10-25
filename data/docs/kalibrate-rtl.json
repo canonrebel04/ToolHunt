@@ -1,0 +1,146 @@
+{
+  "id": "kalibrate-rtl",
+  "name": "kalibrate-rtl",
+  "schema_version": 1,
+  "summary": "Fork of http://thre.at/kalibrate/ for use with rtl-sdr devices.",
+  "highlights": [
+    "-s — band to scan (GSM850, GSM-R, GSM900, EGSM, DCS, PCS)",
+    "-f — frequency of nearby GSM base station",
+    "-c — channel of nearby GSM base station",
+    "-b — band indicator (GSM850, GSM-R, GSM900, EGSM, DCS, PCS)",
+    "-g — gain in dB",
+    "-d — rtl-sdr device index",
+    "-e — initial frequency error in ppm",
+    "-E — manual frequency offset in hz"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install kalibrate-rtl"
+    }
+  ],
+  "usage": "GSM Base Station Scan:",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "band to scan (GSM850, GSM-R, GSM900, EGSM, DCS, PCS)",
+      "default": "",
+      "example": "kal -s"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "frequency of nearby GSM base station",
+      "default": "",
+      "example": "kal -f"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "channel of nearby GSM base station",
+      "default": "",
+      "example": "kal -c"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "band indicator (GSM850, GSM-R, GSM900, EGSM, DCS, PCS)",
+      "default": "",
+      "example": "kal -b"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "gain in dB",
+      "default": "",
+      "example": "kal -g"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "rtl-sdr device index",
+      "default": "",
+      "example": "kal -d"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "initial frequency error in ppm",
+      "default": "",
+      "example": "kal -e"
+    },
+    {
+      "name": "-E",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "manual frequency offset in hz",
+      "default": "",
+      "example": "kal -E"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose",
+      "default": "",
+      "example": "kal -v"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable debug messages",
+      "default": "",
+      "example": "kal -D"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "help",
+      "default": "",
+      "example": "kal -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

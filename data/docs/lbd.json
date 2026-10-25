@@ -1,0 +1,26 @@
+{
+  "id": "lbd",
+  "name": "lbd",
+  "schema_version": 1,
+  "summary": "Load Balancing detector,",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install lbd"
+    }
+  ],
+  "usage": "host [-aCdilrTvVw] [-c class] [-N ndots] [-t type] [-W time]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

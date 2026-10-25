@@ -1,0 +1,51 @@
+{
+  "id": "tcptraceroute",
+  "name": "tcptraceroute",
+  "schema_version": 1,
+  "summary": "A traceroute implementation using TCP packets.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "tcptraceroute <host>",
+      "explanation": "Trace the route to a host",
+      "source": "tldr:tcptraceroute"
+    },
+    {
+      "cmd": "tcptraceroute <host> <destination_port> <packet_length>",
+      "explanation": "Specify the destination port and packet length in bytes",
+      "source": "tldr:tcptraceroute"
+    },
+    {
+      "cmd": "tcptraceroute <host> -p <source_port> -s <source_address>",
+      "explanation": "Specify the local source port and source address",
+      "source": "tldr:tcptraceroute"
+    },
+    {
+      "cmd": "tcptraceroute <host> -f <first_ttl> -m <max_ttl>",
+      "explanation": "Set the first and maximum TTL",
+      "source": "tldr:tcptraceroute"
+    },
+    {
+      "cmd": "tcptraceroute <host> -w <wait_time> -q <number_of_queries>",
+      "explanation": "Specify the wait time and number of queries per hop",
+      "source": "tldr:tcptraceroute"
+    },
+    {
+      "cmd": "tcptraceroute <host> -i <interface>",
+      "explanation": "Specify the interface",
+      "source": "tldr:tcptraceroute"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/linux/tcptraceroute.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

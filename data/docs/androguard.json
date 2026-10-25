@@ -1,0 +1,36 @@
+{
+  "id": "androguard",
+  "name": "androguard",
+  "schema_version": 1,
+  "summary": "Reverse engineering, Malware and goodware analysis of Android applications and more.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "androguard axml <path/to/app>.apk",
+      "explanation": "Display Android app manifest",
+      "source": "tldr:androguard"
+    },
+    {
+      "cmd": "androguard apkid <path/to/app>.apk",
+      "explanation": "Display app metadata (version and app ID)",
+      "source": "tldr:androguard"
+    },
+    {
+      "cmd": "androguard decompile <path/to/app>.apk --output <path/to/directory>",
+      "explanation": "Decompile Java code from an app",
+      "source": "tldr:androguard"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/androguard.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

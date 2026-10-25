@@ -1,0 +1,26 @@
+{
+  "id": "windows-privesc-check",
+  "name": "windows-privesc-check",
+  "schema_version": 1,
+  "summary": "Standalone Executable to Check for Simple Privilege Escalation Vectors on Windows Systems.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install windows-privesc-check"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "ghidra",
+  "name": "Ghidra",
+  "schema_version": 1,
+  "summary": "A software reverse engineering (SRE) framework developed by the NSA. Includes a suite of full-featured, high-end software analysis tools.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ghidra"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

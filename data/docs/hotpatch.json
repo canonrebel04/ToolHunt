@@ -1,0 +1,103 @@
+{
+  "id": "hotpatch",
+  "name": "hotpatch",
+  "schema_version": 1,
+  "summary": "Hot patches executables on Linux using .so file injection.",
+  "highlights": [
+    "-v[vvvv] — Enable verbose logging. Add more 'v's for more",
+    "-N — Dry run. Do not modify anything in process",
+    "-l — Path or name of the .so file to load. Switches off execution pointer reset",
+    "-s — Symbol to invoke during the dll inject. Optional.",
+    "-x — Set execution pointer to symbol. Cannot be set with -s option"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hotpatch"
+    }
+  ],
+  "usage": "hotpatcher [options] <PID of process to patch>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This help message",
+      "default": "",
+      "example": "hotpatcher -h"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Version number.",
+      "default": "",
+      "example": "hotpatcher -V"
+    },
+    {
+      "name": "-v[vvvv]",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable verbose logging. Add more 'v's for more",
+      "default": "",
+      "example": "hotpatcher -v[vvvv]"
+    },
+    {
+      "name": "-N",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Dry run. Do not modify anything in process",
+      "default": "",
+      "example": "hotpatcher -N"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "<.so>",
+      "required": false,
+      "description": "Path or name of the .so file to load. Switches off execution pointer reset",
+      "default": "",
+      "example": "hotpatcher -l <.so>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "<name>",
+      "required": false,
+      "description": "Symbol to invoke during the dll inject. Optional.",
+      "default": "",
+      "example": "hotpatcher -s <name>"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "<name>",
+      "required": false,
+      "description": "Set execution pointer to symbol. Cannot be set with -s option",
+      "default": "",
+      "example": "hotpatcher -x <name>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

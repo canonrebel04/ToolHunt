@@ -1,0 +1,256 @@
+{
+  "id": "sprayhound",
+  "name": "sprayhound",
+  "schema_version": 1,
+  "summary": "Password spraying tool and Bloodhound integration.",
+  "highlights": [
+    "--unsafe — Enable login tries on almost locked out accounts",
+    "--force — Do not prompt for user confirmation",
+    "--nocolor — Do not use color for output",
+    "-u — Username",
+    "-U — File containing username list",
+    "-p — Password",
+    "--lower — User as pass with lowercase password",
+    "--upper — User as pass with uppercase password"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sprayhound"
+    }
+  ],
+  "usage": "sprayhound [-h] [-u USERNAME] [-U USERFILE] [-p PASSWORD | --lower |",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "sprayhound --help"
+    },
+    {
+      "name": "--unsafe",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable login tries on almost locked out accounts",
+      "default": "",
+      "example": "sprayhound --unsafe"
+    },
+    {
+      "name": "--force",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not prompt for user confirmation",
+      "default": "",
+      "example": "sprayhound --force"
+    },
+    {
+      "name": "--nocolor",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not use color for output",
+      "default": "",
+      "example": "sprayhound --nocolor"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbosity level (-v or -vv)",
+      "default": "",
+      "example": "sprayhound -v"
+    },
+    {
+      "name": "--username",
+      "short": "-u",
+      "aliases": [],
+      "arg": "USERNAME",
+      "required": false,
+      "description": "Username",
+      "default": "",
+      "example": "sprayhound --username <username>"
+    },
+    {
+      "name": "--userfile",
+      "short": "-U",
+      "aliases": [],
+      "arg": "USERFILE",
+      "required": false,
+      "description": "File containing username list",
+      "default": "",
+      "example": "sprayhound --userfile <userfile>"
+    },
+    {
+      "name": "--password",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PASSWORD",
+      "required": false,
+      "description": "Password",
+      "default": "",
+      "example": "sprayhound --password <password>"
+    },
+    {
+      "name": "--lower",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "User as pass with lowercase password",
+      "default": "",
+      "example": "sprayhound --lower"
+    },
+    {
+      "name": "--upper",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "User as pass with uppercase password",
+      "default": "",
+      "example": "sprayhound --upper"
+    },
+    {
+      "name": "--threshold",
+      "short": "-t",
+      "aliases": [],
+      "arg": "THRESHOLD",
+      "required": false,
+      "description": "Number of password left allowed before locked out",
+      "default": "",
+      "example": "sprayhound --threshold <threshold>"
+    },
+    {
+      "name": "--domain-controller",
+      "short": "-dc",
+      "aliases": [],
+      "arg": "DOMAIN_CONTROLLER",
+      "required": false,
+      "description": "Domain controller",
+      "default": "",
+      "example": "sprayhound --domain-controller <domain_controller>"
+    },
+    {
+      "name": "--domain",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Domain FQDN",
+      "default": "",
+      "example": "sprayhound --domain <domain>"
+    },
+    {
+      "name": "--ldap-port",
+      "short": "-lP",
+      "aliases": [],
+      "arg": "LDAP_PORT",
+      "required": false,
+      "description": "LDAP Port",
+      "default": "",
+      "example": "sprayhound --ldap-port <ldap_port>"
+    },
+    {
+      "name": "--ldap-user",
+      "short": "-lu",
+      "aliases": [],
+      "arg": "LDAP_USER",
+      "required": false,
+      "description": "LDAP User",
+      "default": "",
+      "example": "sprayhound --ldap-user <ldap_user>"
+    },
+    {
+      "name": "--ldap-pass",
+      "short": "-lp",
+      "aliases": [],
+      "arg": "LDAP_PASS",
+      "required": false,
+      "description": "LDAP Password",
+      "default": "",
+      "example": "sprayhound --ldap-pass <ldap_pass>"
+    },
+    {
+      "name": "--ldap-ssl",
+      "short": "-lssl",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "LDAP over TLS (ldaps)",
+      "default": "",
+      "example": "sprayhound --ldap-ssl"
+    },
+    {
+      "name": "--ldap-page-size",
+      "short": "-lpage",
+      "aliases": [],
+      "arg": "LDAP_PAGE_SIZE",
+      "required": false,
+      "description": "LDAP Paging size (Default: 200)",
+      "default": "200",
+      "example": "sprayhound --ldap-page-size <ldap_page_size>"
+    },
+    {
+      "name": "--neo4j-host",
+      "short": "-nh",
+      "aliases": [],
+      "arg": "NEO4J_HOST",
+      "required": false,
+      "description": "Neo4J Host (Default: 127.0.0.1)",
+      "default": "127.0.0.1",
+      "example": "sprayhound --neo4j-host <neo4j_host>"
+    },
+    {
+      "name": "--neo4j-port",
+      "short": "-nP",
+      "aliases": [],
+      "arg": "NEO4J_PORT",
+      "required": false,
+      "description": "Neo4J Port (Default: 7687)",
+      "default": "7687",
+      "example": "sprayhound --neo4j-port <neo4j_port>"
+    },
+    {
+      "name": "--neo4j-user",
+      "short": "-nu",
+      "aliases": [],
+      "arg": "NEO4J_USER",
+      "required": false,
+      "description": "Neo4J user (Default: neo4j)",
+      "default": "neo4j",
+      "example": "sprayhound --neo4j-user <neo4j_user>"
+    },
+    {
+      "name": "--neo4j-pass",
+      "short": "-np",
+      "aliases": [],
+      "arg": "NEO4J_PASS",
+      "required": false,
+      "description": "Neo4J password (Default: neo4j)",
+      "default": "neo4j",
+      "example": "sprayhound --neo4j-pass <neo4j_pass>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

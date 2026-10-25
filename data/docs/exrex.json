@@ -1,0 +1,61 @@
+{
+  "id": "exrex",
+  "name": "exrex",
+  "schema_version": 1,
+  "summary": "Irregular methods on regular expressions.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "exrex '<regex>'",
+      "explanation": "Generate all possible strings that match a `regex`",
+      "source": "tldr:exrex"
+    },
+    {
+      "cmd": "exrex --random '<regex>'",
+      "explanation": "Generate a random string that matches a `regex`",
+      "source": "tldr:exrex"
+    },
+    {
+      "cmd": "exrex --max-number <100> '<regex>'",
+      "explanation": "Generate at most 100 strings that match a `regex`",
+      "source": "tldr:exrex"
+    },
+    {
+      "cmd": "exrex --delimiter \"<,>\" '<regex>'",
+      "explanation": "Generate all possible strings that match a `regex`, joined by a custom delimiter string",
+      "source": "tldr:exrex"
+    },
+    {
+      "cmd": "exrex --count '<regex>'",
+      "explanation": "Print count of all possible strings that match a `regex`",
+      "source": "tldr:exrex"
+    },
+    {
+      "cmd": "exrex --simplify '<ab|ac>'",
+      "explanation": "Simplify a `regex`",
+      "source": "tldr:exrex"
+    },
+    {
+      "cmd": "exrex '<[oO0](_)[oO0]>'",
+      "explanation": "Print eyes",
+      "source": "tldr:exrex"
+    },
+    {
+      "cmd": "exrex '<( {20}(\\| *\\\\|-{22}|\\|)|\\.={50}| ( ){0,5}\\\\\\.| {12}~{39})>'",
+      "explanation": "Print a boat",
+      "source": "tldr:exrex"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/exrex.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

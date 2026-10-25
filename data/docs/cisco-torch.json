@@ -1,0 +1,176 @@
+{
+  "id": "cisco-torch",
+  "name": "cisco-torch",
+  "schema_version": 1,
+  "summary": "Cisco Torch mass scanning, fingerprinting, and exploitation tool.",
+  "highlights": [
+    "-A — All fingerprint scan types combined",
+    "-t — Cisco Telnetd scan",
+    "-s — Cisco SSHd scan",
+    "-u — Cisco SNMP scan",
+    "-g — Cisco config or tftp file download",
+    "-n — NTP fingerprinting scan",
+    "-j — TFTP fingerprinting scan",
+    "-l — loglevel c critical (default) v verbose d debug"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install cisco-torch"
+    }
+  ],
+  "usage": "cisco-torch <options> <IP,hostname,network>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-O",
+      "short": "",
+      "aliases": [],
+      "arg": "<output file>",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "cisco-torch -O <output file>"
+    },
+    {
+      "name": "-A",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "All fingerprint scan types combined",
+      "default": "",
+      "example": "cisco-torch -A"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Cisco Telnetd scan",
+      "default": "",
+      "example": "cisco-torch -t"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Cisco SSHd scan",
+      "default": "",
+      "example": "cisco-torch -s"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Cisco SNMP scan",
+      "default": "",
+      "example": "cisco-torch -u"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Cisco config or tftp file download",
+      "default": "",
+      "example": "cisco-torch -g"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "NTP fingerprinting scan",
+      "default": "",
+      "example": "cisco-torch -n"
+    },
+    {
+      "name": "-j",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TFTP fingerprinting scan",
+      "default": "",
+      "example": "cisco-torch -j"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "<type>",
+      "required": false,
+      "description": "loglevel c critical (default) v verbose d debug",
+      "default": "ault",
+      "example": "cisco-torch -l <type>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Cisco Webserver scan",
+      "default": "",
+      "example": "cisco-torch -w"
+    },
+    {
+      "name": "-z",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Cisco IOS HTTP Authorization Vulnerability Scan",
+      "default": "",
+      "example": "cisco-torch -z"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Cisco Webserver with SSL support scan",
+      "default": "",
+      "example": "cisco-torch -c"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Password dictionary attack (use with -s, -u, -c, -w , -j or -t only)",
+      "default": "",
+      "example": "cisco-torch -b"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print tool version and exit",
+      "default": "",
+      "example": "cisco-torch -V"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "create_ap",
+  "name": "create_ap",
+  "schema_version": 1,
+  "summary": "A shell script to create a NATed/Bridged Software Access Point.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "create_ap <wlan0> <eth0> <access_point_ssid>",
+      "explanation": "Create an open network with no passphrase",
+      "source": "tldr:create_ap"
+    },
+    {
+      "cmd": "create_ap <wlan0> <eth0> <access_point_ssid> <passphrase>",
+      "explanation": "Use a WPA + WPA2 passphrase",
+      "source": "tldr:create_ap"
+    },
+    {
+      "cmd": "create_ap -n <wlan0> <access_point_ssid> <passphrase>",
+      "explanation": "Create an access point without Internet sharing",
+      "source": "tldr:create_ap"
+    },
+    {
+      "cmd": "create_ap -m bridge <wlan0> <eth0> <access_point_ssid> <passphrase>",
+      "explanation": "Create a bridged network with Internet sharing",
+      "source": "tldr:create_ap"
+    },
+    {
+      "cmd": "create_ap -m bridge <wlan0> <br0> <access_point_ssid> <passphrase>",
+      "explanation": "Create a bridged network with Internet sharing and a pre-configured bridge interface",
+      "source": "tldr:create_ap"
+    },
+    {
+      "cmd": "create_ap <wlan0> <wlan0> <access_point_ssid> <passphrase>",
+      "explanation": "Create an access port for Internet sharing from the same Wi-Fi interface",
+      "source": "tldr:create_ap"
+    },
+    {
+      "cmd": "create_ap --driver <wifi_adapter> <wlan0> <eth0> <access_point_ssid> <passphrase>",
+      "explanation": "Choose a different Wi-Fi adapter driver",
+      "source": "tldr:create_ap"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/linux/create_ap.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

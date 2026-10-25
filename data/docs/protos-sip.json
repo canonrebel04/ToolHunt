@@ -1,0 +1,226 @@
+{
+  "id": "protos-sip",
+  "name": "protos-sip",
+  "schema_version": 1,
+  "summary": "SIP test suite.",
+  "highlights": [
+    "-touri — <addr> Recipient of the request Example: <addr> : you@there.com",
+    "-fromuri — Initiator of the request Default: user@kali",
+    "-sendto — Send packets to <domain> instead of domainname of -touri",
+    "-callid — Call id to start test-case call ids from Default: 0",
+    "-dport — Portnumber to send packets on host. Default: 5060",
+    "-lport — Local portnumber to send packets from Default: 5060",
+    "-delay — Time to wait before sending new test-case Defaults to 100 ms (milliseconds)",
+    "-replywait — Maximum time to wait for host to reply Defaults to 100 ms (milliseconds)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install protos-sip"
+    }
+  ],
+  "usage": "java -jar <jarfile>.jar [ [OPTIONS] | -touri <SIP-URI> ]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-touri",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<addr> Recipient of the request Example: <addr> : you@there.com",
+      "default": "",
+      "example": "protos-sip -touri"
+    },
+    {
+      "name": "-fromuri",
+      "short": "",
+      "aliases": [],
+      "arg": "<addr>",
+      "required": false,
+      "description": "Initiator of the request Default: user@kali",
+      "default": "",
+      "example": "protos-sip -fromuri <addr>"
+    },
+    {
+      "name": "-sendto",
+      "short": "",
+      "aliases": [],
+      "arg": "<domain>",
+      "required": false,
+      "description": "Send packets to <domain> instead of domainname of -touri",
+      "default": "",
+      "example": "protos-sip -sendto <domain>"
+    },
+    {
+      "name": "-callid",
+      "short": "",
+      "aliases": [],
+      "arg": "<callid>",
+      "required": false,
+      "description": "Call id to start test-case call ids from Default: 0",
+      "default": "",
+      "example": "protos-sip -callid <callid>"
+    },
+    {
+      "name": "-dport",
+      "short": "",
+      "aliases": [],
+      "arg": "<port>",
+      "required": false,
+      "description": "Portnumber to send packets on host. Default: 5060",
+      "default": "",
+      "example": "protos-sip -dport <port>"
+    },
+    {
+      "name": "-lport",
+      "short": "",
+      "aliases": [],
+      "arg": "<port>",
+      "required": false,
+      "description": "Local portnumber to send packets from Default: 5060",
+      "default": "",
+      "example": "protos-sip -lport <port>"
+    },
+    {
+      "name": "-delay",
+      "short": "",
+      "aliases": [],
+      "arg": "<ms>",
+      "required": false,
+      "description": "Time to wait before sending new test-case Defaults to 100 ms (milliseconds)",
+      "default": "",
+      "example": "protos-sip -delay <ms>"
+    },
+    {
+      "name": "-replywait",
+      "short": "",
+      "aliases": [],
+      "arg": "<ms>",
+      "required": false,
+      "description": "Maximum time to wait for host to reply Defaults to 100 ms (milliseconds)",
+      "default": "",
+      "example": "protos-sip -replywait <ms>"
+    },
+    {
+      "name": "-file",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Send file <file> instead of test-case(s)",
+      "default": "",
+      "example": "protos-sip -file <file>"
+    },
+    {
+      "name": "-help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display this help",
+      "default": "",
+      "example": "protos-sip -help"
+    },
+    {
+      "name": "-jarfile",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Get data from an alternate bugcat JAR-file <file>",
+      "default": "",
+      "example": "protos-sip -jarfile <file>"
+    },
+    {
+      "name": "-showreply",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show received packets",
+      "default": "",
+      "example": "protos-sip -showreply"
+    },
+    {
+      "name": "-showsent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show sent packets",
+      "default": "",
+      "example": "protos-sip -showsent"
+    },
+    {
+      "name": "-teardown",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Send CANCEL/ACK",
+      "default": "",
+      "example": "protos-sip -teardown"
+    },
+    {
+      "name": "-single",
+      "short": "",
+      "aliases": [],
+      "arg": "<index>",
+      "required": false,
+      "description": "Inject a single test-case <index>",
+      "default": "",
+      "example": "protos-sip -single <index>"
+    },
+    {
+      "name": "-start",
+      "short": "",
+      "aliases": [],
+      "arg": "<index>",
+      "required": false,
+      "description": "Inject test-cases starting from <index>",
+      "default": "",
+      "example": "protos-sip -start <index>"
+    },
+    {
+      "name": "-stop",
+      "short": "",
+      "aliases": [],
+      "arg": "<index>",
+      "required": false,
+      "description": "Stop test-case injection to <index>",
+      "default": "",
+      "example": "protos-sip -stop <index>"
+    },
+    {
+      "name": "-maxpdusize",
+      "short": "",
+      "aliases": [],
+      "arg": "<int>",
+      "required": false,
+      "description": "Maximum PDU size Default to 65507 bytes",
+      "default": "",
+      "example": "protos-sip -maxpdusize <int>"
+    },
+    {
+      "name": "-validcase",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Send valid case (case #0) after each test-case and wait for a response. May be used to check if the target is still responding. Default: off",
+      "default": "",
+      "example": "protos-sip -validcase"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

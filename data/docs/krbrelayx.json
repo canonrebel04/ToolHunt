@@ -1,0 +1,386 @@
+{
+  "id": "krbrelayx",
+  "name": "krbrelayx",
+  "schema_version": 1,
+  "summary": "Kerberos unconstrained delegation abuse toolkit.",
+  "highlights": [
+    "-debug — Turn DEBUG output ON",
+    "-t — Target to attack, since this is Kerberos, only HOSTNAMES are valid. Example: smb://server:",
+    "-tf — File that contains targets by hostname or full URL, one per line",
+    "-w — Watch the target file for changes and update target list automatically (only valid with -t",
+    "-ip — IP address of interface to bind SMB and HTTP servers",
+    "-r — Redirect HTTP requests to a file:// path on SMBSERVER",
+    "-l — Loot directory in which gathered loot (TGTs or dumps) will be stored (default: current dir",
+    "-f — Format to store tickets in. Valid: ccache (Impacket) or kirbi (Mimikatz format) default: c"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install krbrelayx"
+    }
+  ],
+  "usage": "krbrelayx.py [-h] [-debug] [-t TARGET] [-tf TARGETSFILE] [-w]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "krbrelayx --help"
+    },
+    {
+      "name": "-debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Turn DEBUG output ON",
+      "default": "",
+      "example": "krbrelayx -debug"
+    },
+    {
+      "name": "--target",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TARGET",
+      "required": false,
+      "description": "Target to attack, since this is Kerberos, only HOSTNAMES are valid. Example: smb://server:445 If unspecified, will store tickets for later use.",
+      "default": "",
+      "example": "krbrelayx --target <target>"
+    },
+    {
+      "name": "-tf",
+      "short": "",
+      "aliases": [],
+      "arg": "TARGETSFILE",
+      "required": false,
+      "description": "File that contains targets by hostname or full URL, one per line",
+      "default": "",
+      "example": "krbrelayx -tf <targetsfile>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Watch the target file for changes and update target list automatically (only valid with -tf)",
+      "default": "",
+      "example": "krbrelayx -w"
+    },
+    {
+      "name": "--interface-ip",
+      "short": "-ip",
+      "aliases": [],
+      "arg": "INTERFACE_IP",
+      "required": false,
+      "description": "IP address of interface to bind SMB and HTTP servers",
+      "default": "",
+      "example": "krbrelayx --interface-ip <interface_ip>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "SMBSERVER",
+      "required": false,
+      "description": "Redirect HTTP requests to a file:// path on SMBSERVER",
+      "default": "",
+      "example": "krbrelayx -r <smbserver>"
+    },
+    {
+      "name": "--lootdir",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LOOTDIR",
+      "required": false,
+      "description": "Loot directory in which gathered loot (TGTs or dumps) will be stored (default: current directory).",
+      "default": "current directory",
+      "example": "krbrelayx --lootdir <lootdir>"
+    },
+    {
+      "name": "--format",
+      "short": "-f",
+      "aliases": [],
+      "arg": "{ccache,kirbi}",
+      "required": false,
+      "description": "Format to store tickets in. Valid: ccache (Impacket) or kirbi (Mimikatz format) default: ccache",
+      "default": "",
+      "example": "krbrelayx --format <ccache,kirbi>"
+    },
+    {
+      "name": "-codec",
+      "short": "",
+      "aliases": [],
+      "arg": "CODEC",
+      "required": false,
+      "description": "Sets encoding used (codec) from the target's output (default \"utf-8\"). If errors are detected, run chcp.com at the target, map the result with https://docs.python.org/2.4/lib/standard- encodings.html and then execute ntlmrelayx.py again with -codec and the corresponding codec",
+      "default": "utf-8",
+      "example": "krbrelayx -codec <codec>"
+    },
+    {
+      "name": "-no-smb2support",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable SMB2 Support",
+      "default": "",
+      "example": "krbrelayx -no-smb2support"
+    },
+    {
+      "name": "--wpad-host",
+      "short": "-wh",
+      "aliases": [],
+      "arg": "WPAD_HOST",
+      "required": false,
+      "description": "Enable serving a WPAD file for Proxy Authentication attack, setting the proxy host to the one supplied.",
+      "default": "",
+      "example": "krbrelayx --wpad-host <wpad_host>"
+    },
+    {
+      "name": "--wpad-auth-num",
+      "short": "-wa",
+      "aliases": [],
+      "arg": "WPAD_AUTH_NUM",
+      "required": false,
+      "description": "Prompt for authentication N times for clients without MS16-077 installed before serving a WPAD file.",
+      "default": "",
+      "example": "krbrelayx --wpad-auth-num <wpad_auth_num>"
+    },
+    {
+      "name": "--ipv6",
+      "short": "-6",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Listen on both IPv6 and IPv4",
+      "default": "",
+      "example": "krbrelayx --ipv6"
+    },
+    {
+      "name": "--krbpass",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PASSWORD",
+      "required": false,
+      "description": "Account password",
+      "default": "",
+      "example": "krbrelayx --krbpass <password>"
+    },
+    {
+      "name": "--krbhexpass",
+      "short": "-hp",
+      "aliases": [],
+      "arg": "HEXPASSWORD",
+      "required": false,
+      "description": "Hex-encoded password",
+      "default": "",
+      "example": "krbrelayx --krbhexpass <hexpassword>"
+    },
+    {
+      "name": "--krbsalt",
+      "short": "-s",
+      "aliases": [],
+      "arg": "USERNAME",
+      "required": false,
+      "description": "Case sensitive (!) salt. Used to calculate Kerberos keys.Only required if specifying password instead of keys.",
+      "default": "",
+      "example": "krbrelayx --krbsalt <username>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "File to execute on the target system. If not specified, hashes will be dumped (secretsdump.py must be in the same directory)",
+      "default": "",
+      "example": "krbrelayx -e <file>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "COMMAND",
+      "required": false,
+      "description": "Command to execute on target system. If not specified, hashes will be dumped (secretsdump.py must be in the same directory).",
+      "default": "",
+      "example": "krbrelayx -c <command>"
+    },
+    {
+      "name": "--enum-local-admins",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "If relayed user is not admin, attempt SAMR lookup to see who is (only works pre Win 10 Anniversary)",
+      "default": "",
+      "example": "krbrelayx --enum-local-admins"
+    },
+    {
+      "name": "--no-dump",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not attempt to dump LDAP information",
+      "default": "",
+      "example": "krbrelayx --no-dump"
+    },
+    {
+      "name": "--no-da",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not attempt to add a Domain Admin",
+      "default": "",
+      "example": "krbrelayx --no-da"
+    },
+    {
+      "name": "--no-acl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable ACL attacks",
+      "default": "",
+      "example": "krbrelayx --no-acl"
+    },
+    {
+      "name": "--no-validate-privs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not attempt to enumerate privileges, assume permissions are granted to escalate a user via ACL attacks",
+      "default": "",
+      "example": "krbrelayx --no-validate-privs"
+    },
+    {
+      "name": "--escalate-user",
+      "short": "",
+      "aliases": [],
+      "arg": "ESCALATE_USER",
+      "required": false,
+      "description": "Escalate privileges of this user instead of creating a new one",
+      "default": "",
+      "example": "krbrelayx --escalate-user <escalate_user>"
+    },
+    {
+      "name": "--add-computer",
+      "short": "",
+      "aliases": [],
+      "arg": "[COMPUTERNAME]",
+      "required": false,
+      "description": "Attempt to add a new computer account",
+      "default": "",
+      "example": "krbrelayx --add-computer <computername>"
+    },
+    {
+      "name": "--delegate-access",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Delegate access on relayed computer account to the specified account",
+      "default": "",
+      "example": "krbrelayx --delegate-access"
+    },
+    {
+      "name": "--sid",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use a SID to delegate access rather than an account name",
+      "default": "",
+      "example": "krbrelayx --sid"
+    },
+    {
+      "name": "--dump-laps",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Attempt to dump any LAPS passwords readable by the user",
+      "default": "",
+      "example": "krbrelayx --dump-laps"
+    },
+    {
+      "name": "--dump-gmsa",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Attempt to dump any gMSA passwords readable by the user",
+      "default": "",
+      "example": "krbrelayx --dump-gmsa"
+    },
+    {
+      "name": "--dump-adcs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Attempt to dump ADCS enrollment services and certificate templates info",
+      "default": "",
+      "example": "krbrelayx --dump-adcs"
+    },
+    {
+      "name": "--adcs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable AD CS relay attack",
+      "default": "",
+      "example": "krbrelayx --adcs"
+    },
+    {
+      "name": "--template",
+      "short": "",
+      "aliases": [],
+      "arg": "TEMPLATE",
+      "required": false,
+      "description": "AD CS template. Defaults to Machine or User whether relayed account name ends with `$`. Relaying a DC should require specifying `DomainController`",
+      "default": "",
+      "example": "krbrelayx --template <template>"
+    },
+    {
+      "name": "--altname",
+      "short": "",
+      "aliases": [],
+      "arg": "ALTNAME",
+      "required": false,
+      "description": "Subject Alternative Name to use when performing ESC1 or ESC6 attacks.",
+      "default": "",
+      "example": "krbrelayx --altname <altname>"
+    },
+    {
+      "name": "--victim",
+      "short": "-v",
+      "aliases": [],
+      "arg": "TARGET",
+      "required": false,
+      "description": "Victim username or computername$, to request the correct certificate name.",
+      "default": "",
+      "example": "krbrelayx --victim <target>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

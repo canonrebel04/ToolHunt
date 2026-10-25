@@ -1,0 +1,26 @@
+{
+  "id": "redeye",
+  "name": "redeye",
+  "schema_version": 1,
+  "summary": "Visual analytic tool supporting Red & Blue Team operations.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install redeye"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

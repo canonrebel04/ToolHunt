@@ -1,0 +1,50 @@
+{
+  "id": "sipcrack",
+  "name": "sipcrack",
+  "schema_version": 1,
+  "summary": "A SIP protocol login cracker.",
+  "highlights": [
+    "-s — = use stdin for passwords",
+    "-p — = print cracking process every n passwords (for -w) (ATTENTION: slows down heavily)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sipcrack"
+    }
+  ],
+  "usage": "sipcrack [OPTIONS] [ -s | -w <wordlist> ] <dump file>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "= use stdin for passwords",
+      "default": "",
+      "example": "sipcrack -s"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "num",
+      "required": false,
+      "description": "= print cracking process every n passwords (for -w) (ATTENTION: slows down heavily)",
+      "default": "",
+      "example": "sipcrack -p <num>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

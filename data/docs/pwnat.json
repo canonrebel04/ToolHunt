@@ -1,0 +1,103 @@
+{
+  "id": "pwnat",
+  "name": "pwnat",
+  "schema_version": 1,
+  "summary": "A tool that allows any number of clients behind NATs to communicate with a server behind a separate NAT with *no* port forwarding and *no* DMZ setup on any routers in order to directly communicate with each other.",
+  "highlights": [
+    "-c — client mode (default) <args>: [local ip] <local port> <proxy host> [proxy port (def:2222)]",
+    "-s — server mode <args>: [local ip] [proxy port (def:2222)] [[allowed host]:[allowed port] ...]",
+    "-6 — use IPv6",
+    "-a — reuse address",
+    "-p — reuse port"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pwnat"
+    }
+  ],
+  "usage": "pwnat <-s | -c> <args>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "client mode (default) <args>: [local ip] <local port> <proxy host> [proxy port (def:2222)] <remote host> <remote port>",
+      "default": "ault",
+      "example": "pwnat -c"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "server mode <args>: [local ip] [proxy port (def:2222)] [[allowed host]:[allowed port] ...]",
+      "default": "2222",
+      "example": "pwnat -s"
+    },
+    {
+      "name": "-6",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use IPv6",
+      "default": "",
+      "example": "pwnat -6"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show debug output (up to 2)",
+      "default": "",
+      "example": "pwnat -v"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "reuse address",
+      "default": "",
+      "example": "pwnat -a"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "reuse port",
+      "default": "",
+      "example": "pwnat -p"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help and exit",
+      "default": "",
+      "example": "pwnat -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

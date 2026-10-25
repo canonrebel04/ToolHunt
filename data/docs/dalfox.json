@@ -1,0 +1,129 @@
+{
+  "id": "dalfox",
+  "name": "dalfox",
+  "schema_version": 1,
+  "summary": "Parameter Analysis and XSS Scanning tool.",
+  "highlights": [
+    "--config — Path to a config file (TOML or JSON). Overrides default search path",
+    "--debug — Enable debug logging (show DBG lines)",
+    "--no-color — Disable colored output (also respects NO_COLOR env var)",
+    "-S — Silence all logs except POC output to STDOUT"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dalfox"
+    }
+  ],
+  "usage": "dalfox [COMMAND] [TARGET] <FLAGS>",
+  "subcommands": [
+    {
+      "name": "scan",
+      "description": "Scan targets for XSS"
+    },
+    {
+      "name": "server",
+      "description": "Run API/server mode"
+    },
+    {
+      "name": "payload",
+      "description": "Manage or enumerate payloads"
+    },
+    {
+      "name": "mcp",
+      "description": "Run MCP stdio server (Model Context Protocol) exposing Dalfox tools"
+    },
+    {
+      "name": "completion",
+      "description": "Generate shell completion scripts"
+    },
+    {
+      "name": "help",
+      "description": "Print this message or the help of the given subcommand(s)"
+    }
+  ],
+  "flags": [
+    {
+      "name": "--config",
+      "short": "",
+      "aliases": [],
+      "arg": "<FILE>",
+      "required": false,
+      "description": "Path to a config file (TOML or JSON). Overrides default search path",
+      "default": "",
+      "example": "dalfox --config <FILE>"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable debug logging (show DBG lines)",
+      "default": "",
+      "example": "dalfox --debug"
+    },
+    {
+      "name": "--no-color",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable colored output (also respects NO_COLOR env var)",
+      "default": "",
+      "example": "dalfox --no-color"
+    },
+    {
+      "name": "--silence",
+      "short": "-S",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Silence all logs except POC output to STDOUT",
+      "default": "",
+      "example": "dalfox --silence"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print help",
+      "default": "",
+      "example": "dalfox --help"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version",
+      "default": "",
+      "example": "dalfox --version"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "dalfox url <https://example.com>",
+      "explanation": "Scan a single URL for XSS vulnerabilities",
+      "source": "tldr:dalfox"
+    },
+    {
+      "cmd": "dalfox file <path/to/file>",
+      "explanation": "Scan a list of URLs from a file",
+      "source": "tldr:dalfox"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/dalfox.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

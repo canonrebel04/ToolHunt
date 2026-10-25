@@ -1,0 +1,115 @@
+{
+  "id": "bing-ip2hosts",
+  "name": "bing-ip2hosts",
+  "schema_version": 1,
+  "summary": "Enumerates all hostnames which Bing has indexed for a specific IP address.",
+  "highlights": [
+    "-n — Stop after NUM scraped pages return no new results (Default: 5).",
+    "-l — Select the language for use in the setlang parameter (Default: en-us).",
+    "-m — Select the market for use in the setmkt parameter (Default is unset).",
+    "-u — Only display hostnames. Default is to include URL prefixes.",
+    "-c — CSV output. Outputs the IP and hostname on each line, separated by a comma.",
+    "-q — Quiet. Disable output except for final results.",
+    "-t — Use this directory instead of /tmp."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bing-ip2hosts"
+    }
+  ],
+  "usage": "/usr/bin/bing-ip2hosts [OPTIONS] IP|hostname",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Stop after NUM scraped pages return no new results (Default: 5).",
+      "default": "5",
+      "example": "bing-ip2hosts -n <num>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Select the language for use in the setlang parameter (Default: en-us).",
+      "default": "en-us",
+      "example": "bing-ip2hosts -l"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Select the market for use in the setmkt parameter (Default is unset).",
+      "default": "is unset",
+      "example": "bing-ip2hosts -m"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only display hostnames. Default is to include URL prefixes.",
+      "default": "",
+      "example": "bing-ip2hosts -u"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "CSV output. Outputs the IP and hostname on each line, separated by a comma.",
+      "default": "",
+      "example": "bing-ip2hosts -c"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Quiet. Disable output except for final results.",
+      "default": "",
+      "example": "bing-ip2hosts -q"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "DIR",
+      "required": false,
+      "description": "Use this directory instead of /tmp.",
+      "default": "",
+      "example": "bing-ip2hosts -t <dir>"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display the version number of bing-ip2hosts and exit.",
+      "default": "",
+      "example": "bing-ip2hosts -V"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

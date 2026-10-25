@@ -1,0 +1,61 @@
+{
+  "id": "eza",
+  "name": "eza",
+  "schema_version": 1,
+  "summary": "eza is a modern, _maintained_ replacement for ls, built on exa.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "eza --oneline",
+      "explanation": "List files one per line",
+      "source": "tldr:eza"
+    },
+    {
+      "cmd": "eza --all",
+      "explanation": "List all files, including hidden files",
+      "source": "tldr:eza"
+    },
+    {
+      "cmd": "eza --all --long",
+      "explanation": "List all files in long format (permissions, ownership, size, and modification date)",
+      "source": "tldr:eza"
+    },
+    {
+      "cmd": "eza --reverse --sort <size>",
+      "explanation": "List files with the largest at the top",
+      "source": "tldr:eza"
+    },
+    {
+      "cmd": "eza --long --tree --level <3>",
+      "explanation": "Display a tree of files, three levels deep",
+      "source": "tldr:eza"
+    },
+    {
+      "cmd": "eza --long --sort <modified>",
+      "explanation": "List files sorted by modification date (oldest first)",
+      "source": "tldr:eza"
+    },
+    {
+      "cmd": "eza --long --header --icons --git",
+      "explanation": "List files with their headers, icons, and Git statuses",
+      "source": "tldr:eza"
+    },
+    {
+      "cmd": "eza --git-ignore",
+      "explanation": "Don't list files mentioned in `.gitignore`",
+      "source": "tldr:eza"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/eza.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

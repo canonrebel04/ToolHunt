@@ -1,0 +1,50 @@
+{
+  "id": "qsreplace",
+  "name": "qsreplace",
+  "schema_version": 1,
+  "summary": "Accept URLs on stdin, replace all query string values with a user-supplied value, only output each combination of query string parameters once per host and path.",
+  "highlights": [
+    "-a — Append the value instead of replacing it",
+    "-ignore-path — Ignore the path when considering what constitutes a duplicate"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install qsreplace"
+    }
+  ],
+  "usage": "of qsreplace:",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Append the value instead of replacing it",
+      "default": "",
+      "example": "qsreplace -a"
+    },
+    {
+      "name": "-ignore-path",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore the path when considering what constitutes a duplicate",
+      "default": "",
+      "example": "qsreplace -ignore-path"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

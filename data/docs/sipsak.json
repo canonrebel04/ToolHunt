@@ -1,0 +1,546 @@
+{
+  "id": "sipsak",
+  "name": "sipsak",
+  "schema_version": 1,
+  "summary": "A small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications.",
+  "highlights": [
+    "--filename — the file which contains the SIP message to send use - for standard input",
+    "--no-crlf — de-activate CR (\\r) insertion",
+    "--sip-uri — the destination server URI in form sip:[user@]servername[:port]",
+    "--traceroute — activates the traceroute mode",
+    "--usrloc-mode — activates the usrloc mode",
+    "--invite-mode — simulates a successful calls with itself",
+    "--message-mode — sends messages to itself",
+    "--contact — use the given URI as Contact in REGISTER"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sipsak"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "displays this help message",
+      "default": "",
+      "example": "sipsak --help"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "prints version string only",
+      "default": "",
+      "example": "sipsak --version"
+    },
+    {
+      "name": "--filename",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "the file which contains the SIP message to send use - for standard input",
+      "default": "",
+      "example": "sipsak --filename <file>"
+    },
+    {
+      "name": "--no-crlf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "de-activate CR (\\r) insertion",
+      "default": "",
+      "example": "sipsak --no-crlf"
+    },
+    {
+      "name": "--sip-uri",
+      "short": "",
+      "aliases": [],
+      "arg": "SIPURI",
+      "required": false,
+      "description": "the destination server URI in form sip:[user@]servername[:port]",
+      "default": "",
+      "example": "sipsak --sip-uri <sipuri>"
+    },
+    {
+      "name": "--traceroute",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "activates the traceroute mode",
+      "default": "",
+      "example": "sipsak --traceroute"
+    },
+    {
+      "name": "--usrloc-mode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "activates the usrloc mode",
+      "default": "",
+      "example": "sipsak --usrloc-mode"
+    },
+    {
+      "name": "--invite-mode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "simulates a successful calls with itself",
+      "default": "",
+      "example": "sipsak --invite-mode"
+    },
+    {
+      "name": "--message-mode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "sends messages to itself",
+      "default": "",
+      "example": "sipsak --message-mode"
+    },
+    {
+      "name": "--contact",
+      "short": "",
+      "aliases": [],
+      "arg": "SIPURI",
+      "required": false,
+      "description": "use the given URI as Contact in REGISTER",
+      "default": "",
+      "example": "sipsak --contact <sipuri>"
+    },
+    {
+      "name": "--appendix-begin",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "the starting number appendix to the user name (default: 0)",
+      "default": "0",
+      "example": "sipsak --appendix-begin <number>"
+    },
+    {
+      "name": "--appendix-end",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "the ending number of the appendix to the user name",
+      "default": "",
+      "example": "sipsak --appendix-end <number>"
+    },
+    {
+      "name": "--sleep",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "sleep number ms before sending next request",
+      "default": "",
+      "example": "sipsak --sleep <number>"
+    },
+    {
+      "name": "--expires",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "the expires header field value (default: 15)",
+      "default": "15",
+      "example": "sipsak --expires <number>"
+    },
+    {
+      "name": "--remove-bindings",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "activates randomly removing of user bindings",
+      "default": "",
+      "example": "sipsak --remove-bindings <number>"
+    },
+    {
+      "name": "--flood-mode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "activates the flood mode",
+      "default": "",
+      "example": "sipsak --flood-mode"
+    },
+    {
+      "name": "--random-mode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "activates the random mode (dangerous)",
+      "default": "",
+      "example": "sipsak --random-mode"
+    },
+    {
+      "name": "--trash-chars",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "the maximum number of trashed character in random mode (default: request length)",
+      "default": "request length",
+      "example": "sipsak --trash-chars <number>"
+    },
+    {
+      "name": "--local-port",
+      "short": "",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "the local port to use (default: any)",
+      "default": "any",
+      "example": "sipsak --local-port <port>"
+    },
+    {
+      "name": "--remote-port",
+      "short": "",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "the remote port to use (default: 5060)",
+      "default": "5060",
+      "example": "sipsak --remote-port <port>"
+    },
+    {
+      "name": "--outbound-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "HOSTNAME",
+      "required": false,
+      "description": "request target (outbound proxy)",
+      "default": "",
+      "example": "sipsak --outbound-proxy <hostname>"
+    },
+    {
+      "name": "--hostname",
+      "short": "",
+      "aliases": [],
+      "arg": "HOSTNAME",
+      "required": false,
+      "description": "overwrites the local hostname in all headers",
+      "default": "",
+      "example": "sipsak --hostname <hostname>"
+    },
+    {
+      "name": "--max-forwards",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "the value for the max-forwards header field",
+      "default": "",
+      "example": "sipsak --max-forwards <number>"
+    },
+    {
+      "name": "--numeric",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use FQDN instead of IP in the Via-Line",
+      "default": "",
+      "example": "sipsak --numeric"
+    },
+    {
+      "name": "--processes",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "Divide the workflow among the number of processes",
+      "default": "",
+      "example": "sipsak --processes <number>"
+    },
+    {
+      "name": "--auth-username",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "username for authentication",
+      "default": "",
+      "example": "sipsak --auth-username <string>"
+    },
+    {
+      "name": "--no-via",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "deactivate the insertion of a Via-Line",
+      "default": "",
+      "example": "sipsak --no-via"
+    },
+    {
+      "name": "--password",
+      "short": "",
+      "aliases": [],
+      "arg": "PASSWORD",
+      "required": false,
+      "description": "password for authentication (if omitted password=username)",
+      "default": "",
+      "example": "sipsak --password <password>"
+    },
+    {
+      "name": "--ignore-redirects",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ignore redirects",
+      "default": "",
+      "example": "sipsak --ignore-redirects"
+    },
+    {
+      "name": "--verbose",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "each v produces more verbosity (max. 3)",
+      "default": "",
+      "example": "sipsak --verbose"
+    },
+    {
+      "name": "--extract-ip",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "extract IP from the warning in reply",
+      "default": "",
+      "example": "sipsak --extract-ip"
+    },
+    {
+      "name": "--replace-string",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "replacement for a special mark in the message",
+      "default": "",
+      "example": "sipsak --replace-string <string>"
+    },
+    {
+      "name": "--replace",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "activates replacement of variables",
+      "default": "",
+      "example": "sipsak --replace"
+    },
+    {
+      "name": "--nagios-code",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "returns exit codes Nagios compliant",
+      "default": "",
+      "example": "sipsak --nagios-code"
+    },
+    {
+      "name": "--nagios-warn",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "return Nagios warning if retrans > number",
+      "default": "",
+      "example": "sipsak --nagios-warn <number>"
+    },
+    {
+      "name": "--message-body",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "send a message with string as body",
+      "default": "",
+      "example": "sipsak --message-body <string>"
+    },
+    {
+      "name": "--disposition",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "Content-Disposition value",
+      "default": "",
+      "example": "sipsak --disposition <string>"
+    },
+    {
+      "name": "--search",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEXP",
+      "required": false,
+      "description": "search for a RegExp in replies and return error on failure",
+      "default": "",
+      "example": "sipsak --search <regexp>"
+    },
+    {
+      "name": "--timing",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "number of test runs and print just the timings",
+      "default": "",
+      "example": "sipsak --timing <number>"
+    },
+    {
+      "name": "--symmetric",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "send and received on the same port",
+      "default": "",
+      "example": "sipsak --symmetric"
+    },
+    {
+      "name": "--from",
+      "short": "",
+      "aliases": [],
+      "arg": "SIPURI",
+      "required": false,
+      "description": "use the given URI as From in MESSAGE",
+      "default": "",
+      "example": "sipsak --from <sipuri>"
+    },
+    {
+      "name": "--timeout-factor",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "timeout multiplier for INVITE transactions on non-reliable transports (default: 64)",
+      "default": "64",
+      "example": "sipsak --timeout-factor <number>"
+    },
+    {
+      "name": "--timer-t1",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "timeout T1 in ms (default: 500)",
+      "default": "500",
+      "example": "sipsak --timer-t1 <number>"
+    },
+    {
+      "name": "--transport",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "specify transport to be used",
+      "default": "",
+      "example": "sipsak --transport <string>"
+    },
+    {
+      "name": "--headers",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "adds additional headers to the request",
+      "default": "",
+      "example": "sipsak --headers <string>"
+    },
+    {
+      "name": "--local-ip",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "specify local ip address to be used",
+      "default": "",
+      "example": "sipsak --local-ip <string>"
+    },
+    {
+      "name": "--authhash",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "HA1 hash for authentication instead of password",
+      "default": "",
+      "example": "sipsak --authhash <string>"
+    },
+    {
+      "name": "--syslog",
+      "short": "",
+      "aliases": [],
+      "arg": "NUMBER",
+      "required": false,
+      "description": "log exit message to syslog with given log level",
+      "default": "",
+      "example": "sipsak --syslog <number>"
+    },
+    {
+      "name": "--tls-ca-cert",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "file with the cert of the root CA",
+      "default": "",
+      "example": "sipsak --tls-ca-cert <file>"
+    },
+    {
+      "name": "--tls-client-cert",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "file with the cert which sipsak will send",
+      "default": "",
+      "example": "sipsak --tls-client-cert <file>"
+    },
+    {
+      "name": "--tls-ignore-cert-failure",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ignore failures during the TLS handshake",
+      "default": "",
+      "example": "sipsak --tls-ignore-cert-failure"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

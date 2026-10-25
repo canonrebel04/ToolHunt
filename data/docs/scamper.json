@@ -1,0 +1,51 @@
+{
+  "id": "scamper",
+  "name": "scamper",
+  "schema_version": 1,
+  "summary": "A tool that actively probes the Internet in order to analyze topology and performance.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "scamper -i <192.0.2.1>",
+      "explanation": "Execute the standard option (traceroute) to a destination",
+      "source": "tldr:scamper"
+    },
+    {
+      "cmd": "scamper -I \"<ping> <192.0.2.1>\" -I \"<trace> <192.0.2.2>\"",
+      "explanation": "Execute two actions (ping and traceroute) on two different targets",
+      "source": "tldr:scamper"
+    },
+    {
+      "cmd": "scamper -c \"<ping> -P <UDP-dport> -d <33434>\" -i <192.0.2.1> -i <192.0.2.2>",
+      "explanation": "Ping several hosts with UDP, use a specific port number for the first ping, and increase it for each subsequent ping",
+      "source": "tldr:scamper"
+    },
+    {
+      "cmd": "scamper -O <warts> -o <path/to/output.warts> -I \"<tracelb> -P <ICMP-echo> -q <3> <192.0.2.1>\"",
+      "explanation": "Use the Multipath Discovery Algorithm (MDA) to determine the presence of load-balanced paths to the destination and use ICMP echo packets to sample with a maximum of three attempts, write the result to a `.warts` file",
+      "source": "tldr:scamper"
+    },
+    {
+      "cmd": "scamper -O <warts.gz> -o <path/to/output.warts> -I \"<trace> -P <icmp-paris> <2001:db8:dead:beaf::4>\"",
+      "explanation": "Execute a Paris traceroute with ICMP to a destination and save the result in a compressed `.warts` file",
+      "source": "tldr:scamper"
+    },
+    {
+      "cmd": "scamper -O <warts> -o <path/to/output.warts> -I \"sniff -S <2001:db8:dead:beef::6> icmp[icmpid] == <101>\"",
+      "explanation": "Record all ICMP packets that arrive at a specific IP address and have a specific ICMP ID in a `.warts` file",
+      "source": "tldr:scamper"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/scamper.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

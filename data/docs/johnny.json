@@ -1,0 +1,25 @@
+{
+  "id": "johnny",
+  "name": "johnny",
+  "schema_version": 1,
+  "summary": "GUI for John the Ripper.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install johnny"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": false
+  }
+}

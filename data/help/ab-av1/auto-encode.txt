@@ -1,0 +1,15 @@
+Usage: ab-av1 auto-encode [OPTIONS] --preset <PRESET> --min-vmaf <MIN_VMAF> -i <INPUT>
+
+Options:
+  -i, --input <INPUT>              Input video/image
+      --preset <PRESET>            SVT-AV1 preset (0=slow/best … 13=fast)
+      --min-vmaf <MIN_VMAF>        Target VMAF score
+      --min-xpsnr <MIN_XPSNR>      Alternative quality target (XPSNR)
+      --thorough                   More samples / higher confidence CRF search
+      --crf <CRF>                  CRF (usually found automatically)
+      --stdout-format <FORMAT>     Output format [default: human] [possible values: human, json]
+      --verify                     Verify finished encode (decode + duration)
+      --verify-decode              Fail on decode errors
+      --verify-duration            Fail if duration differs by >2s
+      --fail-fast                  Stop at first ffmpeg error
+  -h, --help                       Print help

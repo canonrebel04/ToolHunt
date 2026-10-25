@@ -1,0 +1,266 @@
+{
+  "id": "bruteforce-salted-openssl",
+  "name": "bruteforce-salted-openssl",
+  "schema_version": 1,
+  "summary": "Try to find the password of a file that was encrypted with the 'openssl' command.",
+  "highlights": [
+    "-1 — Stop the program after finding the first password candidate.",
+    "-a — List the available cipher and digest algorithms.",
+    "-B — Search using binary passwords (instead of character passwords). Write candidates to <file>",
+    "-b — Beginning of the password. default: \"\"",
+    "-c — Cipher for decryption. default: aes-256-cbc",
+    "-D — Display salt, key and iv along with the tested password.",
+    "-d — Digest for key and initialization vector generation. default: sha256",
+    "-e — End of the password. default: \"\""
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bruteforce-salted-openssl"
+    }
+  ],
+  "usage": "bruteforce-salted-openssl [options] <filename>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-1",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Stop the program after finding the first password candidate.",
+      "default": "",
+      "example": "bruteforce-salted-openssl -1"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List the available cipher and digest algorithms.",
+      "default": "",
+      "example": "bruteforce-salted-openssl -a"
+    },
+    {
+      "name": "-B",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Search using binary passwords (instead of character passwords). Write candidates to <file>.",
+      "default": "",
+      "example": "bruteforce-salted-openssl -B <file>"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "Beginning of the password. default: \"\"",
+      "default": "",
+      "example": "bruteforce-salted-openssl -b <string>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "<cipher>",
+      "required": false,
+      "description": "Cipher for decryption. default: aes-256-cbc",
+      "default": "",
+      "example": "bruteforce-salted-openssl -c <cipher>"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display salt, key and iv along with the tested password.",
+      "default": "",
+      "example": "bruteforce-salted-openssl -D"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "<digest>",
+      "required": false,
+      "description": "Digest for key and initialization vector generation. default: sha256",
+      "default": "",
+      "example": "bruteforce-salted-openssl -d <digest>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "End of the password. default: \"\"",
+      "default": "",
+      "example": "bruteforce-salted-openssl -e <string>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Read the passwords from a file instead of generating them.",
+      "default": "",
+      "example": "bruteforce-salted-openssl -f <file>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show help and quit.",
+      "default": "",
+      "example": "bruteforce-salted-openssl -h"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "With -K, set the PBKDF2 iteration count to <n>. default: 10000",
+      "default": "",
+      "example": "bruteforce-salted-openssl -i <n>"
+    },
+    {
+      "name": "-K",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use PKCS5_PBKDF2_HMAC to derive the key.",
+      "default": "",
+      "example": "bruteforce-salted-openssl -K"
+    },
+    {
+      "name": "-L",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Limit the maximum number of tested passwords to <n>.",
+      "default": "",
+      "example": "bruteforce-salted-openssl -L <n>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "<length>",
+      "required": false,
+      "description": "Minimum password length (beginning and end included). default: 1",
+      "default": "",
+      "example": "bruteforce-salted-openssl -l <length>"
+    },
+    {
+      "name": "-M",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "Consider the decryption as successful when the data starts with <string>. Without this option, the decryption is considered as successful when the data contains mostly printable ASCII characters (at least 90%).",
+      "default": "",
+      "example": "bruteforce-salted-openssl -M <string>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "<length>",
+      "required": false,
+      "description": "Maximum password length (beginning and end included). default: 8",
+      "default": "",
+      "example": "bruteforce-salted-openssl -m <length>"
+    },
+    {
+      "name": "-N",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore decryption errors (similar to openssl -nopad).",
+      "default": "",
+      "example": "bruteforce-salted-openssl -N"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore salt (similar to openssl -nosalt).",
+      "default": "",
+      "example": "bruteforce-salted-openssl -n"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Preview and check the first N decrypted bytes for the magic string. If the magic string is present, try decrypting the rest of the data. default: 1024",
+      "default": "",
+      "example": "bruteforce-salted-openssl -p <n>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "Password character set. default: \"0123456789ABCDEFGHIJKLMNOPQRSTU VWXYZabcdefghijklmnopqrstuvwxyz\"",
+      "default": "",
+      "example": "bruteforce-salted-openssl -s <string>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Number of threads to use. default: 1",
+      "default": "",
+      "example": "bruteforce-salted-openssl -t <n>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Print progress info every n seconds.",
+      "default": "",
+      "example": "bruteforce-salted-openssl -v <n>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Restore the state of a previous session if the file exists, then write the state to the file regularly (~ every minute).",
+      "default": "",
+      "example": "bruteforce-salted-openssl -w <file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

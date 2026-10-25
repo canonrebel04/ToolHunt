@@ -1,0 +1,61 @@
+{
+  "id": "x8",
+  "name": "x8",
+  "schema_version": 1,
+  "summary": "Hidden parameters discovery suite.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "x8 --url <https://example.com/> --wordlist <path/to/wordlist.txt>",
+      "explanation": "Check hidden parameters in a URL query",
+      "source": "tldr:x8"
+    },
+    {
+      "cmd": "x8 --url <https://example.com/?something=1%26%s> --wordlist <path/to/wordlist.txt>",
+      "explanation": "Check parameters with a custom query injection point (`%s`)",
+      "source": "tldr:x8"
+    },
+    {
+      "cmd": "x8 --url <https://example.com/> --method <POST> --body '<{\"x\":{%s\\}\\>}' --wordlist <path/to/wordlist.txt>",
+      "explanation": "Send parameters via POST body with JSON format",
+      "source": "tldr:x8"
+    },
+    {
+      "cmd": "x8 --url <https://example.com/> --param-template <user[%k]=%v> --wordlist <path/to/wordlist.txt>",
+      "explanation": "Check parameters with a custom template (`%k` for key, `%v` for value)",
+      "source": "tldr:x8"
+    },
+    {
+      "cmd": "x8 --url <https://example.com/?path=..%2faction.php%3f%s%23> --encode --wordlist <path/to/wordlist.txt>",
+      "explanation": "Encode parameters for special characters in queries",
+      "source": "tldr:x8"
+    },
+    {
+      "cmd": "x8 --url <https://example.com/> --headers --wordlist <path/to/headers.txt>",
+      "explanation": "Discover hidden headers for a URL",
+      "source": "tldr:x8"
+    },
+    {
+      "cmd": "x8 --url <https://example.com/> <https://4rt.one/> --workers <0> -c <3> --verify",
+      "explanation": "Check multiple URLs in parallel with high concurrency and verify found parameters",
+      "source": "tldr:x8"
+    },
+    {
+      "cmd": "x8 --url <https://example.com/> --wordlist <path/to/wordlist.txt> --save-responses <path/to/output_directory>",
+      "explanation": "Save request and response data for found parameters to a directory",
+      "source": "tldr:x8"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/x8.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

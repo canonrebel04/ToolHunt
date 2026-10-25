@@ -1,0 +1,34 @@
+{
+  "id": "veil",
+  "name": "veil",
+  "schema_version": 1,
+  "summary": "A tool designed to generate metasploit payloads that bypass common anti-virus solutions.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install veil"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install veil-catapult"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install veil-evasion"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

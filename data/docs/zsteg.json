@@ -1,0 +1,51 @@
+{
+  "id": "zsteg",
+  "name": "zsteg",
+  "schema_version": 1,
+  "summary": "Detect stegano-hidden data in PNG and BMP.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "zsteg <path/to/image.png>",
+      "explanation": "Detect embedded data in a PNG",
+      "source": "tldr:zsteg"
+    },
+    {
+      "cmd": "zsteg --all <path/to/image.bmp>",
+      "explanation": "Detect embedded data in a BMP image, using all known methods",
+      "source": "tldr:zsteg"
+    },
+    {
+      "cmd": "zsteg --msb --order yx <path/to/image.png>",
+      "explanation": "Detect embedded data in a PNG, iterating pixels vertically and using MSB first",
+      "source": "tldr:zsteg"
+    },
+    {
+      "cmd": "zsteg --bits <1,2,3|1-3> <path/to/image.bmp>",
+      "explanation": "Detect embedded data in a BMP image, specifying the bits to consider",
+      "source": "tldr:zsteg"
+    },
+    {
+      "cmd": "zsteg --prime --invert <path/to/image.png>",
+      "explanation": "Detect embedded data in a PNG, extracting only prime pixels and inverting bits",
+      "source": "tldr:zsteg"
+    },
+    {
+      "cmd": "zsteg --min-str-len <10> --strings <first|all|longest|none> <path/to/image.bmp>",
+      "explanation": "Detect embedded data in a BMP image, specifying the minimum length of the strings to be found and the find mode",
+      "source": "tldr:zsteg"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/zsteg.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

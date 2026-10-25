@@ -1,0 +1,56 @@
+{
+  "id": "duf",
+  "name": "duf",
+  "schema_version": 1,
+  "summary": "Disk Usage/Free Utility.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "duf",
+      "explanation": "List accessible devices",
+      "source": "tldr:duf"
+    },
+    {
+      "cmd": "duf --all",
+      "explanation": "List everything (such as pseudo, duplicate, or inaccessible filesystems)",
+      "source": "tldr:duf"
+    },
+    {
+      "cmd": "duf <path/to/directory1 path/to/directory2 ...>",
+      "explanation": "Only show specified devices or mount points",
+      "source": "tldr:duf"
+    },
+    {
+      "cmd": "duf --sort <size|used|avail|usage>",
+      "explanation": "Sort the output by a specified criteria",
+      "source": "tldr:duf"
+    },
+    {
+      "cmd": "duf --<only-fs|hide-fs> <tmpfs|vfat|ext4|xfs>",
+      "explanation": "Show or hide specific filesystems",
+      "source": "tldr:duf"
+    },
+    {
+      "cmd": "duf --sort <mountpoint|size|used|avail|usage|inodes|inodes_used|inodes_avail|inodes_usage|type|filesystem>",
+      "explanation": "Sort the output by key",
+      "source": "tldr:duf"
+    },
+    {
+      "cmd": "duf --theme <dark|light>",
+      "explanation": "Change the theme (if `duf` fails to use the right theme)",
+      "source": "tldr:duf"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/duf.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "dirb",
+  "name": "dirb",
+  "schema_version": 1,
+  "summary": "A web content scanner, brute forceing for hidden files.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dirb"
+    }
+  ],
+  "usage": "dirb-gendict -type pattern",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "dirb <https://example.org>",
+      "explanation": "Scan a webserver using the default wordlist",
+      "source": "tldr:dirb"
+    },
+    {
+      "cmd": "dirb <https://example.org> <path/to/wordlist.txt>",
+      "explanation": "Scan a webserver using a custom wordlist",
+      "source": "tldr:dirb"
+    },
+    {
+      "cmd": "dirb <https://example.org> -r",
+      "explanation": "Scan a webserver non-recursively",
+      "source": "tldr:dirb"
+    },
+    {
+      "cmd": "dirb <https://example.org> -a <user_agent_string> -c <cookie_string>",
+      "explanation": "Scan a webserver using a specified user-agent and cookie for HTTP-requests",
+      "source": "tldr:dirb"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/dirb.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

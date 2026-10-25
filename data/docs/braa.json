@@ -1,0 +1,153 @@
+{
+  "id": "braa",
+  "name": "braa",
+  "schema_version": 1,
+  "summary": "A mass snmp scanner",
+  "highlights": [
+    "-2 — Claim to be a SNMP2C agent.",
+    "-b — Use GETBULK requests for walks.",
+    "-x — Hexdump octet-strings",
+    "-t — Wait <s> seconds for responses.",
+    "-d — Wait <s> microseconds after sending each packet.",
+    "-w — Wait <s> microseconds after sending a group of query packets.",
+    "-p — Wait <s> milliseconds between subsequent passes.",
+    "-r — Retry count (default: 3)."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install braa"
+    }
+  ],
+  "usage": "braa [options] [query1] [query2] ...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this help.",
+      "default": "",
+      "example": "braa -h"
+    },
+    {
+      "name": "-2",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Claim to be a SNMP2C agent.",
+      "default": "",
+      "example": "braa -2"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Use GETBULK requests for walks.",
+      "default": "",
+      "example": "braa -b <n>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show short summary after doing all queries.",
+      "default": "",
+      "example": "braa -v"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Hexdump octet-strings",
+      "default": "",
+      "example": "braa -x"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<s>",
+      "required": false,
+      "description": "Wait <s> seconds for responses.",
+      "default": "",
+      "example": "braa -t <s>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "<s>",
+      "required": false,
+      "description": "Wait <s> microseconds after sending each packet.",
+      "default": "",
+      "example": "braa -d <s>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<s>",
+      "required": false,
+      "description": "Wait <s> microseconds after sending a group of query packets.",
+      "default": "",
+      "example": "braa -w <s>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<s>",
+      "required": false,
+      "description": "Wait <s> milliseconds between subsequent passes.",
+      "default": "",
+      "example": "braa -p <s>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<rc>",
+      "required": false,
+      "description": "Retry count (default: 3).",
+      "default": "3",
+      "example": "braa -r <rc>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "braa public@<ip_address>:<.1.3.6.*>",
+      "explanation": "Walk the SNMP tree of host with public string querying all OIDs under `.1.3.6`",
+      "source": "tldr:braa"
+    },
+    {
+      "cmd": "braa public@<ip_range>:<.1.3.6.1.2.1.1.6.0>",
+      "explanation": "Query the whole subnet `ip_range` for `system.sysLocation.0`",
+      "source": "tldr:braa"
+    },
+    {
+      "cmd": "braa private@<ip_address>:<.1.3.6.1.2.1.1.6.0>=s'<workgroup>'",
+      "explanation": "Attempt to set the value of `system.sysLocation.0` to a specific workgroup",
+      "source": "tldr:braa"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/braa.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

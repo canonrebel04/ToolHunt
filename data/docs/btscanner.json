@@ -1,0 +1,60 @@
+{
+  "id": "btscanner",
+  "name": "btscanner",
+  "schema_version": 1,
+  "summary": "Bluetooth device scanner.",
+  "highlights": [
+    "--cfg — Use <file> as the config file",
+    "--no-reset — Do not reset the Bluetooth adapter before scanning"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install btscanner"
+    }
+  ],
+  "usage": "btscanner [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display help",
+      "default": "",
+      "example": "btscanner --help"
+    },
+    {
+      "name": "--cfg",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Use <file> as the config file",
+      "default": "",
+      "example": "btscanner --cfg <file>"
+    },
+    {
+      "name": "--no-reset",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not reset the Bluetooth adapter before scanning",
+      "default": "",
+      "example": "btscanner --no-reset"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

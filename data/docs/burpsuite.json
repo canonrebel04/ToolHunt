@@ -1,0 +1,203 @@
+{
+  "id": "burpsuite",
+  "name": "burpsuite",
+  "schema_version": 1,
+  "summary": "An integrated platform for attacking web applications (community edition) + SHELLING plugin.",
+  "highlights": [
+    "--disable-extensions — Prevent loading of extensions on startup",
+    "--diagnostics — Print diagnostic information",
+    "--use-defaults — Start with default settings",
+    "--collaborator-server — Run in Collaborator server mode",
+    "--collaborator-config — Specify Collaborator server configuration file; defaults to collaborator.config",
+    "--data-dir — Specify data directory",
+    "--project-file — Open the specified project file; this will be created as a new project if the file does no",
+    "--developer-extension-class-name — Fully qualified name of locally-developed extension class; extension will be loaded from t"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install burpsuite"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version details",
+      "default": "",
+      "example": "burpsuite --version"
+    },
+    {
+      "name": "--disable-extensions",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prevent loading of extensions on startup",
+      "default": "",
+      "example": "burpsuite --disable-extensions"
+    },
+    {
+      "name": "--diagnostics",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print diagnostic information",
+      "default": "",
+      "example": "burpsuite --diagnostics"
+    },
+    {
+      "name": "--use-defaults",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Start with default settings",
+      "default": "",
+      "example": "burpsuite --use-defaults"
+    },
+    {
+      "name": "--collaborator-server",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run in Collaborator server mode",
+      "default": "",
+      "example": "burpsuite --collaborator-server"
+    },
+    {
+      "name": "--collaborator-config",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Specify Collaborator server configuration file; defaults to collaborator.config",
+      "default": "",
+      "example": "burpsuite --collaborator-config"
+    },
+    {
+      "name": "--data-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Specify data directory",
+      "default": "",
+      "example": "burpsuite --data-dir"
+    },
+    {
+      "name": "--project-file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Open the specified project file; this will be created as a new project if the file does not exist",
+      "default": "",
+      "example": "burpsuite --project-file"
+    },
+    {
+      "name": "--developer-extension-class-name",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fully qualified name of locally-developed extension class; extension will be loaded from the classpath",
+      "default": "",
+      "example": "burpsuite --developer-extension-class-name"
+    },
+    {
+      "name": "--config-file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Load the specified project configuration file(s); this option may be repeated to load multiple files",
+      "default": "",
+      "example": "burpsuite --config-file"
+    },
+    {
+      "name": "--user-config-file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Load the specified user configuration file(s); this option may be repeated to load multiple files",
+      "default": "",
+      "example": "burpsuite --user-config-file"
+    },
+    {
+      "name": "--auto-repair",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Automatically repair a corrupted project file specified by the --project-file option",
+      "default": "",
+      "example": "burpsuite --auto-repair"
+    },
+    {
+      "name": "--unpause-spider-and-scanner",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not pause the Spider and Scanner when opening an existing project",
+      "default": "",
+      "example": "burpsuite --unpause-spider-and-scanner"
+    },
+    {
+      "name": "--disable-auto-update",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Suppress auto update behavior",
+      "default": "",
+      "example": "burpsuite --disable-auto-update"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "burpsuite",
+      "explanation": "Start Burp Suite",
+      "source": "tldr:burpsuite"
+    },
+    {
+      "cmd": "burpsuite --use-defaults",
+      "explanation": "Start Burp Suite using the default configuration",
+      "source": "tldr:burpsuite"
+    },
+    {
+      "cmd": "burpsuite --project-file=<path/to/file>",
+      "explanation": "Open a specific project file",
+      "source": "tldr:burpsuite"
+    },
+    {
+      "cmd": "burpsuite --config-file=<path/to/file>",
+      "explanation": "Load a specific configuration file",
+      "source": "tldr:burpsuite"
+    },
+    {
+      "cmd": "burpsuite --disable-extensions",
+      "explanation": "Start without extensions",
+      "source": "tldr:burpsuite"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/burpsuite.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

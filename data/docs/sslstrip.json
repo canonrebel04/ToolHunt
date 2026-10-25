@@ -1,0 +1,126 @@
+{
+  "id": "sslstrip",
+  "name": "sslstrip",
+  "schema_version": 1,
+  "summary": "Python tool to hijack HTTPS connections during a MITM attack.",
+  "highlights": [
+    "-p — Log only SSL POSTs. (default)",
+    "-s — Log all SSL traffic to and from server.",
+    "-a — Log all SSL and HTTP traffic to and from server.",
+    "-l — Port to listen on (default 10000).",
+    "-f — Substitute a lock favicon on secure requests.",
+    "-k — Kill sessions in progress."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sslstrip"
+    }
+  ],
+  "usage": "sslstrip <options>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--post",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Log only SSL POSTs. (default)",
+      "default": "ault",
+      "example": "sslstrip --post"
+    },
+    {
+      "name": "--ssl",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Log all SSL traffic to and from server.",
+      "default": "",
+      "example": "sslstrip --ssl"
+    },
+    {
+      "name": "--all",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Log all SSL and HTTP traffic to and from server.",
+      "default": "",
+      "example": "sslstrip --all"
+    },
+    {
+      "name": "--listen",
+      "short": "-l",
+      "aliases": [],
+      "arg": "<port>",
+      "required": false,
+      "description": "Port to listen on (default 10000).",
+      "default": "10000",
+      "example": "sslstrip --listen <port>"
+    },
+    {
+      "name": "--favicon",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Substitute a lock favicon on secure requests.",
+      "default": "",
+      "example": "sslstrip --favicon"
+    },
+    {
+      "name": "--killsessions",
+      "short": "-k",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Kill sessions in progress.",
+      "default": "",
+      "example": "sslstrip --killsessions"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print this help message.",
+      "default": "",
+      "example": "sslstrip -h"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "sslstrip",
+      "explanation": "Log only HTTPS POST traffic on port 10000 by default",
+      "source": "tldr:sslstrip"
+    },
+    {
+      "cmd": "sslstrip --listen=8080",
+      "explanation": "Log only HTTPS POST traffic on port 8080",
+      "source": "tldr:sslstrip"
+    },
+    {
+      "cmd": "sslstrip --ssl --listen=8080",
+      "explanation": "Log all SSL traffic to and from the server on port 8080",
+      "source": "tldr:sslstrip"
+    },
+    {
+      "cmd": "sslstrip --listen=8080 --all",
+      "explanation": "Log all SSL and HTTP traffic to and from the server on port 8080",
+      "source": "tldr:sslstrip"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/sslstrip.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

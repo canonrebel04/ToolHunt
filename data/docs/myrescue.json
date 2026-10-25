@@ -1,0 +1,188 @@
+{
+  "id": "myrescue",
+  "name": "myrescue",
+  "schema_version": 1,
+  "summary": "A hard disk recovery tool that reads undamaged regions first.",
+  "highlights": [
+    "-b — block size in bytes, default: 4096",
+    "-B — bitmap-file, default: <output-file>.bitmap",
+    "-A — abort on error",
+    "-S — skip errors (exponential-step)",
+    "-f — skip blocks with <number> or more failures",
+    "-r — try up to <retry-count> reads per block, default: 1",
+    "-s — start block number, default: 0",
+    "-e — end block number (excl.), default: size of <input-file>"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install myrescue"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "<block-size>",
+      "required": false,
+      "description": "block size in bytes, default: 4096",
+      "default": "",
+      "example": "myrescue -b <block-size>"
+    },
+    {
+      "name": "-B",
+      "short": "",
+      "aliases": [],
+      "arg": "<bitmap-file>",
+      "required": false,
+      "description": "bitmap-file, default: <output-file>.bitmap",
+      "default": "",
+      "example": "myrescue -B <bitmap-file>"
+    },
+    {
+      "name": "-A",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "abort on error",
+      "default": "",
+      "example": "myrescue -A"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "skip errors (exponential-step)",
+      "default": "",
+      "example": "myrescue -S"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<number>",
+      "required": false,
+      "description": "skip blocks with <number> or more failures",
+      "default": "",
+      "example": "myrescue -f <number>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<retry-count>",
+      "required": false,
+      "description": "try up to <retry-count> reads per block, default: 1",
+      "default": "",
+      "example": "myrescue -r <retry-count>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "<start-block>",
+      "required": false,
+      "description": "start block number, default: 0",
+      "default": "",
+      "example": "myrescue -s <start-block>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "<end-block>",
+      "required": false,
+      "description": "end block number (excl.), default: size of <input-file>",
+      "default": "",
+      "example": "myrescue -e <end-block>"
+    },
+    {
+      "name": "-G",
+      "short": "",
+      "aliases": [],
+      "arg": "<range>",
+      "required": false,
+      "description": "only read <range> blocks around good ones",
+      "default": "",
+      "example": "myrescue -G <range>"
+    },
+    {
+      "name": "-F",
+      "short": "",
+      "aliases": [],
+      "arg": "<range>",
+      "required": false,
+      "description": "skip <range> blocks around failed ones",
+      "default": "",
+      "example": "myrescue -F <range>"
+    },
+    {
+      "name": "-J",
+      "short": "",
+      "aliases": [],
+      "arg": "<number>",
+      "required": false,
+      "description": "randomly jump after reading a few sectors",
+      "default": "",
+      "example": "myrescue -J <number>"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "make -A, -S and -F avoid blocks that took long to read",
+      "default": "",
+      "example": "myrescue -T"
+    },
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "reverse copy direction",
+      "default": "",
+      "example": "myrescue -R"
+    },
+    {
+      "name": "-U",
+      "short": "",
+      "aliases": [],
+      "arg": "<dev-file>",
+      "required": false,
+      "description": "USB device reset after read error (something like /dev/bus/usb/XXX/XXX !)",
+      "default": "",
+      "example": "myrescue -U <dev-file>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [
+        "-?"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "usage information",
+      "default": "",
+      "example": "myrescue -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

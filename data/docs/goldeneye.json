@@ -1,0 +1,104 @@
+{
+  "id": "goldeneye",
+  "name": "goldeneye",
+  "schema_version": 1,
+  "summary": "A HTTP DoS test tool. Attack Vector exploited: HTTP Keep Alive + NoCache.",
+  "highlights": [
+    "-u — File with user-agents to use (default: randomly generated)",
+    "-w — Number of concurrent workers (default: 10)",
+    "-s — Number of concurrent sockets (default: 500)",
+    "-m — HTTP Method to use 'get' or 'post' or 'random' (default: get)",
+    "-n — Do not verify SSL Certificate (default: True)",
+    "-d — Enable Debug Mode [more verbose output] (default: False)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install goldeneye"
+    }
+  ],
+  "usage": "goldeneye <url> [OPTIONS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--useragents",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "File with user-agents to use (default: randomly generated)",
+      "default": "randomly generated",
+      "example": "goldeneye --useragents"
+    },
+    {
+      "name": "--workers",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Number of concurrent workers (default: 10)",
+      "default": "10",
+      "example": "goldeneye --workers"
+    },
+    {
+      "name": "--sockets",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Number of concurrent sockets (default: 500)",
+      "default": "500",
+      "example": "goldeneye --sockets"
+    },
+    {
+      "name": "--method",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "HTTP Method to use 'get' or 'post' or 'random' (default: get)",
+      "default": "get",
+      "example": "goldeneye --method"
+    },
+    {
+      "name": "--nosslcheck",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not verify SSL Certificate (default: True)",
+      "default": "True",
+      "example": "goldeneye --nosslcheck"
+    },
+    {
+      "name": "--debug",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable Debug Mode [more verbose output] (default: False)",
+      "default": "False",
+      "example": "goldeneye --debug"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Shows this help",
+      "default": "",
+      "example": "goldeneye --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

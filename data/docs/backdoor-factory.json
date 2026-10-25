@@ -1,0 +1,376 @@
+{
+  "id": "backdoor-factory",
+  "name": "backdoor-factory",
+  "schema_version": 1,
+  "summary": "Patch win32/64 binaries with shellcode.",
+  "highlights": [
+    "-f — File to backdoor",
+    "-s — Payloads that are available for use. Use 'show' to see payloads.",
+    "-H — IP of the C2 for reverse connections.",
+    "-P — The port to either connect back to for reverse shells or to listen on for bind shells",
+    "-J — Select this options if you want to use code cave jumping to further hide your shellcode in",
+    "-a — Mandating that a new section be added to the exe (better success) but less av avoidance",
+    "-U — User supplied shellcode, make sure that it matches the architecture that you are targeting",
+    "-c — The cave flag will find code caves that can be used for stashing shellcode. This will prin"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install backdoor-factory"
+    }
+  ],
+  "usage": "backdoor-factory [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "backdoor-factory --help"
+    },
+    {
+      "name": "--file",
+      "short": "-f",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "File to backdoor",
+      "default": "",
+      "example": "backdoor-factory --file <file>"
+    },
+    {
+      "name": "--shell",
+      "short": "-s",
+      "aliases": [],
+      "arg": "SHELL",
+      "required": false,
+      "description": "Payloads that are available for use. Use 'show' to see payloads.",
+      "default": "",
+      "example": "backdoor-factory --shell <shell>"
+    },
+    {
+      "name": "--hostip",
+      "short": "-H",
+      "aliases": [],
+      "arg": "HOST",
+      "required": false,
+      "description": "IP of the C2 for reverse connections.",
+      "default": "",
+      "example": "backdoor-factory --hostip <host>"
+    },
+    {
+      "name": "--port",
+      "short": "-P",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "The port to either connect back to for reverse shells or to listen on for bind shells",
+      "default": "",
+      "example": "backdoor-factory --port <port>"
+    },
+    {
+      "name": "--cave_jumping",
+      "short": "-J",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Select this options if you want to use code cave jumping to further hide your shellcode in the binary.",
+      "default": "",
+      "example": "backdoor-factory --cave_jumping"
+    },
+    {
+      "name": "--add_new_section",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Mandating that a new section be added to the exe (better success) but less av avoidance",
+      "default": "",
+      "example": "backdoor-factory --add_new_section"
+    },
+    {
+      "name": "--user_shellcode",
+      "short": "-U",
+      "aliases": [],
+      "arg": "SUPPLIED_SHELLCODE",
+      "required": false,
+      "description": "User supplied shellcode, make sure that it matches the architecture that you are targeting.",
+      "default": "",
+      "example": "backdoor-factory --user_shellcode <supplied_shellcode>"
+    },
+    {
+      "name": "--cave",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The cave flag will find code caves that can be used for stashing shellcode. This will print to all the code caves of a specific size.The -l flag can be use with this setting.",
+      "default": "",
+      "example": "backdoor-factory --cave"
+    },
+    {
+      "name": "--shell_length",
+      "short": "-l",
+      "aliases": [],
+      "arg": "SHELL_LEN",
+      "required": false,
+      "description": "For use with -c to help find code caves of different sizes",
+      "default": "",
+      "example": "backdoor-factory --shell_length <shell_len>"
+    },
+    {
+      "name": "--output-file",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "The backdoor output file",
+      "default": "",
+      "example": "backdoor-factory --output-file <output>"
+    },
+    {
+      "name": "--section",
+      "short": "-n",
+      "aliases": [],
+      "arg": "NSECTION",
+      "required": false,
+      "description": "New section name must be less than seven characters",
+      "default": "",
+      "example": "backdoor-factory --section <nsection>"
+    },
+    {
+      "name": "--directory",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DIR",
+      "required": false,
+      "description": "This is the location of the files that you want to backdoor. You can make a directory of file backdooring faster by forcing the attaching of a codecave to the exe by using the -a setting.",
+      "default": "",
+      "example": "backdoor-factory --directory <dir>"
+    },
+    {
+      "name": "--change_access",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag changes the section that houses the codecave to RWE. Sometimes this is necessary. Enabled by default. If disabled, the backdoor may fail.",
+      "default": "",
+      "example": "backdoor-factory --change_access"
+    },
+    {
+      "name": "--injector",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This command turns the backdoor factory in a hunt and shellcode inject type of mechanism. Edit the target settings in the injector module.",
+      "default": "",
+      "example": "backdoor-factory --injector"
+    },
+    {
+      "name": "--suffix",
+      "short": "-u",
+      "aliases": [],
+      "arg": "SUFFIX",
+      "required": false,
+      "description": "For use with injector, places a suffix on the original file for easy recovery",
+      "default": "",
+      "example": "backdoor-factory --suffix <suffix>"
+    },
+    {
+      "name": "--delete_original",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "For use with injector module. This command deletes the original file. Not for use in production systems. *Author not responsible for stupid uses.*",
+      "default": "",
+      "example": "backdoor-factory --delete_original"
+    },
+    {
+      "name": "--disk_offset",
+      "short": "-O",
+      "aliases": [],
+      "arg": "DISK_OFFSET",
+      "required": false,
+      "description": "Starting point on disk offset, in bytes. Some authors want to obfuscate their on disk offset to avoid reverse engineering, if you find one of those files use this flag, after you find the offset.",
+      "default": "",
+      "example": "backdoor-factory --disk_offset <disk_offset>"
+    },
+    {
+      "name": "--support_check",
+      "short": "-S",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "To determine if the file is supported by BDF prior to backdooring the file. For use by itself or with verbose. This check happens automatically if the backdooring is attempted.",
+      "default": "",
+      "example": "backdoor-factory --support_check"
+    },
+    {
+      "name": "--cave-miner",
+      "short": "-M",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Future use, to help determine smallest shellcode possible in a PE file",
+      "default": "",
+      "example": "backdoor-factory --cave-miner"
+    },
+    {
+      "name": "--no_banner",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Kills the banner.",
+      "default": "",
+      "example": "backdoor-factory --no_banner"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "For debug information output.",
+      "default": "",
+      "example": "backdoor-factory --verbose"
+    },
+    {
+      "name": "--image-type",
+      "short": "-T",
+      "aliases": [],
+      "arg": "IMAGE_TYPE",
+      "required": false,
+      "description": "ALL, x86, or x64 type binaries only. Default=ALL",
+      "default": "",
+      "example": "backdoor-factory --image-type <image_type>"
+    },
+    {
+      "name": "--zero_cert",
+      "short": "-Z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Allows for the overwriting of the pointer to the PE certificate table effectively removing the certificate from the binary for all intents and purposes.",
+      "default": "",
+      "example": "backdoor-factory --zero_cert"
+    },
+    {
+      "name": "--runas_admin",
+      "short": "-R",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "EXPERIMENTAL Checks the PE binaries for 'requestedExecutionLevel level=\"highestAvailable\"'. If this string is included in the binary, it must run as system/admin. If not in Support Check mode it will attmept to patch highestAvailable into the manifest if requestedExecutionLevel entry exists.",
+      "default": "",
+      "example": "backdoor-factory --runas_admin"
+    },
+    {
+      "name": "--patch_dll",
+      "short": "-L",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use this setting if you DON'T want to patch DLLs. Patches by default.",
+      "default": "",
+      "example": "backdoor-factory --patch_dll"
+    },
+    {
+      "name": "--fat_priority",
+      "short": "-F",
+      "aliases": [],
+      "arg": "FAT_PRIORITY",
+      "required": false,
+      "description": "For MACH-O format. If fat file, focus on which arch to patch. Default is x64. To force x86 use -F x86, to force both archs use -F ALL.",
+      "default": "",
+      "example": "backdoor-factory --fat_priority <fat_priority>"
+    },
+    {
+      "name": "--beacon",
+      "short": "-B",
+      "aliases": [],
+      "arg": "BEACON",
+      "required": false,
+      "description": "For payloads that have the ability to beacon out, set the time in secs",
+      "default": "",
+      "example": "backdoor-factory --beacon <beacon>"
+    },
+    {
+      "name": "--patch-method",
+      "short": "-m",
+      "aliases": [],
+      "arg": "PATCH_METHOD",
+      "required": false,
+      "description": "Patching methods for PE files, 'manual','automatic', replace and onionduke",
+      "default": "",
+      "example": "backdoor-factory --patch-method <patch_method>"
+    },
+    {
+      "name": "--user_malware",
+      "short": "-b",
+      "aliases": [],
+      "arg": "SUPPLIED_BINARY",
+      "required": false,
+      "description": "For onionduke. Provide your desired binary.",
+      "default": "",
+      "example": "backdoor-factory --user_malware <supplied_binary>"
+    },
+    {
+      "name": "--xp_mode",
+      "short": "-X",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Default: DO NOT support for XP legacy machines, use -X to support XP. By default the binary will crash on XP machines (e.g. sandboxes)",
+      "default": "",
+      "example": "backdoor-factory --xp_mode"
+    },
+    {
+      "name": "--idt_in_cave",
+      "short": "-A",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "EXPERIMENTAL By default a new Import Directory Table is created in a new section, by calling this flag it will be put in a code cave. This can cause bianry failure is some cases. Test on target binaries first.",
+      "default": "",
+      "example": "backdoor-factory --idt_in_cave"
+    },
+    {
+      "name": "--code_sign",
+      "short": "-C",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "For those with codesigning certs wishing to sign PE binaries only. Name your signing key and private key signingcert.cer and signingPrivateKey.pem repectively in the certs directory it's up to you to obtain signing certs.",
+      "default": "",
+      "example": "backdoor-factory --code_sign"
+    },
+    {
+      "name": "--preprocess",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "To execute preprocessing scripts in the preprocess directory",
+      "default": "",
+      "example": "backdoor-factory --preprocess"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

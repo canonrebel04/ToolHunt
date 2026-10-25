@@ -1,0 +1,59 @@
+{
+  "id": "dcfldd",
+  "name": "dcfldd",
+  "schema_version": 1,
+  "summary": "DCFL (DoD Computer Forensics Lab) dd replacement with hashing.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dcfldd"
+    }
+  ],
+  "usage": "dcfldd [OPTION]...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display this help and exit",
+      "default": "",
+      "example": "dcfldd --help"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "output version information and exit",
+      "default": "",
+      "example": "dcfldd --version"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "dcfldd if=</dev/disk_device> of=<file.img> hash=sha256 hashlog=<file.hash>",
+      "explanation": "Copy a disk to a raw image file and hash the image using SHA256",
+      "source": "tldr:dcfldd"
+    },
+    {
+      "cmd": "dcfldd if=</dev/disk_device> of=<file.img> hash=<sha512|sha384|sha256|sha1|md5> hashlog=<file.hash> hashwindow=<1G>",
+      "explanation": "Copy a disk to a raw image file, hashing each 1 GB chunk",
+      "source": "tldr:dcfldd"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/dcfldd.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

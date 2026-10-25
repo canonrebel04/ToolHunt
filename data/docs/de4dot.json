@@ -1,0 +1,926 @@
+{
+  "id": "de4dot",
+  "name": "de4dot",
+  "schema_version": 1,
+  "summary": ".NET deobfuscator and unpacker.",
+  "highlights": [
+    "-r — Scan for .NET files in all subdirs",
+    "-ro — Output base dir for recursively found files",
+    "-ru — Skip recursively found files with unsupported obfuscator",
+    "-d — Detect obfuscators and exit",
+    "--asm-path — Add an assembly search path",
+    "--dont-rename — Don't rename classes, methods, etc.",
+    "--keep-names — Don't rename n(amespaces), t(ypes), p(rops), e(vents), f(ields), m(ethods), a(rgs), g(ener",
+    "--dont-create-params — Don't create method params when renaming"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install de4dot"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "DIR",
+      "required": false,
+      "description": "Scan for .NET files in all subdirs",
+      "default": "",
+      "example": "de4dot -r <dir>"
+    },
+    {
+      "name": "-ro",
+      "short": "",
+      "aliases": [],
+      "arg": "DIR",
+      "required": false,
+      "description": "Output base dir for recursively found files",
+      "default": "",
+      "example": "de4dot -ro <dir>"
+    },
+    {
+      "name": "-ru",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip recursively found files with unsupported obfuscator",
+      "default": "",
+      "example": "de4dot -ru"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Detect obfuscators and exit",
+      "default": "",
+      "example": "de4dot -d"
+    },
+    {
+      "name": "--asm-path",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Add an assembly search path",
+      "default": "",
+      "example": "de4dot --asm-path <path>"
+    },
+    {
+      "name": "--dont-rename",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't rename classes, methods, etc.",
+      "default": "",
+      "example": "de4dot --dont-rename"
+    },
+    {
+      "name": "--keep-names",
+      "short": "",
+      "aliases": [],
+      "arg": "FLAGS",
+      "required": false,
+      "description": "Don't rename n(amespaces), t(ypes), p(rops), e(vents), f(ields), m(ethods), a(rgs), g(enericparams), d(elegate fields). Can be combined, eg. efm",
+      "default": "",
+      "example": "de4dot --keep-names <flags>"
+    },
+    {
+      "name": "--dont-create-params",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't create method params when renaming",
+      "default": "",
+      "example": "de4dot --dont-create-params"
+    },
+    {
+      "name": "--dont-restore-props",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't restore properties/events",
+      "default": "",
+      "example": "de4dot --dont-restore-props"
+    },
+    {
+      "name": "--default-strtyp",
+      "short": "",
+      "aliases": [],
+      "arg": "TYPE",
+      "required": false,
+      "description": "Default string decrypter type",
+      "default": "",
+      "example": "de4dot --default-strtyp <type>"
+    },
+    {
+      "name": "--default-strtok",
+      "short": "",
+      "aliases": [],
+      "arg": "METHOD",
+      "required": false,
+      "description": "Default string decrypter method token or [type::][name][(args,...)]",
+      "default": "",
+      "example": "de4dot --default-strtok <method>"
+    },
+    {
+      "name": "--no-cflow-deob",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "No control flow deobfuscation (NOT recommended)",
+      "default": "",
+      "example": "de4dot --no-cflow-deob"
+    },
+    {
+      "name": "--only-cflow-deob",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only control flow deobfuscation",
+      "default": "",
+      "example": "de4dot --only-cflow-deob"
+    },
+    {
+      "name": "--load-new-process",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Load executed assemblies into a new process",
+      "default": "",
+      "example": "de4dot --load-new-process"
+    },
+    {
+      "name": "--keep-types",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Keep obfuscator types, fields, methods",
+      "default": "",
+      "example": "de4dot --keep-types"
+    },
+    {
+      "name": "--preserve-tokens",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Preserve important tokens, #US, #Blob, extra sig data",
+      "default": "",
+      "example": "de4dot --preserve-tokens"
+    },
+    {
+      "name": "--preserve-table",
+      "short": "",
+      "aliases": [],
+      "arg": "FLAGS",
+      "required": false,
+      "description": "Preserve rids in table: tr (TypeRef), td (TypeDef), fd (Field), md (Method), pd (Param), mr (MemberRef), s (StandAloneSig), ed (Event), pr (Property), ts (TypeSpec), ms (MethodSpec), all (all previous tables). Use - to disable (eg. all,-pd). Can be combined: ed,fd,md",
+      "default": "",
+      "example": "de4dot --preserve-table <flags>"
+    },
+    {
+      "name": "--preserve-strings",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Preserve #Strings heap offsets",
+      "default": "",
+      "example": "de4dot --preserve-strings"
+    },
+    {
+      "name": "--preserve-us",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Preserve #US heap offsets",
+      "default": "",
+      "example": "de4dot --preserve-us"
+    },
+    {
+      "name": "--preserve-blob",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Preserve #Blob heap offsets",
+      "default": "",
+      "example": "de4dot --preserve-blob"
+    },
+    {
+      "name": "--preserve-sig-data",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Preserve extra data at the end of signatures",
+      "default": "",
+      "example": "de4dot --preserve-sig-data"
+    },
+    {
+      "name": "--one-file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Deobfuscate one file at a time",
+      "default": "",
+      "example": "de4dot --one-file"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose",
+      "default": "",
+      "example": "de4dot -v"
+    },
+    {
+      "name": "-vv",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Very verbose",
+      "default": "",
+      "example": "de4dot -vv"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this help message",
+      "default": "",
+      "example": "de4dot -h"
+    },
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Same as -h",
+      "default": "",
+      "example": "de4dot --help"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Name of .NET file",
+      "default": "",
+      "example": "de4dot -f <file>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Name of output file",
+      "default": "",
+      "example": "de4dot -o <file>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "TYPE",
+      "required": false,
+      "description": "Obfuscator type (see below)",
+      "default": "",
+      "example": "de4dot -p <type>"
+    },
+    {
+      "name": "--strtyp",
+      "short": "",
+      "aliases": [],
+      "arg": "TYPE",
+      "required": false,
+      "description": "String decrypter type",
+      "default": "",
+      "example": "de4dot --strtyp <type>"
+    },
+    {
+      "name": "--strtok",
+      "short": "",
+      "aliases": [],
+      "arg": "METHOD",
+      "required": false,
+      "description": "String decrypter method token or [type::][name][(args,...)]",
+      "default": "",
+      "example": "de4dot --strtok <method>"
+    },
+    {
+      "name": "--un-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (^[a-zA-Z_<{$][a-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --un-name <regex>"
+    },
+    {
+      "name": "--an-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --an-name <regex>"
+    },
+    {
+      "name": "--an-methods",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Decrypt methods (True)",
+      "default": "",
+      "example": "de4dot --an-methods <bool>"
+    },
+    {
+      "name": "--an-rsrc",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Decrypt resources (True)",
+      "default": "",
+      "example": "de4dot --an-rsrc <bool>"
+    },
+    {
+      "name": "--an-stack",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove all StackFrameHelper code (True)",
+      "default": "",
+      "example": "de4dot --an-stack <bool>"
+    },
+    {
+      "name": "--an-vm",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Restore VM code (True)",
+      "default": "",
+      "example": "de4dot --an-vm <bool>"
+    },
+    {
+      "name": "--an-initlocals",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Set initlocals in method header (True)",
+      "default": "",
+      "example": "de4dot --an-initlocals <bool>"
+    },
+    {
+      "name": "--bl-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --bl-name <regex>"
+    },
+    {
+      "name": "--bl-remove-inlined",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove inlined methods (True)",
+      "default": "",
+      "example": "de4dot --bl-remove-inlined <bool>"
+    },
+    {
+      "name": "--bl-methods",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Decrypt methods (True)",
+      "default": "",
+      "example": "de4dot --bl-methods <bool>"
+    },
+    {
+      "name": "--bl-rsrc",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Decrypt resources (True)",
+      "default": "",
+      "example": "de4dot --bl-rsrc <bool>"
+    },
+    {
+      "name": "--bl-embedded",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Dump embedded assemblies (True)",
+      "default": "",
+      "example": "de4dot --bl-embedded <bool>"
+    },
+    {
+      "name": "--cf-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!^[a-zA-Z]{1,3}$&!^[_<>{}$.`-]$&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --cf-name <regex>"
+    },
+    {
+      "name": "--cf-embedded",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Dump embedded assemblies (True)",
+      "default": "",
+      "example": "de4dot --cf-embedded <bool>"
+    },
+    {
+      "name": "--cv-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!^[A-Za-z]{1,2}$&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --cv-name <regex>"
+    },
+    {
+      "name": "--cw-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!^[0-9A-F]{32}$&!^[_<>{}$.`-]$&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --cw-name <regex>"
+    },
+    {
+      "name": "--cw-embedded",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Dump embedded assemblies (True)",
+      "default": "",
+      "example": "de4dot --cw-embedded <bool>"
+    },
+    {
+      "name": "--cw-decrypt-main",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Decrypt main embedded assembly (True)",
+      "default": "",
+      "example": "de4dot --cw-decrypt-main <bool>"
+    },
+    {
+      "name": "--cr-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (^[a-zA-Z_<{$][a-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --cr-name <regex>"
+    },
+    {
+      "name": "--cr-antidump",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove anti dump code (True)",
+      "default": "",
+      "example": "de4dot --cr-antidump <bool>"
+    },
+    {
+      "name": "--cr-decrypt-main",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Decrypt main embedded assembly (True)",
+      "default": "",
+      "example": "de4dot --cr-decrypt-main <bool>"
+    },
+    {
+      "name": "--co-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!^(get_|set_|add_|remove_)?[A-Z]{1,3}(?:`\\d+)?$&!^(get_|set_|add_|remove_)?c[0-9a-f]{32}(?:`\\d+)?$&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --co-name <regex>"
+    },
+    {
+      "name": "--ds-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --ds-name <regex>"
+    },
+    {
+      "name": "--ds-remove-inlined",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove inlined methods (True)",
+      "default": "",
+      "example": "de4dot --ds-remove-inlined <bool>"
+    },
+    {
+      "name": "--ds-rsrc",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Decrypt resources (True)",
+      "default": "",
+      "example": "de4dot --ds-rsrc <bool>"
+    },
+    {
+      "name": "--ds-embedded",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Dump embedded assemblies (True)",
+      "default": "",
+      "example": "de4dot --ds-embedded <bool>"
+    },
+    {
+      "name": "--ds-keys",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Rename resource keys (True)",
+      "default": "",
+      "example": "de4dot --ds-keys <bool>"
+    },
+    {
+      "name": "--ds-casts",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Deobfuscate casts (True)",
+      "default": "",
+      "example": "de4dot --ds-casts <bool>"
+    },
+    {
+      "name": "--df-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!^(?:eval_)?[a-z][a-z0-9]{0,2}$&!^A_[0-9]+$&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --df-name <regex>"
+    },
+    {
+      "name": "--dr3-inline",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Inline short methods (True)",
+      "default": "",
+      "example": "de4dot --dr3-inline <bool>"
+    },
+    {
+      "name": "--dr3-remove-inlined",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove inlined methods (True)",
+      "default": "",
+      "example": "de4dot --dr3-remove-inlined <bool>"
+    },
+    {
+      "name": "--dr3-ns1",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Clear namespace if there's only one class in it (True)",
+      "default": "",
+      "example": "de4dot --dr3-ns1 <bool>"
+    },
+    {
+      "name": "--dr3-sn",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove anti strong name code (True)",
+      "default": "",
+      "example": "de4dot --dr3-sn <bool>"
+    },
+    {
+      "name": "--dr4-methods",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Decrypt methods (True)",
+      "default": "",
+      "example": "de4dot --dr4-methods <bool>"
+    },
+    {
+      "name": "--dr4-inline",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Inline short methods (True)",
+      "default": "",
+      "example": "de4dot --dr4-inline <bool>"
+    },
+    {
+      "name": "--dr4-remove-inlined",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove inlined methods (True)",
+      "default": "",
+      "example": "de4dot --dr4-remove-inlined <bool>"
+    },
+    {
+      "name": "--dr4-embedded",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Dump embedded assemblies (True)",
+      "default": "",
+      "example": "de4dot --dr4-embedded <bool>"
+    },
+    {
+      "name": "--dr4-rsrc",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Decrypt resources (True)",
+      "default": "",
+      "example": "de4dot --dr4-rsrc <bool>"
+    },
+    {
+      "name": "--dr4-ns1",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Clear namespace if there's only one class in it (True)",
+      "default": "",
+      "example": "de4dot --dr4-ns1 <bool>"
+    },
+    {
+      "name": "--dr4-sn",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove anti strong name code (True)",
+      "default": "",
+      "example": "de4dot --dr4-sn <bool>"
+    },
+    {
+      "name": "--ef-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!^[a-zA-Z]$&!^#=&!^dje_.+_ejd$&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --ef-name <regex>"
+    },
+    {
+      "name": "--go-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!^[A-Za-z]{1,2}(?:`\\d+)?$&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --go-name <regex>"
+    },
+    {
+      "name": "--go-remove-inlined",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove inlined methods (True)",
+      "default": "",
+      "example": "de4dot --go-remove-inlined <bool>"
+    },
+    {
+      "name": "--go-ints",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Decrypt integers (True)",
+      "default": "",
+      "example": "de4dot --go-ints <bool>"
+    },
+    {
+      "name": "--go-sn",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove anti strong name code (True)",
+      "default": "",
+      "example": "de4dot --go-sn <bool>"
+    },
+    {
+      "name": "--il-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --il-name <regex>"
+    },
+    {
+      "name": "--mc-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!^[oO01l]+$&!^[A-F0-9]{20,}$&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --mc-name <regex>"
+    },
+    {
+      "name": "--mc-cp",
+      "short": "",
+      "aliases": [],
+      "arg": "INT",
+      "required": false,
+      "description": "String code page (936)",
+      "default": "",
+      "example": "de4dot --mc-cp <int>"
+    },
+    {
+      "name": "--mp-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --mp-name <regex>"
+    },
+    {
+      "name": "--rm-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!.)",
+      "default": "",
+      "example": "de4dot --rm-name <regex>"
+    },
+    {
+      "name": "--sk-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!`[^0-9]+&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --sk-name <regex>"
+    },
+    {
+      "name": "--sa-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --sa-name <regex>"
+    },
+    {
+      "name": "--sa-error",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove automated error reporting code (True)",
+      "default": "",
+      "example": "de4dot --sa-error <bool>"
+    },
+    {
+      "name": "--sn-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!^[a-zA-Z0-9]{1,2}$&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --sn-name <regex>"
+    },
+    {
+      "name": "--sn-remove-inlined",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Remove inlined methods (True)",
+      "default": "",
+      "example": "de4dot --sn-remove-inlined <bool>"
+    },
+    {
+      "name": "--sn-ns1",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Clear namespace if there's only one class in it (True)",
+      "default": "",
+      "example": "de4dot --sn-ns1 <bool>"
+    },
+    {
+      "name": "--sn-rsrc",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOL",
+      "required": false,
+      "description": "Restore resource names (True)",
+      "default": "",
+      "example": "de4dot --sn-rsrc <bool>"
+    },
+    {
+      "name": "--xc-name",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Valid name regex pattern (!^[oO01l]{4,}$&!^(get_|set_|add_|remove_|_)?[x_][a-f0-9]{16,}$&^[\\u2E80-\\u9FFFa-zA-Z_<{$][\\u2E80-\\u9FFFa-zA-Z_0-9<>{}$.`-]*$)",
+      "default": "",
+      "example": "de4dot --xc-name <regex>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

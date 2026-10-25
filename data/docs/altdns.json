@@ -1,0 +1,136 @@
+{
+  "id": "altdns",
+  "name": "altdns",
+  "schema_version": 1,
+  "summary": "Generates permutations, alterations and mutations of subdomains and then resolves them.",
+  "highlights": [
+    "-i — List of subdomains input",
+    "-o — Output location for altered subdomains",
+    "-w — List of words to alter the subdomains with",
+    "-r — Resolve all altered subdomains",
+    "-n — Add number suffix to every domain (0-9)",
+    "-e — Ignore existing domains in file",
+    "-d — IP address of resolver to use (overrides system default)",
+    "-s — File to save resolved altered subdomains to"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install altdns"
+    }
+  ],
+  "usage": "altdns [-h] -i INPUT -o OUTPUT [-w WORDLIST] [-r] [-n] [-e]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "altdns --help"
+    },
+    {
+      "name": "--input",
+      "short": "-i",
+      "aliases": [],
+      "arg": "INPUT",
+      "required": false,
+      "description": "List of subdomains input",
+      "default": "",
+      "example": "altdns --input <input>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "Output location for altered subdomains",
+      "default": "",
+      "example": "altdns --output <output>"
+    },
+    {
+      "name": "--wordlist",
+      "short": "-w",
+      "aliases": [],
+      "arg": "WORDLIST",
+      "required": false,
+      "description": "List of words to alter the subdomains with",
+      "default": "",
+      "example": "altdns --wordlist <wordlist>"
+    },
+    {
+      "name": "--resolve",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Resolve all altered subdomains",
+      "default": "",
+      "example": "altdns --resolve"
+    },
+    {
+      "name": "--add-number-suffix",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Add number suffix to every domain (0-9)",
+      "default": "",
+      "example": "altdns --add-number-suffix"
+    },
+    {
+      "name": "--ignore-existing",
+      "short": "-e",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore existing domains in file",
+      "default": "",
+      "example": "altdns --ignore-existing"
+    },
+    {
+      "name": "--dnsserver",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DNSSERVER",
+      "required": false,
+      "description": "IP address of resolver to use (overrides system default)",
+      "default": "",
+      "example": "altdns --dnsserver <dnsserver>"
+    },
+    {
+      "name": "--save",
+      "short": "-s",
+      "aliases": [],
+      "arg": "SAVE",
+      "required": false,
+      "description": "File to save resolved altered subdomains to",
+      "default": "",
+      "example": "altdns --save <save>"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "Amount of threads to run simultaneously",
+      "default": "",
+      "example": "altdns --threads <threads>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

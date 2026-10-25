@@ -1,0 +1,805 @@
+{
+  "id": "naabu",
+  "name": "naabu",
+  "schema_version": 1,
+  "summary": "A fast port scanner written in go with focus on reliability and simplicity.",
+  "highlights": [
+    "-l — list of hosts to scan ports (file)",
+    "-exclude-hosts — hosts to exclude from the scan (comma-separated)",
+    "-exclude-file — list of hosts to exclude from scan (file)",
+    "-p — ports to scan (80,443, 100-200)",
+    "-top-ports — top ports to scan (default 100) [full,100,1000]",
+    "-port-threshold — port threshold to skip port scan for the host",
+    "-exclude-cdn — skip full port scans for CDN/WAF (only scan for port 80,443)",
+    "-display-cdn — display cdn in use"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install naabu"
+    }
+  ],
+  "usage": "naabu [flags]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-list",
+      "short": "-l",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "list of hosts to scan ports (file)",
+      "default": "",
+      "example": "naabu -list <string>"
+    },
+    {
+      "name": "-exclude-hosts",
+      "short": "",
+      "aliases": [
+        "-eh"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "hosts to exclude from the scan (comma-separated)",
+      "default": "",
+      "example": "naabu -exclude-hosts <string>"
+    },
+    {
+      "name": "-exclude-file",
+      "short": "",
+      "aliases": [
+        "-ef"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "list of hosts to exclude from scan (file)",
+      "default": "",
+      "example": "naabu -exclude-file <string>"
+    },
+    {
+      "name": "-port",
+      "short": "-p",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "ports to scan (80,443, 100-200)",
+      "default": "",
+      "example": "naabu -port <string>"
+    },
+    {
+      "name": "-top-ports",
+      "short": "",
+      "aliases": [
+        "-tp"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "top ports to scan (default 100) [full,100,1000]",
+      "default": "100",
+      "example": "naabu -top-ports <string>"
+    },
+    {
+      "name": "-port-threshold",
+      "short": "",
+      "aliases": [
+        "-pts"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "port threshold to skip port scan for the host",
+      "default": "",
+      "example": "naabu -port-threshold <int>"
+    },
+    {
+      "name": "-exclude-cdn",
+      "short": "",
+      "aliases": [
+        "-ec"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "skip full port scans for CDN/WAF (only scan for port 80,443)",
+      "default": "",
+      "example": "naabu -exclude-cdn"
+    },
+    {
+      "name": "-display-cdn",
+      "short": "",
+      "aliases": [
+        "-cdn"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "display cdn in use",
+      "default": "",
+      "example": "naabu -display-cdn"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "general internal worker threads (default 25)",
+      "default": "25",
+      "example": "naabu -c <int>"
+    },
+    {
+      "name": "-rate",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "packets to send per second (default 1000)",
+      "default": "1000",
+      "example": "naabu -rate <int>"
+    },
+    {
+      "name": "-update",
+      "short": "",
+      "aliases": [
+        "-up"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "update naabu to latest version",
+      "default": "",
+      "example": "naabu -update"
+    },
+    {
+      "name": "-disable-update-check",
+      "short": "",
+      "aliases": [
+        "-duc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable automatic naabu update check",
+      "default": "",
+      "example": "naabu -disable-update-check"
+    },
+    {
+      "name": "-output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "file to write output to (optional)",
+      "default": "",
+      "example": "naabu -output <string>"
+    },
+    {
+      "name": "-list-output-fields",
+      "short": "",
+      "aliases": [
+        "-lof"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "list of fields to output (comma separated)",
+      "default": "",
+      "example": "naabu -list-output-fields"
+    },
+    {
+      "name": "-json",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "write output in JSON lines format",
+      "default": "",
+      "example": "naabu -json"
+    },
+    {
+      "name": "-csv",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "write output in csv format",
+      "default": "",
+      "example": "naabu -csv"
+    },
+    {
+      "name": "-config",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "path to the naabu configuration file (default $HOME/.config/naabu/config.yaml)",
+      "default": "$HOME/.config/naabu/config.yaml",
+      "example": "naabu -config <string>"
+    },
+    {
+      "name": "-scan-all-ips",
+      "short": "",
+      "aliases": [
+        "-sa"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "scan all the IP's associated with DNS record",
+      "default": "",
+      "example": "naabu -scan-all-ips"
+    },
+    {
+      "name": "-scan-type",
+      "short": "-s",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "type of port scan (SYN/CONNECT) (default \"c\")",
+      "default": "c",
+      "example": "naabu -scan-type <string>"
+    },
+    {
+      "name": "-source-ip",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "source ip and port (x.x.x.x:yyy - might not work on OSX)",
+      "default": "",
+      "example": "naabu -source-ip <string>"
+    },
+    {
+      "name": "-connect-payload",
+      "short": "",
+      "aliases": [
+        "-cp"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "payload to send in CONNECT scans (optional)",
+      "default": "",
+      "example": "naabu -connect-payload <string>"
+    },
+    {
+      "name": "-interface-list",
+      "short": "",
+      "aliases": [
+        "-il"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "list available interfaces and public ip",
+      "default": "",
+      "example": "naabu -interface-list"
+    },
+    {
+      "name": "-interface",
+      "short": "-i",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "network Interface to use for port scan",
+      "default": "",
+      "example": "naabu -interface <string>"
+    },
+    {
+      "name": "-nmap",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "invoke nmap scan on targets (nmap must be installed) - Deprecated",
+      "default": "",
+      "example": "naabu -nmap"
+    },
+    {
+      "name": "-nmap-cli",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "nmap command to run on found results (example: -nmap-cli 'nmap -sV')",
+      "default": "",
+      "example": "naabu -nmap-cli <string>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "list of custom resolver dns resolution (comma separated or from file)",
+      "default": "",
+      "example": "naabu -r <string>"
+    },
+    {
+      "name": "-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "socks5 proxy (ip[:port] / fqdn[:port]",
+      "default": "",
+      "example": "naabu -proxy <string>"
+    },
+    {
+      "name": "-proxy-auth",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "socks5 proxy authentication (username:password)",
+      "default": "",
+      "example": "naabu -proxy-auth <string>"
+    },
+    {
+      "name": "-dns-order",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "dns resolution order (p/l/lp/pl) (default \"l\")",
+      "default": "l",
+      "example": "naabu -dns-order <string>"
+    },
+    {
+      "name": "-system-resolver",
+      "short": "",
+      "aliases": [
+        "-sr"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "use system DNS as fallback resolver",
+      "default": "",
+      "example": "naabu -system-resolver"
+    },
+    {
+      "name": "-resume",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "resume scan using resume.cfg",
+      "default": "",
+      "example": "naabu -resume"
+    },
+    {
+      "name": "-stream",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "stream mode (disables resume, nmap, verify, retries, shuffling, etc)",
+      "default": "",
+      "example": "naabu -stream"
+    },
+    {
+      "name": "-passive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display passive open ports using shodan internetdb api",
+      "default": "",
+      "example": "naabu -passive"
+    },
+    {
+      "name": "-input-read-timeout",
+      "short": "",
+      "aliases": [
+        "-irt"
+      ],
+      "arg": "value",
+      "required": false,
+      "description": "timeout on input read (default 3m0s)",
+      "default": "3m0s",
+      "example": "naabu -input-read-timeout <value>"
+    },
+    {
+      "name": "-no-stdin",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable Stdin processing",
+      "default": "",
+      "example": "naabu -no-stdin"
+    },
+    {
+      "name": "-host-discovery",
+      "short": "",
+      "aliases": [
+        "-sn"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Perform Only Host Discovery",
+      "default": "",
+      "example": "naabu -host-discovery"
+    },
+    {
+      "name": "-skip-host-discovery",
+      "short": "",
+      "aliases": [
+        "-Pn"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Skip Host discovery",
+      "default": "",
+      "example": "naabu -skip-host-discovery"
+    },
+    {
+      "name": "-with-host-discovery",
+      "short": "",
+      "aliases": [
+        "-wn"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Enable Host discovery",
+      "default": "",
+      "example": "naabu -with-host-discovery"
+    },
+    {
+      "name": "-probe-icmp-echo",
+      "short": "",
+      "aliases": [
+        "-pe"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "ICMP echo request Ping (host discovery needs to be enabled)",
+      "default": "",
+      "example": "naabu -probe-icmp-echo"
+    },
+    {
+      "name": "-probe-icmp-timestamp",
+      "short": "",
+      "aliases": [
+        "-pp"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "ICMP timestamp request Ping (host discovery needs to be enabled)",
+      "default": "",
+      "example": "naabu -probe-icmp-timestamp"
+    },
+    {
+      "name": "-probe-icmp-address-mask",
+      "short": "",
+      "aliases": [
+        "-pm"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "ICMP address mask request Ping (host discovery needs to be enabled)",
+      "default": "",
+      "example": "naabu -probe-icmp-address-mask"
+    },
+    {
+      "name": "-arp-ping",
+      "short": "",
+      "aliases": [
+        "-arp"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "ARP ping (host discovery needs to be enabled)",
+      "default": "",
+      "example": "naabu -arp-ping"
+    },
+    {
+      "name": "-nd-ping",
+      "short": "",
+      "aliases": [
+        "-nd"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "IPv6 Neighbor Discovery (host discovery needs to be enabled)",
+      "default": "",
+      "example": "naabu -nd-ping"
+    },
+    {
+      "name": "-rev-ptr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Reverse PTR lookup for input ips",
+      "default": "",
+      "example": "naabu -rev-ptr"
+    },
+    {
+      "name": "-service-discovery",
+      "short": "",
+      "aliases": [
+        "-sD"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Service Discovery",
+      "default": "",
+      "example": "naabu -service-discovery"
+    },
+    {
+      "name": "-service-version",
+      "short": "",
+      "aliases": [
+        "-sV"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Service Version",
+      "default": "",
+      "example": "naabu -service-version"
+    },
+    {
+      "name": "-retries",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "number of retries for the port scan (default 3)",
+      "default": "3",
+      "example": "naabu -retries <int>"
+    },
+    {
+      "name": "-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "value",
+      "required": false,
+      "description": "millisecond to wait before timing out (default 1s)",
+      "default": "1s",
+      "example": "naabu -timeout <value>"
+    },
+    {
+      "name": "-warm-up-time",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "time in seconds between scan phases (default 2)",
+      "default": "2",
+      "example": "naabu -warm-up-time <int>"
+    },
+    {
+      "name": "-ping",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ping probes for verification of host",
+      "default": "",
+      "example": "naabu -ping"
+    },
+    {
+      "name": "-verify",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "validate the ports again with TCP verification",
+      "default": "",
+      "example": "naabu -verify"
+    },
+    {
+      "name": "-smart-scan",
+      "short": "",
+      "aliases": [
+        "-ss"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "predictive port scanning using port correlation model",
+      "default": "",
+      "example": "naabu -smart-scan"
+    },
+    {
+      "name": "-prediction-threshold",
+      "short": "",
+      "aliases": [
+        "-pt"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "minimum confidence for port predictions (0-100%) (default 20)",
+      "default": "20",
+      "example": "naabu -prediction-threshold <int>"
+    },
+    {
+      "name": "-health-check",
+      "short": "",
+      "aliases": [
+        "-hc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "run diagnostic check up",
+      "default": "",
+      "example": "naabu -health-check"
+    },
+    {
+      "name": "-debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display debugging information",
+      "default": "",
+      "example": "naabu -debug"
+    },
+    {
+      "name": "-verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display verbose output",
+      "default": "",
+      "example": "naabu -verbose"
+    },
+    {
+      "name": "-no-color",
+      "short": "",
+      "aliases": [
+        "-nc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable colors in CLI output",
+      "default": "",
+      "example": "naabu -no-color"
+    },
+    {
+      "name": "-silent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display only results in output",
+      "default": "",
+      "example": "naabu -silent"
+    },
+    {
+      "name": "-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display version of naabu",
+      "default": "",
+      "example": "naabu -version"
+    },
+    {
+      "name": "-stats",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display stats of the running scan (deprecated)",
+      "default": "",
+      "example": "naabu -stats"
+    },
+    {
+      "name": "-stats-interval",
+      "short": "",
+      "aliases": [
+        "-si"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "number of seconds to wait between showing a statistics update (deprecated) (default 5)",
+      "default": "5",
+      "example": "naabu -stats-interval <int>"
+    },
+    {
+      "name": "-metrics-port",
+      "short": "",
+      "aliases": [
+        "-mp"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "port to expose naabu metrics on (default 63636)",
+      "default": "63636",
+      "example": "naabu -metrics-port <int>"
+    },
+    {
+      "name": "-auth",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "configure projectdiscovery cloud (pdcp) api key (default true)",
+      "default": "true",
+      "example": "naabu -auth"
+    },
+    {
+      "name": "-auth-config",
+      "short": "",
+      "aliases": [
+        "-ac"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "configure projectdiscovery cloud (pdcp) api key credential file",
+      "default": "",
+      "example": "naabu -auth-config <string>"
+    },
+    {
+      "name": "-dashboard",
+      "short": "",
+      "aliases": [
+        "-pd"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "upload / view output in projectdiscovery cloud (pdcp) UI dashboard",
+      "default": "",
+      "example": "naabu -dashboard"
+    },
+    {
+      "name": "-team-id",
+      "short": "",
+      "aliases": [
+        "-tid"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "upload asset results to given team id (optional)",
+      "default": "",
+      "example": "naabu -team-id <string>"
+    },
+    {
+      "name": "-asset-id",
+      "short": "",
+      "aliases": [
+        "-aid"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "upload new assets to existing asset id (optional)",
+      "default": "",
+      "example": "naabu -asset-id <string>"
+    },
+    {
+      "name": "-asset-name",
+      "short": "",
+      "aliases": [
+        "-aname"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "assets group name to set (optional)",
+      "default": "",
+      "example": "naabu -asset-name <string>"
+    },
+    {
+      "name": "-dashboard-upload",
+      "short": "",
+      "aliases": [
+        "-pdu"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "upload naabu output file (jsonl) in projectdiscovery cloud (pdcp) UI dashboard",
+      "default": "",
+      "example": "naabu -dashboard-upload <string>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "naabu -interface-list",
+      "explanation": "Display available network interfaces and public IP address of the local host",
+      "source": "tldr:naabu"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/naabu.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

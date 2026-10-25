@@ -1,0 +1,26 @@
+{
+  "id": "xspy",
+  "name": "xspy",
+  "schema_version": 1,
+  "summary": "A utility for monitoring keypresses on remote X servers",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install xspy"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

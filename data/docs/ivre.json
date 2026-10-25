@@ -1,0 +1,30 @@
+{
+  "id": "ivre",
+  "name": "ivre",
+  "schema_version": 1,
+  "summary": "Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ivre"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ivre-doc"
+    }
+  ],
+  "usage": "ivre [COMMAND]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

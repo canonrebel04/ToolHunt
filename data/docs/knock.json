@@ -1,0 +1,41 @@
+{
+  "id": "knock",
+  "name": "knock",
+  "schema_version": 1,
+  "summary": "Subdomain scanner.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "knock <hostname> <portnumber>:<protocol>",
+      "explanation": "Knock on ports using different protocols",
+      "source": "tldr:knock"
+    },
+    {
+      "cmd": "knock --udp <hostname> <portnumber>",
+      "explanation": "Knock on port using UDP",
+      "source": "tldr:knock"
+    },
+    {
+      "cmd": "knock <-4|-6> <hostname> <portnumber>",
+      "explanation": "Force usage of IPv4/IPv6",
+      "source": "tldr:knock"
+    },
+    {
+      "cmd": "knock --verbose <hostname> <portnumber>",
+      "explanation": "Display errors and details of connection",
+      "source": "tldr:knock"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/linux/knock.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

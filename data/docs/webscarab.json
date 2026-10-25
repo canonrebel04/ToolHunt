@@ -1,0 +1,25 @@
+{
+  "id": "webscarab",
+  "name": "webscarab",
+  "schema_version": 1,
+  "summary": "Framework for analysing applications that communicate using the HTTP and HTTPS protocols",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install webscarab"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": false
+  }
+}

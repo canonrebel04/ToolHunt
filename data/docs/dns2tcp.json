@@ -1,0 +1,136 @@
+{
+  "id": "dns2tcp",
+  "name": "dns2tcp",
+  "schema_version": 1,
+  "summary": "A tool for relaying TCP connections over DNS.",
+  "highlights": [
+    "-c — : enable compression",
+    "-z — : domain to use (mandatory)",
+    "-d — : debug_level (1, 2 or 3)",
+    "-r — : resource to access",
+    "-k — : pre-shared key",
+    "-f — : configuration file",
+    "-l — : local port to bind, '-' is for stdin (mandatory if resource defined without program )",
+    "-e — : program to execute"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dns2tcp"
+    }
+  ],
+  "usage": "dns2tcpc [options] [server]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": enable compression",
+      "default": "",
+      "example": "dns2tcpc -c"
+    },
+    {
+      "name": "-z",
+      "short": "",
+      "aliases": [],
+      "arg": "<domain>",
+      "required": false,
+      "description": ": domain to use (mandatory)",
+      "default": "",
+      "example": "dns2tcpc -z <domain>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "<1|2|3>",
+      "required": false,
+      "description": ": debug_level (1, 2 or 3)",
+      "default": "",
+      "example": "dns2tcpc -d <1|2|3>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<resource>",
+      "required": false,
+      "description": ": resource to access",
+      "default": "",
+      "example": "dns2tcpc -r <resource>"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "<key>",
+      "required": false,
+      "description": ": pre-shared key",
+      "default": "",
+      "example": "dns2tcpc -k <key>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": ": configuration file",
+      "default": "",
+      "example": "dns2tcpc -f <filename>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "<port|->",
+      "required": false,
+      "description": ": local port to bind, '-' is for stdin (mandatory if resource defined without program )",
+      "default": "",
+      "example": "dns2tcpc -l <port|->"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "<program>",
+      "required": false,
+      "description": ": program to execute",
+      "default": "",
+      "example": "dns2tcpc -e <program>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<delay>",
+      "required": false,
+      "description": ": max DNS server's answer delay in seconds (default is 3)",
+      "default": "is 3",
+      "example": "dns2tcpc -t <delay>"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "<TXT|KEY>",
+      "required": false,
+      "description": ": DNS request type (default is TXT)",
+      "default": "is TXT",
+      "example": "dns2tcpc -T <TXT|KEY>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "id": "skipfish",
+  "name": "skipfish",
+  "schema_version": 1,
+  "summary": "A fully automated, active web application security reconnaissance tool.",
+  "highlights": [
+    "-N — - do not accept any new cookies",
+    "--auth-form — - form authentication URL",
+    "-I — - only follow URLs matching 'string'",
+    "-X — - exclude URLs matching 'string'",
+    "-K — - do not fuzz parameters named 'string'",
+    "-Z — - do not descend into 5xx locations",
+    "-O — - do not submit any forms",
+    "-P — - do not parse HTML, etc, to find new links"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install skipfish"
+    }
+  ],
+  "usage": "skipfish [ options ... ] -W wordlist -o output_dir start_url [ start_url2 ... ]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-N",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- do not accept any new cookies",
+      "default": "",
+      "example": "skipfish -N"
+    },
+    {
+      "name": "--auth-form",
+      "short": "",
+      "aliases": [],
+      "arg": "url",
+      "required": false,
+      "description": "- form authentication URL",
+      "default": "",
+      "example": "skipfish --auth-form <url>"
+    },
+    {
+      "name": "-I",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "- only follow URLs matching 'string'",
+      "default": "",
+      "example": "skipfish -I <string>"
+    },
+    {
+      "name": "-X",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "- exclude URLs matching 'string'",
+      "default": "",
+      "example": "skipfish -X <string>"
+    },
+    {
+      "name": "-K",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "- do not fuzz parameters named 'string'",
+      "default": "",
+      "example": "skipfish -K <string>"
+    },
+    {
+      "name": "-Z",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- do not descend into 5xx locations",
+      "default": "",
+      "example": "skipfish -Z"
+    },
+    {
+      "name": "-O",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- do not submit any forms",
+      "default": "",
+      "example": "skipfish -O"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- do not parse HTML, etc, to find new links",
+      "default": "",
+      "example": "skipfish -P"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "dir",
+      "required": true,
+      "description": "- write output to specified directory (required)",
+      "default": "",
+      "example": "skipfish -o <dir>"
+    },
+    {
+      "name": "-M",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- log warnings about mixed content / non-SSL passwords",
+      "default": "",
+      "example": "skipfish -M"
+    },
+    {
+      "name": "-E",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- log all HTTP/1.0 / HTTP/1.1 caching intent mismatches",
+      "default": "",
+      "example": "skipfish -E"
+    },
+    {
+      "name": "-U",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- log all external URLs and e-mails seen",
+      "default": "",
+      "example": "skipfish -U"
+    },
+    {
+      "name": "-Q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- completely suppress duplicate nodes in reports",
+      "default": "",
+      "example": "skipfish -Q"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- be quiet, disable realtime progress stats",
+      "default": "",
+      "example": "skipfish -u"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- enable runtime logging (to stderr)",
+      "default": "",
+      "example": "skipfish -v"
+    },
+    {
+      "name": "-L",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- do not auto-learn new keywords for the site",
+      "default": "",
+      "example": "skipfish -L"
+    },
+    {
+      "name": "-Y",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- do not fuzz extensions in directory brute-force",
+      "default": "",
+      "example": "skipfish -Y"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- do not keep binary responses for reporting",
+      "default": "",
+      "example": "skipfish -e"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "duration",
+      "required": false,
+      "description": "- stop scanning after the given duration h:m:s",
+      "default": "",
+      "example": "skipfish -k <duration>"
+    },
+    {
+      "name": "--config",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "- load the specified configuration file",
+      "default": "",
+      "example": "skipfish --config <file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

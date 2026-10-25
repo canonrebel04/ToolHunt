@@ -1,0 +1,91 @@
+{
+  "id": "enumiax",
+  "name": "enumiax",
+  "schema_version": 1,
+  "summary": "An IAX enumerator.",
+  "highlights": [
+    "-d — Dictionary attack using <dict> file",
+    "-i — Interval for auto-save (# of operations, default 1000)",
+    "-s — Read session state from state file"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install enumiax"
+    }
+  ],
+  "usage": "enumiax [options] target",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "<dict>",
+      "required": false,
+      "description": "Dictionary attack using <dict> file",
+      "default": "",
+      "example": "enumiax -d <dict>"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<count>",
+      "required": false,
+      "description": "Interval for auto-save (# of operations, default 1000)",
+      "default": "",
+      "example": "enumiax -i <count>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Read session state from state file",
+      "default": "",
+      "example": "enumiax -s <file>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Increase verbosity (repeat for additional verbosity)",
+      "default": "",
+      "example": "enumiax -v"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version information and exit",
+      "default": "",
+      "example": "enumiax -V"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print help/usage information and exit",
+      "default": "",
+      "example": "enumiax -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

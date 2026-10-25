@@ -1,0 +1,26 @@
+{
+  "id": "portspoof",
+  "name": "portspoof",
+  "schema_version": 1,
+  "summary": "This program's primary goal is to enhance OS security through a set of new techniques.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install portspoof"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

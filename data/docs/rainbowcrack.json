@@ -1,0 +1,26 @@
+{
+  "id": "rainbowcrack",
+  "name": "rainbowcrack",
+  "schema_version": 1,
+  "summary": "Password cracker based on the faster time-memory trade-off. With MySQL and Cisco PIX Algorithm patches.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install rainbowcrack"
+    }
+  ],
+  "usage": "./rcrack path [path] [...] -h hash",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

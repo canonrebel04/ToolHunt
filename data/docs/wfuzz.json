@@ -1,0 +1,355 @@
+{
+  "id": "wfuzz",
+  "name": "wfuzz",
+  "schema_version": 1,
+  "summary": "Utility to bruteforce web applications to find their not linked resources.",
+  "highlights": [
+    "--filter-help — : Filter language specification",
+    "-e — : List of available encoders/payloads/iterators/printers/scripts",
+    "--recipe — : Reads options from a recipe. Repeat for various recipes.",
+    "--dump-recipe — : Prints current options as a recipe",
+    "--oF — : Saves fuzz results to a file. These can be consumed later using the wfuzz payload.",
+    "-c — : Output with colors",
+    "--interact — : (beta) If selected,all key presses are captured. This allows you to interact with the pr",
+    "--dry-run — : Print the results of applying the requests without actually making any HTTP request."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install wfuzz"
+    }
+  ],
+  "usage": "wfuzz [options] -z payload,params <url>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": This help",
+      "default": "",
+      "example": "wfuzz --help"
+    },
+    {
+      "name": "--filter-help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Filter language specification",
+      "default": "",
+      "example": "wfuzz --filter-help"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Wfuzz version details",
+      "default": "",
+      "example": "wfuzz --version"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "<type>",
+      "required": false,
+      "description": ": List of available encoders/payloads/iterators/printers/scripts",
+      "default": "",
+      "example": "wfuzz -e <type>"
+    },
+    {
+      "name": "--recipe",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": ": Reads options from a recipe. Repeat for various recipes.",
+      "default": "",
+      "example": "wfuzz --recipe <filename>"
+    },
+    {
+      "name": "--dump-recipe",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": ": Prints current options as a recipe",
+      "default": "",
+      "example": "wfuzz --dump-recipe <filename>"
+    },
+    {
+      "name": "--oF",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": ": Saves fuzz results to a file. These can be consumed later using the wfuzz payload.",
+      "default": "",
+      "example": "wfuzz --oF <filename>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Output with colors",
+      "default": "",
+      "example": "wfuzz -c"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Verbose information.",
+      "default": "",
+      "example": "wfuzz -v"
+    },
+    {
+      "name": "--interact",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": (beta) If selected,all key presses are captured. This allows you to interact with the program.",
+      "default": "",
+      "example": "wfuzz --interact"
+    },
+    {
+      "name": "--dry-run",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Print the results of applying the requests without actually making any HTTP request.",
+      "default": "",
+      "example": "wfuzz --dry-run"
+    },
+    {
+      "name": "--prev",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Print the previous HTTP requests (only when using payloads generating fuzzresults)",
+      "default": "",
+      "example": "wfuzz --prev"
+    },
+    {
+      "name": "--efield",
+      "short": "",
+      "aliases": [],
+      "arg": "<expr>",
+      "required": false,
+      "description": ": Show the specified language expression together with the current payload. Repeat for various fields.",
+      "default": "",
+      "example": "wfuzz --efield <expr>"
+    },
+    {
+      "name": "--field",
+      "short": "",
+      "aliases": [],
+      "arg": "<expr>",
+      "required": false,
+      "description": ": Do not show the payload but only the specified language expression. Repeat for various fields.",
+      "default": "",
+      "example": "wfuzz --field <expr>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": ": Specify the number of concurrent connections (10 default)",
+      "default": "",
+      "example": "wfuzz -t <n>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": ": Specify time delay between requests (0 default)",
+      "default": "",
+      "example": "wfuzz -s <n>"
+    },
+    {
+      "name": "--follow",
+      "short": "-L",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Follow HTTP redirections",
+      "default": "",
+      "example": "wfuzz --follow"
+    },
+    {
+      "name": "-Z",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Scan mode (Connection errors will be ignored).",
+      "default": "",
+      "example": "wfuzz -Z"
+    },
+    {
+      "name": "--req-delay",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": ": Sets the maximum time in seconds the request is allowed to take (CURLOPT_TIMEOUT). Default 90.",
+      "default": "",
+      "example": "wfuzz --req-delay <n>"
+    },
+    {
+      "name": "--conn-delay",
+      "short": "",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": ": Sets the maximum time in seconds the connection phase to the server to take (CURLOPT_CONNECTTIMEOUT). Default 90.",
+      "default": "",
+      "example": "wfuzz --conn-delay <n>"
+    },
+    {
+      "name": "--AA",
+      "short": "-A",
+      "aliases": [
+        "--AAA"
+      ],
+      "arg": "",
+      "required": false,
+      "description": ": Alias for -v -c and --script=default,verbose,discover respectively",
+      "default": "",
+      "example": "wfuzz --AA"
+    },
+    {
+      "name": "--no-cache",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Disable plugins cache. Every request will be scanned.",
+      "default": "",
+      "example": "wfuzz --no-cache"
+    },
+    {
+      "name": "--script",
+      "short": "",
+      "aliases": [],
+      "arg": "<plugins>",
+      "required": false,
+      "description": ": Runs script's scan. <plugins> is a comma separated list of plugin-files or plugin-categories",
+      "default": "",
+      "example": "wfuzz --script <plugins>"
+    },
+    {
+      "name": "--script-help",
+      "short": "",
+      "aliases": [],
+      "arg": "<plugins>",
+      "required": false,
+      "description": ": Show help about scripts.",
+      "default": "",
+      "example": "wfuzz --script-help <plugins>"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "url",
+      "required": false,
+      "description": ": Specify a URL for the request.",
+      "default": "",
+      "example": "wfuzz -u <url>"
+    },
+    {
+      "name": "--zP",
+      "short": "",
+      "aliases": [],
+      "arg": "<params>",
+      "required": false,
+      "description": ": Arguments for the specified payload (it must be preceded by -z or -w).",
+      "default": "",
+      "example": "wfuzz --zP <params>"
+    },
+    {
+      "name": "--zD",
+      "short": "",
+      "aliases": [],
+      "arg": "<default>",
+      "required": false,
+      "description": ": Default parameter for the specified payload (it must be preceded by -z or -w).",
+      "default": "",
+      "example": "wfuzz --zD <default>"
+    },
+    {
+      "name": "--zE",
+      "short": "",
+      "aliases": [],
+      "arg": "<encoder>",
+      "required": false,
+      "description": ": Encoder for the specified payload (it must be preceded by -z or -w).",
+      "default": "",
+      "example": "wfuzz --zE <encoder>"
+    },
+    {
+      "name": "--slice",
+      "short": "",
+      "aliases": [],
+      "arg": "<filter>",
+      "required": false,
+      "description": ": Filter payload's elements using the specified expression. It must be preceded by -z.",
+      "default": "",
+      "example": "wfuzz --slice <filter>"
+    },
+    {
+      "name": "--filter",
+      "short": "",
+      "aliases": [],
+      "arg": "<filter>",
+      "required": false,
+      "description": ": Show/hide responses using the specified filter expression (Use BBB for taking values from baseline)",
+      "default": "",
+      "example": "wfuzz --filter <filter>"
+    },
+    {
+      "name": "--prefilter",
+      "short": "",
+      "aliases": [],
+      "arg": "<filter>",
+      "required": false,
+      "description": ": Filter items before fuzzing using the specified expression. Repeat for concatenating filters.",
+      "default": "",
+      "example": "wfuzz --prefilter <filter>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "wfuzz -e <encoders|payloads|iterators|printers|scripts>",
+      "explanation": "List available encoders/payloads/iterators/printers/scripts",
+      "source": "tldr:wfuzz"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/wfuzz.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

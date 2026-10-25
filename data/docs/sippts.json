@@ -1,0 +1,122 @@
+{
+  "id": "sippts",
+  "name": "sippts",
+  "schema_version": 1,
+  "summary": "Set of tools to audit SIP based VoIP Systems.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sippts"
+    }
+  ],
+  "usage": "sippts [-h]",
+  "subcommands": [
+    {
+      "name": "video",
+      "description": "Animated help"
+    },
+    {
+      "name": "astami",
+      "description": "Asterisk AMI pentest"
+    },
+    {
+      "name": "scan",
+      "description": "Fast SIP scanner"
+    },
+    {
+      "name": "exten",
+      "description": "Search SIP extensions of a"
+    },
+    {
+      "name": "rcrack",
+      "description": "Remote password cracker"
+    },
+    {
+      "name": "send",
+      "description": "Send a customized message"
+    },
+    {
+      "name": "wssend",
+      "description": "Send a customized message"
+    },
+    {
+      "name": "enumerate",
+      "description": "Enumerate methods of a SIP"
+    },
+    {
+      "name": "leak",
+      "description": "Exploit SIP Digest Leak"
+    },
+    {
+      "name": "ping",
+      "description": "SIP ping"
+    },
+    {
+      "name": "invite",
+      "description": "Try to make calls through a"
+    },
+    {
+      "name": "dump",
+      "description": "Dump SIP digest"
+    },
+    {
+      "name": "dcrack",
+      "description": "SIP digest authentication"
+    },
+    {
+      "name": "flood",
+      "description": "Flood a SIP server"
+    },
+    {
+      "name": "sniff",
+      "description": "SIP network sniffing"
+    },
+    {
+      "name": "spoof",
+      "description": "ARP Spoofing tool"
+    },
+    {
+      "name": "pcapdump",
+      "description": "Extract data from a PCAP"
+    },
+    {
+      "name": "rtpbleed",
+      "description": "Detect RTPBleed"
+    },
+    {
+      "name": "rtcpbleed",
+      "description": "Detect RTPBleed"
+    },
+    {
+      "name": "rtpbleedflood",
+      "description": "Exploit RTPBleed"
+    },
+    {
+      "name": "rtpbleedinject",
+      "description": "Exploit RTPBleed"
+    }
+  ],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "sippts --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

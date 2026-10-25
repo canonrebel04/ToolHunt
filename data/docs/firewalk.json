@@ -1,0 +1,26 @@
+{
+  "id": "firewalk",
+  "name": "firewalk",
+  "schema_version": 1,
+  "summary": "An active reconnaissance network security tool.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install firewalk"
+    }
+  ],
+  "usage": "firewalk [options] target_gateway metric",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

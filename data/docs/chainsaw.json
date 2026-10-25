@@ -1,0 +1,105 @@
+{
+  "id": "chainsaw",
+  "name": "chainsaw",
+  "schema_version": 1,
+  "summary": "A powerful ‘first-response’ capability to quickly identify threats within Windows event logs.",
+  "highlights": [
+    "--no-banner — Hide Chainsaw's banner",
+    "--num-threads — Limit the thread number (default: num of CPUs)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install chainsaw"
+    }
+  ],
+  "usage": "chainsaw [OPTIONS] <COMMAND>",
+  "subcommands": [
+    {
+      "name": "dump",
+      "description": "Dump artefacts into a different format"
+    },
+    {
+      "name": "hunt",
+      "description": "Hunt through artefacts using detection rules for threat detection"
+    },
+    {
+      "name": "lint",
+      "description": "Lint provided rules to ensure that they load correctly"
+    },
+    {
+      "name": "search",
+      "description": "Search through forensic artefacts for keywords or patterns"
+    },
+    {
+      "name": "analyse",
+      "description": "Perform various analyses on artefacts"
+    },
+    {
+      "name": "help",
+      "description": "Print this message or the help of the given subcommand(s)"
+    }
+  ],
+  "flags": [
+    {
+      "name": "--no-banner",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Hide Chainsaw's banner",
+      "default": "",
+      "example": "chainsaw --no-banner"
+    },
+    {
+      "name": "--num-threads",
+      "short": "",
+      "aliases": [],
+      "arg": "<NUM_THREADS>",
+      "required": false,
+      "description": "Limit the thread number (default: num of CPUs)",
+      "default": "num of CPUs",
+      "example": "chainsaw --num-threads <NUM_THREADS>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print verbose output",
+      "default": "",
+      "example": "chainsaw -v"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print help",
+      "default": "",
+      "example": "chainsaw --help"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version",
+      "default": "",
+      "example": "chainsaw --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

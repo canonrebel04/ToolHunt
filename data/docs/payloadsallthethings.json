@@ -1,0 +1,26 @@
+{
+  "id": "payloadsallthethings",
+  "name": "payloadsallthethings",
+  "schema_version": 1,
+  "summary": "A list of useful payloads and bypass for Web Application Security and Pentest/CTF.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install payloadsallthethings"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

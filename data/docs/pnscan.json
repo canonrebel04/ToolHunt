@@ -1,0 +1,186 @@
+{
+  "id": "pnscan",
+  "name": "pnscan",
+  "schema_version": 1,
+  "summary": "A parallel network scanner that can be used to survey TCP network services.",
+  "highlights": [
+    "-d — Print debugging info.",
+    "-s — Lookup and print hostnames.",
+    "-i — Ignore case when scanning responses.",
+    "-S — Enable shutdown mode.",
+    "-l — Line oriented output.",
+    "-w — Request string to send.",
+    "-W — Hex coded request string to send.",
+    "-r — Response string to look for."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pnscan"
+    }
+  ],
+  "usage": "pnscan [<options>] [{<CIDR>|<host-range> <port-range>} | <service>]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display this information.",
+      "default": "",
+      "example": "pnscan -h"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version.",
+      "default": "",
+      "example": "pnscan -V"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Be verbose.",
+      "default": "",
+      "example": "pnscan -v"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print debugging info.",
+      "default": "",
+      "example": "pnscan -d"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Lookup and print hostnames.",
+      "default": "",
+      "example": "pnscan -s"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore case when scanning responses.",
+      "default": "",
+      "example": "pnscan -i"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable shutdown mode.",
+      "default": "",
+      "example": "pnscan -S"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Line oriented output.",
+      "default": "",
+      "example": "pnscan -l"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "Request string to send.",
+      "default": "",
+      "example": "pnscan -w <string>"
+    },
+    {
+      "name": "-W",
+      "short": "",
+      "aliases": [],
+      "arg": "<hex list>",
+      "required": false,
+      "description": "Hex coded request string to send.",
+      "default": "",
+      "example": "pnscan -W <hex list>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "Response string to look for.",
+      "default": "",
+      "example": "pnscan -r <string>"
+    },
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "<hex list>",
+      "required": false,
+      "description": "Hex coded response string to look for.",
+      "default": "",
+      "example": "pnscan -R <hex list>"
+    },
+    {
+      "name": "-L",
+      "short": "",
+      "aliases": [],
+      "arg": "<length>",
+      "required": false,
+      "description": "Max bytes to print.",
+      "default": "",
+      "example": "pnscan -L <length>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<msecs>",
+      "required": false,
+      "description": "Connect/Write/Read timeout.",
+      "default": "",
+      "example": "pnscan -t <msecs>"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "<workers>",
+      "required": false,
+      "description": "Concurrent worker threads limit.",
+      "default": "",
+      "example": "pnscan -n <workers>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

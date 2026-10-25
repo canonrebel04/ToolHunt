@@ -1,0 +1,37 @@
+{
+  "id": "weevely",
+  "name": "weevely",
+  "schema_version": 1,
+  "summary": "Weaponized web shell.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install weevely"
+    }
+  ],
+  "usage": "weevely [-h] {terminal,session,generate} ...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "weevely --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

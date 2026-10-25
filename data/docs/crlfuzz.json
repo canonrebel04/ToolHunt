@@ -1,0 +1,156 @@
+{
+  "id": "crlfuzz",
+  "name": "crlfuzz",
+  "schema_version": 1,
+  "summary": "A fast tool to scan CRLF vulnerability written in Go.",
+  "highlights": [
+    "-u — Define single URL to fuzz",
+    "-l — Fuzz URLs within file",
+    "-X — Specify request method to use (default: GET)",
+    "-o — File to save results",
+    "-d — Define request data",
+    "-H — Pass custom header to target",
+    "-x — Use proxy to fuzz",
+    "-c — Set the concurrency level (default: 20)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install crlfuzz"
+    }
+  ],
+  "usage": "[buffers] | crlfuzz [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "<URL>",
+      "required": false,
+      "description": "Define single URL to fuzz",
+      "default": "",
+      "example": "crlfuzz --url <URL>"
+    },
+    {
+      "name": "--list",
+      "short": "-l",
+      "aliases": [],
+      "arg": "<FILE>",
+      "required": false,
+      "description": "Fuzz URLs within file",
+      "default": "",
+      "example": "crlfuzz --list <FILE>"
+    },
+    {
+      "name": "--method",
+      "short": "-X",
+      "aliases": [],
+      "arg": "<METHOD>",
+      "required": false,
+      "description": "Specify request method to use (default: GET)",
+      "default": "GET",
+      "example": "crlfuzz --method <METHOD>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "<FILE>",
+      "required": false,
+      "description": "File to save results",
+      "default": "",
+      "example": "crlfuzz --output <FILE>"
+    },
+    {
+      "name": "--data",
+      "short": "-d",
+      "aliases": [],
+      "arg": "<DATA>",
+      "required": false,
+      "description": "Define request data",
+      "default": "",
+      "example": "crlfuzz --data <DATA>"
+    },
+    {
+      "name": "--header",
+      "short": "-H",
+      "aliases": [],
+      "arg": "<HEADER>",
+      "required": false,
+      "description": "Pass custom header to target",
+      "default": "",
+      "example": "crlfuzz --header <HEADER>"
+    },
+    {
+      "name": "--proxy",
+      "short": "-x",
+      "aliases": [],
+      "arg": "<URL>",
+      "required": false,
+      "description": "Use proxy to fuzz",
+      "default": "",
+      "example": "crlfuzz --proxy <URL>"
+    },
+    {
+      "name": "--concurrent",
+      "short": "-c",
+      "aliases": [],
+      "arg": "<i>",
+      "required": false,
+      "description": "Set the concurrency level (default: 20)",
+      "default": "20",
+      "example": "crlfuzz --concurrent <i>"
+    },
+    {
+      "name": "--silent",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Silent mode",
+      "default": "",
+      "example": "crlfuzz --silent"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose mode",
+      "default": "",
+      "example": "crlfuzz --verbose"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show current CRLFuzz version",
+      "default": "",
+      "example": "crlfuzz --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display its help",
+      "default": "",
+      "example": "crlfuzz --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

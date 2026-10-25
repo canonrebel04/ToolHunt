@@ -1,0 +1,976 @@
+{
+  "id": "xsser",
+  "name": "xsser",
+  "schema_version": 1,
+  "summary": "A penetration testing tool for detecting and exploiting XSS vulnerabilites.",
+  "highlights": [
+    "-s — show advanced statistics output results",
+    "-v — active verbose mode output results",
+    "--gtk — launch XSSer GTK Interface",
+    "--wizard — start Wizard Helper!",
+    "--imx — IMX - Create an image with XSS (--imx image.png)",
+    "--fla — FLA - Create a flash movie with XSS (--fla movie.swf)",
+    "--xst — XST - Cross Site Tracing (--xst http(s)://host.com)",
+    "--all — Automatically audit an entire target"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install xsser"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show program's version number and exit",
+      "default": "",
+      "example": "xsser --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "xsser --help"
+    },
+    {
+      "name": "--statistics",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show advanced statistics output results",
+      "default": "",
+      "example": "xsser --statistics"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "active verbose mode output results",
+      "default": "",
+      "example": "xsser --verbose"
+    },
+    {
+      "name": "--gtk",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "launch XSSer GTK Interface",
+      "default": "",
+      "example": "xsser --gtk"
+    },
+    {
+      "name": "--wizard",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "start Wizard Helper!",
+      "default": "",
+      "example": "xsser --wizard"
+    },
+    {
+      "name": "--imx",
+      "short": "",
+      "aliases": [],
+      "arg": "IMX",
+      "required": false,
+      "description": "IMX - Create an image with XSS (--imx image.png)",
+      "default": "",
+      "example": "xsser --imx <imx>"
+    },
+    {
+      "name": "--fla",
+      "short": "",
+      "aliases": [],
+      "arg": "FLASH",
+      "required": false,
+      "description": "FLA - Create a flash movie with XSS (--fla movie.swf)",
+      "default": "",
+      "example": "xsser --fla <flash>"
+    },
+    {
+      "name": "--xst",
+      "short": "",
+      "aliases": [],
+      "arg": "XST",
+      "required": false,
+      "description": "XST - Cross Site Tracing (--xst http(s)://host.com)",
+      "default": "",
+      "example": "xsser --xst <xst>"
+    },
+    {
+      "name": "--all",
+      "short": "",
+      "aliases": [],
+      "arg": "TARGET",
+      "required": false,
+      "description": "Automatically audit an entire target",
+      "default": "",
+      "example": "xsser --all <target>"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Enter target to audit",
+      "default": "",
+      "example": "xsser --url <url>"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "READFILE",
+      "required": false,
+      "description": "Read target(s) urls from file",
+      "default": "",
+      "example": "xsser -i <readfile>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "DORK",
+      "required": false,
+      "description": "Search target(s) using a query (ex: 'news.php?id=')",
+      "default": "",
+      "example": "xsser -d <dork>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Search from a list of 'dorks'",
+      "default": "",
+      "example": "xsser -l"
+    },
+    {
+      "name": "--De",
+      "short": "",
+      "aliases": [],
+      "arg": "DORK_ENGINE",
+      "required": false,
+      "description": "Use this search engine (default: DuckDuckGo)",
+      "default": "DuckDuckGo",
+      "example": "xsser --De <dork_engine>"
+    },
+    {
+      "name": "--Da",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Search massively using all search engines",
+      "default": "",
+      "example": "xsser --Da"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "GETDATA",
+      "required": false,
+      "description": "Send payload using GET (ex: '/menu.php?id=XSS')",
+      "default": "",
+      "example": "xsser -g <getdata>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "POSTDATA",
+      "required": false,
+      "description": "Send payload using POST (ex: 'foo=1&bar=XSS')",
+      "default": "",
+      "example": "xsser -p <postdata>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "CRAWLING",
+      "required": false,
+      "description": "Number of urls to crawl on target(s): 1-99999",
+      "default": "",
+      "example": "xsser -c <crawling>"
+    },
+    {
+      "name": "--Cw",
+      "short": "",
+      "aliases": [],
+      "arg": "CRAWLER_WIDTH",
+      "required": false,
+      "description": "Deeping level of crawler: 1-5 (default: 2)",
+      "default": "2",
+      "example": "xsser --Cw <crawler_width>"
+    },
+    {
+      "name": "--Cl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Crawl only local target(s) urls (default: FALSE)",
+      "default": "FALSE",
+      "example": "xsser --Cl"
+    },
+    {
+      "name": "--head",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Send a HEAD request before start a test",
+      "default": "",
+      "example": "xsser --head"
+    },
+    {
+      "name": "--cookie",
+      "short": "",
+      "aliases": [],
+      "arg": "COOKIE",
+      "required": false,
+      "description": "Change your HTTP Cookie header",
+      "default": "",
+      "example": "xsser --cookie <cookie>"
+    },
+    {
+      "name": "--drop-cookie",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore Set-Cookie header from response",
+      "default": "",
+      "example": "xsser --drop-cookie"
+    },
+    {
+      "name": "--user-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "AGENT",
+      "required": false,
+      "description": "Change your HTTP User-Agent header (default: SPOOFED)",
+      "default": "SPOOFED",
+      "example": "xsser --user-agent <agent>"
+    },
+    {
+      "name": "--referer",
+      "short": "",
+      "aliases": [],
+      "arg": "REFERER",
+      "required": false,
+      "description": "Use another HTTP Referer header (default: NONE)",
+      "default": "NONE",
+      "example": "xsser --referer <referer>"
+    },
+    {
+      "name": "--xforw",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set your HTTP X-Forwarded-For with random IP values",
+      "default": "",
+      "example": "xsser --xforw"
+    },
+    {
+      "name": "--xclient",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set your HTTP X-Client-IP with random IP values",
+      "default": "",
+      "example": "xsser --xclient"
+    },
+    {
+      "name": "--headers",
+      "short": "",
+      "aliases": [],
+      "arg": "HEADERS",
+      "required": false,
+      "description": "Extra HTTP headers newline separated",
+      "default": "",
+      "example": "xsser --headers <headers>"
+    },
+    {
+      "name": "--auth-type",
+      "short": "",
+      "aliases": [],
+      "arg": "ATYPE",
+      "required": false,
+      "description": "HTTP Authentication type (Basic, Digest, GSS or NTLM)",
+      "default": "",
+      "example": "xsser --auth-type <atype>"
+    },
+    {
+      "name": "--auth-cred",
+      "short": "",
+      "aliases": [],
+      "arg": "ACRED",
+      "required": false,
+      "description": "HTTP Authentication credentials (name:password)",
+      "default": "",
+      "example": "xsser --auth-cred <acred>"
+    },
+    {
+      "name": "--check-tor",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check to see if Tor is used properly",
+      "default": "",
+      "example": "xsser --check-tor"
+    },
+    {
+      "name": "--proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "Use proxy server (tor: http://localhost:8118)",
+      "default": "",
+      "example": "xsser --proxy <proxy>"
+    },
+    {
+      "name": "--ignore-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore system default HTTP proxy",
+      "default": "",
+      "example": "xsser --ignore-proxy"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "Select your timeout (default: 30)",
+      "default": "30",
+      "example": "xsser --timeout <timeout>"
+    },
+    {
+      "name": "--retries",
+      "short": "",
+      "aliases": [],
+      "arg": "RETRIES",
+      "required": false,
+      "description": "Retries when connection timeout (default: 1)",
+      "default": "1",
+      "example": "xsser --retries <retries>"
+    },
+    {
+      "name": "--threads",
+      "short": "",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "Maximum number of concurrent requests (default: 5)",
+      "default": "5",
+      "example": "xsser --threads <threads>"
+    },
+    {
+      "name": "--delay",
+      "short": "",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "Delay in seconds between each request (default: 0)",
+      "default": "0",
+      "example": "xsser --delay <delay>"
+    },
+    {
+      "name": "--tcp-nodelay",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use the TCP_NODELAY option",
+      "default": "",
+      "example": "xsser --tcp-nodelay"
+    },
+    {
+      "name": "--follow-redirects",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Follow server redirections (default: FALSE)",
+      "default": "FALSE",
+      "example": "xsser --follow-redirects"
+    },
+    {
+      "name": "--follow-limit",
+      "short": "",
+      "aliases": [],
+      "arg": "FLI",
+      "required": false,
+      "description": "Set limit for redirection requests (default: 50)",
+      "default": "50",
+      "example": "xsser --follow-limit <fli>"
+    },
+    {
+      "name": "--hash",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Send a hash to check if target is repeating content",
+      "default": "",
+      "example": "xsser --hash"
+    },
+    {
+      "name": "--heuristic",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Discover parameters filtered by using heuristics",
+      "default": "",
+      "example": "xsser --heuristic"
+    },
+    {
+      "name": "--discode",
+      "short": "",
+      "aliases": [],
+      "arg": "DISCODE",
+      "required": false,
+      "description": "Set code on reply to discard an injection",
+      "default": "",
+      "example": "xsser --discode <discode>"
+    },
+    {
+      "name": "--checkaturl",
+      "short": "",
+      "aliases": [],
+      "arg": "ALT",
+      "required": false,
+      "description": "Check reply using: <alternative url> [aka BLIND-XSS]",
+      "default": "",
+      "example": "xsser --checkaturl <alt>"
+    },
+    {
+      "name": "--checkmethod",
+      "short": "",
+      "aliases": [],
+      "arg": "ALTM",
+      "required": false,
+      "description": "Check reply using: GET or POST (default: GET)",
+      "default": "GET",
+      "example": "xsser --checkmethod <altm>"
+    },
+    {
+      "name": "--checkatdata",
+      "short": "",
+      "aliases": [],
+      "arg": "ALD",
+      "required": false,
+      "description": "Check reply using: <alternative payload>",
+      "default": "",
+      "example": "xsser --checkatdata <ald>"
+    },
+    {
+      "name": "--reverse-check",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Establish a reverse connection from target to XSSer",
+      "default": "",
+      "example": "xsser --reverse-check"
+    },
+    {
+      "name": "--payload",
+      "short": "",
+      "aliases": [],
+      "arg": "SCRIPT",
+      "required": false,
+      "description": "OWN - Inject your own code",
+      "default": "",
+      "example": "xsser --payload <script>"
+    },
+    {
+      "name": "--auto",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "AUTO - Inject a list of vectors provided by XSSer",
+      "default": "",
+      "example": "xsser --auto"
+    },
+    {
+      "name": "--auto-set",
+      "short": "",
+      "aliases": [],
+      "arg": "FZZ_NUM",
+      "required": false,
+      "description": "ASET - Limit of vectors to inject (default: 1293)",
+      "default": "1293",
+      "example": "xsser --auto-set <fzz_num>"
+    },
+    {
+      "name": "--auto-info",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "AINFO - Select ONLY vectors with INFO (default: FALSE)",
+      "default": "FALSE",
+      "example": "xsser --auto-info"
+    },
+    {
+      "name": "--auto-random",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ARAND - Set random to order (default: FALSE)",
+      "default": "FALSE",
+      "example": "xsser --auto-random"
+    },
+    {
+      "name": "--Phpids0.6.5",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "PHPIDS (0.6.5) [ALL]",
+      "default": "",
+      "example": "xsser --Phpids0.6.5"
+    },
+    {
+      "name": "--Phpids0.7",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "PHPIDS (0.7) [ALL]",
+      "default": "",
+      "example": "xsser --Phpids0.7"
+    },
+    {
+      "name": "--Imperva",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Imperva Incapsula [ALL]",
+      "default": "",
+      "example": "xsser --Imperva"
+    },
+    {
+      "name": "--Webknight",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "WebKnight (4.1) [Chrome]",
+      "default": "",
+      "example": "xsser --Webknight"
+    },
+    {
+      "name": "--F5bigip",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "F5 Big IP [Chrome + FF + Opera]",
+      "default": "",
+      "example": "xsser --F5bigip"
+    },
+    {
+      "name": "--Barracuda",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Barracuda WAF [ALL]",
+      "default": "",
+      "example": "xsser --Barracuda"
+    },
+    {
+      "name": "--Modsec",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Mod-Security [ALL]",
+      "default": "",
+      "example": "xsser --Modsec"
+    },
+    {
+      "name": "--Quickdefense",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "QuickDefense [Chrome]",
+      "default": "",
+      "example": "xsser --Quickdefense"
+    },
+    {
+      "name": "--Sucuri",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "SucuriWAF [ALL]",
+      "default": "",
+      "example": "xsser --Sucuri"
+    },
+    {
+      "name": "--Firefox",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Firefox 12 [& below]",
+      "default": "",
+      "example": "xsser --Firefox"
+    },
+    {
+      "name": "--Chrome",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Chrome 19 & Firefox 12 [& below]",
+      "default": "",
+      "example": "xsser --Chrome"
+    },
+    {
+      "name": "--Opera",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Opera 10.5 [& below]",
+      "default": "",
+      "example": "xsser --Opera"
+    },
+    {
+      "name": "--Iexplorer",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "IExplorer 9 & Firefox 12 [& below]",
+      "default": "",
+      "example": "xsser --Iexplorer"
+    },
+    {
+      "name": "--Str",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use method String.FromCharCode()",
+      "default": "",
+      "example": "xsser --Str"
+    },
+    {
+      "name": "--Une",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Unescape() function",
+      "default": "",
+      "example": "xsser --Une"
+    },
+    {
+      "name": "--Mix",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Mix String.FromCharCode() and Unescape()",
+      "default": "",
+      "example": "xsser --Mix"
+    },
+    {
+      "name": "--Dec",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Decimal encoding",
+      "default": "",
+      "example": "xsser --Dec"
+    },
+    {
+      "name": "--Hex",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Hexadecimal encoding",
+      "default": "",
+      "example": "xsser --Hex"
+    },
+    {
+      "name": "--Hes",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Hexadecimal encoding with semicolons",
+      "default": "",
+      "example": "xsser --Hes"
+    },
+    {
+      "name": "--Dwo",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode IP addresses with DWORD",
+      "default": "",
+      "example": "xsser --Dwo"
+    },
+    {
+      "name": "--Doo",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode IP addresses with Octal",
+      "default": "",
+      "example": "xsser --Doo"
+    },
+    {
+      "name": "--Cem",
+      "short": "",
+      "aliases": [],
+      "arg": "CEM",
+      "required": false,
+      "description": "Set different 'Character Encoding Mutations' (reversing obfuscators) (ex: 'Mix,Une,Str,Hex')",
+      "default": "",
+      "example": "xsser --Cem <cem>"
+    },
+    {
+      "name": "--Coo",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "COO - Cross Site Scripting Cookie injection",
+      "default": "",
+      "example": "xsser --Coo"
+    },
+    {
+      "name": "--Xsa",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "XSA - Cross Site Agent Scripting",
+      "default": "",
+      "example": "xsser --Xsa"
+    },
+    {
+      "name": "--Xsr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "XSR - Cross Site Referer Scripting",
+      "default": "",
+      "example": "xsser --Xsr"
+    },
+    {
+      "name": "--Dcp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DCP - Data Control Protocol injections",
+      "default": "",
+      "example": "xsser --Dcp"
+    },
+    {
+      "name": "--Dom",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DOM - Document Object Model injections",
+      "default": "",
+      "example": "xsser --Dom"
+    },
+    {
+      "name": "--Ind",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "IND - HTTP Response Splitting Induced code",
+      "default": "",
+      "example": "xsser --Ind"
+    },
+    {
+      "name": "--Fp",
+      "short": "",
+      "aliases": [],
+      "arg": "FINALPAYLOAD",
+      "required": false,
+      "description": "OWN - Exploit your own code",
+      "default": "",
+      "example": "xsser --Fp <finalpayload>"
+    },
+    {
+      "name": "--Fr",
+      "short": "",
+      "aliases": [],
+      "arg": "FINALREMOTE",
+      "required": false,
+      "description": "REMOTE - Exploit a script -remotely-",
+      "default": "",
+      "example": "xsser --Fr <finalremote>"
+    },
+    {
+      "name": "--Anchor",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ANC - Use 'Anchor Stealth' payloader (DOM shadows!)",
+      "default": "",
+      "example": "xsser --Anchor"
+    },
+    {
+      "name": "--B64",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "B64 - Base64 code encoding in META tag (rfc2397)",
+      "default": "",
+      "example": "xsser --B64"
+    },
+    {
+      "name": "--Onm",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ONM - Use onMouseMove() event",
+      "default": "",
+      "example": "xsser --Onm"
+    },
+    {
+      "name": "--Ifr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "IFR - Use <iframe> source tag",
+      "default": "",
+      "example": "xsser --Ifr"
+    },
+    {
+      "name": "--Dos",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DOS - XSS (client) Denial of Service",
+      "default": "",
+      "example": "xsser --Dos"
+    },
+    {
+      "name": "--Doss",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DOSs - XSS (server) Denial of Service",
+      "default": "",
+      "example": "xsser --Doss"
+    },
+    {
+      "name": "--save",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Export to file (XSSreport.raw)",
+      "default": "",
+      "example": "xsser --save"
+    },
+    {
+      "name": "--xml",
+      "short": "",
+      "aliases": [],
+      "arg": "FILEXML",
+      "required": false,
+      "description": "Export to XML (--xml file.xml)",
+      "default": "",
+      "example": "xsser --xml <filexml>"
+    },
+    {
+      "name": "--silent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Inhibit console output results",
+      "default": "",
+      "example": "xsser --silent"
+    },
+    {
+      "name": "--alive",
+      "short": "",
+      "aliases": [],
+      "arg": "ISALIVE",
+      "required": false,
+      "description": "Set limit of errors before check if target is alive",
+      "default": "",
+      "example": "xsser --alive <isalive>"
+    },
+    {
+      "name": "--update",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check for latest stable version",
+      "default": "",
+      "example": "xsser --update"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

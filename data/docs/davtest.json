@@ -1,0 +1,83 @@
+{
+  "id": "davtest",
+  "name": "davtest",
+  "schema_version": 1,
+  "summary": "Tests WebDAV enabled servers by uploading test executable files, and then (optionally) uploading files which allow for command execution or other actions directly on the target.",
+  "highlights": [
+    "-cleanup — delete everything uploaded when done",
+    "-move — PUT text files then MOVE to executable",
+    "-copy — PUT text files then COPY to executable",
+    "-nocreate — don't create a directory",
+    "-quiet — only print out summary"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install davtest"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-cleanup",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "delete everything uploaded when done",
+      "default": "",
+      "example": "davtest -cleanup"
+    },
+    {
+      "name": "-move",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "PUT text files then MOVE to executable",
+      "default": "",
+      "example": "davtest -move"
+    },
+    {
+      "name": "-copy",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "PUT text files then COPY to executable",
+      "default": "",
+      "example": "davtest -copy"
+    },
+    {
+      "name": "-nocreate",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't create a directory",
+      "default": "",
+      "example": "davtest -nocreate"
+    },
+    {
+      "name": "-quiet",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "only print out summary",
+      "default": "",
+      "example": "davtest -quiet"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

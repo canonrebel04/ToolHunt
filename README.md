@@ -179,6 +179,17 @@ curl -s localhost:5000/api/tools/nmap
 Add a tool by hand: `python update_database.py NAME "DESCRIPTION" URL --category general`.
 The FAISS search index is a build artifact (not in git): the Docker build runs `python -m backend.build_index`, and locally the index is built on the first search and rebuilt automatically whenever the tool list changes.
 
+## 📖 Tool docs (Tier 1)
+
+Every tool can have a structured write-up under `data/docs/<id>.json`: summary, install commands, usage, **flags parsed from real help output**, subcommands, and examples (mostly from [tldr-pages](https://github.com/tldr-pages/tldr), CC BY 4.0). Flags are never invented — they come from Kali's pre-captured `-h` output, or from fixtures under `data/help/` for showcase tools.
+
+```bash
+curl -s localhost:5000/api/tools/nmap/docs | jq '.flags | length'
+python -m docgen.run --kali-cache /tmp/kali.tgz --tldr-cache /tmp/tldr.zip
+```
+
+AI enrichment (Tier 2) is a later phase; it will only rewrite descriptions/examples and must validate every flag against this Tier 1 parse.
+
 ## 🔭 Automatic discovery
 
 A weekly GitHub Action (`.github/workflows/discovery.yml`, Mondays 06:17 UTC, or run it by hand from the Actions tab) collects tools from:
@@ -203,7 +214,7 @@ python -m discovery.run --sources blackarch,kali   # subset, no token needed
 
 ## 🧪 Testing
 
-**120 tests, under 1s** — all ML modules are mocked via `conftest.py`, so tests run without downloading models.
+**130+ tests, under 1s** — all ML modules are mocked via `conftest.py`, so tests run without downloading models.
 
 ```bash
 # Run all tests

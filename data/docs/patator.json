@@ -1,0 +1,58 @@
+{
+  "id": "patator",
+  "name": "patator",
+  "schema_version": 1,
+  "summary": "A multi-purpose bruteforcer.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install patator"
+    }
+  ],
+  "usage": "patator module --help",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "patator ssh_login host=<ip_or_host> user=FILE0 password=FILE1 0=<path/to/users.txt> 1=<path/to/passwords.txt> --rate_limit=<seconds> --timeout=<seconds> -x ignore:mesg='Authentication failed.'",
+      "explanation": "Brute force ssh login with rate limit and timeout options (successful login will show login banner or something similar)",
+      "source": "tldr:patator"
+    },
+    {
+      "cmd": "patator unzip_pass zipfile=<path/to/file.zip> password=FILE0 0=<path/to/passwords.txt> -x ignore:code!=0",
+      "explanation": "Brute force encrypted ZIP file",
+      "source": "tldr:patator"
+    },
+    {
+      "cmd": "patator http_fuzz url=<http://host:port> auth_type=basic user_pass=COMBO00:COMBO01 0=<path/to/userpass.txt> -x ignore:code=401",
+      "explanation": "Brute force http basic auth (payload file `userpass.txt` should be in the format `username:password`)",
+      "source": "tldr:patator"
+    },
+    {
+      "cmd": "patator ftp_login host=<ip_or_host> user=FILE0 password=FILE1 0=<path/to/users.txt> 1=<path/to/passwords.txt> tls=<0|1> -x ignore:mesg='Login incorrect.' -x ignore,reset,retry:code=500",
+      "explanation": "Brute force FTP/FTPS login",
+      "source": "tldr:patator"
+    },
+    {
+      "cmd": "patator --help",
+      "explanation": "List all available modules",
+      "source": "tldr:patator"
+    },
+    {
+      "cmd": "patator <module_name> --help",
+      "explanation": "Display help for a particular module",
+      "source": "tldr:patator"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/patator.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

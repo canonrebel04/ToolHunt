@@ -1,0 +1,42 @@
+{
+  "id": "reglookup",
+  "name": "reglookup",
+  "schema_version": 1,
+  "summary": "Command line utility for reading and querying Windows NT registries",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install reglookup"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install reglookup-doc"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libregfi-dev"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libregfi1t64"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install python3-pyregfi"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

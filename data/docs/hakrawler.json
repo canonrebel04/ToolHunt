@@ -1,0 +1,146 @@
+{
+  "id": "hakrawler",
+  "name": "hakrawler",
+  "schema_version": 1,
+  "summary": "Simple, fast web crawler designed for easy, quick discovery of endpoints and assets within a web application.",
+  "highlights": [
+    "-d — Depth to crawl. (default 2)",
+    "-insecure — Disable TLS verification.",
+    "-json — Output as JSON.",
+    "-proxy — Proxy URL. E.g. -proxy http://127.0.0.1:8080",
+    "-s — Show the source of URL based on where it was found. E.g. href, form, script, etc.",
+    "-size — Page size limit, in KB. (default -1)",
+    "-subs — Include subdomains for crawling.",
+    "-t — Number of threads to utilise. (default 8)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hakrawler"
+    }
+  ],
+  "usage": "of hakrawler:",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Depth to crawl. (default 2)",
+      "default": "2",
+      "example": "hakrawler -d <int>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Custom headers separated by two semi-colons. E.g. -h \"Cookie: foo=bar;;Referer: http://example.com/\"",
+      "default": "",
+      "example": "hakrawler -h <string>"
+    },
+    {
+      "name": "-insecure",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable TLS verification.",
+      "default": "",
+      "example": "hakrawler -insecure"
+    },
+    {
+      "name": "-json",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output as JSON.",
+      "default": "",
+      "example": "hakrawler -json"
+    },
+    {
+      "name": "-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Proxy URL. E.g. -proxy http://127.0.0.1:8080",
+      "default": "",
+      "example": "hakrawler -proxy <string>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show the source of URL based on where it was found. E.g. href, form, script, etc.",
+      "default": "",
+      "example": "hakrawler -s"
+    },
+    {
+      "name": "-size",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Page size limit, in KB. (default -1)",
+      "default": "-1",
+      "example": "hakrawler -size <int>"
+    },
+    {
+      "name": "-subs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Include subdomains for crawling.",
+      "default": "",
+      "example": "hakrawler -subs"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Number of threads to utilise. (default 8)",
+      "default": "8",
+      "example": "hakrawler -t <int>"
+    },
+    {
+      "name": "-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Maximum time to crawl each URL from stdin, in seconds. (default -1)",
+      "default": "-1",
+      "example": "hakrawler -timeout <int>"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show only unique urls.",
+      "default": "",
+      "example": "hakrawler -u"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

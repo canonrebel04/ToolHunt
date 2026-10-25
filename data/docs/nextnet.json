@@ -1,0 +1,26 @@
+{
+  "id": "nextnet",
+  "name": "nextnet",
+  "schema_version": 1,
+  "summary": "Pivot point discovery tool.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install nextnet"
+    }
+  ],
+  "usage": "nextnet [cidr] ... [cidr]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

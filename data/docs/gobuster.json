@@ -1,0 +1,118 @@
+{
+  "id": "gobuster",
+  "name": "gobuster",
+  "schema_version": 1,
+  "summary": "High-performance discovery tool for directories, DNS and cloud storage",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install gobuster"
+    }
+  ],
+  "usage": "gobuster command [command options]",
+  "subcommands": [
+    {
+      "name": "dir",
+      "description": "Uses directory/file enumeration mode"
+    },
+    {
+      "name": "vhost",
+      "description": "Uses VHOST enumeration mode (you most probably want to use the IP address as the URL parameter)"
+    },
+    {
+      "name": "dns",
+      "description": "Uses DNS subdomain enumeration mode"
+    },
+    {
+      "name": "fuzz",
+      "description": "Uses fuzzing mode. Replaces the keyword FUZZ in the URL, Headers and the request body"
+    },
+    {
+      "name": "tftp",
+      "description": "Uses TFTP enumeration mode"
+    },
+    {
+      "name": "s3",
+      "description": "Uses aws bucket enumeration mode"
+    },
+    {
+      "name": "gcs",
+      "description": "Uses gcs bucket enumeration mode"
+    },
+    {
+      "name": "help",
+      "description": "Shows a list of commands or help for one command"
+    }
+  ],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show help",
+      "default": "",
+      "example": "gobuster --help"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print the version",
+      "default": "",
+      "example": "gobuster --version"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "gobuster dir --url <https://example.com/> --wordlist <path/to/file>",
+      "explanation": "Discover directories and files that match in the wordlist",
+      "source": "tldr:gobuster",
+      "verified": false
+    },
+    {
+      "cmd": "gobuster dns --domain <example.com> --wordlist <path/to/file>",
+      "explanation": "Discover subdomains",
+      "source": "tldr:gobuster",
+      "verified": false
+    },
+    {
+      "cmd": "gobuster s3 --wordlist <path/to/file>",
+      "explanation": "Discover Amazon S3 buckets",
+      "source": "tldr:gobuster",
+      "verified": false
+    },
+    {
+      "cmd": "gobuster vhost --url <https://example.com/> --wordlist <path/to/file>",
+      "explanation": "Discover other virtual hosts on the server",
+      "source": "tldr:gobuster",
+      "verified": false
+    },
+    {
+      "cmd": "gobuster fuzz --url <https://example.com/?parameter=FUZZ> --wordlist <path/to/file>",
+      "explanation": "Fuzz the value of a parameter",
+      "source": "tldr:gobuster",
+      "verified": false
+    },
+    {
+      "cmd": "gobuster fuzz --url <https://example.com/?FUZZ=value> --wordlist <path/to/file>",
+      "explanation": "Fuzz the name of a parameter",
+      "source": "tldr:gobuster",
+      "verified": false
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/gobuster.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

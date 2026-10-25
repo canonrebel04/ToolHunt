@@ -1,0 +1,783 @@
+{
+  "id": "ffuf",
+  "name": "ffuf",
+  "schema_version": 1,
+  "summary": "Fast web fuzzer written in Go.",
+  "highlights": [
+    "-X — HTTP method to use",
+    "-b — Cookie data `\"NAME1=VALUE1; NAME2=VALUE2\"` for copy as curl functionality.",
+    "-cc — Client cert for authentication. Client key needs to be defined as well for this to work",
+    "-ck — Client key for authentication. Client certificate needs to be defined as well for this to ",
+    "-d — POST data",
+    "-http2 — Use HTTP2 protocol (default: false)",
+    "-ignore-body — Do not fetch the response content. (default: false)",
+    "-r — Follow redirects (default: false)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ffuf"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Header `\"Name: Value\"`, separated by colon. Multiple -H flags are accepted.",
+      "default": "",
+      "example": "ffuf -H"
+    },
+    {
+      "name": "-X",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "HTTP method to use",
+      "default": "",
+      "example": "ffuf -X"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Cookie data `\"NAME1=VALUE1; NAME2=VALUE2\"` for copy as curl functionality.",
+      "default": "",
+      "example": "ffuf -b"
+    },
+    {
+      "name": "-cc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Client cert for authentication. Client key needs to be defined as well for this to work",
+      "default": "",
+      "example": "ffuf -cc"
+    },
+    {
+      "name": "-ck",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Client key for authentication. Client certificate needs to be defined as well for this to work",
+      "default": "",
+      "example": "ffuf -ck"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "POST data",
+      "default": "",
+      "example": "ffuf -d"
+    },
+    {
+      "name": "-http2",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use HTTP2 protocol (default: false)",
+      "default": "false",
+      "example": "ffuf -http2"
+    },
+    {
+      "name": "-ignore-body",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not fetch the response content. (default: false)",
+      "default": "false",
+      "example": "ffuf -ignore-body"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Follow redirects (default: false)",
+      "default": "false",
+      "example": "ffuf -r"
+    },
+    {
+      "name": "-raw",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not encode URI (default: false)",
+      "default": "false",
+      "example": "ffuf -raw"
+    },
+    {
+      "name": "-recursion",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Scan recursively. Only FUZZ keyword is supported, and URL (-u) has to end in it. (default: false)",
+      "default": "false",
+      "example": "ffuf -recursion"
+    },
+    {
+      "name": "-recursion-depth",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Maximum recursion depth. (default: 0)",
+      "default": "0",
+      "example": "ffuf -recursion-depth"
+    },
+    {
+      "name": "-replay-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Replay matched requests using this proxy.",
+      "default": "",
+      "example": "ffuf -replay-proxy"
+    },
+    {
+      "name": "-sni",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Target TLS SNI, does not support FUZZ keyword",
+      "default": "",
+      "example": "ffuf -sni"
+    },
+    {
+      "name": "-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "HTTP request timeout in seconds. (default: 10)",
+      "default": "10",
+      "example": "ffuf -timeout"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Target URL",
+      "default": "",
+      "example": "ffuf -u"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Proxy URL (SOCKS5 or HTTP). For example: http://127.0.0.1:8080 or socks5://127.0.0.1:8080",
+      "default": "",
+      "example": "ffuf -x"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show version information. (default: false)",
+      "default": "false",
+      "example": "ffuf -V"
+    },
+    {
+      "name": "-ac",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Automatically calibrate filtering options (default: false)",
+      "default": "false",
+      "example": "ffuf -ac"
+    },
+    {
+      "name": "-acc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Custom auto-calibration string. Can be used multiple times. Implies -ac",
+      "default": "",
+      "example": "ffuf -acc"
+    },
+    {
+      "name": "-ach",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Per host autocalibration (default: false)",
+      "default": "false",
+      "example": "ffuf -ach"
+    },
+    {
+      "name": "-ack",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Autocalibration keyword (default: FUZZ)",
+      "default": "FUZZ",
+      "example": "ffuf -ack"
+    },
+    {
+      "name": "-acs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Custom auto-calibration strategies. Can be used multiple times. Implies -ac",
+      "default": "",
+      "example": "ffuf -acs"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Colorize output. (default: false)",
+      "default": "false",
+      "example": "ffuf -c"
+    },
+    {
+      "name": "-config",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Load configuration from a file",
+      "default": "",
+      "example": "ffuf -config"
+    },
+    {
+      "name": "-json",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "JSON output, printing newline-delimited JSON records (default: false)",
+      "default": "false",
+      "example": "ffuf -json"
+    },
+    {
+      "name": "-maxtime",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Maximum running time in seconds for entire process. (default: 0)",
+      "default": "0",
+      "example": "ffuf -maxtime"
+    },
+    {
+      "name": "-maxtime-job",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Maximum running time in seconds per job. (default: 0)",
+      "default": "0",
+      "example": "ffuf -maxtime-job"
+    },
+    {
+      "name": "-noninteractive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable the interactive console functionality (default: false)",
+      "default": "false",
+      "example": "ffuf -noninteractive"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Seconds of `delay` between requests, or a range of random delay. For example \"0.1\" or \"0.1-2.0\"",
+      "default": "",
+      "example": "ffuf -p"
+    },
+    {
+      "name": "-rate",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Rate of requests per second (default: 0)",
+      "default": "0",
+      "example": "ffuf -rate"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not print additional information (silent mode) (default: false)",
+      "default": "false",
+      "example": "ffuf -s"
+    },
+    {
+      "name": "-sa",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Stop on all error cases. Implies -sf and -se. (default: false)",
+      "default": "false",
+      "example": "ffuf -sa"
+    },
+    {
+      "name": "-scraperfile",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Custom scraper file path",
+      "default": "",
+      "example": "ffuf -scraperfile"
+    },
+    {
+      "name": "-scrapers",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Active scraper groups (default: all)",
+      "default": "all",
+      "example": "ffuf -scrapers"
+    },
+    {
+      "name": "-se",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Stop on spurious errors (default: false)",
+      "default": "false",
+      "example": "ffuf -se"
+    },
+    {
+      "name": "-search",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Search for a FFUFHASH payload from ffuf history",
+      "default": "",
+      "example": "ffuf -search"
+    },
+    {
+      "name": "-sf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Stop when > 95% of responses return 403 Forbidden (default: false)",
+      "default": "false",
+      "example": "ffuf -sf"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Number of concurrent threads. (default: 40)",
+      "default": "40",
+      "example": "ffuf -t"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose output, printing full URL and redirect location (if any) with the results. (default: false)",
+      "default": "false",
+      "example": "ffuf -v"
+    },
+    {
+      "name": "-mc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Match HTTP status codes, or \"all\" for everything. (default: 200-299,301,302,307,401,403,405,500)",
+      "default": "200-299,301,302,307,401,403,405,500",
+      "example": "ffuf -mc"
+    },
+    {
+      "name": "-ml",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Match amount of lines in response",
+      "default": "",
+      "example": "ffuf -ml"
+    },
+    {
+      "name": "-mmode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Matcher set operator. Either of: and, or (default: or)",
+      "default": "or",
+      "example": "ffuf -mmode"
+    },
+    {
+      "name": "-mr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Match regexp",
+      "default": "",
+      "example": "ffuf -mr"
+    },
+    {
+      "name": "-ms",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Match HTTP response size",
+      "default": "",
+      "example": "ffuf -ms"
+    },
+    {
+      "name": "-mt",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Match how many milliseconds to the first response byte, either greater or less than. EG: >100 or <100",
+      "default": "",
+      "example": "ffuf -mt"
+    },
+    {
+      "name": "-mw",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Match amount of words in response",
+      "default": "",
+      "example": "ffuf -mw"
+    },
+    {
+      "name": "-fc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Filter HTTP status codes from response. Comma separated list of codes and ranges",
+      "default": "",
+      "example": "ffuf -fc"
+    },
+    {
+      "name": "-fl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Filter by amount of lines in response. Comma separated list of line counts and ranges",
+      "default": "",
+      "example": "ffuf -fl"
+    },
+    {
+      "name": "-fmode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Filter set operator. Either of: and, or (default: or)",
+      "default": "or",
+      "example": "ffuf -fmode"
+    },
+    {
+      "name": "-fr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Filter regexp",
+      "default": "",
+      "example": "ffuf -fr"
+    },
+    {
+      "name": "-fs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Filter HTTP response size. Comma separated list of sizes and ranges",
+      "default": "",
+      "example": "ffuf -fs"
+    },
+    {
+      "name": "-ft",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Filter by number of milliseconds to the first response byte, either greater or less than. EG: >100 or <100",
+      "default": "",
+      "example": "ffuf -ft"
+    },
+    {
+      "name": "-fw",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Filter by amount of words in response. Comma separated list of word counts and ranges",
+      "default": "",
+      "example": "ffuf -fw"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DirSearch wordlist compatibility mode. Used in conjunction with -e flag. (default: false)",
+      "default": "false",
+      "example": "ffuf -D"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Comma separated list of extensions. Extends FUZZ keyword.",
+      "default": "",
+      "example": "ffuf -e"
+    },
+    {
+      "name": "-enc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encoders for keywords, eg. 'FUZZ:urlencode b64encode'",
+      "default": "",
+      "example": "ffuf -enc"
+    },
+    {
+      "name": "-ic",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore wordlist comments (default: false)",
+      "default": "false",
+      "example": "ffuf -ic"
+    },
+    {
+      "name": "-input-cmd",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Command producing the input. --input-num is required when using this input method. Overrides -w.",
+      "default": "",
+      "example": "ffuf -input-cmd"
+    },
+    {
+      "name": "-input-num",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Number of inputs to test. Used in conjunction with --input-cmd. (default: 100)",
+      "default": "100",
+      "example": "ffuf -input-num"
+    },
+    {
+      "name": "-input-shell",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Shell to be used for running command",
+      "default": "",
+      "example": "ffuf -input-shell"
+    },
+    {
+      "name": "-mode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Multi-wordlist operation mode. Available modes: clusterbomb, pitchfork, sniper (default: clusterbomb)",
+      "default": "clusterbomb",
+      "example": "ffuf -mode"
+    },
+    {
+      "name": "-request",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "File containing the raw http request",
+      "default": "",
+      "example": "ffuf -request"
+    },
+    {
+      "name": "-request-proto",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Protocol to use along with raw request (default: https)",
+      "default": "https",
+      "example": "ffuf -request-proto"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Wordlist file path and (optional) keyword separated by colon. eg. '/path/to/wordlist:KEYWORD'",
+      "default": "",
+      "example": "ffuf -w"
+    },
+    {
+      "name": "-audit-log",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write audit log containing all requests, responses and config",
+      "default": "",
+      "example": "ffuf -audit-log"
+    },
+    {
+      "name": "-debug-log",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write all of the internal logging to the specified file.",
+      "default": "",
+      "example": "ffuf -debug-log"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write output to file",
+      "default": "",
+      "example": "ffuf -o"
+    },
+    {
+      "name": "-od",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Directory path to store matched results to.",
+      "default": "",
+      "example": "ffuf -od"
+    },
+    {
+      "name": "-of",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output file format. Available formats: json, ejson, html, md, csv, ecsv (or, 'all' for all formats) (default: json)",
+      "default": "json",
+      "example": "ffuf -of"
+    },
+    {
+      "name": "-or",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't create the output file if we don't have results (default: false)",
+      "default": "false",
+      "example": "ffuf -or"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "ffuf -c -w <path/to/wordlist.txt> -u <https://example.com/FUZZ>",
+      "explanation": "Enumerate directories using [c]olored output and a [w]ordlist specifying a target [u]RL",
+      "source": "tldr:ffuf"
+    },
+    {
+      "cmd": "ffuf -w <path/to/subdomains.txt> -u <https://FUZZ.example.com>",
+      "explanation": "Enumerate webservers of subdomains by changing the position of the keyword",
+      "source": "tldr:ffuf"
+    },
+    {
+      "cmd": "ffuf -o -w <path/to/wordlist.txt> -u <https://example.com/FUZZ> -t <500> -x <http://127.0.0.1:8080>",
+      "explanation": "Fuzz with specified [t]hreads (default: 40) and pro[x]ying the traffic and save [o]utput to a file",
+      "source": "tldr:ffuf"
+    },
+    {
+      "cmd": "ffuf -w <path/to/wordlist.txt> -u <https://example.com> -H \"<Host: FUZZ>\" -mc <200>",
+      "explanation": "Fuzz a specific [H]eader (\"Name: Value\") and [m]atch HTTP status [c]odes",
+      "source": "tldr:ffuf"
+    },
+    {
+      "cmd": "ffuf -w <path/to/postdata.txt> -X <POST> -d \"<username=admin\\&password=FUZZ>\" -u <https://example.com/login.php> -fc <302,401-499> -fs <1234>",
+      "explanation": "Fuzz with specified HTTP method and [d]ata, while [f]iltering out specific status [c]odes and response [s]ize",
+      "source": "tldr:ffuf"
+    },
+    {
+      "cmd": "ffuf -w <path/to/keys:KEY> -w <path/to/values:VALUE> -mode <pitchfork|clusterbomb> -u <https://example.com/id?KEY=VALUE> -ac",
+      "explanation": "Fuzz multiple positions with multiple wordlists using different modes and [a]uto [c]alibration to reduce false positives",
+      "source": "tldr:ffuf"
+    },
+    {
+      "cmd": "ffuf -w <path/to/wordlist> -x <http://127.0.0.1:8080> -u <https://example.com/FUZZ>",
+      "explanation": "Proxy requests through an HTTP MITM pro[x]y (such as Burp Suite or `mitmproxy`)",
+      "source": "tldr:ffuf"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/ffuf.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

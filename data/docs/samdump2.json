@@ -1,0 +1,60 @@
+{
+  "id": "samdump2",
+  "name": "samdump2",
+  "schema_version": 1,
+  "summary": "Dump password hashes from a Windows NT/2k/XP installation",
+  "highlights": [
+    "-d — enable debugging",
+    "-o — write output to file"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install samdump2"
+    }
+  ],
+  "usage": "samdump2 [OPTION]... SYSTEM_FILE SAM_FILE",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable debugging",
+      "default": "",
+      "example": "samdump2 -d"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display this information",
+      "default": "",
+      "example": "samdump2 -h"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "write output to file",
+      "default": "",
+      "example": "samdump2 -o <file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

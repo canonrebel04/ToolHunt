@@ -1,0 +1,71 @@
+{
+  "id": "koadic",
+  "name": "koadic",
+  "schema_version": 1,
+  "summary": "A Windows post-exploitation rootkit similar to other penetration testing tools such as Meterpreter and Powershell Empire.",
+  "highlights": [
+    "--autorun — a file containing commands to autorun at startup",
+    "-o — it is tuesday my dudes",
+    "--restore — a koadic restore json file"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install koadic"
+    }
+  ],
+  "usage": "koadic [-h] [--autorun AUTORUN] [-o] [--restore RESTORE]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "koadic --help"
+    },
+    {
+      "name": "--autorun",
+      "short": "",
+      "aliases": [],
+      "arg": "AUTORUN",
+      "required": false,
+      "description": "a file containing commands to autorun at startup",
+      "default": "",
+      "example": "koadic --autorun <autorun>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "it is tuesday my dudes",
+      "default": "",
+      "example": "koadic -o"
+    },
+    {
+      "name": "--restore",
+      "short": "",
+      "aliases": [],
+      "arg": "RESTORE",
+      "required": false,
+      "description": "a koadic restore json file",
+      "default": "",
+      "example": "koadic --restore <restore>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

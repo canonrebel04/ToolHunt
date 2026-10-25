@@ -1,0 +1,49 @@
+{
+  "id": "coercer",
+  "name": "coercer",
+  "schema_version": 1,
+  "summary": "Coerce a Windows server to authenticate on an arbitrary machine through 15 methods.",
+  "highlights": [
+    "-v — Verbose mode (default: False)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install coercer"
+    }
+  ],
+  "usage": "coercer [-h] [-v] {scan,coerce,fuzz} ...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "coercer --help"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose mode (default: False)",
+      "default": "False",
+      "example": "coercer --verbose"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

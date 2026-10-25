@@ -1,0 +1,206 @@
+{
+  "id": "pdfid",
+  "name": "pdfid",
+  "schema_version": 1,
+  "summary": "Scan a file to look for certain PDF keywords.",
+  "highlights": [
+    "-s — scan the given directory",
+    "-a — display all the names",
+    "-e — display extra data, like dates",
+    "-f — force the scan of the file, even without proper %PDF header",
+    "-d — disable JavaScript and auto launch",
+    "-p — plugins to load (separate plugins with a comma , ; @file supported)",
+    "-c — output csv data when using plugins",
+    "-m — minimum score for plugin results output"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pdfid"
+    }
+  ],
+  "usage": "pdfid [options] [pdf-file|zip-file|url|@file] ...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show program's version number and exit",
+      "default": "",
+      "example": "pdfid --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "pdfid --help"
+    },
+    {
+      "name": "--scan",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "scan the given directory",
+      "default": "",
+      "example": "pdfid --scan"
+    },
+    {
+      "name": "--all",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display all the names",
+      "default": "",
+      "example": "pdfid --all"
+    },
+    {
+      "name": "--extra",
+      "short": "-e",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display extra data, like dates",
+      "default": "",
+      "example": "pdfid --extra"
+    },
+    {
+      "name": "--force",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "force the scan of the file, even without proper %PDF header",
+      "default": "",
+      "example": "pdfid --force"
+    },
+    {
+      "name": "--disarm",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable JavaScript and auto launch",
+      "default": "",
+      "example": "pdfid --disarm"
+    },
+    {
+      "name": "--plugins",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PLUGINS",
+      "required": false,
+      "description": "plugins to load (separate plugins with a comma , ; @file supported)",
+      "default": "",
+      "example": "pdfid --plugins <plugins>"
+    },
+    {
+      "name": "--csv",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "output csv data when using plugins",
+      "default": "",
+      "example": "pdfid --csv"
+    },
+    {
+      "name": "--minimumscore",
+      "short": "-m",
+      "aliases": [],
+      "arg": "MINIMUMSCORE",
+      "required": false,
+      "description": "minimum score for plugin results output",
+      "default": "",
+      "example": "pdfid --minimumscore <minimumscore>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose (will also raise catched exceptions)",
+      "default": "",
+      "example": "pdfid --verbose"
+    },
+    {
+      "name": "--select",
+      "short": "-S",
+      "aliases": [],
+      "arg": "SELECT",
+      "required": false,
+      "description": "selection expression",
+      "default": "",
+      "example": "pdfid --select <select>"
+    },
+    {
+      "name": "--nozero",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "supress output for counts equal to zero",
+      "default": "",
+      "example": "pdfid --nozero"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "output to log file",
+      "default": "",
+      "example": "pdfid --output <output>"
+    },
+    {
+      "name": "--pluginoptions",
+      "short": "",
+      "aliases": [],
+      "arg": "PLUGINOPTIONS",
+      "required": false,
+      "description": "options for the plugin",
+      "default": "",
+      "example": "pdfid --pluginoptions <pluginoptions>"
+    },
+    {
+      "name": "--literalfilenames",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "take filenames literally, no wildcard matching",
+      "default": "",
+      "example": "pdfid --literalfilenames"
+    },
+    {
+      "name": "--recursedir",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Recurse directories (wildcards and here files (@...) allowed)",
+      "default": "",
+      "example": "pdfid --recursedir"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

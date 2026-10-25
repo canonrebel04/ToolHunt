@@ -1,0 +1,156 @@
+{
+  "id": "netmask",
+  "name": "netmask",
+  "schema_version": 1,
+  "summary": "Helps determine network masks",
+  "highlights": [
+    "-d — Print status/progress information",
+    "-s — Output address/netmask pairs",
+    "-c — Output CIDR format address lists",
+    "-i — Output Cisco style address lists",
+    "-r — Output ip address ranges",
+    "-x — Output address/netmask pairs in hex",
+    "-o — Output address/netmask pairs in octal",
+    "-b — Output address/netmask pairs in binary"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install netmask"
+    }
+  ],
+  "usage": "netmask spec [spec ...]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print a summary of the options",
+      "default": "",
+      "example": "netmask --help"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print the version number",
+      "default": "",
+      "example": "netmask --version"
+    },
+    {
+      "name": "--debug",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print status/progress information",
+      "default": "",
+      "example": "netmask --debug"
+    },
+    {
+      "name": "--standard",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output address/netmask pairs",
+      "default": "",
+      "example": "netmask --standard"
+    },
+    {
+      "name": "--cidr",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output CIDR format address lists",
+      "default": "",
+      "example": "netmask --cidr"
+    },
+    {
+      "name": "--cisco",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output Cisco style address lists",
+      "default": "",
+      "example": "netmask --cisco"
+    },
+    {
+      "name": "--range",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output ip address ranges",
+      "default": "",
+      "example": "netmask --range"
+    },
+    {
+      "name": "--hex",
+      "short": "-x",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output address/netmask pairs in hex",
+      "default": "",
+      "example": "netmask --hex"
+    },
+    {
+      "name": "--octal",
+      "short": "-o",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output address/netmask pairs in octal",
+      "default": "",
+      "example": "netmask --octal"
+    },
+    {
+      "name": "--binary",
+      "short": "-b",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output address/netmask pairs in binary",
+      "default": "",
+      "example": "netmask --binary"
+    },
+    {
+      "name": "--nodns",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable DNS lookups for addresses",
+      "default": "",
+      "example": "netmask --nodns"
+    },
+    {
+      "name": "--files",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Treat arguments as input files",
+      "default": "",
+      "example": "netmask --files"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

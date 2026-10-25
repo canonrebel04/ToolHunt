@@ -1,0 +1,196 @@
+{
+  "id": "httprint",
+  "name": "httprint",
+  "schema_version": 1,
+  "summary": "A web server fingerprinting tool.",
+  "highlights": [
+    "-x — Nmap -oX option generated xml file as input file. Ports which can be considered as http po",
+    "-s — file containing http fingerprint signatures.",
+    "-o — output in html format.",
+    "-oc — output in csv format.",
+    "-ox — output in xml format.",
+    "-noautossl — Disable automatic detection of SSL.",
+    "-tp — Ping timeout in milliseconds. Default is 4000 ms. Maximum 30000 ms.",
+    "-ct — Default is 75. Do not change."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install httprint"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "<host>",
+      "required": false,
+      "description": "host can be either an IP address, a symbolic name, an IP range or a URL.",
+      "default": "",
+      "example": "httprint -h <host>"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "<nmap xml file>",
+      "required": false,
+      "description": "Nmap -oX option generated xml file as input file. Ports which can be considered as http ports are taken from the nmapportlist.txt file.",
+      "default": "",
+      "example": "httprint -x <nmap xml file>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "<signatures>",
+      "required": false,
+      "description": "file containing http fingerprint signatures.",
+      "default": "",
+      "example": "httprint -s <signatures>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "<output file>",
+      "required": false,
+      "description": "output in html format.",
+      "default": "",
+      "example": "httprint -o <output file>"
+    },
+    {
+      "name": "-oc",
+      "short": "",
+      "aliases": [],
+      "arg": "<output file>",
+      "required": false,
+      "description": "output in csv format.",
+      "default": "",
+      "example": "httprint -oc <output file>"
+    },
+    {
+      "name": "-ox",
+      "short": "",
+      "aliases": [],
+      "arg": "<output file>",
+      "required": false,
+      "description": "output in xml format.",
+      "default": "",
+      "example": "httprint -ox <output file>"
+    },
+    {
+      "name": "-noautossl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable automatic detection of SSL.",
+      "default": "",
+      "example": "httprint -noautossl"
+    },
+    {
+      "name": "-tp",
+      "short": "",
+      "aliases": [],
+      "arg": "<ping timeout>",
+      "required": false,
+      "description": "Ping timeout in milliseconds. Default is 4000 ms. Maximum 30000 ms.",
+      "default": "",
+      "example": "httprint -tp <ping timeout>"
+    },
+    {
+      "name": "-ct",
+      "short": "",
+      "aliases": [],
+      "arg": "<1-100>",
+      "required": false,
+      "description": "Default is 75. Do not change.",
+      "default": "",
+      "example": "httprint -ct <1-100>"
+    },
+    {
+      "name": "-ua",
+      "short": "",
+      "aliases": [],
+      "arg": "<User Agent>",
+      "required": false,
+      "description": "Default is Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0.",
+      "default": "",
+      "example": "httprint -ua <User Agent>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<timeout>",
+      "required": false,
+      "description": "Connection/read timeout in milliseconds. Default is 10000 ms. Maximum 100000 ms.",
+      "default": "",
+      "example": "httprint -t <timeout>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<retry>",
+      "required": false,
+      "description": "Number of retries. Default is 3. Maximum 30.",
+      "default": "",
+      "example": "httprint -r <retry>"
+    },
+    {
+      "name": "-P0",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Turn ICMP ping off.",
+      "default": "",
+      "example": "httprint -P0"
+    },
+    {
+      "name": "-nr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "No redirection. Do not automatically follow 301, 302 responses. Enabled by default.",
+      "default": "",
+      "example": "httprint -nr"
+    },
+    {
+      "name": "-th",
+      "short": "",
+      "aliases": [],
+      "arg": "<threads>",
+      "required": false,
+      "description": "Number of threads. Default is 8. Maximum 64.",
+      "default": "",
+      "example": "httprint -th <threads>"
+    },
+    {
+      "name": "-?",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Displays this message.",
+      "default": "",
+      "example": "httprint -?"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

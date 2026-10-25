@@ -1,0 +1,126 @@
+{
+  "id": "linkedin2username",
+  "name": "linkedin2username",
+  "schema_version": 1,
+  "summary": "OSINT Tool: Generate username lists for companies on LinkedIn.",
+  "highlights": [
+    "-c — Company name exactly as typed in the company linkedin profile page URL.",
+    "-n — Append a domain name to username output. [example: \"-n uber.com\" would output jschmoe@uber",
+    "-d — Search depth (how many loops of 50). If unset, will try to grab them all.",
+    "-s — Seconds to sleep between search loops. Defaults to 0.",
+    "-x — Proxy server to use. WARNING: WILL DISABLE SSL VERIFICATION. [example: \"-p https://localho",
+    "-k — Filter results by a a list of command separated keywords. Will do a separate loop for each",
+    "-g — Attempts to bypass the 1,000 record search limit by running multiple searches split across",
+    "-o — Output Directory, defaults to li2u-output"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install linkedin2username"
+    }
+  ],
+  "usage": "linkedin2username [-h] -c COMPANY [-n DOMAIN] [-d DEPTH] [-s SLEEP]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "linkedin2username --help"
+    },
+    {
+      "name": "--company",
+      "short": "-c",
+      "aliases": [],
+      "arg": "COMPANY",
+      "required": false,
+      "description": "Company name exactly as typed in the company linkedin profile page URL.",
+      "default": "",
+      "example": "linkedin2username --company <company>"
+    },
+    {
+      "name": "--domain",
+      "short": "-n",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Append a domain name to username output. [example: \"-n uber.com\" would output jschmoe@uber.com]",
+      "default": "",
+      "example": "linkedin2username --domain <domain>"
+    },
+    {
+      "name": "--depth",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DEPTH",
+      "required": false,
+      "description": "Search depth (how many loops of 50). If unset, will try to grab them all.",
+      "default": "",
+      "example": "linkedin2username --depth <depth>"
+    },
+    {
+      "name": "--sleep",
+      "short": "-s",
+      "aliases": [],
+      "arg": "SLEEP",
+      "required": false,
+      "description": "Seconds to sleep between search loops. Defaults to 0.",
+      "default": "",
+      "example": "linkedin2username --sleep <sleep>"
+    },
+    {
+      "name": "--proxy",
+      "short": "-x",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "Proxy server to use. WARNING: WILL DISABLE SSL VERIFICATION. [example: \"-p https://localhost:8080\"]",
+      "default": "",
+      "example": "linkedin2username --proxy <proxy>"
+    },
+    {
+      "name": "--keywords",
+      "short": "-k",
+      "aliases": [],
+      "arg": "KEYWORDS",
+      "required": false,
+      "description": "Filter results by a a list of command separated keywords. Will do a separate loop for each keyword, potentially bypassing the 1,000 record limit. [example: \"-k 'sales,human resources,information technology']",
+      "default": "",
+      "example": "linkedin2username --keywords <keywords>"
+    },
+    {
+      "name": "--geoblast",
+      "short": "-g",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Attempts to bypass the 1,000 record search limit by running multiple searches split across geographic regions.",
+      "default": "",
+      "example": "linkedin2username --geoblast"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "Output Directory, defaults to li2u-output",
+      "default": "",
+      "example": "linkedin2username --output <output>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

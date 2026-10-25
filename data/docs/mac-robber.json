@@ -1,0 +1,37 @@
+{
+  "id": "mac-robber",
+  "name": "mac-robber",
+  "schema_version": 1,
+  "summary": "A digital investigation tool that collects data from allocated files in a mounted file system.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install mac-robber"
+    }
+  ],
+  "usage": "mac-robber [-V] <directories>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print the version to stdout",
+      "default": "",
+      "example": "mac-robber -V"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

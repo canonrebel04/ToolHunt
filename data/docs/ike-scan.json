@@ -1,0 +1,166 @@
+{
+  "id": "ike-scan",
+  "name": "ike-scan",
+  "schema_version": 1,
+  "summary": "A tool that uses IKE protocol to discover, fingerprint and test IPSec VPN servers.",
+  "highlights": [
+    "--spisize — Set the proposal SPI size to <n>. Default=0 If this is non-zero, then a random SPI of the ",
+    "--hdrflags — Set the ISAKMP header flags to <n>. Default=0 The flags are detailed in RFC 2408 section 3",
+    "--hdrmsgid — Set the ISAKMP header message ID to <n>. Default=0 This should be zero for IKE Phase-1.",
+    "--cookie — Set the ISAKMP initiator cookie to <n> The cookie value should be specified in hex. By def",
+    "--exchange — Set the exchange type to <n> This option allows you to change the exchange type in the ISA",
+    "--nextpayload — Set the next payload in the ISAKMP header to <n> Normally, the next payload is automatical",
+    "--randomseed — Use <n> to seed the pseudo random number generator. This option seeds the PRNG with the sp",
+    "--timestamp — Display timestamps for received packets. This option causes a timestamp to be displayed fo"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ike-scan"
+    }
+  ],
+  "usage": "ike-scan [options] [hosts...]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--spisize",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Set the proposal SPI size to <n>. Default=0 If this is non-zero, then a random SPI of the specified size will be added to the proposal payload. The default of zero means no SPI.",
+      "default": "",
+      "example": "ike-scan --spisize <n>"
+    },
+    {
+      "name": "--hdrflags",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Set the ISAKMP header flags to <n>. Default=0 The flags are detailed in RFC 2408 section 3.1",
+      "default": "",
+      "example": "ike-scan --hdrflags <n>"
+    },
+    {
+      "name": "--hdrmsgid",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Set the ISAKMP header message ID to <n>. Default=0 This should be zero for IKE Phase-1.",
+      "default": "",
+      "example": "ike-scan --hdrmsgid <n>"
+    },
+    {
+      "name": "--cookie",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Set the ISAKMP initiator cookie to <n> The cookie value should be specified in hex. By default, the cookies are automatically generated and have unique values. If you specify this option, then you can only specify a single target, because ike-scan requires unique cookie values to match up the response packets.",
+      "default": "",
+      "example": "ike-scan --cookie <n>"
+    },
+    {
+      "name": "--exchange",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Set the exchange type to <n> This option allows you to change the exchange type in the ISAKMP header to an arbitrary value. Note that ike-scan only supports Main and Aggressive modes (values 2 and 4 respectively). Specifying other values will change the exchange type value in the ISAKMP header, but will not adjust the other payloads. The exchange types are defined in RFC 2408 sec 3.1.",
+      "default": "",
+      "example": "ike-scan --exchange <n>"
+    },
+    {
+      "name": "--nextpayload",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Set the next payload in the ISAKMP header to <n> Normally, the next payload is automatically set to the correct value.",
+      "default": "",
+      "example": "ike-scan --nextpayload <n>"
+    },
+    {
+      "name": "--randomseed",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Use <n> to seed the pseudo random number generator. This option seeds the PRNG with the specified number, which can be useful if you want to ensure that the packet data is exactly repeatable when it includes payloads with random data such as key exchange or nonce. By default, the PRNG is seeded with an unpredictable value.",
+      "default": "",
+      "example": "ike-scan --randomseed <n>"
+    },
+    {
+      "name": "--timestamp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display timestamps for received packets. This option causes a timestamp to be displayed for each received packet.",
+      "default": "",
+      "example": "ike-scan --timestamp"
+    },
+    {
+      "name": "--sourceip",
+      "short": "",
+      "aliases": [],
+      "arg": "<s>",
+      "required": false,
+      "description": "Set source IP address for outgoing packets to <s>. This option causes the outgoing IKE packets to have the specified source IP address. The address can either be an IP address in dotted quad format, or the string \"random\" which will use a different random source address for each packet that is sent. If this option is used, no packets will be received This option requires raw socket support, and you will need superuser privileges to use this option, even if you specify a high source port. This option does not work on all operating systems.",
+      "default": "",
+      "example": "ike-scan --sourceip <s>"
+    },
+    {
+      "name": "--bindip",
+      "short": "",
+      "aliases": [],
+      "arg": "<s>",
+      "required": false,
+      "description": "Set the IP address to bind to. This option causes the outgoing IKE packets to originate from <s>, and this address will also be used to receive responses from the target.",
+      "default": "",
+      "example": "ike-scan --bindip <s>"
+    },
+    {
+      "name": "--shownum",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display the host number for received packets. This displays the ordinal host number of the responding host before the IP address. It can be useful when sending many packets to the same target IP, to see if any probes are being ignored.",
+      "default": "",
+      "example": "ike-scan --shownum"
+    },
+    {
+      "name": "--nat-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use RFC 3947 NAT-Traversal encapsulation. This option adds the non-ESP marker to the beginning of outgoing packets and strips it from received packets, as described in RFC 3947. It also changes the default source port to 4500 and the default destination port to 4500, which are the ports for NAT-T IKE. These port numbers can be changed with the --sport and --dport options, providing they are used after the --nat-t option.",
+      "default": "",
+      "example": "ike-scan --nat-t"
+    },
+    {
+      "name": "--rcookie",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Set the ISAKMP responder cookie to <n>. This sets the responder cookie to the specified hex value. By default, the responder cookie is set to zero.",
+      "default": "",
+      "example": "ike-scan --rcookie <n>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

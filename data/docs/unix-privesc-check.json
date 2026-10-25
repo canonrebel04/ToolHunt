@@ -1,0 +1,26 @@
+{
+  "id": "unix-privesc-check",
+  "name": "unix-privesc-check",
+  "schema_version": 1,
+  "summary": "Tries to find misconfigurations that could allow local unprivilged users to escalate privileges to other users or to access local apps (e.g. databases).",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install unix-privesc-check"
+    }
+  ],
+  "usage": "unix-privesc-check { standard | detailed }",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

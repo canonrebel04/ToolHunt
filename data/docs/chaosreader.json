@@ -1,0 +1,266 @@
+{
+  "id": "chaosreader",
+  "name": "chaosreader",
+  "schema_version": 1,
+  "summary": "A freeware tool to trace tcp, udp etc. sessions and fetch application data from snoop or tcpdump logs.",
+  "highlights": [
+    "-a — # Create application session files (default)",
+    "-d — # Show DNS names instead of IP addresses",
+    "-e — # Create HTML 2-way & hex files for everything",
+    "--help2 — # Print massive help",
+    "-i — # Create info file",
+    "-q — # Quiet, no output to screen",
+    "-r — # Create raw files",
+    "-v — # Verbose - Create ALL files .. (except -e)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install chaosreader"
+    }
+  ],
+  "usage": "chaosreader [-adehiknqrvxAHIRTUXY] [-D dir]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--application",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Create application session files (default)",
+      "default": "ault",
+      "example": "chaosreader --application"
+    },
+    {
+      "name": "--preferdns",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Show DNS names instead of IP addresses",
+      "default": "",
+      "example": "chaosreader --preferdns"
+    },
+    {
+      "name": "--everything",
+      "short": "-e",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Create HTML 2-way & hex files for everything",
+      "default": "",
+      "example": "chaosreader --everything"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Print a brief help",
+      "default": "",
+      "example": "chaosreader -h"
+    },
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Print verbose help (this) and version",
+      "default": "",
+      "example": "chaosreader --help"
+    },
+    {
+      "name": "--help2",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Print massive help",
+      "default": "",
+      "example": "chaosreader --help2"
+    },
+    {
+      "name": "--info",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Create info file",
+      "default": "",
+      "example": "chaosreader --info"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Quiet, no output to screen",
+      "default": "",
+      "example": "chaosreader --quiet"
+    },
+    {
+      "name": "--raw",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Create raw files",
+      "default": "",
+      "example": "chaosreader --raw"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Verbose - Create ALL files .. (except -e)",
+      "default": "",
+      "example": "chaosreader --verbose"
+    },
+    {
+      "name": "--index",
+      "short": "-x",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Create index files (default)",
+      "default": "ault",
+      "example": "chaosreader --index"
+    },
+    {
+      "name": "--noapplication",
+      "short": "-A",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Exclude application session files",
+      "default": "",
+      "example": "chaosreader --noapplication"
+    },
+    {
+      "name": "--hex",
+      "short": "-H",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Include hex dumps (slow)",
+      "default": "",
+      "example": "chaosreader --hex"
+    },
+    {
+      "name": "--noinfo",
+      "short": "-I",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Exclude info files",
+      "default": "",
+      "example": "chaosreader --noinfo"
+    },
+    {
+      "name": "--noraw",
+      "short": "-R",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Exclude raw files",
+      "default": "",
+      "example": "chaosreader --noraw"
+    },
+    {
+      "name": "--notcp",
+      "short": "-T",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Exclude TCP traffic",
+      "default": "",
+      "example": "chaosreader --notcp"
+    },
+    {
+      "name": "--noudp",
+      "short": "-U",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Exclude UDP traffic",
+      "default": "",
+      "example": "chaosreader --noudp"
+    },
+    {
+      "name": "--noicmp",
+      "short": "-Y",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Exclude ICMP traffic",
+      "default": "",
+      "example": "chaosreader --noicmp"
+    },
+    {
+      "name": "--noindex",
+      "short": "-X",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Exclude index files",
+      "default": "",
+      "example": "chaosreader --noindex"
+    },
+    {
+      "name": "--keydata",
+      "short": "-k",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Create extra files for keystroke analysis",
+      "default": "",
+      "example": "chaosreader --keydata"
+    },
+    {
+      "name": "--names",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "# Include hostnames in hyperlinked HTTPlog (HTML)",
+      "default": "",
+      "example": "chaosreader --names"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "dir",
+      "required": false,
+      "description": "--dir dir # Output all files to this directory",
+      "default": "",
+      "example": "chaosreader -D <dir>"
+    },
+    {
+      "name": "-z",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--runredo # Standalone, redo. Rereads last run's logs.",
+      "default": "",
+      "example": "chaosreader -z"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

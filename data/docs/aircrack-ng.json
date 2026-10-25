@@ -1,0 +1,467 @@
+{
+  "id": "aircrack-ng",
+  "name": "Aircrack-ng",
+  "schema_version": 1,
+  "summary": "A complete suite of tools to assess Wi-Fi network security. It focuses on monitoring, attacking, testing, and cracking WEP and WPA/WPA2-PSK keys.",
+  "highlights": [
+    "-a — force attack mode (1/WEP, 2/WPA-PSK)",
+    "-e — target selection: network identifier",
+    "-b — target selection: access point's MAC",
+    "-p — # of CPU to use (default: all CPUs)",
+    "-q — : enable quiet mode (no status output)",
+    "-C — : merge the given APs to a virtual one",
+    "-l — : write key to file. Overwrites file.",
+    "-c — : search alphanumeric characters only"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install aircrack-ng"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install airgraph-ng"
+    }
+  ],
+  "usage": "aircrack-ng [options] <input file(s)>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "<amode>",
+      "required": false,
+      "description": "force attack mode (1/WEP, 2/WPA-PSK)",
+      "default": "",
+      "example": "aircrack-ng -a <amode>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "<essid>",
+      "required": false,
+      "description": "target selection: network identifier",
+      "default": "",
+      "example": "aircrack-ng -e <essid>"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "<bssid>",
+      "required": false,
+      "description": "target selection: access point's MAC",
+      "default": "",
+      "example": "aircrack-ng -b <bssid>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<nbcpu>",
+      "required": false,
+      "description": "# of CPU to use (default: all CPUs)",
+      "default": "all CPUs",
+      "example": "aircrack-ng -p <nbcpu>"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": enable quiet mode (no status output)",
+      "default": "",
+      "example": "aircrack-ng -q"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "<macs>",
+      "required": false,
+      "description": ": merge the given APs to a virtual one",
+      "default": "",
+      "example": "aircrack-ng -C <macs>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": ": write key to file. Overwrites file.",
+      "default": "",
+      "example": "aircrack-ng -l <file>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": search alphanumeric characters only",
+      "default": "",
+      "example": "aircrack-ng -c"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": search binary coded decimal chr only",
+      "default": "",
+      "example": "aircrack-ng -t"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": search the numeric key for Fritz!BOX",
+      "default": "",
+      "example": "aircrack-ng -h"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "<mask>",
+      "required": false,
+      "description": ": use masking of the key (A1:XX:CF:YY)",
+      "default": "",
+      "example": "aircrack-ng -d <mask>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "<maddr>",
+      "required": false,
+      "description": "MAC address to filter usable packets",
+      "default": "",
+      "example": "aircrack-ng -m <maddr>"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "<nbits>",
+      "required": false,
+      "description": "WEP key length : 64/128/152/256/512",
+      "default": "",
+      "example": "aircrack-ng -n <nbits>"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<index>",
+      "required": false,
+      "description": "WEP key index (1 to 4), default: any",
+      "default": "",
+      "example": "aircrack-ng -i <index>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<fudge>",
+      "required": false,
+      "description": "bruteforce fudge factor, default: 2",
+      "default": "",
+      "example": "aircrack-ng -f <fudge>"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "<korek>",
+      "required": false,
+      "description": "disable one attack method (1 to 17)",
+      "default": "",
+      "example": "aircrack-ng -k <korek>"
+    },
+    {
+      "name": "-x1",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": last keybyte bruteforcing (default)",
+      "default": "ault",
+      "example": "aircrack-ng -x1"
+    },
+    {
+      "name": "-x2",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": enable last 2 keybytes bruteforcing",
+      "default": "",
+      "example": "aircrack-ng -x2"
+    },
+    {
+      "name": "-X",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": disable bruteforce multithreading",
+      "default": "",
+      "example": "aircrack-ng -X"
+    },
+    {
+      "name": "-y",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": experimental single bruteforce mode",
+      "default": "",
+      "example": "aircrack-ng -y"
+    },
+    {
+      "name": "-K",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": use only old KoreK attacks (pre-PTW)",
+      "default": "",
+      "example": "aircrack-ng -K"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": show the key in ASCII while cracking",
+      "default": "",
+      "example": "aircrack-ng -s"
+    },
+    {
+      "name": "-M",
+      "short": "",
+      "aliases": [],
+      "arg": "<num>",
+      "required": false,
+      "description": ": specify maximum number of IVs to use",
+      "default": "",
+      "example": "aircrack-ng -M <num>"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": WEP decloak, skips broken keystreams",
+      "default": "",
+      "example": "aircrack-ng -D"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "<num>",
+      "required": false,
+      "description": ": PTW debug: 1: disable Klein, 2: PTW",
+      "default": "",
+      "example": "aircrack-ng -P <num>"
+    },
+    {
+      "name": "-1",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": run only 1 try to crack key with PTW",
+      "default": "",
+      "example": "aircrack-ng -1"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": run in visual inspection mode",
+      "default": "",
+      "example": "aircrack-ng -V"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<words>",
+      "required": false,
+      "description": "path to wordlist(s) filename(s)",
+      "default": "",
+      "example": "aircrack-ng -w <words>"
+    },
+    {
+      "name": "-N",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": ": path to new session filename",
+      "default": "",
+      "example": "aircrack-ng -N <file>"
+    },
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": ": path to existing session filename",
+      "default": "",
+      "example": "aircrack-ng -R <file>"
+    },
+    {
+      "name": "-E",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": ": create EWSA Project file v3",
+      "default": "",
+      "example": "aircrack-ng -E <file>"
+    },
+    {
+      "name": "-I",
+      "short": "",
+      "aliases": [],
+      "arg": "<str>",
+      "required": false,
+      "description": ": PMKID string (hashcat -m 16800)",
+      "default": "",
+      "example": "aircrack-ng -I <str>"
+    },
+    {
+      "name": "-j",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": ": create Hashcat v3.6+ file (HCCAPX)",
+      "default": "",
+      "example": "aircrack-ng -j <file>"
+    },
+    {
+      "name": "-J",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": ": create Hashcat file (HCCAP)",
+      "default": "",
+      "example": "aircrack-ng -J <file>"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": WPA cracking speed test",
+      "default": "",
+      "example": "aircrack-ng -S"
+    },
+    {
+      "name": "-Z",
+      "short": "",
+      "aliases": [],
+      "arg": "<sec>",
+      "required": false,
+      "description": ": WPA cracking speed test length of execution.",
+      "default": "",
+      "example": "aircrack-ng -Z <sec>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<DB>",
+      "required": false,
+      "description": ": path to airolib-ng database (Cannot be used with -w)",
+      "default": "",
+      "example": "aircrack-ng -r <DB>"
+    },
+    {
+      "name": "--simd-list",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Show a list of the available SIMD architectures, for this machine.",
+      "default": "",
+      "example": "aircrack-ng --simd-list"
+    },
+    {
+      "name": "--simd",
+      "short": "",
+      "aliases": [],
+      "arg": "<option>",
+      "required": false,
+      "description": ": Use specific SIMD architecture.",
+      "default": "",
+      "example": "aircrack-ng --simd <option>"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Displays # of CPUs & SIMD support",
+      "default": "",
+      "example": "aircrack-ng -u"
+    },
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Displays this usage screen",
+      "default": "",
+      "example": "aircrack-ng --help"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "aircrack-ng -w <path/to/wordlist.txt> <path/to/capture.cap>",
+      "explanation": "Crack key from capture file using [w]ordlist",
+      "source": "tldr:aircrack-ng"
+    },
+    {
+      "cmd": "aircrack-ng -p <number> -w <path/to/wordlist.txt> <path/to/capture.cap>",
+      "explanation": "Crack key using multiple CPU threads from capture file using [w]ordlist",
+      "source": "tldr:aircrack-ng"
+    },
+    {
+      "cmd": "aircrack-ng -w <path/to/wordlist.txt> -e <extended_ssid> <path/to/capture.cap>",
+      "explanation": "Crack key from capture file using [w]ordlist and the access point's [e]ssid",
+      "source": "tldr:aircrack-ng"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/aircrack-ng.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

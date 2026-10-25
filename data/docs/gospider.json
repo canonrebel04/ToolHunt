@@ -1,0 +1,386 @@
+{
+  "id": "gospider",
+  "name": "gospider",
+  "schema_version": 1,
+  "summary": "Fast web spider written in Go.",
+  "highlights": [
+    "-s — Site to crawl",
+    "-S — Site list to crawl",
+    "-p — Proxy (Ex: http://127.0.0.1:8080)",
+    "-o — Output folder",
+    "-u — User Agent to use web: random web user-agent mobi: random mobile user-agent or you can set",
+    "--cookie — Cookie to use (testA=a; testB=b)",
+    "-H — Header to use (Use multiple flag to set multiple header)",
+    "--burp — Load headers and cookie from burp raw http request"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install gospider"
+    }
+  ],
+  "usage": "gospider [flags]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--site",
+      "short": "-s",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Site to crawl",
+      "default": "",
+      "example": "gospider --site <string>"
+    },
+    {
+      "name": "--sites",
+      "short": "-S",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Site list to crawl",
+      "default": "",
+      "example": "gospider --sites <string>"
+    },
+    {
+      "name": "--proxy",
+      "short": "-p",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Proxy (Ex: http://127.0.0.1:8080)",
+      "default": "",
+      "example": "gospider --proxy <string>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Output folder",
+      "default": "",
+      "example": "gospider --output <string>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "-u",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "User Agent to use web: random web user-agent mobi: random mobile user-agent or you can set your special user-agent (default \"web\")",
+      "default": "web",
+      "example": "gospider --user-agent <string>"
+    },
+    {
+      "name": "--cookie",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Cookie to use (testA=a; testB=b)",
+      "default": "",
+      "example": "gospider --cookie <string>"
+    },
+    {
+      "name": "--header",
+      "short": "-H",
+      "aliases": [],
+      "arg": "stringArray",
+      "required": false,
+      "description": "Header to use (Use multiple flag to set multiple header)",
+      "default": "",
+      "example": "gospider --header <stringarray>"
+    },
+    {
+      "name": "--burp",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Load headers and cookie from burp raw http request",
+      "default": "",
+      "example": "gospider --burp <string>"
+    },
+    {
+      "name": "--blacklist",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Blacklist URL Regex",
+      "default": "",
+      "example": "gospider --blacklist <string>"
+    },
+    {
+      "name": "--whitelist",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Whitelist URL Regex",
+      "default": "",
+      "example": "gospider --whitelist <string>"
+    },
+    {
+      "name": "--whitelist-domain",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Whitelist Domain",
+      "default": "",
+      "example": "gospider --whitelist-domain <string>"
+    },
+    {
+      "name": "--filter-length",
+      "short": "-L",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Turn on length filter",
+      "default": "",
+      "example": "gospider --filter-length <string>"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Number of threads (Run sites in parallel) (default 1)",
+      "default": "1",
+      "example": "gospider --threads <int>"
+    },
+    {
+      "name": "--concurrent",
+      "short": "-c",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "The number of the maximum allowed concurrent requests of the matching domains (default 5)",
+      "default": "5",
+      "example": "gospider --concurrent <int>"
+    },
+    {
+      "name": "--depth",
+      "short": "-d",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "MaxDepth limits the recursion depth of visited URLs. (Set it to 0 for infinite recursion) (default 1)",
+      "default": "1",
+      "example": "gospider --depth <int>"
+    },
+    {
+      "name": "--delay",
+      "short": "-k",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Delay is the duration to wait before creating a new request to the matching domains (second)",
+      "default": "",
+      "example": "gospider --delay <int>"
+    },
+    {
+      "name": "--random-delay",
+      "short": "-K",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "RandomDelay is the extra randomized duration to wait added to Delay before creating a new request (second)",
+      "default": "",
+      "example": "gospider --random-delay <int>"
+    },
+    {
+      "name": "--timeout",
+      "short": "-m",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Request timeout (second) (default 10)",
+      "default": "10",
+      "example": "gospider --timeout <int>"
+    },
+    {
+      "name": "--base",
+      "short": "-B",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable all and only use HTML content",
+      "default": "",
+      "example": "gospider --base"
+    },
+    {
+      "name": "--js",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable linkfinder in javascript file (default true)",
+      "default": "true",
+      "example": "gospider --js"
+    },
+    {
+      "name": "--sitemap",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Try to crawl sitemap.xml",
+      "default": "",
+      "example": "gospider --sitemap"
+    },
+    {
+      "name": "--robots",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Try to crawl robots.txt (default true)",
+      "default": "true",
+      "example": "gospider --robots"
+    },
+    {
+      "name": "--other-source",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Find URLs from 3rd party (Archive.org, CommonCrawl.org, VirusTotal.com, AlienVault.com)",
+      "default": "",
+      "example": "gospider --other-source"
+    },
+    {
+      "name": "--include-subs",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Include subdomains crawled from 3rd party. Default is main domain",
+      "default": "",
+      "example": "gospider --include-subs"
+    },
+    {
+      "name": "--include-other-source",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Also include other-source's urls (still crawl and request)",
+      "default": "",
+      "example": "gospider --include-other-source"
+    },
+    {
+      "name": "--subs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Include subdomains",
+      "default": "",
+      "example": "gospider --subs"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Turn on debug mode",
+      "default": "",
+      "example": "gospider --debug"
+    },
+    {
+      "name": "--json",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable JSON output",
+      "default": "",
+      "example": "gospider --json"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Turn on verbose",
+      "default": "",
+      "example": "gospider --verbose"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Suppress all the output and only show URL",
+      "default": "",
+      "example": "gospider --quiet"
+    },
+    {
+      "name": "--no-redirect",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable redirect",
+      "default": "",
+      "example": "gospider --no-redirect"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check version",
+      "default": "",
+      "example": "gospider --version"
+    },
+    {
+      "name": "--length",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Turn on length",
+      "default": "",
+      "example": "gospider --length"
+    },
+    {
+      "name": "--raw",
+      "short": "-R",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable raw output",
+      "default": "",
+      "example": "gospider --raw"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "help for gospider",
+      "default": "",
+      "example": "gospider --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

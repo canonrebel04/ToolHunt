@@ -1,0 +1,564 @@
+{
+  "id": "wireshark",
+  "name": "Wireshark",
+  "schema_version": 1,
+  "summary": "The world's foremost network protocol analyzer. A packet sniffer and analysis tool that captures network traffic for troubleshooting, analysis, and security evaluation.",
+  "highlights": [
+    "-i — name or idx of interface (def: first non-loopback)",
+    "-f — packet filter in libpcap filter syntax",
+    "-s — packet snapshot length (def: appropriate maximum)",
+    "-p — don't capture in promiscuous mode",
+    "-I — capture in monitor mode, if available",
+    "-B — size of kernel buffer in MiB (def: 2MiB)",
+    "-y — link layer type (def: first appropriate)",
+    "-D — print list of interfaces and exit"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libwireshark-data"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libwireshark-dev"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libwireshark19"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install wireshark"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install wireshark-common"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install wireshark-dev"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install wireshark-doc"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libwiretap-dev"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libwiretap16"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libwsutil-dev"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libwsutil17"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install stratoshark"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install tshark"
+    }
+  ],
+  "usage": "wireshark [options] ... [ <infile> ]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--interface",
+      "short": "-i",
+      "aliases": [],
+      "arg": "<interface>",
+      "required": false,
+      "description": "name or idx of interface (def: first non-loopback)",
+      "default": "first non-loopback",
+      "example": "wireshark --interface <interface>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<capture filter>",
+      "required": false,
+      "description": "packet filter in libpcap filter syntax",
+      "default": "",
+      "example": "wireshark -f <capture filter>"
+    },
+    {
+      "name": "--snapshot-length",
+      "short": "-s",
+      "aliases": [],
+      "arg": "<snaplen>",
+      "required": false,
+      "description": "packet snapshot length (def: appropriate maximum)",
+      "default": "appropriate maximum",
+      "example": "wireshark --snapshot-length <snaplen>"
+    },
+    {
+      "name": "--no-promiscuous-mode",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't capture in promiscuous mode",
+      "default": "",
+      "example": "wireshark --no-promiscuous-mode"
+    },
+    {
+      "name": "--monitor-mode",
+      "short": "-I",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "capture in monitor mode, if available",
+      "default": "",
+      "example": "wireshark --monitor-mode"
+    },
+    {
+      "name": "--buffer-size",
+      "short": "-B",
+      "aliases": [],
+      "arg": "<buffer size>",
+      "required": false,
+      "description": "size of kernel buffer in MiB (def: 2MiB)",
+      "default": "2MiB",
+      "example": "wireshark --buffer-size <buffer size>"
+    },
+    {
+      "name": "--linktype",
+      "short": "-y",
+      "aliases": [],
+      "arg": "<link type>",
+      "required": false,
+      "description": "link layer type (def: first appropriate)",
+      "default": "first appropriate",
+      "example": "wireshark --linktype <link type>"
+    },
+    {
+      "name": "--list-interfaces",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print list of interfaces and exit",
+      "default": "",
+      "example": "wireshark --list-interfaces"
+    },
+    {
+      "name": "--list-data-link-types",
+      "short": "-L",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print list of link-layer types of iface and exit",
+      "default": "",
+      "example": "wireshark --list-data-link-types"
+    },
+    {
+      "name": "--list-time-stamp-types",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print list of timestamp types for iface and exit",
+      "default": "",
+      "example": "wireshark --list-time-stamp-types"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "start capturing immediately (def: do nothing)",
+      "default": "do nothing",
+      "example": "wireshark -k"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "update display when new items are captured",
+      "default": "",
+      "example": "wireshark -S"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "turn on automatic scrolling while -S is in use",
+      "default": "",
+      "example": "wireshark -l"
+    },
+    {
+      "name": "--update-interval",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "interval between updates with new items, in milliseconds (def: 100ms)",
+      "default": "100ms",
+      "example": "wireshark --update-interval"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "<item count>",
+      "required": false,
+      "description": "stop after n items (def: infinite)",
+      "default": "infinite",
+      "example": "wireshark -c <item count>"
+    },
+    {
+      "name": "--read-file",
+      "short": "-r",
+      "aliases": [],
+      "arg": "<infile>",
+      "required": false,
+      "description": "set the filename to read from (no pipes or stdin!)",
+      "default": "",
+      "example": "wireshark --read-file <infile>"
+    },
+    {
+      "name": "--read-filter",
+      "short": "-R",
+      "aliases": [],
+      "arg": "<read filter>",
+      "required": false,
+      "description": "filter in display filter (wireshark-filter(4)) syntax",
+      "default": "",
+      "example": "wireshark --read-filter <read filter>"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable all name resolutions (def: all enabled)",
+      "default": "all enabled",
+      "example": "wireshark -n"
+    },
+    {
+      "name": "-N",
+      "short": "",
+      "aliases": [],
+      "arg": "<name resolve flags>",
+      "required": false,
+      "description": "enable specific name resolution(s): \"mtndsNvg\"",
+      "default": "",
+      "example": "wireshark -N <name resolve flags>"
+    },
+    {
+      "name": "--enable-protocol",
+      "short": "",
+      "aliases": [],
+      "arg": "<proto_name>",
+      "required": false,
+      "description": "enable dissection of proto_name",
+      "default": "",
+      "example": "wireshark --enable-protocol <proto_name>"
+    },
+    {
+      "name": "--disable-protocol",
+      "short": "",
+      "aliases": [],
+      "arg": "<proto_name>",
+      "required": false,
+      "description": "disable dissection of proto_name",
+      "default": "",
+      "example": "wireshark --disable-protocol <proto_name>"
+    },
+    {
+      "name": "--only-protocols",
+      "short": "",
+      "aliases": [],
+      "arg": "<protocols>",
+      "required": false,
+      "description": "Only enable dissection of these protocols, comma separated. Disable everything else",
+      "default": "",
+      "example": "wireshark --only-protocols <protocols>"
+    },
+    {
+      "name": "--disable-all-protocols",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable dissection of all protocols",
+      "default": "",
+      "example": "wireshark --disable-all-protocols"
+    },
+    {
+      "name": "--enable-heuristic",
+      "short": "",
+      "aliases": [],
+      "arg": "<short_name>",
+      "required": false,
+      "description": "enable dissection of heuristic protocol",
+      "default": "",
+      "example": "wireshark --enable-heuristic <short_name>"
+    },
+    {
+      "name": "--disable-heuristic",
+      "short": "",
+      "aliases": [],
+      "arg": "<short_name>",
+      "required": false,
+      "description": "disable dissection of heuristic protocol",
+      "default": "",
+      "example": "wireshark --disable-heuristic <short_name>"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "<config profile>",
+      "required": false,
+      "description": "start with specified configuration profile",
+      "default": "",
+      "example": "wireshark -C <config profile>"
+    },
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "hide the capture info dialog during capture",
+      "default": "",
+      "example": "wireshark -H"
+    },
+    {
+      "name": "--display-filter",
+      "short": "-Y",
+      "aliases": [],
+      "arg": "<display filter>",
+      "required": false,
+      "description": "start with the given display filter",
+      "default": "",
+      "example": "wireshark --display-filter <display filter>"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "<item number>",
+      "required": false,
+      "description": "go to specified item number after \"-r\"",
+      "default": "",
+      "example": "wireshark -g <item number>"
+    },
+    {
+      "name": "-J",
+      "short": "",
+      "aliases": [],
+      "arg": "<jump filter>",
+      "required": false,
+      "description": "jump to the first item matching the display filter",
+      "default": "",
+      "example": "wireshark -J <jump filter>"
+    },
+    {
+      "name": "-j",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "search backwards for a matching item after \"-J\"",
+      "default": "",
+      "example": "wireshark -j"
+    },
+    {
+      "name": "-z",
+      "short": "",
+      "aliases": [],
+      "arg": "<statistics>",
+      "required": false,
+      "description": "show various statistics, see man page for details",
+      "default": "",
+      "example": "wireshark -z <statistics>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<outfile|->",
+      "required": false,
+      "description": "set the output filename (or '-' for stdout)",
+      "default": "",
+      "example": "wireshark -w <outfile|->"
+    },
+    {
+      "name": "-F",
+      "short": "",
+      "aliases": [],
+      "arg": "<capture type>",
+      "required": false,
+      "description": "set the output file type; default is pcapng. an empty \"-F\" option will list the file types.",
+      "default": "",
+      "example": "wireshark -F <capture type>"
+    },
+    {
+      "name": "--capture-comment",
+      "short": "",
+      "aliases": [],
+      "arg": "<comment>",
+      "required": false,
+      "description": "add a capture file comment, if supported",
+      "default": "",
+      "example": "wireshark --capture-comment <comment>"
+    },
+    {
+      "name": "--temp-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "<directory>",
+      "required": false,
+      "description": "write temporary files to this directory (default: /tmp)",
+      "default": "/tmp",
+      "example": "wireshark --temp-dir <directory>"
+    },
+    {
+      "name": "--log-level",
+      "short": "",
+      "aliases": [],
+      "arg": "<level>",
+      "required": false,
+      "description": "sets the active log level (\"critical\", \"warning\", etc.)",
+      "default": "",
+      "example": "wireshark --log-level <level>"
+    },
+    {
+      "name": "--log-fatal",
+      "short": "",
+      "aliases": [],
+      "arg": "<level>",
+      "required": false,
+      "description": "sets level to abort the program (\"critical\" or \"warning\")",
+      "default": "",
+      "example": "wireshark --log-fatal <level>"
+    },
+    {
+      "name": "--log-domains",
+      "short": "",
+      "aliases": [],
+      "arg": "<[!]list>",
+      "required": false,
+      "description": "comma-separated list of the active log domains",
+      "default": "",
+      "example": "wireshark --log-domains <[!]list>"
+    },
+    {
+      "name": "--log-fatal-domains",
+      "short": "",
+      "aliases": [],
+      "arg": "<list>",
+      "required": false,
+      "description": "list of domains that cause the program to abort",
+      "default": "",
+      "example": "wireshark --log-fatal-domains <list>"
+    },
+    {
+      "name": "--log-debug",
+      "short": "",
+      "aliases": [],
+      "arg": "<[!]list>",
+      "required": false,
+      "description": "list of domains with \"debug\" level",
+      "default": "",
+      "example": "wireshark --log-debug <[!]list>"
+    },
+    {
+      "name": "--log-noisy",
+      "short": "",
+      "aliases": [],
+      "arg": "<[!]list>",
+      "required": false,
+      "description": "list of domains with \"noisy\" level",
+      "default": "",
+      "example": "wireshark --log-noisy <[!]list>"
+    },
+    {
+      "name": "--log-file",
+      "short": "",
+      "aliases": [],
+      "arg": "<path>",
+      "required": false,
+      "description": "file to output messages to (in addition to stderr)",
+      "default": "",
+      "example": "wireshark --log-file <path>"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display this help and exit",
+      "default": "",
+      "example": "wireshark --help"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display version info and exit",
+      "default": "",
+      "example": "wireshark --version"
+    },
+    {
+      "name": "-K",
+      "short": "",
+      "aliases": [],
+      "arg": "<keytab>",
+      "required": false,
+      "description": "keytab file to use for kerberos decryption",
+      "default": "",
+      "example": "wireshark -K <keytab>"
+    },
+    {
+      "name": "--display",
+      "short": "",
+      "aliases": [],
+      "arg": "<X display>",
+      "required": false,
+      "description": "X display to use",
+      "default": "",
+      "example": "wireshark --display <X display>"
+    },
+    {
+      "name": "--fullscreen",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "start Wireshark in full screen",
+      "default": "",
+      "example": "wireshark --fullscreen"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

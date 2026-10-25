@@ -1,0 +1,136 @@
+{
+  "id": "bruteforce-wallet",
+  "name": "bruteforce-wallet",
+  "schema_version": 1,
+  "summary": "Try to find the password of an encrypted Peercoin (or Bitcoin,Litecoin, etc...) wallet file.",
+  "highlights": [
+    "-b — Beginning of the password. default: \"\"",
+    "-e — End of the password. default: \"\"",
+    "-f — Read the passwords from a file instead of generating them.",
+    "-l — Minimum password length (beginning and end included). default: 1",
+    "-m — Maximum password length (beginning and end included). default: 8",
+    "-s — Password character set. default: \"0123456789ABCDEFGHIJKLMNOPQRSTU VWXYZabcdefghijklmnopqrs",
+    "-t — Number of threads to use. default: 1",
+    "-w — Restore the state of a previous session if the file exists, then write the state to the fi"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bruteforce-wallet"
+    }
+  ],
+  "usage": "bruteforce-wallet [options] <wallet file>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "Beginning of the password. default: \"\"",
+      "default": "",
+      "example": "bruteforce-wallet -b <string>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "End of the password. default: \"\"",
+      "default": "",
+      "example": "bruteforce-wallet -e <string>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Read the passwords from a file instead of generating them.",
+      "default": "",
+      "example": "bruteforce-wallet -f <file>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show help and quit.",
+      "default": "",
+      "example": "bruteforce-wallet -h"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "<length>",
+      "required": false,
+      "description": "Minimum password length (beginning and end included). default: 1",
+      "default": "",
+      "example": "bruteforce-wallet -l <length>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "<length>",
+      "required": false,
+      "description": "Maximum password length (beginning and end included). default: 8",
+      "default": "",
+      "example": "bruteforce-wallet -m <length>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "Password character set. default: \"0123456789ABCDEFGHIJKLMNOPQRSTU VWXYZabcdefghijklmnopqrstuvwxyz\"",
+      "default": "",
+      "example": "bruteforce-wallet -s <string>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Number of threads to use. default: 1",
+      "default": "",
+      "example": "bruteforce-wallet -t <n>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Print progress info every n seconds.",
+      "default": "",
+      "example": "bruteforce-wallet -v <n>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Restore the state of a previous session if the file exists, then write the state to the file regularly (~ every minute).",
+      "default": "",
+      "example": "bruteforce-wallet -w <file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

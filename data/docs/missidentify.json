@@ -1,0 +1,113 @@
+{
+  "id": "missidentify",
+  "name": "missidentify",
+  "schema_version": 1,
+  "summary": "A program to find Win32 applications.",
+  "highlights": [
+    "-r — Recursive mode. All subdirectories are traversed",
+    "-q — Silent mode. No error messages are displayed",
+    "-a — Display all executable files regardless of extension",
+    "-b — Bare filename. No path information displayed",
+    "-l — Relative paths in filenames"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install missidentify"
+    }
+  ],
+  "usage": "missidentify [-Vh] [-rablv] [-s|-S len] [FILES]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Recursive mode. All subdirectories are traversed",
+      "default": "",
+      "example": "missidentify -r"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Silent mode. No error messages are displayed",
+      "default": "",
+      "example": "missidentify -q"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display all executable files regardless of extension",
+      "default": "",
+      "example": "missidentify -a"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Bare filename. No path information displayed",
+      "default": "",
+      "example": "missidentify -b"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Relative paths in filenames",
+      "default": "",
+      "example": "missidentify -l"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose mode. Displays the filename for every 10th file processed",
+      "default": "",
+      "example": "missidentify -v"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display version number and exit",
+      "default": "",
+      "example": "missidentify -V"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display this help message",
+      "default": "",
+      "example": "missidentify -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

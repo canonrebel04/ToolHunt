@@ -1,0 +1,26 @@
+{
+  "id": "intrace",
+  "name": "intrace",
+  "schema_version": 1,
+  "summary": "Traceroute-like application piggybacking on existing TCP connections",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install intrace"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

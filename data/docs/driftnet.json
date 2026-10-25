@@ -1,0 +1,166 @@
+{
+  "id": "driftnet",
+  "name": "driftnet",
+  "schema_version": 1,
+  "summary": "Listens to network traffic and picks out images from TCP streams it observes.",
+  "highlights": [
+    "-b — Beep when a new image is captured.",
+    "-f — Instead of listening on an interface, read captured packets from a pcap dump file; file ca",
+    "-p — Do not put the listening interface into promiscuous mode.",
+    "-a — Adjunct mode: do not display images on screen, but save them to a temporary directory and ",
+    "-m — Maximum number of images to keep in temporary directory in adjunct mode.",
+    "-s — Attempt to extract streamed audio data from the network, in addition to images. At present",
+    "-S — Extract streamed audio but not images.",
+    "-l — List the system capture interfaces."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install driftnet"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display this help message.",
+      "default": "",
+      "example": "driftnet -h"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose operation.",
+      "default": "",
+      "example": "driftnet -v"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Beep when a new image is captured.",
+      "default": "",
+      "example": "driftnet -b"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "Instead of listening on an interface, read captured packets from a pcap dump file; file can be a named pipe for use with Kismet or similar.",
+      "default": "",
+      "example": "driftnet -f <file>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not put the listening interface into promiscuous mode.",
+      "default": "",
+      "example": "driftnet -p"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Adjunct mode: do not display images on screen, but save them to a temporary directory and announce their names on standard output.",
+      "default": "",
+      "example": "driftnet -a"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "number",
+      "required": false,
+      "description": "Maximum number of images to keep in temporary directory in adjunct mode.",
+      "default": "",
+      "example": "driftnet -m <number>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Attempt to extract streamed audio data from the network, in addition to images. At present this supports MPEG data only.",
+      "default": "",
+      "example": "driftnet -s"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Extract streamed audio but not images.",
+      "default": "",
+      "example": "driftnet -S"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List the system capture interfaces.",
+      "default": "",
+      "example": "driftnet -l"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable GTK display (this is the default).",
+      "default": "",
+      "example": "driftnet -g"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable the HTTP server to display images.",
+      "default": "",
+      "example": "driftnet -w"
+    },
+    {
+      "name": "-W",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Port number for the HTTP server (implies -w). Default: 9090.",
+      "default": "",
+      "example": "driftnet -W"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

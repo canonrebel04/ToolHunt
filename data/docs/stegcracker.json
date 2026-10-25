@@ -1,0 +1,105 @@
+{
+  "id": "stegcracker",
+  "name": "stegcracker",
+  "schema_version": 1,
+  "summary": "Steganography brute-force utility to uncover hidden data inside files.",
+  "highlights": [
+    "-o — Output file location, this will be the file the data will be written to on a successful cr",
+    "-t — Number of concurrent threads used to crack passwords with, increasing this number might le",
+    "-c — Number of passwords loaded into memory per thread cycle. After each password of the chunk ",
+    "-q — Runs the program in \"quiet mode\", meaning no status updates or other output besides the cr",
+    "-V — Runs the program in \"verbose mode\", this will print additional debugging information (incl"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install stegcracker"
+    }
+  ],
+  "usage": "stegcracker <file> [<wordlist>]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this help message and exit",
+      "default": "",
+      "example": "stegcracker --help"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "Output file location, this will be the file the data will be written to on a successful cracked password. If no output location is specified, the default location will be the same filename with \".out\" appended to the name.",
+      "default": "",
+      "example": "stegcracker --output <output>"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "Number of concurrent threads used to crack passwords with, increasing this number might lead to better performance. Default: 16",
+      "default": "",
+      "example": "stegcracker --threads <threads>"
+    },
+    {
+      "name": "--chunk-size",
+      "short": "-c",
+      "aliases": [],
+      "arg": "CHUNK_SIZE",
+      "required": false,
+      "description": "Number of passwords loaded into memory per thread cycle. After each password of the chunk has been depleted a status update will be printed to the console with the attempted password. Default: 64",
+      "default": "",
+      "example": "stegcracker --chunk-size <chunk_size>"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [
+        "--stfu"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Runs the program in \"quiet mode\", meaning no status updates or other output besides the cracked password will be echoed to the terminal. By default, all logging / error messages are printed to stderr (making piping to other processes easier).",
+      "default": "",
+      "example": "stegcracker --quiet"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print the current version number and exit.",
+      "default": "",
+      "example": "stegcracker --version"
+    },
+    {
+      "name": "--verbose",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Runs the program in \"verbose mode\", this will print additional debugging information (include this output when submitting bug reports). Cannot be used in conjunction with the \"--quiet\" argument.",
+      "default": "",
+      "example": "stegcracker --verbose"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

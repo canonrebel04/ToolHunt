@@ -1,0 +1,176 @@
+{
+  "id": "inetsim",
+  "name": "inetsim",
+  "schema_version": 1,
+  "summary": "A software suite for simulating common internet services in a lab environment, e.g. for analyzing the network behaviour of unknown malware samples.",
+  "highlights": [
+    "--config — Configuration file to use.",
+    "--log-dir — Directory logfiles are written to.",
+    "--data-dir — Directory containing service data.",
+    "--report-dir — Directory reports are written to.",
+    "--bind-address — Default IP address to bind services to. Overrides configuration option 'default_bind_addre",
+    "--max-childs — Default maximum number of child processes per service. Overrides configuration option 'def",
+    "--user — Default user to run services. Overrides configuration option 'default_run_as_user'.",
+    "--faketime-init-delta — Initial faketime delta (seconds). Overrides configuration option 'faketime_init_delta'."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install inetsim"
+    }
+  ],
+  "usage": "/usr/bin/inetsim [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print this help message.",
+      "default": "",
+      "example": "inetsim --help"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show version information.",
+      "default": "",
+      "example": "inetsim --version"
+    },
+    {
+      "name": "--config",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "Configuration file to use.",
+      "default": "",
+      "example": "inetsim --config <filename>"
+    },
+    {
+      "name": "--log-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "<directory>",
+      "required": false,
+      "description": "Directory logfiles are written to.",
+      "default": "",
+      "example": "inetsim --log-dir <directory>"
+    },
+    {
+      "name": "--data-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "<directory>",
+      "required": false,
+      "description": "Directory containing service data.",
+      "default": "",
+      "example": "inetsim --data-dir <directory>"
+    },
+    {
+      "name": "--report-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "<directory>",
+      "required": false,
+      "description": "Directory reports are written to.",
+      "default": "",
+      "example": "inetsim --report-dir <directory>"
+    },
+    {
+      "name": "--bind-address",
+      "short": "",
+      "aliases": [],
+      "arg": "<IP address>",
+      "required": false,
+      "description": "Default IP address to bind services to. Overrides configuration option 'default_bind_address'.",
+      "default": "",
+      "example": "inetsim --bind-address <IP address>"
+    },
+    {
+      "name": "--max-childs",
+      "short": "",
+      "aliases": [],
+      "arg": "<num>",
+      "required": false,
+      "description": "Default maximum number of child processes per service. Overrides configuration option 'default_max_childs'.",
+      "default": "",
+      "example": "inetsim --max-childs <num>"
+    },
+    {
+      "name": "--user",
+      "short": "",
+      "aliases": [],
+      "arg": "<username>",
+      "required": false,
+      "description": "Default user to run services. Overrides configuration option 'default_run_as_user'.",
+      "default": "",
+      "example": "inetsim --user <username>"
+    },
+    {
+      "name": "--faketime-init-delta",
+      "short": "",
+      "aliases": [],
+      "arg": "<secs>",
+      "required": false,
+      "description": "Initial faketime delta (seconds). Overrides configuration option 'faketime_init_delta'.",
+      "default": "",
+      "example": "inetsim --faketime-init-delta <secs>"
+    },
+    {
+      "name": "--faketime-auto-delay",
+      "short": "",
+      "aliases": [],
+      "arg": "<secs>",
+      "required": false,
+      "description": "Delay for auto incrementing faketime (seconds). Overrides configuration option 'faketime_auto_delay'.",
+      "default": "",
+      "example": "inetsim --faketime-auto-delay <secs>"
+    },
+    {
+      "name": "--faketime-auto-incr",
+      "short": "",
+      "aliases": [],
+      "arg": "<secs>",
+      "required": false,
+      "description": "Delta for auto incrementing faketime (seconds). Overrides configuration option 'faketime_auto_increment'.",
+      "default": "",
+      "example": "inetsim --faketime-auto-incr <secs>"
+    },
+    {
+      "name": "--session",
+      "short": "",
+      "aliases": [],
+      "arg": "<id>",
+      "required": false,
+      "description": "Session id to use. Defaults to main process id.",
+      "default": "",
+      "example": "inetsim --session <id>"
+    },
+    {
+      "name": "--pidfile",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "Pid file to use. Defaults to '/run/inetsim.pid'.",
+      "default": "",
+      "example": "inetsim --pidfile <filename>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

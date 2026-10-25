@@ -1,0 +1,60 @@
+{
+  "id": "ldeep",
+  "name": "ldeep",
+  "schema_version": 1,
+  "summary": "In-depth ldap enumeration utility.",
+  "highlights": [
+    "-o — Store the results in a file",
+    "--security_desc — Enable the retrieval of security descriptors in ldeep results"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ldeep"
+    }
+  ],
+  "usage": "ldeep - 2.0.3 [-h] [-o OUTFILE] [--security_desc]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "ldeep --help"
+    },
+    {
+      "name": "--outfile",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTFILE",
+      "required": false,
+      "description": "Store the results in a file",
+      "default": "",
+      "example": "ldeep --outfile <outfile>"
+    },
+    {
+      "name": "--security_desc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable the retrieval of security descriptors in ldeep results",
+      "default": "",
+      "example": "ldeep --security_desc"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

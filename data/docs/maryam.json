@@ -1,0 +1,47 @@
+{
+  "id": "maryam",
+  "name": "maryam",
+  "schema_version": 1,
+  "summary": "Full-featured Web Identification framework written in Python.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install maryam"
+    }
+  ],
+  "usage": "maryam [-h] [-e execute] [-s start] [-v]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "maryam --help"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show version and exit",
+      "default": "",
+      "example": "maryam -v"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "wondershaper",
+  "name": "wondershaper",
+  "schema_version": 1,
+  "summary": "Limit the bandwidth of one or more network adapters.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "wondershaper -s -a <adapter_name>",
+      "explanation": "Show the current [s]tatus of a specific [a]dapter",
+      "source": "tldr:wondershaper"
+    },
+    {
+      "cmd": "wondershaper -c -a <adapter_name>",
+      "explanation": "Clear limits from a specific [a]dapter",
+      "source": "tldr:wondershaper"
+    },
+    {
+      "cmd": "wondershaper -a <adapter_name> -d <1024>",
+      "explanation": "Set a specific maximum [d]ownload rate (in Kbps)",
+      "source": "tldr:wondershaper"
+    },
+    {
+      "cmd": "wondershaper -a <adapter_name> -u <512>",
+      "explanation": "Set a specific maximum [u]pload rate (in Kbps)",
+      "source": "tldr:wondershaper"
+    },
+    {
+      "cmd": "wondershaper -a <adapter_name> -d <1024> -u <512>",
+      "explanation": "Set a specific maximum [d]ownload rate and [u]pload rate (in Kbps)",
+      "source": "tldr:wondershaper"
+    },
+    {
+      "cmd": "wondershaper -h",
+      "explanation": "Display [h]elp",
+      "source": "tldr:wondershaper"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/wondershaper.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

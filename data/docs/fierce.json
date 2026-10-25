@@ -1,0 +1,136 @@
+{
+  "id": "fierce",
+  "name": "fierce",
+  "schema_version": 1,
+  "summary": "A DNS reconnaissance tool for locating non-contiguous IP space.",
+  "highlights": [
+    "--domain — domain name to test",
+    "--connect — attempt HTTP connection to non-RFC 1918 hosts",
+    "--wide — scan entire class c of discovered records",
+    "--traverse — scan NUMBER IPs before and after discovered records. This respects Class C boundaries and ",
+    "--range — scan an internal IP range, use cidr notation",
+    "--delay — time to wait between lookups",
+    "--subdomain-file — use subdomains specified in this file (one per line)",
+    "--dns-file — use dns servers specified in this file for reverse lookups (one per line)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install fierce"
+    }
+  ],
+  "usage": "fierce [-h] [--domain DOMAIN] [--connect] [--wide]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "fierce --help"
+    },
+    {
+      "name": "--domain",
+      "short": "",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "domain name to test",
+      "default": "",
+      "example": "fierce --domain <domain>"
+    },
+    {
+      "name": "--connect",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "attempt HTTP connection to non-RFC 1918 hosts",
+      "default": "",
+      "example": "fierce --connect"
+    },
+    {
+      "name": "--wide",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "scan entire class c of discovered records",
+      "default": "",
+      "example": "fierce --wide"
+    },
+    {
+      "name": "--traverse",
+      "short": "",
+      "aliases": [],
+      "arg": "TRAVERSE",
+      "required": false,
+      "description": "scan NUMBER IPs before and after discovered records. This respects Class C boundaries and won't enter adjacent subnets.",
+      "default": "",
+      "example": "fierce --traverse <traverse>"
+    },
+    {
+      "name": "--range",
+      "short": "",
+      "aliases": [],
+      "arg": "RANGE",
+      "required": false,
+      "description": "scan an internal IP range, use cidr notation",
+      "default": "",
+      "example": "fierce --range <range>"
+    },
+    {
+      "name": "--delay",
+      "short": "",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "time to wait between lookups",
+      "default": "",
+      "example": "fierce --delay <delay>"
+    },
+    {
+      "name": "--subdomain-file",
+      "short": "",
+      "aliases": [],
+      "arg": "SUBDOMAIN_FILE",
+      "required": false,
+      "description": "use subdomains specified in this file (one per line)",
+      "default": "",
+      "example": "fierce --subdomain-file <subdomain_file>"
+    },
+    {
+      "name": "--dns-file",
+      "short": "",
+      "aliases": [],
+      "arg": "DNS_FILE",
+      "required": false,
+      "description": "use dns servers specified in this file for reverse lookups (one per line)",
+      "default": "",
+      "example": "fierce --dns-file <dns_file>"
+    },
+    {
+      "name": "--tcp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use TCP instead of UDP",
+      "default": "",
+      "example": "fierce --tcp"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "id": "bluelog",
+  "name": "bluelog",
+  "schema_version": 1,
+  "summary": "A Bluetooth scanner and sniffer written to do a single task, log devices that are in discoverable mode.",
+  "highlights": [
+    "-i — Sets scanning device, default is \"hci0\"",
+    "-o — Sets output filename, default is \"devices.log\"",
+    "-q — Quiet, turns off nonessential terminal outout",
+    "-d — Enables daemon mode, Bluelog will run in background",
+    "-k — Kill an already running Bluelog process",
+    "-l — Start \"Bluelog Live\", default is disabled",
+    "-n — Write device names to log, default is disabled",
+    "-m — Write device manufacturer to log, default is disabled"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bluelog"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<interface>",
+      "required": false,
+      "description": "Sets scanning device, default is \"hci0\"",
+      "default": "",
+      "example": "bluelog -i <interface>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "Sets output filename, default is \"devices.log\"",
+      "default": "",
+      "example": "bluelog -o <filename>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose, prints discovered devices to the terminal",
+      "default": "",
+      "example": "bluelog -v"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Quiet, turns off nonessential terminal outout",
+      "default": "",
+      "example": "bluelog -q"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enables daemon mode, Bluelog will run in background",
+      "default": "",
+      "example": "bluelog -d"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Kill an already running Bluelog process",
+      "default": "",
+      "example": "bluelog -k"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Start \"Bluelog Live\", default is disabled",
+      "default": "",
+      "example": "bluelog -l"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write device names to log, default is disabled",
+      "default": "",
+      "example": "bluelog -n"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write device manufacturer to log, default is disabled",
+      "default": "",
+      "example": "bluelog -m"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write device class to log, default is disabled",
+      "default": "",
+      "example": "bluelog -c"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use \"friendly\" device class, default is disabled",
+      "default": "",
+      "example": "bluelog -f"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write timestamps to log, default is disabled",
+      "default": "",
+      "example": "bluelog -t"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Obfuscate discovered MACs, default is disabled",
+      "default": "",
+      "example": "bluelog -x"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode discovered MACs with CRC32, default disabled",
+      "default": "",
+      "example": "bluelog -e"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable BlueProPro log format, see README",
+      "default": "",
+      "example": "bluelog -b"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<retries>",
+      "required": false,
+      "description": "Name resolution retries, default is 3",
+      "default": "",
+      "example": "bluelog -r <retries>"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "<minutes>",
+      "required": false,
+      "description": "Amnesia, Bluelog will forget device after given time",
+      "default": "",
+      "example": "bluelog -a <minutes>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<seconds>",
+      "required": false,
+      "description": "Scanning window in seconds, see README",
+      "default": "",
+      "example": "bluelog -w <seconds>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Syslog only mode, no log file. Default is disabled",
+      "default": "",
+      "example": "bluelog -s"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

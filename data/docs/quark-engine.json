@@ -1,0 +1,216 @@
+{
+  "id": "quark-engine",
+  "name": "quark-engine",
+  "schema_version": 1,
+  "summary": "An Obfuscation-Neglect Android Malware Scoring System.",
+  "highlights": [
+    "-s — Show summary report. Optionally specify the name of a rule/label",
+    "-d — Show detail report. Optionally specify the name of a rule/label",
+    "-o — Output report in JSON",
+    "-w — Generate web report",
+    "-a — APK file [required]",
+    "-r — Rules directory [default: /root/.quark- engine/quark-rules/rules]",
+    "-g — Create call graph to call_graph_image directory",
+    "-c — Show rules classification"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install quark-engine"
+    }
+  ],
+  "usage": "quark [OPTIONS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--summary",
+      "short": "-s",
+      "aliases": [],
+      "arg": "TEXT",
+      "required": false,
+      "description": "Show summary report. Optionally specify the name of a rule/label",
+      "default": "",
+      "example": "quark --summary <text>"
+    },
+    {
+      "name": "--detail",
+      "short": "-d",
+      "aliases": [],
+      "arg": "TEXT",
+      "required": false,
+      "description": "Show detail report. Optionally specify the name of a rule/label",
+      "default": "",
+      "example": "quark --detail <text>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Output report in JSON",
+      "default": "",
+      "example": "quark --output <file>"
+    },
+    {
+      "name": "--webreport",
+      "short": "-w",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Generate web report",
+      "default": "",
+      "example": "quark --webreport <file>"
+    },
+    {
+      "name": "--apk",
+      "short": "-a",
+      "aliases": [],
+      "arg": "FILE",
+      "required": true,
+      "description": "APK file [required]",
+      "default": "",
+      "example": "quark --apk <file>"
+    },
+    {
+      "name": "--rule",
+      "short": "-r",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Rules directory [default: /root/.quark- engine/quark-rules/rules]",
+      "default": "/root/.quark- engine/quark-rules/rules",
+      "example": "quark --rule <path>"
+    },
+    {
+      "name": "--graph",
+      "short": "-g",
+      "aliases": [],
+      "arg": "[png|json]",
+      "required": false,
+      "description": "Create call graph to call_graph_image directory",
+      "default": "",
+      "example": "quark --graph <png|json>"
+    },
+    {
+      "name": "--classification",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show rules classification",
+      "default": "",
+      "example": "quark --classification"
+    },
+    {
+      "name": "--threshold",
+      "short": "-t",
+      "aliases": [],
+      "arg": "[100|80|60|40|20]",
+      "required": false,
+      "description": "Set the lower limit of the confidence threshold",
+      "default": "",
+      "example": "quark --threshold <100|80|60|40|20>"
+    },
+    {
+      "name": "--list",
+      "short": "-i",
+      "aliases": [],
+      "arg": "[all|native|custom]",
+      "required": false,
+      "description": "List classes, methods and descriptors",
+      "default": "",
+      "example": "quark --list <all|native|custom>"
+    },
+    {
+      "name": "--permission",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List Android permissions",
+      "default": "",
+      "example": "quark --permission"
+    },
+    {
+      "name": "--label",
+      "short": "-l",
+      "aliases": [],
+      "arg": "[max|detailed]",
+      "required": false,
+      "description": "Show report based on label of rules",
+      "default": "",
+      "example": "quark --label <max|detailed>"
+    },
+    {
+      "name": "--comparison",
+      "short": "-C",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Behaviors comparison based on max confidence of rule labels",
+      "default": "",
+      "example": "quark --comparison"
+    },
+    {
+      "name": "--generate-rule",
+      "short": "",
+      "aliases": [],
+      "arg": "DIRECTORY",
+      "required": false,
+      "description": "Generate rules and output to given directory",
+      "default": "",
+      "example": "quark --generate-rule <directory>"
+    },
+    {
+      "name": "--core-library",
+      "short": "",
+      "aliases": [],
+      "arg": "[androguard|rizin|radare2|shuriken]",
+      "required": false,
+      "description": "Specify the core library used to analyze an APK",
+      "default": "",
+      "example": "quark --core-library <androguard|rizin|radare2|shuriken>"
+    },
+    {
+      "name": "--auto-fix-checksum",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Automatically repair damaged DEX checksum/signature before analyzing (androguard only).When not provided, Quark will prompt in interactive TTY and skip in non-interactive runs.",
+      "default": "",
+      "example": "quark --auto-fix-checksum"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show the version and exit.",
+      "default": "",
+      "example": "quark --version"
+    },
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this message and exit.",
+      "default": "",
+      "example": "quark --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

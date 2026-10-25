@@ -1,0 +1,56 @@
+{
+  "id": "spf",
+  "name": "spf",
+  "schema_version": 1,
+  "summary": "A python tool designed to allow for quick recon and deployment of simple social engineering phishing exercises.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "spf <path/to/directory>",
+      "explanation": "Launch `spf` with a specific path",
+      "source": "tldr:spf"
+    },
+    {
+      "cmd": "spf <path/to/directory1 path/to/directory2 ...>",
+      "explanation": "Launch `spf` with multiple paths",
+      "source": "tldr:spf"
+    },
+    {
+      "cmd": "spf --fix-hotkeys",
+      "explanation": "Fix hotkey settings by appending missing keys",
+      "source": "tldr:spf"
+    },
+    {
+      "cmd": "spf --fix-config-file",
+      "explanation": "Fix the configuration file by appending missing entries",
+      "source": "tldr:spf"
+    },
+    {
+      "cmd": "spf --config-file <path/to/config.toml> --hotkey-file <path/to/hotkey.toml>",
+      "explanation": "Use specific configuration and hotkey files",
+      "source": "tldr:spf"
+    },
+    {
+      "cmd": "spf --chooser-file <tmp/chooser-result>",
+      "explanation": "Write the path of the first selected file to this file and exit",
+      "source": "tldr:spf"
+    },
+    {
+      "cmd": "spf path-list",
+      "explanation": "Show internal configuration and data directory paths",
+      "source": "tldr:spf"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/spf.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

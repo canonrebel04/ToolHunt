@@ -1,0 +1,328 @@
+{
+  "id": "nikto",
+  "name": "Nikto",
+  "schema_version": 1,
+  "summary": "An open-source web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs.",
+  "highlights": [
+    "-Add-header — Add HTTP headers (can be used multiple times, one per header pair)",
+    "-check6 — Check if IPv6 is working (connects to ipv6.google.com or value set in nikto.conf)",
+    "-dbcheck — Check database and other key files for syntax errors",
+    "-followredirects — Follow 3xx redirects to new location",
+    "-ipv4 — IPv4 Only",
+    "-ipv6 — IPv6 Only",
+    "-list-plugins — List all available plugins, perform no testing",
+    "-mutate-options — Provide information for mutates"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install nikto"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-Add-header",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Add HTTP headers (can be used multiple times, one per header pair)",
+      "default": "",
+      "example": "nikto -Add-header"
+    },
+    {
+      "name": "-check6",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check if IPv6 is working (connects to ipv6.google.com or value set in nikto.conf)",
+      "default": "",
+      "example": "nikto -check6"
+    },
+    {
+      "name": "-dbcheck",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check database and other key files for syntax errors",
+      "default": "",
+      "example": "nikto -dbcheck"
+    },
+    {
+      "name": "-followredirects",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Follow 3xx redirects to new location",
+      "default": "",
+      "example": "nikto -followredirects"
+    },
+    {
+      "name": "-Help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This help information",
+      "default": "",
+      "example": "nikto -Help"
+    },
+    {
+      "name": "-ipv4",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "IPv4 Only",
+      "default": "",
+      "example": "nikto -ipv4"
+    },
+    {
+      "name": "-ipv6",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "IPv6 Only",
+      "default": "",
+      "example": "nikto -ipv6"
+    },
+    {
+      "name": "-list-plugins",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List all available plugins, perform no testing",
+      "default": "",
+      "example": "nikto -list-plugins"
+    },
+    {
+      "name": "-mutate-options",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Provide information for mutates",
+      "default": "",
+      "example": "nikto -mutate-options"
+    },
+    {
+      "name": "-nocheck",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't check for updates on startup",
+      "default": "",
+      "example": "nikto -nocheck"
+    },
+    {
+      "name": "-nocookies",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not use cookies from responses in requests",
+      "default": "",
+      "example": "nikto -nocookies"
+    },
+    {
+      "name": "-nointeractive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables interactive features",
+      "default": "",
+      "example": "nikto -nointeractive"
+    },
+    {
+      "name": "-nolookup",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables DNS lookups",
+      "default": "",
+      "example": "nikto -nolookup"
+    },
+    {
+      "name": "-nossl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables the use of SSL",
+      "default": "",
+      "example": "nikto -nossl"
+    },
+    {
+      "name": "-nosslkeepalive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable TLS connection reuse (keep-alive on by default)",
+      "default": "",
+      "example": "nikto -nosslkeepalive"
+    },
+    {
+      "name": "-noslash",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Strip trailing slash from URL (e.g., '/admin/' to '/admin')",
+      "default": "",
+      "example": "nikto -noslash"
+    },
+    {
+      "name": "-no404",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables nikto attempting to guess a 404 page",
+      "default": "",
+      "example": "nikto -no404"
+    },
+    {
+      "name": "-Option",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Over-ride an option in nikto.conf, can be issued multiple times",
+      "default": "",
+      "example": "nikto -Option"
+    },
+    {
+      "name": "-Save",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Save positive responses to this directory ('.' for auto-name)",
+      "default": "",
+      "example": "nikto -Save"
+    },
+    {
+      "name": "-ssl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force ssl mode on port",
+      "default": "",
+      "example": "nikto -ssl"
+    },
+    {
+      "name": "-Userdbs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Load only user databases, not the standard databases all Disable standard dbs and load only user dbs tests Disable only db_tests and load udb_tests",
+      "default": "",
+      "example": "nikto -Userdbs"
+    },
+    {
+      "name": "-useragent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force User-Agent instead of pulling from database",
+      "default": "",
+      "example": "nikto -useragent"
+    },
+    {
+      "name": "-useproxy",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use the proxy defined in nikto.conf, or argument http://server:port",
+      "default": "",
+      "example": "nikto -useproxy"
+    },
+    {
+      "name": "-Version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print plugin and database versions",
+      "default": "",
+      "example": "nikto -Version"
+    },
+    {
+      "name": "-404code",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore these HTTP codes as negative responses (always). Format is \"302,301\".",
+      "default": "",
+      "example": "nikto -404code"
+    },
+    {
+      "name": "-404string",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore this string in response body content as negative response (always). Can be a regular expression. + requires a value",
+      "default": "",
+      "example": "nikto -404string"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "perl nikto.pl -host <192.168.0.1>",
+      "explanation": "Perform a basic Nikto scan against a target host",
+      "source": "tldr:nikto",
+      "verified": false
+    },
+    {
+      "cmd": "perl nikto.pl -host <192.168.0.1> -port <443>",
+      "explanation": "Specify the port number when performing a basic scan",
+      "source": "tldr:nikto",
+      "verified": false
+    },
+    {
+      "cmd": "perl nikto.pl -host <https://192.168.0.1:443/>",
+      "explanation": "Scan ports and protocols with full URL syntax",
+      "source": "tldr:nikto",
+      "verified": false
+    },
+    {
+      "cmd": "perl nikto.pl -host <192.168.0.1> -port <80,88,443>",
+      "explanation": "Scan multiple ports in the same scanning session",
+      "source": "tldr:nikto",
+      "verified": false
+    },
+    {
+      "cmd": "perl nikto.pl -update",
+      "explanation": "Update to the latest plugins and databases",
+      "source": "tldr:nikto",
+      "verified": false
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/nikto.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

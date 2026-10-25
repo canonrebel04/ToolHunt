@@ -1,0 +1,81 @@
+{
+  "id": "fiked",
+  "name": "fiked",
+  "schema_version": 1,
+  "summary": "Fake IDE daemon",
+  "highlights": [
+    "-r — use raw socket: forge ip src addr to match <gateway> (disables -u)",
+    "-d — detach from tty and run as a daemon (implies -q)",
+    "-q — be quiet, don't write anything to stdout"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install fiked"
+    }
+  ],
+  "usage": "fiked [-rdqhV] -g gw -k id:psk [-k ..] [-u user] [-l file] [-L file]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use raw socket: forge ip src addr to match <gateway> (disables -u)",
+      "default": "",
+      "example": "fiked -r"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "detach from tty and run as a daemon (implies -q)",
+      "default": "",
+      "example": "fiked -d"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "be quiet, don't write anything to stdout",
+      "default": "",
+      "example": "fiked -q"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print help and exit",
+      "default": "",
+      "example": "fiked -h"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print version and exit",
+      "default": "",
+      "example": "fiked -V"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

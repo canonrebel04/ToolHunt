@@ -1,0 +1,173 @@
+{
+  "id": "netexec",
+  "name": "netexec",
+  "schema_version": 1,
+  "summary": "A Windows / Active Directory environments pentest tool.",
+  "highlights": [
+    "-t — set how many concurrent threads to use",
+    "--timeout — max timeout in seconds of each thread",
+    "--jitter — sets a random delay between each authentication",
+    "--no-progress — do not displaying progress bar during scan",
+    "--log — export result into a custom file",
+    "--verbose — enable verbose output",
+    "--debug — enable debug level information",
+    "-6 — Enable force IPv6"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install netexec"
+    }
+  ],
+  "usage": "netexec [-h] [--version] [-t THREADS] [--timeout TIMEOUT]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "netexec --help"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display nxc version",
+      "default": "",
+      "example": "netexec --version"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "set how many concurrent threads to use",
+      "default": "",
+      "example": "netexec --threads <threads>"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "max timeout in seconds of each thread",
+      "default": "",
+      "example": "netexec --timeout <timeout>"
+    },
+    {
+      "name": "--jitter",
+      "short": "",
+      "aliases": [],
+      "arg": "INTERVAL",
+      "required": false,
+      "description": "sets a random delay between each authentication",
+      "default": "",
+      "example": "netexec --jitter <interval>"
+    },
+    {
+      "name": "--no-progress",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not displaying progress bar during scan",
+      "default": "",
+      "example": "netexec --no-progress"
+    },
+    {
+      "name": "--log",
+      "short": "",
+      "aliases": [],
+      "arg": "LOG",
+      "required": false,
+      "description": "export result into a custom file",
+      "default": "",
+      "example": "netexec --log <log>"
+    },
+    {
+      "name": "--verbose",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable verbose output",
+      "default": "",
+      "example": "netexec --verbose"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable debug level information",
+      "default": "",
+      "example": "netexec --debug"
+    },
+    {
+      "name": "-6",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable force IPv6",
+      "default": "",
+      "example": "netexec -6"
+    },
+    {
+      "name": "--dns-server",
+      "short": "",
+      "aliases": [],
+      "arg": "DNS_SERVER",
+      "required": false,
+      "description": "Specify DNS server (default: Use hosts file & System DNS)",
+      "default": "Use hosts file & System DNS",
+      "example": "netexec --dns-server <dns_server>"
+    },
+    {
+      "name": "--dns-tcp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use TCP instead of UDP for DNS queries",
+      "default": "",
+      "example": "netexec --dns-tcp"
+    },
+    {
+      "name": "--dns-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "DNS_TIMEOUT",
+      "required": false,
+      "description": "DNS query timeout in seconds",
+      "default": "",
+      "example": "netexec --dns-timeout <dns_timeout>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "tldr nxc",
+      "explanation": "View documentation for the original command",
+      "source": "tldr:netexec"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/netexec.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

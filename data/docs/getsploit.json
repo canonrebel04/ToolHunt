@@ -1,0 +1,104 @@
+{
+  "id": "getsploit",
+  "name": "getsploit",
+  "schema_version": 1,
+  "summary": "Command line utility for searching and downloading exploits.",
+  "highlights": [
+    "-j — Show result in JSON format",
+    "-m — Mirror (aka copies) exploits to the current working directory",
+    "-l — Perform search in the local database instead of searching online",
+    "-u — Update getsploit.db database",
+    "-s — Set vulners API key",
+    "-k — Vulners API key"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install getsploit"
+    }
+  ],
+  "usage": "getsploit [OPTIONS] [QUERY]...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--json",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show result in JSON format",
+      "default": "",
+      "example": "getsploit --json"
+    },
+    {
+      "name": "--mirror",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Mirror (aka copies) exploits to the current working directory",
+      "default": "",
+      "example": "getsploit --mirror"
+    },
+    {
+      "name": "--local",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform search in the local database instead of searching online",
+      "default": "",
+      "example": "getsploit --local"
+    },
+    {
+      "name": "--update",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update getsploit.db database",
+      "default": "",
+      "example": "getsploit --update"
+    },
+    {
+      "name": "--set-key",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set vulners API key",
+      "default": "",
+      "example": "getsploit --set-key"
+    },
+    {
+      "name": "--api-key",
+      "short": "-k",
+      "aliases": [],
+      "arg": "TEXT",
+      "required": false,
+      "description": "Vulners API key",
+      "default": "",
+      "example": "getsploit --api-key <text>"
+    },
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this message and exit.",
+      "default": "",
+      "example": "getsploit --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

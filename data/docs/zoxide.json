@@ -1,0 +1,51 @@
+{
+  "id": "zoxide",
+  "name": "zoxide",
+  "schema_version": 1,
+  "summary": "It remembers which directories you use most frequently, so you can \"jump\" to them in just a few keystrokes.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "zoxide query string",
+      "explanation": "Go to the highest-ranked directory that contains `string` in the name",
+      "source": "tldr:zoxide"
+    },
+    {
+      "cmd": "zoxide query string1 string2",
+      "explanation": "Go to the highest-ranked directory that contains `string1` and then `string2`",
+      "source": "tldr:zoxide"
+    },
+    {
+      "cmd": "zoxide query --interactive",
+      "explanation": "Start an interactive directory search (requires `fzf`)",
+      "source": "tldr:zoxide"
+    },
+    {
+      "cmd": "zoxide add <path/to/directory>",
+      "explanation": "Add a directory or increment its rank",
+      "source": "tldr:zoxide"
+    },
+    {
+      "cmd": "zoxide remove <path/to/directory>",
+      "explanation": "Remove a directory from `zoxide`'s database",
+      "source": "tldr:zoxide"
+    },
+    {
+      "cmd": "zoxide init <bash|elvish|fish|nushell|posix|powershell|tcsh|xonsh|zsh>",
+      "explanation": "Generate shell configuration for command aliases (`z`, `zi`)",
+      "source": "tldr:zoxide"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/zoxide.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

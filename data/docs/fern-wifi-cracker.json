@@ -1,0 +1,25 @@
+{
+  "id": "fern-wifi-cracker",
+  "name": "fern-wifi-cracker",
+  "schema_version": 1,
+  "summary": "WEP, WPA wifi cracker for wireless penetration testing.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install fern-wifi-cracker"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "id": "rsmangler",
+  "name": "rsmangler",
+  "schema_version": 1,
+  "summary": "rsmangler takes a wordlist and mangle it",
+  "highlights": [
+    "-f — the input file, use - for STDIN",
+    "-o — the output file, use - for STDOUT",
+    "-x — maximum word length",
+    "-m — minimum word length",
+    "-p — permutate all the words",
+    "-d — double each word",
+    "-r — reverser the word",
+    "-t — l33t speak the word"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install rsmangler"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show help",
+      "default": "",
+      "example": "rsmangler --help"
+    },
+    {
+      "name": "--file",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "the input file, use - for STDIN",
+      "default": "",
+      "example": "rsmangler --file"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "the output file, use - for STDOUT",
+      "default": "",
+      "example": "rsmangler --output"
+    },
+    {
+      "name": "--max",
+      "short": "-x",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "maximum word length",
+      "default": "",
+      "example": "rsmangler --max"
+    },
+    {
+      "name": "--min",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "minimum word length",
+      "default": "",
+      "example": "rsmangler --min"
+    },
+    {
+      "name": "--perms",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "permutate all the words",
+      "default": "",
+      "example": "rsmangler --perms"
+    },
+    {
+      "name": "--double",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "double each word",
+      "default": "",
+      "example": "rsmangler --double"
+    },
+    {
+      "name": "--reverse",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "reverser the word",
+      "default": "",
+      "example": "rsmangler --reverse"
+    },
+    {
+      "name": "--leet",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "l33t speak the word",
+      "default": "",
+      "example": "rsmangler --leet"
+    },
+    {
+      "name": "--full-leet",
+      "short": "-T",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "all posibilities l33t",
+      "default": "",
+      "example": "rsmangler --full-leet"
+    },
+    {
+      "name": "--capital",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "capitalise the word",
+      "default": "",
+      "example": "rsmangler --capital"
+    },
+    {
+      "name": "--upper",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "uppercase the word",
+      "default": "",
+      "example": "rsmangler --upper"
+    },
+    {
+      "name": "--lower",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "lowercase the word",
+      "default": "",
+      "example": "rsmangler --lower"
+    },
+    {
+      "name": "--swap",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "swap the case of the word",
+      "default": "",
+      "example": "rsmangler --swap"
+    },
+    {
+      "name": "--ed",
+      "short": "-e",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add ed to the end of the word",
+      "default": "",
+      "example": "rsmangler --ed"
+    },
+    {
+      "name": "--ing",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add ing to the end of the word",
+      "default": "",
+      "example": "rsmangler --ing"
+    },
+    {
+      "name": "--punctuation",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add common punctuation to the end of the word",
+      "default": "",
+      "example": "rsmangler --punctuation"
+    },
+    {
+      "name": "--years",
+      "short": "-y",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add all years from 1990 to current year to start and end",
+      "default": "",
+      "example": "rsmangler --years"
+    },
+    {
+      "name": "--acronym",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "create an acronym based on all the words entered in order and add to word list",
+      "default": "",
+      "example": "rsmangler --acronym"
+    },
+    {
+      "name": "--common",
+      "short": "-C",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add the following words to start and end: admin, sys, pw, pwd",
+      "default": "",
+      "example": "rsmangler --common"
+    },
+    {
+      "name": "--pna",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add 01 - 09 to the end of the word",
+      "default": "",
+      "example": "rsmangler --pna"
+    },
+    {
+      "name": "--pnb",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add 01 - 09 to the beginning of the word",
+      "default": "",
+      "example": "rsmangler --pnb"
+    },
+    {
+      "name": "--na",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add 1 - 123 to the end of the word",
+      "default": "",
+      "example": "rsmangler --na"
+    },
+    {
+      "name": "--nb",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add 1 - 123 to the beginning of the word",
+      "default": "",
+      "example": "rsmangler --nb"
+    },
+    {
+      "name": "--force",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't check output size",
+      "default": "",
+      "example": "rsmangler --force"
+    },
+    {
+      "name": "--space",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add spaces between words",
+      "default": "",
+      "example": "rsmangler --space"
+    },
+    {
+      "name": "--allow-duplicates",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "allow duplicates in the output list",
+      "default": "",
+      "example": "rsmangler --allow-duplicates"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

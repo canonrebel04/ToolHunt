@@ -1,0 +1,1156 @@
+{
+  "id": "sipp",
+  "name": "sipp",
+  "schema_version": 1,
+  "summary": "A free Open Source test tool / traffic generator for the SIP protocol.",
+  "highlights": [
+    "-aa — : Enable automatic 200 OK answer for INFO, UPDATE and NOTIFY messages.",
+    "-auth_uri — : Force the value of the URI for authentication. By default, the URI is composed of remote",
+    "-au — : Set authorization username for authentication challenges. Default is taken from -s argum",
+    "-ap — : Set the password for authentication challenges. Default is 'password'",
+    "-base_cseq — : Start value of [cseq] for each call.",
+    "-bg — : Launch SIPp in background mode.",
+    "-bind_local — : Bind socket to local IP address, i.e. the local IP address is used as the source IP addr",
+    "-buff_size — : Set the send and receive buffer size."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sipp"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Display version and copyright information.",
+      "default": "",
+      "example": "sipp -v"
+    },
+    {
+      "name": "-aa",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Enable automatic 200 OK answer for INFO, UPDATE and NOTIFY messages.",
+      "default": "",
+      "example": "sipp -aa"
+    },
+    {
+      "name": "-auth_uri",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Force the value of the URI for authentication. By default, the URI is composed of remote_ip:remote_port.",
+      "default": "",
+      "example": "sipp -auth_uri"
+    },
+    {
+      "name": "-au",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set authorization username for authentication challenges. Default is taken from -s argument",
+      "default": "",
+      "example": "sipp -au"
+    },
+    {
+      "name": "-ap",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the password for authentication challenges. Default is 'password'",
+      "default": "",
+      "example": "sipp -ap"
+    },
+    {
+      "name": "-base_cseq",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Start value of [cseq] for each call.",
+      "default": "",
+      "example": "sipp -base_cseq"
+    },
+    {
+      "name": "-bg",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Launch SIPp in background mode.",
+      "default": "",
+      "example": "sipp -bg"
+    },
+    {
+      "name": "-bind_local",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Bind socket to local IP address, i.e. the local IP address is used as the source IP address. If SIPp runs in server mode it will only listen on the local IP address instead of all IP addresses.",
+      "default": "",
+      "example": "sipp -bind_local"
+    },
+    {
+      "name": "-buff_size",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the send and receive buffer size.",
+      "default": "",
+      "example": "sipp -buff_size"
+    },
+    {
+      "name": "-calldebug_file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the name of the call debug file.",
+      "default": "",
+      "example": "sipp -calldebug_file"
+    },
+    {
+      "name": "-calldebug_overwrite",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Overwrite the call debug file (default true).",
+      "default": "true",
+      "example": "sipp -calldebug_overwrite"
+    },
+    {
+      "name": "-cid_str",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Call ID string (default %u-%p@%s). %u=call_number, %s=ip_address, %p=process_number, %%=% (in any order).",
+      "default": "%u-%p@%s",
+      "example": "sipp -cid_str"
+    },
+    {
+      "name": "-ci",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the local control IP address",
+      "default": "",
+      "example": "sipp -ci"
+    },
+    {
+      "name": "-cp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the local control port number. Default is 8888.",
+      "default": "",
+      "example": "sipp -cp"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Controls the length of calls. More precisely, this controls the duration of 'pause' instructions in the scenario, if they do not have a 'milliseconds' section. Default value is 0 and default unit is milliseconds.",
+      "default": "",
+      "example": "sipp -d"
+    },
+    {
+      "name": "-deadcall_wait",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": How long the Call-ID and final status of calls should be kept to improve message and error logs (default unit is ms).",
+      "default": "unit is ms",
+      "example": "sipp -deadcall_wait"
+    },
+    {
+      "name": "-default_behaviors",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set the default behaviors that SIPp will use. Possbile values are: - all Use all default behaviors - none Use no default behaviors - bye Send byes for aborted calls - abortunexp Abort calls on unexpected messages - pingreply Reply to ping requests If a behavior is prefaced with a -, then it is turned off. Example: all,-bye",
+      "default": "",
+      "example": "sipp -default_behaviors"
+    },
+    {
+      "name": "-error_file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the name of the error log file.",
+      "default": "",
+      "example": "sipp -error_file"
+    },
+    {
+      "name": "-error_overwrite",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Overwrite the error log file (default true).",
+      "default": "true",
+      "example": "sipp -error_overwrite"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the statistics report frequency on screen. Default is 1 and default unit is seconds.",
+      "default": "",
+      "example": "sipp -f"
+    },
+    {
+      "name": "-fd",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the statistics dump log report frequency. Default is 60 and default unit is seconds.",
+      "default": "",
+      "example": "sipp -fd"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the local IP address for 'Contact:','Via:', and 'From:' headers. Default is primary host IP address.",
+      "default": "",
+      "example": "sipp -i"
+    },
+    {
+      "name": "-inf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Inject values from an external CSV file during calls into the scenarios. First line of this file say whether the data is to be read in sequence (SEQUENTIAL), random (RANDOM), or user (USER) order. Each line corresponds to one call and has one or more ';' delimited data fields. Those fields can be referred as [field0], [field1], ... in the xml scenario file. Several CSV files can be used simultaneously (syntax: -inf f1.csv -inf f2.csv ...)",
+      "default": "",
+      "example": "sipp -inf"
+    },
+    {
+      "name": "-infindex",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": file field Create an index of file using field. For example -inf users.csv -infindex users.csv 0 creates an index on the first key.",
+      "default": "",
+      "example": "sipp -infindex"
+    },
+    {
+      "name": "-ip_field",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set which field from the injection file contains the IP address from which the client will send its messages. If this option is omitted and the '-t ui' option is present, then field 0 is assumed. Use this option together with '-t ui'",
+      "default": "",
+      "example": "sipp -ip_field"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the maximum number of simultaneous calls. Once this limit is reached, traffic is decreased until the number of open calls goes down. Default: (3 * call_duration (s) * rate).",
+      "default": "",
+      "example": "sipp -l"
+    },
+    {
+      "name": "-log_file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the name of the log actions log file.",
+      "default": "",
+      "example": "sipp -log_file"
+    },
+    {
+      "name": "-log_overwrite",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Overwrite the log actions log file (default true).",
+      "default": "true",
+      "example": "sipp -log_overwrite"
+    },
+    {
+      "name": "-lost",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the number of packets to lose by default (scenario specifications override this value).",
+      "default": "",
+      "example": "sipp -lost"
+    },
+    {
+      "name": "-rtcheck",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Select the retransmisison detection method: full (default) or loose.",
+      "default": "ault",
+      "example": "sipp -rtcheck"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Stop the test and exit when 'calls' calls are processed",
+      "default": "",
+      "example": "sipp -m"
+    },
+    {
+      "name": "-mi",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the local media IP address (default: local primary host IP address)",
+      "default": "local primary host IP address",
+      "example": "sipp -mi"
+    },
+    {
+      "name": "-master",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": 3pcc extended mode: indicates the master number",
+      "default": "",
+      "example": "sipp -master"
+    },
+    {
+      "name": "-max_recv_loops",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the maximum number of messages received read per cycle. Increase this value for high traffic level. The default value is 1000.",
+      "default": "",
+      "example": "sipp -max_recv_loops"
+    },
+    {
+      "name": "-max_sched_loops",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set the maximum number of calsl run per event loop. Increase this value for high traffic level. The default value is 1000.",
+      "default": "",
+      "example": "sipp -max_sched_loops"
+    },
+    {
+      "name": "-max_reconnect",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the the maximum number of reconnection.",
+      "default": "",
+      "example": "sipp -max_reconnect"
+    },
+    {
+      "name": "-max_retrans",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Maximum number of UDP retransmissions before call ends on timeout. Default is 5 for INVITE transactions and 7 for others.",
+      "default": "",
+      "example": "sipp -max_retrans"
+    },
+    {
+      "name": "-max_invite_retrans",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Maximum number of UDP retransmissions for invite transactions before call ends on timeout.",
+      "default": "",
+      "example": "sipp -max_invite_retrans"
+    },
+    {
+      "name": "-max_non_invite_retrans",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Maximum number of UDP retransmissions for non-invite transactions before call ends on timeout.",
+      "default": "",
+      "example": "sipp -max_non_invite_retrans"
+    },
+    {
+      "name": "-max_log_size",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": What is the limit for error and message log file sizes.",
+      "default": "",
+      "example": "sipp -max_log_size"
+    },
+    {
+      "name": "-max_socket",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the max number of sockets to open simultaneously. This option is significant if you use one socket per call. Once this limit is reached, traffic is distributed over the sockets already opened. Default value is 50000",
+      "default": "",
+      "example": "sipp -max_socket"
+    },
+    {
+      "name": "-mb",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the RTP echo buffer size (default: 2048).",
+      "default": "2048",
+      "example": "sipp -mb"
+    },
+    {
+      "name": "-message_file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the name of the message log file.",
+      "default": "",
+      "example": "sipp -message_file"
+    },
+    {
+      "name": "-message_overwrite",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Overwrite the message log file (default true).",
+      "default": "true",
+      "example": "sipp -message_overwrite"
+    },
+    {
+      "name": "-mp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the local RTP echo port number. Default is 6000.",
+      "default": "",
+      "example": "sipp -mp"
+    },
+    {
+      "name": "-nd",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": No Default. Disable all default behavior of SIPp which are the following: - On UDP retransmission timeout, abort the call by sending a BYE or a CANCEL - On receive timeout with no ontimeout attribute, abort the call by sending a BYE or a CANCEL - On unexpected BYE send a 200 OK and close the call - On unexpected CANCEL send a 200 OK and close the call - On unexpected PING send a 200 OK and continue the call - On any other unexpected message, abort the call by sending a BYE or a CANCEL",
+      "default": "",
+      "example": "sipp -nd"
+    },
+    {
+      "name": "-nr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Disable retransmission in UDP mode.",
+      "default": "",
+      "example": "sipp -nr"
+    },
+    {
+      "name": "-nostdin",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Disable stdin.",
+      "default": "",
+      "example": "sipp -nostdin"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the local port number. Default is a random free port chosen by the system.",
+      "default": "",
+      "example": "sipp -p"
+    },
+    {
+      "name": "-pause_msg_ign",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Ignore the messages received during a pause defined in the scenario",
+      "default": "",
+      "example": "sipp -pause_msg_ign"
+    },
+    {
+      "name": "-periodic_rtd",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Reset response time partition counters each logging interval.",
+      "default": "",
+      "example": "sipp -periodic_rtd"
+    },
+    {
+      "name": "-plugin",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Load a plugin.",
+      "default": "",
+      "example": "sipp -plugin"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the call rate (in calls per seconds). This value can bechanged during test by pressing '+','_','*' or '/'. Default is 10. pressing '+' key to increase call rate by 1 * rate_scale, pressing '-' key to decrease call rate by 1 * rate_scale, pressing '*' key to increase call rate by 10 * rate_scale, pressing '/' key to decrease call rate by 10 * rate_scale. If the -rp option is used, the call rate is calculated with the period in ms given by the user.",
+      "default": "",
+      "example": "sipp -r"
+    },
+    {
+      "name": "-rp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Specify the rate period for the call rate. Default is 1 second and default unit is milliseconds. This allows you to have n calls every m milliseconds (by using -r n -rp m). Example: -r 7 -rp 2000 ==> 7 calls every 2 seconds. -r 10 -rp 5s => 10 calls every 5 seconds.",
+      "default": "",
+      "example": "sipp -rp"
+    },
+    {
+      "name": "-rate_scale",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Control the units for the '+', '-', '*', and '/' keys.",
+      "default": "",
+      "example": "sipp -rate_scale"
+    },
+    {
+      "name": "-rate_increase",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Specify the rate increase every -fd units (default is seconds). This allows you to increase the load for each independent logging period. Example: -rate_increase 10 -fd 10s ==> increase calls by 10 every 10 seconds.",
+      "default": "is seconds",
+      "example": "sipp -rate_increase"
+    },
+    {
+      "name": "-rate_max",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": If -rate_increase is set, then quit after the rate reaches this value. Example: -rate_increase 10 -rate_max 100 ==> increase calls by 10 until 100 cps is hit.",
+      "default": "",
+      "example": "sipp -rate_max"
+    },
+    {
+      "name": "-no_rate_quit",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": If -rate_increase is set, do not quit after the rate reaches -rate_max.",
+      "default": "",
+      "example": "sipp -no_rate_quit"
+    },
+    {
+      "name": "-recv_timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Global receive timeout. Default unit is milliseconds. If the expected message is not received, the call times out and is aborted.",
+      "default": "",
+      "example": "sipp -recv_timeout"
+    },
+    {
+      "name": "-send_timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Global send timeout. Default unit is milliseconds. If a message is not sent (due to congestion), the call times out and is aborted.",
+      "default": "",
+      "example": "sipp -send_timeout"
+    },
+    {
+      "name": "-sleep",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": How long to sleep for at startup. Default unit is seconds.",
+      "default": "",
+      "example": "sipp -sleep"
+    },
+    {
+      "name": "-reconnect_close",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Should calls be closed on reconnect?",
+      "default": "",
+      "example": "sipp -reconnect_close"
+    },
+    {
+      "name": "-reconnect_sleep",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "How long (in milliseconds) to sleep between the close and reconnect?",
+      "default": "",
+      "example": "sipp -reconnect_sleep"
+    },
+    {
+      "name": "-ringbuffer_files",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "How many error/message files should be kept after rotation?",
+      "default": "",
+      "example": "sipp -ringbuffer_files"
+    },
+    {
+      "name": "-ringbuffer_size",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "How large should error/message files be before they get rotated?",
+      "default": "",
+      "example": "sipp -ringbuffer_size"
+    },
+    {
+      "name": "-rsa",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the remote sending address to host:port for sending the messages.",
+      "default": "",
+      "example": "sipp -rsa"
+    },
+    {
+      "name": "-rtp_echo",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Enable RTP echo. RTP/UDP packets received on port defined by -mp are echoed to their sender. RTP/UDP packets coming on this port + 2 are also echoed to their sender (used for sound and video echo).",
+      "default": "",
+      "example": "sipp -rtp_echo"
+    },
+    {
+      "name": "-rtt_freq",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": freq is mandatory. Dump response times every freq calls in the log file defined by -trace_rtt. Default value is 200.",
+      "default": "",
+      "example": "sipp -rtt_freq"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the username part of the resquest URI. Default is 'service'.",
+      "default": "",
+      "example": "sipp -s"
+    },
+    {
+      "name": "-sd",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Dumps a default scenario (embeded in the sipp executable)",
+      "default": "",
+      "example": "sipp -sd"
+    },
+    {
+      "name": "-sf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Loads an alternate xml scenario file. To learn more about XML scenario syntax, use the -sd option to dump embedded scenarios. They contain all the necessary help.",
+      "default": "",
+      "example": "sipp -sf"
+    },
+    {
+      "name": "-shortmessage_file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set the name of the short message log file.",
+      "default": "",
+      "example": "sipp -shortmessage_file"
+    },
+    {
+      "name": "-shortmessage_overwrite",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Overwrite the short message log file (default true).",
+      "default": "true",
+      "example": "sipp -shortmessage_overwrite"
+    },
+    {
+      "name": "-oocsf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Load out-of-call scenario.",
+      "default": "",
+      "example": "sipp -oocsf"
+    },
+    {
+      "name": "-oocsn",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Load out-of-call scenario.",
+      "default": "",
+      "example": "sipp -oocsn"
+    },
+    {
+      "name": "-skip_rlimit",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Do not perform rlimit tuning of file descriptor limits. Default: false.",
+      "default": "",
+      "example": "sipp -skip_rlimit"
+    },
+    {
+      "name": "-slave",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": 3pcc extended mode: indicates the slave number",
+      "default": "",
+      "example": "sipp -slave"
+    },
+    {
+      "name": "-slave_cfg",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": 3pcc extended mode: indicates the file where the master and slave addresses are stored",
+      "default": "",
+      "example": "sipp -slave_cfg"
+    },
+    {
+      "name": "-sn",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Use a default scenario (embedded in the sipp executable). If this option is omitted, the Standard SipStone UAC scenario is loaded. Available values in this version:",
+      "default": "",
+      "example": "sipp -sn"
+    },
+    {
+      "name": "-stat_delimiter",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the delimiter for the statistics file",
+      "default": "",
+      "example": "sipp -stat_delimiter"
+    },
+    {
+      "name": "-stf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the file name to use to dump statistics",
+      "default": "",
+      "example": "sipp -stf"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the transport mode: - u1: UDP with one socket (default), - un: UDP with one socket per call, - ui: UDP with one socket per IP address The IP addresses must be defined in the injection file. - t1: TCP with one socket, - tn: TCP with one socket per call, - l1: TLS with one socket, - ln: TLS with one socket per call, - s1: SCTP with one socket (default), - sn: SCTP with one socket per call, - c1: u1 + compression (only if compression plugin loaded), - cn: un + compression (only if compression plugin loaded). This plugin is not provided with sipp.",
+      "default": "ault",
+      "example": "sipp -t"
+    },
+    {
+      "name": "-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Global timeout. Default unit is seconds. If this option is set, SIPp quits after nb units (-timeout 20s quits after 20 seconds).",
+      "default": "",
+      "example": "sipp -timeout"
+    },
+    {
+      "name": "-timeout_error",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": SIPp fails if the global timeout is reached is set (-timeout option required).",
+      "default": "",
+      "example": "sipp -timeout_error"
+    },
+    {
+      "name": "-timer_resol",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Set the timer resolution. Default unit is milliseconds. This option has an impact on timers precision.Small values allow more precise scheduling but impacts CPU usage.If the compression is on, the value is set to 50ms. The default value is 10ms.",
+      "default": "",
+      "example": "sipp -timer_resol"
+    },
+    {
+      "name": "-T2",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Global T2-timer in milli seconds",
+      "default": "",
+      "example": "sipp -T2"
+    },
+    {
+      "name": "-sendbuffer_warn",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Produce warnings instead of errors on SendBuffer failures.",
+      "default": "",
+      "example": "sipp -sendbuffer_warn"
+    },
+    {
+      "name": "-trace_msg",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Displays sent and received SIP messages in <scenario file name>_<pid>_messages.log",
+      "default": "",
+      "example": "sipp -trace_msg"
+    },
+    {
+      "name": "-trace_shortmsg",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Displays sent and received SIP messages as CSV in <scenario file name>_<pid>_shortmessages.log",
+      "default": "",
+      "example": "sipp -trace_shortmsg"
+    },
+    {
+      "name": "-trace_screen",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Dump statistic screens in the <scenario_name>_<pid>_screens.log file when quitting SIPp. Useful to get a final status report in background mode (-bg option).",
+      "default": "",
+      "example": "sipp -trace_screen"
+    },
+    {
+      "name": "-trace_err",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Trace all unexpected messages in <scenario file name>_<pid>_errors.log.",
+      "default": "",
+      "example": "sipp -trace_err"
+    },
+    {
+      "name": "-trace_calldebug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Dumps debugging information about aborted calls to <scenario_name>_<pid>_calldebug.log file.",
+      "default": "",
+      "example": "sipp -trace_calldebug"
+    },
+    {
+      "name": "-trace_stat",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Dumps all statistics in <scenario_name>_<pid>.csv file. Use the '-h stat' option for a detailed description of the statistics file content.",
+      "default": "",
+      "example": "sipp -trace_stat"
+    },
+    {
+      "name": "-trace_counts",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Dumps individual message counts in a CSV file.",
+      "default": "",
+      "example": "sipp -trace_counts"
+    },
+    {
+      "name": "-trace_rtt",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Allow tracing of all response times in <scenario file name>_<pid>_rtt.csv.",
+      "default": "",
+      "example": "sipp -trace_rtt"
+    },
+    {
+      "name": "-trace_logs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Allow tracing of <log> actions in <scenario file name>_<pid>_logs.log.",
+      "default": "",
+      "example": "sipp -trace_logs"
+    },
+    {
+      "name": "-users",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Instead of starting calls at a fixed rate, begin 'users' calls at startup, and keep the number of calls constant.",
+      "default": "",
+      "example": "sipp -users"
+    },
+    {
+      "name": "-watchdog_interval",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set gap between watchdog timer firings. Default is 400.",
+      "default": "",
+      "example": "sipp -watchdog_interval"
+    },
+    {
+      "name": "-watchdog_reset",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": If the watchdog timer has not fired in more than this time period, then reset the max triggers counters. Default is 10 minutes.",
+      "default": "",
+      "example": "sipp -watchdog_reset"
+    },
+    {
+      "name": "-watchdog_minor_threshold",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "If it has been longer than this period between watchdog executions count a minor trip. Default is 500.",
+      "default": "",
+      "example": "sipp -watchdog_minor_threshold"
+    },
+    {
+      "name": "-watchdog_major_threshold",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "If it has been longer than this period between watchdog executions count a major trip. Default is 3000.",
+      "default": "",
+      "example": "sipp -watchdog_major_threshold"
+    },
+    {
+      "name": "-watchdog_major_maxtriggers",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "How many times the major watchdog timer can be tripped before the test is terminated. Default is 10.",
+      "default": "",
+      "example": "sipp -watchdog_major_maxtriggers"
+    },
+    {
+      "name": "-watchdog_minor_maxtriggers",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "How many times the minor watchdog timer can be tripped before the test is terminated. Default is 120.",
+      "default": "",
+      "example": "sipp -watchdog_minor_maxtriggers"
+    },
+    {
+      "name": "-3pcc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Launch the tool in 3pcc mode (\"Third Party call control\"). The passed ip address is depending on the 3PCC role. - When the first twin command is 'sendCmd' then this is the address of the remote twin socket. SIPp will try to connect to this address:port to send the twin command (This instance must be started after all other 3PCC scenarii). Example: 3PCC-C-A scenario. - When the first twin command is 'recvCmd' then this is the address of the local twin socket. SIPp will open this address:port to listen for twin command. Example: 3PCC-C-B scenario.",
+      "default": "",
+      "example": "sipp -3pcc"
+    },
+    {
+      "name": "-tdmmap",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Generate and handle a table of TDM circuits. A circuit must be available for the call to be placed. Format: -tdmmap {0-3}{99}{5-8}{1-31}",
+      "default": "",
+      "example": "sipp -tdmmap"
+    },
+    {
+      "name": "-key",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": keyword value Set the generic parameter named \"keyword\" to \"value\".",
+      "default": "",
+      "example": "sipp -key"
+    },
+    {
+      "name": "-set",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": variable value Set the global variable parameter named \"variable\" to \"value\".",
+      "default": "",
+      "example": "sipp -set"
+    },
+    {
+      "name": "-dynamicStart",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": variable value Set the start offset of dynamic_id varaiable",
+      "default": "",
+      "example": "sipp -dynamicStart"
+    },
+    {
+      "name": "-dynamicMax",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": variable value Set the maximum of dynamic_id variable",
+      "default": "",
+      "example": "sipp -dynamicMax"
+    },
+    {
+      "name": "-dynamicStep",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": variable value Set the increment of dynamic_id variable",
+      "default": "",
+      "example": "sipp -dynamicStep"
+    },
+    {
+      "name": "-1",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fatal error",
+      "default": "",
+      "example": "sipp -1"
+    },
+    {
+      "name": "-2",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fatal error binding a socket",
+      "default": "",
+      "example": "sipp -2"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

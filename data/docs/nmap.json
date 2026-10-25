@@ -1,0 +1,864 @@
+{
+  "id": "nmap",
+  "name": "Nmap",
+  "schema_version": 1,
+  "summary": "Network mapper and security scanner for network discovery and security auditing. Uses IP packets to determine hosts, services, operating systems, and firewalls.",
+  "highlights": [
+    "-iL — Input from list of hosts/networks",
+    "-iR — Choose random targets",
+    "--exclude — Exclude hosts/networks",
+    "--excludefile — Exclude list from file",
+    "-sL — List Scan - simply list targets to scan",
+    "-sn — Ping Scan - disable port scan",
+    "-Pn — Treat all hosts as online -- skip host discovery",
+    "-PO[protocol — IP Protocol Ping"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install nmap"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install nmap-common"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install zenmap"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ncat"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ndiff"
+    }
+  ],
+  "usage": "nmap [Scan Type(s)] [Options] {target specification}",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-iL",
+      "short": "",
+      "aliases": [],
+      "arg": "<inputfilename>",
+      "required": false,
+      "description": "Input from list of hosts/networks",
+      "default": "",
+      "example": "nmap -iL <inputfilename>"
+    },
+    {
+      "name": "-iR",
+      "short": "",
+      "aliases": [],
+      "arg": "<num hosts>",
+      "required": false,
+      "description": "Choose random targets",
+      "default": "",
+      "example": "nmap -iR <num hosts>"
+    },
+    {
+      "name": "--exclude",
+      "short": "",
+      "aliases": [],
+      "arg": "<host1[,host2][,host3],...>",
+      "required": false,
+      "description": "Exclude hosts/networks",
+      "default": "",
+      "example": "nmap --exclude <host1[,host2][,host3],...>"
+    },
+    {
+      "name": "--excludefile",
+      "short": "",
+      "aliases": [],
+      "arg": "<exclude_file>",
+      "required": false,
+      "description": "Exclude list from file",
+      "default": "",
+      "example": "nmap --excludefile <exclude_file>"
+    },
+    {
+      "name": "-sL",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List Scan - simply list targets to scan",
+      "default": "",
+      "example": "nmap -sL"
+    },
+    {
+      "name": "-sn",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ping Scan - disable port scan",
+      "default": "",
+      "example": "nmap -sn"
+    },
+    {
+      "name": "-Pn",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Treat all hosts as online -- skip host discovery",
+      "default": "",
+      "example": "nmap -Pn"
+    },
+    {
+      "name": "-PO[protocol",
+      "short": "",
+      "aliases": [],
+      "arg": "list",
+      "required": false,
+      "description": "IP Protocol Ping",
+      "default": "",
+      "example": "nmap -PO[protocol <list>"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [
+        "-R"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Never do DNS resolution/Always resolve [default: sometimes]",
+      "default": "sometimes",
+      "example": "nmap -n"
+    },
+    {
+      "name": "--dns-servers",
+      "short": "",
+      "aliases": [],
+      "arg": "<serv1[,serv2],...>",
+      "required": false,
+      "description": "Specify custom DNS servers",
+      "default": "",
+      "example": "nmap --dns-servers <serv1[,serv2],...>"
+    },
+    {
+      "name": "--system-dns",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use OS's DNS resolver",
+      "default": "",
+      "example": "nmap --system-dns"
+    },
+    {
+      "name": "--traceroute",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Trace hop path to each host",
+      "default": "",
+      "example": "nmap --traceroute"
+    },
+    {
+      "name": "-sU",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "UDP Scan",
+      "default": "",
+      "example": "nmap -sU"
+    },
+    {
+      "name": "--scanflags",
+      "short": "",
+      "aliases": [],
+      "arg": "<flags>",
+      "required": false,
+      "description": "Customize TCP scan flags",
+      "default": "",
+      "example": "nmap --scanflags <flags>"
+    },
+    {
+      "name": "-sI",
+      "short": "",
+      "aliases": [],
+      "arg": "<zombie host[:probeport]>",
+      "required": false,
+      "description": "Idle scan",
+      "default": "",
+      "example": "nmap -sI <zombie host[:probeport]>"
+    },
+    {
+      "name": "-sO",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "IP protocol scan",
+      "default": "",
+      "example": "nmap -sO"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "<FTP relay host>",
+      "required": false,
+      "description": "FTP bounce scan",
+      "default": "",
+      "example": "nmap -b <FTP relay host>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<port ranges>",
+      "required": false,
+      "description": "Only scan specified ports Ex: -p22; -p1-65535; -p U:53,111,137,T:21-25,80,139,8080,S:9",
+      "default": "",
+      "example": "nmap -p <port ranges>"
+    },
+    {
+      "name": "--exclude-ports",
+      "short": "",
+      "aliases": [],
+      "arg": "<port ranges>",
+      "required": false,
+      "description": "Exclude the specified ports from scanning",
+      "default": "",
+      "example": "nmap --exclude-ports <port ranges>"
+    },
+    {
+      "name": "-F",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fast mode - Scan fewer ports than the default scan",
+      "default": "",
+      "example": "nmap -F"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Scan ports sequentially - don't randomize",
+      "default": "",
+      "example": "nmap -r"
+    },
+    {
+      "name": "--top-ports",
+      "short": "",
+      "aliases": [],
+      "arg": "<number>",
+      "required": false,
+      "description": "Scan <number> most common ports",
+      "default": "",
+      "example": "nmap --top-ports <number>"
+    },
+    {
+      "name": "--port-ratio",
+      "short": "",
+      "aliases": [],
+      "arg": "<ratio>",
+      "required": false,
+      "description": "Scan ports more common than <ratio>",
+      "default": "",
+      "example": "nmap --port-ratio <ratio>"
+    },
+    {
+      "name": "-sV",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Probe open ports to determine service/version info",
+      "default": "",
+      "example": "nmap -sV"
+    },
+    {
+      "name": "--version-intensity",
+      "short": "",
+      "aliases": [],
+      "arg": "<level>",
+      "required": false,
+      "description": "Set from 0 (light) to 9 (try all probes)",
+      "default": "",
+      "example": "nmap --version-intensity <level>"
+    },
+    {
+      "name": "--version-light",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Limit to most likely probes (intensity 2)",
+      "default": "",
+      "example": "nmap --version-light"
+    },
+    {
+      "name": "--version-all",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Try every single probe (intensity 9)",
+      "default": "",
+      "example": "nmap --version-all"
+    },
+    {
+      "name": "--version-trace",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show detailed version scan activity (for debugging)",
+      "default": "",
+      "example": "nmap --version-trace"
+    },
+    {
+      "name": "-sC",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "equivalent to --script=default",
+      "default": "",
+      "example": "nmap -sC"
+    },
+    {
+      "name": "--script",
+      "short": "",
+      "aliases": [],
+      "arg": "<Lua scripts>",
+      "required": false,
+      "description": "<Lua scripts> is a comma separated list of directories, script-files or script-categories",
+      "default": "",
+      "example": "nmap --script <Lua scripts>"
+    },
+    {
+      "name": "--script-args",
+      "short": "",
+      "aliases": [],
+      "arg": "<n1=v1,[n2=v2,...]>",
+      "required": false,
+      "description": "provide arguments to scripts",
+      "default": "",
+      "example": "nmap --script-args <n1=v1,[n2=v2,...]>"
+    },
+    {
+      "name": "--script-trace",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show all data sent and received",
+      "default": "",
+      "example": "nmap --script-trace"
+    },
+    {
+      "name": "--script-updatedb",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update the script database.",
+      "default": "",
+      "example": "nmap --script-updatedb"
+    },
+    {
+      "name": "--script-help",
+      "short": "",
+      "aliases": [],
+      "arg": "<Lua scripts>",
+      "required": false,
+      "description": "Show help about scripts. <Lua scripts> is a comma-separated list of script-files or script-categories.",
+      "default": "",
+      "example": "nmap --script-help <Lua scripts>"
+    },
+    {
+      "name": "-O",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable OS detection",
+      "default": "",
+      "example": "nmap -O"
+    },
+    {
+      "name": "--osscan-limit",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Limit OS detection to promising targets",
+      "default": "",
+      "example": "nmap --osscan-limit"
+    },
+    {
+      "name": "--osscan-guess",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Guess OS more aggressively",
+      "default": "",
+      "example": "nmap --osscan-guess"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "<0-5>",
+      "required": false,
+      "description": "Set timing template (higher is faster)",
+      "default": "",
+      "example": "nmap -T <0-5>"
+    },
+    {
+      "name": "--max-retries",
+      "short": "",
+      "aliases": [],
+      "arg": "<tries>",
+      "required": false,
+      "description": "Caps number of port scan probe retransmissions.",
+      "default": "",
+      "example": "nmap --max-retries <tries>"
+    },
+    {
+      "name": "--host-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "<time>",
+      "required": false,
+      "description": "Give up on target after this long",
+      "default": "",
+      "example": "nmap --host-timeout <time>"
+    },
+    {
+      "name": "--scan-delay",
+      "short": "",
+      "aliases": [
+        "--max-scan-delay"
+      ],
+      "arg": "<time>",
+      "required": false,
+      "description": "Adjust delay between probes",
+      "default": "",
+      "example": "nmap --scan-delay <time>"
+    },
+    {
+      "name": "--min-rate",
+      "short": "",
+      "aliases": [],
+      "arg": "<number>",
+      "required": false,
+      "description": "Send packets no slower than <number> per second",
+      "default": "",
+      "example": "nmap --min-rate <number>"
+    },
+    {
+      "name": "--max-rate",
+      "short": "",
+      "aliases": [],
+      "arg": "<number>",
+      "required": false,
+      "description": "Send packets no faster than <number> per second",
+      "default": "",
+      "example": "nmap --max-rate <number>"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "<decoy1,decoy2[,ME],...>",
+      "required": false,
+      "description": "Cloak a scan with decoys",
+      "default": "",
+      "example": "nmap -D <decoy1,decoy2[,ME],...>"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "<IP_Address>",
+      "required": false,
+      "description": "Spoof source address",
+      "default": "",
+      "example": "nmap -S <IP_Address>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "<iface>",
+      "required": false,
+      "description": "Use specified interface",
+      "default": "",
+      "example": "nmap -e <iface>"
+    },
+    {
+      "name": "--source-port",
+      "short": "-g",
+      "aliases": [],
+      "arg": "<portnum>",
+      "required": false,
+      "description": "Use given port number",
+      "default": "",
+      "example": "nmap --source-port <portnum>"
+    },
+    {
+      "name": "--proxies",
+      "short": "",
+      "aliases": [],
+      "arg": "<url1,[url2],...>",
+      "required": false,
+      "description": "Relay connections through HTTP/SOCKS4 proxies",
+      "default": "",
+      "example": "nmap --proxies <url1,[url2],...>"
+    },
+    {
+      "name": "--data",
+      "short": "",
+      "aliases": [],
+      "arg": "<hex string>",
+      "required": false,
+      "description": "Append a custom payload to sent packets",
+      "default": "",
+      "example": "nmap --data <hex string>"
+    },
+    {
+      "name": "--data-string",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "Append a custom ASCII string to sent packets",
+      "default": "",
+      "example": "nmap --data-string <string>"
+    },
+    {
+      "name": "--data-length",
+      "short": "",
+      "aliases": [],
+      "arg": "<num>",
+      "required": false,
+      "description": "Append random data to sent packets",
+      "default": "",
+      "example": "nmap --data-length <num>"
+    },
+    {
+      "name": "--ip-options",
+      "short": "",
+      "aliases": [],
+      "arg": "<options>",
+      "required": false,
+      "description": "Send packets with specified ip options",
+      "default": "",
+      "example": "nmap --ip-options <options>"
+    },
+    {
+      "name": "--ttl",
+      "short": "",
+      "aliases": [],
+      "arg": "<val>",
+      "required": false,
+      "description": "Set IP time-to-live field",
+      "default": "",
+      "example": "nmap --ttl <val>"
+    },
+    {
+      "name": "--spoof-mac",
+      "short": "",
+      "aliases": [],
+      "arg": "<mac address/prefix/vendor name>",
+      "required": false,
+      "description": "Spoof your MAC address",
+      "default": "",
+      "example": "nmap --spoof-mac <mac address/prefix/vendor name>"
+    },
+    {
+      "name": "--badsum",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Send packets with a bogus TCP/UDP/SCTP checksum",
+      "default": "",
+      "example": "nmap --badsum"
+    },
+    {
+      "name": "-oN",
+      "short": "",
+      "aliases": [
+        "-oX",
+        "-oS",
+        "-oG"
+      ],
+      "arg": "<file>",
+      "required": false,
+      "description": "Output scan in normal, XML, s|<rIpt kIddi3, and Grepable format, respectively, to the given filename.",
+      "default": "",
+      "example": "nmap -oN <file>"
+    },
+    {
+      "name": "-oA",
+      "short": "",
+      "aliases": [],
+      "arg": "<basename>",
+      "required": false,
+      "description": "Output in the three major formats at once",
+      "default": "",
+      "example": "nmap -oA <basename>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Increase verbosity level (use -vv or more for greater effect)",
+      "default": "",
+      "example": "nmap -v"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Increase debugging level (use -dd or more for greater effect)",
+      "default": "",
+      "example": "nmap -d"
+    },
+    {
+      "name": "--reason",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display the reason a port is in a particular state",
+      "default": "",
+      "example": "nmap --reason"
+    },
+    {
+      "name": "--open",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only show open (or possibly open) ports",
+      "default": "",
+      "example": "nmap --open"
+    },
+    {
+      "name": "--packet-trace",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show all packets sent and received",
+      "default": "",
+      "example": "nmap --packet-trace"
+    },
+    {
+      "name": "--iflist",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print host interfaces and routes (for debugging)",
+      "default": "",
+      "example": "nmap --iflist"
+    },
+    {
+      "name": "--append-output",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Append to rather than clobber specified output files",
+      "default": "",
+      "example": "nmap --append-output"
+    },
+    {
+      "name": "--resume",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "Resume an aborted scan",
+      "default": "",
+      "example": "nmap --resume <filename>"
+    },
+    {
+      "name": "--noninteractive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable runtime interactions via keyboard",
+      "default": "",
+      "example": "nmap --noninteractive"
+    },
+    {
+      "name": "--stylesheet",
+      "short": "",
+      "aliases": [],
+      "arg": "<path/URL>",
+      "required": false,
+      "description": "XSL stylesheet to transform XML output to HTML",
+      "default": "",
+      "example": "nmap --stylesheet <path/URL>"
+    },
+    {
+      "name": "--webxml",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Reference stylesheet from Nmap.Org for more portable XML",
+      "default": "",
+      "example": "nmap --webxml"
+    },
+    {
+      "name": "--no-stylesheet",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prevent associating of XSL stylesheet w/XML output",
+      "default": "",
+      "example": "nmap --no-stylesheet"
+    },
+    {
+      "name": "-6",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable IPv6 scanning",
+      "default": "",
+      "example": "nmap -6"
+    },
+    {
+      "name": "-A",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable OS detection, version detection, script scanning, and traceroute",
+      "default": "",
+      "example": "nmap -A"
+    },
+    {
+      "name": "--datadir",
+      "short": "",
+      "aliases": [],
+      "arg": "<dirname>",
+      "required": false,
+      "description": "Specify custom Nmap data file location",
+      "default": "",
+      "example": "nmap --datadir <dirname>"
+    },
+    {
+      "name": "--send-eth",
+      "short": "",
+      "aliases": [
+        "--send-ip"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Send using raw ethernet frames or IP packets",
+      "default": "",
+      "example": "nmap --send-eth"
+    },
+    {
+      "name": "--privileged",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Assume that the user is fully privileged",
+      "default": "",
+      "example": "nmap --privileged"
+    },
+    {
+      "name": "--unprivileged",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Assume the user lacks raw socket privileges",
+      "default": "",
+      "example": "nmap --unprivileged"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version number",
+      "default": "",
+      "example": "nmap -V"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print this help summary page.",
+      "default": "",
+      "example": "nmap -h"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "nmap -v<1|2|3> <ip_or_hostname>",
+      "explanation": "Scan the top 1000 ports of a remote host with various [v]erbosity levels",
+      "source": "tldr:nmap"
+    },
+    {
+      "cmd": "sudo nmap -A -iL <path/to/file.txt>",
+      "explanation": "Enable OS detection, version detection, script scanning, and traceroute of hosts from a file",
+      "source": "tldr:nmap"
+    },
+    {
+      "cmd": "nmap -p <port1,port2,...> <ip_or_host1,ip_or_host2,...>",
+      "explanation": "Scan a specific list of [p]orts (use `-p-` for all ports from 1 to 65535)",
+      "source": "tldr:nmap"
+    },
+    {
+      "cmd": "nmap -sC -sV -oA <top-1000-ports> <ip_or_host1,ip_or_host2,...>",
+      "explanation": "Perform service and version detection of the top 1000 ports using default NSE scripts, writing results (`-oA`) to output files",
+      "source": "tldr:nmap"
+    },
+    {
+      "cmd": "nmap --script \"default and safe\" <ip_or_host1,ip_or_host2,...>",
+      "explanation": "Scan target(s) carefully using `default and safe` NSE scripts",
+      "source": "tldr:nmap"
+    },
+    {
+      "cmd": "nmap --script \"http-*\" <ip_or_host1,ip_or_host2,...> -p 80,443",
+      "explanation": "Scan for web servers running on standard [p]orts 80 and 443 using all available `http-*` NSE scripts",
+      "source": "tldr:nmap"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/nmap.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

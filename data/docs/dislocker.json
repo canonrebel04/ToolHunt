@@ -1,0 +1,184 @@
+{
+  "id": "dislocker",
+  "name": "dislocker",
+  "schema_version": 1,
+  "summary": "Read BitLocker encrypted volumes under Linux.",
+  "highlights": [
+    "-c — decrypt volume using a clear key (default)",
+    "-f — decrypt volume using the bek file (on USB key)",
+    "-k — decrypt volume using the FVEK directly",
+    "-K — decrypt volume using the VMK directly",
+    "-l — put messages into this file (stdout by default)",
+    "-O — BitLocker partition offset, in bytes (default is 0)",
+    "-p — decrypt volume using the recovery password method",
+    "-q — do NOT display anything"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dislocker"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libdislocker0-dev"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libdislocker0.7t64"
+    }
+  ],
+  "usage": "dislocker [-hqrsv] [-l LOG_FILE] [-O OFFSET] [-V VOLUME DECRYPTMETHOD -F[N]] [-- ARGS...]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--clearkey",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "decrypt volume using a clear key (default)",
+      "default": "ault",
+      "example": "dislocker --clearkey"
+    },
+    {
+      "name": "--bekfile",
+      "short": "-f",
+      "aliases": [],
+      "arg": "BEKFILE",
+      "required": false,
+      "description": "decrypt volume using the bek file (on USB key)",
+      "default": "",
+      "example": "dislocker --bekfile <bekfile>"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print this help and exit",
+      "default": "",
+      "example": "dislocker --help"
+    },
+    {
+      "name": "--fvek",
+      "short": "-k",
+      "aliases": [],
+      "arg": "FVEK_FILE",
+      "required": false,
+      "description": "decrypt volume using the FVEK directly",
+      "default": "",
+      "example": "dislocker --fvek <fvek_file>"
+    },
+    {
+      "name": "--vmk",
+      "short": "-K",
+      "aliases": [],
+      "arg": "VMK_FILE",
+      "required": false,
+      "description": "decrypt volume using the VMK directly",
+      "default": "",
+      "example": "dislocker --vmk <vmk_file>"
+    },
+    {
+      "name": "--logfile",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LOG_FILE",
+      "required": false,
+      "description": "put messages into this file (stdout by default)",
+      "default": "",
+      "example": "dislocker --logfile <log_file>"
+    },
+    {
+      "name": "--offset",
+      "short": "-O",
+      "aliases": [],
+      "arg": "OFFSET",
+      "required": false,
+      "description": "BitLocker partition offset, in bytes (default is 0)",
+      "default": "is 0",
+      "example": "dislocker --offset <offset>"
+    },
+    {
+      "name": "--recovery-password",
+      "short": "-p",
+      "aliases": [],
+      "arg": "[RECOVERY_PASSWORD]",
+      "required": false,
+      "description": "decrypt volume using the recovery password method",
+      "default": "",
+      "example": "dislocker --recovery-password <recovery_password>"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do NOT display anything",
+      "default": "",
+      "example": "dislocker --quiet"
+    },
+    {
+      "name": "--readonly",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not allow one to write on the BitLocker volume",
+      "default": "",
+      "example": "dislocker --readonly"
+    },
+    {
+      "name": "--stateok",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not check the volume's state, assume it's ok to mount it",
+      "default": "",
+      "example": "dislocker --stateok"
+    },
+    {
+      "name": "--user-password",
+      "short": "-u",
+      "aliases": [],
+      "arg": "[USER_PASSWORD]",
+      "required": false,
+      "description": "decrypt volume using the user password method",
+      "default": "",
+      "example": "dislocker --user-password <user_password>"
+    },
+    {
+      "name": "--verbosity",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "increase verbosity (CRITICAL errors are displayed by default)",
+      "default": "",
+      "example": "dislocker --verbosity"
+    },
+    {
+      "name": "--volume",
+      "short": "-V",
+      "aliases": [],
+      "arg": "VOLUME",
+      "required": false,
+      "description": "volume to get metadata and keys from",
+      "default": "",
+      "example": "dislocker --volume <volume>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

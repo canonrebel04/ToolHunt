@@ -1,0 +1,56 @@
+{
+  "id": "whatwaf",
+  "name": "whatwaf",
+  "schema_version": 1,
+  "summary": "Detect and bypass web application firewalls and protection systems.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "whatwaf --url <https://example.com> --verbose",
+      "explanation": "Detect protection on a single URL, optionally use verbose output",
+      "source": "tldr:whatwaf"
+    },
+    {
+      "cmd": "whatwaf --threads <number> --list <path/to/file>",
+      "explanation": "Detect protection on a list of URLs in parallel from a file (one URL per line)",
+      "source": "tldr:whatwaf"
+    },
+    {
+      "cmd": "whatwaf --proxy <http://127.0.0.1:8080> --pl <path/to/file> --url <https://example.com>",
+      "explanation": "Send requests through a proxy and use custom payload list from a file (one payload per line)",
+      "source": "tldr:whatwaf"
+    },
+    {
+      "cmd": "whatwaf --tor --payloads '<payload1,payload2,...>' --url <https://example.com>",
+      "explanation": "Send requests through Tor (Tor must be installed) using custom payloads (comma-separated)",
+      "source": "tldr:whatwaf"
+    },
+    {
+      "cmd": "whatwaf --ra --throttle <seconds> --timeout <seconds> --post --force-ssl --url <http://example.com>",
+      "explanation": "Use a random user-agent, set throttling and timeout, send a POST request, and force HTTPS connection",
+      "source": "tldr:whatwaf"
+    },
+    {
+      "cmd": "whatwaf --wafs",
+      "explanation": "List all WAFs that can be detected",
+      "source": "tldr:whatwaf"
+    },
+    {
+      "cmd": "whatwaf --tampers",
+      "explanation": "List all available tamper scripts",
+      "source": "tldr:whatwaf"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/whatwaf.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

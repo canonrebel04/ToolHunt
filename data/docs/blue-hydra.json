@@ -1,0 +1,136 @@
+{
+  "id": "blue-hydra",
+  "name": "blue-hydra",
+  "schema_version": 1,
+  "summary": "A Bluetooth device discovery service built on top of the bluez library.",
+  "highlights": [
+    "-d — Suppress output and run in daemon mode",
+    "-z — Hide mac addresses in CLI UI",
+    "-p — Send results to hermes",
+    "--pulse-debug — Store results in a file for review",
+    "--no-db — Keep db in ram only",
+    "--rssi-api — Open 127.0.0.1:1124 to allow other processes to poll for seen devices and rssi",
+    "--no-info — For the purposes for fox hunting, don't info scan. Some info may be missing, but there wil",
+    "--mohawk-api — For the purposes of making a hat to cover a mohawk, shit out the ui as json at /dev/shm/bl"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install blue-hydra"
+    }
+  ],
+  "usage": "BlueHydra [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--daemonize",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Suppress output and run in daemon mode",
+      "default": "",
+      "example": "blue_hydra --daemonize"
+    },
+    {
+      "name": "--demo",
+      "short": "-z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Hide mac addresses in CLI UI",
+      "default": "",
+      "example": "blue_hydra --demo"
+    },
+    {
+      "name": "--pulse",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Send results to hermes",
+      "default": "",
+      "example": "blue_hydra --pulse"
+    },
+    {
+      "name": "--pulse-debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Store results in a file for review",
+      "default": "",
+      "example": "blue_hydra --pulse-debug"
+    },
+    {
+      "name": "--no-db",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Keep db in ram only",
+      "default": "",
+      "example": "blue_hydra --no-db"
+    },
+    {
+      "name": "--rssi-api",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Open 127.0.0.1:1124 to allow other processes to poll for seen devices and rssi",
+      "default": "",
+      "example": "blue_hydra --rssi-api"
+    },
+    {
+      "name": "--no-info",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "For the purposes for fox hunting, don't info scan. Some info may be missing, but there will be less gaps during tracking",
+      "default": "",
+      "example": "blue_hydra --no-info"
+    },
+    {
+      "name": "--mohawk-api",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "For the purposes of making a hat to cover a mohawk, shit out the ui as json at /dev/shm/blue_hydra.json",
+      "default": "",
+      "example": "blue_hydra --mohawk-api"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show version and quit",
+      "default": "",
+      "example": "blue_hydra --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this message",
+      "default": "",
+      "example": "blue_hydra --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

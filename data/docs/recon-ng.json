@@ -1,0 +1,140 @@
+{
+  "id": "recon-ng",
+  "name": "recon-ng",
+  "schema_version": 1,
+  "summary": "A full-featured Web Reconnaissance framework written in Python.",
+  "highlights": [
+    "--no-version — disable version check. Already disabled by default in Debian",
+    "--no-analytics — disable analytics reporting. Already disabled by default in Debian",
+    "--no-marketplace — disable remote module management",
+    "--stealth — disable all passive requests (--no-*)",
+    "--accessible — Use accessible outputs when available"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install recon-ng"
+    }
+  ],
+  "usage": "recon-ng [-h] [-w workspace] [-r filename] [--no-version]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "recon-ng --help"
+    },
+    {
+      "name": "--no-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable version check. Already disabled by default in Debian",
+      "default": "",
+      "example": "recon-ng --no-version"
+    },
+    {
+      "name": "--no-analytics",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable analytics reporting. Already disabled by default in Debian",
+      "default": "",
+      "example": "recon-ng --no-analytics"
+    },
+    {
+      "name": "--no-marketplace",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable remote module management",
+      "default": "",
+      "example": "recon-ng --no-marketplace"
+    },
+    {
+      "name": "--stealth",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable all passive requests (--no-*)",
+      "default": "",
+      "example": "recon-ng --stealth"
+    },
+    {
+      "name": "--accessible",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use accessible outputs when available",
+      "default": "",
+      "example": "recon-ng --accessible"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "displays the current version",
+      "default": "",
+      "example": "recon-ng --version"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "recon-ng",
+      "explanation": "Start the tool in interactive mode",
+      "source": "tldr:recon-ng"
+    },
+    {
+      "cmd": "workspaces create <workspace_name>",
+      "explanation": "[Interactive] Create a workspace",
+      "source": "tldr:recon-ng"
+    },
+    {
+      "cmd": "marketplace search",
+      "explanation": "[Interactive] Search the marketplace for modules used to accomplish different reconnaissance tasks",
+      "source": "tldr:recon-ng"
+    },
+    {
+      "cmd": "marketplace install all",
+      "explanation": "[Interactive] Install all available modules (some may need API keys to function completely)",
+      "source": "tldr:recon-ng"
+    },
+    {
+      "cmd": "modules load profiler",
+      "explanation": "[Interactive] Load the profiler module. It is used to scan the web for profiles matching the target, scrape them, and store them",
+      "source": "tldr:recon-ng"
+    },
+    {
+      "cmd": "db insert profiles",
+      "explanation": "[Interactive] Insert the target's username. After entering this command, enter the desired username of the search and leave the rest of the options blank",
+      "source": "tldr:recon-ng"
+    },
+    {
+      "cmd": "run",
+      "explanation": "[Interactive] Run the current module",
+      "source": "tldr:recon-ng"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/recon-ng.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

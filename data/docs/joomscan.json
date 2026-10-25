@@ -1,0 +1,136 @@
+{
+  "id": "joomscan",
+  "name": "joomscan",
+  "schema_version": 1,
+  "summary": "Detects file inclusion, sql injection, command execution vulnerabilities of a target Joomla! web site.",
+  "highlights": [
+    "-u — | The Joomla URL/domain to scan.",
+    "-ec — | Try to enumerate components.",
+    "--cookie — | Set cookie.",
+    "-a — | Use the specified User-Agent.",
+    "-r — | Use a random User-Agent.",
+    "--timeout — | Set timeout.",
+    "--proxy — | Use a proxy to connect to the target URL Proxy example: --proxy http://127.0.0.1:8080 ht",
+    "--about — | About Author"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install joomscan"
+    }
+  ],
+  "usage": "joomscan [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "<URL>",
+      "required": false,
+      "description": "| The Joomla URL/domain to scan.",
+      "default": "",
+      "example": "joomscan --url <URL>"
+    },
+    {
+      "name": "--enumerate-components",
+      "short": "-ec",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "| Try to enumerate components.",
+      "default": "",
+      "example": "joomscan --enumerate-components"
+    },
+    {
+      "name": "--cookie",
+      "short": "",
+      "aliases": [],
+      "arg": "<String>",
+      "required": false,
+      "description": "| Set cookie.",
+      "default": "",
+      "example": "joomscan --cookie <String>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "-a",
+      "aliases": [],
+      "arg": "<User-Agent>",
+      "required": false,
+      "description": "| Use the specified User-Agent.",
+      "default": "",
+      "example": "joomscan --user-agent <User-Agent>"
+    },
+    {
+      "name": "--random-agent",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "| Use a random User-Agent.",
+      "default": "",
+      "example": "joomscan --random-agent"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "<Time-Out>",
+      "required": false,
+      "description": "| Set timeout.",
+      "default": "",
+      "example": "joomscan --timeout <Time-Out>"
+    },
+    {
+      "name": "--proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "| Use a proxy to connect to the target URL Proxy example: --proxy http://127.0.0.1:8080 https://127.0.0.1:443 socks://127.0.0.1:414",
+      "default": "",
+      "example": "joomscan --proxy <proxy>"
+    },
+    {
+      "name": "--about",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "| About Author",
+      "default": "",
+      "example": "joomscan --about"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "| This help screen.",
+      "default": "",
+      "example": "joomscan --help"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "| Output the current version and exit.",
+      "default": "",
+      "example": "joomscan --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

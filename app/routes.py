@@ -276,3 +276,21 @@ def tool_detail(tool_id):
         out[key] = tool.get(key)
     out['archived'] = bool(out['archived'])
     return jsonify(out)
+
+
+@main_bp.route('/api/tools/<tool_id>/docs', methods=['GET'])
+def tool_docs(tool_id):
+    """Return the Tier 1 structured doc for a tool (flags, examples, install), if present."""
+    tool_id = (tool_id or '').strip().lower()[:100]
+    try:
+        from docgen import schema
+        tool = get_tool(tool_id)
+        if tool is None:
+            return _error_response("Tool not found", code="NOT_FOUND", retryable=False, status=404)
+        doc = schema.load_doc(tool["id"]) or schema.load_doc(tool_id)
+    except Exception:
+        logger.exception("Docs lookup failed: id=%r", tool_id)
+        return _error_response("An internal error occurred.", code="LOOKUP_FAILED", retryable=True, status=500)
+    if doc is None:
+        return _error_response("No documentation yet", code="NO_DOCS", retryable=False, status=404)
+    return jsonify(doc)

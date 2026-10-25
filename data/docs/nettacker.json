@@ -1,0 +1,41 @@
+{
+  "id": "nettacker",
+  "name": "nettacker",
+  "schema_version": 1,
+  "summary": "Automated Penetration Testing Framework.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "nettacker --show-all-modules",
+      "explanation": "List all available modules",
+      "source": "tldr:nettacker"
+    },
+    {
+      "cmd": "nettacker --modules port_scan --targets <192.168.0.1/24,owasp.org,scanme.org,...>",
+      "explanation": "Run a port scan on targets",
+      "source": "tldr:nettacker"
+    },
+    {
+      "cmd": "nettacker --modules port_scan --ports <22,80,443,...> --targets-list <path/to/targets.txt>",
+      "explanation": "Run a port scan on specific ports and targets listed in a file (newline separated)",
+      "source": "tldr:nettacker"
+    },
+    {
+      "cmd": "nettacker --ping-before-scan --modules <port_scan,subdomain_scan,waf_scan,...> --ports <80,443> --targets <owasp.org>",
+      "explanation": "Run ping test before scan and then run multiple scan types on target",
+      "source": "tldr:nettacker"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/nettacker.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

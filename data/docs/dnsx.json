@@ -1,0 +1,620 @@
+{
+  "id": "dnsx",
+  "name": "dnsx",
+  "schema_version": 1,
+  "summary": "Fast and multi-purpose DNS toolkit allow to run multiple DNS queries of your choice with a list of user-supplied resolvers.",
+  "highlights": [
+    "-l — list of sub(domains)/hosts to resolve (file or comma separated or stdin)",
+    "-d — list of domain to bruteforce (file or comma separated or stdin)",
+    "-w — list of words to bruteforce (file or comma separated or stdin)",
+    "-a — query A record (default)",
+    "-aaaa — query AAAA record",
+    "-cname — query CNAME record",
+    "-ns — query NS record",
+    "-txt — query TXT record"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dnsx"
+    }
+  ],
+  "usage": "dnsx [flags]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-list",
+      "short": "-l",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "list of sub(domains)/hosts to resolve (file or comma separated or stdin)",
+      "default": "",
+      "example": "dnsx -list <string>"
+    },
+    {
+      "name": "-domain",
+      "short": "-d",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "list of domain to bruteforce (file or comma separated or stdin)",
+      "default": "",
+      "example": "dnsx -domain <string>"
+    },
+    {
+      "name": "-wordlist",
+      "short": "-w",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "list of words to bruteforce (file or comma separated or stdin)",
+      "default": "",
+      "example": "dnsx -wordlist <string>"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query A record (default)",
+      "default": "ault",
+      "example": "dnsx -a"
+    },
+    {
+      "name": "-aaaa",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query AAAA record",
+      "default": "",
+      "example": "dnsx -aaaa"
+    },
+    {
+      "name": "-cname",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query CNAME record",
+      "default": "",
+      "example": "dnsx -cname"
+    },
+    {
+      "name": "-ns",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query NS record",
+      "default": "",
+      "example": "dnsx -ns"
+    },
+    {
+      "name": "-txt",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query TXT record",
+      "default": "",
+      "example": "dnsx -txt"
+    },
+    {
+      "name": "-srv",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query SRV record",
+      "default": "",
+      "example": "dnsx -srv"
+    },
+    {
+      "name": "-ptr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query PTR record",
+      "default": "",
+      "example": "dnsx -ptr"
+    },
+    {
+      "name": "-mx",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query MX record",
+      "default": "",
+      "example": "dnsx -mx"
+    },
+    {
+      "name": "-soa",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query SOA record",
+      "default": "",
+      "example": "dnsx -soa"
+    },
+    {
+      "name": "-any",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query ANY record",
+      "default": "",
+      "example": "dnsx -any"
+    },
+    {
+      "name": "-axfr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query AXFR",
+      "default": "",
+      "example": "dnsx -axfr"
+    },
+    {
+      "name": "-caa",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "query CAA record",
+      "default": "",
+      "example": "dnsx -caa"
+    },
+    {
+      "name": "-recon",
+      "short": "",
+      "aliases": [
+        "-all"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "query all the dns records (a,aaaa,cname,ns,txt,srv,ptr,mx,soa,axfr,caa)",
+      "default": "",
+      "example": "dnsx -recon"
+    },
+    {
+      "name": "-exclude-type",
+      "short": "-e",
+      "aliases": [],
+      "arg": "value",
+      "required": false,
+      "description": "dns query type to exclude (a,aaaa,cname,ns,txt,srv,ptr,mx,soa,axfr,caa) (default none)",
+      "default": "none",
+      "example": "dnsx -exclude-type <value>"
+    },
+    {
+      "name": "-resp",
+      "short": "",
+      "aliases": [
+        "-re"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "display dns response",
+      "default": "",
+      "example": "dnsx -resp"
+    },
+    {
+      "name": "-resp-only",
+      "short": "",
+      "aliases": [
+        "-ro"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "display dns response only",
+      "default": "",
+      "example": "dnsx -resp-only"
+    },
+    {
+      "name": "-rcode",
+      "short": "",
+      "aliases": [
+        "-rc"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "filter result by dns status code (eg. -rcode noerror,servfail,refused)",
+      "default": "",
+      "example": "dnsx -rcode <string>"
+    },
+    {
+      "name": "-response-type-filter",
+      "short": "",
+      "aliases": [
+        "-rtf"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "return entries with no records for the specified query types (e.g., a, cname)",
+      "default": "",
+      "example": "dnsx -response-type-filter <string>"
+    },
+    {
+      "name": "-cdn",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display cdn name",
+      "default": "",
+      "example": "dnsx -cdn"
+    },
+    {
+      "name": "-asn",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display host asn information",
+      "default": "",
+      "example": "dnsx -asn"
+    },
+    {
+      "name": "-threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "number of concurrent threads to use (default 100)",
+      "default": "100",
+      "example": "dnsx -threads <int>"
+    },
+    {
+      "name": "-rate-limit",
+      "short": "",
+      "aliases": [
+        "-rl"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "number of dns request/second to make (disabled as default) (default -1)",
+      "default": "-1",
+      "example": "dnsx -rate-limit <int>"
+    },
+    {
+      "name": "-update",
+      "short": "",
+      "aliases": [
+        "-up"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "update dnsx to latest version",
+      "default": "",
+      "example": "dnsx -update"
+    },
+    {
+      "name": "-disable-update-check",
+      "short": "",
+      "aliases": [
+        "-duc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable automatic dnsx update check",
+      "default": "",
+      "example": "dnsx -disable-update-check"
+    },
+    {
+      "name": "-output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "file to write output",
+      "default": "",
+      "example": "dnsx -output <string>"
+    },
+    {
+      "name": "-json",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "write output in JSONL(ines) format",
+      "default": "",
+      "example": "dnsx -json"
+    },
+    {
+      "name": "-omit-raw",
+      "short": "",
+      "aliases": [
+        "-or"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "omit raw dns response from jsonl output",
+      "default": "",
+      "example": "dnsx -omit-raw"
+    },
+    {
+      "name": "-output-template",
+      "short": "",
+      "aliases": [
+        "-ot"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "custom output template (e.g. -ot '{{host}} {{a}}')",
+      "default": "",
+      "example": "dnsx -output-template <string>"
+    },
+    {
+      "name": "-health-check",
+      "short": "",
+      "aliases": [
+        "-hc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "run diagnostic check up",
+      "default": "",
+      "example": "dnsx -health-check"
+    },
+    {
+      "name": "-silent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display only results in the output",
+      "default": "",
+      "example": "dnsx -silent"
+    },
+    {
+      "name": "-verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display verbose output",
+      "default": "",
+      "example": "dnsx -verbose"
+    },
+    {
+      "name": "-debug",
+      "short": "",
+      "aliases": [
+        "-raw"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "display raw dns response",
+      "default": "",
+      "example": "dnsx -debug"
+    },
+    {
+      "name": "-stats",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display stats of the running scan",
+      "default": "",
+      "example": "dnsx -stats"
+    },
+    {
+      "name": "-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display version of dnsx",
+      "default": "",
+      "example": "dnsx -version"
+    },
+    {
+      "name": "-no-color",
+      "short": "",
+      "aliases": [
+        "-nc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable color in output",
+      "default": "",
+      "example": "dnsx -no-color"
+    },
+    {
+      "name": "-retry",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "number of dns attempts to make (must be at least 1) (default 2)",
+      "default": "2",
+      "example": "dnsx -retry <int>"
+    },
+    {
+      "name": "-hostsfile",
+      "short": "",
+      "aliases": [
+        "-hf"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "use system host file",
+      "default": "",
+      "example": "dnsx -hostsfile"
+    },
+    {
+      "name": "-trace",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "perform dns tracing",
+      "default": "",
+      "example": "dnsx -trace"
+    },
+    {
+      "name": "-trace-max-recursion",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Max recursion for dns trace (default 255)",
+      "default": "255",
+      "example": "dnsx -trace-max-recursion <int>"
+    },
+    {
+      "name": "-resume",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "resume existing scan",
+      "default": "",
+      "example": "dnsx -resume"
+    },
+    {
+      "name": "-stream",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "stream mode (wordlist, wildcard, stats and stop/resume will be disabled)",
+      "default": "",
+      "example": "dnsx -stream"
+    },
+    {
+      "name": "-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "value",
+      "required": false,
+      "description": "maximum time to wait for a DNS query to complete (default 3s)",
+      "default": "3s",
+      "example": "dnsx -timeout <value>"
+    },
+    {
+      "name": "-auth",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "configure ProjectDiscovery Cloud Platform (PDCP) api key (default true)",
+      "default": "true",
+      "example": "dnsx -auth"
+    },
+    {
+      "name": "-resolver",
+      "short": "-r",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "list of resolvers to use (file or comma separated)",
+      "default": "",
+      "example": "dnsx -resolver <string>"
+    },
+    {
+      "name": "-wildcard-threshold",
+      "short": "",
+      "aliases": [
+        "-wt"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "wildcard filter threshold (default 5)",
+      "default": "5",
+      "example": "dnsx -wildcard-threshold <int>"
+    },
+    {
+      "name": "-auto-wildcard",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "automatically detect wildcard domains for filtering",
+      "default": "",
+      "example": "dnsx -auto-wildcard"
+    },
+    {
+      "name": "-wildcard-domain",
+      "short": "",
+      "aliases": [
+        "-wd"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "domain name for manual wildcard filtering (mutually exclusive with -auto-wildcard; other flags will be ignored - json output recommended)",
+      "default": "",
+      "example": "dnsx -wildcard-domain <string>"
+    },
+    {
+      "name": "-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "proxy to use (eg socks5://127.0.0.1:8080)",
+      "default": "",
+      "example": "dnsx -proxy <string>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "echo <example.com> | dnsx -a -resp",
+      "explanation": "Query the A record of a (sub)domain and show [re]sponse received",
+      "source": "tldr:dnsx"
+    },
+    {
+      "cmd": "dnsx <<< <example.com> -recon -resp",
+      "explanation": "Query all the DNS records (A, AAAA, CNAME, NS, TXT, SRV, PTR, MX, SOA, AXFR, CAA)",
+      "source": "tldr:dnsx"
+    },
+    {
+      "cmd": "echo <example.com> | dnsx -resp -<a|aaaa|cname|ns|txt|srv|ptr|mx|soa|any|axfr|caa>",
+      "explanation": "Query a specific type of DNS record",
+      "source": "tldr:dnsx"
+    },
+    {
+      "cmd": "echo <example.com> | dnsx -resp-only",
+      "explanation": "Output response only (do not show the queried domain or subdomain)",
+      "source": "tldr:dnsx"
+    },
+    {
+      "cmd": "echo <example.com> | dnsx -<debug|raw> -resolver <1.1.1.1,8.8.8.8,...> -retry <number>",
+      "explanation": "Display raw response of a query, specifying resolvers to use and retry attempts for failures",
+      "source": "tldr:dnsx"
+    },
+    {
+      "cmd": "dnsx -domain <FUZZ.example.com> -wordlist <path/to/wordlist.txt> -resp",
+      "explanation": "Brute force DNS records using a placeholder",
+      "source": "tldr:dnsx"
+    },
+    {
+      "cmd": "dnsx -domain <path/to/domain.txt> -wordlist <path/to/wordlist.txt> -resp -output <path/to/output.txt> -no-color",
+      "explanation": "Brute force DNS records from a list of domains and wordlists, appending output to a file with no color codes",
+      "source": "tldr:dnsx"
+    },
+    {
+      "cmd": "subfinder -silent -domain <example.com> | dnsx -cname -resp -rate-limit <number>",
+      "explanation": "Extract `CNAME` records for the given list of subdomains, with rate limiting DNS queries per second",
+      "source": "tldr:dnsx"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/dnsx.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

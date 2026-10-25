@@ -1,0 +1,56 @@
+{
+  "id": "maigret",
+  "name": "maigret",
+  "schema_version": 1,
+  "summary": "OSINT username checker. Collect a dossier on a person by username from a huge number of sites.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "maigret <username1 username2 ...>",
+      "explanation": "Search for accounts using one or more usernames from the Maigret database",
+      "source": "tldr:maigret"
+    },
+    {
+      "cmd": "maigret <username> <--txt|--csv|--html|--xmind|--pdf|--graph|--json simple|--json ndjson>",
+      "explanation": "Search for accounts and generate reports in various formats",
+      "source": "tldr:maigret"
+    },
+    {
+      "cmd": "maigret <username> --proxy <socks5://127.0.0.1:9050|http://127.0.0.1:8080>",
+      "explanation": "Proxy search requests through a proxy",
+      "source": "tldr:maigret"
+    },
+    {
+      "cmd": "maigret --web <5000>",
+      "explanation": "Launch Maigret Web Interface (default port `5000`)",
+      "source": "tldr:maigret"
+    },
+    {
+      "cmd": "maigret <username> --top-sites <500>",
+      "explanation": "Limit search to a certain number of top-ranked sites from the Maigret database",
+      "source": "tldr:maigret"
+    },
+    {
+      "cmd": "maigret <username> --all-sites",
+      "explanation": "Search all available sites in the Maigret database",
+      "source": "tldr:maigret"
+    },
+    {
+      "cmd": "maigret <username> --site <twitter> --site <github>",
+      "explanation": "Search for accounts on specific sites only (useful for targeted or faster searches)",
+      "source": "tldr:maigret"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/maigret.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

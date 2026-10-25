@@ -1,0 +1,36 @@
+{
+  "id": "apkleaks",
+  "name": "apkleaks",
+  "schema_version": 1,
+  "summary": "Scanning APK file for URIs, endpoints & secrets.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "apkleaks --file <path/to/file>.apk",
+      "explanation": "Scan an APK file for URIs, endpoints, and secrets",
+      "source": "tldr:apkleaks"
+    },
+    {
+      "cmd": "apkleaks --file <path/to/file>.apk --output <path/to/output.txt>",
+      "explanation": "Scan and save the output to a specific file",
+      "source": "tldr:apkleaks"
+    },
+    {
+      "cmd": "apkleaks --file <path/to/file>.apk --args \"<--threads-count 5 --deobf>\"",
+      "explanation": "Pass `jadx` disassembler arguments",
+      "source": "tldr:apkleaks"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/apkleaks.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

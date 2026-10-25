@@ -1,0 +1,556 @@
+{
+  "id": "sstimap",
+  "name": "sstimap",
+  "schema_version": 1,
+  "summary": "Automatic SSTI detection tool with interactive interface.",
+  "highlights": [
+    "--module — Provide information about the module ('list' to show all modules)",
+    "--config — Use custom config file or directory",
+    "--no-color — Disable color in output",
+    "-u — Target URL (e.g. 'https://example.com/?name=test')",
+    "-i — Run SSTImap in interactive mode",
+    "--load-urls — File or directory to load URLs from (use '-' for STDIN)",
+    "--load-forms — File or directory to load forms from (use '-' for STDIN)",
+    "--load-vuln — File or directory to load vulnerability from (use '-' for STDIN)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sstimap"
+    }
+  ],
+  "usage": "sstimap.py [-h] [-V] [--module MODULE] [--config CONFIG] [--no-color]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "sstimap --help"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show program's version number and exit",
+      "default": "",
+      "example": "sstimap --version"
+    },
+    {
+      "name": "--module",
+      "short": "",
+      "aliases": [],
+      "arg": "MODULE",
+      "required": false,
+      "description": "Provide information about the module ('list' to show all modules)",
+      "default": "",
+      "example": "sstimap --module <module>"
+    },
+    {
+      "name": "--config",
+      "short": "",
+      "aliases": [],
+      "arg": "CONFIG",
+      "required": false,
+      "description": "Use custom config file or directory",
+      "default": "",
+      "example": "sstimap --config <config>"
+    },
+    {
+      "name": "--no-color",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable color in output",
+      "default": "",
+      "example": "sstimap --no-color"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Target URL (e.g. 'https://example.com/?name=test')",
+      "default": "",
+      "example": "sstimap --url <url>"
+    },
+    {
+      "name": "--interactive",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run SSTImap in interactive mode",
+      "default": "",
+      "example": "sstimap --interactive"
+    },
+    {
+      "name": "--load-urls",
+      "short": "",
+      "aliases": [],
+      "arg": "LOAD_URLS",
+      "required": false,
+      "description": "File or directory to load URLs from (use '-' for STDIN)",
+      "default": "",
+      "example": "sstimap --load-urls <load_urls>"
+    },
+    {
+      "name": "--load-forms",
+      "short": "",
+      "aliases": [],
+      "arg": "LOAD_FORMS",
+      "required": false,
+      "description": "File or directory to load forms from (use '-' for STDIN)",
+      "default": "",
+      "example": "sstimap --load-forms <load_forms>"
+    },
+    {
+      "name": "--load-vuln",
+      "short": "",
+      "aliases": [],
+      "arg": "LOAD_VULN",
+      "required": false,
+      "description": "File or directory to load vulnerability from (use '-' for STDIN)",
+      "default": "",
+      "example": "sstimap --load-vuln <load_vuln>"
+    },
+    {
+      "name": "--save-vuln",
+      "short": "",
+      "aliases": [],
+      "arg": "SAVE_VULN",
+      "required": false,
+      "description": "File or directory to save detected vulnerability to",
+      "default": "",
+      "example": "sstimap --save-vuln <save_vuln>"
+    },
+    {
+      "name": "--marker",
+      "short": "-M",
+      "aliases": [],
+      "arg": "MARKER",
+      "required": false,
+      "description": "Use string as injection marker (default '*')",
+      "default": "*",
+      "example": "sstimap --marker <marker>"
+    },
+    {
+      "name": "--injection-points",
+      "short": "-P",
+      "aliases": [],
+      "arg": "INJECTION_POINTS",
+      "required": false,
+      "description": "Injection points to test without markers: Q(uery) B(ody) H(eaders) C(ookies). Default: QBHC",
+      "default": "",
+      "example": "sstimap --injection-points <injection_points>"
+    },
+    {
+      "name": "--data",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DATA",
+      "required": false,
+      "description": "Request body data param to send (e.g. 'param=value') [Stackable]",
+      "default": "",
+      "example": "sstimap --data <data>"
+    },
+    {
+      "name": "--data-type",
+      "short": "",
+      "aliases": [],
+      "arg": "DATA_TYPE",
+      "required": false,
+      "description": "Request body data type (default 'auto')",
+      "default": "auto",
+      "example": "sstimap --data-type <data_type>"
+    },
+    {
+      "name": "--header",
+      "short": "-H",
+      "aliases": [],
+      "arg": "HEADER",
+      "required": false,
+      "description": "Header to send (e.g. 'Header: Value') [Stackable]",
+      "default": "",
+      "example": "sstimap --header <header>"
+    },
+    {
+      "name": "--cookie",
+      "short": "-C",
+      "aliases": [],
+      "arg": "COOKIE",
+      "required": false,
+      "description": "Cookie to send (e.g. 'Field=Value') [Stackable]",
+      "default": "",
+      "example": "sstimap --cookie <cookie>"
+    },
+    {
+      "name": "--method",
+      "short": "-m",
+      "aliases": [],
+      "arg": "METHOD",
+      "required": false,
+      "description": "HTTP method to use (default 'GET')",
+      "default": "GET",
+      "example": "sstimap --method <method>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "-a",
+      "aliases": [],
+      "arg": "USER_AGENT",
+      "required": false,
+      "description": "User-Agent header value to use",
+      "default": "",
+      "example": "sstimap --user-agent <user_agent>"
+    },
+    {
+      "name": "--random-user-agent",
+      "short": "-A",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Random User-Agent header value from a list of desktop browsers on every request",
+      "default": "",
+      "example": "sstimap --random-user-agent"
+    },
+    {
+      "name": "--delay",
+      "short": "",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "Delay between requests (Default/0: no delay)",
+      "default": "/0: no delay",
+      "example": "sstimap --delay <delay>"
+    },
+    {
+      "name": "--proxy",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "Use a proxy to connect to the target URL",
+      "default": "",
+      "example": "sstimap --proxy <proxy>"
+    },
+    {
+      "name": "--verify-ssl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verify SSL certificates (not verified by default)",
+      "default": "",
+      "example": "sstimap --verify-ssl"
+    },
+    {
+      "name": "--log-response",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Include HTTP responses into ~/.sstimap/sstimap.log",
+      "default": "",
+      "example": "sstimap --log-response"
+    },
+    {
+      "name": "--crawl",
+      "short": "-c",
+      "aliases": [],
+      "arg": "CRAWL_DEPTH",
+      "required": false,
+      "description": "Depth to crawl (default/0: don't crawl)",
+      "default": "/0: don't crawl",
+      "example": "sstimap --crawl <crawl_depth>"
+    },
+    {
+      "name": "--forms",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Scan page(s) for forms",
+      "default": "",
+      "example": "sstimap --forms"
+    },
+    {
+      "name": "--empty-forms",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Treat pages without params as GET forms",
+      "default": "",
+      "example": "sstimap --empty-forms"
+    },
+    {
+      "name": "--crawl-exclude",
+      "short": "",
+      "aliases": [],
+      "arg": "CRAWL_EXCLUDE",
+      "required": false,
+      "description": "RegEx in URLs to not crawl",
+      "default": "",
+      "example": "sstimap --crawl-exclude <crawl_exclude>"
+    },
+    {
+      "name": "--crawl-domains",
+      "short": "",
+      "aliases": [],
+      "arg": "CRAWL_DOMAINS",
+      "required": false,
+      "description": "Crawl other domains: Y(es) / S(ubdomains) / N(o). Default: S",
+      "default": "",
+      "example": "sstimap --crawl-domains <crawl_domains>"
+    },
+    {
+      "name": "--save-urls",
+      "short": "",
+      "aliases": [],
+      "arg": "SAVE_URLS",
+      "required": false,
+      "description": "File or directory to save crawled URLs to",
+      "default": "",
+      "example": "sstimap --save-urls <save_urls>"
+    },
+    {
+      "name": "--save-forms",
+      "short": "",
+      "aliases": [],
+      "arg": "SAVE_FORMS",
+      "required": false,
+      "description": "File or directory to save crawled forms to",
+      "default": "",
+      "example": "sstimap --save-forms <save_forms>"
+    },
+    {
+      "name": "--level",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Level of escaping to perform (1-5, Default: 1)",
+      "default": "",
+      "example": "sstimap --level <level>"
+    },
+    {
+      "name": "--engine",
+      "short": "-e",
+      "aliases": [],
+      "arg": "ENGINE",
+      "required": false,
+      "description": "Comma-separated list of template engines to test: [language:[variant:]][category/]engine,... For all, use '*'",
+      "default": "",
+      "example": "sstimap --engine <engine>"
+    },
+    {
+      "name": "--technique",
+      "short": "-r",
+      "aliases": [],
+      "arg": "TECHNIQUE",
+      "required": false,
+      "description": "Techniques: R(endered) E(rror-based) B(oolean error- based blind) T(ime-based blind). Default: REBT",
+      "default": "",
+      "example": "sstimap --technique <technique>"
+    },
+    {
+      "name": "--bool-ok",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOLEAN_REGEX_OK",
+      "required": false,
+      "description": "RegEx to match when boolean error-based blind payload evaluates correctly",
+      "default": "",
+      "example": "sstimap --bool-ok <boolean_regex_ok>"
+    },
+    {
+      "name": "--bool-err",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOLEAN_REGEX_ERR",
+      "required": false,
+      "description": "RegEx to match when boolean error-based blind payload causes an error",
+      "default": "",
+      "example": "sstimap --bool-err <boolean_regex_err>"
+    },
+    {
+      "name": "--bool-match",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOLEAN_MATCH",
+      "required": false,
+      "description": "Comma-separated list of matching params or 'all'. Default: code,header_count,cookie_count,byte_len,body_ len,body_words,body_lines,encoding,redirects,time,url, content_type,server",
+      "default": "",
+      "example": "sstimap --bool-match <boolean_match>"
+    },
+    {
+      "name": "--bool-match-min",
+      "short": "",
+      "aliases": [],
+      "arg": "BOOLEAN_MATCH_MIN",
+      "required": false,
+      "description": "Minimum amount of usable params for matching. Default: 7",
+      "default": "",
+      "example": "sstimap --bool-match-min <boolean_match_min>"
+    },
+    {
+      "name": "--blind-delay",
+      "short": "",
+      "aliases": [],
+      "arg": "TIME_BASED_BLIND_DELAY",
+      "required": false,
+      "description": "Delay to detect time-based blind injection (Default: 4 seconds)",
+      "default": "4 seconds",
+      "example": "sstimap --blind-delay <time_based_blind_delay>"
+    },
+    {
+      "name": "--verify-blind-delay",
+      "short": "",
+      "aliases": [],
+      "arg": "TIME_BASED_VERIFY_BLIND_DELAY",
+      "required": false,
+      "description": "Delay to verify and exploit time-based blind injection (Default: 30 seconds)",
+      "default": "30 seconds",
+      "example": "sstimap --verify-blind-delay <time_based_verify_blind_delay>"
+    },
+    {
+      "name": "--legacy",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Include old payloads, that no longer work with newer versions of the engines",
+      "default": "",
+      "example": "sstimap --legacy"
+    },
+    {
+      "name": "--generic",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Try dedicated payloads for generic engines, detecting more context.",
+      "default": "",
+      "example": "sstimap --generic"
+    },
+    {
+      "name": "--run",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run detection at the start of SSTImap in interactive mode.",
+      "default": "",
+      "example": "sstimap --run"
+    },
+    {
+      "name": "--tpl-shell",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prompt for an interactive shell on the template engine",
+      "default": "",
+      "example": "sstimap --tpl-shell"
+    },
+    {
+      "name": "--tpl-code",
+      "short": "-T",
+      "aliases": [],
+      "arg": "TPL_CODE",
+      "required": false,
+      "description": "Inject code in the template engine",
+      "default": "",
+      "example": "sstimap --tpl-code <tpl_code>"
+    },
+    {
+      "name": "--eval-shell",
+      "short": "-x",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prompt for an interactive shell on the template engine base language",
+      "default": "",
+      "example": "sstimap --eval-shell"
+    },
+    {
+      "name": "--eval-code",
+      "short": "-X",
+      "aliases": [],
+      "arg": "EVAL_CODE",
+      "required": false,
+      "description": "Evaluate code in the template engine base language",
+      "default": "",
+      "example": "sstimap --eval-code <eval_code>"
+    },
+    {
+      "name": "--os-shell",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prompt for an interactive operating system shell",
+      "default": "",
+      "example": "sstimap --os-shell"
+    },
+    {
+      "name": "--os-cmd",
+      "short": "-S",
+      "aliases": [],
+      "arg": "OS_CMD",
+      "required": false,
+      "description": "Execute an operating system command",
+      "default": "",
+      "example": "sstimap --os-cmd <os_cmd>"
+    },
+    {
+      "name": "--bind-shell",
+      "short": "-B",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "Spawn a system shell on a TCP PORT of the target and connect to it",
+      "default": "",
+      "example": "sstimap --bind-shell <port>"
+    },
+    {
+      "name": "--remote-shell",
+      "short": "",
+      "aliases": [],
+      "arg": "REMOTE_SHELL",
+      "required": false,
+      "description": "Expected system shell on the target (default '/bin/sh')",
+      "default": "/bin/sh",
+      "example": "sstimap --remote-shell <remote_shell>"
+    },
+    {
+      "name": "--force-overwrite",
+      "short": "-F",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force file overwrite when uploading",
+      "default": "",
+      "example": "sstimap --force-overwrite"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

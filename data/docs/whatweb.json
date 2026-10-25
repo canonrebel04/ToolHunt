@@ -1,0 +1,595 @@
+{
+  "id": "whatweb",
+  "name": "whatweb",
+  "schema_version": 1,
+  "summary": "Next generation web scanner that identifies what websites are running.",
+  "highlights": [
+    "-i — Read targets from a file. You can pipe hostnames or URLs directly with -i /dev/stdin.",
+    "--url-prefix — Add a prefix to target URLs.",
+    "--url-suffix — Add a suffix to target URLs.",
+    "--url-pattern — Insert the targets into a URL. e.g. example.com/%insert%/robots.txt",
+    "-a — Set the aggression level. Default: 1.",
+    "-U — Identify as AGENT instead of WhatWeb/0.6.4.",
+    "-H — Add an HTTP header. eg \"Foo:Bar\". Specifying a default header will replace it. Specifying ",
+    "--follow-redirect — Control when to follow redirects. WHEN may be `never', `http-only', `meta-only', `same-sit"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install whatweb"
+    }
+  ],
+  "usage": "whatweb [options] <URLs>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--input-file",
+      "short": "-i",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Read targets from a file. You can pipe hostnames or URLs directly with -i /dev/stdin.",
+      "default": "",
+      "example": "whatweb --input-file <file>"
+    },
+    {
+      "name": "--url-prefix",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Add a prefix to target URLs.",
+      "default": "",
+      "example": "whatweb --url-prefix"
+    },
+    {
+      "name": "--url-suffix",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Add a suffix to target URLs.",
+      "default": "",
+      "example": "whatweb --url-suffix"
+    },
+    {
+      "name": "--url-pattern",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Insert the targets into a URL. e.g. example.com/%insert%/robots.txt",
+      "default": "",
+      "example": "whatweb --url-pattern"
+    },
+    {
+      "name": "--aggression",
+      "short": "-a",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Set the aggression level. Default: 1.",
+      "default": "",
+      "example": "whatweb --aggression <level>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "-U",
+      "aliases": [],
+      "arg": "AGENT",
+      "required": false,
+      "description": "Identify as AGENT instead of WhatWeb/0.6.4.",
+      "default": "",
+      "example": "whatweb --user-agent <agent>"
+    },
+    {
+      "name": "--header",
+      "short": "-H",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Add an HTTP header. eg \"Foo:Bar\". Specifying a default header will replace it. Specifying an empty value, e.g. \"User-Agent:\" will remove it.",
+      "default": "",
+      "example": "whatweb --header"
+    },
+    {
+      "name": "--follow-redirect",
+      "short": "",
+      "aliases": [],
+      "arg": "WHEN",
+      "required": false,
+      "description": "Control when to follow redirects. WHEN may be `never', `http-only', `meta-only', `same-site', or `always'. Default: always.",
+      "default": "",
+      "example": "whatweb --follow-redirect <when>"
+    },
+    {
+      "name": "--max-redirects",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Maximum number of redirects. Default: 10.",
+      "default": "",
+      "example": "whatweb --max-redirects <num>"
+    },
+    {
+      "name": "--user",
+      "short": "-u",
+      "aliases": [],
+      "arg": "<user:password>",
+      "required": false,
+      "description": "HTTP basic authentication.",
+      "default": "",
+      "example": "whatweb --user <user:password>"
+    },
+    {
+      "name": "--cookie",
+      "short": "-c",
+      "aliases": [],
+      "arg": "COOKIES",
+      "required": false,
+      "description": "Use cookies, e.g. 'name=value; name2=value2'.",
+      "default": "",
+      "example": "whatweb --cookie <cookies>"
+    },
+    {
+      "name": "--cookie-jar",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Read cookies from a file and save cookies to the same file. Creates the file if it doesn't exist.",
+      "default": "",
+      "example": "whatweb --cookie-jar <file>"
+    },
+    {
+      "name": "--no-cookies",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable automatic cookie handling (improves performance with high thread counts).",
+      "default": "",
+      "example": "whatweb --no-cookies"
+    },
+    {
+      "name": "--proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<hostname[:port]> Set proxy hostname and port. Default: 8080.",
+      "default": "",
+      "example": "whatweb --proxy"
+    },
+    {
+      "name": "--proxy-user",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<username:password> Set proxy user and password.",
+      "default": "",
+      "example": "whatweb --proxy-user"
+    },
+    {
+      "name": "--list-plugins",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List all plugins.",
+      "default": "",
+      "example": "whatweb --list-plugins"
+    },
+    {
+      "name": "--info-plugins",
+      "short": "-I",
+      "aliases": [],
+      "arg": "[SEARCH]",
+      "required": false,
+      "description": "List all plugins with detailed information. Optionally search with keywords in a comma delimited list.",
+      "default": "",
+      "example": "whatweb --info-plugins <search>"
+    },
+    {
+      "name": "--search-plugins",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "Search plugins for a keyword.",
+      "default": "",
+      "example": "whatweb --search-plugins <string>"
+    },
+    {
+      "name": "--plugins",
+      "short": "-p",
+      "aliases": [],
+      "arg": "LIST",
+      "required": false,
+      "description": "Select plugins. LIST is a comma delimited set of selected plugins. Default is all. Each element can be a directory, file or plugin name and can optionally have a modifier, +/-. Examples: +/tmp/moo.rb,+/tmp/foo.rb title,md5,+./plugins-disabled/ ./plugins-disabled,-md5 -p + is a shortcut for -p +plugins-disabled.",
+      "default": "",
+      "example": "whatweb --plugins <list>"
+    },
+    {
+      "name": "--custom-plugin",
+      "short": "",
+      "aliases": [],
+      "arg": "DEFINITION",
+      "required": false,
+      "description": "Define a custom plugin named Custom-Plugin, Examples: \":text=>'powered by abc'\" \":version=>/powered[ ]?by ab[0-9]/\" \":ghdb=>'intitle:abc \\\"powered by abc\\\"'\" \":md5=>'8666257030b94d3bdb46e05945f60b42'\" \"{:text=>'powered by abc'}\"",
+      "default": "",
+      "example": "whatweb --custom-plugin <definition>"
+    },
+    {
+      "name": "--dorks",
+      "short": "",
+      "aliases": [],
+      "arg": "PLUGIN",
+      "required": false,
+      "description": "List Google dorks for the selected plugin.",
+      "default": "",
+      "example": "whatweb --dorks <plugin>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose output includes plugin descriptions. Use twice for debugging.",
+      "default": "",
+      "example": "whatweb --verbose"
+    },
+    {
+      "name": "--colour",
+      "short": "",
+      "aliases": [
+        "--color"
+      ],
+      "arg": "WHEN",
+      "required": false,
+      "description": "control whether colour is used. WHEN may be `never', `always', or `auto'.",
+      "default": "",
+      "example": "whatweb --colour <when>"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not display brief logging to STDOUT.",
+      "default": "",
+      "example": "whatweb --quiet"
+    },
+    {
+      "name": "--no-errors",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Suppress error messages.",
+      "default": "",
+      "example": "whatweb --no-errors"
+    },
+    {
+      "name": "--log-brief",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Log brief, one-line output.",
+      "default": "",
+      "example": "whatweb --log-brief <file>"
+    },
+    {
+      "name": "--log-verbose",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Log verbose output.",
+      "default": "",
+      "example": "whatweb --log-verbose <file>"
+    },
+    {
+      "name": "--log-errors",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Log errors.",
+      "default": "",
+      "example": "whatweb --log-errors <file>"
+    },
+    {
+      "name": "--log-xml",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Log XML format.",
+      "default": "",
+      "example": "whatweb --log-xml <file>"
+    },
+    {
+      "name": "--log-json",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Log JSON format.",
+      "default": "",
+      "example": "whatweb --log-json <file>"
+    },
+    {
+      "name": "--log-sql",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Log SQL INSERT statements.",
+      "default": "",
+      "example": "whatweb --log-sql <file>"
+    },
+    {
+      "name": "--log-sql-create",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Create SQL database tables.",
+      "default": "",
+      "example": "whatweb --log-sql-create <file>"
+    },
+    {
+      "name": "--log-json-verbose",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Log JSON Verbose format.",
+      "default": "",
+      "example": "whatweb --log-json-verbose <file>"
+    },
+    {
+      "name": "--log-magictree",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Log MagicTree XML format.",
+      "default": "",
+      "example": "whatweb --log-magictree <file>"
+    },
+    {
+      "name": "--log-object",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Log Ruby object inspection format.",
+      "default": "",
+      "example": "whatweb --log-object <file>"
+    },
+    {
+      "name": "--log-mongo-database",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Name of the MongoDB database.",
+      "default": "",
+      "example": "whatweb --log-mongo-database"
+    },
+    {
+      "name": "--log-mongo-collection",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Name of the MongoDB collection. Default: whatweb.",
+      "default": "",
+      "example": "whatweb --log-mongo-collection"
+    },
+    {
+      "name": "--log-mongo-host",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "MongoDB hostname or IP address. Default: 0.0.0.0.",
+      "default": "",
+      "example": "whatweb --log-mongo-host"
+    },
+    {
+      "name": "--log-mongo-username",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "MongoDB username. Default: nil.",
+      "default": "",
+      "example": "whatweb --log-mongo-username"
+    },
+    {
+      "name": "--log-mongo-password",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "MongoDB password. Default: nil.",
+      "default": "",
+      "example": "whatweb --log-mongo-password"
+    },
+    {
+      "name": "--log-elastic-index",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Name of the index to store results. Default: whatweb",
+      "default": "",
+      "example": "whatweb --log-elastic-index"
+    },
+    {
+      "name": "--log-elastic-host",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Host:port of the elastic http interface. Default: 127.0.0.1:9200",
+      "default": "",
+      "example": "whatweb --log-elastic-host"
+    },
+    {
+      "name": "--max-threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Number of simultaneous threads. Default: 25.",
+      "default": "",
+      "example": "whatweb --max-threads"
+    },
+    {
+      "name": "--open-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Time in seconds. Default: 15.",
+      "default": "",
+      "example": "whatweb --open-timeout"
+    },
+    {
+      "name": "--read-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Time in seconds. Default: 30.",
+      "default": "",
+      "example": "whatweb --read-timeout"
+    },
+    {
+      "name": "--wait",
+      "short": "",
+      "aliases": [],
+      "arg": "SECONDS",
+      "required": false,
+      "description": "Wait SECONDS between connections. This is useful when using a single thread.",
+      "default": "",
+      "example": "whatweb --wait <seconds>"
+    },
+    {
+      "name": "--output-sync",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force immediate output flushing for real-time monitoring (slower with high thread counts).",
+      "default": "",
+      "example": "whatweb --output-sync"
+    },
+    {
+      "name": "--output-buffer-size",
+      "short": "",
+      "aliases": [],
+      "arg": "SIZE",
+      "required": false,
+      "description": "Set output buffer size. 0=unbuffered, default=auto based on thread count.",
+      "default": "",
+      "example": "whatweb --output-buffer-size <size>"
+    },
+    {
+      "name": "--short-help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Short usage help.",
+      "default": "",
+      "example": "whatweb --short-help"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Complete usage help.",
+      "default": "",
+      "example": "whatweb --help"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Raise errors in plugins.",
+      "default": "",
+      "example": "whatweb --debug"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display version information.",
+      "default": "",
+      "example": "whatweb --version"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "whatweb <website1 website2 ...>",
+      "explanation": "Scan websites/targets for web technologies",
+      "source": "tldr:whatweb"
+    },
+    {
+      "cmd": "whatweb --input-file <targets_file>",
+      "explanation": "Read targets/websites from a file",
+      "source": "tldr:whatweb"
+    },
+    {
+      "cmd": "whatweb --verbose <example.com>",
+      "explanation": "Scan a website/target in verbose mode",
+      "source": "tldr:whatweb"
+    },
+    {
+      "cmd": "whatweb --aggression 3 <example.com>",
+      "explanation": "Run an aggressive scan on a website",
+      "source": "tldr:whatweb"
+    },
+    {
+      "cmd": "whatweb --no-errors <192.168.0.0/24>",
+      "explanation": "Scan a network and suppress errors",
+      "source": "tldr:whatweb"
+    },
+    {
+      "cmd": "whatweb --list-plugins",
+      "explanation": "List plugins",
+      "source": "tldr:whatweb"
+    },
+    {
+      "cmd": "whatweb --info-plugins <plugin_name>",
+      "explanation": "List plugin details",
+      "source": "tldr:whatweb"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/whatweb.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

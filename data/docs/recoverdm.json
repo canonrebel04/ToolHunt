@@ -1,0 +1,26 @@
+{
+  "id": "recoverdm",
+  "name": "recoverdm",
+  "schema_version": 1,
+  "summary": "Recover damaged CD DVD and disks with bad sectors.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install recoverdm"
+    }
+  ],
+  "usage": "recoverdm -t <type> -i <file/device-in> -o <fileout> [-l <sectorsfile>] [-n # retries]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

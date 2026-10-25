@@ -1,0 +1,46 @@
+{
+  "id": "httpry",
+  "name": "httpry",
+  "schema_version": 1,
+  "summary": "A specialized packet sniffer designed for displaying and logging HTTP traffic.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "httpry -o <path/to/file.log>",
+      "explanation": "Save output to a file",
+      "source": "tldr:httpry"
+    },
+    {
+      "cmd": "httpry <eth0> -b <path/to/file.pcap>",
+      "explanation": "Listen on a specific interface and save output to a binary PCAP format file",
+      "source": "tldr:httpry"
+    },
+    {
+      "cmd": "httpry -m <get|post|put|head|options|delete|trace|connect|patch>",
+      "explanation": "Filter output by a comma-separated list of HTTP verbs",
+      "source": "tldr:httpry"
+    },
+    {
+      "cmd": "httpry -r <path/to/file.log> '<host 192.168.5.25>'",
+      "explanation": "Read from an input capture file and filter by IP",
+      "source": "tldr:httpry"
+    },
+    {
+      "cmd": "httpry -d -o <path/to/file.log>",
+      "explanation": "Run as daemon process",
+      "source": "tldr:httpry"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/httpry.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

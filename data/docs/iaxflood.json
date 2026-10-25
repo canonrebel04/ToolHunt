@@ -1,0 +1,26 @@
+{
+  "id": "iaxflood",
+  "name": "iaxflood",
+  "schema_version": 1,
+  "summary": "IAX flooder.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install iaxflood"
+    }
+  ],
+  "usage": "iaxflood sourcename destinationname numpackets",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

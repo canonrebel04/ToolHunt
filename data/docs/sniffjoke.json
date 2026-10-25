@@ -1,0 +1,196 @@
+{
+  "id": "sniffjoke",
+  "name": "sniffjoke",
+  "schema_version": 1,
+  "summary": "Injects packets in the transmission flow that are able to seriously disturb passive analysis like sniffing, interception and low level information theft.",
+  "highlights": [
+    "--location — specify the network environment (suggested) [default: generic]",
+    "--dir — specify the base directory where the location reside [default: /usr/local/var/sniffjoke/] ",
+    "--user — downgrade priviledge to the specified user [default: nobody]",
+    "--group — downgrade priviledge to the specified group [default: nogroup]",
+    "--no-tcp — disable tcp mangling [default: tcp mangled]",
+    "--no-udp — disable udp mangling [default: udp mangled]",
+    "--whitelist — inject evasion packets only in the specified ip addresses",
+    "--blacklist — inject evasion packet in all session excluding the blacklisted ip address"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sniffjoke"
+    }
+  ],
+  "usage": "sniffjoke [OPTION]... :",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--location",
+      "short": "",
+      "aliases": [],
+      "arg": "<name>",
+      "required": false,
+      "description": "specify the network environment (suggested) [default: generic]",
+      "default": "generic",
+      "example": "sniffjoke --location <name>"
+    },
+    {
+      "name": "--dir",
+      "short": "",
+      "aliases": [],
+      "arg": "<name>",
+      "required": false,
+      "description": "specify the base directory where the location reside [default: /usr/local/var/sniffjoke/] [using both location and dir defaults, the configuration status will not be saved]",
+      "default": "/usr/local/var/sniffjoke/",
+      "example": "sniffjoke --dir <name>"
+    },
+    {
+      "name": "--user",
+      "short": "",
+      "aliases": [],
+      "arg": "<username>",
+      "required": false,
+      "description": "downgrade priviledge to the specified user [default: nobody]",
+      "default": "nobody",
+      "example": "sniffjoke --user <username>"
+    },
+    {
+      "name": "--group",
+      "short": "",
+      "aliases": [],
+      "arg": "<groupname>",
+      "required": false,
+      "description": "downgrade priviledge to the specified group [default: nogroup]",
+      "default": "nogroup",
+      "example": "sniffjoke --group <groupname>"
+    },
+    {
+      "name": "--no-tcp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable tcp mangling [default: tcp mangled]",
+      "default": "tcp mangled",
+      "example": "sniffjoke --no-tcp"
+    },
+    {
+      "name": "--no-udp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable udp mangling [default: udp mangled]",
+      "default": "udp mangled",
+      "example": "sniffjoke --no-udp"
+    },
+    {
+      "name": "--whitelist",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "inject evasion packets only in the specified ip addresses",
+      "default": "",
+      "example": "sniffjoke --whitelist"
+    },
+    {
+      "name": "--blacklist",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "inject evasion packet in all session excluding the blacklisted ip address",
+      "default": "",
+      "example": "sniffjoke --blacklist"
+    },
+    {
+      "name": "--start",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "if present, evasion i'ts activated immediatly [default: not present]",
+      "default": "not present",
+      "example": "sniffjoke --start"
+    },
+    {
+      "name": "--chain",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable chained hacking, powerful and entropic effects [default: disabled]",
+      "default": "disabled",
+      "example": "sniffjoke --chain"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "<level 0-5>",
+      "required": false,
+      "description": "set verbosity level [default: 2] 0: suppress log, 1: common, 2: verbose, 3: debug, 4: session 5: packets",
+      "default": "2",
+      "example": "sniffjoke --debug <level 0-5>"
+    },
+    {
+      "name": "--foreground",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "running in foreground [default:background]",
+      "default": "background",
+      "example": "sniffjoke --foreground"
+    },
+    {
+      "name": "--force",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "force restart (usable when another sniffjoke service is running)",
+      "default": "",
+      "example": "sniffjoke --force"
+    },
+    {
+      "name": "--gw-mac-addr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "specify default gateway mac address [default: is autodetected]",
+      "default": "is autodetected",
+      "example": "sniffjoke --gw-mac-addr"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show sniffjoke version",
+      "default": "",
+      "example": "sniffjoke --version"
+    },
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help",
+      "default": "",
+      "example": "sniffjoke --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

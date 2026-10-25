@@ -1,0 +1,208 @@
+{
+  "id": "wafw00f",
+  "name": "wafw00f",
+  "schema_version": 1,
+  "summary": "Identify and fingerprint Web Application Firewall (WAF) products protecting a website.",
+  "highlights": [
+    "-v — Enable verbosity, multiple -v options increase verbosity",
+    "-a — Find all WAFs which match the signatures, do not stop testing on the first one",
+    "-r — Do not follow redirections given by 3xx responses",
+    "-t — Test for one specific WAF (use --list to get names, quote names with spaces e.g. \"AireeCDN",
+    "-o — Write output to csv, json or text file depending on file extension. For stdout, specify - ",
+    "-f — Force output format to csv, json or text.",
+    "-i — Read targets from a file. Input format can be csv, json or text. For csv and json, a `url`",
+    "-l — List all WAFs that WAFW00F is able to detect"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install wafw00f"
+    }
+  ],
+  "usage": "wafw00f url1 [url2 [url3 ... ]]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "wafw00f --help"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable verbosity, multiple -v options increase verbosity",
+      "default": "",
+      "example": "wafw00f --verbose"
+    },
+    {
+      "name": "--findall",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Find all WAFs which match the signatures, do not stop testing on the first one",
+      "default": "",
+      "example": "wafw00f --findall"
+    },
+    {
+      "name": "--noredirect",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not follow redirections given by 3xx responses",
+      "default": "",
+      "example": "wafw00f --noredirect"
+    },
+    {
+      "name": "--test",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TEST",
+      "required": false,
+      "description": "Test for one specific WAF (use --list to get names, quote names with spaces e.g. \"AireeCDN (Airee)\")",
+      "default": "",
+      "example": "wafw00f --test <test>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "Write output to csv, json or text file depending on file extension. For stdout, specify - as filename.",
+      "default": "",
+      "example": "wafw00f --output <output>"
+    },
+    {
+      "name": "--format",
+      "short": "-f",
+      "aliases": [],
+      "arg": "FORMAT",
+      "required": false,
+      "description": "Force output format to csv, json or text.",
+      "default": "",
+      "example": "wafw00f --format <format>"
+    },
+    {
+      "name": "--input-file",
+      "short": "-i",
+      "aliases": [],
+      "arg": "INPUT",
+      "required": true,
+      "description": "Read targets from a file. Input format can be csv, json or text. For csv and json, a `url` column name or element is required.",
+      "default": "",
+      "example": "wafw00f --input-file <input>"
+    },
+    {
+      "name": "--list",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List all WAFs that WAFW00F is able to detect",
+      "default": "",
+      "example": "wafw00f --list"
+    },
+    {
+      "name": "--proxy",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "Use an HTTP proxy to perform requests, examples: http://hostname:8080, socks5://hostname:1080, http://user:pass@hostname:8080",
+      "default": "",
+      "example": "wafw00f --proxy <proxy>"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print out the current version of WafW00f and exit.",
+      "default": "",
+      "example": "wafw00f --version"
+    },
+    {
+      "name": "--headers",
+      "short": "-H",
+      "aliases": [],
+      "arg": "HEADERS",
+      "required": false,
+      "description": "Pass custom headers via a text file to overwrite the default header set.",
+      "default": "",
+      "example": "wafw00f --headers <headers>"
+    },
+    {
+      "name": "--timeout",
+      "short": "-T",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "Set the timeout for the requests.",
+      "default": "",
+      "example": "wafw00f --timeout <timeout>"
+    },
+    {
+      "name": "--no-colors",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable ANSI colors in output.",
+      "default": "",
+      "example": "wafw00f --no-colors"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "wafw00f <https://www.example.com>",
+      "explanation": "Check if a website is using any WAF",
+      "source": "tldr:wafw00f"
+    },
+    {
+      "cmd": "wafw00f --findall <https://www.example.com>",
+      "explanation": "Test for all detectable WAFs without stopping at the first match",
+      "source": "tldr:wafw00f"
+    },
+    {
+      "cmd": "wafw00f --proxy <http://localhost:8080> <https://www.example.com>",
+      "explanation": "Pass requests through a proxy (such as BurpSuite)",
+      "source": "tldr:wafw00f"
+    },
+    {
+      "cmd": "wafw00f --test <Cloudflare|Cloudfront|Fastly|ZScaler|...> <https://www.example.com>",
+      "explanation": "Test for a specific WAF product (run `wafw00f --list` to get list of all supported WAFs)",
+      "source": "tldr:wafw00f"
+    },
+    {
+      "cmd": "wafw00f --headers <path/to/headers.txt> <https://www.example.com>",
+      "explanation": "Pass custom headers from a file",
+      "source": "tldr:wafw00f"
+    },
+    {
+      "cmd": "wafw00f --list",
+      "explanation": "List all WAFs that can be detected",
+      "source": "tldr:wafw00f"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/wafw00f.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

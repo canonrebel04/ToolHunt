@@ -1,0 +1,386 @@
+{
+  "id": "unicornscan",
+  "name": "unicornscan",
+  "schema_version": 1,
+  "summary": "A new information gathering and correlation engine.",
+  "highlights": [
+    "-b — *set broken crc sums on [T]ransport layer, [N]etwork layer, or both[TN]",
+    "-B — *set source port? or whatever the scan module expects as a number",
+    "-d — *set delay type (numeric value, valid options are `1:tsc 2:gtod 3:sleep')",
+    "-D — no default Payload, only probe known protocols",
+    "-e — *enable modules listed as arguments (output and report currently)",
+    "-E — for processing `non-open' responses (icmp errors, tcp rsts...)",
+    "-G — *payload group (numeric) for tcp/udp type payload selection (default all)",
+    "-H — resolve hostnames during the reporting phase"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install unicornscan"
+    }
+  ],
+  "usage": "unicornscan [options `b:B:cd:De:EFG:hHi:Ij:l:L:m:M:o:p:P:q:Qr:R:s:St:T:u:Uw:W:vVzZ:' ] X.X.X.X/YY:S-E",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--broken-crc",
+      "short": "-b",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*set broken crc sums on [T]ransport layer, [N]etwork layer, or both[TN]",
+      "default": "",
+      "example": "unicornscan --broken-crc"
+    },
+    {
+      "name": "--source-port",
+      "short": "-B",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*set source port? or whatever the scan module expects as a number",
+      "default": "",
+      "example": "unicornscan --source-port"
+    },
+    {
+      "name": "--delay-type",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*set delay type (numeric value, valid options are `1:tsc 2:gtod 3:sleep')",
+      "default": "",
+      "example": "unicornscan --delay-type"
+    },
+    {
+      "name": "--no-defpayload",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "no default Payload, only probe known protocols",
+      "default": "",
+      "example": "unicornscan --no-defpayload"
+    },
+    {
+      "name": "--enable-module",
+      "short": "-e",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*enable modules listed as arguments (output and report currently)",
+      "default": "",
+      "example": "unicornscan --enable-module"
+    },
+    {
+      "name": "--proc-errors",
+      "short": "-E",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "for processing `non-open' responses (icmp errors, tcp rsts...)",
+      "default": "",
+      "example": "unicornscan --proc-errors"
+    },
+    {
+      "name": "--try-frags",
+      "short": "-F",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "unicornscan --try-frags"
+    },
+    {
+      "name": "--payload-group",
+      "short": "-G",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*payload group (numeric) for tcp/udp type payload selection (default all)",
+      "default": "all",
+      "example": "unicornscan --payload-group"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "help",
+      "default": "",
+      "example": "unicornscan --help"
+    },
+    {
+      "name": "--do-dns",
+      "short": "-H",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "resolve hostnames during the reporting phase",
+      "default": "",
+      "example": "unicornscan --do-dns"
+    },
+    {
+      "name": "--interface",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": true,
+      "description": "*interface name, like eth0 or fxp1, not normally required",
+      "default": "",
+      "example": "unicornscan --interface"
+    },
+    {
+      "name": "--immediate",
+      "short": "-I",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "immediate mode, display things as we find them",
+      "default": "",
+      "example": "unicornscan --immediate"
+    },
+    {
+      "name": "--ignore-seq",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*ignore `A'll, 'R'eset sequence numbers for tcp header validation",
+      "default": "",
+      "example": "unicornscan --ignore-seq"
+    },
+    {
+      "name": "--logfile",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*write to this file not my terminal",
+      "default": "",
+      "example": "unicornscan --logfile"
+    },
+    {
+      "name": "--mode",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*scan mode, tcp (syn) scan is default, U for udp T for tcp `sf' for tcp connect scan and A for arp for -mT you can also specify tcp flags following the T like -mTsFpU for example that would send tcp syn packets with (NO Syn|FIN|NO Push|URG)",
+      "default": "",
+      "example": "unicornscan --mode"
+    },
+    {
+      "name": "--module-dir",
+      "short": "-M",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*directory modules are found at (defaults to /usr/lib/unicornscan/modules)",
+      "default": "to /usr/lib/unicornscan/modules",
+      "example": "unicornscan --module-dir"
+    },
+    {
+      "name": "--format",
+      "short": "-o",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*format of what to display for replies, see man page for format specification",
+      "default": "",
+      "example": "unicornscan --format"
+    },
+    {
+      "name": "--ports",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "global ports to scan, if not specified in target options",
+      "default": "",
+      "example": "unicornscan --ports"
+    },
+    {
+      "name": "--pcap-filter",
+      "short": "-P",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*extra pcap filter string for reciever",
+      "default": "",
+      "example": "unicornscan --pcap-filter"
+    },
+    {
+      "name": "--covertness",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*covertness value from 0 to 255",
+      "default": "",
+      "example": "unicornscan --covertness"
+    },
+    {
+      "name": "--quiet",
+      "short": "-Q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "dont use output to screen, its going somewhere else (a database say...)",
+      "default": "",
+      "example": "unicornscan --quiet"
+    },
+    {
+      "name": "--pps",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*packets per second (total, not per host, and as you go higher it gets less accurate)",
+      "default": "",
+      "example": "unicornscan --pps"
+    },
+    {
+      "name": "--repeats",
+      "short": "-R",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*repeat packet scan N times",
+      "default": "",
+      "example": "unicornscan --repeats"
+    },
+    {
+      "name": "--source-addr",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*source address for packets `r' for random",
+      "default": "",
+      "example": "unicornscan --source-addr"
+    },
+    {
+      "name": "--no-shuffle",
+      "short": "-S",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not shuffle ports",
+      "default": "",
+      "example": "unicornscan --no-shuffle"
+    },
+    {
+      "name": "--ip-ttl",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*set TTL on sent packets as in 62 or 6-16 or r64-128",
+      "default": "",
+      "example": "unicornscan --ip-ttl"
+    },
+    {
+      "name": "--ip-tos",
+      "short": "-T",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*set TOS on sent packets",
+      "default": "",
+      "example": "unicornscan --ip-tos"
+    },
+    {
+      "name": "--debug",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*debug mask",
+      "default": "",
+      "example": "unicornscan --debug"
+    },
+    {
+      "name": "--no-openclosed",
+      "short": "-U",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "dont say open or closed",
+      "default": "",
+      "example": "unicornscan --no-openclosed"
+    },
+    {
+      "name": "--safefile",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*write pcap file of recieved packets",
+      "default": "",
+      "example": "unicornscan --safefile"
+    },
+    {
+      "name": "--fingerprint",
+      "short": "-W",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*OS fingerprint 0=cisco(def) 1=openbsd 2=WindowsXP 3=p0fsendsyn 4=FreeBSD 5=nmap 6=linux 7:strangetcp",
+      "default": "",
+      "example": "unicornscan --fingerprint"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose (each time more verbose so -vvvvv is really verbose)",
+      "default": "",
+      "example": "unicornscan --verbose"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display version",
+      "default": "",
+      "example": "unicornscan --version"
+    },
+    {
+      "name": "--sniff",
+      "short": "-z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "sniff alike",
+      "default": "",
+      "example": "unicornscan --sniff"
+    },
+    {
+      "name": "--drone-str",
+      "short": "-Z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "*drone String",
+      "default": "",
+      "example": "unicornscan --drone-str"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

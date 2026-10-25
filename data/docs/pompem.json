@@ -1,0 +1,93 @@
+{
+  "id": "pompem",
+  "name": "pompem",
+  "schema_version": 1,
+  "summary": "A python exploit tool finder.",
+  "highlights": [
+    "-s — text for search",
+    "--txt — Write txt File",
+    "--html — Write html File",
+    "--update — upgrade to latest version",
+    "-g — Download exploit files"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pompem"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "pompem --help"
+    },
+    {
+      "name": "--search",
+      "short": "-s",
+      "aliases": [],
+      "arg": "<keyword,keyword,keyword>",
+      "required": false,
+      "description": "text for search",
+      "default": "",
+      "example": "pompem --search <keyword,keyword,keyword>"
+    },
+    {
+      "name": "--txt",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write txt File",
+      "default": "",
+      "example": "pompem --txt"
+    },
+    {
+      "name": "--html",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write html File",
+      "default": "",
+      "example": "pompem --html"
+    },
+    {
+      "name": "--update",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "upgrade to latest version",
+      "default": "",
+      "example": "pompem --update"
+    },
+    {
+      "name": "--get",
+      "short": "-g",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Download exploit files",
+      "default": "",
+      "example": "pompem --get"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

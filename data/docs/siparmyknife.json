@@ -1,0 +1,26 @@
+{
+  "id": "siparmyknife",
+  "name": "siparmyknife",
+  "schema_version": 1,
+  "summary": "A small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install siparmyknife"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

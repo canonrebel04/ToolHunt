@@ -1,0 +1,25 @@
+{
+  "id": "bettercap-ui",
+  "name": "bettercap-ui",
+  "schema_version": 1,
+  "summary": "Official Bettercap's Web UI.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bettercap-ui"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": false
+  }
+}

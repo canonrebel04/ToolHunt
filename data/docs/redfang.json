@@ -1,0 +1,115 @@
+{
+  "id": "redfang",
+  "name": "redfang",
+  "schema_version": 1,
+  "summary": "Finds non-discoverable Bluetooth devices by brute-forcing the last six bytes of the devices' Bluetooth addresses and calling read_remote_name().",
+  "highlights": [
+    "-r — range i.e. 00803789EE76-00803789EEff",
+    "-o — filename Output Scan to Text Logfile An address can also be manf+nnnnnn, where manf is lis",
+    "-t — timeout The connect timeout, this is 10000 by default Which is quick and yields results, i",
+    "-n — num The number of dongles",
+    "-d — Show debug information",
+    "-s — Perform Bluetooth Discovery",
+    "-l — Show device manufacturer codes"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install redfang"
+    }
+  ],
+  "usage": "fang [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "range i.e. 00803789EE76-00803789EEff",
+      "default": "",
+      "example": "fang -r"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "filename Output Scan to Text Logfile An address can also be manf+nnnnnn, where manf is listed with the -l option and nnnnnn is the tail of the address. All addresses must be 12 characters long",
+      "default": "",
+      "example": "fang -o"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "timeout The connect timeout, this is 10000 by default Which is quick and yields results, increase for reliability",
+      "default": "",
+      "example": "fang -t"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "num The number of dongles",
+      "default": "",
+      "example": "fang -n"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show debug information",
+      "default": "",
+      "example": "fang -d"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform Bluetooth Discovery",
+      "default": "",
+      "example": "fang -s"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show device manufacturer codes",
+      "default": "",
+      "example": "fang -l"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display help",
+      "default": "",
+      "example": "fang -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

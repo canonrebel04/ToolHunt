@@ -1,0 +1,70 @@
+{
+  "id": "termineter",
+  "name": "termineter",
+  "schema_version": 1,
+  "summary": "Smart meter testing framework.",
+  "highlights": [
+    "-L — set the logging level",
+    "-r — execute a resource file"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install termineter"
+    }
+  ],
+  "usage": "termineter [-h] [-v] [-L {DEBUG,INFO,WARNING,ERROR,CRITICAL}]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "termineter --help"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show program's version number and exit",
+      "default": "",
+      "example": "termineter --version"
+    },
+    {
+      "name": "--log",
+      "short": "-L",
+      "aliases": [],
+      "arg": "{DEBUG,INFO,WARNING,ERROR,CRITICAL}",
+      "required": false,
+      "description": "set the logging level",
+      "default": "",
+      "example": "termineter --log <debug,info,warning,error,critical>"
+    },
+    {
+      "name": "--rc-file",
+      "short": "-r",
+      "aliases": [],
+      "arg": "RESOURCE_FILE",
+      "required": false,
+      "description": "execute a resource file",
+      "default": "",
+      "example": "termineter --rc-file <resource_file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "id": "pack",
+  "name": "pack",
+  "schema_version": 1,
+  "summary": "Password Analysis and Cracking Kit",
+  "highlights": [
+    "-r — repack or normalize a jar, suitable for signing with jarsigner",
+    "-g — output a plain pack file, suitable to be compressed with a file compression utility",
+    "--gzip — (default) post compress the pack output with gzip",
+    "-G — remove debugging attributes (SourceFile, LineNumberTable, LocalVariableTable and LocalVari",
+    "-O — do not transmit file ordering information",
+    "--keep-file-order — (default) preserve input file ordering",
+    "-S — limit segment sizes (default unlimited)",
+    "-E — packing effort (default N=5)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pack"
+    }
+  ],
+  "usage": "pack200 [-opt... | --option=value]... x.pack[.gz] y.jar",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--repack",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "repack or normalize a jar, suitable for signing with jarsigner",
+      "default": "",
+      "example": "pack200 --repack"
+    },
+    {
+      "name": "--no-gzip",
+      "short": "-g",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "output a plain pack file, suitable to be compressed with a file compression utility",
+      "default": "",
+      "example": "pack200 --no-gzip"
+    },
+    {
+      "name": "--gzip",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "(default) post compress the pack output with gzip",
+      "default": "ault",
+      "example": "pack200 --gzip"
+    },
+    {
+      "name": "--strip-debug",
+      "short": "-G",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "remove debugging attributes (SourceFile, LineNumberTable, LocalVariableTable and LocalVariableTypeTable) while packing",
+      "default": "",
+      "example": "pack200 --strip-debug"
+    },
+    {
+      "name": "--no-keep-file-order",
+      "short": "-O",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not transmit file ordering information",
+      "default": "",
+      "example": "pack200 --no-keep-file-order"
+    },
+    {
+      "name": "--keep-file-order",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "(default) preserve input file ordering",
+      "default": "ault",
+      "example": "pack200 --keep-file-order"
+    },
+    {
+      "name": "--segment-limit",
+      "short": "-S",
+      "aliases": [],
+      "arg": "{N}",
+      "required": false,
+      "description": "limit segment sizes (default unlimited)",
+      "default": "unlimited",
+      "example": "pack200 --segment-limit <n>"
+    },
+    {
+      "name": "--effort",
+      "short": "-E",
+      "aliases": [],
+      "arg": "{N}",
+      "required": false,
+      "description": "packing effort (default N=5)",
+      "default": "N=5",
+      "example": "pack200 --effort <n>"
+    },
+    {
+      "name": "--deflate-hint",
+      "short": "-H",
+      "aliases": [],
+      "arg": "{h}",
+      "required": false,
+      "description": "transmit deflate hint: true, false, or keep (default)",
+      "default": "ault",
+      "example": "pack200 --deflate-hint <h>"
+    },
+    {
+      "name": "--modification-time",
+      "short": "-m",
+      "aliases": [],
+      "arg": "{V}",
+      "required": false,
+      "description": "transmit modtimes: latest or keep (default)",
+      "default": "ault",
+      "example": "pack200 --modification-time <v>"
+    },
+    {
+      "name": "--pass-file",
+      "short": "-P",
+      "aliases": [],
+      "arg": "{F}",
+      "required": false,
+      "description": "transmit the given input element(s) unchanged",
+      "default": "",
+      "example": "pack200 --pass-file <f>"
+    },
+    {
+      "name": "--unknown-attribute",
+      "short": "-U",
+      "aliases": [],
+      "arg": "{a}",
+      "required": false,
+      "description": "unknown attribute action: error, strip, or pass (default)",
+      "default": "ault",
+      "example": "pack200 --unknown-attribute <a>"
+    },
+    {
+      "name": "--config-file",
+      "short": "-f",
+      "aliases": [],
+      "arg": "{F}",
+      "required": false,
+      "description": "read file F for Pack200.Packer properties",
+      "default": "",
+      "example": "pack200 --config-file <f>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "increase program verbosity",
+      "default": "",
+      "example": "pack200 --verbose"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set verbosity to lowest level",
+      "default": "",
+      "example": "pack200 --quiet"
+    },
+    {
+      "name": "--log-file",
+      "short": "-l",
+      "aliases": [],
+      "arg": "{F}",
+      "required": false,
+      "description": "output to the given log file, or '-' for System.out",
+      "default": "",
+      "example": "pack200 --log-file <f>"
+    },
+    {
+      "name": "--help",
+      "short": "-?",
+      "aliases": [
+        "-h"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "print this help message",
+      "default": "",
+      "example": "pack200 --help"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print program version",
+      "default": "",
+      "example": "pack200 --version"
+    },
+    {
+      "name": "-J",
+      "short": "",
+      "aliases": [],
+      "arg": "{X}",
+      "required": false,
+      "description": "pass option X to underlying Java VM",
+      "default": "",
+      "example": "pack200 -J <x>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

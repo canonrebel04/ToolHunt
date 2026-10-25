@@ -1,0 +1,136 @@
+{
+  "id": "subjack",
+  "name": "subjack",
+  "schema_version": 1,
+  "summary": "Subdomain Takeover tool written in Go.",
+  "highlights": [
+    "-a — Find those hidden gems by sending requests to every URL. (Default: Requests are only sent ",
+    "-c — Path to configuration file. (default \"/usr/share/subjack/fingerprints.json\")",
+    "-d — Domain.",
+    "-m — Flag the presence of a dead record, but valid CNAME entry.",
+    "-o — Output results to file (Subjack will write JSON if file ends with '.json').",
+    "-ssl — Force HTTPS connections (May increase accuracy (Default: http://).",
+    "-t — Number of concurrent threads (Default: 10). (default 10)",
+    "-timeout — Seconds to wait before connection timeout (Default: 10). (default 10)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install subjack"
+    }
+  ],
+  "usage": "of subjack:",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Find those hidden gems by sending requests to every URL. (Default: Requests are only sent to URLs with identified CNAMEs).",
+      "default": "Requests are only sent to URLs with identified CNAMEs",
+      "example": "subjack -a"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Path to configuration file. (default \"/usr/share/subjack/fingerprints.json\")",
+      "default": "/usr/share/subjack/fingerprints.json",
+      "example": "subjack -c <string>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Domain.",
+      "default": "",
+      "example": "subjack -d <string>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Flag the presence of a dead record, but valid CNAME entry.",
+      "default": "",
+      "example": "subjack -m"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Output results to file (Subjack will write JSON if file ends with '.json').",
+      "default": "",
+      "example": "subjack -o <string>"
+    },
+    {
+      "name": "-ssl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force HTTPS connections (May increase accuracy (Default: http://).",
+      "default": "http://",
+      "example": "subjack -ssl"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Number of concurrent threads (Default: 10). (default 10)",
+      "default": "10",
+      "example": "subjack -t <int>"
+    },
+    {
+      "name": "-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Seconds to wait before connection timeout (Default: 10). (default 10)",
+      "default": "10",
+      "example": "subjack -timeout <int>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display more information per each request.",
+      "default": "",
+      "example": "subjack -v"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Path to wordlist.",
+      "default": "",
+      "example": "subjack -w <string>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

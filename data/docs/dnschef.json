@@ -1,0 +1,93 @@
+{
+  "id": "dnschef",
+  "name": "dnschef",
+  "schema_version": 1,
+  "summary": "A highly configurable DNS proxy for pentesters.",
+  "highlights": [
+    "--file — Specify a file containing a list of DOMAIN=IP pairs (one pair per line) used for DNS respo",
+    "--logfile — Specify a log file to record all activity",
+    "-t — Use TCP DNS proxy instead of the default UDP.",
+    "-6 — Run in IPv6 mode.",
+    "-q — Don't show headers."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dnschef"
+    }
+  ],
+  "usage": "dnschef [options]:",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "dnschef --help"
+    },
+    {
+      "name": "--file",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Specify a file containing a list of DOMAIN=IP pairs (one pair per line) used for DNS responses. For example: google.com=1.1.1.1 will force all queries to 'google.com' to be resolved to '1.1.1.1'. IPv6 addresses will be automatically detected. You can be even more specific by combining --file with other arguments. However, data obtained from the file will take precedence over others.",
+      "default": "",
+      "example": "dnschef --file <file>"
+    },
+    {
+      "name": "--logfile",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Specify a log file to record all activity",
+      "default": "",
+      "example": "dnschef --logfile <file>"
+    },
+    {
+      "name": "--tcp",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use TCP DNS proxy instead of the default UDP.",
+      "default": "",
+      "example": "dnschef --tcp"
+    },
+    {
+      "name": "--ipv6",
+      "short": "-6",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run in IPv6 mode.",
+      "default": "",
+      "example": "dnschef --ipv6"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't show headers.",
+      "default": "",
+      "example": "dnschef --quiet"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

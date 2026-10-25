@@ -1,0 +1,115 @@
+{
+  "id": "evil-ssdp",
+  "name": "evil-ssdp",
+  "schema_version": 1,
+  "summary": "Spoof SSDP replies to phish for NetNTLM challenge/response on a network.",
+  "highlights": [
+    "-p — Port for HTTP server. Defaults to 8888.",
+    "-t — Name of a folder in the templates directory. Defaults to \"office365\". This will determine ",
+    "-s — IP address of your SMB server. Defalts to the primary address of the \"interface\" provided.",
+    "-b — Enable base64 authentication for templates and write credentials to log file.",
+    "-r — Realm when prompting target for authentication via Basic Auth.",
+    "-u — Redirect to this URL. Works with templates that do a POST for logon forms and with templat",
+    "-a — Run in analyze mode. Will NOT respond to any SSDP queries, but will still enable and run t"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install evil-ssdp"
+    }
+  ],
+  "usage": "evil_ssdp.py [-h] [-p PORT] [-t TEMPLATE] [-s SMB] [-b] [-r REALM]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "evil-ssdp --help"
+    },
+    {
+      "name": "--port",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "Port for HTTP server. Defaults to 8888.",
+      "default": "",
+      "example": "evil-ssdp --port <port>"
+    },
+    {
+      "name": "--template",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TEMPLATE",
+      "required": false,
+      "description": "Name of a folder in the templates directory. Defaults to \"office365\". This will determine xml and phishing pages used.",
+      "default": "",
+      "example": "evil-ssdp --template <template>"
+    },
+    {
+      "name": "--smb",
+      "short": "-s",
+      "aliases": [],
+      "arg": "SMB",
+      "required": false,
+      "description": "IP address of your SMB server. Defalts to the primary address of the \"interface\" provided.",
+      "default": "",
+      "example": "evil-ssdp --smb <smb>"
+    },
+    {
+      "name": "--basic",
+      "short": "-b",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable base64 authentication for templates and write credentials to log file.",
+      "default": "",
+      "example": "evil-ssdp --basic"
+    },
+    {
+      "name": "--realm",
+      "short": "-r",
+      "aliases": [],
+      "arg": "REALM",
+      "required": false,
+      "description": "Realm when prompting target for authentication via Basic Auth.",
+      "default": "",
+      "example": "evil-ssdp --realm <realm>"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Redirect to this URL. Works with templates that do a POST for logon forms and with templates that include the custom redirect JavaScript (see README for more info).[example: -r https://google.com]",
+      "default": "",
+      "example": "evil-ssdp --url <url>"
+    },
+    {
+      "name": "--analyze",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run in analyze mode. Will NOT respond to any SSDP queries, but will still enable and run the web server for testing.",
+      "default": "",
+      "example": "evil-ssdp --analyze"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

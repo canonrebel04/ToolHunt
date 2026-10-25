@@ -1,0 +1,208 @@
+{
+  "id": "ab-av1",
+  "name": "ab-av1",
+  "schema_version": 1,
+  "summary": "AV1 encoding with smart scene-cut + VMAF targeting (auto-encode)",
+  "highlights": [],
+  "install": [
+    {
+      "method": "brew",
+      "cmd": "brew install ab-av1"
+    }
+  ],
+  "usage": "ab-av1 <COMMAND>",
+  "subcommands": [
+    {
+      "name": "auto-encode",
+      "description": "Automatically find the best CRF for --min-vmaf and encode"
+    },
+    {
+      "name": "crf-search",
+      "description": "Find the best CRF delivering --min-vmaf"
+    },
+    {
+      "name": "sample-encode",
+      "description": "Encode short samples to predict VMAF / size / time"
+    },
+    {
+      "name": "encode",
+      "description": "Encode with a given CRF & preset"
+    },
+    {
+      "name": "vmaf",
+      "description": "Full VMAF score (reference vs distorted)"
+    },
+    {
+      "name": "xpsnr",
+      "description": "Full XPSNR score (reference vs distorted)"
+    },
+    {
+      "name": "help",
+      "description": "Print this message or the help of the given subcommand(s)"
+    }
+  ],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print help",
+      "default": "",
+      "example": "ab-av1 --help"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version",
+      "default": "",
+      "example": "ab-av1 --version"
+    },
+    {
+      "name": "--input",
+      "short": "-i",
+      "aliases": [],
+      "arg": "<INPUT>",
+      "required": false,
+      "description": "Input video/image",
+      "default": "",
+      "example": "ab-av1 auto-encode --input <INPUT>",
+      "section": "auto-encode"
+    },
+    {
+      "name": "--preset",
+      "short": "",
+      "aliases": [],
+      "arg": "<PRESET>",
+      "required": false,
+      "description": "SVT-AV1 preset (0=slow/best … 13=fast)",
+      "default": "",
+      "example": "ab-av1 auto-encode --preset <PRESET>",
+      "section": "auto-encode"
+    },
+    {
+      "name": "--min-vmaf",
+      "short": "",
+      "aliases": [],
+      "arg": "<MIN_VMAF>",
+      "required": false,
+      "description": "Target VMAF score",
+      "default": "",
+      "example": "ab-av1 auto-encode --min-vmaf <MIN_VMAF>",
+      "section": "auto-encode"
+    },
+    {
+      "name": "--min-xpsnr",
+      "short": "",
+      "aliases": [],
+      "arg": "<MIN_XPSNR>",
+      "required": false,
+      "description": "Alternative quality target (XPSNR)",
+      "default": "",
+      "example": "ab-av1 auto-encode --min-xpsnr <MIN_XPSNR>",
+      "section": "auto-encode"
+    },
+    {
+      "name": "--thorough",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "More samples / higher confidence CRF search",
+      "default": "",
+      "example": "ab-av1 auto-encode --thorough",
+      "section": "auto-encode"
+    },
+    {
+      "name": "--crf",
+      "short": "",
+      "aliases": [],
+      "arg": "<CRF>",
+      "required": false,
+      "description": "CRF (usually found automatically)",
+      "default": "",
+      "example": "ab-av1 auto-encode --crf <CRF>",
+      "section": "auto-encode"
+    },
+    {
+      "name": "--stdout-format",
+      "short": "",
+      "aliases": [],
+      "arg": "<FORMAT>",
+      "required": false,
+      "description": "Output format [default: human] [possible values: human, json]",
+      "default": "human",
+      "example": "ab-av1 auto-encode --stdout-format <FORMAT>",
+      "section": "auto-encode"
+    },
+    {
+      "name": "--verify",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verify finished encode (decode + duration)",
+      "default": "",
+      "example": "ab-av1 auto-encode --verify",
+      "section": "auto-encode"
+    },
+    {
+      "name": "--verify-decode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fail on decode errors",
+      "default": "",
+      "example": "ab-av1 auto-encode --verify-decode",
+      "section": "auto-encode"
+    },
+    {
+      "name": "--verify-duration",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fail if duration differs by >2s",
+      "default": "",
+      "example": "ab-av1 auto-encode --verify-duration",
+      "section": "auto-encode"
+    },
+    {
+      "name": "--fail-fast",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Stop at first ffmpeg error",
+      "default": "",
+      "example": "ab-av1 auto-encode --fail-fast",
+      "section": "auto-encode"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "ab-av1 auto-encode --thorough -i video-file.mkv --preset 6 --min-vmaf 95",
+      "explanation": "Find a CRF that hits VMAF 95 with a thorough search, then encode",
+      "source": "showcase"
+    },
+    {
+      "cmd": "ab-av1 crf-search -i video-file.mkv --preset 6 --min-vmaf 95",
+      "explanation": "Only search for the best CRF (no final encode)",
+      "source": "showcase"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "captured-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

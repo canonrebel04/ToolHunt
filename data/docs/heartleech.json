@@ -1,0 +1,26 @@
+{
+  "id": "heartleech",
+  "name": "heartleech",
+  "schema_version": 1,
+  "summary": "Scans for systems vulnerable to the heartbleed bug, and then download them.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install heartleech"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

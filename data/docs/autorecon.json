@@ -1,0 +1,538 @@
+{
+  "id": "autorecon",
+  "name": "autorecon",
+  "schema_version": 1,
+  "summary": "A multi-threaded network reconnaissance tool which performs automated enumeration of services.",
+  "highlights": [
+    "-t — Read targets from file.",
+    "-p — Comma separated list of ports / port ranges to scan. Specify TCP/UDP ports by prepending l",
+    "-m — The maximum number of concurrent scans to run. Default: 50",
+    "-mp — The maximum number of concurrent port scans to run. Default: 10 (approx 20% of max-scans u",
+    "-c — Location of AutoRecon's config file. Default: /root/.config/AutoRecon/config.toml",
+    "-g — Location of AutoRecon's global file. Default: /root/.config/AutoRecon/global.toml",
+    "--tags — Tags to determine which plugins should be included. Separate tags by a plus symbol (+) to ",
+    "--exclude-tags — Tags to determine which plugins should be excluded. Separate tags by a plus symbol (+) to "
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install autorecon"
+    }
+  ],
+  "usage": "autorecon [-t TARGET_FILE] [-p PORTS] [-m MAX_SCANS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--target-file",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TARGET_FILE",
+      "required": false,
+      "description": "Read targets from file.",
+      "default": "",
+      "example": "autorecon --target-file <target_file>"
+    },
+    {
+      "name": "--ports",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PORTS",
+      "required": false,
+      "description": "Comma separated list of ports / port ranges to scan. Specify TCP/UDP ports by prepending list with T:/U: To scan both TCP/UDP, put port(s) at start or specify B: e.g. 53,T:21-25,80,U:123,B:123. Default: None",
+      "default": "",
+      "example": "autorecon --ports <ports>"
+    },
+    {
+      "name": "--max-scans",
+      "short": "-m",
+      "aliases": [],
+      "arg": "MAX_SCANS",
+      "required": false,
+      "description": "The maximum number of concurrent scans to run. Default: 50",
+      "default": "",
+      "example": "autorecon --max-scans <max_scans>"
+    },
+    {
+      "name": "--max-port-scans",
+      "short": "-mp",
+      "aliases": [],
+      "arg": "MAX_PORT_SCANS",
+      "required": false,
+      "description": "The maximum number of concurrent port scans to run. Default: 10 (approx 20% of max-scans unless specified)",
+      "default": "",
+      "example": "autorecon --max-port-scans <max_port_scans>"
+    },
+    {
+      "name": "--config",
+      "short": "-c",
+      "aliases": [],
+      "arg": "CONFIG_FILE",
+      "required": false,
+      "description": "Location of AutoRecon's config file. Default: /root/.config/AutoRecon/config.toml",
+      "default": "",
+      "example": "autorecon --config <config_file>"
+    },
+    {
+      "name": "--global-file",
+      "short": "-g",
+      "aliases": [],
+      "arg": "GLOBAL_FILE",
+      "required": false,
+      "description": "Location of AutoRecon's global file. Default: /root/.config/AutoRecon/global.toml",
+      "default": "",
+      "example": "autorecon --global-file <global_file>"
+    },
+    {
+      "name": "--tags",
+      "short": "",
+      "aliases": [],
+      "arg": "TAGS",
+      "required": false,
+      "description": "Tags to determine which plugins should be included. Separate tags by a plus symbol (+) to group tags together. Separate groups with a comma (,) to create multiple groups. For a plugin to be included, it must have all the tags specified in at least one group. Default: default",
+      "default": "",
+      "example": "autorecon --tags <tags>"
+    },
+    {
+      "name": "--exclude-tags",
+      "short": "",
+      "aliases": [],
+      "arg": "TAGS",
+      "required": false,
+      "description": "Tags to determine which plugins should be excluded. Separate tags by a plus symbol (+) to group tags together. Separate groups with a comma (,) to create multiple groups. For a plugin to be excluded, it must have all the tags specified in at least one group. Default: None",
+      "default": "",
+      "example": "autorecon --exclude-tags <tags>"
+    },
+    {
+      "name": "--port-scans",
+      "short": "",
+      "aliases": [],
+      "arg": "PLUGINS",
+      "required": false,
+      "description": "Override --tags / --exclude-tags for the listed PortScan plugins (comma separated). Default: None",
+      "default": "",
+      "example": "autorecon --port-scans <plugins>"
+    },
+    {
+      "name": "--service-scans",
+      "short": "",
+      "aliases": [],
+      "arg": "PLUGINS",
+      "required": false,
+      "description": "Override --tags / --exclude-tags for the listed ServiceScan plugins (comma separated). Default: None",
+      "default": "",
+      "example": "autorecon --service-scans <plugins>"
+    },
+    {
+      "name": "--reports",
+      "short": "",
+      "aliases": [],
+      "arg": "PLUGINS",
+      "required": false,
+      "description": "Override --tags / --exclude-tags for the listed Report plugins (comma separated). Default: None",
+      "default": "",
+      "example": "autorecon --reports <plugins>"
+    },
+    {
+      "name": "--plugins-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "PLUGINS_DIR",
+      "required": false,
+      "description": "The location of the plugins directory. Default: /root/.local/share/AutoRecon/plugins",
+      "default": "",
+      "example": "autorecon --plugins-dir <plugins_dir>"
+    },
+    {
+      "name": "--add-plugins-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "PLUGINS_DIR",
+      "required": false,
+      "description": "The location of an additional plugins directory to add to the main one. Default: None",
+      "default": "",
+      "example": "autorecon --add-plugins-dir <plugins_dir>"
+    },
+    {
+      "name": "--list",
+      "short": "-l",
+      "aliases": [],
+      "arg": "[TYPE]",
+      "required": false,
+      "description": "List all plugins or plugins of a specific type. e.g. --list, --list port, --list service",
+      "default": "",
+      "example": "autorecon --list <type>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "The output directory for results. Default: results",
+      "default": "",
+      "example": "autorecon --output <output>"
+    },
+    {
+      "name": "--single-target",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only scan a single target. A directory named after the target will not be created. Instead, the directory structure will be created within the output directory. Default: False",
+      "default": "",
+      "example": "autorecon --single-target"
+    },
+    {
+      "name": "--only-scans-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only create the \"scans\" directory for results. Other directories (e.g. exploit, loot, report) will not be created. Default: False",
+      "default": "",
+      "example": "autorecon --only-scans-dir"
+    },
+    {
+      "name": "--no-port-dirs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't create directories for ports (e.g. scans/tcp80, scans/udp53). Instead store all results in the \"scans\" directory itself. Default: False",
+      "default": "",
+      "example": "autorecon --no-port-dirs"
+    },
+    {
+      "name": "--heartbeat",
+      "short": "",
+      "aliases": [],
+      "arg": "HEARTBEAT",
+      "required": false,
+      "description": "Specifies the heartbeat interval (in seconds) for scan status messages. Default: 60",
+      "default": "",
+      "example": "autorecon --heartbeat <heartbeat>"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "Specifies the maximum amount of time in minutes that AutoRecon should run for. Default: None",
+      "default": "",
+      "example": "autorecon --timeout <timeout>"
+    },
+    {
+      "name": "--target-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TARGET_TIMEOUT",
+      "required": false,
+      "description": "Specifies the maximum amount of time in minutes that a target should be scanned for before abandoning it and moving on. Default: None",
+      "default": "",
+      "example": "autorecon --target-timeout <target_timeout>"
+    },
+    {
+      "name": "--nmap",
+      "short": "",
+      "aliases": [],
+      "arg": "NMAP",
+      "required": false,
+      "description": "Override the {nmap_extra} variable in scans. Default: -vv --reason -Pn -T4",
+      "default": "",
+      "example": "autorecon --nmap <nmap>"
+    },
+    {
+      "name": "--nmap-append",
+      "short": "",
+      "aliases": [],
+      "arg": "NMAP_APPEND",
+      "required": false,
+      "description": "Append to the default {nmap_extra} variable in scans. Default:",
+      "default": "",
+      "example": "autorecon --nmap-append <nmap_append>"
+    },
+    {
+      "name": "--proxychains",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use if you are running AutoRecon via proxychains. Default: False",
+      "default": "",
+      "example": "autorecon --proxychains"
+    },
+    {
+      "name": "--disable-sanity-checks",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable sanity checks that would otherwise prevent the scans from running. Default: False",
+      "default": "",
+      "example": "autorecon --disable-sanity-checks"
+    },
+    {
+      "name": "--disable-keyboard-control",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables keyboard control ([s]tatus, Up, Down) if you are in SSH or Docker.",
+      "default": "",
+      "example": "autorecon --disable-keyboard-control"
+    },
+    {
+      "name": "--ignore-plugin-checks",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignores errors from plugin check functions that would otherwise prevent AutoRecon from running. Default: False",
+      "default": "",
+      "example": "autorecon --ignore-plugin-checks"
+    },
+    {
+      "name": "--accessible",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Attempts to make AutoRecon output more accessible to screenreaders. Default: False",
+      "default": "",
+      "example": "autorecon --accessible"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable verbose output. Repeat for more verbosity.",
+      "default": "",
+      "example": "autorecon --verbose"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prints the AutoRecon version and exits.",
+      "default": "",
+      "example": "autorecon --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this help message and exit.",
+      "default": "",
+      "example": "autorecon --help"
+    },
+    {
+      "name": "--curl.path",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "The path on the web server to curl. Default: /",
+      "default": "",
+      "example": "autorecon --curl.path <value>"
+    },
+    {
+      "name": "--dirbuster.tool",
+      "short": "",
+      "aliases": [],
+      "arg": "{feroxbuster,gobuster,dirsearch,ffuf,dirb}",
+      "required": false,
+      "description": "The tool to use for directory busting. Default: feroxbuster",
+      "default": "",
+      "example": "autorecon --dirbuster.tool <feroxbuster,gobuster,dirsearch,ffuf,dirb>"
+    },
+    {
+      "name": "--dirbuster.threads",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "The number of threads to use when directory busting. Default: 10",
+      "default": "",
+      "example": "autorecon --dirbuster.threads <value>"
+    },
+    {
+      "name": "--dirbuster.ext",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "The extensions you wish to fuzz (no dot, comma separated). Default: txt,html,php,asp,aspx,jsp",
+      "default": "",
+      "example": "autorecon --dirbuster.ext <value>"
+    },
+    {
+      "name": "--dirbuster.recursive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enables recursive searching (where available). Warning: This may cause significant increases to scan times. Default: False",
+      "default": "",
+      "example": "autorecon --dirbuster.recursive"
+    },
+    {
+      "name": "--dirbuster.extras",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "Any extra options you wish to pass to the tool when it runs. e.g. --dirbuster.extras='-s 200,301 --discover- backup'",
+      "default": "",
+      "example": "autorecon --dirbuster.extras <value>"
+    },
+    {
+      "name": "--enum4linux.tool",
+      "short": "",
+      "aliases": [],
+      "arg": "{enum4linux-ng,enum4linux}",
+      "required": false,
+      "description": "The tool to use for doing Windows and Samba enumeration. Default: enum4linux-ng",
+      "default": "",
+      "example": "autorecon --enum4linux.tool <enum4linux-ng,enum4linux>"
+    },
+    {
+      "name": "--onesixtyone.community-strings",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "The file containing a list of community strings to try. Default: /usr/share/seclists/Discovery/SNMP/common-snmp- community-strings-onesixtyone.txt",
+      "default": "",
+      "example": "autorecon --onesixtyone.community-strings <value>"
+    },
+    {
+      "name": "--redirect-host-discovery.update-hosts",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "If set, discovered redirect hostnames will be added to /etc/hosts with the target IP",
+      "default": "",
+      "example": "autorecon --redirect-host-discovery.update-hosts"
+    },
+    {
+      "name": "--subdomain-enum.domain",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "The domain to use as the base domain (e.g. example.com) for subdomain enumeration. Default: None",
+      "default": "",
+      "example": "autorecon --subdomain-enum.domain <value>"
+    },
+    {
+      "name": "--subdomain-enum.threads",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "The number of threads to use when enumerating subdomains. Default: 10",
+      "default": "",
+      "example": "autorecon --subdomain-enum.threads <value>"
+    },
+    {
+      "name": "--vhost-enum.hostname",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "The hostname to use as the base host (e.g. example.com) for virtual host enumeration. Default: None",
+      "default": "",
+      "example": "autorecon --vhost-enum.hostname <value>"
+    },
+    {
+      "name": "--vhost-enum.threads",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "The number of threads to use when enumerating virtual hosts. Default: 10",
+      "default": "",
+      "example": "autorecon --vhost-enum.threads <value>"
+    },
+    {
+      "name": "--wpscan.api-token",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "An API Token from wpvulndb.com to help search for more vulnerabilities.",
+      "default": "",
+      "example": "autorecon --wpscan.api-token <value>"
+    },
+    {
+      "name": "--global.username-wordlist",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "A wordlist of usernames, useful for bruteforcing. Default: /usr/share/seclists/Usernames/top-usernames- shortlist.txt",
+      "default": "",
+      "example": "autorecon --global.username-wordlist <value>"
+    },
+    {
+      "name": "--global.password-wordlist",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "A wordlist of passwords, useful for bruteforcing. Default: /usr/share/seclists/Passwords/darkweb2017-top100.txt",
+      "default": "",
+      "example": "autorecon --global.password-wordlist <value>"
+    },
+    {
+      "name": "--global.domain",
+      "short": "",
+      "aliases": [],
+      "arg": "VALUE",
+      "required": false,
+      "description": "The domain to use (if known). Used for DNS and/or Active Directory. Default: None",
+      "default": "",
+      "example": "autorecon --global.domain <value>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "sudo autorecon <host_or_ip1,host_or_ip2,...>",
+      "explanation": "Perform reconnaissance on target host(s) (detailed scan results will be dumped in `results`)",
+      "source": "tldr:autorecon"
+    },
+    {
+      "cmd": "sudo autorecon --target-file <path/to/file>",
+      "explanation": "Perform reconnaissance on target(s) from a file",
+      "source": "tldr:autorecon"
+    },
+    {
+      "cmd": "sudo autorecon --output <path/to/results> <host_or_ip1,host_or_ip2,...>",
+      "explanation": "Output results to a different directory",
+      "source": "tldr:autorecon"
+    },
+    {
+      "cmd": "sudo autorecon --ports <T:21-25,80,443,U:53,B:123> <host_or_ip1,host_or_ip2,...>",
+      "explanation": "Limit scanning to specific ports and protocols (`T` for TCP, `U` for UDP, `B` for both)",
+      "source": "tldr:autorecon"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/autorecon.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

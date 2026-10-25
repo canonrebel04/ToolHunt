@@ -1,0 +1,56 @@
+{
+  "id": "tlsx",
+  "name": "tlsx",
+  "schema_version": 1,
+  "summary": "TLS grabber focused on TLS based data collection.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "tlsx -host <host1,host2,...> -tls-version -cipher",
+      "explanation": "Display TLS version and cipher of one or more hosts",
+      "source": "tldr:tlsx"
+    },
+    {
+      "cmd": "tlsx -host <host> -version-enum -cipher-enum",
+      "explanation": "Enumerate and display supported TLS versions and ciphers of a host",
+      "source": "tldr:tlsx"
+    },
+    {
+      "cmd": "tlsx -list <path/to/hosts.txt> -expired -self-signed -mismatched -revoked -untrusted",
+      "explanation": "Scan a list of hosts from a file and mark hosts with expired/self-signed/mismatched/revoked/untrusted certificates",
+      "source": "tldr:tlsx"
+    },
+    {
+      "cmd": "tlsx -list <path/to/hosts.txt> -concurrency <300> -timeout <5> -retry <3> -delay <200ms> -wildcard-cert",
+      "explanation": "Adjust per host concurrency, timeout, retry, and delay parameters when scanning a list of hosts for wildcard SSL certificates",
+      "source": "tldr:tlsx"
+    },
+    {
+      "cmd": "tlsx -host <host> -dns",
+      "explanation": "Display unique hostname(s) from SSL certificate response",
+      "source": "tldr:tlsx"
+    },
+    {
+      "cmd": "tlsx -host <host> -san -json -output <path/to/file.json>",
+      "explanation": "Display Subject Alternative Names (SANs) from the TLS certificate of a host, with JSON output written to a file",
+      "source": "tldr:tlsx"
+    },
+    {
+      "cmd": "tlsx -health-check",
+      "explanation": "Perform a self health-check of `tlsx` itself",
+      "source": "tldr:tlsx"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/tlsx.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

@@ -135,7 +135,8 @@ def test_real_search_tool_passes_category_filter(monkeypatch):
     out = real_main.search_tool("scanner", "security")
     assert out and all(t["category"] == "security" for t in out)
     assert all("id" in t for t in out)
-    assert real_main.search_tool("scanner", "general") == []  # no general tools in the DB yet
+    general = real_main.search_tool("finder", "general")
+    assert general and all(t["category"] == "general" for t in general)
     assert real_main.search_tool("scanner")[0]["id"]
     assert seen["allowed"] is None
     with pytest.raises(ValueError):

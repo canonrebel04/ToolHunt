@@ -1,0 +1,158 @@
+{
+  "id": "vinetto",
+  "name": "vinetto",
+  "schema_version": 1,
+  "summary": "A forensics tool to examine Thumbs.db files",
+  "highlights": [
+    "-e — examine EDBFILE (Extensible Storage Engine Database) for original thumbnail filenames NOTE",
+    "-H — write html report to DIR (requires option -o)",
+    "-m — operating mode: \"f\", \"d\", \"r\", or \"a\" where \"f\" indicates single file processing (default)",
+    "--md5 — force the MD5 hash value calculation for an input file Normally, the MD5 is calculated whe",
+    "--nomd5 — skip the MD5 hash value calculation for an input file",
+    "-o — write thumbnails to DIR NOTE: -o requires INFILE",
+    "-q — quiet output: Errors only NOTE: -v overrides -q",
+    "-s — create symlink from the the image realname to the numbered name in DIR/.thumbs (requires o"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install vinetto"
+    }
+  ],
+  "usage": "vinetto [-h] [-e EDBFILE] [-H] [-m [{f,d,r,a}]] [--md5] [--nomd5]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [
+        "-?"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit, use -v for more details",
+      "default": "",
+      "example": "vinetto --help"
+    },
+    {
+      "name": "--edb",
+      "short": "-e",
+      "aliases": [],
+      "arg": "EDBFILE",
+      "required": false,
+      "description": "examine EDBFILE (Extensible Storage Engine Database) for original thumbnail filenames NOTE: -e without an INFILE explores EDBFILE extracted data NOTE: Automatic mode will attempt to use ESEDB without -e",
+      "default": "",
+      "example": "vinetto --edb <edbfile>"
+    },
+    {
+      "name": "--htmlrep",
+      "short": "-H",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "write html report to DIR (requires option -o)",
+      "default": "",
+      "example": "vinetto --htmlrep"
+    },
+    {
+      "name": "--mode",
+      "short": "-m",
+      "aliases": [],
+      "arg": "[{f,d,r,a}]",
+      "required": false,
+      "description": "operating mode: \"f\", \"d\", \"r\", or \"a\" where \"f\" indicates single file processing (default) \"d\" indicates directory processing \"r\" indicates recursive directory processing from a starting directory \"a\" indicates automatic processing using well known directories starting from a base directory",
+      "default": "ault",
+      "example": "vinetto --mode <f,d,r,a>"
+    },
+    {
+      "name": "--md5",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "force the MD5 hash value calculation for an input file Normally, the MD5 is calculated when a file is less than 0.5 GiB in size NOTE: --nomd5 overrides --md5",
+      "default": "",
+      "example": "vinetto --md5"
+    },
+    {
+      "name": "--nomd5",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "skip the MD5 hash value calculation for an input file",
+      "default": "",
+      "example": "vinetto --nomd5"
+    },
+    {
+      "name": "--outdir",
+      "short": "-o",
+      "aliases": [],
+      "arg": "DIR",
+      "required": false,
+      "description": "write thumbnails to DIR NOTE: -o requires INFILE",
+      "default": "",
+      "example": "vinetto --outdir <dir>"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "quiet output: Errors only NOTE: -v overrides -q",
+      "default": "",
+      "example": "vinetto --quiet"
+    },
+    {
+      "name": "--symlinks",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "create symlink from the the image realname to the numbered name in DIR/.thumbs (requires option -o) NOTE: A Catalog containing the realname must exist for this option to produce results OR a Windows.edb must be given (-e) to find and extract possible file names",
+      "default": "",
+      "example": "vinetto --symlinks"
+    },
+    {
+      "name": "--utf8",
+      "short": "-U",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use utf8 encodings",
+      "default": "",
+      "example": "vinetto --utf8"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose output, each use increments output level: 0 (Standard) 1 (Verbose), 2 (Enhanced), 3 (Full)",
+      "default": "",
+      "example": "vinetto --verbose"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show program's version number and exit",
+      "default": "",
+      "example": "vinetto --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "id": "dumpzilla",
+  "name": "dumpzilla",
+  "schema_version": 1,
+  "summary": "A forensic tool for firefox.",
+  "highlights": [
+    "--Search — --Bookmarks [-bm_create_range <start> <end>][-bm_last_range <start> <end>]",
+    "--Certoverride — --Cookies [-showdom] [-domain <string>] [-name <string>] [-hostcookie <string>] [-access <",
+    "--Downloads — --Export <directory> (export data as json)",
+    "--Passwords — --Permissions [-host <string>] [-modif <date>] [-modif_range <start> <end>]",
+    "--Session — --Summary (no data extraction, only summary report)",
+    "--Thumbnails — --Verbosity (DEBUG|INFO|WARNING|ERROR|CRITICAL)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dumpzilla"
+    }
+  ],
+  "usage": "python dumpzilla.py PROFILE_DIR [OPTIONS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--Addons",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "dumpzilla --Addons"
+    },
+    {
+      "name": "--Search",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--Bookmarks [-bm_create_range <start> <end>][-bm_last_range <start> <end>]",
+      "default": "",
+      "example": "dumpzilla --Search"
+    },
+    {
+      "name": "--Certoverride",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--Cookies [-showdom] [-domain <string>] [-name <string>] [-hostcookie <string>] [-access <date>] [-create <date>] [-secure <0|1>] [-httponly <0|1>] [-last_range <start> <end>] [-create_range <start> <end>]",
+      "default": "",
+      "example": "dumpzilla --Certoverride"
+    },
+    {
+      "name": "--Downloads",
+      "short": "",
+      "aliases": [],
+      "arg": "[-range <start> <end>]",
+      "required": false,
+      "description": "--Export <directory> (export data as json)",
+      "default": "",
+      "example": "dumpzilla --Downloads <-range <start> <end>>"
+    },
+    {
+      "name": "--Keypinning",
+      "short": "",
+      "aliases": [],
+      "arg": "[-entry_type <HPKP|HSTS>]",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "dumpzilla --Keypinning <-entry_type <hpkp|hsts>>"
+    },
+    {
+      "name": "--OfflineCache",
+      "short": "",
+      "aliases": [],
+      "arg": "[-cache_range <start> <end> -extract <directory>]",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "dumpzilla --OfflineCache <-cache_range <start> <end> -extract <directory>>"
+    },
+    {
+      "name": "--Preferences",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "dumpzilla --Preferences"
+    },
+    {
+      "name": "--Passwords",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--Permissions [-host <string>] [-modif <date>] [-modif_range <start> <end>]",
+      "default": "",
+      "example": "dumpzilla --Passwords"
+    },
+    {
+      "name": "--Session",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--Summary (no data extraction, only summary report)",
+      "default": "",
+      "example": "dumpzilla --Session"
+    },
+    {
+      "name": "--Thumbnails",
+      "short": "",
+      "aliases": [],
+      "arg": "[-extract_thumb <directory>]",
+      "required": false,
+      "description": "--Verbosity (DEBUG|INFO|WARNING|ERROR|CRITICAL)",
+      "default": "",
+      "example": "dumpzilla --Thumbnails <-extract_thumb <directory>>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

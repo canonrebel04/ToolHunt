@@ -1,0 +1,47 @@
+{
+  "id": "silenttrinity",
+  "name": "silenttrinity",
+  "schema_version": 1,
+  "summary": "An asynchronous, collaborative post-exploitation agent powered by Python and .NET's DLR.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install silenttrinity"
+    }
+  ],
+  "usage": "st [-h] [-v] (client|teamserver) [<args>...]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this help message and exit",
+      "default": "",
+      "example": "silenttrinity --help"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show version",
+      "default": "",
+      "example": "silenttrinity --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

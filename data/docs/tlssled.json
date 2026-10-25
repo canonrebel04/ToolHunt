@@ -1,0 +1,26 @@
+{
+  "id": "tlssled",
+  "name": "tlssled",
+  "schema_version": 1,
+  "summary": "A Linux shell script whose purpose is to evaluate the security of a target SSL/TLS (HTTPS) web server implementation.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install tlssled"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

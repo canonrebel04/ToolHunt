@@ -1,0 +1,61 @@
+{
+  "id": "yay",
+  "name": "yay",
+  "schema_version": 1,
+  "summary": "Yet another yogurt. Pacman wrapper and AUR helper written in go.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "yay <package_name|search_term>",
+      "explanation": "Interactively search and install packages from the repos and AUR",
+      "source": "tldr:yay"
+    },
+    {
+      "cmd": "yay",
+      "explanation": "Synchronize and update all packages from the repos and AUR",
+      "source": "tldr:yay"
+    },
+    {
+      "cmd": "yay -S <package> --noconfirm",
+      "explanation": "Install a new package from the repos and AUR and do not ask to confirm transactions",
+      "source": "tldr:yay"
+    },
+    {
+      "cmd": "yay -Rns <package>",
+      "explanation": "Remove an installed package and both its dependencies and configuration files",
+      "source": "tldr:yay"
+    },
+    {
+      "cmd": "yay -Ss <keyword>",
+      "explanation": "Search the package database for a keyword from the repos and AUR",
+      "source": "tldr:yay"
+    },
+    {
+      "cmd": "yay -Yc",
+      "explanation": "Remove orphaned packages (installed as dependencies but not required by any package)",
+      "source": "tldr:yay"
+    },
+    {
+      "cmd": "yay -Scc",
+      "explanation": "Clean `pacman` and `yay` caches (old package versions kept for rollback and downgrade purposes)",
+      "source": "tldr:yay"
+    },
+    {
+      "cmd": "yay -Ps",
+      "explanation": "Show statistics for installed packages and system health",
+      "source": "tldr:yay"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/linux/yay.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}
