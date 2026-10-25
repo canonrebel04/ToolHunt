@@ -1,0 +1,51 @@
+{
+  "id": "phpstan",
+  "name": "phpstan",
+  "schema_version": 1,
+  "summary": "PHP Static Analysis Tool - discover bugs in your code without running it.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "phpstan analyse <path/to/directory1 path/to/directory2 ...>",
+      "explanation": "Analyze one or more directories",
+      "source": "tldr:phpstan"
+    },
+    {
+      "cmd": "phpstan analyse <path/to/directory> --configuration <path/to/config>",
+      "explanation": "Analyze a directory using a configuration file",
+      "source": "tldr:phpstan"
+    },
+    {
+      "cmd": "phpstan analyse <path/to/directory> --level <level>",
+      "explanation": "Analyze using a specific rule level (0-10, higher is stricter)",
+      "source": "tldr:phpstan"
+    },
+    {
+      "cmd": "phpstan analyse <path/to/directory> --autoload-file <path/to/autoload_file>",
+      "explanation": "Specify an autoload file to load before analyzing",
+      "source": "tldr:phpstan"
+    },
+    {
+      "cmd": "phpstan analyse <path/to/directory> --memory-limit <memory_limit>",
+      "explanation": "Specify a memory limit during analysis",
+      "source": "tldr:phpstan"
+    },
+    {
+      "cmd": "phpstan analyse --help",
+      "explanation": "Display available options for analysis",
+      "source": "tldr:phpstan"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/phpstan.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

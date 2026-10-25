@@ -1,0 +1,26 @@
+{
+  "id": "mfcuk",
+  "name": "mfcuk",
+  "schema_version": 1,
+  "summary": "MIFARE Classic Universal toolKit.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install mfcuk"
+    }
+  ],
+  "usage": "examples:",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

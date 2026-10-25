@@ -1,0 +1,50 @@
+{
+  "id": "passdetective",
+  "name": "passdetective",
+  "schema_version": 1,
+  "summary": "Scans shell command history to detect mistakenly written passwords, API keys, and secrets.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install passdetective"
+    }
+  ],
+  "usage": "PassDetective [flags]",
+  "subcommands": [
+    {
+      "name": "completion",
+      "description": "Generate the autocompletion script for the specified shell"
+    },
+    {
+      "name": "extract",
+      "description": "Extract passwords from shell history"
+    },
+    {
+      "name": "help",
+      "description": "Help about any command"
+    }
+  ],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Help message for PassDetective",
+      "default": "",
+      "example": "PassDetective --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

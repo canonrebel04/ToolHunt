@@ -1,0 +1,126 @@
+{
+  "id": "twofi",
+  "name": "twofi",
+  "schema_version": 1,
+  "summary": "Twitter Words of Interest.",
+  "highlights": [
+    "--config — config file, default is twofi.yml",
+    "-c — include the count with the words",
+    "-m — minimum word length",
+    "-T — a file containing a list of terms",
+    "-t — comma separated search terms quote words containing spaces, no space after commas",
+    "-U — a file containing a list of users",
+    "-u — comma separated usernames quote words containing spaces, no space after commas",
+    "-v — verbose"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install twofi"
+    }
+  ],
+  "usage": "twoif [OPTIONS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show help",
+      "default": "",
+      "example": "twofi --help"
+    },
+    {
+      "name": "--config",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "config file, default is twofi.yml",
+      "default": "",
+      "example": "twofi --config <file>"
+    },
+    {
+      "name": "--count",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "include the count with the words",
+      "default": "",
+      "example": "twofi --count"
+    },
+    {
+      "name": "--min_word_length",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "minimum word length",
+      "default": "",
+      "example": "twofi --min_word_length"
+    },
+    {
+      "name": "--term_file",
+      "short": "-T",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "a file containing a list of terms",
+      "default": "",
+      "example": "twofi --term_file <file>"
+    },
+    {
+      "name": "--terms",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "comma separated search terms quote words containing spaces, no space after commas",
+      "default": "",
+      "example": "twofi --terms"
+    },
+    {
+      "name": "--user_file",
+      "short": "-U",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "a file containing a list of users",
+      "default": "",
+      "example": "twofi --user_file <file>"
+    },
+    {
+      "name": "--users",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "comma separated usernames quote words containing spaces, no space after commas",
+      "default": "",
+      "example": "twofi --users"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose",
+      "default": "",
+      "example": "twofi --verbose"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

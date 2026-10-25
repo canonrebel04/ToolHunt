@@ -1,0 +1,61 @@
+{
+  "id": "asnmap",
+  "name": "asnmap",
+  "schema_version": 1,
+  "summary": "Map organization network ranges using ASN information.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "asnmap -asn <AS5650> -silent",
+      "explanation": "Look up CIDR ranges for an ASN",
+      "source": "tldr:asnmap"
+    },
+    {
+      "cmd": "asnmap -ip <100.19.12.21> -silent",
+      "explanation": "Look up CIDR ranges for an IP address",
+      "source": "tldr:asnmap"
+    },
+    {
+      "cmd": "asnmap -domain <example.com> -silent",
+      "explanation": "Look up CIDR ranges for a domain",
+      "source": "tldr:asnmap"
+    },
+    {
+      "cmd": "asnmap -org <GOOGLE> -silent",
+      "explanation": "Look up CIDR ranges for an organization",
+      "source": "tldr:asnmap"
+    },
+    {
+      "cmd": "asnmap -file <path/to/targets.txt> -silent",
+      "explanation": "Look up CIDR ranges from a file of targets",
+      "source": "tldr:asnmap"
+    },
+    {
+      "cmd": "asnmap -domain <facebook.com> -json -silent",
+      "explanation": "Output results in JSON format",
+      "source": "tldr:asnmap"
+    },
+    {
+      "cmd": "asnmap -asn <AS394161> -csv -silent",
+      "explanation": "Output results in CSV format",
+      "source": "tldr:asnmap"
+    },
+    {
+      "cmd": "asnmap -update",
+      "explanation": "Update asnmap to the latest version",
+      "source": "tldr:asnmap"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/asnmap.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

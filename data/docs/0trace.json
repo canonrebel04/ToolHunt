@@ -1,0 +1,26 @@
+{
+  "id": "0trace",
+  "name": "0trace",
+  "schema_version": 1,
+  "summary": "A hop enumeration tool.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install 0trace"
+    }
+  ],
+  "usage": "/usr/bin/0trace.sh iface target_ip [ target_port ]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

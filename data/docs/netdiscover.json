@@ -1,0 +1,69 @@
+{
+  "id": "netdiscover",
+  "name": "netdiscover",
+  "schema_version": 1,
+  "summary": "An active/passive address reconnaissance tool, mainly developed for those wireless networks without dhcp server, when you are wardriving. It can be also used on hub/switched networks.",
+  "highlights": [
+    "-l — scan the list of ranges contained into the given file",
+    "-m — scan a list of known MACs and host names",
+    "-c — number of times to send each ARP request (for nets with packet loss)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install netdiscover"
+    }
+  ],
+  "usage": "netdiscover [-i device] [-r range | -l file | -p] [-m file] [-F filter] [-s time] [-c count] [-n node] [-dfPLNS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "scan the list of ranges contained into the given file",
+      "default": "",
+      "example": "netdiscover -l <file>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "scan a list of known MACs and host names",
+      "default": "",
+      "example": "netdiscover -m <file>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "count",
+      "required": false,
+      "description": "number of times to send each ARP request (for nets with packet loss)",
+      "default": "",
+      "example": "netdiscover -c <count>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "netdiscover -r <172.16.6.0/23> -i <ens244>",
+      "explanation": "Scan the IP range on the network interface for active hosts",
+      "source": "tldr:netdiscover",
+      "verified": false
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/netdiscover.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

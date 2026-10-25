@@ -1,0 +1,60 @@
+{
+  "id": "dnsgen",
+  "name": "dnsgen",
+  "schema_version": 1,
+  "summary": "Generate combination of domain names from the provided input.",
+  "highlights": [
+    "-w — Path to custom wordlist.",
+    "-f — Fast generation."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dnsgen"
+    }
+  ],
+  "usage": "dnsgen [OPTIONS] FILENAME",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--wordlist",
+      "short": "-w",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Path to custom wordlist.",
+      "default": "",
+      "example": "dnsgen --wordlist <path>"
+    },
+    {
+      "name": "--fast",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fast generation.",
+      "default": "",
+      "example": "dnsgen --fast"
+    },
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this message and exit.",
+      "default": "",
+      "example": "dnsgen --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

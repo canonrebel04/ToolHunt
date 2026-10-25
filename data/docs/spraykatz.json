@@ -1,0 +1,115 @@
+{
+  "id": "spraykatz",
+  "name": "spraykatz",
+  "schema_version": 1,
+  "summary": "Credentials gathering tool automating remote procdump and parse of lsass process.",
+  "highlights": [
+    "-u — User to spray with. He must have admin rights on targeted systems in order to gain remote ",
+    "-p — User's password or NTLM hash in the LM:NT format.",
+    "-t — IP addresses and/or IP address ranges. You can submit them via a file of targets (one targ",
+    "-d — User's domain. If he is not member of a domain, simply use \"-d .\" instead.",
+    "-r — Only try to remove ProcDump and dumps left behind on distant machines. Just in case.",
+    "-v — Verbosity mode. Default is info.",
+    "-w — How many seconds Spraykatz waits before exiting gracefully. Default is 180 seconds."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install spraykatz"
+    }
+  ],
+  "usage": "spraykatz.py [-h] -u USERNAME -p PASSWORD -t TARGETS [-d DOMAIN] [-r]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "spraykatz --help"
+    },
+    {
+      "name": "--username",
+      "short": "-u",
+      "aliases": [],
+      "arg": "USERNAME",
+      "required": false,
+      "description": "User to spray with. He must have admin rights on targeted systems in order to gain remote code execution.",
+      "default": "",
+      "example": "spraykatz --username <username>"
+    },
+    {
+      "name": "--password",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PASSWORD",
+      "required": false,
+      "description": "User's password or NTLM hash in the LM:NT format.",
+      "default": "",
+      "example": "spraykatz --password <password>"
+    },
+    {
+      "name": "--targets",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TARGETS",
+      "required": false,
+      "description": "IP addresses and/or IP address ranges. You can submit them via a file of targets (one target per line), or inline (separated by commas).",
+      "default": "",
+      "example": "spraykatz --targets <targets>"
+    },
+    {
+      "name": "--domain",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "User's domain. If he is not member of a domain, simply use \"-d .\" instead.",
+      "default": "",
+      "example": "spraykatz --domain <domain>"
+    },
+    {
+      "name": "--remove",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only try to remove ProcDump and dumps left behind on distant machines. Just in case.",
+      "default": "",
+      "example": "spraykatz --remove"
+    },
+    {
+      "name": "--verbosity",
+      "short": "-v",
+      "aliases": [],
+      "arg": "{warning,info,debug}",
+      "required": false,
+      "description": "Verbosity mode. Default is info.",
+      "default": "",
+      "example": "spraykatz --verbosity <warning,info,debug>"
+    },
+    {
+      "name": "--wait",
+      "short": "-w",
+      "aliases": [],
+      "arg": "WAIT",
+      "required": false,
+      "description": "How many seconds Spraykatz waits before exiting gracefully. Default is 180 seconds.",
+      "default": "",
+      "example": "spraykatz --wait <wait>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

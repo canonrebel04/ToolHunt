@@ -1,0 +1,92 @@
+{
+  "id": "hosthunter",
+  "name": "hosthunter",
+  "schema_version": 1,
+  "summary": "A recon tool for discovering hostnames using OSINT techniques.",
+  "highlights": [
+    "-f — Choose between CSV and TXT output file formats.",
+    "-o — Sets the path of the output file.",
+    "-sc — Capture a screenshot of any associated Web Applications.",
+    "-t — Scan a Single IP."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hosthunter"
+    }
+  ],
+  "usage": "hosthunter [-h] [-f FORMAT] [-o OUTPUT] [-sc] [-t TARGET] [-V]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "hosthunter --help"
+    },
+    {
+      "name": "--format",
+      "short": "-f",
+      "aliases": [],
+      "arg": "FORMAT",
+      "required": false,
+      "description": "Choose between CSV and TXT output file formats.",
+      "default": "",
+      "example": "hosthunter --format <format>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "Sets the path of the output file.",
+      "default": "",
+      "example": "hosthunter --output <output>"
+    },
+    {
+      "name": "--screen-capture",
+      "short": "-sc",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Capture a screenshot of any associated Web Applications.",
+      "default": "",
+      "example": "hosthunter --screen-capture"
+    },
+    {
+      "name": "--target",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TARGET",
+      "required": false,
+      "description": "Scan a Single IP.",
+      "default": "",
+      "example": "hosthunter --target <target>"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Displays the current version.",
+      "default": "",
+      "example": "hosthunter --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

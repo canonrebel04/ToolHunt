@@ -1,0 +1,136 @@
+{
+  "id": "dbd",
+  "name": "dbd",
+  "schema_version": 1,
+  "summary": "A Netcat-clone, designed to be portable and offer strong encryption. It runs on Unix-like operating systems and on Microsoft Win32.",
+  "highlights": [
+    "-l — listen for incoming connection",
+    "-p — choose port to listen on, or source port to connect out from",
+    "-r — infinitely respawn/reconnect, pause for n seconds between connection attempts. -r0 can be ",
+    "-q — hush, quiet, don't print anything (overrides -v)",
+    "-n — toggle numeric-only IP addresses (don't do DNS resolution). if you specify -n twice, origi",
+    "-m — toggle monitoring (snooping) on/off (only used with the -e option). snooping can also be t",
+    "-s — invoke a shell, nothing else. if dbd is setuid 0, it'll invoke a root shell",
+    "-w — \"immobility timeout\" in seconds for idle read/write operations and program execution (the "
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dbd"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "listen for incoming connection",
+      "default": "",
+      "example": "dbd -l"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "n",
+      "required": false,
+      "description": "choose port to listen on, or source port to connect out from",
+      "default": "",
+      "example": "dbd -p <n>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "n",
+      "required": false,
+      "description": "infinitely respawn/reconnect, pause for n seconds between connection attempts. -r0 can be used to re-listen after disconnect (just like a regular daemon)",
+      "default": "",
+      "example": "dbd -r <n>"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "hush, quiet, don't print anything (overrides -v)",
+      "default": "",
+      "example": "dbd -q"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "be verbose",
+      "default": "",
+      "example": "dbd -v"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "toggle numeric-only IP addresses (don't do DNS resolution). if you specify -n twice, original state will be active (i.e. -n works like a on/off switch)",
+      "default": "",
+      "example": "dbd -n"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "toggle monitoring (snooping) on/off (only used with the -e option). snooping can also be turned on by specifying -vv (-v two times)",
+      "default": "",
+      "example": "dbd -m"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print version banner and exit (include that output in your bug report and send bug report to michel.blomgren@tigerteam.se)",
+      "default": "",
+      "example": "dbd -V"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "invoke a shell, nothing else. if dbd is setuid 0, it'll invoke a root shell",
+      "default": "",
+      "example": "dbd -s"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "n",
+      "required": false,
+      "description": "\"immobility timeout\" in seconds for idle read/write operations and program execution (the -e option)",
+      "default": "",
+      "example": "dbd -w <n>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

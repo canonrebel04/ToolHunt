@@ -1,0 +1,216 @@
+{
+  "id": "sfuzz",
+  "name": "sfuzz",
+  "schema_version": 1,
+  "summary": "A simple fuzzer.",
+  "highlights": [
+    "-q — Silent output mode (generally for CLI fuzzing)",
+    "-X — prints the output in hex",
+    "-b — Begin fuzzing at the test specified.",
+    "-e — End testing on failure.",
+    "-t — Wait time for reading the socket",
+    "-S — Remote host",
+    "-p — Port",
+    "-R — Refrain from closing connections (ie: \"leak\" them)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sfuzz"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This message.",
+      "default": "",
+      "example": "sfuzz -h"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Version information.",
+      "default": "",
+      "example": "sfuzz -V"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose output",
+      "default": "",
+      "example": "sfuzz -v"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Silent output mode (generally for CLI fuzzing)",
+      "default": "",
+      "example": "sfuzz -q"
+    },
+    {
+      "name": "-X",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "prints the output in hex",
+      "default": "",
+      "example": "sfuzz -X"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Begin fuzzing at the test specified.",
+      "default": "",
+      "example": "sfuzz -b"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "End testing on failure.",
+      "default": "",
+      "example": "sfuzz -e"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Wait time for reading the socket",
+      "default": "",
+      "example": "sfuzz -t"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Remote host",
+      "default": "",
+      "example": "sfuzz -S"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Port",
+      "default": "",
+      "example": "sfuzz -p"
+    },
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Refrain from closing connections (ie: \"leak\" them)",
+      "default": "",
+      "example": "sfuzz -R"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Config File",
+      "default": "",
+      "example": "sfuzz -f"
+    },
+    {
+      "name": "-L",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Log file",
+      "default": "",
+      "example": "sfuzz -L"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Create a new logfile after each fuzz",
+      "default": "",
+      "example": "sfuzz -n"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Trim the tailing newline",
+      "default": "",
+      "example": "sfuzz -r"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Define a symbol and value (X=y).",
+      "default": "",
+      "example": "sfuzz -D"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only perform literal fuzzing",
+      "default": "",
+      "example": "sfuzz -l"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only perform sequence fuzzing",
+      "default": "",
+      "example": "sfuzz -s"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

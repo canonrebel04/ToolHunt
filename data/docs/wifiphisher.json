@@ -1,0 +1,366 @@
+{
+  "id": "wifiphisher",
+  "name": "wifiphisher",
+  "schema_version": 1,
+  "summary": "Fast automated phishing attacks against WPA networks.",
+  "highlights": [
+    "-i — Manually choose an interface that supports both AP and monitor modes for spawning the rogu",
+    "-eI — Manually choose an interface that supports monitor mode for deauthenticating the victims. ",
+    "-aI — Manually choose an interface that supports AP mode for spawning the rogue AP. Example: -aI",
+    "-iI — Choose an interface that is connected on the InternetExample: -iI ppp0",
+    "-mI — Choose an interface that is connected on the Internet in order to perform a MITM attack. A",
+    "-iAM — Specify the MAC address of the AP interface",
+    "-iEM — Specify the MAC address of the extensions interface",
+    "-iNM — Do not change any MAC address"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install wifiphisher"
+    }
+  ],
+  "usage": "wifiphisher [-h] [-i INTERFACE] [-eI EXTENSIONSINTERFACE]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "wifiphisher --help"
+    },
+    {
+      "name": "--interface",
+      "short": "-i",
+      "aliases": [],
+      "arg": "INTERFACE",
+      "required": false,
+      "description": "Manually choose an interface that supports both AP and monitor modes for spawning the rogue AP as well as mounting additional Wi-Fi attacks from Extensions (i.e. deauth). Example: -i wlan1",
+      "default": "",
+      "example": "wifiphisher --interface <interface>"
+    },
+    {
+      "name": "--extensionsinterface",
+      "short": "-eI",
+      "aliases": [],
+      "arg": "EXTENSIONSINTERFACE",
+      "required": false,
+      "description": "Manually choose an interface that supports monitor mode for deauthenticating the victims. Example: -eI wlan1",
+      "default": "",
+      "example": "wifiphisher --extensionsinterface <extensionsinterface>"
+    },
+    {
+      "name": "--apinterface",
+      "short": "-aI",
+      "aliases": [],
+      "arg": "APINTERFACE",
+      "required": false,
+      "description": "Manually choose an interface that supports AP mode for spawning the rogue AP. Example: -aI wlan0",
+      "default": "",
+      "example": "wifiphisher --apinterface <apinterface>"
+    },
+    {
+      "name": "--internetinterface",
+      "short": "-iI",
+      "aliases": [],
+      "arg": "INTERNETINTERFACE",
+      "required": false,
+      "description": "Choose an interface that is connected on the InternetExample: -iI ppp0",
+      "default": "",
+      "example": "wifiphisher --internetinterface <internetinterface>"
+    },
+    {
+      "name": "--mitminterface",
+      "short": "-mI",
+      "aliases": [],
+      "arg": "MITMINTERFACE",
+      "required": false,
+      "description": "Choose an interface that is connected on the Internet in order to perform a MITM attack. All other interfaces will be protected.Example: -mI wlan1",
+      "default": "",
+      "example": "wifiphisher --mitminterface <mitminterface>"
+    },
+    {
+      "name": "--mac-ap-interface",
+      "short": "-iAM",
+      "aliases": [],
+      "arg": "MAC_AP_INTERFACE",
+      "required": false,
+      "description": "Specify the MAC address of the AP interface",
+      "default": "",
+      "example": "wifiphisher --mac-ap-interface <mac_ap_interface>"
+    },
+    {
+      "name": "--mac-extensions-interface",
+      "short": "-iEM",
+      "aliases": [],
+      "arg": "MAC_EXTENSIONS_INTERFACE",
+      "required": false,
+      "description": "Specify the MAC address of the extensions interface",
+      "default": "",
+      "example": "wifiphisher --mac-extensions-interface <mac_extensions_interface>"
+    },
+    {
+      "name": "--no-mac-randomization",
+      "short": "-iNM",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not change any MAC address",
+      "default": "",
+      "example": "wifiphisher --no-mac-randomization"
+    },
+    {
+      "name": "--keepnetworkmanager",
+      "short": "-kN",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not kill NetworkManager",
+      "default": "",
+      "example": "wifiphisher --keepnetworkmanager"
+    },
+    {
+      "name": "--noextensions",
+      "short": "-nE",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not load any extensions.",
+      "default": "",
+      "example": "wifiphisher --noextensions"
+    },
+    {
+      "name": "--nodeauth",
+      "short": "-nD",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip the deauthentication phase.",
+      "default": "",
+      "example": "wifiphisher --nodeauth"
+    },
+    {
+      "name": "--essid",
+      "short": "-e",
+      "aliases": [],
+      "arg": "ESSID",
+      "required": false,
+      "description": "Enter the ESSID of the rogue Access Point. This option will skip Access Point selection phase. Example: --essid 'Free WiFi'",
+      "default": "",
+      "example": "wifiphisher --essid <essid>"
+    },
+    {
+      "name": "--deauth-essid",
+      "short": "-dE",
+      "aliases": [],
+      "arg": "DEAUTH_ESSID",
+      "required": false,
+      "description": "Deauth all the BSSIDs in the WLAN with that ESSID.",
+      "default": "",
+      "example": "wifiphisher --deauth-essid <deauth_essid>"
+    },
+    {
+      "name": "--phishingscenario",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PHISHINGSCENARIO",
+      "required": false,
+      "description": "Choose the phishing scenario to run.This option will skip the scenario selection phase. Example: -p firmware_upgrade",
+      "default": "",
+      "example": "wifiphisher --phishingscenario <phishingscenario>"
+    },
+    {
+      "name": "--presharedkey",
+      "short": "-pK",
+      "aliases": [],
+      "arg": "PRESHAREDKEY",
+      "required": false,
+      "description": "Add WPA/WPA2 protection on the rogue Access Point. Example: -pK s3cr3tp4ssw0rd",
+      "default": "",
+      "example": "wifiphisher --presharedkey <presharedkey>"
+    },
+    {
+      "name": "--handshake-capture",
+      "short": "-hC",
+      "aliases": [],
+      "arg": "HANDSHAKE_CAPTURE",
+      "required": false,
+      "description": "Capture of the WPA/WPA2 handshakes for verifying passphrase. Requires cowpatty. Example : -hC capture.pcap",
+      "default": "",
+      "example": "wifiphisher --handshake-capture <handshake_capture>"
+    },
+    {
+      "name": "--quitonsuccess",
+      "short": "-qS",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Stop the script after successfully retrieving one pair of credentials",
+      "default": "",
+      "example": "wifiphisher --quitonsuccess"
+    },
+    {
+      "name": "--lure10-capture",
+      "short": "-lC",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Capture the BSSIDs of the APs that are discovered during AP selection phase. This option is part of Lure10 attack.",
+      "default": "",
+      "example": "wifiphisher --lure10-capture"
+    },
+    {
+      "name": "--lure10-exploit",
+      "short": "-lE",
+      "aliases": [],
+      "arg": "LURE10_EXPLOIT",
+      "required": false,
+      "description": "Fool the Windows Location Service of nearby Windows users to believe it is within an area that was previously captured with --lure10-capture. Part of the Lure10 attack.",
+      "default": "",
+      "example": "wifiphisher --lure10-exploit <lure10_exploit>"
+    },
+    {
+      "name": "--logging",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Log activity to file",
+      "default": "",
+      "example": "wifiphisher --logging"
+    },
+    {
+      "name": "--disable-karma",
+      "short": "-dK",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables KARMA attack",
+      "default": "",
+      "example": "wifiphisher --disable-karma"
+    },
+    {
+      "name": "--logpath",
+      "short": "-lP",
+      "aliases": [],
+      "arg": "LOGPATH",
+      "required": false,
+      "description": "Determine the full path of the logfile.",
+      "default": "",
+      "example": "wifiphisher --logpath <logpath>"
+    },
+    {
+      "name": "--credential-log-path",
+      "short": "-cP",
+      "aliases": [],
+      "arg": "CREDENTIAL_LOG_PATH",
+      "required": false,
+      "description": "Determine the full path of the file that will store any captured credentials",
+      "default": "",
+      "example": "wifiphisher --credential-log-path <credential_log_path>"
+    },
+    {
+      "name": "--payload-path",
+      "short": "",
+      "aliases": [],
+      "arg": "PAYLOAD_PATH",
+      "required": false,
+      "description": "Payload path for scenarios serving a payload",
+      "default": "",
+      "example": "wifiphisher --payload-path <payload_path>"
+    },
+    {
+      "name": "--channel-monitor",
+      "short": "-cM",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Monitor if target access point changes the channel.",
+      "default": "",
+      "example": "wifiphisher --channel-monitor"
+    },
+    {
+      "name": "--wps-pbc",
+      "short": "-wP",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Monitor if the button on a WPS-PBC Registrar is pressed.",
+      "default": "",
+      "example": "wifiphisher --wps-pbc"
+    },
+    {
+      "name": "--wpspbc-assoc-interface",
+      "short": "-wAI",
+      "aliases": [],
+      "arg": "WPSPBC_ASSOC_INTERFACE",
+      "required": false,
+      "description": "The WLAN interface used for associating to the WPS AccessPoint.",
+      "default": "",
+      "example": "wifiphisher --wpspbc-assoc-interface <wpspbc_assoc_interface>"
+    },
+    {
+      "name": "--known-beacons",
+      "short": "-kB",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Broadcast a number of beacon frames advertising popular WLANs",
+      "default": "",
+      "example": "wifiphisher --known-beacons"
+    },
+    {
+      "name": "--force-hostapd",
+      "short": "-fH",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force the usage of hostapd installed in the system",
+      "default": "",
+      "example": "wifiphisher --force-hostapd"
+    },
+    {
+      "name": "--phishing-pages-directory",
+      "short": "-pPD",
+      "aliases": [],
+      "arg": "PHISHING_PAGES_DIRECTORY",
+      "required": false,
+      "description": "Search for phishing pages in this location",
+      "default": "",
+      "example": "wifiphisher --phishing-pages-directory <phishing_pages_directory>"
+    },
+    {
+      "name": "--dnsmasq-conf",
+      "short": "",
+      "aliases": [],
+      "arg": "DNSMASQ_CONF",
+      "required": false,
+      "description": "Determine the full path of a custom dnmasq.conf file",
+      "default": "",
+      "example": "wifiphisher --dnsmasq-conf <dnsmasq_conf>"
+    },
+    {
+      "name": "--phishing-essid",
+      "short": "-pE",
+      "aliases": [],
+      "arg": "PHISHING_ESSID",
+      "required": false,
+      "description": "Determine the ESSID you want to use for the phishing page",
+      "default": "",
+      "example": "wifiphisher --phishing-essid <phishing_essid>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

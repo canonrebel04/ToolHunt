@@ -1,0 +1,9 @@
+{
+  "id": "ab-av1",
+  "binary": "ab-av1",
+  "commands": {
+    "": "ab-av1 --help",
+    "auto-encode": "ab-av1 auto-encode --help"
+  },
+  "note": "Captured from public man page / upstream README (not run on the box)"
+}

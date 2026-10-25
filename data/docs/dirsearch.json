@@ -1,0 +1,768 @@
+{
+  "id": "dirsearch",
+  "name": "dirsearch",
+  "schema_version": 1,
+  "summary": "HTTP(S) directory/file brute forcer.",
+  "highlights": [
+    "-u — Target URL(s), can use multiple flags",
+    "-l — URL list file",
+    "--stdin — Read URL(s) from STDIN",
+    "--cidr — Target CIDR",
+    "--raw — Load raw HTTP request from file (use `--scheme` flag to set the scheme)",
+    "-s — Session file",
+    "--config — Full path to config file, see 'config.ini' for example (Default: config.ini)",
+    "-w — Customize wordlists (separated by commas)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dirsearch"
+    }
+  ],
+  "usage": "dirsearch.py [-u|--url] target [-e|--extensions] extensions [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show program's version number and exit",
+      "default": "",
+      "example": "dirsearch --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "dirsearch --help"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Target URL(s), can use multiple flags",
+      "default": "",
+      "example": "dirsearch --url <url>"
+    },
+    {
+      "name": "--url-file",
+      "short": "-l",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "URL list file",
+      "default": "",
+      "example": "dirsearch --url-file <path>"
+    },
+    {
+      "name": "--stdin",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read URL(s) from STDIN",
+      "default": "",
+      "example": "dirsearch --stdin"
+    },
+    {
+      "name": "--cidr",
+      "short": "",
+      "aliases": [],
+      "arg": "CIDR",
+      "required": false,
+      "description": "Target CIDR",
+      "default": "",
+      "example": "dirsearch --cidr <cidr>"
+    },
+    {
+      "name": "--raw",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Load raw HTTP request from file (use `--scheme` flag to set the scheme)",
+      "default": "",
+      "example": "dirsearch --raw <path>"
+    },
+    {
+      "name": "--session",
+      "short": "-s",
+      "aliases": [],
+      "arg": "SESSION_FILE",
+      "required": false,
+      "description": "Session file",
+      "default": "",
+      "example": "dirsearch --session <session_file>"
+    },
+    {
+      "name": "--config",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Full path to config file, see 'config.ini' for example (Default: config.ini)",
+      "default": "config.ini",
+      "example": "dirsearch --config <path>"
+    },
+    {
+      "name": "--wordlists",
+      "short": "-w",
+      "aliases": [],
+      "arg": "WORDLISTS",
+      "required": false,
+      "description": "Customize wordlists (separated by commas)",
+      "default": "",
+      "example": "dirsearch --wordlists <wordlists>"
+    },
+    {
+      "name": "--extensions",
+      "short": "-e",
+      "aliases": [],
+      "arg": "EXTENSIONS",
+      "required": false,
+      "description": "Extension list separated by commas (e.g. php,asp)",
+      "default": "",
+      "example": "dirsearch --extensions <extensions>"
+    },
+    {
+      "name": "--force-extensions",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Add extensions to the end of every wordlist entry. By default dirsearch only replaces the %EXT% keyword with extensions",
+      "default": "",
+      "example": "dirsearch --force-extensions"
+    },
+    {
+      "name": "--overwrite-extensions",
+      "short": "-O",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Overwrite other extensions in the wordlist with your extensions (selected via `-e`)",
+      "default": "",
+      "example": "dirsearch --overwrite-extensions"
+    },
+    {
+      "name": "--exclude-extensions",
+      "short": "",
+      "aliases": [],
+      "arg": "EXTENSIONS",
+      "required": false,
+      "description": "Exclude extension list separated by commas (e.g. asp,jsp)",
+      "default": "",
+      "example": "dirsearch --exclude-extensions <extensions>"
+    },
+    {
+      "name": "--remove-extensions",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Remove extensions in all paths (e.g. admin.php -> admin)",
+      "default": "",
+      "example": "dirsearch --remove-extensions"
+    },
+    {
+      "name": "--prefixes",
+      "short": "",
+      "aliases": [],
+      "arg": "PREFIXES",
+      "required": false,
+      "description": "Add custom prefixes to all wordlist entries (separated by commas)",
+      "default": "",
+      "example": "dirsearch --prefixes <prefixes>"
+    },
+    {
+      "name": "--suffixes",
+      "short": "",
+      "aliases": [],
+      "arg": "SUFFIXES",
+      "required": false,
+      "description": "Add custom suffixes to all wordlist entries, ignore directories (separated by commas)",
+      "default": "",
+      "example": "dirsearch --suffixes <suffixes>"
+    },
+    {
+      "name": "--uppercase",
+      "short": "-U",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Uppercase wordlist",
+      "default": "",
+      "example": "dirsearch --uppercase"
+    },
+    {
+      "name": "--lowercase",
+      "short": "-L",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Lowercase wordlist",
+      "default": "",
+      "example": "dirsearch --lowercase"
+    },
+    {
+      "name": "--capital",
+      "short": "-C",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Capital wordlist",
+      "default": "",
+      "example": "dirsearch --capital"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "Number of threads",
+      "default": "",
+      "example": "dirsearch --threads <threads>"
+    },
+    {
+      "name": "--recursive",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Brute-force recursively",
+      "default": "",
+      "example": "dirsearch --recursive"
+    },
+    {
+      "name": "--deep-recursive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform recursive scan on every directory depth (e.g. api/users -> api/)",
+      "default": "",
+      "example": "dirsearch --deep-recursive"
+    },
+    {
+      "name": "--force-recursive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do recursive brute-force for every found path, not only directories",
+      "default": "",
+      "example": "dirsearch --force-recursive"
+    },
+    {
+      "name": "--max-recursion-depth",
+      "short": "-R",
+      "aliases": [],
+      "arg": "DEPTH",
+      "required": false,
+      "description": "Maximum recursion depth",
+      "default": "",
+      "example": "dirsearch --max-recursion-depth <depth>"
+    },
+    {
+      "name": "--recursion-status",
+      "short": "",
+      "aliases": [],
+      "arg": "CODES",
+      "required": false,
+      "description": "Valid status codes to perform recursive scan, support ranges (separated by commas)",
+      "default": "",
+      "example": "dirsearch --recursion-status <codes>"
+    },
+    {
+      "name": "--subdirs",
+      "short": "",
+      "aliases": [],
+      "arg": "SUBDIRS",
+      "required": false,
+      "description": "Scan sub-directories of the given URL[s] (separated by commas)",
+      "default": "",
+      "example": "dirsearch --subdirs <subdirs>"
+    },
+    {
+      "name": "--exclude-subdirs",
+      "short": "",
+      "aliases": [],
+      "arg": "SUBDIRS",
+      "required": false,
+      "description": "Exclude the following subdirectories during recursive scan (separated by commas)",
+      "default": "",
+      "example": "dirsearch --exclude-subdirs <subdirs>"
+    },
+    {
+      "name": "--include-status",
+      "short": "-i",
+      "aliases": [],
+      "arg": "CODES",
+      "required": false,
+      "description": "Include status codes, separated by commas, support ranges (e.g. 200,300-399)",
+      "default": "",
+      "example": "dirsearch --include-status <codes>"
+    },
+    {
+      "name": "--exclude-status",
+      "short": "-x",
+      "aliases": [],
+      "arg": "CODES",
+      "required": false,
+      "description": "Exclude status codes, separated by commas, support ranges (e.g. 301,500-599)",
+      "default": "",
+      "example": "dirsearch --exclude-status <codes>"
+    },
+    {
+      "name": "--exclude-sizes",
+      "short": "",
+      "aliases": [],
+      "arg": "SIZES",
+      "required": false,
+      "description": "Exclude responses by sizes, separated by commas (e.g. 0B,4KB)",
+      "default": "",
+      "example": "dirsearch --exclude-sizes <sizes>"
+    },
+    {
+      "name": "--exclude-text",
+      "short": "",
+      "aliases": [],
+      "arg": "TEXTS",
+      "required": false,
+      "description": "Exclude responses by text, can use multiple flags",
+      "default": "",
+      "example": "dirsearch --exclude-text <texts>"
+    },
+    {
+      "name": "--exclude-regex",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "Exclude responses by regular expression",
+      "default": "",
+      "example": "dirsearch --exclude-regex <regex>"
+    },
+    {
+      "name": "--exclude-redirect",
+      "short": "",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "Exclude responses if this regex (or text) matches redirect URL (e.g. '/index.html')",
+      "default": "",
+      "example": "dirsearch --exclude-redirect <string>"
+    },
+    {
+      "name": "--exclude-response",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Exclude responses similar to response of this page, path as input (e.g. 404.html)",
+      "default": "",
+      "example": "dirsearch --exclude-response <path>"
+    },
+    {
+      "name": "--skip-on-status",
+      "short": "",
+      "aliases": [],
+      "arg": "CODES",
+      "required": false,
+      "description": "Skip target whenever hit one of these status codes, separated by commas, support ranges",
+      "default": "",
+      "example": "dirsearch --skip-on-status <codes>"
+    },
+    {
+      "name": "--min-response-size",
+      "short": "",
+      "aliases": [],
+      "arg": "LENGTH",
+      "required": false,
+      "description": "Minimum response length",
+      "default": "",
+      "example": "dirsearch --min-response-size <length>"
+    },
+    {
+      "name": "--max-response-size",
+      "short": "",
+      "aliases": [],
+      "arg": "LENGTH",
+      "required": false,
+      "description": "Maximum response length",
+      "default": "",
+      "example": "dirsearch --max-response-size <length>"
+    },
+    {
+      "name": "--max-time",
+      "short": "",
+      "aliases": [],
+      "arg": "SECONDS",
+      "required": false,
+      "description": "Maximum runtime for the scan",
+      "default": "",
+      "example": "dirsearch --max-time <seconds>"
+    },
+    {
+      "name": "--exit-on-error",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Exit whenever an error occurs",
+      "default": "",
+      "example": "dirsearch --exit-on-error"
+    },
+    {
+      "name": "--http-method",
+      "short": "-m",
+      "aliases": [],
+      "arg": "METHOD",
+      "required": false,
+      "description": "HTTP method (default: GET)",
+      "default": "GET",
+      "example": "dirsearch --http-method <method>"
+    },
+    {
+      "name": "--data",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DATA",
+      "required": false,
+      "description": "HTTP request data",
+      "default": "",
+      "example": "dirsearch --data <data>"
+    },
+    {
+      "name": "--data-file",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "File contains HTTP request data",
+      "default": "",
+      "example": "dirsearch --data-file <path>"
+    },
+    {
+      "name": "--header",
+      "short": "-H",
+      "aliases": [],
+      "arg": "HEADERS",
+      "required": false,
+      "description": "HTTP request header, can use multiple flags",
+      "default": "",
+      "example": "dirsearch --header <headers>"
+    },
+    {
+      "name": "--header-file",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "File contains HTTP request headers",
+      "default": "",
+      "example": "dirsearch --header-file <path>"
+    },
+    {
+      "name": "--follow-redirects",
+      "short": "-F",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Follow HTTP redirects",
+      "default": "",
+      "example": "dirsearch --follow-redirects"
+    },
+    {
+      "name": "--random-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Choose a random User-Agent for each request",
+      "default": "",
+      "example": "dirsearch --random-agent"
+    },
+    {
+      "name": "--auth",
+      "short": "",
+      "aliases": [],
+      "arg": "CREDENTIAL",
+      "required": false,
+      "description": "Authentication credential (e.g. user:password or bearer token)",
+      "default": "",
+      "example": "dirsearch --auth <credential>"
+    },
+    {
+      "name": "--auth-type",
+      "short": "",
+      "aliases": [],
+      "arg": "TYPE",
+      "required": false,
+      "description": "Authentication type (basic, digest, bearer, ntlm, jwt, oauth2)",
+      "default": "",
+      "example": "dirsearch --auth-type <type>"
+    },
+    {
+      "name": "--cert-file",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "File contains client-side certificate",
+      "default": "",
+      "example": "dirsearch --cert-file <path>"
+    },
+    {
+      "name": "--key-file",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "File contains client-side certificate private key (unencrypted)",
+      "default": "",
+      "example": "dirsearch --key-file <path>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "USER_AGENT",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "dirsearch --user-agent <user_agent>"
+    },
+    {
+      "name": "--cookie",
+      "short": "",
+      "aliases": [],
+      "arg": "COOKIE",
+      "required": false,
+      "description": "Connection Settings:",
+      "default": "",
+      "example": "dirsearch --cookie <cookie>"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "Connection timeout",
+      "default": "",
+      "example": "dirsearch --timeout <timeout>"
+    },
+    {
+      "name": "--delay",
+      "short": "",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "Delay between requests",
+      "default": "",
+      "example": "dirsearch --delay <delay>"
+    },
+    {
+      "name": "--proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "Proxy URL (HTTP/SOCKS), can use multiple flags",
+      "default": "",
+      "example": "dirsearch --proxy <proxy>"
+    },
+    {
+      "name": "--proxy-file",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "File contains proxy servers",
+      "default": "",
+      "example": "dirsearch --proxy-file <path>"
+    },
+    {
+      "name": "--proxy-auth",
+      "short": "",
+      "aliases": [],
+      "arg": "CREDENTIAL",
+      "required": false,
+      "description": "Proxy authentication credential",
+      "default": "",
+      "example": "dirsearch --proxy-auth <credential>"
+    },
+    {
+      "name": "--replay-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "Proxy to replay with found paths",
+      "default": "",
+      "example": "dirsearch --replay-proxy <proxy>"
+    },
+    {
+      "name": "--tor",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Tor network as proxy",
+      "default": "",
+      "example": "dirsearch --tor"
+    },
+    {
+      "name": "--scheme",
+      "short": "",
+      "aliases": [],
+      "arg": "SCHEME",
+      "required": false,
+      "description": "Scheme for raw request or if there is no scheme in the URL (Default: auto-detect)",
+      "default": "auto-detect",
+      "example": "dirsearch --scheme <scheme>"
+    },
+    {
+      "name": "--max-rate",
+      "short": "",
+      "aliases": [],
+      "arg": "RATE",
+      "required": false,
+      "description": "Max requests per second",
+      "default": "",
+      "example": "dirsearch --max-rate <rate>"
+    },
+    {
+      "name": "--retries",
+      "short": "",
+      "aliases": [],
+      "arg": "RETRIES",
+      "required": false,
+      "description": "Number of retries for failed requests",
+      "default": "",
+      "example": "dirsearch --retries <retries>"
+    },
+    {
+      "name": "--ip",
+      "short": "",
+      "aliases": [],
+      "arg": "IP",
+      "required": false,
+      "description": "Server IP address",
+      "default": "",
+      "example": "dirsearch --ip <ip>"
+    },
+    {
+      "name": "--crawl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Crawl for new paths in responses",
+      "default": "",
+      "example": "dirsearch --crawl"
+    },
+    {
+      "name": "--full-url",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Full URLs in the output (enabled automatically in quiet mode)",
+      "default": "",
+      "example": "dirsearch --full-url"
+    },
+    {
+      "name": "--redirects-history",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show redirects history",
+      "default": "",
+      "example": "dirsearch --redirects-history"
+    },
+    {
+      "name": "--no-color",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "No colored output",
+      "default": "",
+      "example": "dirsearch --no-color"
+    },
+    {
+      "name": "--quiet-mode",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Quiet mode",
+      "default": "",
+      "example": "dirsearch --quiet-mode"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Output file",
+      "default": "",
+      "example": "dirsearch --output <path>"
+    },
+    {
+      "name": "--format",
+      "short": "",
+      "aliases": [],
+      "arg": "FORMAT",
+      "required": false,
+      "description": "Report format (Available: simple, plain, json, xml, md, csv, html, sqlite)",
+      "default": "",
+      "example": "dirsearch --format <format>"
+    },
+    {
+      "name": "--log",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Log file",
+      "default": "",
+      "example": "dirsearch --log <path>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "dirsearch --url <url> --extensions <php> --cookie <cookie>",
+      "explanation": "Scan a web server using a cookie",
+      "source": "tldr:dirsearch"
+    },
+    {
+      "cmd": "dirsearch --url <url> --extensions <php> --http-method <HEAD>",
+      "explanation": "Scan a web server using the `HEAD` HTTP method",
+      "source": "tldr:dirsearch"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/dirsearch.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

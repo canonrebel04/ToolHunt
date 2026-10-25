@@ -1,0 +1,104 @@
+{
+  "id": "goofile",
+  "name": "goofile",
+  "schema_version": 1,
+  "summary": "Command line filetype search",
+  "highlights": [
+    "-d — the domain to search - optional (ie. kali.org",
+    "-f — the filetype to search for - required (ie. pdf)",
+    "-k — Google Custom Search Engine API key - optional",
+    "-e — Google Custom Search Engine ID - optional",
+    "-q — Only search for files with keyword - optional",
+    "--logging — Set the logging verbosity to something other than \"INFO\" - optional"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install goofile"
+    }
+  ],
+  "usage": "goofile [-h] [-d DOMAIN] [-f FILETYPE] [-k KEY] [-e ENGINE] [-q QUERY]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "goofile --help"
+    },
+    {
+      "name": "--domain",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "the domain to search - optional (ie. kali.org",
+      "default": "",
+      "example": "goofile --domain <domain>"
+    },
+    {
+      "name": "--filetype",
+      "short": "-f",
+      "aliases": [],
+      "arg": "FILETYPE",
+      "required": false,
+      "description": "the filetype to search for - required (ie. pdf)",
+      "default": "",
+      "example": "goofile --filetype <filetype>"
+    },
+    {
+      "name": "--key",
+      "short": "-k",
+      "aliases": [],
+      "arg": "KEY",
+      "required": false,
+      "description": "Google Custom Search Engine API key - optional",
+      "default": "",
+      "example": "goofile --key <key>"
+    },
+    {
+      "name": "--engine",
+      "short": "-e",
+      "aliases": [],
+      "arg": "ENGINE",
+      "required": false,
+      "description": "Google Custom Search Engine ID - optional",
+      "default": "",
+      "example": "goofile --engine <engine>"
+    },
+    {
+      "name": "--query",
+      "short": "-q",
+      "aliases": [],
+      "arg": "QUERY",
+      "required": false,
+      "description": "Only search for files with keyword - optional",
+      "default": "",
+      "example": "goofile --query <query>"
+    },
+    {
+      "name": "--logging",
+      "short": "",
+      "aliases": [],
+      "arg": "LOGGING",
+      "required": false,
+      "description": "Set the logging verbosity to something other than \"INFO\" - optional",
+      "default": "",
+      "example": "goofile --logging <logging>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

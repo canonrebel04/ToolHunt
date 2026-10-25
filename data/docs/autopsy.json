@@ -1,0 +1,72 @@
+{
+  "id": "autopsy",
+  "name": "autopsy",
+  "schema_version": 1,
+  "summary": "The forensic browser. A GUI for the Sleuth Kit.",
+  "highlights": [
+    "-c — force a cookie in the URL",
+    "-C — force NO cookie in the URL",
+    "-d — specify the evidence locker directory",
+    "-p — specify the server port (default: 9999)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install autopsy"
+    }
+  ],
+  "usage": "/usr/bin/autopsy [-c] [-C] [-d evid_locker] [-i device filesystem mnt] [-p port] [remoteaddr]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "force a cookie in the URL",
+      "default": "",
+      "example": "autopsy -c"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "force NO cookie in the URL",
+      "default": "",
+      "example": "autopsy -C"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "dir",
+      "required": false,
+      "description": "specify the evidence locker directory",
+      "default": "",
+      "example": "autopsy -d <dir>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "port",
+      "required": false,
+      "description": "specify the server port (default: 9999)",
+      "default": "9999",
+      "example": "autopsy -p <port>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

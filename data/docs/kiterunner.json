@@ -1,0 +1,41 @@
+{
+  "id": "kiterunner",
+  "name": "kiterunner",
+  "schema_version": 1,
+  "summary": "Contextual Content Discovery Tool.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "tldr kiterunner brute",
+      "explanation": "View documentation for bruteforcing API paths and web endpoints",
+      "source": "tldr:kiterunner"
+    },
+    {
+      "cmd": "tldr kiterunner scan",
+      "explanation": "View documentation for concurrently scanning hosts with kitebuilder wordlists",
+      "source": "tldr:kiterunner"
+    },
+    {
+      "cmd": "tldr kiterunner kb",
+      "explanation": "View documentation for manipulating kitebuilder schemas",
+      "source": "tldr:kiterunner"
+    },
+    {
+      "cmd": "tldr kiterunner wordlist",
+      "explanation": "View documentation for managing cached and remote wordlists",
+      "source": "tldr:kiterunner"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/kiterunner.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

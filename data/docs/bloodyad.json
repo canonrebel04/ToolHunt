@@ -1,0 +1,207 @@
+{
+  "id": "bloodyad",
+  "name": "bloodyad",
+  "schema_version": 1,
+  "summary": "An Active Directory Privilege Escalation Framework.",
+  "highlights": [
+    "-d — Domain used for NTLM authentication",
+    "-u — Username used for NTLM authentication",
+    "-p — password or LMHASH:NTHASH for NTLM authentication, password or AES/RC4 key for kerberos, p",
+    "-k — Enable Kerberos authentication. If '-p' is provided it will try to query a TGT with it. Yo",
+    "-f — Specify format for '--password' or '-k <keyfile>'",
+    "-c — Schannel authentication or krb pkinit if -k also provided, e.g: \"path/to/key:path/to/cert\"",
+    "-s — Use LDAP/GC over TLS (LDAPS/GCS). Use -ss for simple bind and -sss to remove all channel b",
+    "-H — Hostname or IP of the DC (ex: my.dc.local or 172.16.1.3)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bloodyad"
+    }
+  ],
+  "usage": "bloodyad [-h] [-d DOMAIN] [-u USERNAME] [-p PASSWORD]",
+  "subcommands": [
+    {
+      "name": "add",
+      "description": "[ADD] function category"
+    },
+    {
+      "name": "get",
+      "description": "[GET] function category"
+    },
+    {
+      "name": "msldap",
+      "description": "[MSLDAP] function category"
+    },
+    {
+      "name": "remove",
+      "description": "[REMOVE] function category"
+    },
+    {
+      "name": "set",
+      "description": "[SET] function category"
+    }
+  ],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "bloodyad --help"
+    },
+    {
+      "name": "--domain",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Domain used for NTLM authentication",
+      "default": "",
+      "example": "bloodyad --domain <domain>"
+    },
+    {
+      "name": "--username",
+      "short": "-u",
+      "aliases": [],
+      "arg": "USERNAME",
+      "required": false,
+      "description": "Username used for NTLM authentication",
+      "default": "",
+      "example": "bloodyad --username <username>"
+    },
+    {
+      "name": "--password",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PASSWORD",
+      "required": false,
+      "description": "password or LMHASH:NTHASH for NTLM authentication, password or AES/RC4 key for kerberos, password for certificate (Do not specify to trigger integrated windows authentication)",
+      "default": "",
+      "example": "bloodyad --password <password>"
+    },
+    {
+      "name": "--kerberos",
+      "short": "-k",
+      "aliases": [],
+      "arg": "[KERBEROS ...]",
+      "required": false,
+      "description": "Enable Kerberos authentication. If '-p' is provided it will try to query a TGT with it. You can also provide a list of one or more optional keywords as '-k kdc=192.168.100.1 kdcc=192.168.150.1 realmc=foreign.realm.corp <keyfile_type>=/home/silver/Admin.ccache', <keyfile_type> being ccache, kirbi or keytab, 'kdc' being the kerberos server for the keyfile provided and 'realmc' and 'kdcc' for cross realm (the realm of the '--host' provided)",
+      "default": "",
+      "example": "bloodyad --kerberos <kerberos ...>"
+    },
+    {
+      "name": "--format",
+      "short": "-f",
+      "aliases": [],
+      "arg": "{b64,hex,aes,rc4,default}",
+      "required": false,
+      "description": "Specify format for '--password' or '-k <keyfile>'",
+      "default": "",
+      "example": "bloodyad --format <b64,hex,aes,rc4,default>"
+    },
+    {
+      "name": "--certificate",
+      "short": "-c",
+      "aliases": [],
+      "arg": "[CERTIFICATE]",
+      "required": false,
+      "description": "Schannel authentication or krb pkinit if -k also provided, e.g: \"path/to/key:path/to/cert\" (Use Windows Certstore with krb if left empty)",
+      "default": "",
+      "example": "bloodyad --certificate <certificate>"
+    },
+    {
+      "name": "--secure",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use LDAP/GC over TLS (LDAPS/GCS). Use -ss for simple bind and -sss to remove all channel binding/signing (useful for debug).",
+      "default": "",
+      "example": "bloodyad --secure"
+    },
+    {
+      "name": "--host",
+      "short": "-H",
+      "aliases": [],
+      "arg": "HOST",
+      "required": false,
+      "description": "Hostname or IP of the DC (ex: my.dc.local or 172.16.1.3)",
+      "default": "",
+      "example": "bloodyad --host <host>"
+    },
+    {
+      "name": "--dc-ip",
+      "short": "-i",
+      "aliases": [],
+      "arg": "DC_IP",
+      "required": false,
+      "description": "IP of the DC (useful if you provided a --host which can't resolve)",
+      "default": "",
+      "example": "bloodyad --dc-ip <dc_ip>"
+    },
+    {
+      "name": "--dns",
+      "short": "",
+      "aliases": [],
+      "arg": "DNS",
+      "required": false,
+      "description": "IP of the DNS to resolve AD names (useful for inter- domain functions)",
+      "default": "",
+      "example": "bloodyad --dns <dns>"
+    },
+    {
+      "name": "--timeout",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "Connection timeout in seconds",
+      "default": "",
+      "example": "bloodyad --timeout <timeout>"
+    },
+    {
+      "name": "--gc",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Connect to Global Catalog (GC)",
+      "default": "",
+      "example": "bloodyad --gc"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "{QUIET,INFO,DEBUG,TRACE}",
+      "required": false,
+      "description": "Adjust output verbosity",
+      "default": "",
+      "example": "bloodyad --verbose <quiet,info,debug,trace>"
+    },
+    {
+      "name": "--json",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output results in JSON format",
+      "default": "",
+      "example": "bloodyad --json"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "osrframework",
+  "name": "osrframework",
+  "schema_version": 1,
+  "summary": "A project focused on providing API and tools to perform more accurate online researches.",
+  "highlights": [
+    "--license — shows the AGPLv3+ license and exists."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install osrframework"
+    }
+  ],
+  "usage": "osrf [-h] [--license] [--version]",
+  "subcommands": [
+    {
+      "name": "alias_generator",
+      "description": "Generates a list of candidate usernames based on known"
+    },
+    {
+      "name": "checkfy",
+      "description": "Verifies if a given email address matches a pattern."
+    },
+    {
+      "name": "domainfy",
+      "description": "Checks whether domain names using words and nicknames"
+    },
+    {
+      "name": "mailfy",
+      "description": "Gets information about email accounts."
+    },
+    {
+      "name": "phonefy",
+      "description": "Looks for information linked to spam practices by a"
+    },
+    {
+      "name": "searchfy",
+      "description": "Performs queries on several platforms."
+    },
+    {
+      "name": "usufy",
+      "description": "Looks for registered accounts with given nicknames."
+    }
+  ],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "shows this help and exists.",
+      "default": "",
+      "example": "osrf --help"
+    },
+    {
+      "name": "--license",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "shows the AGPLv3+ license and exists.",
+      "default": "",
+      "example": "osrf --license"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "shows the version of the program and exists.",
+      "default": "",
+      "example": "osrf --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

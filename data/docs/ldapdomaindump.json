@@ -1,0 +1,41 @@
+{
+  "id": "ldapdomaindump",
+  "name": "ldapdomaindump",
+  "schema_version": 1,
+  "summary": "Active Directory information dumper via LDAP.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "ldapdomaindump --user <domain>\\<username> --password <password|ntlm_hash> <hostname|ip>",
+      "explanation": "Dump all information using the given LDAP account",
+      "source": "tldr:ldapdomaindump"
+    },
+    {
+      "cmd": "ldapdomaindump --resolve --user <domain>\\<username> --password<password> <hostname|ip>",
+      "explanation": "Dump all information, resolving computer hostnames",
+      "source": "tldr:ldapdomaindump"
+    },
+    {
+      "cmd": "ldapdomaindump --resolve --dns-server <domain_controller_ip> --user <domain>\\<username> --password<password> <hostname|ip>",
+      "explanation": "Dump all information, resolving computer hostnames with the selected DNS server",
+      "source": "tldr:ldapdomaindump"
+    },
+    {
+      "cmd": "ldapdomaindump --no-json --outdir <path/to/directory> --user <domain>\\<username> --password<password> <hostname|ip>",
+      "explanation": "Dump all information to the given directory without JSON output",
+      "source": "tldr:ldapdomaindump"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/linux/ldapdomaindump.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

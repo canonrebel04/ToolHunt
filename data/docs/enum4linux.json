@@ -1,0 +1,228 @@
+{
+  "id": "enum4linux",
+  "name": "enum4linux",
+  "schema_version": 1,
+  "summary": "A tool for enumerating information from Windows and Samba systems.",
+  "highlights": [
+    "-U — get userlist",
+    "-M — get machine list*",
+    "-S — get sharelist",
+    "-P — get password policy information",
+    "-G — get group and member list",
+    "-d — be detailed, applies to -U and -S",
+    "-a — Do all simple enumeration (-U -S -G -P -r -o -n -i). This option is enabled if you don't p",
+    "-r — enumerate users via RID cycling"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install enum4linux"
+    }
+  ],
+  "usage": "./enum4linux.pl [options] ip",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-U",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "get userlist",
+      "default": "",
+      "example": "enum4linux -U"
+    },
+    {
+      "name": "-M",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "get machine list*",
+      "default": "",
+      "example": "enum4linux -M"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "get sharelist",
+      "default": "",
+      "example": "enum4linux -S"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "get password policy information",
+      "default": "",
+      "example": "enum4linux -P"
+    },
+    {
+      "name": "-G",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "get group and member list",
+      "default": "",
+      "example": "enum4linux -G"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "be detailed, applies to -U and -S",
+      "default": "",
+      "example": "enum4linux -d"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do all simple enumeration (-U -S -G -P -r -o -n -i). This option is enabled if you don't provide any other options.",
+      "default": "",
+      "example": "enum4linux -a"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display this help message and exit",
+      "default": "",
+      "example": "enum4linux -h"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enumerate users via RID cycling",
+      "default": "",
+      "example": "enum4linux -r"
+    },
+    {
+      "name": "-K",
+      "short": "",
+      "aliases": [],
+      "arg": "n",
+      "required": false,
+      "description": "Keep searching RIDs until n consective RIDs don't correspond to a username. Impies RID range ends at 999999. Useful against DCs.",
+      "default": "",
+      "example": "enum4linux -K <n>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get some (limited) info via LDAP 389/TCP (for DCs only)",
+      "default": "",
+      "example": "enum4linux -l"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "brute force guessing for share names",
+      "default": "",
+      "example": "enum4linux -s <file>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get OS information",
+      "default": "",
+      "example": "enum4linux -o"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get printer information",
+      "default": "",
+      "example": "enum4linux -i"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do an nmblookup (similar to nbtstat)",
+      "default": "",
+      "example": "enum4linux -n"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose. Shows full commands being run (net, rpcclient, etc.)",
+      "default": "",
+      "example": "enum4linux -v"
+    },
+    {
+      "name": "-A",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Aggressive. Do write checks on shares etc",
+      "default": "",
+      "example": "enum4linux -A"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "enum4linux -a <remote_host>",
+      "explanation": "Try to enumerate using all methods",
+      "source": "tldr:enum4linux"
+    },
+    {
+      "cmd": "enum4linux -U <remote_host>",
+      "explanation": "List usernames from a given host",
+      "source": "tldr:enum4linux"
+    },
+    {
+      "cmd": "enum4linux -S <remote_host>",
+      "explanation": "List shares",
+      "source": "tldr:enum4linux"
+    },
+    {
+      "cmd": "enum4linux -o <remote_host>",
+      "explanation": "Get OS information",
+      "source": "tldr:enum4linux"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/enum4linux.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

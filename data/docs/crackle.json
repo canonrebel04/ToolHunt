@@ -1,0 +1,69 @@
+{
+  "id": "crackle",
+  "name": "crackle",
+  "schema_version": 1,
+  "summary": "Crack and decrypt BLE encryption.",
+  "highlights": [
+    "-t — Run tests against crypto engine"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install crackle"
+    }
+  ],
+  "usage": "crackle -i <input.pcap> [-o <output.pcap>] [-l <ltk>]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Be verbose",
+      "default": "",
+      "example": "crackle -v"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run tests against crypto engine",
+      "default": "",
+      "example": "crackle -t"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "crackle -i <path/to/input.pcap>",
+      "explanation": "Check whether the recorded BLE communications contain the packets necessary for recovering temporary keys (TKs)",
+      "source": "tldr:crackle",
+      "verified": false
+    },
+    {
+      "cmd": "crackle -i <path/to/input.pcap> -o <path/to/decrypted.pcap>",
+      "explanation": "Use brute force to recover the TK of the recorded pairing events and use it to decrypt all subsequent communications",
+      "source": "tldr:crackle",
+      "verified": false
+    },
+    {
+      "cmd": "crackle -i <path/to/input.pcap> -o <path/to/decrypted.pcap> -l <81b06facd90fe7a6e9bbd9cee59736a7>",
+      "explanation": "Use the specified long-term key (LTK) to decrypt the recorded communication",
+      "source": "tldr:crackle",
+      "verified": false
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/crackle.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "winexe",
+  "name": "winexe",
+  "schema_version": 1,
+  "summary": "Remotely execute commands on Windows NT/2000/XP/2003 systems.",
+  "highlights": [
+    "-A — Get the credentials from a file",
+    "-N — Do not ask for a password",
+    "-k — Use Kerberos, -k [yes|no]",
+    "-d — Set debug level",
+    "--uninstall — Uninstall winexe service after remote execution",
+    "--reinstall — Reinstall winexe service before remote execution",
+    "--system — Use SYSTEM account",
+    "--profile — Load user profile"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install winexe"
+    }
+  ],
+  "usage": "winexe [OPTION]... //HOST COMMAND",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display help message",
+      "default": "",
+      "example": "winexe --help"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display version number",
+      "default": "",
+      "example": "winexe --version"
+    },
+    {
+      "name": "--authentication-file",
+      "short": "-A",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Get the credentials from a file",
+      "default": "",
+      "example": "winexe --authentication-file <file>"
+    },
+    {
+      "name": "--no-pass",
+      "short": "-N",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not ask for a password",
+      "default": "",
+      "example": "winexe --no-pass"
+    },
+    {
+      "name": "--kerberos",
+      "short": "-k",
+      "aliases": [],
+      "arg": "STRING",
+      "required": false,
+      "description": "Use Kerberos, -k [yes|no]",
+      "default": "",
+      "example": "winexe --kerberos <string>"
+    },
+    {
+      "name": "--debuglevel",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DEBUGLEVEL",
+      "required": false,
+      "description": "Set debug level",
+      "default": "",
+      "example": "winexe --debuglevel <debuglevel>"
+    },
+    {
+      "name": "--uninstall",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Uninstall winexe service after remote execution",
+      "default": "",
+      "example": "winexe --uninstall"
+    },
+    {
+      "name": "--reinstall",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Reinstall winexe service before remote execution",
+      "default": "",
+      "example": "winexe --reinstall"
+    },
+    {
+      "name": "--system",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use SYSTEM account",
+      "default": "",
+      "example": "winexe --system"
+    },
+    {
+      "name": "--profile",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Load user profile",
+      "default": "",
+      "example": "winexe --profile"
+    },
+    {
+      "name": "--convert",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Try to convert characters between local and remote code-pages",
+      "default": "",
+      "example": "winexe --convert"
+    },
+    {
+      "name": "--runas-file",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Run as user options defined in a file",
+      "default": "",
+      "example": "winexe --runas-file <file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "apache-users",
+  "name": "apache-users",
+  "schema_version": 1,
+  "summary": "This perl script will enumerate the usernames on a unix system that use the apache module UserDir.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install apache-users"
+    }
+  ],
+  "usage": "apache-users [-h 1.2.3.4] [-l names] [-p 80] [-s (SSL Support 1=true 0=false)] [-e 403 (http code)] [-t threads]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

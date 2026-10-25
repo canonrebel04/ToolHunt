@@ -1,0 +1,46 @@
+{
+  "id": "onionsearch",
+  "name": "onionsearch",
+  "schema_version": 1,
+  "summary": "Script that scrapes urls on different \".onion\" search engines.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "onionsearch \"<string>\"",
+      "explanation": "Request results from all the search engines",
+      "source": "tldr:onionsearch"
+    },
+    {
+      "cmd": "onionsearch \"<string>\" --engines <tor66|deeplink|phobos|...>",
+      "explanation": "Request search results from specific search engines",
+      "source": "tldr:onionsearch"
+    },
+    {
+      "cmd": "onionsearch \"<string>\" --exclude <candle|ahmia|...>",
+      "explanation": "Exclude certain search engines when searching",
+      "source": "tldr:onionsearch"
+    },
+    {
+      "cmd": "onionsearch \"<stuxnet>\" --engines <tor66|deeplink|phobos|...> --limit <3>",
+      "explanation": "Limit the number of pages to load per engine",
+      "source": "tldr:onionsearch"
+    },
+    {
+      "cmd": "onionsearch --help | grep --after-context 1 --ignore-case \"supported engines\"",
+      "explanation": "List all supported search engines",
+      "source": "tldr:onionsearch"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/onionsearch.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

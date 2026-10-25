@@ -1,0 +1,296 @@
+{
+  "id": "finalrecon",
+  "name": "finalrecon",
+  "schema_version": 1,
+  "summary": "OSINT Tool for All-In-One Web Reconnaissance.",
+  "highlights": [
+    "--url — Target URL",
+    "--headers — Header Information",
+    "--sslinfo — SSL Certificate Information",
+    "--whois — Whois Lookup",
+    "--crawl — Crawl Target",
+    "--dns — DNS Enumeration",
+    "--sub — Sub-Domain Enumeration",
+    "--dir — Directory Search"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install finalrecon"
+    }
+  ],
+  "usage": "finalrecon [-h] [--url URL] [--headers] [--sslinfo] [--whois] [--crawl]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "finalrecon --help"
+    },
+    {
+      "name": "--url",
+      "short": "",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Target URL",
+      "default": "",
+      "example": "finalrecon --url <url>"
+    },
+    {
+      "name": "--headers",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Header Information",
+      "default": "",
+      "example": "finalrecon --headers"
+    },
+    {
+      "name": "--sslinfo",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "SSL Certificate Information",
+      "default": "",
+      "example": "finalrecon --sslinfo"
+    },
+    {
+      "name": "--whois",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Whois Lookup",
+      "default": "",
+      "example": "finalrecon --whois"
+    },
+    {
+      "name": "--crawl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Crawl Target",
+      "default": "",
+      "example": "finalrecon --crawl"
+    },
+    {
+      "name": "--dns",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DNS Enumeration",
+      "default": "",
+      "example": "finalrecon --dns"
+    },
+    {
+      "name": "--sub",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Sub-Domain Enumeration",
+      "default": "",
+      "example": "finalrecon --sub"
+    },
+    {
+      "name": "--dir",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Directory Search",
+      "default": "",
+      "example": "finalrecon --dir"
+    },
+    {
+      "name": "--wayback",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Wayback URLs",
+      "default": "",
+      "example": "finalrecon --wayback"
+    },
+    {
+      "name": "--ps",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fast Port Scan",
+      "default": "",
+      "example": "finalrecon --ps"
+    },
+    {
+      "name": "--full",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Full Recon",
+      "default": "",
+      "example": "finalrecon --full"
+    },
+    {
+      "name": "-nb",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Hide Banner",
+      "default": "",
+      "example": "finalrecon -nb"
+    },
+    {
+      "name": "-dt",
+      "short": "",
+      "aliases": [],
+      "arg": "DT",
+      "required": false,
+      "description": "Number of threads for directory enum [ Default : 30 ]",
+      "default": "30",
+      "example": "finalrecon -dt <dt>"
+    },
+    {
+      "name": "-pt",
+      "short": "",
+      "aliases": [],
+      "arg": "PT",
+      "required": false,
+      "description": "Number of threads for port scan [ Default : 50 ]",
+      "default": "50",
+      "example": "finalrecon -pt <pt>"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "T",
+      "required": false,
+      "description": "Request Timeout [ Default : 30.0 ]",
+      "default": "30.0",
+      "example": "finalrecon -T <t>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "W",
+      "required": false,
+      "description": "Path to Wordlist [ Default : wordlists/dirb_common.txt ]",
+      "default": "wordlists/dirb_common.txt",
+      "example": "finalrecon -w <w>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Allow Redirect [ Default : False ]",
+      "default": "False",
+      "example": "finalrecon -r"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Toggle SSL Verification [ Default : True ]",
+      "default": "True",
+      "example": "finalrecon -s"
+    },
+    {
+      "name": "-sp",
+      "short": "",
+      "aliases": [],
+      "arg": "SP",
+      "required": false,
+      "description": "Specify SSL Port [ Default : 443 ]",
+      "default": "443",
+      "example": "finalrecon -sp <sp>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "D",
+      "required": false,
+      "description": "Custom DNS Servers [ Default : 1.1.1.1 ]",
+      "default": "1.1.1.1",
+      "example": "finalrecon -d <d>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "E",
+      "required": false,
+      "description": "File Extensions [ Example : txt, xml, php ]",
+      "default": "",
+      "example": "finalrecon -e <e>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "O",
+      "required": false,
+      "description": "Export Format [ Default : txt ]",
+      "default": "txt",
+      "example": "finalrecon -o <o>"
+    },
+    {
+      "name": "-cd",
+      "short": "",
+      "aliases": [],
+      "arg": "CD",
+      "required": false,
+      "description": "Change export directory [ Default : ~/.local/share/finalrecon ]",
+      "default": "~/.local/share/finalrecon",
+      "example": "finalrecon -cd <cd>"
+    },
+    {
+      "name": "-of",
+      "short": "",
+      "aliases": [],
+      "arg": "OF",
+      "required": false,
+      "description": "Change export folder name [ Default :<path>fr_<hostname>_<date> ]",
+      "default": "<path>fr_<hostname>_<date>",
+      "example": "finalrecon -of <of>"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "K",
+      "required": false,
+      "description": "Add API key [ Example : shodan@key ]",
+      "default": "",
+      "example": "finalrecon -k <k>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

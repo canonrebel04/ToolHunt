@@ -1,0 +1,88 @@
+{
+  "id": "gowitness",
+  "name": "gowitness",
+  "schema_version": 1,
+  "summary": "A golang, web screenshot utility using Chrome Headless.",
+  "highlights": [
+    "-D — Enable debug logging",
+    "--profile — Enable CPU, memory, and trace profiling (writes to profiles/<timestamp>/)",
+    "-q — Silence (almost all) logging"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install gowitness"
+    }
+  ],
+  "usage": "gowitness [command]",
+  "subcommands": [
+    {
+      "name": "help",
+      "description": "Help about any command"
+    },
+    {
+      "name": "report",
+      "description": "Work with gowitness reports"
+    },
+    {
+      "name": "scan",
+      "description": "Perform various scans"
+    },
+    {
+      "name": "version",
+      "description": "Get the gowitness version"
+    }
+  ],
+  "flags": [
+    {
+      "name": "--debug-log",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable debug logging",
+      "default": "",
+      "example": "gowitness --debug-log"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "help for gowitness",
+      "default": "",
+      "example": "gowitness --help"
+    },
+    {
+      "name": "--profile",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable CPU, memory, and trace profiling (writes to profiles/<timestamp>/)",
+      "default": "",
+      "example": "gowitness --profile"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Silence (almost all) logging",
+      "default": "",
+      "example": "gowitness --quiet"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

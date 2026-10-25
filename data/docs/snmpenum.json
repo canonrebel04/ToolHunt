@@ -1,0 +1,26 @@
+{
+  "id": "snmpenum",
+  "name": "snmpenum",
+  "schema_version": 1,
+  "summary": "An snmp enumerator.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install snmpenum"
+    }
+  ],
+  "usage": "snmpenum <IP-address> <community> <configfile>",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

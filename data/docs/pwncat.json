@@ -1,0 +1,306 @@
+{
+  "id": "pwncat",
+  "name": "pwncat",
+  "schema_version": 1,
+  "summary": "Bind and reverse shell handler with FW/IDS/IPS evasion, self-inject and port-scanning.",
+  "highlights": [
+    "-l — [Listen mode]: Start a server and listen for incoming connections. If using TCP and a conn",
+    "-z — [Zero-I/0 mode]: Connect to a remote endpoint and report status only. Used for port scanni",
+    "-n — Do not resolve DNS.",
+    "--send-on-eof — Buffer data received on stdin until EOF and send everything in one chunk.",
+    "--no-shutdown — Do not shutdown into half-duplex mode. If this option is passed, pwncat won't invoke shutd",
+    "-v — Be verbose and print info to stderr. Use -v, -vv, -vvv or -vvvv for more verbosity. The se",
+    "-4 — Only Use IPv4 (default: IPv4 and IPv6 dualstack).",
+    "-6 — Only Use IPv6 (default: IPv4 and IPv6 dualstack)."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pwncat"
+    }
+  ],
+  "usage": "pwncat [options] hostname port",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--listen",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "[Listen mode]: Start a server and listen for incoming connections. If using TCP and a connected client disconnects or the connection is interrupted otherwise, the server will quit. See -k/--keep-open to change this behaviour.",
+      "default": "",
+      "example": "pwncat --listen"
+    },
+    {
+      "name": "--zero",
+      "short": "-z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "[Zero-I/0 mode]: Connect to a remote endpoint and report status only. Used for port scanning. See --banner for version detection.",
+      "default": "",
+      "example": "pwncat --zero"
+    },
+    {
+      "name": "--nodns",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not resolve DNS.",
+      "default": "",
+      "example": "pwncat --nodns"
+    },
+    {
+      "name": "--send-on-eof",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Buffer data received on stdin until EOF and send everything in one chunk.",
+      "default": "",
+      "example": "pwncat --send-on-eof"
+    },
+    {
+      "name": "--no-shutdown",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not shutdown into half-duplex mode. If this option is passed, pwncat won't invoke shutdown on a socket after seeing EOF on stdin. This is provided for backward-compatibility with OpenBSD netcat, which exhibits this behavior.",
+      "default": "",
+      "example": "pwncat --no-shutdown"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Be verbose and print info to stderr. Use -v, -vv, -vvv or -vvvv for more verbosity. The server performance will decrease drastically if you use more than three times.",
+      "default": "",
+      "example": "pwncat --verbose"
+    },
+    {
+      "name": "-4",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only Use IPv4 (default: IPv4 and IPv6 dualstack).",
+      "default": "IPv4 and IPv6 dualstack",
+      "example": "pwncat -4"
+    },
+    {
+      "name": "-6",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only Use IPv6 (default: IPv4 and IPv6 dualstack).",
+      "default": "IPv4 and IPv6 dualstack",
+      "example": "pwncat -6"
+    },
+    {
+      "name": "--udp",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use UDP for the connection instead of TCP.",
+      "default": "",
+      "example": "pwncat --udp"
+    },
+    {
+      "name": "--http",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Connect / Listen mode (TCP and UDP): Hide traffic in http packets to fool Firewalls/IDS/IPS.",
+      "default": "",
+      "example": "pwncat --http"
+    },
+    {
+      "name": "--https",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Connect / Listen mode (TCP and UDP): Hide traffic in https packets to fool Firewalls/IDS/IPS.",
+      "default": "",
+      "example": "pwncat --https"
+    },
+    {
+      "name": "--header",
+      "short": "-H",
+      "aliases": [],
+      "arg": "[str ...]",
+      "required": false,
+      "description": "Add HTTP headers to your request when using --http(s).",
+      "default": "",
+      "example": "pwncat --header <str ...>"
+    },
+    {
+      "name": "--script-send",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "All modes (TCP and UDP): A Python scripting engine to define your own custom transformer function which will be executed before sending data to a remote endpoint. Your file must contain the exact following function which will: be applied as the transformer: def transform(data, pse): # NOTE: the function name must be 'transform' # NOTE: the function param name must be 'data' # NOTE: indentation must be 4 spaces # ... your transformations goes here return data You can also define as many custom functions or classes within this file, but ensure to prefix them uniquely to not collide with pwncat's function or classes, as the file will be called with exec().",
+      "default": "",
+      "example": "pwncat --script-send <file>"
+    },
+    {
+      "name": "--script-recv",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "All modes (TCP and UDP): A Python scripting engine to define your own custom transformer function which will be executed after receiving data from a remote endpoint. Your file must contain the exact following function which will: be applied as the transformer: def transform(data, pse): # NOTE: the function name must be 'transform' # NOTE: the function param name must be 'data' # NOTE: indentation must be 4 spaces # ... your transformations goes here return data You can also define as many custom functions or classes within this file, but ensure to prefix them uniquely to not collide with pwncat's function or classes, as the file will be called with exec().",
+      "default": "",
+      "example": "pwncat --script-recv <file>"
+    },
+    {
+      "name": "--banner",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Zero-I/O (TCP and UDP): Try banner grabbing during port scan.",
+      "default": "",
+      "example": "pwncat --banner"
+    },
+    {
+      "name": "--keep-open",
+      "short": "-k",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Listen mode (TCP only): Re-accept new clients in listen mode after a client has disconnected or the connection is interrupted otherwise. (default: server will quit after connection is gone)",
+      "default": "server will quit after connection is gone",
+      "example": "pwncat --keep-open"
+    },
+    {
+      "name": "--rebind",
+      "short": "",
+      "aliases": [],
+      "arg": "[x]",
+      "required": false,
+      "description": "Listen mode (TCP and UDP): If the server is unable to bind, it will re-initialize itself x many times before giving up. Omit the quantifier to rebind endlessly or specify a positive integer for how many times to rebind before giving up. See --rebind-robin for an interesting use-case. (default: fail after first unsuccessful try).",
+      "default": "fail after first unsuccessful try",
+      "example": "pwncat --rebind <x>"
+    },
+    {
+      "name": "--rebind-robin",
+      "short": "",
+      "aliases": [],
+      "arg": "port",
+      "required": false,
+      "description": "Listen mode (TCP and UDP): If the server is unable to initialize (e.g: cannot bind and --rebind is specified, it it will shuffle ports in round-robin mode to bind to. Use comma separated string such as '80,81,82,83', a range of ports '80-83' or an increment '80+3'. Set --rebind to at least the number of ports to probe +1 This option requires --rebind to be specified.",
+      "default": "",
+      "example": "pwncat --rebind-robin <port>"
+    },
+    {
+      "name": "--source-port",
+      "short": "",
+      "aliases": [],
+      "arg": "port",
+      "required": false,
+      "description": "Specify source bind port for connect mode.",
+      "default": "",
+      "example": "pwncat --source-port <port>"
+    },
+    {
+      "name": "--reconn",
+      "short": "",
+      "aliases": [],
+      "arg": "[x]",
+      "required": false,
+      "description": "Connect mode (TCP and UDP): If the remote server is not reachable or the connection is interrupted, the client will connect again x many times before giving up. Omit the quantifier to retry endlessly or specify a positive integer for how many times to retry before giving up. (default: quit if the remote is not available or the connection was interrupted) This might be handy for stable TCP reverse shells ;-) Note on UDP: By default UDP does not know if it is connected, so it will stop at the first port and assume it has a connection. Consider using --udp-sconnect with this option to make UDP aware of a successful connection.",
+      "default": "quit if the remote is not available or the connection was interrupted",
+      "example": "pwncat --reconn <x>"
+    },
+    {
+      "name": "--reconn-robin",
+      "short": "",
+      "aliases": [],
+      "arg": "port",
+      "required": false,
+      "description": "Connect mode (TCP and UDP): If the remote server is not reachable or the connection is interrupted and --reconn is specified, the client will shuffle ports in round-robin mode to connect to. Use comma separated string such as '80,81,82,83', a range of ports '80-83' or an increment '80+3'. Set --reconn to at least the number of ports to probe +1 This helps reverse shell to evade intrusiona prevention systems that will cut your connection and block the outbound port. This is also useful in Connect or Zero-I/O mode to figure out what outbound ports are allowed.",
+      "default": "",
+      "example": "pwncat --reconn-robin <port>"
+    },
+    {
+      "name": "--ping-init",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Connect mode (TCP and UDP): UDP is a stateless protocol unlike TCP, so no hand- shake communication takes place and the client just sends data to a server without being \"accepted\" by the server first. This means a server waiting for an UDP client to connect to, is unable to send any data to the client, before the client hasn't send data first. The server simply doesn't know the IP address before an initial connect. The --ping-init option instructs the client to send one single initial ping packet to the server, so that it is able to talk to the client. This is a way to make a UDP reverse shell work. See --ping-word for what char/string to send as initial ping packet (default: '\\0')",
+      "default": "\\0",
+      "example": "pwncat --ping-init"
+    },
+    {
+      "name": "--ping-robin",
+      "short": "",
+      "aliases": [],
+      "arg": "port",
+      "required": false,
+      "description": "Connect mode (TCP and UDP): Instruct the client to shuffle the specified ports in round-robin mode for a remote server to ping. This might be handy to scan outbound allowed ports. Use comma separated string such as '80,81,82,83', a range of ports '80-83' or an increment '80+3'. Use --ping-intvl 0 to be faster.",
+      "default": "",
+      "example": "pwncat --ping-robin <port>"
+    },
+    {
+      "name": "--udp-sconnect",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Connect mode (UDP only): Emulating stateful behaviour for UDP connect phase by sending an initial packet to the server to validate if it is actually connected. By default, UDP will simply issue a connect and is not aware if it is really connected or not. The default connect packet to be send is '\\0', you can change this with --udp-sconnect-word.",
+      "default": "",
+      "example": "pwncat --udp-sconnect"
+    },
+    {
+      "name": "--udp-sconnect-word",
+      "short": "",
+      "aliases": [],
+      "arg": "[str]",
+      "required": false,
+      "description": "Connect mode (UDP only): Change the the data to be send for UDP stateful connect behaviour. Note you can also omit the string to send an empty packet (EOF), but be aware that some servers such as netcat will instantly quit upon receive of an EOF packet. The default is to send a null byte sting: '\\0'.",
+      "default": "",
+      "example": "pwncat --udp-sconnect-word <str>"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this help message and exit",
+      "default": "",
+      "example": "pwncat --help"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show version information and exit",
+      "default": "",
+      "example": "pwncat --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

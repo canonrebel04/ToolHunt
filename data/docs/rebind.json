@@ -1,0 +1,146 @@
+{
+  "id": "rebind",
+  "name": "rebind",
+  "schema_version": 1,
+  "summary": "DNS Rebinding Tool",
+  "highlights": [
+    "-i — Specify the network interface to bind to",
+    "-d — Specify your registered domain name",
+    "-u — Specify the Basic Authentication user name [admin]",
+    "-a — Specify the Basic Authentication password [admin]",
+    "-r — Specify the initial URL request path [/]",
+    "-t — Specify a comma separated list of target IP addresses [client IP]",
+    "-n — Specify the callback interval in milliseconds [2000]",
+    "-p — Specify the target port [80]"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install rebind"
+    }
+  ],
+  "usage": "dns-rebind [OPTIONS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<interface>",
+      "required": false,
+      "description": "Specify the network interface to bind to",
+      "default": "",
+      "example": "dns-rebind -i <interface>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "<fqdn>",
+      "required": false,
+      "description": "Specify your registered domain name",
+      "default": "",
+      "example": "dns-rebind -d <fqdn>"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "<user>",
+      "required": false,
+      "description": "Specify the Basic Authentication user name [admin]",
+      "default": "",
+      "example": "dns-rebind -u <user>"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "<pass>",
+      "required": false,
+      "description": "Specify the Basic Authentication password [admin]",
+      "default": "",
+      "example": "dns-rebind -a <pass>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<path>",
+      "required": false,
+      "description": "Specify the initial URL request path [/]",
+      "default": "",
+      "example": "dns-rebind -r <path>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<ip>",
+      "required": false,
+      "description": "Specify a comma separated list of target IP addresses [client IP]",
+      "default": "",
+      "example": "dns-rebind -t <ip>"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "<time>",
+      "required": false,
+      "description": "Specify the callback interval in milliseconds [2000]",
+      "default": "",
+      "example": "dns-rebind -n <time>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<port>",
+      "required": false,
+      "description": "Specify the target port [80]",
+      "default": "",
+      "example": "dns-rebind -p <port>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "<port>",
+      "required": false,
+      "description": "Specify the callback port [81]",
+      "default": "",
+      "example": "dns-rebind -c <port>"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "<value>",
+      "required": false,
+      "description": "Specify a cookie to set for the client",
+      "default": "",
+      "example": "dns-rebind -C <value>"
+    },
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Specify a file of HTTP headers for the client to send to the target",
+      "default": "",
+      "example": "dns-rebind -H <file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

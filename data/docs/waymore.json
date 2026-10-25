@@ -1,0 +1,41 @@
+{
+  "id": "waymore",
+  "name": "waymore",
+  "schema_version": 1,
+  "summary": "Find way more from the Wayback Machine, Common Crawl, Alien Vault OTX, URLScan & VirusTotal.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "waymore --input <example.com>",
+      "explanation": "Search for URLs of a domain (output will typically be in `~/.config/waymore/results/`)",
+      "source": "tldr:waymore"
+    },
+    {
+      "cmd": "waymore -mode U --output-urls <path/to/example.com-urls.txt> --input <example.com>",
+      "explanation": "Limit search results to only include a list of URLs for a domain and store outputs to the specified file",
+      "source": "tldr:waymore"
+    },
+    {
+      "cmd": "waymore -mode R --output-responses <path/to/example.com-url-responses> --input <example.com>",
+      "explanation": "Only output the content bodies of URLs and store outputs to the specified directory",
+      "source": "tldr:waymore"
+    },
+    {
+      "cmd": "waymore -from <YYYYMMDD|YYYYMM|YYYY> --to-date <YYYYMMDD|YYYYMM|YYYY> --input <example.com>",
+      "explanation": "Filter the results by specifying date ranges",
+      "source": "tldr:waymore"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/waymore.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

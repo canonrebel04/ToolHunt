@@ -1,0 +1,373 @@
+{
+  "id": "pdf-parser",
+  "name": "pdf-parser",
+  "schema_version": 1,
+  "summary": "Parses a PDF document to identify the fundamental elements used in the analyzed file.",
+  "highlights": [
+    "-m — Print manual",
+    "-s — string to search in indirect objects (except streams)",
+    "-f — pass stream object through filters (FlateDecode, ASCIIHexDecode, ASCII85Decode, LZWDecode ",
+    "-o — id(s) of indirect object(s) to select, use comma (,) to separate ids (version independent)",
+    "-r — id of indirect object being referenced (version independent)",
+    "-e — type of elements to select (cxtsi)",
+    "-w — raw output for data and filters",
+    "-a — display stats for pdf document"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pdf-parser"
+    }
+  ],
+  "usage": "pdf-parser [options] pdf-file|zip-file|url",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show program's version number and exit",
+      "default": "",
+      "example": "pdf-parser --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "pdf-parser --help"
+    },
+    {
+      "name": "--man",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print manual",
+      "default": "",
+      "example": "pdf-parser --man"
+    },
+    {
+      "name": "--search",
+      "short": "-s",
+      "aliases": [],
+      "arg": "SEARCH",
+      "required": false,
+      "description": "string to search in indirect objects (except streams)",
+      "default": "",
+      "example": "pdf-parser --search <search>"
+    },
+    {
+      "name": "--filter",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "pass stream object through filters (FlateDecode, ASCIIHexDecode, ASCII85Decode, LZWDecode and RunLengthDecode only)",
+      "default": "",
+      "example": "pdf-parser --filter"
+    },
+    {
+      "name": "--object",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OBJECT",
+      "required": false,
+      "description": "id(s) of indirect object(s) to select, use comma (,) to separate ids (version independent)",
+      "default": "",
+      "example": "pdf-parser --object <object>"
+    },
+    {
+      "name": "--reference",
+      "short": "-r",
+      "aliases": [],
+      "arg": "REFERENCE",
+      "required": false,
+      "description": "id of indirect object being referenced (version independent)",
+      "default": "",
+      "example": "pdf-parser --reference <reference>"
+    },
+    {
+      "name": "--elements",
+      "short": "-e",
+      "aliases": [],
+      "arg": "ELEMENTS",
+      "required": false,
+      "description": "type of elements to select (cxtsi)",
+      "default": "",
+      "example": "pdf-parser --elements <elements>"
+    },
+    {
+      "name": "--raw",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "raw output for data and filters",
+      "default": "",
+      "example": "pdf-parser --raw"
+    },
+    {
+      "name": "--stats",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display stats for pdf document",
+      "default": "",
+      "example": "pdf-parser --stats"
+    },
+    {
+      "name": "--type",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TYPE",
+      "required": false,
+      "description": "type of indirect object to select",
+      "default": "",
+      "example": "pdf-parser --type <type>"
+    },
+    {
+      "name": "--objstm",
+      "short": "-O",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "parse stream of /ObjStm objects",
+      "default": "",
+      "example": "pdf-parser --objstm"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display malformed PDF elements",
+      "default": "",
+      "example": "pdf-parser --verbose"
+    },
+    {
+      "name": "--extract",
+      "short": "-x",
+      "aliases": [],
+      "arg": "EXTRACT",
+      "required": false,
+      "description": "filename to extract malformed content to",
+      "default": "",
+      "example": "pdf-parser --extract <extract>"
+    },
+    {
+      "name": "--hash",
+      "short": "-H",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display hash of objects",
+      "default": "",
+      "example": "pdf-parser --hash"
+    },
+    {
+      "name": "--nocanonicalizedoutput",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not canonicalize the output",
+      "default": "",
+      "example": "pdf-parser --nocanonicalizedoutput"
+    },
+    {
+      "name": "--dump",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DUMP",
+      "required": false,
+      "description": "filename to dump stream content to",
+      "default": "",
+      "example": "pdf-parser --dump <dump>"
+    },
+    {
+      "name": "--debug",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display debug info",
+      "default": "",
+      "example": "pdf-parser --debug"
+    },
+    {
+      "name": "--content",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display the content for objects without streams or with streams without filters",
+      "default": "",
+      "example": "pdf-parser --content"
+    },
+    {
+      "name": "--searchstream",
+      "short": "",
+      "aliases": [],
+      "arg": "SEARCHSTREAM",
+      "required": false,
+      "description": "string to search in streams",
+      "default": "",
+      "example": "pdf-parser --searchstream <searchstream>"
+    },
+    {
+      "name": "--unfiltered",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "search in unfiltered streams",
+      "default": "",
+      "example": "pdf-parser --unfiltered"
+    },
+    {
+      "name": "--casesensitive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "case sensitive search in streams",
+      "default": "",
+      "example": "pdf-parser --casesensitive"
+    },
+    {
+      "name": "--regex",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use regex to search in streams",
+      "default": "",
+      "example": "pdf-parser --regex"
+    },
+    {
+      "name": "--overridingfilters",
+      "short": "",
+      "aliases": [],
+      "arg": "OVERRIDINGFILTERS",
+      "required": false,
+      "description": "override filters with given filters (use raw for the raw stream content)",
+      "default": "",
+      "example": "pdf-parser --overridingfilters <overridingfilters>"
+    },
+    {
+      "name": "--generate",
+      "short": "-g",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "generate a Python program that creates the parsed PDF file",
+      "default": "",
+      "example": "pdf-parser --generate"
+    },
+    {
+      "name": "--generateembedded",
+      "short": "",
+      "aliases": [],
+      "arg": "GENERATEEMBEDDED",
+      "required": false,
+      "description": "generate a Python program that embeds the selected indirect object as a file",
+      "default": "",
+      "example": "pdf-parser --generateembedded <generateembedded>"
+    },
+    {
+      "name": "--yara",
+      "short": "-y",
+      "aliases": [],
+      "arg": "YARA",
+      "required": false,
+      "description": "YARA rule (or directory or @file) to check streams (can be used with option --unfiltered)",
+      "default": "",
+      "example": "pdf-parser --yara <yara>"
+    },
+    {
+      "name": "--yarastrings",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print YARA strings",
+      "default": "",
+      "example": "pdf-parser --yarastrings"
+    },
+    {
+      "name": "--decoders",
+      "short": "",
+      "aliases": [],
+      "arg": "DECODERS",
+      "required": false,
+      "description": "decoders to load (separate decoders with a comma , ; @file supported)",
+      "default": "",
+      "example": "pdf-parser --decoders <decoders>"
+    },
+    {
+      "name": "--decoderoptions",
+      "short": "",
+      "aliases": [],
+      "arg": "DECODEROPTIONS",
+      "required": false,
+      "description": "options for the decoder",
+      "default": "",
+      "example": "pdf-parser --decoderoptions <decoderoptions>"
+    },
+    {
+      "name": "--key",
+      "short": "-k",
+      "aliases": [],
+      "arg": "KEY",
+      "required": false,
+      "description": "key to search in dictionaries",
+      "default": "",
+      "example": "pdf-parser --key <key>"
+    },
+    {
+      "name": "--jsonoutput",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "produce json output",
+      "default": "",
+      "example": "pdf-parser --jsonoutput"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "pdf-parser --stats <path/to/file.pdf>",
+      "explanation": "Display statistics for a PDF file",
+      "source": "tldr:pdf-parser"
+    },
+    {
+      "cmd": "pdf-parser --type </object_type> <path/to/file.pdf>",
+      "explanation": "Display objects of a specific type (`/Font`, `/URI`, ...) in a PDF file",
+      "source": "tldr:pdf-parser"
+    },
+    {
+      "cmd": "pdf-parser --search <search_string> <path/to/file.pdf>",
+      "explanation": "Search for strings in indirect objects",
+      "source": "tldr:pdf-parser"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/pdf-parser.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

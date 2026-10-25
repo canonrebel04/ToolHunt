@@ -1,0 +1,59 @@
+{
+  "id": "dc3dd",
+  "name": "dc3dd",
+  "schema_version": 1,
+  "summary": "A patched version of dd that includes a number of features useful for computer forensics.",
+  "highlights": [
+    "--flags — display compile-time flags and exit"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dc3dd"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display this help and exit",
+      "default": "",
+      "example": "dc3dd --help"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "output version information and exit",
+      "default": "",
+      "example": "dc3dd --version"
+    },
+    {
+      "name": "--flags",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display compile-time flags and exit",
+      "default": "",
+      "example": "dc3dd --flags"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

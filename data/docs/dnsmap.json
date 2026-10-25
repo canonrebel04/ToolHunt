@@ -1,0 +1,105 @@
+{
+  "id": "dnsmap",
+  "name": "dnsmap",
+  "schema_version": 1,
+  "summary": "Passive DNS network mapper.",
+  "highlights": [
+    "-w — Use an external wordlist instead of the built-in one. You can use programs as crunch or cu",
+    "-r — Save results to a plain text file. If a file name isn't supplied, dnsmap will create an un",
+    "-c — Save results in CSV format in a file. If a file name isn't pro- vided, dnsmap will create ",
+    "-d — Limit of random delay in milliseconds between successive queries. Delay value is a maximum",
+    "-i — IP addresses to ignore in the results (useful if you get obtaining false positives). Use c"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dnsmap"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<wordlist-file>",
+      "required": false,
+      "description": "Use an external wordlist instead of the built-in one. You can use programs as crunch or cupp to generate personalized wordlists.",
+      "default": "",
+      "example": "man -w <wordlist-file>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<regular-results-file>",
+      "required": false,
+      "description": "Save results to a plain text file. If a file name isn't supplied, dnsmap will create an unique filename which includes the current timestamp. e.g.: dnsmap_example_com_br_2019_11_15_214812.txt. So, you can provide a directory name only, as -r /tmp.",
+      "default": "",
+      "example": "man -r <regular-results-file>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "<csv-results-file>",
+      "required": false,
+      "description": "Save results in CSV format in a file. If a file name isn't pro- vided, dnsmap will create something as dnsmap_exam- ple_com_br_2019_11_15_220114.csv. This is a similar behaviour from -r option.",
+      "default": "",
+      "example": "man -c <csv-results-file>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "<delay-millisecs>",
+      "required": false,
+      "description": "Limit of random delay in milliseconds between successive queries. Delay value is a maximum random value. e.g. if you enter 1000, each DNS request will be delayed a *maximum* of 1 second. By default, dnsmap uses a value of 10 milliseconds of maximum delay between DNS lookups. It is recommended to use the -d (delay in milliseconds) option in cases where dnsmap is interfering with your online expe- rience. i.e.: killing your bandwidth. If used, delay must be be- tween 1 and 300000 milliseconds (5 minutes).",
+      "default": "",
+      "example": "man -d <delay-millisecs>"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<ips-to-ignore>",
+      "required": false,
+      "description": "IP addresses to ignore in the results (useful if you get obtaining false positives). Use commas without spaces to separate the IP ad- dresses. The maximum number of IPs to filter is 5. Example: 203.0.113.10,198.51.199.65",
+      "default": "",
+      "example": "man -i <ips-to-ignore>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "dnsmap <example.com>",
+      "explanation": "Scan for subdomains using the internal wordlist",
+      "source": "tldr:dnsmap"
+    },
+    {
+      "cmd": "dnsmap <example.com> -w <path/to/wordlist.txt>",
+      "explanation": "Specify a list of subdomains to check for",
+      "source": "tldr:dnsmap"
+    },
+    {
+      "cmd": "dnsmap <example.com> -c <path/to/file.csv>",
+      "explanation": "Store results to a CSV file",
+      "source": "tldr:dnsmap"
+    },
+    {
+      "cmd": "dnsmap <example.com> -i <123.45.67.89,98.76.54.32>",
+      "explanation": "Ignore 2 IPs that are false positives (up to 5 possible)",
+      "source": "tldr:dnsmap"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/dnsmap.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

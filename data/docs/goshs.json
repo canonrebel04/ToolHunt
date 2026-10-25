@@ -1,0 +1,786 @@
+{
+  "id": "goshs",
+  "name": "goshs",
+  "schema_version": 1,
+  "summary": "A SimpleHTTPServer written in Go, enhanced with features and with a nice design.",
+  "highlights": [
+    "-i — IP or Interface to listen on (default: 0.0.0.0)",
+    "-p — The port to listen on (default: 8000)",
+    "-d — The web root directory (default: current working path)",
+    "-w — Also serve using webdav protocol (default: false)",
+    "-wp — The port to listen on for webdav (default: 8001)",
+    "-ro — Read only mode, no upload possible (default: false)",
+    "-uo — Upload only mode, no download possible (default: false)",
+    "-uf — Specify a different upload folder (default: current working path)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install goshs"
+    }
+  ],
+  "usage": "goshs [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--ip",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "IP or Interface to listen on (default: 0.0.0.0)",
+      "default": "0.0.0.0",
+      "example": "goshs --ip"
+    },
+    {
+      "name": "--port",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The port to listen on (default: 8000)",
+      "default": "8000",
+      "example": "goshs --port"
+    },
+    {
+      "name": "--dir",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The web root directory (default: current working path)",
+      "default": "current working path",
+      "example": "goshs --dir"
+    },
+    {
+      "name": "--webdav",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Also serve using webdav protocol (default: false)",
+      "default": "false",
+      "example": "goshs --webdav"
+    },
+    {
+      "name": "--webdav-port",
+      "short": "-wp",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The port to listen on for webdav (default: 8001)",
+      "default": "8001",
+      "example": "goshs --webdav-port"
+    },
+    {
+      "name": "--read-only",
+      "short": "-ro",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read only mode, no upload possible (default: false)",
+      "default": "false",
+      "example": "goshs --read-only"
+    },
+    {
+      "name": "--upload-only",
+      "short": "-uo",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Upload only mode, no download possible (default: false)",
+      "default": "false",
+      "example": "goshs --upload-only"
+    },
+    {
+      "name": "--upload-folder",
+      "short": "-uf",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Specify a different upload folder (default: current working path)",
+      "default": "current working path",
+      "example": "goshs --upload-folder"
+    },
+    {
+      "name": "--max-upload",
+      "short": "-mu",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Maximum upload size in bytes, 0=unlimited (default: 0)",
+      "default": "0",
+      "example": "goshs --max-upload"
+    },
+    {
+      "name": "--no-chat",
+      "short": "-nc",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable the team chat (default: false)",
+      "default": "false",
+      "example": "goshs --no-chat"
+    },
+    {
+      "name": "--persist-chat",
+      "short": "-pc",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Persist chat to disk (.goshs-chat/) (default: false)",
+      "default": "false",
+      "example": "goshs --persist-chat"
+    },
+    {
+      "name": "--persist-chat-images",
+      "short": "-pci",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write pasted chat images to disk (default: false)",
+      "default": "false",
+      "example": "goshs --persist-chat-images"
+    },
+    {
+      "name": "--no-delete",
+      "short": "-nd",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable the delete option (default: false)",
+      "default": "false",
+      "example": "goshs --no-delete"
+    },
+    {
+      "name": "--silent",
+      "short": "-si",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Running without dir listing (default: false)",
+      "default": "false",
+      "example": "goshs --silent"
+    },
+    {
+      "name": "--invisible",
+      "short": "-I",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Invisible mode (default: false)",
+      "default": "false",
+      "example": "goshs --invisible"
+    },
+    {
+      "name": "--cli",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable cli (only with auth and tls) (default: false)",
+      "default": "false",
+      "example": "goshs --cli"
+    },
+    {
+      "name": "--catcher",
+      "short": "-rc",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable reverse shell catcher (default: false)",
+      "default": "false",
+      "example": "goshs --catcher"
+    },
+    {
+      "name": "--embedded",
+      "short": "-e",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show embedded files in UI (default: false)",
+      "default": "false",
+      "example": "goshs --embedded"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write output to logfile (default: false)",
+      "default": "false",
+      "example": "goshs --output"
+    },
+    {
+      "name": "--tunnel",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable tunnel (default: false)",
+      "default": "false",
+      "example": "goshs --tunnel"
+    },
+    {
+      "name": "--ssl",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use TLS",
+      "default": "",
+      "example": "goshs --ssl"
+    },
+    {
+      "name": "--self-signed",
+      "short": "-ss",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use a self-signed certificate",
+      "default": "",
+      "example": "goshs --self-signed"
+    },
+    {
+      "name": "--server-key",
+      "short": "-sk",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Path to server key",
+      "default": "",
+      "example": "goshs --server-key"
+    },
+    {
+      "name": "--server-cert",
+      "short": "-sc",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Path to server certificate",
+      "default": "",
+      "example": "goshs --server-cert"
+    },
+    {
+      "name": "--pkcs12",
+      "short": "-p12",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Path to server p12",
+      "default": "",
+      "example": "goshs --pkcs12"
+    },
+    {
+      "name": "--p12-no-pass",
+      "short": "-p12np",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Server p12 has empty password",
+      "default": "",
+      "example": "goshs --p12-no-pass"
+    },
+    {
+      "name": "--lets-encrypt",
+      "short": "-sl",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Let's Encrypt as certification service",
+      "default": "",
+      "example": "goshs --lets-encrypt"
+    },
+    {
+      "name": "--le-domains",
+      "short": "-sld",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Domain(s) to request from Let's Encrypt (comma separated list)",
+      "default": "",
+      "example": "goshs --le-domains"
+    },
+    {
+      "name": "--le-email",
+      "short": "-sle",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Email to use with Let's Encrypt",
+      "default": "",
+      "example": "goshs --le-email"
+    },
+    {
+      "name": "--le-http",
+      "short": "-slh",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Port to use for Let's Encrypt HTTP Challenge (default: 80)",
+      "default": "80",
+      "example": "goshs --le-http"
+    },
+    {
+      "name": "--le-tls",
+      "short": "-slt",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Port to use for Let's Encrypt TLS ALPN Challenge (default: 443)",
+      "default": "443",
+      "example": "goshs --le-tls"
+    },
+    {
+      "name": "-ftp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Activate FTP server capabilities (default: false)",
+      "default": "false",
+      "example": "goshs -ftp"
+    },
+    {
+      "name": "-ftp-port",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The port FTP/SFTP listens on (default: 2121)",
+      "default": "2121",
+      "example": "goshs -ftp-port"
+    },
+    {
+      "name": "-ftp-sftp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Switch to SFTP instead of plain FTP (default: false)",
+      "default": "false",
+      "example": "goshs -ftp-sftp"
+    },
+    {
+      "name": "--ftp-keyfile",
+      "short": "-fkf",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Authorized_keys file for SFTP pubkey auth",
+      "default": "",
+      "example": "goshs --ftp-keyfile"
+    },
+    {
+      "name": "--ftp-host-keyfile",
+      "short": "-fhk",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "SSH host key file for SFTP identification",
+      "default": "",
+      "example": "goshs --ftp-host-keyfile"
+    },
+    {
+      "name": "--tftp-server",
+      "short": "-tftp",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Activate TFTP server capabilities (default: false)",
+      "default": "false",
+      "example": "goshs --tftp-server"
+    },
+    {
+      "name": "-tftp-port",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The port TFTP listens on (default: 69)",
+      "default": "69",
+      "example": "goshs -tftp-port"
+    },
+    {
+      "name": "-smb",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Activate SMB server capabilities (default: false)",
+      "default": "false",
+      "example": "goshs -smb"
+    },
+    {
+      "name": "--smb-port",
+      "short": "-smb-port",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The port SMB listens on (default: 445)",
+      "default": "445",
+      "example": "goshs --smb-port"
+    },
+    {
+      "name": "--smb-domain",
+      "short": "-smb-domain",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The domain to use for SMB authentication (default: WORKGROUP)",
+      "default": "WORKGROUP",
+      "example": "goshs --smb-domain"
+    },
+    {
+      "name": "--smb-share",
+      "short": "-smb-share",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The share to use for SMB authentication (default: goshs)",
+      "default": "goshs",
+      "example": "goshs --smb-share"
+    },
+    {
+      "name": "-smb-wordlist",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Wordlist file for quick hash cracking (default: none)",
+      "default": "none",
+      "example": "goshs -smb-wordlist"
+    },
+    {
+      "name": "--ldap-server",
+      "short": "-ldap",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Activate LDAP credential capture server (default: false)",
+      "default": "false",
+      "example": "goshs --ldap-server"
+    },
+    {
+      "name": "-ldap-port",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "The port LDAP listens on (default: 389)",
+      "default": "389",
+      "example": "goshs -ldap-port"
+    },
+    {
+      "name": "-ldap-jndi",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable dynamic JNDI mode — baseDN in the search becomes the factory class name, fetched from the goshs HTTP server",
+      "default": "",
+      "example": "goshs -ldap-jndi"
+    },
+    {
+      "name": "-ldap-jndi-base",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Override codeBase URL for JNDI payloads (default: auto)",
+      "default": "auto",
+      "example": "goshs -ldap-jndi-base"
+    },
+    {
+      "name": "-ldap-wordlist",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Wordlist file for quick LDAP NTLM hash cracking",
+      "default": "",
+      "example": "goshs -ldap-wordlist"
+    },
+    {
+      "name": "--basic-auth",
+      "short": "-b",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use basic authentication (user:pass - user can be empty)",
+      "default": "",
+      "example": "goshs --basic-auth"
+    },
+    {
+      "name": "--cert-auth",
+      "short": "-ca",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use certificate based authentication - provide ca certificate",
+      "default": "",
+      "example": "goshs --cert-auth"
+    },
+    {
+      "name": "--hash",
+      "short": "-H",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Hash a password for file based ACLs",
+      "default": "",
+      "example": "goshs --hash"
+    },
+    {
+      "name": "--ip-whitelist",
+      "short": "-ipw",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Comma separated list of IPs to whitelist",
+      "default": "",
+      "example": "goshs --ip-whitelist"
+    },
+    {
+      "name": "--trusted-proxy-whitelist",
+      "short": "-tpw",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Comma separated list of trusted proxies",
+      "default": "",
+      "example": "goshs --trusted-proxy-whitelist"
+    },
+    {
+      "name": "--dns-server",
+      "short": "-dns",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable DNS server (default: false)",
+      "default": "false",
+      "example": "goshs --dns-server"
+    },
+    {
+      "name": "--dns-port",
+      "short": "-dns-port",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DNS server port (default: 8053)",
+      "default": "8053",
+      "example": "goshs --dns-port"
+    },
+    {
+      "name": "--dns-ip",
+      "short": "-dns-ip",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DNS server Reply IP (default: 127.0.0.1)",
+      "default": "127.0.0.1",
+      "example": "goshs --dns-ip"
+    },
+    {
+      "name": "--smtp-server",
+      "short": "-smtp",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable SMTP server (default: false)",
+      "default": "false",
+      "example": "goshs --smtp-server"
+    },
+    {
+      "name": "--smtp-port",
+      "short": "-smtp-port",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "SMTP server port (default: 2525)",
+      "default": "2525",
+      "example": "goshs --smtp-port"
+    },
+    {
+      "name": "--smtp-domain",
+      "short": "-smtp-domain",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "SMTP server domain (default: open relay)",
+      "default": "open relay",
+      "example": "goshs --smtp-domain"
+    },
+    {
+      "name": "--webhook",
+      "short": "-W",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable webhook support (default: false)",
+      "default": "false",
+      "example": "goshs --webhook"
+    },
+    {
+      "name": "--webhook-url",
+      "short": "-Wu",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "URL to send webhook requests to",
+      "default": "",
+      "example": "goshs --webhook-url"
+    },
+    {
+      "name": "--webhook-events",
+      "short": "-We",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Comma separated list of events to notify [all, upload, delete, download, view, webdav, ftp, smb, dns, smtp, redirect, verbose] (default: all)",
+      "default": "all",
+      "example": "goshs --webhook-events"
+    },
+    {
+      "name": "--webhook-provider",
+      "short": "-Wp",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Webhook provider [Discord, Mattermost, Slack] (default: Discord)",
+      "default": "Discord",
+      "example": "goshs --webhook-provider"
+    },
+    {
+      "name": "--template",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Render {{.VAR}} placeholders in files requested with ?tpl (default: false)",
+      "default": "false",
+      "example": "goshs --template"
+    },
+    {
+      "name": "--tpl-var",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Template variable KEY=VALUE (repeatable), e.g. LPORT=4444 LHOST defaults to -i when a single IP is bound; on 0.0.0.0 pass --tpl-var LHOST=",
+      "default": "",
+      "example": "goshs --tpl-var"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--config Provide config file path (default: false)",
+      "default": "false",
+      "example": "goshs -C"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--print-config Print sample config to STDOUT (default: false)",
+      "default": "false",
+      "example": "goshs -P"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--user Drop privs to user (unix only) (default: current user)",
+      "default": "current user",
+      "example": "goshs -u"
+    },
+    {
+      "name": "--update",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update goshs to most recent version",
+      "default": "",
+      "example": "goshs --update"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--mdns Enable zeroconf mDNS registration (default: false)",
+      "default": "false",
+      "example": "goshs -m"
+    },
+    {
+      "name": "--tui",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run the interactive terminal dashboard (default: false)",
+      "default": "false",
+      "example": "goshs --tui"
+    },
+    {
+      "name": "--ttl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Self-destruct after a duration, e.g. 30m, 2h (default: disabled)",
+      "default": "disabled",
+      "example": "goshs --ttl"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--verbose Activate verbose log output (default: false)",
+      "default": "false",
+      "example": "goshs -V"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print the current goshs version",
+      "default": "",
+      "example": "goshs -v"
+    },
+    {
+      "name": "--completion",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Install shell tab completion (bash|fish|zsh)",
+      "default": "",
+      "example": "goshs --completion"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

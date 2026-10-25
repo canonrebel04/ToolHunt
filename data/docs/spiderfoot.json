@@ -1,0 +1,206 @@
+{
+  "id": "spiderfoot",
+  "name": "spiderfoot",
+  "schema_version": 1,
+  "summary": "The Open Source Footprinting Tool.",
+  "highlights": [
+    "-d — Enable debug output.",
+    "-M — List available modules.",
+    "-s — Target for the scan.",
+    "-u — Select modules automatically by use case",
+    "-T — List available event types.",
+    "-o — Output format. Tab is default.",
+    "-n — Strip newlines from data.",
+    "-r — Include the source data field in tab/csv output."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install spiderfoot"
+    }
+  ],
+  "usage": "sf.py [-h] [-d] [-l IP:port] [-m mod1,mod2,...] [-M] [-C scanID]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "spiderfoot --help"
+    },
+    {
+      "name": "--debug",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable debug output.",
+      "default": "",
+      "example": "spiderfoot --debug"
+    },
+    {
+      "name": "--modules",
+      "short": "-M",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List available modules.",
+      "default": "",
+      "example": "spiderfoot --modules"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "TARGET",
+      "required": false,
+      "description": "Target for the scan.",
+      "default": "",
+      "example": "spiderfoot -s <target>"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "{all,footprint,investigate,passive}",
+      "required": false,
+      "description": "Select modules automatically by use case",
+      "default": "",
+      "example": "spiderfoot -u <all,footprint,investigate,passive>"
+    },
+    {
+      "name": "--types",
+      "short": "-T",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List available event types.",
+      "default": "",
+      "example": "spiderfoot --types"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "{tab,csv,json}",
+      "required": false,
+      "description": "Output format. Tab is default.",
+      "default": "",
+      "example": "spiderfoot -o <tab,csv,json>"
+    },
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't print field headers, just data.",
+      "default": "",
+      "example": "spiderfoot -H"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Strip newlines from data.",
+      "default": "",
+      "example": "spiderfoot -n"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Include the source data field in tab/csv output.",
+      "default": "",
+      "example": "spiderfoot -r"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "LENGTH",
+      "required": false,
+      "description": "Maximum data length to display. By default, all data is shown.",
+      "default": "",
+      "example": "spiderfoot -S <length>"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "DELIMITER",
+      "required": false,
+      "description": "Delimiter to use for CSV output. Default is ,.",
+      "default": "",
+      "example": "spiderfoot -D <delimiter>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Filter out other event types that weren't requested with -t.",
+      "default": "",
+      "example": "spiderfoot -f"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "STRICT MODE. Will only enable modules that can directly consume your target, and if -t was specified only those events will be consumed by modules. This overrides -t and -m options.",
+      "default": "",
+      "example": "spiderfoot -x"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable logging. This will also hide errors!",
+      "default": "",
+      "example": "spiderfoot -q"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display the version of SpiderFoot and exit.",
+      "default": "",
+      "example": "spiderfoot --version"
+    },
+    {
+      "name": "-max-threads",
+      "short": "",
+      "aliases": [],
+      "arg": "MAX_THREADS",
+      "required": false,
+      "description": "Max number of modules to run concurrently.",
+      "default": "",
+      "example": "spiderfoot -max-threads <max_threads>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

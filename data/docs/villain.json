@@ -1,0 +1,136 @@
+{
+  "id": "villain",
+  "name": "villain",
+  "schema_version": 1,
+  "summary": "C2 framework that can handle multiple TCP socket & HoaxShell-based reverse shells, enhance their functionality with additional features and share them among connected sibling servers.",
+  "highlights": [
+    "-p — Team server port (default: 6501).",
+    "-x — HoaxShell server port (default: 8080 via http, 443 via https).",
+    "-n — Reverse TCP multi-handler port (default: 4443).",
+    "-f — Http file smuggler server port (default: 8888).",
+    "-i — Allows any Villain client (sibling server) to connect to your instance without prompting y",
+    "-c — Path to your ssl certificate (for HoaxShell https server).",
+    "-k — Path to the private key for your certificate (for HoaxShell https server).",
+    "-q — Do not print the banner on startup."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install villain"
+    }
+  ],
+  "usage": "Villain.py [-h] [-p PORT] [-x HOAX_PORT] [-n REVERSE_TCP_PORT]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "villain --help"
+    },
+    {
+      "name": "--port",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "Team server port (default: 6501).",
+      "default": "6501",
+      "example": "villain --port <port>"
+    },
+    {
+      "name": "--hoax-port",
+      "short": "-x",
+      "aliases": [],
+      "arg": "HOAX_PORT",
+      "required": false,
+      "description": "HoaxShell server port (default: 8080 via http, 443 via https).",
+      "default": "8080 via http, 443 via https",
+      "example": "villain --hoax-port <hoax_port>"
+    },
+    {
+      "name": "--reverse-tcp-port",
+      "short": "-n",
+      "aliases": [],
+      "arg": "REVERSE_TCP_PORT",
+      "required": false,
+      "description": "Reverse TCP multi-handler port (default: 4443).",
+      "default": "4443",
+      "example": "villain --reverse-tcp-port <reverse_tcp_port>"
+    },
+    {
+      "name": "--file-smuggler-port",
+      "short": "-f",
+      "aliases": [],
+      "arg": "FILE_SMUGGLER_PORT",
+      "required": false,
+      "description": "Http file smuggler server port (default: 8888).",
+      "default": "8888",
+      "example": "villain --file-smuggler-port <file_smuggler_port>"
+    },
+    {
+      "name": "--insecure",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Allows any Villain client (sibling server) to connect to your instance without prompting you for verification.",
+      "default": "",
+      "example": "villain --insecure"
+    },
+    {
+      "name": "--certfile",
+      "short": "-c",
+      "aliases": [],
+      "arg": "CERTFILE",
+      "required": false,
+      "description": "Path to your ssl certificate (for HoaxShell https server).",
+      "default": "",
+      "example": "villain --certfile <certfile>"
+    },
+    {
+      "name": "--keyfile",
+      "short": "-k",
+      "aliases": [],
+      "arg": "KEYFILE",
+      "required": false,
+      "description": "Path to the private key for your certificate (for HoaxShell https server).",
+      "default": "",
+      "example": "villain --keyfile <keyfile>"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show program's version number and exit.",
+      "default": "",
+      "example": "villain --version"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not print the banner on startup.",
+      "default": "",
+      "example": "villain --quiet"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

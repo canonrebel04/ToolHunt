@@ -1,0 +1,102 @@
+{
+  "id": "eapmd5pass",
+  "name": "eapmd5pass",
+  "schema_version": 1,
+  "summary": "An implementation of an offline dictionary attack against the EAP-MD5 protocol.",
+  "highlights": [
+    "-i — interface name",
+    "-b — BSSID of target network (default: all)",
+    "-C — EAP-MD5 challenge value.",
+    "-E — EAP-MD5 response EAP ID value."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install eapmd5pass"
+    }
+  ],
+  "usage": "eapmd5pass [ -i <int> | -r <pcapfile> ] [ -w wordfile ] [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<iface>",
+      "required": false,
+      "description": "interface name",
+      "default": "",
+      "example": "eapmd5pass -i <iface>"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "<bssid>",
+      "required": false,
+      "description": "BSSID of target network (default: all)",
+      "default": "all",
+      "example": "eapmd5pass -b <bssid>"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "<chal>",
+      "required": false,
+      "description": "EAP-MD5 challenge value.",
+      "default": "",
+      "example": "eapmd5pass -C <chal>"
+    },
+    {
+      "name": "-E",
+      "short": "",
+      "aliases": [],
+      "arg": "<eapid>",
+      "required": false,
+      "description": "EAP-MD5 response EAP ID value.",
+      "default": "",
+      "example": "eapmd5pass -E <eapid>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "increase verbosity level (max 3)",
+      "default": "",
+      "example": "eapmd5pass -v"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "version information",
+      "default": "",
+      "example": "eapmd5pass -V"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "usage information",
+      "default": "",
+      "example": "eapmd5pass -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

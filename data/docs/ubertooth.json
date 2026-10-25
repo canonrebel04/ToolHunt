@@ -1,0 +1,42 @@
+{
+  "id": "ubertooth",
+  "name": "ubertooth",
+  "schema_version": 1,
+  "summary": "A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libubertooth-dev"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libubertooth1"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ubertooth"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ubertooth-firmware"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ubertooth-firmware-source"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

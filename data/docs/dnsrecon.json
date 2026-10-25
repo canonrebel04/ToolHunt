@@ -1,0 +1,398 @@
+{
+  "id": "dnsrecon",
+  "name": "dnsrecon",
+  "schema_version": 1,
+  "summary": "Python script for enumeration of hosts, subdomains and emails from a given domain using google.",
+  "highlights": [
+    "-d — Target domain.",
+    "-iL — File containing a list of domains to perform DNS enumeration on, one per line.",
+    "-n — Domain server to use. If none is given, the SOA of the target will be used. Multiple serve",
+    "-r — IP range for reverse lookup brute force in formats (first-last) or in (range/bitmask).",
+    "-D — Dictionary file of subdomain and hostnames to use for brute force.",
+    "-f — Filter out of brute force domain lookup, records that resolve to the wildcard defined IP a",
+    "-a — Perform AXFR with standard enumeration.",
+    "-s — Perform a reverse lookup of IPv4 ranges in the SPF record with standard enumeration."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dnsrecon"
+    }
+  ],
+  "usage": "dnsrecon [-h] [-d DOMAIN] [-iL INPUT_LIST] [-n NS_SERVER] [-r RANGE]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "dnsrecon --help"
+    },
+    {
+      "name": "--domain",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Target domain.",
+      "default": "",
+      "example": "dnsrecon --domain <domain>"
+    },
+    {
+      "name": "--input-list",
+      "short": "-iL",
+      "aliases": [],
+      "arg": "INPUT_LIST",
+      "required": false,
+      "description": "File containing a list of domains to perform DNS enumeration on, one per line.",
+      "default": "",
+      "example": "dnsrecon --input-list <input_list>"
+    },
+    {
+      "name": "--name_server",
+      "short": "-n",
+      "aliases": [],
+      "arg": "NS_SERVER",
+      "required": false,
+      "description": "Domain server to use. If none is given, the SOA of the target will be used. Multiple servers can be specified using a comma separated list.",
+      "default": "",
+      "example": "dnsrecon --name_server <ns_server>"
+    },
+    {
+      "name": "--range",
+      "short": "-r",
+      "aliases": [],
+      "arg": "RANGE",
+      "required": false,
+      "description": "IP range for reverse lookup brute force in formats (first-last) or in (range/bitmask).",
+      "default": "",
+      "example": "dnsrecon --range <range>"
+    },
+    {
+      "name": "--dictionary",
+      "short": "-D",
+      "aliases": [],
+      "arg": "DICTIONARY",
+      "required": false,
+      "description": "Dictionary file of subdomain and hostnames to use for brute force.",
+      "default": "",
+      "example": "dnsrecon --dictionary <dictionary>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Filter out of brute force domain lookup, records that resolve to the wildcard defined IP address when saving records.",
+      "default": "",
+      "example": "dnsrecon -f"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform AXFR with standard enumeration.",
+      "default": "",
+      "example": "dnsrecon -a"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform a reverse lookup of IPv4 ranges in the SPF record with standard enumeration.",
+      "default": "",
+      "example": "dnsrecon -s"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform Bing enumeration with standard enumeration.",
+      "default": "",
+      "example": "dnsrecon -b"
+    },
+    {
+      "name": "-y",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform Yandex enumeration with standard enumeration.",
+      "default": "",
+      "example": "dnsrecon -y"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform crt.sh enumeration with standard enumeration.",
+      "default": "",
+      "example": "dnsrecon -k"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform deep whois record analysis and reverse lookup of IP ranges found through Whois when doing a standard enumeration.",
+      "default": "",
+      "example": "dnsrecon -w"
+    },
+    {
+      "name": "--shodan",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Shodan to query netblocks discovered via SPF (-s) and/or Whois (-w) during standard enumeration.",
+      "default": "",
+      "example": "dnsrecon --shodan"
+    },
+    {
+      "name": "--shodan-active",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Actively validate Shodan-discovered names by resolving them and confirming they still match the queried netblock.",
+      "default": "",
+      "example": "dnsrecon --shodan-active"
+    },
+    {
+      "name": "--shodan-key",
+      "short": "",
+      "aliases": [],
+      "arg": "SHODAN_KEY",
+      "required": false,
+      "description": "Shodan API key. If omitted, SHODAN_API_KEY environment variable is used.",
+      "default": "",
+      "example": "dnsrecon --shodan-key <shodan_key>"
+    },
+    {
+      "name": "-z",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Performs a DNSSEC zone walk with standard enumeration.",
+      "default": "",
+      "example": "dnsrecon -z"
+    },
+    {
+      "name": "--threads",
+      "short": "",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "Number of threads to use in reverse lookups, forward lookups, brute force and SRV record enumeration.",
+      "default": "",
+      "example": "dnsrecon --threads <threads>"
+    },
+    {
+      "name": "--lifetime",
+      "short": "",
+      "aliases": [],
+      "arg": "LIFETIME",
+      "required": false,
+      "description": "Time to wait for a server to respond to a query. default is 3.0",
+      "default": "",
+      "example": "dnsrecon --lifetime <lifetime>"
+    },
+    {
+      "name": "--loglevel",
+      "short": "",
+      "aliases": [],
+      "arg": "{DEBUG,INFO,WARNING,ERROR,CRITICAL}",
+      "required": false,
+      "description": "Log level to use. default is INFO",
+      "default": "",
+      "example": "dnsrecon --loglevel <debug,info,warning,error,critical>"
+    },
+    {
+      "name": "--tcp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use TCP protocol to make queries.",
+      "default": "",
+      "example": "dnsrecon --tcp"
+    },
+    {
+      "name": "--db",
+      "short": "",
+      "aliases": [],
+      "arg": "DB",
+      "required": false,
+      "description": "SQLite 3 file to save found records.",
+      "default": "",
+      "example": "dnsrecon --db <db>"
+    },
+    {
+      "name": "--xml",
+      "short": "-x",
+      "aliases": [],
+      "arg": "XML",
+      "required": false,
+      "description": "XML file to save found records.",
+      "default": "",
+      "example": "dnsrecon --xml <xml>"
+    },
+    {
+      "name": "--csv",
+      "short": "-c",
+      "aliases": [],
+      "arg": "CSV",
+      "required": false,
+      "description": "Save output to a comma separated value file.",
+      "default": "",
+      "example": "dnsrecon --csv <csv>"
+    },
+    {
+      "name": "--json",
+      "short": "-j",
+      "aliases": [],
+      "arg": "JSON",
+      "required": false,
+      "description": "save output to a JSON file.",
+      "default": "",
+      "example": "dnsrecon --json <json>"
+    },
+    {
+      "name": "--iw",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Continue brute forcing a domain even if a wildcard record is discovered.",
+      "default": "",
+      "example": "dnsrecon --iw"
+    },
+    {
+      "name": "--disable_check_nxdomain",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables check for NXDOMAIN hijacking on name servers.",
+      "default": "",
+      "example": "dnsrecon --disable_check_nxdomain"
+    },
+    {
+      "name": "--disable_check_recursion",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables check for recursion on name servers",
+      "default": "",
+      "example": "dnsrecon --disable_check_recursion"
+    },
+    {
+      "name": "--disable_recurs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable recursion desired flag in queries.",
+      "default": "",
+      "example": "dnsrecon --disable_recurs"
+    },
+    {
+      "name": "--disable_check_bindversion",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables check for BIND version on name servers",
+      "default": "",
+      "example": "dnsrecon --disable_check_bindversion"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DNSrecon version",
+      "default": "",
+      "example": "dnsrecon --version"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable verbosity",
+      "default": "",
+      "example": "dnsrecon --verbose"
+    },
+    {
+      "name": "--type",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TYPE",
+      "required": false,
+      "description": "Type of enumeration to perform. Possible types: std: SOA, NS, A, AAAA, MX and SRV. rvl: Reverse lookup of a given CIDR or IP range. brt: Brute force domains and hosts using a given dictionary. srv: SRV records. axfr: Test all NS servers for a zone transfer. bing: Perform Bing search for subdomains and hosts. yand: Perform Yandex search for subdomains and hosts. crt: Perform crt.sh search for subdomains and hosts. caa: CAA records. snoop: Perform cache snooping against all NS servers for a given domain, testing all with file containing the domains, file given with -D option.",
+      "default": "",
+      "example": "dnsrecon --type <type>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "dnsrecon --domain <example.com> --db <path/to/database.sqlite>",
+      "explanation": "Scan a domain and save the results to an SQLite database",
+      "source": "tldr:dnsrecon"
+    },
+    {
+      "cmd": "dnsrecon --domain <example.com> --name_server <nameserver.example.com> --type axfr",
+      "explanation": "Scan a domain, specifying the nameserver and performing a zone transfer",
+      "source": "tldr:dnsrecon"
+    },
+    {
+      "cmd": "dnsrecon --domain <example.com> --dictionary <path/to/dictionary.txt> --type brt",
+      "explanation": "Scan a domain, using a brute-force attack and a dictionary of subdomains and hostnames",
+      "source": "tldr:dnsrecon"
+    },
+    {
+      "cmd": "dnsrecon --domain <example.com> -s --json",
+      "explanation": "Scan a domain, performing a reverse lookup of IP ranges from the SPF record and saving the results to a JSON file",
+      "source": "tldr:dnsrecon"
+    },
+    {
+      "cmd": "dnsrecon --domain <example.com> --type snoop --name_server <nameserver.example.com> --dictionary <path/to/dictionary.txt>",
+      "explanation": "Scan a domain, performing DNS cache snooping",
+      "source": "tldr:dnsrecon"
+    },
+    {
+      "cmd": "dnsrecon --domain <example.com> --type zonewalk",
+      "explanation": "Scan a domain, performing zone walking",
+      "source": "tldr:dnsrecon"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/dnsrecon.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

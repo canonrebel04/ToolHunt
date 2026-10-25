@@ -1,0 +1,173 @@
+{
+  "id": "chkrootkit",
+  "name": "chkrootkit",
+  "schema_version": 1,
+  "summary": "Checks for rootkits on a system.",
+  "highlights": [
+    "-l — show available tests and exit",
+    "-d — debug",
+    "-q — quiet mode",
+    "-x — expert mode",
+    "-s — filter results of sniffer test through 'grep -Ev REGEXP' to exclude expected PACKET_SNIFFE",
+    "-r — use DIR as the root directory",
+    "-n — skip NFS mount points",
+    "-T — skip mount points of the specified file system type"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install chkrootkit"
+    }
+  ],
+  "usage": "/usr/sbin/chkrootkit [options] [test ...]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help and exit",
+      "default": "",
+      "example": "chkrootkit -h"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show version information and exit",
+      "default": "",
+      "example": "chkrootkit -V"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show available tests and exit",
+      "default": "",
+      "example": "chkrootkit -l"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "debug",
+      "default": "",
+      "example": "chkrootkit -d"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "quiet mode",
+      "default": "",
+      "example": "chkrootkit -q"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "expert mode",
+      "default": "",
+      "example": "chkrootkit -x"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "REGEXP",
+      "required": false,
+      "description": "filter results of sniffer test through 'grep -Ev REGEXP' to exclude expected PACKET_SNIFFERs. Read /usr/share/doc/chkrootkit/README.FALSE-POSITIVES first.",
+      "default": "",
+      "example": "chkrootkit -s <regexp>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "DIR",
+      "required": false,
+      "description": "use DIR as the root directory",
+      "default": "",
+      "example": "chkrootkit -r <dir>"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "skip NFS mount points",
+      "default": "",
+      "example": "chkrootkit -n"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "FSTYPE",
+      "required": false,
+      "description": "skip mount points of the specified file system type",
+      "default": "",
+      "example": "chkrootkit -T <fstype>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "chkrootkit -q",
+      "explanation": "Enable [q]uiet mode and suppress normal test results",
+      "source": "tldr:chkrootkit"
+    },
+    {
+      "cmd": "chkrootkit -x",
+      "explanation": "Enable e[x]pert mode and produce additional outputs",
+      "source": "tldr:chkrootkit"
+    },
+    {
+      "cmd": "chkrootkit -d",
+      "explanation": "Enable [d]ebug mode to show all output",
+      "source": "tldr:chkrootkit"
+    },
+    {
+      "cmd": "chkrootkit -r <path/to/directory>",
+      "explanation": "Specify a directory as the [r]oot for testing (e.g. mounted `ext` drives)",
+      "source": "tldr:chkrootkit"
+    },
+    {
+      "cmd": "chkrootkit -n",
+      "explanation": "Ignore [n]fs-mounted directories",
+      "source": "tldr:chkrootkit"
+    },
+    {
+      "cmd": "chkrootkit -T <filesystemtype>",
+      "explanation": "Invoke [T]ests and ignore specific filesystem types",
+      "source": "tldr:chkrootkit"
+    },
+    {
+      "cmd": "chkrootkit -l",
+      "explanation": "Generate [l]ist of available tests",
+      "source": "tldr:chkrootkit"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/chkrootkit.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

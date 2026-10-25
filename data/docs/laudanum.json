@@ -1,0 +1,26 @@
+{
+  "id": "laudanum",
+  "name": "laudanum",
+  "schema_version": 1,
+  "summary": "A collection of injectable files, designed to be used in a pentest when SQL injection flaws are found and are in multiple languages for different environments.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install laudanum"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

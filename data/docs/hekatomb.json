@@ -1,0 +1,146 @@
+{
+  "id": "hekatomb",
+  "name": "hekatomb",
+  "schema_version": 1,
+  "summary": "Extract and decrypt all credentials from all domain computers using DPAPI.",
+  "highlights": [
+    "-pvk — Domain backup keys file",
+    "-dns — DNS server IP address to resolve computers hostname",
+    "-port — Port to connect to SMB Server",
+    "-smb2 — Force the use of SMBv2 protocol",
+    "-just-user — Test only specified username",
+    "-just-computer — Test only specified computer",
+    "-md5 — Print md5 hash instead of clear passwords",
+    "-csv — Export results to CSV file"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hekatomb"
+    }
+  ],
+  "usage": "hekatomb [-h] [-hashes LMHASH:NTHASH] [-pvk PVK] [-dns DNS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "hekatomb --help"
+    },
+    {
+      "name": "-pvk",
+      "short": "",
+      "aliases": [],
+      "arg": "PVK",
+      "required": false,
+      "description": "Domain backup keys file",
+      "default": "",
+      "example": "hekatomb -pvk <pvk>"
+    },
+    {
+      "name": "-dns",
+      "short": "",
+      "aliases": [],
+      "arg": "DNS",
+      "required": false,
+      "description": "DNS server IP address to resolve computers hostname",
+      "default": "",
+      "example": "hekatomb -dns <dns>"
+    },
+    {
+      "name": "-port",
+      "short": "",
+      "aliases": [],
+      "arg": "[port]",
+      "required": false,
+      "description": "Port to connect to SMB Server",
+      "default": "",
+      "example": "hekatomb -port <port>"
+    },
+    {
+      "name": "-smb2",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force the use of SMBv2 protocol",
+      "default": "",
+      "example": "hekatomb -smb2"
+    },
+    {
+      "name": "-just-user",
+      "short": "",
+      "aliases": [],
+      "arg": "JUST_USER",
+      "required": false,
+      "description": "Test only specified username",
+      "default": "",
+      "example": "hekatomb -just-user <just_user>"
+    },
+    {
+      "name": "-just-computer",
+      "short": "",
+      "aliases": [],
+      "arg": "JUST_COMPUTER",
+      "required": false,
+      "description": "Test only specified computer",
+      "default": "",
+      "example": "hekatomb -just-computer <just_computer>"
+    },
+    {
+      "name": "-md5",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print md5 hash instead of clear passwords",
+      "default": "",
+      "example": "hekatomb -md5"
+    },
+    {
+      "name": "-csv",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Export results to CSV file",
+      "default": "",
+      "example": "hekatomb -csv"
+    },
+    {
+      "name": "-debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Turn DEBUG output ON",
+      "default": "",
+      "example": "hekatomb -debug"
+    },
+    {
+      "name": "-debugmax",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Turn DEBUG output TO MAAAAXXXX",
+      "default": "",
+      "example": "hekatomb -debugmax"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

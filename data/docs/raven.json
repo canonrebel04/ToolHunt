@@ -1,0 +1,71 @@
+{
+  "id": "raven",
+  "name": "raven",
+  "schema_version": 1,
+  "summary": "A Linkedin information gathering tool that can be used by pentesters to gather information about an organization employees using Linkedin.",
+  "highlights": [
+    "--allowed-ip — Restrict access to our HTTP handler by IP address (optional)",
+    "--upload-dir — Designate the directory to save uploaded files to (default: current working directory)",
+    "--organize-uploads — Organize file uploads into subfolders by remote client IP"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install raven"
+    }
+  ],
+  "usage": "raven [lhost] [lport] [--allowed-ip <allowed_client_ip>] [--upload-dir <upload_directory>] [--organize-uploads]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "raven --help"
+    },
+    {
+      "name": "--allowed-ip",
+      "short": "",
+      "aliases": [],
+      "arg": "ALLOWED_IP",
+      "required": false,
+      "description": "Restrict access to our HTTP handler by IP address (optional)",
+      "default": "",
+      "example": "raven --allowed-ip <allowed_ip>"
+    },
+    {
+      "name": "--upload-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "UPLOAD_DIR",
+      "required": false,
+      "description": "Designate the directory to save uploaded files to (default: current working directory)",
+      "default": "current working directory",
+      "example": "raven --upload-dir <upload_dir>"
+    },
+    {
+      "name": "--organize-uploads",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Organize file uploads into subfolders by remote client IP",
+      "default": "",
+      "example": "raven --organize-uploads"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

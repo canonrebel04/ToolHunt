@@ -1,0 +1,373 @@
+{
+  "id": "cewl",
+  "name": "cewl",
+  "schema_version": 1,
+  "summary": "A custom word list generator.",
+  "highlights": [
+    "-k — Keep the downloaded file.",
+    "-d — Depth to spider to, default 2.",
+    "-m — Minimum word length, default 3.",
+    "-x — Maximum word length, default unset.",
+    "-o — Let the spider visit other sites.",
+    "--exclude — A file containing a list of paths to exclude",
+    "--allowed — A regex pattern that path must match to be followed",
+    "-w — Write the output to the file."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install cewl"
+    }
+  ],
+  "usage": "cewl [OPTIONS] ... <url>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show help.",
+      "default": "",
+      "example": "cewl --help"
+    },
+    {
+      "name": "--keep",
+      "short": "-k",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Keep the downloaded file.",
+      "default": "",
+      "example": "cewl --keep"
+    },
+    {
+      "name": "--depth",
+      "short": "-d",
+      "aliases": [],
+      "arg": "<x>",
+      "required": false,
+      "description": "Depth to spider to, default 2.",
+      "default": "",
+      "example": "cewl --depth <x>"
+    },
+    {
+      "name": "--min_word_length",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Minimum word length, default 3.",
+      "default": "",
+      "example": "cewl --min_word_length"
+    },
+    {
+      "name": "--max_word_length",
+      "short": "-x",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Maximum word length, default unset.",
+      "default": "",
+      "example": "cewl --max_word_length"
+    },
+    {
+      "name": "--offsite",
+      "short": "-o",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Let the spider visit other sites.",
+      "default": "",
+      "example": "cewl --offsite"
+    },
+    {
+      "name": "--exclude",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "A file containing a list of paths to exclude",
+      "default": "",
+      "example": "cewl --exclude"
+    },
+    {
+      "name": "--allowed",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "A regex pattern that path must match to be followed",
+      "default": "",
+      "example": "cewl --allowed"
+    },
+    {
+      "name": "--write",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Write the output to the file.",
+      "default": "",
+      "example": "cewl --write"
+    },
+    {
+      "name": "--ua",
+      "short": "-u",
+      "aliases": [],
+      "arg": "<agent>",
+      "required": false,
+      "description": "User agent to send.",
+      "default": "",
+      "example": "cewl --ua <agent>"
+    },
+    {
+      "name": "--no-words",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't output the wordlist.",
+      "default": "",
+      "example": "cewl --no-words"
+    },
+    {
+      "name": "--groups",
+      "short": "-g",
+      "aliases": [],
+      "arg": "<x>",
+      "required": false,
+      "description": "Return groups of words as well",
+      "default": "",
+      "example": "cewl --groups <x>"
+    },
+    {
+      "name": "--lowercase",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Lowercase all parsed words",
+      "default": "",
+      "example": "cewl --lowercase"
+    },
+    {
+      "name": "--with-numbers",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Accept words with numbers in as well as just letters",
+      "default": "",
+      "example": "cewl --with-numbers"
+    },
+    {
+      "name": "--convert-umlauts",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Convert common ISO-8859-1 (Latin-1) umlauts (ä-ae, ö-oe, ü-ue, ß-ss)",
+      "default": "",
+      "example": "cewl --convert-umlauts"
+    },
+    {
+      "name": "--meta",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "include meta data.",
+      "default": "",
+      "example": "cewl --meta"
+    },
+    {
+      "name": "--meta_file",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "Output file for meta data.",
+      "default": "",
+      "example": "cewl --meta_file <file>"
+    },
+    {
+      "name": "--email",
+      "short": "-e",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Include email addresses.",
+      "default": "",
+      "example": "cewl --email"
+    },
+    {
+      "name": "--email_file",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Output file for email addresses.",
+      "default": "",
+      "example": "cewl --email_file <file>"
+    },
+    {
+      "name": "--meta-temp-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "<dir>",
+      "required": false,
+      "description": "The temporary directory used by exiftool when parsing files, default /tmp.",
+      "default": "",
+      "example": "cewl --meta-temp-dir <dir>"
+    },
+    {
+      "name": "--count",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show the count for each word found.",
+      "default": "",
+      "example": "cewl --count"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose.",
+      "default": "",
+      "example": "cewl --verbose"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Extra debug information.",
+      "default": "",
+      "example": "cewl --debug"
+    },
+    {
+      "name": "--auth_type",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Digest or basic.",
+      "default": "",
+      "example": "cewl --auth_type"
+    },
+    {
+      "name": "--auth_user",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Authentication username.",
+      "default": "",
+      "example": "cewl --auth_user"
+    },
+    {
+      "name": "--auth_pass",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Authentication password.",
+      "default": "",
+      "example": "cewl --auth_pass"
+    },
+    {
+      "name": "--proxy_host",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Proxy host.",
+      "default": "",
+      "example": "cewl --proxy_host"
+    },
+    {
+      "name": "--proxy_port",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Proxy port, default 8080.",
+      "default": "",
+      "example": "cewl --proxy_port"
+    },
+    {
+      "name": "--proxy_username",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": true,
+      "description": "Username for proxy, if required.",
+      "default": "",
+      "example": "cewl --proxy_username"
+    },
+    {
+      "name": "--proxy_password",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": true,
+      "description": "Password for proxy, if required.",
+      "default": "",
+      "example": "cewl --proxy_password"
+    },
+    {
+      "name": "--header",
+      "short": "-H",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "In format name:value - can pass multiple.",
+      "default": "",
+      "example": "cewl --header"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "cewl --depth 2 --write <path/to/wordlist.txt> <url>",
+      "explanation": "Create a wordlist file from the given URL up to 2 links depth",
+      "source": "tldr:cewl"
+    },
+    {
+      "cmd": "cewl --with-numbers --min_word_length 5 <url>",
+      "explanation": "Output an alphanumeric wordlist from the given URL with words of minimum 5 characters",
+      "source": "tldr:cewl"
+    },
+    {
+      "cmd": "cewl --debug --email <url>",
+      "explanation": "Output a wordlist from the given URL in debug mode including email addresses",
+      "source": "tldr:cewl"
+    },
+    {
+      "cmd": "cewl --auth_type <basic|digest> --auth_user <username> --auth_pass <password> <url>",
+      "explanation": "Output a wordlist from the given URL using HTTP Basic or Digest authentication",
+      "source": "tldr:cewl"
+    },
+    {
+      "cmd": "cewl --proxy_host <host> --proxy_port <port> <url>",
+      "explanation": "Output a wordlist from the given URL through a proxy",
+      "source": "tldr:cewl"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/cewl.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

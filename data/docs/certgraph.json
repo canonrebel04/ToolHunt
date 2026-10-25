@@ -1,0 +1,196 @@
+{
+  "id": "certgraph",
+  "name": "certgraph",
+  "schema_version": 1,
+  "summary": "Crawl the graph of certificate Alternate Names.",
+  "highlights": [
+    "-cdn — include certificates from CDNs",
+    "-ct-expired — include expired certificates in certificate transparency search",
+    "-ct-subdomains — include sub-domains in certificate transparency search",
+    "-depth — maximum BFS depth to go (default 5)",
+    "-details — print details about the domains crawled",
+    "-dns — check for DNS records to determine if domain is registered",
+    "-driver — driver to use [crtsh, google, http, smtp] (default \"http\")",
+    "-json — print the graph as json, can be used for graph in web UI"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install certgraph"
+    }
+  ],
+  "usage": "of certgraph: [OPTION]... HOST...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-cdn",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "include certificates from CDNs",
+      "default": "",
+      "example": "certgraph -cdn"
+    },
+    {
+      "name": "-ct-expired",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "include expired certificates in certificate transparency search",
+      "default": "",
+      "example": "certgraph -ct-expired"
+    },
+    {
+      "name": "-ct-subdomains",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "include sub-domains in certificate transparency search",
+      "default": "",
+      "example": "certgraph -ct-subdomains"
+    },
+    {
+      "name": "-depth",
+      "short": "",
+      "aliases": [],
+      "arg": "uint",
+      "required": false,
+      "description": "maximum BFS depth to go (default 5)",
+      "default": "5",
+      "example": "certgraph -depth <uint>"
+    },
+    {
+      "name": "-details",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print details about the domains crawled",
+      "default": "",
+      "example": "certgraph -details"
+    },
+    {
+      "name": "-dns",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "check for DNS records to determine if domain is registered",
+      "default": "",
+      "example": "certgraph -dns"
+    },
+    {
+      "name": "-driver",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "driver to use [crtsh, google, http, smtp] (default \"http\")",
+      "default": "http",
+      "example": "certgraph -driver <string>"
+    },
+    {
+      "name": "-json",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print the graph as json, can be used for graph in web UI",
+      "default": "",
+      "example": "certgraph -json"
+    },
+    {
+      "name": "-parallel",
+      "short": "",
+      "aliases": [],
+      "arg": "uint",
+      "required": false,
+      "description": "number of certificates to retrieve in parallel (default 10)",
+      "default": "10",
+      "example": "certgraph -parallel <uint>"
+    },
+    {
+      "name": "-sanscap",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "maximum number of uniq TLD+1 domains in certificate to include, 0 has no limit (default 80)",
+      "default": "80",
+      "example": "certgraph -sanscap <int>"
+    },
+    {
+      "name": "-save",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "save certs to folder in PEM format",
+      "default": "",
+      "example": "certgraph -save <string>"
+    },
+    {
+      "name": "-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "uint",
+      "required": false,
+      "description": "tcp timeout in seconds (default 10)",
+      "default": "10",
+      "example": "certgraph -timeout <uint>"
+    },
+    {
+      "name": "-tldplus1",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "for every domain found, add tldPlus1 of the domain's parent",
+      "default": "",
+      "example": "certgraph -tldplus1"
+    },
+    {
+      "name": "-updatepsl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update the default Public Suffix List",
+      "default": "",
+      "example": "certgraph -updatepsl"
+    },
+    {
+      "name": "-verbose",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose logging",
+      "default": "",
+      "example": "certgraph -verbose"
+    },
+    {
+      "name": "-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print version and exit",
+      "default": "",
+      "example": "certgraph -version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

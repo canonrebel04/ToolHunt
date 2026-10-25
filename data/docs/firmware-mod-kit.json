@@ -1,0 +1,25 @@
+{
+  "id": "firmware-mod-kit",
+  "name": "firmware-mod-kit",
+  "schema_version": 1,
+  "summary": "Modify firmware images without recompiling.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install firmware-mod-kit"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": false
+  }
+}

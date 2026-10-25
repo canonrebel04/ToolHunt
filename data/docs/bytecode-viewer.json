@@ -1,0 +1,26 @@
+{
+  "id": "bytecode-viewer",
+  "name": "bytecode-viewer",
+  "schema_version": 1,
+  "summary": "A Java 8/Android APK Reverse Engineering Suite.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bytecode-viewer"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

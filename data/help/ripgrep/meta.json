@@ -1,0 +1,8 @@
+{
+  "id": "ripgrep",
+  "binary": "rg",
+  "commands": {
+    "": "rg --help"
+  },
+  "note": "Captured from public man page / upstream README (not run on the box)"
+}

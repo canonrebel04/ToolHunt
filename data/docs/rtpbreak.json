@@ -1,0 +1,276 @@
+{
+  "id": "rtpbreak",
+  "name": "rtpbreak",
+  "schema_version": 1,
+  "summary": "Detects, reconstructs and analyzes any RTP session",
+  "highlights": [
+    "-r — Read packets from pcap file <str>",
+    "-i — Read packets from network interface <str>",
+    "-L — Force datalink header length == <int> bytes",
+    "-d — Set output directory to <str> (def:.)",
+    "-w — Disable RTP raw dumps",
+    "-W — Disable RTP pcap dumps",
+    "-g — Fill gaps in RTP raw dumps (caused by lost packets)",
+    "-n — Dump noise packets"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install rtpbreak"
+    }
+  ],
+  "usage": "rtpbreak (-r|-i) <source> [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<str>",
+      "required": false,
+      "description": "Read packets from pcap file <str>",
+      "default": "",
+      "example": "rtpbreak -r <str>"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<str>",
+      "required": false,
+      "description": "Read packets from network interface <str>",
+      "default": "",
+      "example": "rtpbreak -i <str>"
+    },
+    {
+      "name": "-L",
+      "short": "",
+      "aliases": [],
+      "arg": "<int>",
+      "required": false,
+      "description": "Force datalink header length == <int> bytes",
+      "default": "",
+      "example": "rtpbreak -L <int>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "<str>",
+      "required": false,
+      "description": "Set output directory to <str> (def:.)",
+      "default": ".",
+      "example": "rtpbreak -d <str>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable RTP raw dumps",
+      "default": "",
+      "example": "rtpbreak -w"
+    },
+    {
+      "name": "-W",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable RTP pcap dumps",
+      "default": "",
+      "example": "rtpbreak -W"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fill gaps in RTP raw dumps (caused by lost packets)",
+      "default": "",
+      "example": "rtpbreak -g"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Dump noise packets",
+      "default": "",
+      "example": "rtpbreak -n"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable stdout logging",
+      "default": "",
+      "example": "rtpbreak -f"
+    },
+    {
+      "name": "-F",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable syslog logging",
+      "default": "",
+      "example": "rtpbreak -F"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Be verbose",
+      "default": "",
+      "example": "rtpbreak -v"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Sniff packets in promisc mode",
+      "default": "",
+      "example": "rtpbreak -m"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<str>",
+      "required": false,
+      "description": "Add pcap filter <str>",
+      "default": "",
+      "example": "rtpbreak -p <str>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Expect even destination UDP port",
+      "default": "",
+      "example": "rtpbreak -e"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Expect unprivileged source/destination UDP ports (>1024)",
+      "default": "",
+      "example": "rtpbreak -u"
+    },
+    {
+      "name": "-y",
+      "short": "",
+      "aliases": [],
+      "arg": "<int>",
+      "required": false,
+      "description": "Expect RTP payload type == <int>",
+      "default": "",
+      "example": "rtpbreak -y <int>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "<int>",
+      "required": false,
+      "description": "Expect RTP payload length == <int> bytes",
+      "default": "",
+      "example": "rtpbreak -l <int>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<float>",
+      "required": false,
+      "description": "Set packet timeout to <float> seconds (def:10.00)",
+      "default": "10.00",
+      "example": "rtpbreak -t <float>"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "<float>",
+      "required": false,
+      "description": "Set pattern timeout to <float> seconds (def:0.25)",
+      "default": "0.25",
+      "example": "rtpbreak -T <float>"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "<int>",
+      "required": false,
+      "description": "Set pattern packets count to <int> (def:5)",
+      "default": "5",
+      "example": "rtpbreak -P <int>"
+    },
+    {
+      "name": "-Z",
+      "short": "",
+      "aliases": [],
+      "arg": "<str>",
+      "required": false,
+      "description": "Run as user <str>",
+      "default": "",
+      "example": "rtpbreak -Z <str>"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run in background (option -f implicit)",
+      "default": "",
+      "example": "rtpbreak -D"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List known RTP payload types",
+      "default": "",
+      "example": "rtpbreak -k"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This",
+      "default": "",
+      "example": "rtpbreak -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "id": "webacoo",
+  "name": "webacoo",
+  "schema_version": 1,
+  "summary": "Web Backdoor Cookie Script-Kit.",
+  "highlights": [
+    "-g — Generate backdoor code (-o is required)",
+    "-f — PHP System function to use FUNCTION 1: system (default) 2: shell_exec 3: exec 4: passthru ",
+    "-o — Generated backdoor output filename",
+    "-r — Return un-obfuscated backdoor code",
+    "-t — Establish remote \"terminal\" connection (-u is required)",
+    "-u — Backdoor URL",
+    "-e — Single command execution mode (-t and -u are required)",
+    "-m — HTTP method to be used (default is GET)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install webacoo"
+    }
+  ],
+  "usage": "webacoo [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Generate backdoor code (-o is required)",
+      "default": "",
+      "example": "webacoo -g"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "FUNCTION",
+      "required": false,
+      "description": "PHP System function to use FUNCTION 1: system (default) 2: shell_exec 3: exec 4: passthru 5: popen",
+      "default": "ault",
+      "example": "webacoo -f <function>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "Generated backdoor output filename",
+      "default": "",
+      "example": "webacoo -o <output>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Return un-obfuscated backdoor code",
+      "default": "",
+      "example": "webacoo -r"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Establish remote \"terminal\" connection (-u is required)",
+      "default": "",
+      "example": "webacoo -t"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Backdoor URL",
+      "default": "",
+      "example": "webacoo -u <url>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "CMD",
+      "required": false,
+      "description": "Single command execution mode (-t and -u are required)",
+      "default": "",
+      "example": "webacoo -e <cmd>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "METHOD",
+      "required": false,
+      "description": "HTTP method to be used (default is GET)",
+      "default": "is GET",
+      "example": "webacoo -m <method>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "C_NAME",
+      "required": false,
+      "description": "Cookie name (default: \"M-cookie\")",
+      "default": "M-cookie",
+      "example": "webacoo -c <c_name>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "DELIM",
+      "required": false,
+      "description": "Delimiter (default: New random for each request)",
+      "default": "New random for each request",
+      "example": "webacoo -d <delim>"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "AGENT",
+      "required": false,
+      "description": "HTTP header user-agent (default exist)",
+      "default": "exist",
+      "example": "webacoo -a <agent>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "Use proxy (tor, ip:port or user:pass:ip:port)",
+      "default": "",
+      "example": "webacoo -p <proxy>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Verbose level LEVEL 0: no additional info (default) 1: print HTTP headers 2: print HTTP headers + data",
+      "default": "ault",
+      "example": "webacoo -v <level>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "LOG",
+      "required": false,
+      "description": "Log activity to file",
+      "default": "",
+      "example": "webacoo -l <log>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display help and exit",
+      "default": "",
+      "example": "webacoo -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

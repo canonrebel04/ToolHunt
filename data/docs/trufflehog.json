@@ -1,0 +1,133 @@
+{
+  "id": "trufflehog",
+  "name": "trufflehog",
+  "schema_version": 1,
+  "summary": "Searches through git repositories for high entropy strings, digging deep into commit history.",
+  "highlights": [
+    "--results — Specifies which type(s) of results to output: verified (confirmed valid by API), unknown (",
+    "--filter-entropy — Filter unverified results with Shannon entropy. Start with 3.0.",
+    "--config — Path to configuration file.",
+    "--detector-timeout — Maximum time to spend scanning chunks per detector (e.g., 30s).",
+    "--archive-max-size — Maximum size of archive to scan. (Byte units eg. 512B, 2KB, 4MB)",
+    "--archive-max-depth — Maximum depth of archive to scan.",
+    "--archive-timeout — Maximum time to spend extracting an archive.",
+    "--exclude-detectors — Comma separated list of detector types to exclude. Protobuf name or IDs may be used, as we"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install trufflehog"
+    }
+  ],
+  "usage": "TruffleHog [<flags>] <command> [<args> ...]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--results",
+      "short": "",
+      "aliases": [],
+      "arg": "RESULTS",
+      "required": false,
+      "description": "Specifies which type(s) of results to output: verified (confirmed valid by API), unknown (verification failed due to error), unverified (detected but not verified), filtered_unverified (unverified but would have been filtered out). Defaults to verified,unverified,unknown.",
+      "default": "",
+      "example": "trufflehog --results <results>"
+    },
+    {
+      "name": "--filter-entropy",
+      "short": "",
+      "aliases": [],
+      "arg": "FILTER-ENTROPY",
+      "required": false,
+      "description": "Filter unverified results with Shannon entropy. Start with 3.0.",
+      "default": "",
+      "example": "trufflehog --filter-entropy <filter-entropy>"
+    },
+    {
+      "name": "--config",
+      "short": "",
+      "aliases": [],
+      "arg": "CONFIG",
+      "required": false,
+      "description": "Path to configuration file.",
+      "default": "",
+      "example": "trufflehog --config <config>"
+    },
+    {
+      "name": "--detector-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "DETECTOR-TIMEOUT",
+      "required": false,
+      "description": "Maximum time to spend scanning chunks per detector (e.g., 30s).",
+      "default": "",
+      "example": "trufflehog --detector-timeout <detector-timeout>"
+    },
+    {
+      "name": "--archive-max-size",
+      "short": "",
+      "aliases": [],
+      "arg": "ARCHIVE-MAX-SIZE",
+      "required": false,
+      "description": "Maximum size of archive to scan. (Byte units eg. 512B, 2KB, 4MB)",
+      "default": "",
+      "example": "trufflehog --archive-max-size <archive-max-size>"
+    },
+    {
+      "name": "--archive-max-depth",
+      "short": "",
+      "aliases": [],
+      "arg": "ARCHIVE-MAX-DEPTH",
+      "required": false,
+      "description": "Maximum depth of archive to scan.",
+      "default": "",
+      "example": "trufflehog --archive-max-depth <archive-max-depth>"
+    },
+    {
+      "name": "--archive-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "ARCHIVE-TIMEOUT",
+      "required": false,
+      "description": "Maximum time to spend extracting an archive.",
+      "default": "",
+      "example": "trufflehog --archive-timeout <archive-timeout>"
+    },
+    {
+      "name": "--exclude-detectors",
+      "short": "",
+      "aliases": [],
+      "arg": "EXCLUDE-DETECTORS",
+      "required": false,
+      "description": "Comma separated list of detector types to exclude. Protobuf name or IDs may be used, as well as ranges. IDs defined here take precedence over the include list.",
+      "default": "",
+      "example": "trufflehog --exclude-detectors <exclude-detectors>"
+    },
+    {
+      "name": "--user-agent-suffix",
+      "short": "",
+      "aliases": [],
+      "arg": "USER-AGENT-SUFFIX",
+      "required": false,
+      "description": "Suffix to add to User-Agent.",
+      "default": "",
+      "example": "trufflehog --user-agent-suffix <user-agent-suffix>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "trufflehog filesystem <path/to/file_or_directory1 path/to/file_or_directory2 ...>",
+      "explanation": "Scan individual files or directories",
+      "source": "tldr:trufflehog"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/trufflehog.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

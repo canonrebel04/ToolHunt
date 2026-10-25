@@ -1,0 +1,26 @@
+{
+  "id": "cisco-auditing-tool",
+  "name": "cisco-auditing-tool",
+  "schema_version": 1,
+  "summary": "Perl script which scans cisco routers for common vulnerabilities. Checks for default passwords, easily guessable community names, and the IOS history bug. Includes support for plugins and scanning multiple hosts.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install cisco-auditing-tool"
+    }
+  ],
+  "usage": "CAT [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,563 @@
+{
+  "id": "feroxbuster",
+  "name": "feroxbuster",
+  "schema_version": 1,
+  "summary": "A fast, simple, recursive content discovery tool written in Rust.",
+  "highlights": [
+    "-u — The target URL (required, unless [--stdin || --resume-from || --request-file] used)",
+    "--stdin — Read url(s) from STDIN",
+    "--resume-from — State file from which to resume a partially complete scan (ex. --resume-from ferox-1606586",
+    "--request-file — Raw HTTP request file to use as a template for all requests",
+    "--burp — Set --proxy to http://127.0.0.1:8080 and set --insecure to true",
+    "--burp-replay — Set --replay-proxy to http://127.0.0.1:8080 and set --insecure to true",
+    "--data-urlencoded — Set -H 'Content-Type: application/x-www-form-urlencoded', --data to <data-urlencoded> (sup",
+    "--data-json — Set -H 'Content-Type: application/json', --data to <data-json> (supports @file) and -m to "
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install feroxbuster"
+    }
+  ],
+  "usage": "feroxbuster [OPTIONS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print help (see a summary with '-h')",
+      "default": "",
+      "example": "feroxbuster --help"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version",
+      "default": "",
+      "example": "feroxbuster --version"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "<URL>",
+      "required": false,
+      "description": "The target URL (required, unless [--stdin || --resume-from || --request-file] used)",
+      "default": "",
+      "example": "feroxbuster --url <URL>"
+    },
+    {
+      "name": "--stdin",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read url(s) from STDIN",
+      "default": "",
+      "example": "feroxbuster --stdin"
+    },
+    {
+      "name": "--resume-from",
+      "short": "",
+      "aliases": [],
+      "arg": "<STATE_FILE>",
+      "required": false,
+      "description": "State file from which to resume a partially complete scan (ex. --resume-from ferox-1606586780.state)",
+      "default": "",
+      "example": "feroxbuster --resume-from <STATE_FILE>"
+    },
+    {
+      "name": "--request-file",
+      "short": "",
+      "aliases": [],
+      "arg": "<REQUEST_FILE>",
+      "required": false,
+      "description": "Raw HTTP request file to use as a template for all requests",
+      "default": "",
+      "example": "feroxbuster --request-file <REQUEST_FILE>"
+    },
+    {
+      "name": "--burp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set --proxy to http://127.0.0.1:8080 and set --insecure to true",
+      "default": "",
+      "example": "feroxbuster --burp"
+    },
+    {
+      "name": "--burp-replay",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set --replay-proxy to http://127.0.0.1:8080 and set --insecure to true",
+      "default": "",
+      "example": "feroxbuster --burp-replay"
+    },
+    {
+      "name": "--data-urlencoded",
+      "short": "",
+      "aliases": [],
+      "arg": "<DATA>",
+      "required": false,
+      "description": "Set -H 'Content-Type: application/x-www-form-urlencoded', --data to <data-urlencoded> (supports @file) and -m to POST",
+      "default": "",
+      "example": "feroxbuster --data-urlencoded <DATA>"
+    },
+    {
+      "name": "--data-json",
+      "short": "",
+      "aliases": [],
+      "arg": "<DATA>",
+      "required": false,
+      "description": "Set -H 'Content-Type: application/json', --data to <data-json> (supports @file) and -m to POST",
+      "default": "",
+      "example": "feroxbuster --data-json <DATA>"
+    },
+    {
+      "name": "--smart",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set --auto-tune, --collect-words, and --collect-backups to true",
+      "default": "",
+      "example": "feroxbuster --smart"
+    },
+    {
+      "name": "--thorough",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use the same settings as --smart and set --collect-extensions and --scan-dir-listings to true",
+      "default": "",
+      "example": "feroxbuster --thorough"
+    },
+    {
+      "name": "--proxy",
+      "short": "-p",
+      "aliases": [],
+      "arg": "<PROXY>",
+      "required": false,
+      "description": "Proxy to use for requests (ex: http(s)://host:port, socks5(h)://host:port)",
+      "default": "",
+      "example": "feroxbuster --proxy <PROXY>"
+    },
+    {
+      "name": "--replay-proxy",
+      "short": "-P",
+      "aliases": [],
+      "arg": "<REPLAY_PROXY>",
+      "required": false,
+      "description": "Send only unfiltered requests through a Replay Proxy, instead of all requests",
+      "default": "",
+      "example": "feroxbuster --replay-proxy <REPLAY_PROXY>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "-a",
+      "aliases": [],
+      "arg": "<USER_AGENT>",
+      "required": false,
+      "description": "Sets the User-Agent (default: feroxbuster/2.13.1)",
+      "default": "feroxbuster/2.13.1",
+      "example": "feroxbuster --user-agent <USER_AGENT>"
+    },
+    {
+      "name": "--random-agent",
+      "short": "-A",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use a random User-Agent",
+      "default": "",
+      "example": "feroxbuster --random-agent"
+    },
+    {
+      "name": "--data",
+      "short": "",
+      "aliases": [],
+      "arg": "<DATA>",
+      "required": false,
+      "description": "Request's Body; can read data from a file if input starts with an @ (ex: @post.bin)",
+      "default": "",
+      "example": "feroxbuster --data <DATA>"
+    },
+    {
+      "name": "--add-slash",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Append / to each request's URL",
+      "default": "",
+      "example": "feroxbuster --add-slash"
+    },
+    {
+      "name": "--protocol",
+      "short": "",
+      "aliases": [],
+      "arg": "<PROTOCOL>",
+      "required": false,
+      "description": "Specify the protocol to use when targeting via --request-file or --url with domain only (default: https)",
+      "default": "https",
+      "example": "feroxbuster --protocol <PROTOCOL>"
+    },
+    {
+      "name": "--unique",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only show unique responses",
+      "default": "",
+      "example": "feroxbuster --unique"
+    },
+    {
+      "name": "--timeout",
+      "short": "-T",
+      "aliases": [],
+      "arg": "<SECONDS>",
+      "required": false,
+      "description": "Number of seconds before a client's request times out (default: 7)",
+      "default": "7",
+      "example": "feroxbuster --timeout <SECONDS>"
+    },
+    {
+      "name": "--redirects",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Allow client to follow redirects",
+      "default": "",
+      "example": "feroxbuster --redirects"
+    },
+    {
+      "name": "--insecure",
+      "short": "-k",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disables TLS certificate validation in the client",
+      "default": "",
+      "example": "feroxbuster --insecure"
+    },
+    {
+      "name": "--client-cert",
+      "short": "",
+      "aliases": [],
+      "arg": "<PEM>",
+      "required": false,
+      "description": "Add a PEM encoded certificate for mutual authentication (mTLS)",
+      "default": "",
+      "example": "feroxbuster --client-cert <PEM>"
+    },
+    {
+      "name": "--client-key",
+      "short": "",
+      "aliases": [],
+      "arg": "<PEM>",
+      "required": false,
+      "description": "Add a PEM encoded private key for mutual authentication (mTLS)",
+      "default": "",
+      "example": "feroxbuster --client-key <PEM>"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "<THREADS>",
+      "required": false,
+      "description": "Number of concurrent threads (default: 50)",
+      "default": "50",
+      "example": "feroxbuster --threads <THREADS>"
+    },
+    {
+      "name": "--no-recursion",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not scan recursively",
+      "default": "",
+      "example": "feroxbuster --no-recursion"
+    },
+    {
+      "name": "--depth",
+      "short": "-d",
+      "aliases": [],
+      "arg": "<RECURSION_DEPTH>",
+      "required": false,
+      "description": "Maximum recursion depth, a depth of 0 is infinite recursion (default: 4)",
+      "default": "4",
+      "example": "feroxbuster --depth <RECURSION_DEPTH>"
+    },
+    {
+      "name": "--force-recursion",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force recursion attempts on all 'found' endpoints (still respects recursion depth)",
+      "default": "",
+      "example": "feroxbuster --force-recursion"
+    },
+    {
+      "name": "--dont-extract-links",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't extract links from response body (html, javascript, etc...)",
+      "default": "",
+      "example": "feroxbuster --dont-extract-links"
+    },
+    {
+      "name": "--scan-limit",
+      "short": "-L",
+      "aliases": [],
+      "arg": "<SCAN_LIMIT>",
+      "required": false,
+      "description": "Limit total number of concurrent scans (default: 0, i.e. no limit)",
+      "default": "0, i.e. no limit",
+      "example": "feroxbuster --scan-limit <SCAN_LIMIT>"
+    },
+    {
+      "name": "--parallel",
+      "short": "",
+      "aliases": [],
+      "arg": "<PARALLEL_SCANS>",
+      "required": false,
+      "description": "Run parallel feroxbuster instances (one child process per url passed via stdin)",
+      "default": "",
+      "example": "feroxbuster --parallel <PARALLEL_SCANS>"
+    },
+    {
+      "name": "--rate-limit",
+      "short": "",
+      "aliases": [],
+      "arg": "<RATE_LIMIT>",
+      "required": false,
+      "description": "Limit number of requests per second (per directory) (default: 0, i.e. no limit)",
+      "default": "0, i.e. no limit",
+      "example": "feroxbuster --rate-limit <RATE_LIMIT>"
+    },
+    {
+      "name": "--response-size-limit",
+      "short": "",
+      "aliases": [],
+      "arg": "<BYTES>",
+      "required": false,
+      "description": "Limit size of response body to read in bytes (default: 4MB)",
+      "default": "4MB",
+      "example": "feroxbuster --response-size-limit <BYTES>"
+    },
+    {
+      "name": "--time-limit",
+      "short": "",
+      "aliases": [],
+      "arg": "<TIME_SPEC>",
+      "required": false,
+      "description": "Limit total run time of all scans (ex: --time-limit 10m)",
+      "default": "",
+      "example": "feroxbuster --time-limit <TIME_SPEC>"
+    },
+    {
+      "name": "--wordlist",
+      "short": "-w",
+      "aliases": [],
+      "arg": "<FILE>",
+      "required": false,
+      "description": "Path or URL of the wordlist",
+      "default": "",
+      "example": "feroxbuster --wordlist <FILE>"
+    },
+    {
+      "name": "--auto-tune",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Automatically lower scan rate when an excessive amount of errors are encountered",
+      "default": "",
+      "example": "feroxbuster --auto-tune"
+    },
+    {
+      "name": "--auto-bail",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Automatically stop scanning when an excessive amount of errors are encountered",
+      "default": "",
+      "example": "feroxbuster --auto-bail"
+    },
+    {
+      "name": "--dont-filter",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't auto-filter wildcard responses",
+      "default": "",
+      "example": "feroxbuster --dont-filter"
+    },
+    {
+      "name": "--scan-dir-listings",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force scans to recurse into directory listings",
+      "default": "",
+      "example": "feroxbuster --scan-dir-listings"
+    },
+    {
+      "name": "--collect-extensions",
+      "short": "-E",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Automatically discover extensions and add them to --extensions (unless they're in --dont-collect)",
+      "default": "",
+      "example": "feroxbuster --collect-extensions"
+    },
+    {
+      "name": "--collect-backups",
+      "short": "-B",
+      "aliases": [],
+      "arg": "[<collect_backups>...]",
+      "required": false,
+      "description": "Automatically request likely backup extensions for \"found\" urls (default: ~, .bak, .bak2, .old, .1)",
+      "default": "~, .bak, .bak2, .old, .1",
+      "example": "feroxbuster --collect-backups <collect_backups>..."
+    },
+    {
+      "name": "--collect-words",
+      "short": "-g",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Automatically discover important words from within responses and add them to the wordlist",
+      "default": "",
+      "example": "feroxbuster --collect-words"
+    },
+    {
+      "name": "--verbosity",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Increase verbosity level (use -vv or more for greater effect. [CAUTION] 4 -v's is probably too much)",
+      "default": "",
+      "example": "feroxbuster --verbosity"
+    },
+    {
+      "name": "--silent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only print URLs (or JSON w/ --json) + turn off logging (good for piping a list of urls to other commands)",
+      "default": "",
+      "example": "feroxbuster --silent"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Hide progress bars and banner (good for tmux windows w/ notifications)",
+      "default": "",
+      "example": "feroxbuster --quiet"
+    },
+    {
+      "name": "--json",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Emit JSON logs to --output and --debug-log instead of normal text",
+      "default": "",
+      "example": "feroxbuster --json"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "<FILE>",
+      "required": false,
+      "description": "Output file to write results to (use w/ --json for JSON entries)",
+      "default": "",
+      "example": "feroxbuster --output <FILE>"
+    },
+    {
+      "name": "--debug-log",
+      "short": "",
+      "aliases": [],
+      "arg": "<FILE>",
+      "required": false,
+      "description": "Output file to write log entries (use w/ --json for JSON entries)",
+      "default": "",
+      "example": "feroxbuster --debug-log <FILE>"
+    },
+    {
+      "name": "--no-state",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable state output file (*.state)",
+      "default": "",
+      "example": "feroxbuster --no-state"
+    },
+    {
+      "name": "--limit-bars",
+      "short": "",
+      "aliases": [],
+      "arg": "<NUM_BARS_TO_SHOW>",
+      "required": false,
+      "description": "Number of directory scan bars to show at any given time (default: no limit)",
+      "default": "no limit",
+      "example": "feroxbuster --limit-bars <NUM_BARS_TO_SHOW>"
+    },
+    {
+      "name": "--update",
+      "short": "-U",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update feroxbuster to the latest version",
+      "default": "",
+      "example": "feroxbuster --update"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "feroxbuster --url \"<https://example.com>\" --wordlist <path/to/file> --no-recursion --proxy \"<http://127.0.0.1:8080>\"",
+      "explanation": "Enumerate directories without recursion through a specific proxy",
+      "source": "tldr:feroxbuster"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/feroxbuster.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

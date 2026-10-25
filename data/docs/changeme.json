@@ -1,0 +1,336 @@
+{
+  "id": "changeme",
+  "name": "changeme",
+  "schema_version": 1,
+  "summary": "A default credential scanner.",
+  "highlights": [
+    "-a — Scan for all protocols",
+    "-c — Category of default creds to scan for",
+    "--contributors — Display cred file contributors",
+    "-d — Debug output",
+    "-dl — Specify a delay in milliseconds to avoid 429 status codes default=500",
+    "--dump — Print all of the loaded credentials",
+    "--dryrun — Print urls to be scan, but don't scan them",
+    "-f — Fingerprint targets, but don't check creds"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install changeme"
+    }
+  ],
+  "usage": "changeme.py [-h] [--all] [--category CATEGORY] [--contributors]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "changeme --help"
+    },
+    {
+      "name": "--all",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Scan for all protocols",
+      "default": "",
+      "example": "changeme --all"
+    },
+    {
+      "name": "--category",
+      "short": "-c",
+      "aliases": [],
+      "arg": "CATEGORY",
+      "required": false,
+      "description": "Category of default creds to scan for",
+      "default": "",
+      "example": "changeme --category <category>"
+    },
+    {
+      "name": "--contributors",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display cred file contributors",
+      "default": "",
+      "example": "changeme --contributors"
+    },
+    {
+      "name": "--debug",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Debug output",
+      "default": "",
+      "example": "changeme --debug"
+    },
+    {
+      "name": "--delay",
+      "short": "-dl",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "Specify a delay in milliseconds to avoid 429 status codes default=500",
+      "default": "",
+      "example": "changeme --delay <delay>"
+    },
+    {
+      "name": "--dump",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print all of the loaded credentials",
+      "default": "",
+      "example": "changeme --dump"
+    },
+    {
+      "name": "--dryrun",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print urls to be scan, but don't scan them",
+      "default": "",
+      "example": "changeme --dryrun"
+    },
+    {
+      "name": "--fingerprint",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fingerprint targets, but don't check creds",
+      "default": "",
+      "example": "changeme --fingerprint"
+    },
+    {
+      "name": "--fresh",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Flush any previous scans and start fresh",
+      "default": "",
+      "example": "changeme --fresh"
+    },
+    {
+      "name": "--log",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LOG",
+      "required": false,
+      "description": "Write logs to logfile",
+      "default": "",
+      "example": "changeme --log <log>"
+    },
+    {
+      "name": "--mkcred",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Make cred file",
+      "default": "",
+      "example": "changeme --mkcred"
+    },
+    {
+      "name": "--name",
+      "short": "-n",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Narrow testing to the supplied credential name",
+      "default": "",
+      "example": "changeme --name <name>"
+    },
+    {
+      "name": "--noversion",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't perform a version check",
+      "default": "",
+      "example": "changeme --noversion"
+    },
+    {
+      "name": "--proxy",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "HTTP(S) Proxy",
+      "default": "",
+      "example": "changeme --proxy <proxy>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "Name of result file. File extension determines type (csv, html, json).",
+      "default": "",
+      "example": "changeme --output <output>"
+    },
+    {
+      "name": "--oa",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output results files in csv, html and json formats",
+      "default": "",
+      "example": "changeme --oa"
+    },
+    {
+      "name": "--protocols",
+      "short": "",
+      "aliases": [],
+      "arg": "PROTOCOLS",
+      "required": false,
+      "description": "Comma separated list of protocols to test: http,ssh,ssh_key. Defaults to http.",
+      "default": "",
+      "example": "changeme --protocols <protocols>"
+    },
+    {
+      "name": "--portoverride",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Scan all protocols on all specified ports",
+      "default": "",
+      "example": "changeme --portoverride"
+    },
+    {
+      "name": "--redishost",
+      "short": "",
+      "aliases": [],
+      "arg": "REDISHOST",
+      "required": false,
+      "description": "Redis server",
+      "default": "",
+      "example": "changeme --redishost <redishost>"
+    },
+    {
+      "name": "--redisport",
+      "short": "",
+      "aliases": [],
+      "arg": "REDISPORT",
+      "required": false,
+      "description": "Redis server",
+      "default": "",
+      "example": "changeme --redisport <redisport>"
+    },
+    {
+      "name": "--resume",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Resume previous scan",
+      "default": "",
+      "example": "changeme --resume"
+    },
+    {
+      "name": "--shodan_query",
+      "short": "-q",
+      "aliases": [],
+      "arg": "SHODAN_QUERY",
+      "required": false,
+      "description": "Shodan query",
+      "default": "",
+      "example": "changeme --shodan_query <shodan_query>"
+    },
+    {
+      "name": "--shodan_key",
+      "short": "-k",
+      "aliases": [],
+      "arg": "SHODAN_KEY",
+      "required": false,
+      "description": "Shodan API key",
+      "default": "",
+      "example": "changeme --shodan_key <shodan_key>"
+    },
+    {
+      "name": "--ssl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Force cred to SSL and fall back to non-SSL if an SSLError occurs",
+      "default": "",
+      "example": "changeme --ssl"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "Number of threads, default=10",
+      "default": "",
+      "example": "changeme --threads <threads>"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "Timeout in seconds for a request, default=10",
+      "default": "",
+      "example": "changeme --timeout <timeout>"
+    },
+    {
+      "name": "--useragent",
+      "short": "-ua",
+      "aliases": [],
+      "arg": "USERAGENT",
+      "required": false,
+      "description": "User agent string to use",
+      "default": "",
+      "example": "changeme --useragent <useragent>"
+    },
+    {
+      "name": "--validate",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Validate creds files",
+      "default": "",
+      "example": "changeme --validate"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose output",
+      "default": "",
+      "example": "changeme --verbose"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

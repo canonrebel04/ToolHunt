@@ -1,0 +1,166 @@
+{
+  "id": "maskprocessor",
+  "name": "maskprocessor",
+  "schema_version": 1,
+  "summary": "A High-Performance word generator with a per-position configurable charset.",
+  "highlights": [
+    "--combinations — Calculate number of combinations",
+    "--hex-charset — Assume charset is given in hex",
+    "-q — Maximum number of multiple sequential characters",
+    "-r — Maximum number of occurrence of a character",
+    "-s — Start at specific position",
+    "-l — Stop at specific position",
+    "-o — Output-file",
+    "-1 — User-defineable charsets"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install maskprocessor"
+    }
+  ],
+  "usage": "mp32 [options]... mask",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version",
+      "default": "",
+      "example": "mp32 --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print help",
+      "default": "",
+      "example": "mp32 --help"
+    },
+    {
+      "name": "--combinations",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Calculate number of combinations",
+      "default": "",
+      "example": "mp32 --combinations"
+    },
+    {
+      "name": "--hex-charset",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Assume charset is given in hex",
+      "default": "",
+      "example": "mp32 --hex-charset"
+    },
+    {
+      "name": "--seq-max",
+      "short": "-q",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Maximum number of multiple sequential characters",
+      "default": "",
+      "example": "mp32 --seq-max <num>"
+    },
+    {
+      "name": "--occurrence-max",
+      "short": "-r",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Maximum number of occurrence of a character",
+      "default": "",
+      "example": "mp32 --occurrence-max <num>"
+    },
+    {
+      "name": "--start-at",
+      "short": "-s",
+      "aliases": [],
+      "arg": "WORD",
+      "required": false,
+      "description": "Start at specific position",
+      "default": "",
+      "example": "mp32 --start-at <word>"
+    },
+    {
+      "name": "--stop-at",
+      "short": "-l",
+      "aliases": [],
+      "arg": "WORD",
+      "required": false,
+      "description": "Stop at specific position",
+      "default": "",
+      "example": "mp32 --stop-at <word>"
+    },
+    {
+      "name": "--output-file",
+      "short": "-o",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Output-file",
+      "default": "",
+      "example": "mp32 --output-file <file>"
+    },
+    {
+      "name": "--custom-charset1",
+      "short": "-1",
+      "aliases": [],
+      "arg": "CS",
+      "required": false,
+      "description": "User-defineable charsets",
+      "default": "",
+      "example": "mp32 --custom-charset1 <cs>"
+    },
+    {
+      "name": "--custom-charset2",
+      "short": "-2",
+      "aliases": [],
+      "arg": "CS",
+      "required": false,
+      "description": "Example:",
+      "default": "",
+      "example": "mp32 --custom-charset2 <cs>"
+    },
+    {
+      "name": "--custom-charset3",
+      "short": "-3",
+      "aliases": [],
+      "arg": "CS",
+      "required": false,
+      "description": "--custom-charset1=?dabcdef",
+      "default": "",
+      "example": "mp32 --custom-charset3 <cs>"
+    },
+    {
+      "name": "--custom-charset4",
+      "short": "-4",
+      "aliases": [],
+      "arg": "CS",
+      "required": false,
+      "description": "sets charset ?1 to 0123456789abcdef",
+      "default": "",
+      "example": "mp32 --custom-charset4 <cs>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

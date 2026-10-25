@@ -1,0 +1,36 @@
+{
+  "id": "checkov",
+  "name": "checkov",
+  "schema_version": 1,
+  "summary": "Prevent cloud misconfigurations and find vulnerabilities during build-time in infrastructure as code, container images and open source packages.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "checkov --directory <path/to/directory>",
+      "explanation": "Scan a directory containing IaC (Terraform, Cloudformation, ARM, Ansible, Bicep, Dockerfile, etc.)",
+      "source": "tldr:checkov"
+    },
+    {
+      "cmd": "checkov --compact --file <path/to/file>",
+      "explanation": "Scan an IaC file, omitting code blocks in the output",
+      "source": "tldr:checkov"
+    },
+    {
+      "cmd": "checkov --list",
+      "explanation": "List all checks for all IaC types",
+      "source": "tldr:checkov"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/checkov.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

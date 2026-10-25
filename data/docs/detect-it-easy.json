@@ -1,0 +1,316 @@
+{
+  "id": "detect-it-easy",
+  "name": "detect-it-easy",
+  "schema_version": 1,
+  "summary": "A program for determining types of files.",
+  "highlights": [
+    "--help-all — Displays help including Qt specific options.",
+    "-r — Scan directories recursively",
+    "-d — Enable deep scanning for thorough analysis",
+    "-u — Enable heuristic scanning methods",
+    "-b — Show verbose output with detailed information",
+    "-g — Enable aggressive scanning mode",
+    "-a — Scan all file types",
+    "-f — Format the output result"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install detect-it-easy"
+    }
+  ],
+  "usage": "diec [options] target",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Displays help on commandline options.",
+      "default": "",
+      "example": "diec --help"
+    },
+    {
+      "name": "--help-all",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Displays help including Qt specific options.",
+      "default": "",
+      "example": "diec --help-all"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Displays version information.",
+      "default": "",
+      "example": "diec --version"
+    },
+    {
+      "name": "--recursivescan",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Scan directories recursively",
+      "default": "",
+      "example": "diec --recursivescan"
+    },
+    {
+      "name": "--deepscan",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable deep scanning for thorough analysis",
+      "default": "",
+      "example": "diec --deepscan"
+    },
+    {
+      "name": "--heuristicscan",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable heuristic scanning methods",
+      "default": "",
+      "example": "diec --heuristicscan"
+    },
+    {
+      "name": "--verbose",
+      "short": "-b",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show verbose output with detailed information",
+      "default": "",
+      "example": "diec --verbose"
+    },
+    {
+      "name": "--aggressivecscan",
+      "short": "-g",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable aggressive scanning mode",
+      "default": "",
+      "example": "diec --aggressivecscan"
+    },
+    {
+      "name": "--alltypes",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Scan all file types",
+      "default": "",
+      "example": "diec --alltypes"
+    },
+    {
+      "name": "--format",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Format the output result",
+      "default": "",
+      "example": "diec --format"
+    },
+    {
+      "name": "--profiling",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Profile signatures during scan",
+      "default": "",
+      "example": "diec --profiling"
+    },
+    {
+      "name": "--messages",
+      "short": "-M",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display scan messages and warnings",
+      "default": "",
+      "example": "diec --messages"
+    },
+    {
+      "name": "--hideunknown",
+      "short": "-U",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Hide unknown file types from results",
+      "default": "",
+      "example": "diec --hideunknown"
+    },
+    {
+      "name": "--entropy",
+      "short": "-e",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display file entropy information",
+      "default": "",
+      "example": "diec --entropy"
+    },
+    {
+      "name": "--info",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display file information",
+      "default": "",
+      "example": "diec --info"
+    },
+    {
+      "name": "--struct",
+      "short": "-S",
+      "aliases": [],
+      "arg": "<struct>",
+      "required": false,
+      "description": "Show special file information using specified structure (e.g., 'Hash' or 'Hash#MD5')",
+      "default": "",
+      "example": "diec --struct <struct>"
+    },
+    {
+      "name": "--xml",
+      "short": "-x",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output results in XML format",
+      "default": "",
+      "example": "diec --xml"
+    },
+    {
+      "name": "--json",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output results in JSON format",
+      "default": "",
+      "example": "diec --json"
+    },
+    {
+      "name": "--csv",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output results in CSV format",
+      "default": "",
+      "example": "diec --csv"
+    },
+    {
+      "name": "--tsv",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output results in TSV format",
+      "default": "",
+      "example": "diec --tsv"
+    },
+    {
+      "name": "--plaintext",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output results as plain text",
+      "default": "",
+      "example": "diec --plaintext"
+    },
+    {
+      "name": "--database",
+      "short": "-D",
+      "aliases": [],
+      "arg": "<path>",
+      "required": false,
+      "description": "Set database path",
+      "default": "",
+      "example": "diec --database <path>"
+    },
+    {
+      "name": "--extradatabase",
+      "short": "-E",
+      "aliases": [],
+      "arg": "<path>",
+      "required": false,
+      "description": "Set extra database path",
+      "default": "",
+      "example": "diec --extradatabase <path>"
+    },
+    {
+      "name": "--customdatabase",
+      "short": "-C",
+      "aliases": [],
+      "arg": "<path>",
+      "required": false,
+      "description": "Set custom database path",
+      "default": "",
+      "example": "diec --customdatabase <path>"
+    },
+    {
+      "name": "--showdatabase",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show database information",
+      "default": "",
+      "example": "diec --showdatabase"
+    },
+    {
+      "name": "--showstructs",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display all available special structures for the file",
+      "default": "",
+      "example": "diec --showstructs"
+    },
+    {
+      "name": "--test",
+      "short": "",
+      "aliases": [],
+      "arg": "<directory>",
+      "required": false,
+      "description": "Test signatures in specified directory",
+      "default": "",
+      "example": "diec --test <directory>"
+    },
+    {
+      "name": "--addtest",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "Add test case with filename, detect string, and directory",
+      "default": "",
+      "example": "diec --addtest <filename>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

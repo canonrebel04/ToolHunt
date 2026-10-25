@@ -1,0 +1,46 @@
+{
+  "id": "snyk",
+  "name": "snyk",
+  "schema_version": 1,
+  "summary": "CLI and build-time tool to find and fix known vulnerabilities in open-source dependencies.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "snyk auth",
+      "explanation": "Log in to your Snyk account",
+      "source": "tldr:snyk"
+    },
+    {
+      "cmd": "snyk test",
+      "explanation": "Test your code for any known vulnerabilities",
+      "source": "tldr:snyk"
+    },
+    {
+      "cmd": "snyk test --docker <docker_image>",
+      "explanation": "Test a local Docker image for any known vulnerabilities",
+      "source": "tldr:snyk"
+    },
+    {
+      "cmd": "snyk monitor",
+      "explanation": "Record the state of dependencies and any vulnerabilities on snyk.io",
+      "source": "tldr:snyk"
+    },
+    {
+      "cmd": "snyk wizard",
+      "explanation": "Auto patch and ignore vulnerabilities",
+      "source": "tldr:snyk"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/snyk.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

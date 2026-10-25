@@ -1,0 +1,46 @@
+{
+  "id": "fbi",
+  "name": "fbi",
+  "schema_version": 1,
+  "summary": "An accurate facebook account information gathering.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "sudo fbi <path/to/file>",
+      "explanation": "Display an image",
+      "source": "tldr:fbi"
+    },
+    {
+      "cmd": "sudo fbi <path/to/file1 path/to/file2 ...>",
+      "explanation": "Display multiple images",
+      "source": "tldr:fbi"
+    },
+    {
+      "cmd": "sudo fbi --timeout <delay> <path/to/files/*>",
+      "explanation": "Start a slideshow with a custom delay (in seconds)",
+      "source": "tldr:fbi"
+    },
+    {
+      "cmd": "sudo fbi --autozoom <path/to/file>",
+      "explanation": "Scale the image to fit the screen",
+      "source": "tldr:fbi"
+    },
+    {
+      "cmd": "fbi --help",
+      "explanation": "Display help",
+      "source": "tldr:fbi"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/linux/fbi.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "id": "pacu",
+  "name": "pacu",
+  "schema_version": 1,
+  "summary": "The AWS exploitation framework, designed for testing the security of Amazon Web Services environments.",
+  "highlights": [
+    "--session — <session name>",
+    "--activate-session — activate session, use session arg to set session name",
+    "--new-session — <session name>",
+    "--set-keys — alias, access id, secret key, token",
+    "--import-keys — AWS profile name to import keys from",
+    "--module-name — <module name>",
+    "--data — <service name/all>",
+    "--module-args — <--module-args='--regions us-east-1,us-east-1'>"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pacu"
+    }
+  ],
+  "usage": "pacu [-h] [--session ] [--activate-session] [--new-session ]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "pacu --help"
+    },
+    {
+      "name": "--session",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<session name>",
+      "default": "",
+      "example": "pacu --session"
+    },
+    {
+      "name": "--activate-session",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "activate session, use session arg to set session name",
+      "default": "",
+      "example": "pacu --activate-session"
+    },
+    {
+      "name": "--new-session",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<session name>",
+      "default": "",
+      "example": "pacu --new-session"
+    },
+    {
+      "name": "--set-keys",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "alias, access id, secret key, token",
+      "default": "",
+      "example": "pacu --set-keys"
+    },
+    {
+      "name": "--import-keys",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "AWS profile name to import keys from",
+      "default": "",
+      "example": "pacu --import-keys"
+    },
+    {
+      "name": "--module-name",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<module name>",
+      "default": "",
+      "example": "pacu --module-name"
+    },
+    {
+      "name": "--data",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<service name/all>",
+      "default": "",
+      "example": "pacu --data"
+    },
+    {
+      "name": "--module-args",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<--module-args='--regions us-east-1,us-east-1'>",
+      "default": "",
+      "example": "pacu --module-args"
+    },
+    {
+      "name": "--list-modules",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List arguments",
+      "default": "",
+      "example": "pacu --list-modules"
+    },
+    {
+      "name": "--pacu-help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List the Pacu help window",
+      "default": "",
+      "example": "pacu --pacu-help"
+    },
+    {
+      "name": "--module-info",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get information on a specific module, use --module- name",
+      "default": "",
+      "example": "pacu --module-info"
+    },
+    {
+      "name": "--exec",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "exec module",
+      "default": "",
+      "example": "pacu --exec"
+    },
+    {
+      "name": "--set-regions",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "[ ...] <region1 region2 ...> or <all> for all",
+      "default": "",
+      "example": "pacu --set-regions"
+    },
+    {
+      "name": "--whoami",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display information on current IAM user",
+      "default": "",
+      "example": "pacu --whoami"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display Pacu version",
+      "default": "",
+      "example": "pacu --version"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not print the banner on startup",
+      "default": "",
+      "example": "pacu --quiet"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "id": "dhcpig",
+  "name": "dhcpig",
+  "schema_version": 1,
+  "summary": "Enhanced DHCPv4 and DHCPv6 exhaustion and fuzzing script written in python using scapy network library.",
+  "highlights": [
+    "-v — ... 0 ... no (3) 1 ... minimal 10 ... default 99 ... debug",
+    "-6 — ... DHCPv6 (off, DHCPv4 by default)",
+    "-1 — ... enable RapidCommit (2way ip assignment instead of 4way) (off)",
+    "-s — ... a list of client macs 00:11:22:33:44:55,00:11:22:33:44:56 (Default: <random>)",
+    "-O — ... option-codes to request e.g. 21,22,23 or 12,14-19,23 (Default: 0-80)",
+    "-f — ... randomly fuzz packets (off)",
+    "-t — ... number of sending threads (1)",
+    "-a — ... detect/print arp who_has (off)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dhcpig"
+    }
+  ],
+  "usage": "pig.py [-h -v -6 -1 -s -f -t -a -i -o -l -x -y -z -g -r -n -c ] <interface>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<-- you are here :)",
+      "default": "",
+      "example": "dhcpig --help"
+    },
+    {
+      "name": "--verbosity",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... 0 ... no (3) 1 ... minimal 10 ... default 99 ... debug",
+      "default": "",
+      "example": "dhcpig --verbosity"
+    },
+    {
+      "name": "--ipv6",
+      "short": "-6",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... DHCPv6 (off, DHCPv4 by default)",
+      "default": "",
+      "example": "dhcpig --ipv6"
+    },
+    {
+      "name": "--v6-rapid-commit",
+      "short": "-1",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... enable RapidCommit (2way ip assignment instead of 4way) (off)",
+      "default": "",
+      "example": "dhcpig --v6-rapid-commit"
+    },
+    {
+      "name": "--client-src",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... a list of client macs 00:11:22:33:44:55,00:11:22:33:44:56 (Default: <random>)",
+      "default": "<random>",
+      "example": "dhcpig --client-src"
+    },
+    {
+      "name": "--request-options",
+      "short": "-O",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... option-codes to request e.g. 21,22,23 or 12,14-19,23 (Default: 0-80)",
+      "default": "0-80",
+      "example": "dhcpig --request-options"
+    },
+    {
+      "name": "--fuzz",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... randomly fuzz packets (off)",
+      "default": "",
+      "example": "dhcpig --fuzz"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... number of sending threads (1)",
+      "default": "",
+      "example": "dhcpig --threads"
+    },
+    {
+      "name": "--show-arp",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... detect/print arp who_has (off)",
+      "default": "",
+      "example": "dhcpig --show-arp"
+    },
+    {
+      "name": "--show-icmp",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... detect/print icmps requests (off)",
+      "default": "",
+      "example": "dhcpig --show-icmp"
+    },
+    {
+      "name": "--show-options",
+      "short": "-o",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... print lease infos (off)",
+      "default": "",
+      "example": "dhcpig --show-options"
+    },
+    {
+      "name": "--show-lease-confirm",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... detect/print dhcp replies (off)",
+      "default": "",
+      "example": "dhcpig --show-lease-confirm"
+    },
+    {
+      "name": "--neighbors-attack-garp",
+      "short": "-g",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... knock off network segment using gratious arps (off)",
+      "default": "",
+      "example": "dhcpig --neighbors-attack-garp"
+    },
+    {
+      "name": "--neighbors-scan-arp",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... arp neighbor scan (off)",
+      "default": "",
+      "example": "dhcpig --neighbors-scan-arp"
+    },
+    {
+      "name": "--timeout-threads",
+      "short": "-x",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... thread spawn timer (0.4)",
+      "default": "",
+      "example": "dhcpig --timeout-threads"
+    },
+    {
+      "name": "--timeout-dos",
+      "short": "-y",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... DOS timeout (8) (wait time to mass grat.arp)",
+      "default": "",
+      "example": "dhcpig --timeout-dos"
+    },
+    {
+      "name": "--timeout-dhcprequest",
+      "short": "-z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... dhcp request timeout (2)",
+      "default": "",
+      "example": "dhcpig --timeout-dhcprequest"
+    },
+    {
+      "name": "--color",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "... enable color output (off)",
+      "default": "",
+      "example": "dhcpig --color"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "sudo <path/to>/pig.py <eth0>",
+      "explanation": "Exhaust all of the available DHCP addresses using the specified interface",
+      "source": "tldr:dhcpig"
+    },
+    {
+      "cmd": "sudo <path/to>/pig.py --ipv6 <eth1>",
+      "explanation": "Exhaust IPv6 addresses using eth1 interface",
+      "source": "tldr:dhcpig"
+    },
+    {
+      "cmd": "sudo <path/to>/pig.py --fuzz <eth1>",
+      "explanation": "Send fuzzed/malformed data packets using the interface",
+      "source": "tldr:dhcpig"
+    },
+    {
+      "cmd": "sudo <path/to>/pig.py --color <eth1>",
+      "explanation": "Enable color output",
+      "source": "tldr:dhcpig"
+    },
+    {
+      "cmd": "sudo <path/to>/pig.py --color --verbosity 1 <eth1>",
+      "explanation": "Enable minimal verbosity and color output",
+      "source": "tldr:dhcpig"
+    },
+    {
+      "cmd": "sudo <path/to>/pig.py --color --verbosity 100 --neighbors-scan-arp <eth1>",
+      "explanation": "Use a debug verbosity of 100 and scan network of neighboring devices using ARP packets",
+      "source": "tldr:dhcpig"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/dhcpig.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

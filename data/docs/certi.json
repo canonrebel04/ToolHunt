@@ -1,0 +1,37 @@
+{
+  "id": "certi",
+  "name": "certi",
+  "schema_version": 1,
+  "summary": "Active Directory Certificate Services (ADCS) abuser. impacket copy of Certify.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install certi"
+    }
+  ],
+  "usage": "certi [-h] {list,req} ...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "certi --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

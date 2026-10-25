@@ -1,0 +1,56 @@
+{
+  "id": "flask-unsign",
+  "name": "flask-unsign",
+  "schema_version": 1,
+  "summary": "Command line tool to fetch, decode, brute-force and craft session cookies of a Flask application by guessing secret keys.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "flask-unsign --decode --cookie <cookie>",
+      "explanation": "Decode a Flask session cookie",
+      "source": "tldr:flask-unsign"
+    },
+    {
+      "cmd": "flask-unsign --decode --server <url>",
+      "explanation": "Decode a session cookie fetched from a URL which returns a `Set-Cookie` header",
+      "source": "tldr:flask-unsign"
+    },
+    {
+      "cmd": "flask-unsign --unsign --cookie <cookie>",
+      "explanation": "Brute-force a secret key using the default flask-unsign-wordlist (requires `flask-unsign-wordlist`)",
+      "source": "tldr:flask-unsign"
+    },
+    {
+      "cmd": "flask-unsign --unsign --cookie <cookie> --wordlist <path/to/wordlist.txt>",
+      "explanation": "Brute-force a secret key with a custom wordlist (use `--no-literal-eval` for unquoted entries)",
+      "source": "tldr:flask-unsign"
+    },
+    {
+      "cmd": "flask-unsign --sign --cookie \"<{'logged_in': False>}\" --secret <secret>",
+      "explanation": "Sign a new session cookie with a secret key",
+      "source": "tldr:flask-unsign"
+    },
+    {
+      "cmd": "flask-unsign --sign --cookie \"<{'logged_in': False>}\" --secret <secret> --legacy",
+      "explanation": "Sign a session cookie using legacy timestamp (useful for old versions)",
+      "source": "tldr:flask-unsign"
+    },
+    {
+      "cmd": "flask-unsign --unsign --cookie <cookie> --wordlist <path/to/wordlist.txt> --threads <threads> --no-literal-eval",
+      "explanation": "Brute-force a session cookie with custom threads and no literal evaluation",
+      "source": "tldr:flask-unsign"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/flask-unsign.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

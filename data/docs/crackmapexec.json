@@ -1,0 +1,93 @@
+{
+  "id": "crackmapexec",
+  "name": "crackmapexec",
+  "schema_version": 1,
+  "summary": "A swiss army knife for pentesting Windows/Active Directory environments.",
+  "highlights": [
+    "-t — set how many concurrent threads to use (default: 100)",
+    "--timeout — max timeout in seconds of each thread (default: None)",
+    "--jitter — sets a random delay between each connection (default: None)",
+    "--darrell — give Darrell a hand",
+    "--verbose — enable verbose output"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install crackmapexec"
+    }
+  ],
+  "usage": "crackmapexec [-h] [-t THREADS] [--timeout TIMEOUT] [--jitter INTERVAL]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "crackmapexec --help"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "set how many concurrent threads to use (default: 100)",
+      "default": "100",
+      "example": "crackmapexec -t <threads>"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "max timeout in seconds of each thread (default: None)",
+      "default": "None",
+      "example": "crackmapexec --timeout <timeout>"
+    },
+    {
+      "name": "--jitter",
+      "short": "",
+      "aliases": [],
+      "arg": "INTERVAL",
+      "required": false,
+      "description": "sets a random delay between each connection (default: None)",
+      "default": "None",
+      "example": "crackmapexec --jitter <interval>"
+    },
+    {
+      "name": "--darrell",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "give Darrell a hand",
+      "default": "",
+      "example": "crackmapexec --darrell"
+    },
+    {
+      "name": "--verbose",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable verbose output",
+      "default": "",
+      "example": "crackmapexec --verbose"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

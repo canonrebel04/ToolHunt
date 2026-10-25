@@ -1,0 +1,67 @@
+{
+  "id": "bat",
+  "name": "bat",
+  "schema_version": 1,
+  "summary": "Print and concatenate files. A `cat` clone with syntax highlighting and Git integration.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "brew",
+      "cmd": "brew install bat"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "bat <path/to/file1 path/to/file2 ...>",
+      "explanation": "Pretty print the contents of one or more files to `stdout`",
+      "source": "tldr:bat"
+    },
+    {
+      "cmd": "bat <path/to/file1 path/to/file2 ...> > <path/to/target_file>",
+      "explanation": "Concatenate several files into the target file",
+      "source": "tldr:bat"
+    },
+    {
+      "cmd": "bat --style plain --pager never <path/to/file>",
+      "explanation": "Remove decorations and disable paging",
+      "source": "tldr:bat"
+    },
+    {
+      "cmd": "bat --highlight-line <10|5:10|:10|10:|10:+5> <path/to/file>",
+      "explanation": "Highlight a specific line or a range of lines with a different background color",
+      "source": "tldr:bat"
+    },
+    {
+      "cmd": "bat --show-all <path/to/file>",
+      "explanation": "Show non-printable characters like space, tab, or newline",
+      "source": "tldr:bat"
+    },
+    {
+      "cmd": "bat --number <path/to/file>",
+      "explanation": "Remove all decorations except line numbers in the output",
+      "source": "tldr:bat"
+    },
+    {
+      "cmd": "bat --language json <path/to/file.json>",
+      "explanation": "Syntax highlight a JSON file by explicitly setting the language",
+      "source": "tldr:bat"
+    },
+    {
+      "cmd": "bat --list-languages",
+      "explanation": "Display all supported languages",
+      "source": "tldr:bat"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "package-install",
+    "tldr:pages/common/bat.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

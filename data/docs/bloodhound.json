@@ -1,0 +1,26 @@
+{
+  "id": "bloodhound",
+  "name": "bloodhound",
+  "schema_version": 1,
+  "summary": "Six Degrees of Domain Admin",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bloodhound"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

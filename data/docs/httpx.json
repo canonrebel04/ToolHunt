@@ -1,0 +1,61 @@
+{
+  "id": "httpx",
+  "name": "httpx",
+  "schema_version": 1,
+  "summary": "A fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "httpx -probe -target <url|host|ipaddress|subnet_with_cidr>",
+      "explanation": "Run a probe against a [u]RL, host, IP Address, or subnet (CIDR notation) showing probe status",
+      "source": "tldr:httpx"
+    },
+    {
+      "cmd": "subfinder -domain <example.com> | httpx -status-code",
+      "explanation": "Run a probe against multiple hosts showing status code with input from `subfinder`",
+      "source": "tldr:httpx"
+    },
+    {
+      "cmd": "httpx -rate-limit <150> -list <path/to/newline_separated_hosts_list> -tech-detect -response-time",
+      "explanation": "Run a rate limited probe against a list of hosts from a file showing technology detected and response time",
+      "source": "tldr:httpx"
+    },
+    {
+      "cmd": "httpx -target <url> -title -cdn -hash <sha256>",
+      "explanation": "Run a probe against a [u]RL showing its webpage title, CDN/WAF in use, and page content hash",
+      "source": "tldr:httpx"
+    },
+    {
+      "cmd": "httpx -probe -target <host1,host2,...> -ports http:<80,8000-8080>,https:<443,8443> -timeout <10>",
+      "explanation": "Run a probe against a list of hosts with custom defined ports and timeout after certain seconds",
+      "source": "tldr:httpx"
+    },
+    {
+      "cmd": "httpx -target <host1,host2,...> -filter-code <400,401,404>",
+      "explanation": "Run a probe against a list of hosts filtering out codes of certain responses",
+      "source": "tldr:httpx"
+    },
+    {
+      "cmd": "httpx -target <host1,host2,...> -match-code <200,301,304>",
+      "explanation": "Run a probe against a list of hosts matching codes of certain responses",
+      "source": "tldr:httpx"
+    },
+    {
+      "cmd": "httpx -target <https://www.github.com> -path </tldr-pages/tldr,/projectdiscovery/httpx> -screenshot -screenshot-timeout <10>",
+      "explanation": "Run a probe against a URL saving screenshots of certain paths, with screenshot timeouts (assets are saved in `output`)",
+      "source": "tldr:httpx"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/httpx.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,1897 @@
+{
+  "id": "nuclei",
+  "name": "nuclei",
+  "schema_version": 1,
+  "summary": "A fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use.",
+  "highlights": [
+    "-max-time — maximum time to run before automatic termination (e.g., 1h, 30m)",
+    "-l — path to file containing a list of target URLs/hosts to scan (one per line)",
+    "-targets-inline — inline multiline target list (for use in template profiles)",
+    "-resume — resume scan from and save to specified file (clustering will be disabled)",
+    "-scan-all-ips — scan all the IP's associated with dns record",
+    "-input-mode — mode of input file (list, burp, jsonl, yaml, openapi, swagger) (default \"list\")",
+    "-required-only — use only required fields in input format when generating requests",
+    "-skip-format-validation — skip format validation (like missing vars) when parsing input file"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install nuclei"
+    }
+  ],
+  "usage": "nuclei [flags]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-max-time",
+      "short": "",
+      "aliases": [
+        "-mt"
+      ],
+      "arg": "value",
+      "required": false,
+      "description": "maximum time to run before automatic termination (e.g., 1h, 30m)",
+      "default": "",
+      "example": "nuclei -max-time <value>"
+    },
+    {
+      "name": "-list",
+      "short": "-l",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "path to file containing a list of target URLs/hosts to scan (one per line)",
+      "default": "",
+      "example": "nuclei -list <string>"
+    },
+    {
+      "name": "-targets-inline",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "inline multiline target list (for use in template profiles)",
+      "default": "",
+      "example": "nuclei -targets-inline <string>"
+    },
+    {
+      "name": "-resume",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "resume scan from and save to specified file (clustering will be disabled)",
+      "default": "",
+      "example": "nuclei -resume <string>"
+    },
+    {
+      "name": "-scan-all-ips",
+      "short": "",
+      "aliases": [
+        "-sa"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "scan all the IP's associated with dns record",
+      "default": "",
+      "example": "nuclei -scan-all-ips"
+    },
+    {
+      "name": "-input-mode",
+      "short": "",
+      "aliases": [
+        "-im"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "mode of input file (list, burp, jsonl, yaml, openapi, swagger) (default \"list\")",
+      "default": "list",
+      "example": "nuclei -input-mode <string>"
+    },
+    {
+      "name": "-required-only",
+      "short": "",
+      "aliases": [
+        "-ro"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "use only required fields in input format when generating requests",
+      "default": "",
+      "example": "nuclei -required-only"
+    },
+    {
+      "name": "-skip-format-validation",
+      "short": "",
+      "aliases": [
+        "-sfv"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "skip format validation (like missing vars) when parsing input file",
+      "default": "",
+      "example": "nuclei -skip-format-validation"
+    },
+    {
+      "name": "-vars-text-templating",
+      "short": "",
+      "aliases": [
+        "-vtt"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable text templating for vars in input file (only for yaml input mode)",
+      "default": "",
+      "example": "nuclei -vars-text-templating"
+    },
+    {
+      "name": "-new-templates",
+      "short": "",
+      "aliases": [
+        "-nt"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "run only new templates added in latest nuclei-templates release",
+      "default": "",
+      "example": "nuclei -new-templates"
+    },
+    {
+      "name": "-automatic-scan",
+      "short": "",
+      "aliases": [
+        "-as"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "automatic web scan using wappalyzer technology detection to tags mapping",
+      "default": "",
+      "example": "nuclei -automatic-scan"
+    },
+    {
+      "name": "-prompt",
+      "short": "",
+      "aliases": [
+        "-ai"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "generate and run template using ai prompt",
+      "default": "",
+      "example": "nuclei -prompt <string>"
+    },
+    {
+      "name": "-validate",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "validate the passed templates to nuclei",
+      "default": "",
+      "example": "nuclei -validate"
+    },
+    {
+      "name": "-no-strict-syntax",
+      "short": "",
+      "aliases": [
+        "-nss"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable strict syntax check on templates",
+      "default": "",
+      "example": "nuclei -no-strict-syntax"
+    },
+    {
+      "name": "-template-display",
+      "short": "",
+      "aliases": [
+        "-td"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "displays the templates content",
+      "default": "",
+      "example": "nuclei -template-display"
+    },
+    {
+      "name": "-tl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "list all templates matching current filters",
+      "default": "",
+      "example": "nuclei -tl"
+    },
+    {
+      "name": "-tgl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "list all available tags",
+      "default": "",
+      "example": "nuclei -tgl"
+    },
+    {
+      "name": "-sign",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "signs the templates with the private key defined in NUCLEI_SIGNATURE_PRIVATE_KEY env variable",
+      "default": "",
+      "example": "nuclei -sign"
+    },
+    {
+      "name": "-code",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable loading code protocol-based templates",
+      "default": "",
+      "example": "nuclei -code"
+    },
+    {
+      "name": "-disable-unsigned-templates",
+      "short": "",
+      "aliases": [
+        "-dut"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable running unsigned templates or templates with mismatched signature",
+      "default": "",
+      "example": "nuclei -disable-unsigned-templates"
+    },
+    {
+      "name": "-enable-self-contained",
+      "short": "",
+      "aliases": [
+        "-esc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable loading self-contained templates",
+      "default": "",
+      "example": "nuclei -enable-self-contained"
+    },
+    {
+      "name": "-enable-global-matchers",
+      "short": "",
+      "aliases": [
+        "-egm"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable loading global matchers templates",
+      "default": "",
+      "example": "nuclei -enable-global-matchers"
+    },
+    {
+      "name": "-file",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable loading file templates",
+      "default": "",
+      "example": "nuclei -file"
+    },
+    {
+      "name": "-output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "output file to write found issues/vulnerabilities",
+      "default": "",
+      "example": "nuclei -output <string>"
+    },
+    {
+      "name": "-store-resp",
+      "short": "",
+      "aliases": [
+        "-sresp"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "store all request/response passed through nuclei to output directory",
+      "default": "",
+      "example": "nuclei -store-resp"
+    },
+    {
+      "name": "-store-resp-dir",
+      "short": "",
+      "aliases": [
+        "-srd"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "store all request/response passed through nuclei to custom directory (default \"output\")",
+      "default": "output",
+      "example": "nuclei -store-resp-dir <string>"
+    },
+    {
+      "name": "-silent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display findings only",
+      "default": "",
+      "example": "nuclei -silent"
+    },
+    {
+      "name": "-no-color",
+      "short": "",
+      "aliases": [
+        "-nc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable output content coloring (ANSI escape codes)",
+      "default": "",
+      "example": "nuclei -no-color"
+    },
+    {
+      "name": "-jsonl",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "write output in JSONL(ines) format",
+      "default": "",
+      "example": "nuclei -jsonl"
+    },
+    {
+      "name": "-omit-raw",
+      "short": "",
+      "aliases": [
+        "-or"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "omit request/response pairs in the JSON, JSONL, Markdown, and PDF outputs (for findings only)",
+      "default": "",
+      "example": "nuclei -omit-raw"
+    },
+    {
+      "name": "-omit-template",
+      "short": "",
+      "aliases": [
+        "-ot"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "omit encoded template in the JSON, JSONL output",
+      "default": "",
+      "example": "nuclei -omit-template"
+    },
+    {
+      "name": "-no-meta",
+      "short": "",
+      "aliases": [
+        "-nm"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable printing result metadata in cli output",
+      "default": "",
+      "example": "nuclei -no-meta"
+    },
+    {
+      "name": "-timestamp",
+      "short": "",
+      "aliases": [
+        "-ts"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enables printing timestamp in cli output",
+      "default": "",
+      "example": "nuclei -timestamp"
+    },
+    {
+      "name": "-report-db",
+      "short": "",
+      "aliases": [
+        "-rdb"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "nuclei reporting database (always use this to persist report data)",
+      "default": "",
+      "example": "nuclei -report-db <string>"
+    },
+    {
+      "name": "-matcher-status",
+      "short": "",
+      "aliases": [
+        "-ms"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "display match failure status",
+      "default": "",
+      "example": "nuclei -matcher-status"
+    },
+    {
+      "name": "-markdown-export",
+      "short": "",
+      "aliases": [
+        "-me"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "directory to export results in markdown format",
+      "default": "",
+      "example": "nuclei -markdown-export <string>"
+    },
+    {
+      "name": "-sarif-export",
+      "short": "",
+      "aliases": [
+        "-se"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "file to export results in SARIF format",
+      "default": "",
+      "example": "nuclei -sarif-export <string>"
+    },
+    {
+      "name": "-json-export",
+      "short": "",
+      "aliases": [
+        "-je"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "file to export results in JSON format",
+      "default": "",
+      "example": "nuclei -json-export <string>"
+    },
+    {
+      "name": "-jsonl-export",
+      "short": "",
+      "aliases": [
+        "-jle"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "file to export results in JSONL(ine) format",
+      "default": "",
+      "example": "nuclei -jsonl-export <string>"
+    },
+    {
+      "name": "-pdf-export",
+      "short": "",
+      "aliases": [
+        "-pe"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "file to export results in PDF format",
+      "default": "",
+      "example": "nuclei -pdf-export <string>"
+    },
+    {
+      "name": "-config",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "path to the nuclei configuration file",
+      "default": "",
+      "example": "nuclei -config <string>"
+    },
+    {
+      "name": "-profile",
+      "short": "",
+      "aliases": [
+        "-tp"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "template profile config file to run",
+      "default": "",
+      "example": "nuclei -profile <string>"
+    },
+    {
+      "name": "-profile-list",
+      "short": "",
+      "aliases": [
+        "-tpl"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "list community template profiles",
+      "default": "",
+      "example": "nuclei -profile-list"
+    },
+    {
+      "name": "-follow-redirects",
+      "short": "",
+      "aliases": [
+        "-fr"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable following redirects for http templates",
+      "default": "",
+      "example": "nuclei -follow-redirects"
+    },
+    {
+      "name": "-follow-host-redirects",
+      "short": "",
+      "aliases": [
+        "-fhr"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "follow redirects on the same host",
+      "default": "",
+      "example": "nuclei -follow-host-redirects"
+    },
+    {
+      "name": "-max-redirects",
+      "short": "",
+      "aliases": [
+        "-mr"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "max number of redirects to follow for http templates (default 10)",
+      "default": "10",
+      "example": "nuclei -max-redirects <int>"
+    },
+    {
+      "name": "-disable-redirects",
+      "short": "",
+      "aliases": [
+        "-dr"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable redirects for http templates",
+      "default": "",
+      "example": "nuclei -disable-redirects"
+    },
+    {
+      "name": "-report-config",
+      "short": "",
+      "aliases": [
+        "-rc"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "nuclei reporting module configuration file",
+      "default": "",
+      "example": "nuclei -report-config <string>"
+    },
+    {
+      "name": "-var",
+      "short": "-V",
+      "aliases": [],
+      "arg": "value",
+      "required": false,
+      "description": "custom vars in key=value format",
+      "default": "",
+      "example": "nuclei -var <value>"
+    },
+    {
+      "name": "-resolvers",
+      "short": "-r",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "file containing resolver list for nuclei",
+      "default": "",
+      "example": "nuclei -resolvers <string>"
+    },
+    {
+      "name": "-system-resolvers",
+      "short": "",
+      "aliases": [
+        "-sr"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "use system DNS resolving as error fallback",
+      "default": "",
+      "example": "nuclei -system-resolvers"
+    },
+    {
+      "name": "-disable-clustering",
+      "short": "",
+      "aliases": [
+        "-dc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable clustering of requests",
+      "default": "",
+      "example": "nuclei -disable-clustering"
+    },
+    {
+      "name": "-passive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable passive HTTP response processing mode",
+      "default": "",
+      "example": "nuclei -passive"
+    },
+    {
+      "name": "-force-http2",
+      "short": "",
+      "aliases": [
+        "-fh2"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "force http2 connection on requests",
+      "default": "",
+      "example": "nuclei -force-http2"
+    },
+    {
+      "name": "-env-vars",
+      "short": "",
+      "aliases": [
+        "-ev"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable environment variables to be used in template",
+      "default": "",
+      "example": "nuclei -env-vars"
+    },
+    {
+      "name": "-client-cert",
+      "short": "",
+      "aliases": [
+        "-cc"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "client certificate file (PEM-encoded) used for authenticating against scanned hosts",
+      "default": "",
+      "example": "nuclei -client-cert <string>"
+    },
+    {
+      "name": "-client-key",
+      "short": "",
+      "aliases": [
+        "-ck"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "client key file (PEM-encoded) used for authenticating against scanned hosts",
+      "default": "",
+      "example": "nuclei -client-key <string>"
+    },
+    {
+      "name": "-client-ca",
+      "short": "",
+      "aliases": [
+        "-ca"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "client certificate authority file (PEM-encoded) used for authenticating against scanned hosts",
+      "default": "",
+      "example": "nuclei -client-ca <string>"
+    },
+    {
+      "name": "-show-match-line",
+      "short": "",
+      "aliases": [
+        "-sml"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "show match lines for file templates, works with extractors only",
+      "default": "",
+      "example": "nuclei -show-match-line"
+    },
+    {
+      "name": "-ztls",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use ztls library with autofallback to standard one for tls13 [Deprecated] autofallback to ztls is enabled by default",
+      "default": "",
+      "example": "nuclei -ztls"
+    },
+    {
+      "name": "-sni",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "tls sni hostname to use (default: input domain name)",
+      "default": "input domain name",
+      "example": "nuclei -sni <string>"
+    },
+    {
+      "name": "-dialer-keep-alive",
+      "short": "",
+      "aliases": [
+        "-dka"
+      ],
+      "arg": "value",
+      "required": false,
+      "description": "keep-alive duration for network requests.",
+      "default": "",
+      "example": "nuclei -dialer-keep-alive <value>"
+    },
+    {
+      "name": "-allow-local-file-access",
+      "short": "",
+      "aliases": [
+        "-lfa"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "allows file (payload) access anywhere on the system",
+      "default": "",
+      "example": "nuclei -allow-local-file-access"
+    },
+    {
+      "name": "-restrict-local-network-access",
+      "short": "",
+      "aliases": [
+        "-lna"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "blocks connections to the local / private network",
+      "default": "",
+      "example": "nuclei -restrict-local-network-access"
+    },
+    {
+      "name": "-interface",
+      "short": "-i",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "network interface to use for network scan",
+      "default": "",
+      "example": "nuclei -interface <string>"
+    },
+    {
+      "name": "-attack-type",
+      "short": "",
+      "aliases": [
+        "-at"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "type of payload combinations to perform (batteringram,pitchfork,clusterbomb)",
+      "default": "",
+      "example": "nuclei -attack-type <string>"
+    },
+    {
+      "name": "-source-ip",
+      "short": "",
+      "aliases": [
+        "-sip"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "source ip address to use for network scan",
+      "default": "",
+      "example": "nuclei -source-ip <string>"
+    },
+    {
+      "name": "-response-size-read",
+      "short": "",
+      "aliases": [
+        "-rsr"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "max response size to read in bytes",
+      "default": "",
+      "example": "nuclei -response-size-read <int>"
+    },
+    {
+      "name": "-response-size-save",
+      "short": "",
+      "aliases": [
+        "-rss"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "max response size to read in bytes (default 1048576)",
+      "default": "1048576",
+      "example": "nuclei -response-size-save <int>"
+    },
+    {
+      "name": "-reset",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "reset removes all nuclei configuration and data files (including nuclei-templates)",
+      "default": "",
+      "example": "nuclei -reset"
+    },
+    {
+      "name": "-tls-impersonate",
+      "short": "",
+      "aliases": [
+        "-tlsi"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable experimental client hello (ja3) tls randomization",
+      "default": "",
+      "example": "nuclei -tls-impersonate"
+    },
+    {
+      "name": "-http-api-endpoint",
+      "short": "",
+      "aliases": [
+        "-hae"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "experimental http api endpoint",
+      "default": "",
+      "example": "nuclei -http-api-endpoint <string>"
+    },
+    {
+      "name": "-interactsh-server",
+      "short": "",
+      "aliases": [
+        "-iserver"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "interactsh server url for self-hosted instance (default: oast.pro,oast.live,oast.site,oast.online,oast.fun,oast.me)",
+      "default": "oast.pro,oast.live,oast.site,oast.online,oast.fun,oast.me",
+      "example": "nuclei -interactsh-server <string>"
+    },
+    {
+      "name": "-interactsh-token",
+      "short": "",
+      "aliases": [
+        "-itoken"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "authentication token for self-hosted interactsh server",
+      "default": "",
+      "example": "nuclei -interactsh-token <string>"
+    },
+    {
+      "name": "-interactions-cache-size",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "number of requests to keep in the interactions cache (default 5000)",
+      "default": "5000",
+      "example": "nuclei -interactions-cache-size <int>"
+    },
+    {
+      "name": "-interactions-eviction",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "number of seconds to wait before evicting requests from cache (default 60)",
+      "default": "60",
+      "example": "nuclei -interactions-eviction <int>"
+    },
+    {
+      "name": "-interactions-poll-duration",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "number of seconds to wait before each interaction poll request (default 5)",
+      "default": "5",
+      "example": "nuclei -interactions-poll-duration <int>"
+    },
+    {
+      "name": "-interactions-cooldown-period",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "extra time for interaction polling before exiting (default 5)",
+      "default": "5",
+      "example": "nuclei -interactions-cooldown-period <int>"
+    },
+    {
+      "name": "-no-interactsh",
+      "short": "",
+      "aliases": [
+        "-ni"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable interactsh server for OAST testing, exclude OAST based templates",
+      "default": "",
+      "example": "nuclei -no-interactsh"
+    },
+    {
+      "name": "-fuzzing-type",
+      "short": "",
+      "aliases": [
+        "-ft"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "overrides fuzzing type set in template (replace, prefix, postfix, infix)",
+      "default": "",
+      "example": "nuclei -fuzzing-type <string>"
+    },
+    {
+      "name": "-fuzzing-mode",
+      "short": "",
+      "aliases": [
+        "-fm"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "overrides fuzzing mode set in template (multiple, single)",
+      "default": "",
+      "example": "nuclei -fuzzing-mode <string>"
+    },
+    {
+      "name": "-fuzz",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable loading fuzzing templates (Deprecated: use -dast instead)",
+      "default": "",
+      "example": "nuclei -fuzz"
+    },
+    {
+      "name": "-dast",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable / run dast (fuzz) nuclei templates",
+      "default": "",
+      "example": "nuclei -dast"
+    },
+    {
+      "name": "-dast-server",
+      "short": "",
+      "aliases": [
+        "-dts"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable dast server mode (live fuzzing)",
+      "default": "",
+      "example": "nuclei -dast-server"
+    },
+    {
+      "name": "-dast-report",
+      "short": "",
+      "aliases": [
+        "-dtr"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "write dast scan report to file",
+      "default": "",
+      "example": "nuclei -dast-report"
+    },
+    {
+      "name": "-dast-server-token",
+      "short": "",
+      "aliases": [
+        "-dtst"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "dast server token (optional)",
+      "default": "",
+      "example": "nuclei -dast-server-token <string>"
+    },
+    {
+      "name": "-dast-server-address",
+      "short": "",
+      "aliases": [
+        "-dtsa"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "dast server address (default \"localhost:9055\")",
+      "default": "localhost:9055",
+      "example": "nuclei -dast-server-address <string>"
+    },
+    {
+      "name": "-display-fuzz-points",
+      "short": "",
+      "aliases": [
+        "-dfp"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "display fuzz points in the output for debugging",
+      "default": "",
+      "example": "nuclei -display-fuzz-points"
+    },
+    {
+      "name": "-fuzz-param-frequency",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "frequency of uninteresting parameters for fuzzing before skipping (default 10)",
+      "default": "10",
+      "example": "nuclei -fuzz-param-frequency <int>"
+    },
+    {
+      "name": "-fuzz-aggression",
+      "short": "",
+      "aliases": [
+        "-fa"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "fuzzing aggression level controls payload count for fuzz (low, medium, high) (default \"low\")",
+      "default": "low",
+      "example": "nuclei -fuzz-aggression <string>"
+    },
+    {
+      "name": "-uncover",
+      "short": "",
+      "aliases": [
+        "-uc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable uncover engine",
+      "default": "",
+      "example": "nuclei -uncover"
+    },
+    {
+      "name": "-uncover-field",
+      "short": "",
+      "aliases": [
+        "-uf"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "uncover fields to return (ip,port,host) (default \"ip:port\")",
+      "default": "ip:port",
+      "example": "nuclei -uncover-field <string>"
+    },
+    {
+      "name": "-uncover-limit",
+      "short": "",
+      "aliases": [
+        "-ul"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "uncover results to return (default 100)",
+      "default": "100",
+      "example": "nuclei -uncover-limit <int>"
+    },
+    {
+      "name": "-uncover-ratelimit",
+      "short": "",
+      "aliases": [
+        "-ur"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "override ratelimit of engines with unknown ratelimit (default 60 req/min) (default 60)",
+      "default": "60 req/min",
+      "example": "nuclei -uncover-ratelimit <int>"
+    },
+    {
+      "name": "-rate-limit",
+      "short": "",
+      "aliases": [
+        "-rl"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "maximum number of requests to send per second (default 150)",
+      "default": "150",
+      "example": "nuclei -rate-limit <int>"
+    },
+    {
+      "name": "-rate-limit-duration",
+      "short": "",
+      "aliases": [
+        "-rld"
+      ],
+      "arg": "value",
+      "required": false,
+      "description": "maximum number of requests to send per second (default 1s)",
+      "default": "1s",
+      "example": "nuclei -rate-limit-duration <value>"
+    },
+    {
+      "name": "-per-host-rate-limit",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable per-host rate limiting (global rate limit becomes unlimited when enabled)",
+      "default": "",
+      "example": "nuclei -per-host-rate-limit"
+    },
+    {
+      "name": "-rate-limit-minute",
+      "short": "",
+      "aliases": [
+        "-rlm"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "maximum number of requests to send per minute (DEPRECATED)",
+      "default": "",
+      "example": "nuclei -rate-limit-minute <int>"
+    },
+    {
+      "name": "-bulk-size",
+      "short": "",
+      "aliases": [
+        "-bs"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "maximum number of hosts to be analyzed in parallel per template (default 25)",
+      "default": "25",
+      "example": "nuclei -bulk-size <int>"
+    },
+    {
+      "name": "-concurrency",
+      "short": "-c",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "maximum number of templates to be executed in parallel (default 25)",
+      "default": "25",
+      "example": "nuclei -concurrency <int>"
+    },
+    {
+      "name": "-headless-bulk-size",
+      "short": "",
+      "aliases": [
+        "-hbs"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "maximum number of headless hosts to be analyzed in parallel per template (default 10)",
+      "default": "10",
+      "example": "nuclei -headless-bulk-size <int>"
+    },
+    {
+      "name": "-headless-concurrency",
+      "short": "",
+      "aliases": [
+        "-headc"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "maximum number of headless templates to be executed in parallel (default 10)",
+      "default": "10",
+      "example": "nuclei -headless-concurrency <int>"
+    },
+    {
+      "name": "-js-concurrency",
+      "short": "",
+      "aliases": [
+        "-jsc"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "maximum number of javascript runtimes to be executed in parallel (default 120)",
+      "default": "120",
+      "example": "nuclei -js-concurrency <int>"
+    },
+    {
+      "name": "-payload-concurrency",
+      "short": "",
+      "aliases": [
+        "-pc"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "max payload concurrency for each template (default 25)",
+      "default": "25",
+      "example": "nuclei -payload-concurrency <int>"
+    },
+    {
+      "name": "-probe-concurrency",
+      "short": "",
+      "aliases": [
+        "-prc"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "http probe concurrency with httpx (default 50)",
+      "default": "50",
+      "example": "nuclei -probe-concurrency <int>"
+    },
+    {
+      "name": "-template-loading-concurrency",
+      "short": "",
+      "aliases": [
+        "-tlc"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "maximum number of concurrent template loading operations (default 50)",
+      "default": "50",
+      "example": "nuclei -template-loading-concurrency <int>"
+    },
+    {
+      "name": "-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "time to wait in seconds before timeout (default 10)",
+      "default": "10",
+      "example": "nuclei -timeout <int>"
+    },
+    {
+      "name": "-retries",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "number of times to retry a failed request (default 1)",
+      "default": "1",
+      "example": "nuclei -retries <int>"
+    },
+    {
+      "name": "-leave-default-ports",
+      "short": "",
+      "aliases": [
+        "-ldp"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "leave default HTTP/HTTPS ports (eg. host:80,host:443)",
+      "default": "",
+      "example": "nuclei -leave-default-ports"
+    },
+    {
+      "name": "-max-host-error",
+      "short": "",
+      "aliases": [
+        "-mhe"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "max errors for a host before skipping from scan (default 30)",
+      "default": "30",
+      "example": "nuclei -max-host-error <int>"
+    },
+    {
+      "name": "-no-mhe",
+      "short": "",
+      "aliases": [
+        "-nmhe"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable skipping host from scan based on errors",
+      "default": "",
+      "example": "nuclei -no-mhe"
+    },
+    {
+      "name": "-project",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use a project folder to avoid sending same request multiple times",
+      "default": "",
+      "example": "nuclei -project"
+    },
+    {
+      "name": "-project-path",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "set a specific project path (default \"/tmp\")",
+      "default": "/tmp",
+      "example": "nuclei -project-path <string>"
+    },
+    {
+      "name": "-stop-at-first-match",
+      "short": "",
+      "aliases": [
+        "-spm"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "stop processing HTTP requests after the first match (may break template/workflow logic)",
+      "default": "",
+      "example": "nuclei -stop-at-first-match"
+    },
+    {
+      "name": "-stream",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "stream mode - start elaborating without sorting the input",
+      "default": "",
+      "example": "nuclei -stream"
+    },
+    {
+      "name": "-scan-strategy",
+      "short": "",
+      "aliases": [
+        "-ss"
+      ],
+      "arg": "value",
+      "required": false,
+      "description": "strategy to use while scanning(auto/host-spray/template-spray) (default auto)",
+      "default": "auto",
+      "example": "nuclei -scan-strategy <value>"
+    },
+    {
+      "name": "-input-read-timeout",
+      "short": "",
+      "aliases": [
+        "-irt"
+      ],
+      "arg": "value",
+      "required": false,
+      "description": "timeout on input read (default 3m0s)",
+      "default": "3m0s",
+      "example": "nuclei -input-read-timeout <value>"
+    },
+    {
+      "name": "-no-httpx",
+      "short": "",
+      "aliases": [
+        "-nh"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable httpx probing for non-url input",
+      "default": "",
+      "example": "nuclei -no-httpx"
+    },
+    {
+      "name": "-preflight-portscan",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "run preflight resolve + TCP portscan and filter targets before scanning (disabled by default)",
+      "default": "",
+      "example": "nuclei -preflight-portscan"
+    },
+    {
+      "name": "-no-stdin",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable stdin processing",
+      "default": "",
+      "example": "nuclei -no-stdin"
+    },
+    {
+      "name": "-headless",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable templates that require headless browser support (root user on Linux will disable sandbox)",
+      "default": "",
+      "example": "nuclei -headless"
+    },
+    {
+      "name": "-page-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "seconds to wait for each page in headless mode (default 20)",
+      "default": "20",
+      "example": "nuclei -page-timeout <int>"
+    },
+    {
+      "name": "-show-browser",
+      "short": "",
+      "aliases": [
+        "-sb"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "show the browser on the screen when running templates with headless mode",
+      "default": "",
+      "example": "nuclei -show-browser"
+    },
+    {
+      "name": "-system-chrome",
+      "short": "",
+      "aliases": [
+        "-sc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "use local installed Chrome browser instead of nuclei installed",
+      "default": "",
+      "example": "nuclei -system-chrome"
+    },
+    {
+      "name": "-cdp-endpoint",
+      "short": "",
+      "aliases": [
+        "-cdpe"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "use remote browser via Chrome DevTools Protocol (CDP) endpoint",
+      "default": "",
+      "example": "nuclei -cdp-endpoint <string>"
+    },
+    {
+      "name": "-list-headless-action",
+      "short": "",
+      "aliases": [
+        "-lha"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "list available headless actions",
+      "default": "",
+      "example": "nuclei -list-headless-action"
+    },
+    {
+      "name": "-debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show all requests and responses",
+      "default": "",
+      "example": "nuclei -debug"
+    },
+    {
+      "name": "-debug-req",
+      "short": "",
+      "aliases": [
+        "-dreq"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "show all sent requests",
+      "default": "",
+      "example": "nuclei -debug-req"
+    },
+    {
+      "name": "-debug-resp",
+      "short": "",
+      "aliases": [
+        "-dresp"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "show all received responses",
+      "default": "",
+      "example": "nuclei -debug-resp"
+    },
+    {
+      "name": "-proxy-internal",
+      "short": "",
+      "aliases": [
+        "-pi"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "proxy all internal requests",
+      "default": "",
+      "example": "nuclei -proxy-internal"
+    },
+    {
+      "name": "-list-dsl-function",
+      "short": "",
+      "aliases": [
+        "-ldf"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "list all supported DSL function signatures",
+      "default": "",
+      "example": "nuclei -list-dsl-function"
+    },
+    {
+      "name": "-trace-log",
+      "short": "",
+      "aliases": [
+        "-tlog"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "file to write sent requests trace log",
+      "default": "",
+      "example": "nuclei -trace-log <string>"
+    },
+    {
+      "name": "-error-log",
+      "short": "",
+      "aliases": [
+        "-elog"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "file to write sent requests error log",
+      "default": "",
+      "example": "nuclei -error-log <string>"
+    },
+    {
+      "name": "-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show nuclei version",
+      "default": "",
+      "example": "nuclei -version"
+    },
+    {
+      "name": "-hang-monitor",
+      "short": "",
+      "aliases": [
+        "-hm"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable nuclei hang monitoring",
+      "default": "",
+      "example": "nuclei -hang-monitor"
+    },
+    {
+      "name": "-verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show verbose output",
+      "default": "",
+      "example": "nuclei -verbose"
+    },
+    {
+      "name": "-profile-mem",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "generate memory (heap) profile & trace files",
+      "default": "",
+      "example": "nuclei -profile-mem <string>"
+    },
+    {
+      "name": "-vv",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display templates loaded for scan",
+      "default": "",
+      "example": "nuclei -vv"
+    },
+    {
+      "name": "-show-var-dump",
+      "short": "",
+      "aliases": [
+        "-svd"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "show variables dump for debugging",
+      "default": "",
+      "example": "nuclei -show-var-dump"
+    },
+    {
+      "name": "-var-dump-limit",
+      "short": "",
+      "aliases": [
+        "-vdl"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "limit the number of characters displayed in var dump (default 255)",
+      "default": "255",
+      "example": "nuclei -var-dump-limit <int>"
+    },
+    {
+      "name": "-enable-pprof",
+      "short": "",
+      "aliases": [
+        "-ep"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable pprof debugging server",
+      "default": "",
+      "example": "nuclei -enable-pprof"
+    },
+    {
+      "name": "-templates-version",
+      "short": "",
+      "aliases": [
+        "-tv"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "shows the version of the installed nuclei-templates",
+      "default": "",
+      "example": "nuclei -templates-version"
+    },
+    {
+      "name": "-health-check",
+      "short": "",
+      "aliases": [
+        "-hc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "run diagnostic check up",
+      "default": "",
+      "example": "nuclei -health-check"
+    },
+    {
+      "name": "-update-templates",
+      "short": "",
+      "aliases": [
+        "-ut"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "update nuclei-templates to latest released version",
+      "default": "",
+      "example": "nuclei -update-templates"
+    },
+    {
+      "name": "-update-template-dir",
+      "short": "",
+      "aliases": [
+        "-ud"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "custom directory to install / update nuclei-templates",
+      "default": "",
+      "example": "nuclei -update-template-dir <string>"
+    },
+    {
+      "name": "-disable-update-check",
+      "short": "",
+      "aliases": [
+        "-duc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "disable automatic nuclei/templates update check",
+      "default": "",
+      "example": "nuclei -disable-update-check"
+    },
+    {
+      "name": "-honeypot-detect",
+      "short": "",
+      "aliases": [
+        "-hpd"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "detect potential honeypot hosts based on match concentration",
+      "default": "",
+      "example": "nuclei -honeypot-detect"
+    },
+    {
+      "name": "-honeypot-threshold",
+      "short": "",
+      "aliases": [
+        "-hpt"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "number of distinct template IDs required to flag a honeypot host (default 15)",
+      "default": "15",
+      "example": "nuclei -honeypot-threshold <int>"
+    },
+    {
+      "name": "-suppress-honeypot",
+      "short": "",
+      "aliases": [
+        "-shp"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "suppress output for flagged honeypot hosts",
+      "default": "",
+      "example": "nuclei -suppress-honeypot"
+    },
+    {
+      "name": "-stats",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display statistics about the running scan",
+      "default": "",
+      "example": "nuclei -stats"
+    },
+    {
+      "name": "-stats-json",
+      "short": "",
+      "aliases": [
+        "-sj"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "display statistics in JSONL(ines) format",
+      "default": "",
+      "example": "nuclei -stats-json"
+    },
+    {
+      "name": "-stats-interval",
+      "short": "",
+      "aliases": [
+        "-si"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "number of seconds to wait between showing a statistics update (default 5)",
+      "default": "5",
+      "example": "nuclei -stats-interval <int>"
+    },
+    {
+      "name": "-metrics-port",
+      "short": "",
+      "aliases": [
+        "-mp"
+      ],
+      "arg": "int",
+      "required": false,
+      "description": "port to expose nuclei metrics on (default 9092)",
+      "default": "9092",
+      "example": "nuclei -metrics-port <int>"
+    },
+    {
+      "name": "-http-stats",
+      "short": "",
+      "aliases": [
+        "-hps"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "enable http status capturing (experimental)",
+      "default": "",
+      "example": "nuclei -http-stats"
+    },
+    {
+      "name": "-auth",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "configure projectdiscovery cloud (pdcp) api key (default true)",
+      "default": "true",
+      "example": "nuclei -auth"
+    },
+    {
+      "name": "-team-id",
+      "short": "",
+      "aliases": [
+        "-tid"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "upload scan results to given team id (optional) (default \"none\")",
+      "default": "none",
+      "example": "nuclei -team-id <string>"
+    },
+    {
+      "name": "-cloud-upload",
+      "short": "",
+      "aliases": [
+        "-cup"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "upload scan results to pdcp dashboard [DEPRECATED use -dashboard]",
+      "default": "",
+      "example": "nuclei -cloud-upload"
+    },
+    {
+      "name": "-scan-id",
+      "short": "",
+      "aliases": [
+        "-sid"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "upload scan results to existing scan id (optional)",
+      "default": "",
+      "example": "nuclei -scan-id <string>"
+    },
+    {
+      "name": "-scan-name",
+      "short": "",
+      "aliases": [
+        "-sname"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "scan name to set (optional)",
+      "default": "",
+      "example": "nuclei -scan-name <string>"
+    },
+    {
+      "name": "-dashboard",
+      "short": "",
+      "aliases": [
+        "-pd"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "upload / view nuclei results in projectdiscovery cloud (pdcp) UI dashboard",
+      "default": "",
+      "example": "nuclei -dashboard"
+    },
+    {
+      "name": "-dashboard-upload",
+      "short": "",
+      "aliases": [
+        "-pdu"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "upload / view nuclei results file (jsonl) in projectdiscovery cloud (pdcp) UI dashboard",
+      "default": "",
+      "example": "nuclei -dashboard-upload <string>"
+    },
+    {
+      "name": "-prefetch-secrets",
+      "short": "",
+      "aliases": [
+        "-ps"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "prefetch secrets from the secrets file",
+      "default": "",
+      "example": "nuclei -prefetch-secrets"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "nuclei -update-templates",
+      "explanation": "Update `nuclei` templates to the latest released version (downloaded to `~/nuclei-templates` on macOS/Linux or `%USERPROFILE%\\nuclei-templates` on Windows)",
+      "source": "tldr:nuclei"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/nuclei.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

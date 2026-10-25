@@ -1,0 +1,26 @@
+{
+  "id": "sqldict",
+  "name": "sqldict",
+  "schema_version": 1,
+  "summary": "A dictionary attack tool for SQL Server.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sqldict"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

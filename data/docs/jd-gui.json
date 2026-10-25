@@ -1,0 +1,25 @@
+{
+  "id": "jd-gui",
+  "name": "jd-gui",
+  "schema_version": 1,
+  "summary": "A standalone graphical utility that displays Java source codes of .class files.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install jd-gui"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": false
+  }
+}

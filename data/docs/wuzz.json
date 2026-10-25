@@ -1,0 +1,46 @@
+{
+  "id": "wuzz",
+  "name": "wuzz",
+  "schema_version": 1,
+  "summary": "Interactive cli tool for HTTP inspection.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "wuzz",
+      "explanation": "Start `wuzz`",
+      "source": "tldr:wuzz"
+    },
+    {
+      "cmd": "<Ctrl r>",
+      "explanation": "Send an HTTP request",
+      "source": "tldr:wuzz"
+    },
+    {
+      "cmd": "<Ctrl j><Tab>",
+      "explanation": "Switch to the next view",
+      "source": "tldr:wuzz"
+    },
+    {
+      "cmd": "<Ctrl k><Shift Tab>",
+      "explanation": "Switch to the previous view",
+      "source": "tldr:wuzz"
+    },
+    {
+      "cmd": "<F1>",
+      "explanation": "Display help",
+      "source": "tldr:wuzz"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/wuzz.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,1006 @@
+{
+  "id": "hashrat",
+  "name": "hashrat",
+  "schema_version": 1,
+  "summary": "Hashing tool supporting MD5, SHA1, SHA256, SHA512, Whirlpool, JH and their HMAC.",
+  "highlights": [
+    "-? — Print this help",
+    "-list-hashes — Print a list of hashes that can be used with the '-type' option",
+    "-type — specify a hash type to use. This supports hashes coming from other subsystems, such as ope",
+    "-md5 — Use md5 hash algorithmn",
+    "-sha1 — Use sha1 hash algorithmn",
+    "-sha256 — Use sha256 hash algorithmn",
+    "-sha384 — Use sha384 hash algorithmn",
+    "-sha512 — Use sha512 hash algorithmn"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hashrat"
+    }
+  ],
+  "usage": "hashrat [options] [path to hash]...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print this help",
+      "default": "",
+      "example": "hashrat --help"
+    },
+    {
+      "name": "-help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print this help",
+      "default": "",
+      "example": "hashrat -help"
+    },
+    {
+      "name": "-?",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print this help",
+      "default": "",
+      "example": "hashrat -?"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print program version",
+      "default": "",
+      "example": "hashrat --version"
+    },
+    {
+      "name": "-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print program version",
+      "default": "",
+      "example": "hashrat -version"
+    },
+    {
+      "name": "-list-hashes",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print a list of hashes that can be used with the '-type' option",
+      "default": "",
+      "example": "hashrat -list-hashes"
+    },
+    {
+      "name": "-type",
+      "short": "",
+      "aliases": [],
+      "arg": "<hash>",
+      "required": false,
+      "description": "specify a hash type to use. This supports hashes coming from other subsystems, such as openssl. It also supports 'chaining' hash types like so: -type sha256,whirl",
+      "default": "",
+      "example": "hashrat -type <hash>"
+    },
+    {
+      "name": "-md5",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use md5 hash algorithmn",
+      "default": "",
+      "example": "hashrat -md5"
+    },
+    {
+      "name": "-sha1",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use sha1 hash algorithmn",
+      "default": "",
+      "example": "hashrat -sha1"
+    },
+    {
+      "name": "-sha256",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use sha256 hash algorithmn",
+      "default": "",
+      "example": "hashrat -sha256"
+    },
+    {
+      "name": "-sha384",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use sha384 hash algorithmn",
+      "default": "",
+      "example": "hashrat -sha384"
+    },
+    {
+      "name": "-sha512",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use sha512 hash algorithmn",
+      "default": "",
+      "example": "hashrat -sha512"
+    },
+    {
+      "name": "-whirl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use whirlpool hash algorithmn",
+      "default": "",
+      "example": "hashrat -whirl"
+    },
+    {
+      "name": "-whirlpool",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use whirlpool hash algorithmn",
+      "default": "",
+      "example": "hashrat -whirlpool"
+    },
+    {
+      "name": "-jh224",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use jh-224 hash algorithmn",
+      "default": "",
+      "example": "hashrat -jh224"
+    },
+    {
+      "name": "-jh256",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use jh-256 hash algorithmn",
+      "default": "",
+      "example": "hashrat -jh256"
+    },
+    {
+      "name": "-jh384",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use jh-384 hash algorithmn",
+      "default": "",
+      "example": "hashrat -jh384"
+    },
+    {
+      "name": "-jh512",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use jh-512 hash algorithmn",
+      "default": "",
+      "example": "hashrat -jh512"
+    },
+    {
+      "name": "-hmac",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "HMAC using specified hash algorithm",
+      "default": "",
+      "example": "hashrat -hmac"
+    },
+    {
+      "name": "-totp",
+      "short": "",
+      "aliases": [],
+      "arg": "<secret>",
+      "required": false,
+      "description": "TOTP code with secret, defaults to google-authenticator compatible setup",
+      "default": "",
+      "example": "hashrat -totp <secret>"
+    },
+    {
+      "name": "-digits",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "produce otp codes with <n> digits",
+      "default": "",
+      "example": "hashrat -digits <n>"
+    },
+    {
+      "name": "-period",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "produce otp codes with period/lifetime of <n> seconds",
+      "default": "",
+      "example": "hashrat -period <n>"
+    },
+    {
+      "name": "-8",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with octal instead of hex",
+      "default": "",
+      "example": "hashrat -8"
+    },
+    {
+      "name": "-10",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with decimal instead of hex",
+      "default": "",
+      "example": "hashrat -10"
+    },
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with UPPERCASE hexadecimal",
+      "default": "",
+      "example": "hashrat -H"
+    },
+    {
+      "name": "-HEX",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with UPPERCASE hexadecimal",
+      "default": "",
+      "example": "hashrat -HEX"
+    },
+    {
+      "name": "-32",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with base32 instead of hex",
+      "default": "",
+      "example": "hashrat -32"
+    },
+    {
+      "name": "-base32",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with base32 instead of hex",
+      "default": "",
+      "example": "hashrat -base32"
+    },
+    {
+      "name": "-c32",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with Crockford base32 instead of hex",
+      "default": "",
+      "example": "hashrat -c32"
+    },
+    {
+      "name": "-w32",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with word-safe base32 instead of hex",
+      "default": "",
+      "example": "hashrat -w32"
+    },
+    {
+      "name": "-z32",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with zbase32 instead of hex",
+      "default": "",
+      "example": "hashrat -z32"
+    },
+    {
+      "name": "-64",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with base64 instead of hex",
+      "default": "",
+      "example": "hashrat -64"
+    },
+    {
+      "name": "-base64",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with base64 instead of hex",
+      "default": "",
+      "example": "hashrat -base64"
+    },
+    {
+      "name": "-i64",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with base64 with rearranged characters",
+      "default": "",
+      "example": "hashrat -i64"
+    },
+    {
+      "name": "-p64",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with base64 with a-z,A-Z and _-, for best compatibility with 'allowed characters' in websites.",
+      "default": "",
+      "example": "hashrat -p64"
+    },
+    {
+      "name": "-r64",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with base64 with a-z,A-Z and _-, rfc4648 compatible.",
+      "default": "",
+      "example": "hashrat -r64"
+    },
+    {
+      "name": "-rfc4648",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with base64 with a-z,A-Z and _-, rfc4648 compatible.",
+      "default": "",
+      "example": "hashrat -rfc4648"
+    },
+    {
+      "name": "-x64",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with XXencode style base64.",
+      "default": "",
+      "example": "hashrat -x64"
+    },
+    {
+      "name": "-u64",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with UUencode style base64.",
+      "default": "",
+      "example": "hashrat -u64"
+    },
+    {
+      "name": "-g64",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with GEDCOM style base64.",
+      "default": "",
+      "example": "hashrat -g64"
+    },
+    {
+      "name": "-a85",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with ASCII85.",
+      "default": "",
+      "example": "hashrat -a85"
+    },
+    {
+      "name": "-z85",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encode with ZEROMQ variant of ASCII85.",
+      "default": "",
+      "example": "hashrat -z85"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output hashes in traditional md5sum, shaXsum format",
+      "default": "",
+      "example": "hashrat -t"
+    },
+    {
+      "name": "-trad",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output hashes in traditional md5sum, shaXsum format",
+      "default": "",
+      "example": "hashrat -trad"
+    },
+    {
+      "name": "-bsd",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output hashes in bsdsum format",
+      "default": "",
+      "example": "hashrat -bsd"
+    },
+    {
+      "name": "-tag",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output hashes in bsdsum format",
+      "default": "",
+      "example": "hashrat -tag"
+    },
+    {
+      "name": "--tag",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output hashes in bsdsum format",
+      "default": "",
+      "example": "hashrat --tag"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Recurse into directories when hashing files",
+      "default": "",
+      "example": "hashrat -r"
+    },
+    {
+      "name": "-hid",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show hidden (starting with .) files",
+      "default": "",
+      "example": "hashrat -hid"
+    },
+    {
+      "name": "-hidden",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show hidden (starting with .) files",
+      "default": "",
+      "example": "hashrat -hidden"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<listfile>",
+      "required": false,
+      "description": "Hash files listed in <listfile>",
+      "default": "",
+      "example": "hashrat -f <listfile>"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<patterns>",
+      "required": false,
+      "description": "Only hash items matching a comma-seperated list of shell patterns",
+      "default": "",
+      "example": "hashrat -i <patterns>"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "<patterns>",
+      "required": false,
+      "description": "Exclude items matching a comma-sepearted list of shell patterns",
+      "default": "",
+      "example": "hashrat -x <patterns>"
+    },
+    {
+      "name": "-X",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Exclude items matching shell patters stored in <file>",
+      "default": "",
+      "example": "hashrat -X <file>"
+    },
+    {
+      "name": "-name",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<patterns> Only hash items matching a comma-seperated list of shell patterns (-name aka 'find')",
+      "default": "",
+      "example": "hashrat -name"
+    },
+    {
+      "name": "-mtime",
+      "short": "",
+      "aliases": [],
+      "arg": "<days>",
+      "required": false,
+      "description": "Only hash items <days> old. Has the same format as the find command, e.g. -10 is younger than ten days, +10 is older than ten, and 10 is ten days old",
+      "default": "",
+      "example": "hashrat -mtime <days>"
+    },
+    {
+      "name": "-mmin",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<mins> Only hash items <min> minutes old. Has the same format as the find command, e.g. -10 is younger than ten mins, +10 is older than ten, and 10 is ten mins old",
+      "default": "",
+      "example": "hashrat -mmin"
+    },
+    {
+      "name": "-myear",
+      "short": "",
+      "aliases": [],
+      "arg": "<years>",
+      "required": false,
+      "description": "Only hash items <years> old. Has the same format as the find command, e.g. -10 is younger than ten years, +10 is older than ten, and 10 is ten years old",
+      "default": "",
+      "example": "hashrat -myear <years>"
+    },
+    {
+      "name": "-exec",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "In CHECK or MATCH mode only examine executable files.",
+      "default": "",
+      "example": "hashrat -exec"
+    },
+    {
+      "name": "-dups",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Search for duplicate files.",
+      "default": "",
+      "example": "hashrat -dups"
+    },
+    {
+      "name": "-rename",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Rename files to <name>-<hash>.<extn>.",
+      "default": "",
+      "example": "hashrat -rename"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "<length>",
+      "required": false,
+      "description": "Truncate hashes to <length> bytes",
+      "default": "",
+      "example": "hashrat -n <length>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "CHECK hashes against list from file (or stdin)",
+      "default": "",
+      "example": "hashrat -c"
+    },
+    {
+      "name": "-cf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "CHECK hashes against list but only show failures",
+      "default": "",
+      "example": "hashrat -cf"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "<dir>",
+      "required": false,
+      "description": "Recursively CHECK directory against list of files on stdin",
+      "default": "",
+      "example": "hashrat -C <dir>"
+    },
+    {
+      "name": "-Cf",
+      "short": "",
+      "aliases": [],
+      "arg": "<dir>",
+      "required": false,
+      "description": "Recursively CHECK directory against list but only show failures",
+      "default": "",
+      "example": "hashrat -Cf <dir>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "MATCH files from a list read from stdin.",
+      "default": "",
+      "example": "hashrat -m"
+    },
+    {
+      "name": "-lm",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read hashes from stdin, upload them to a memcached server (requires the -memcached option).",
+      "default": "",
+      "example": "hashrat -lm"
+    },
+    {
+      "name": "-mcd",
+      "short": "",
+      "aliases": [],
+      "arg": "<server>",
+      "required": false,
+      "description": "Specify memcached server. (Overrides reading list from stdin if used with -m, -c or -cf).",
+      "default": "",
+      "example": "hashrat -mcd <server>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "<script>",
+      "required": false,
+      "description": "Script to run when a file fails CHECK mode, or is found in MATCH mode.",
+      "default": "",
+      "example": "hashrat -h <script>"
+    },
+    {
+      "name": "-hook",
+      "short": "",
+      "aliases": [],
+      "arg": "<script>",
+      "required": false,
+      "description": "Script to run when a file fails CHECK mode, or is found in FIND mode",
+      "default": "",
+      "example": "hashrat -hook <script>"
+    },
+    {
+      "name": "-color",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use ANSI color codes on output when checking hashes.",
+      "default": "",
+      "example": "hashrat -color"
+    },
+    {
+      "name": "-strict",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Strict mode: when checking, check file mtime, owner, group, and inode as well as its hash",
+      "default": "",
+      "example": "hashrat -strict"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Strict mode: when checking, check file mtime, owner, group, and inode as well as its hash",
+      "default": "",
+      "example": "hashrat -S"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "dereference (follow) symlinks",
+      "default": "",
+      "example": "hashrat -d"
+    },
+    {
+      "name": "-fs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Stay on one file system",
+      "default": "",
+      "example": "hashrat -fs"
+    },
+    {
+      "name": "-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DirMode: Read all files in directory and create one hash for them!",
+      "default": "",
+      "example": "hashrat -dir"
+    },
+    {
+      "name": "-dirmode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DirMode: Read all files in directory and create one hash for them!",
+      "default": "",
+      "example": "hashrat -dirmode"
+    },
+    {
+      "name": "-devmode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DevMode: read from a file EVEN IF IT'S A DEVNODE",
+      "default": "",
+      "example": "hashrat -devmode"
+    },
+    {
+      "name": "-lines",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read lines from stdin and hash each line independantly.",
+      "default": "",
+      "example": "hashrat -lines"
+    },
+    {
+      "name": "-rawlines",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read lines from stdin and hash each line independantly, INCLUDING any trailing whitespace. (This is compatible with 'echo text | md5sum')",
+      "default": "",
+      "example": "hashrat -rawlines"
+    },
+    {
+      "name": "-rl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read lines from stdin and hash each line independantly, INCLUDING any trailing whitespace. (This is compatible with 'echo text | md5sum')",
+      "default": "",
+      "example": "hashrat -rl"
+    },
+    {
+      "name": "-cgi",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run in HTTP CGI mode",
+      "default": "",
+      "example": "hashrat -cgi"
+    },
+    {
+      "name": "-xdialog",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run in 'xdialog' (zenity, yad or qarama) mode",
+      "default": "",
+      "example": "hashrat -xdialog"
+    },
+    {
+      "name": "-net",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Treat 'file' arguments as either ssh or http URLs, and pull files over the network and then hash them (Allows hashing of files on remote machines). URLs are in the format ssh://[username]:[password]@[host]:[port] or http://[username]:[password]@[host]:[port]..",
+      "default": "",
+      "example": "hashrat -net"
+    },
+    {
+      "name": "-idfile",
+      "short": "",
+      "aliases": [],
+      "arg": "<path>",
+      "required": false,
+      "description": "Path to an ssh private key file to use to authenticate INSTEAD OF A PASSWORD when pulling files via ssh.",
+      "default": "",
+      "example": "hashrat -idfile <path>"
+    },
+    {
+      "name": "-xattr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use eXtended file ATTRibutes. In hash mode, store hashes in the file attributes, in check mode compare against hashes stored in file attributes.",
+      "default": "",
+      "example": "hashrat -xattr"
+    },
+    {
+      "name": "-txattr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use TRUSTED eXtended file ATTRibutes. In hash mode, store hashes in 'trusted' file attributes. 'trusted' attributes can only be read and written by root. Under freebsd this menas SYSTEM attributes.",
+      "default": "",
+      "example": "hashrat -txattr"
+    },
+    {
+      "name": "-attrs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "comma-separated list of filesystem attribute names to be set to the value of the hash.",
+      "default": "",
+      "example": "hashrat -attrs"
+    },
+    {
+      "name": "-cache",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use hashes stored in 'user' xattr if they're younger than the mtime of the file. This speeds up outputting hashes. Also do not update xattr of a file if it already matches.",
+      "default": "",
+      "example": "hashrat -cache"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "<types>",
+      "required": false,
+      "description": "Update. In checking mode, update hashes for the files as you go. <types> is a comma-separated list of things to update, which can be 'xattr' 'memcached' or a file name. This will update these targets with the hash that was found at the time of checking.",
+      "default": "",
+      "example": "hashrat -u <types>"
+    },
+    {
+      "name": "-hide-input",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When reading data from stdin in linemode, set the terminal to not echo characters, thus hiding typed input.",
+      "default": "",
+      "example": "hashrat -hide-input"
+    },
+    {
+      "name": "-star-input",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When reading data from stdin in linemode replace characters with stars.",
+      "default": "",
+      "example": "hashrat -star-input"
+    },
+    {
+      "name": "-xsel",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update X11 clipboard and primary selections to the current hash. This works using Xterm command sequences. The xterm resource 'allowWindowOps' must be set to 'true' for this to work.",
+      "default": "",
+      "example": "hashrat -xsel"
+    },
+    {
+      "name": "-clip",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update X11 clipboard to the current hash. This works using the 'xsel', 'xclip' or 'pbcopy' commands, or if none of those are installed falls back to Xterm clipboard as in the '-xsel' option .",
+      "default": "",
+      "example": "hashrat -clip"
+    },
+    {
+      "name": "-qr",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display the current hash as a qrcode. This requires the 'qrencode' command to be installed, and also an image viewer like fim, feh, or imagemagick display to be installed.",
+      "default": "",
+      "example": "hashrat -qr"
+    },
+    {
+      "name": "-qrcode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display the current hash as a qrcode. This requires the 'qrencode' command to be installed, and also an image viewer like fim, feh, or imagemagick display to be installed.",
+      "default": "",
+      "example": "hashrat -qrcode"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

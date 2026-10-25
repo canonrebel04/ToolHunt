@@ -1,0 +1,50 @@
+{
+  "id": "spectools",
+  "name": "spectools",
+  "schema_version": 1,
+  "summary": "Spectrum-Tools is a set of utilities for using the Wi-Spy USB spectrum analyzer hardware. Stable version.",
+  "highlights": [
+    "-n — tcp://host:port Connect to network server",
+    "-l — List detected devices"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install spectools"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--net",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "tcp://host:port Connect to network server",
+      "default": "",
+      "example": "spectool_curses --net"
+    },
+    {
+      "name": "--list",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List detected devices",
+      "default": "",
+      "example": "spectool_curses --list"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

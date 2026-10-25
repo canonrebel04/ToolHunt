@@ -1,0 +1,25 @@
+{
+  "id": "gpp-decrypt",
+  "name": "gpp-decrypt",
+  "schema_version": 1,
+  "summary": "Parse the Group Policy Preferences XML file which extracts the username and decrypts the cpassword attribute.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install gpp-decrypt"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": false
+  }
+}

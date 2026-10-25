@@ -1,0 +1,82 @@
+{
+  "id": "thc-pptp-bruter",
+  "name": "thc-pptp-bruter",
+  "schema_version": 1,
+  "summary": "A brute force program that works against pptp vpn endpoints (tcp port 1723).",
+  "highlights": [
+    "-W — Disable windows hack [default: enabled]",
+    "-p — PPTP port [default: 1723]",
+    "-n — Number of parallel tries [default: 5]",
+    "-l — Limit to n passwords / sec [default: 100]"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install thc-pptp-bruter"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose output / Debug output",
+      "default": "",
+      "example": "thc-pptp-bruter -v"
+    },
+    {
+      "name": "-W",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable windows hack [default: enabled]",
+      "default": "enabled",
+      "example": "thc-pptp-bruter -W"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "PPTP port [default: 1723]",
+      "default": "1723",
+      "example": "thc-pptp-bruter -p <n>"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Number of parallel tries [default: 5]",
+      "default": "5",
+      "example": "thc-pptp-bruter -n <n>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "Limit to n passwords / sec [default: 100]",
+      "default": "100",
+      "example": "thc-pptp-bruter -l <n>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

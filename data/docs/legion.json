@@ -1,0 +1,186 @@
+{
+  "id": "legion",
+  "name": "legion",
+  "schema_version": 1,
+  "summary": "Automatic Enumeration Tool based in Open Source tools.",
+  "highlights": [
+    "--mcp-server — Start MCP server for AI integration",
+    "--headless — Run Legion in headless (CLI) mode",
+    "--web — Run Legion with the local Flask web interface",
+    "--tool-audit — Print a tool availability audit and exit",
+    "--tool-install-plan — Print the generated install script for missing tools on the selected platform and exit",
+    "--tool-install — Run the generated install plan for missing tools on the selected platform and exit",
+    "--web-port — Local web interface port",
+    "--web-bind-all — When used with --web, bind the web interface to 0.0.0.0 instead of 127.0.0.1"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install legion"
+    }
+  ],
+  "usage": "legion.py [-h] [--mcp-server] [--headless] [--web] [--tool-audit |",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "legion --help"
+    },
+    {
+      "name": "--mcp-server",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Start MCP server for AI integration",
+      "default": "",
+      "example": "legion --mcp-server"
+    },
+    {
+      "name": "--headless",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run Legion in headless (CLI) mode",
+      "default": "",
+      "example": "legion --headless"
+    },
+    {
+      "name": "--web",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run Legion with the local Flask web interface",
+      "default": "",
+      "example": "legion --web"
+    },
+    {
+      "name": "--tool-audit",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print a tool availability audit and exit",
+      "default": "",
+      "example": "legion --tool-audit"
+    },
+    {
+      "name": "--tool-install-plan",
+      "short": "",
+      "aliases": [],
+      "arg": "{kali,ubuntu}",
+      "required": false,
+      "description": "Print the generated install script for missing tools on the selected platform and exit",
+      "default": "",
+      "example": "legion --tool-install-plan <kali,ubuntu>"
+    },
+    {
+      "name": "--tool-install",
+      "short": "",
+      "aliases": [],
+      "arg": "{kali,ubuntu}",
+      "required": false,
+      "description": "Run the generated install plan for missing tools on the selected platform and exit",
+      "default": "",
+      "example": "legion --tool-install <kali,ubuntu>"
+    },
+    {
+      "name": "--web-port",
+      "short": "",
+      "aliases": [],
+      "arg": "WEB_PORT",
+      "required": false,
+      "description": "Local web interface port",
+      "default": "",
+      "example": "legion --web-port <web_port>"
+    },
+    {
+      "name": "--web-bind-all",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When used with --web, bind the web interface to 0.0.0.0 instead of 127.0.0.1",
+      "default": "",
+      "example": "legion --web-bind-all"
+    },
+    {
+      "name": "--web-transparent-ui",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When used with --web, enable transparent UI effects",
+      "default": "",
+      "example": "legion --web-transparent-ui"
+    },
+    {
+      "name": "--input-file",
+      "short": "",
+      "aliases": [],
+      "arg": "INPUT_FILE",
+      "required": false,
+      "description": "Text file with targets (hostnames, subnets, IPs, etc.)",
+      "default": "",
+      "example": "legion --input-file <input_file>"
+    },
+    {
+      "name": "--discovery",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable host discovery (default: enabled)",
+      "default": "enabled",
+      "example": "legion --discovery"
+    },
+    {
+      "name": "--staged-scan",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable staged scan",
+      "default": "",
+      "example": "legion --staged-scan"
+    },
+    {
+      "name": "--output-file",
+      "short": "",
+      "aliases": [],
+      "arg": "OUTPUT_FILE",
+      "required": false,
+      "description": "Output file (.legion or .json)",
+      "default": "",
+      "example": "legion --output-file <output_file>"
+    },
+    {
+      "name": "--run-actions",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run scripted actions/automated attacks after scan/import",
+      "default": "",
+      "example": "legion --run-actions"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

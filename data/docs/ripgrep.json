@@ -1,0 +1,1068 @@
+{
+  "id": "ripgrep",
+  "name": "ripgrep",
+  "schema_version": 1,
+  "summary": "Recursively searches directories for a regex pattern while respecting gitignore",
+  "highlights": [
+    "-e — A pattern to search for. This option can be provided multiple times, where all patterns gi",
+    "-f — Search for patterns from the given file, with one pattern per line. When this flag is used",
+    "--pre — For each input PATH, this flag causes ripgrep to search the standard output of COMMAND PAT",
+    "--pre-glob — This flag works in conjunction with the --pre flag. Namely, when one or more --pre-glob fl",
+    "-z — This flag instructs ripgrep to search in compressed files. Currently gzip, bzip2, xz, LZ4,",
+    "-s — Execute the search case sensitively. This is the default mode. This is a global option tha",
+    "--crlf — When enabled, ripgrep will treat CRLF (\\r\\n) as a line terminator instead of just \\n. Prin",
+    "-E — Specify the text encoding that ripgrep will use on all files searched. The default value i"
+  ],
+  "install": [
+    {
+      "method": "brew",
+      "cmd": "brew install ripgrep"
+    }
+  ],
+  "usage": "rg [OPTIONS] PATTERN [PATH ...]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--regexp",
+      "short": "-e",
+      "aliases": [],
+      "arg": "PATTERN",
+      "required": false,
+      "description": "A pattern to search for. This option can be provided multiple times, where all patterns given are searched, in addition to any patterns provided by -f/--file. Lines matching at least one of the provided patterns are…",
+      "default": "",
+      "example": "rg --regexp <pattern>"
+    },
+    {
+      "name": "--file",
+      "short": "-f",
+      "aliases": [],
+      "arg": "PATTERNFILE",
+      "required": false,
+      "description": "Search for patterns from the given file, with one pattern per line. When this flag is used multiple times or in combination with the -e/--regexp flag, then all patterns provided are searched. Empty pattern lines will…",
+      "default": "",
+      "example": "rg --file <patternfile>"
+    },
+    {
+      "name": "--pre",
+      "short": "",
+      "aliases": [],
+      "arg": "COMMAND",
+      "required": false,
+      "description": "For each input PATH, this flag causes ripgrep to search the standard output of COMMAND PATH instead of the contents of PATH. This option expects the COMMAND program to either be a path or to be available in your…",
+      "default": "",
+      "example": "rg --pre <command>"
+    },
+    {
+      "name": "--pre-glob",
+      "short": "",
+      "aliases": [],
+      "arg": "GLOB",
+      "required": false,
+      "description": "This flag works in conjunction with the --pre flag. Namely, when one or more --pre-glob flags are given, then only files that match the given set of globs will be handed to the command specified by the --pre flag.…",
+      "default": "",
+      "example": "rg --pre-glob <glob>"
+    },
+    {
+      "name": "--search-zip",
+      "short": "-z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag instructs ripgrep to search in compressed files. Currently gzip, bzip2, xz, LZ4, LZMA, Brotli and Zstd files are supported. This option expects the decompression binaries (such as gzip) to be available in…",
+      "default": "",
+      "example": "rg --search-zip"
+    },
+    {
+      "name": "--case-sensitive",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Execute the search case sensitively. This is the default mode. This is a global option that applies to all patterns given to ripgrep. Individual patterns can still be matched case insensitively by using inline regex…",
+      "default": "",
+      "example": "rg --case-sensitive"
+    },
+    {
+      "name": "--crlf",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When enabled, ripgrep will treat CRLF (\\r\\n) as a line terminator instead of just \\n. Principally, this permits the line anchor assertions ^ and $ in regex patterns to treat CRLF, CR or LF as line terminators instead…",
+      "default": "",
+      "example": "rg --crlf"
+    },
+    {
+      "name": "--encoding",
+      "short": "-E",
+      "aliases": [],
+      "arg": "ENCODING",
+      "required": false,
+      "description": "Specify the text encoding that ripgrep will use on all files searched. The default value is auto, which will cause ripgrep to do a best effort automatic detection of encoding on a per-file basis. Automatic detection…",
+      "default": "",
+      "example": "rg --encoding <encoding>"
+    },
+    {
+      "name": "--engine",
+      "short": "",
+      "aliases": [],
+      "arg": "ENGINE",
+      "required": false,
+      "description": "Specify which regular expression engine to use. When you choose a regex engine, it applies that choice for every regex provided to ripgrep (e.g., via multiple -e/--regexp or -f/--file flags). Accepted values are…",
+      "default": "",
+      "example": "rg --engine <engine>"
+    },
+    {
+      "name": "--fixed-strings",
+      "short": "-F",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Treat all patterns as literals instead of as regular expressions. When this flag is used, special regular expression meta characters such as .(){}*+ should not need be escaped. This flag can be disabled with…",
+      "default": "",
+      "example": "rg --fixed-strings"
+    },
+    {
+      "name": "--ignore-case",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When this flag is provided, all patterns will be searched case insensitively. The case insensitivity rules used by ripgrep's default regex engine conform to Unicode's \"simple\" case folding rules. This is a global…",
+      "default": "",
+      "example": "rg --ignore-case"
+    },
+    {
+      "name": "--invert-match",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag inverts matching. That is, instead of printing lines that match, ripgrep will print lines that don't match. Note that this only inverts line-by-line matching. For example, combining this flag with…",
+      "default": "",
+      "example": "rg --invert-match"
+    },
+    {
+      "name": "--line-regexp",
+      "short": "-x",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When enabled, ripgrep will only show matches surrounded by line boundaries. This is equivalent to surrounding every pattern with ^ and $. In other words, this only prints lines where the entire line participates in a…",
+      "default": "",
+      "example": "rg --line-regexp"
+    },
+    {
+      "name": "--max-count",
+      "short": "-m",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Limit the number of matching lines per file searched to NUM. When -U/--multiline is used, a single match that spans multiple lines is only counted once for the purposes of this limit. Multiple matches in a single…",
+      "default": "",
+      "example": "rg --max-count <num>"
+    },
+    {
+      "name": "--mmap",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When enabled, ripgrep will search using memory maps when possible. This is enabled by default when ripgrep thinks it will be faster. Memory map searching cannot be used in all circumstances. For example, when…",
+      "default": "",
+      "example": "rg --mmap"
+    },
+    {
+      "name": "--multiline",
+      "short": "-U",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag enables searching across multiple lines. When multiline mode is enabled, ripgrep will lift the restriction that a match cannot include a line terminator. For example, when multiline mode is not enabled (the…",
+      "default": "",
+      "example": "rg --multiline"
+    },
+    {
+      "name": "--multiline-dotall",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag enables \"dot all\" mode in all regex patterns. This causes . to match line terminators when multiline searching is enabled. This flag has no effect if multiline searching isn't enabled with the…",
+      "default": "",
+      "example": "rg --multiline-dotall"
+    },
+    {
+      "name": "--no-unicode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag disables Unicode mode for all patterns given to ripgrep. By default, ripgrep will enable \"Unicode mode\" in all of its regexes. This has a number of consequences: o . will only match valid UTF-8 encoded…",
+      "default": "",
+      "example": "rg --no-unicode"
+    },
+    {
+      "name": "--null-data",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enabling this flag causes ripgrep to use NUL as a line terminator instead of the default of \\n. This is useful when searching large binary files that would otherwise have very long lines if \\n were used as the line…",
+      "default": "",
+      "example": "rg --null-data"
+    },
+    {
+      "name": "--pcre2",
+      "short": "-P",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When this flag is present, ripgrep will use the PCRE2 regex engine instead of its default regex engine. This is generally useful when you want to use features such as look-around or backreferences. Using this flag is…",
+      "default": "",
+      "example": "rg --pcre2"
+    },
+    {
+      "name": "--smart-case",
+      "short": "-S",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag instructs ripgrep to searches case insensitively if the pattern is all lowercase. Otherwise, ripgrep will search case sensitively. A pattern is considered all lowercase if both of the following rules hold:…",
+      "default": "",
+      "example": "rg --smart-case"
+    },
+    {
+      "name": "--stop-on-nonmatch",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enabling this option will cause ripgrep to stop reading a file once it encounters a non-matching line after it has encountered a matching line. This is useful if it is expected that all matches in a given file will…",
+      "default": "",
+      "example": "rg --stop-on-nonmatch"
+    },
+    {
+      "name": "--text",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag instructs ripgrep to search binary files as if they were text. When this flag is present, ripgrep's binary file detection is disabled. This means that when a binary file is searched, its contents may be…",
+      "default": "",
+      "example": "rg --text"
+    },
+    {
+      "name": "--threads",
+      "short": "-j",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "This flag sets the approximate number of threads to use. A value of 0 (which is the default) causes ripgrep to choose the thread count using heuristics.",
+      "default": "",
+      "example": "rg --threads <num>"
+    },
+    {
+      "name": "--word-regexp",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When enabled, ripgrep will only show matches surrounded by word boundaries. This is equivalent to surrounding every pattern with \\b{start-half} and \\b{end-half}. These are a custom syntax from ripgrep's default regex…",
+      "default": "",
+      "example": "rg --word-regexp"
+    },
+    {
+      "name": "--auto-hybrid-regex",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DEPRECATED. Use --engine instead. When this flag is used, ripgrep will dynamically choose between supported regex engines depending on the features used in a pattern. When ripgrep chooses a regex engine, it applies…",
+      "default": "",
+      "example": "rg --auto-hybrid-regex"
+    },
+    {
+      "name": "--no-pcre2-unicode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DEPRECATED. Use --no-unicode instead. Note that Unicode mode is enabled by default. This flag can be disabled with --pcre2-unicode. FILTER OPTIONS",
+      "default": "",
+      "example": "rg --no-pcre2-unicode"
+    },
+    {
+      "name": "--binary",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enabling this flag will cause ripgrep to search binary files. By default, ripgrep attempts to automatically skip binary files in order to improve the relevance of results and make the search faster. Binary files are…",
+      "default": "",
+      "example": "rg --binary"
+    },
+    {
+      "name": "--follow",
+      "short": "-L",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag instructs ripgrep to follow symbolic links while traversing directories. This behavior is disabled by default. Note that ripgrep will check for symbolic link loops and report errors if it finds one. ripgrep…",
+      "default": "",
+      "example": "rg --follow"
+    },
+    {
+      "name": "--glob",
+      "short": "-g",
+      "aliases": [],
+      "arg": "GLOB",
+      "required": false,
+      "description": "Include or exclude files and directories for searching that match the given glob. This always overrides any other ignore logic. Multiple glob flags may be used. Globbing rules match .gitignore globs. Precede a glob…",
+      "default": "",
+      "example": "rg --glob <glob>"
+    },
+    {
+      "name": "--glob-case-insensitive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Process all glob patterns given with the -g/--glob flag case insensitively. This effectively treats -g/--glob as --iglob. This flag can be disabled with --no-glob-case-insensitive.",
+      "default": "",
+      "example": "rg --glob-case-insensitive"
+    },
+    {
+      "name": "--iglob",
+      "short": "",
+      "aliases": [],
+      "arg": "GLOB",
+      "required": false,
+      "description": "Include or exclude files and directories for searching that match the given glob. This always overrides any other ignore logic. Multiple glob flags may be used. Globbing rules match .gitignore globs. Precede a glob…",
+      "default": "",
+      "example": "rg --iglob <glob>"
+    },
+    {
+      "name": "--ignore-file",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Specifies a path to one or more gitignore formatted rules files. These patterns are applied after the patterns found in .gitignore, .rgignore and .ignore are applied and are matched relative to the current working…",
+      "default": "",
+      "example": "rg --ignore-file <path>"
+    },
+    {
+      "name": "--ignore-file-case-insensitive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Process ignore files (.gitignore, .ignore, etc.) case insensitively. Note that this comes with a performance penalty and is most useful on case insensitive file systems (such as Windows). This flag can be disabled…",
+      "default": "",
+      "example": "rg --ignore-file-case-insensitive"
+    },
+    {
+      "name": "--max-depth",
+      "short": "-d",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "This flag limits the depth of directory traversal to NUM levels beyond the paths given. A value of 0 only searches the explicitly given paths themselves. For example, rg --max-depth 0 dir/ is a no-op because dir/…",
+      "default": "",
+      "example": "rg --max-depth <num>"
+    },
+    {
+      "name": "--no-ignore",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When set, ignore files such as .gitignore, .ignore and .rgignore will not be respected. This implies --no-ignore-dot, --no-ignore-exclude, --no-ignore-global, --no-ignore-parent and --no-ignore-vcs. This does not…",
+      "default": "",
+      "example": "rg --no-ignore"
+    },
+    {
+      "name": "--no-ignore-dot",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't respect filter rules from .ignore or .rgignore files. This does not impact whether ripgrep will ignore files and directories whose names begin with a dot. For that, see the -./--hidden flag. This flag also does…",
+      "default": "",
+      "example": "rg --no-ignore-dot"
+    },
+    {
+      "name": "--no-ignore-exclude",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't respect filter rules from files that are manually configured for the repository. For example, this includes git's .git/info/exclude. This flag can be disabled with --ignore-exclude.",
+      "default": "",
+      "example": "rg --no-ignore-exclude"
+    },
+    {
+      "name": "--no-ignore-files",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When set, any --ignore-file flags, even ones that come after this flag, are ignored. This flag can be disabled with --ignore-files.",
+      "default": "",
+      "example": "rg --no-ignore-files"
+    },
+    {
+      "name": "--no-ignore-global",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't respect filter rules from ignore files that come from \"global\" sources such as git's core.excludesFile configuration option (which defaults to $HOME/.config/git/ignore). This flag can be disabled with…",
+      "default": "",
+      "example": "rg --no-ignore-global"
+    },
+    {
+      "name": "--no-ignore-parent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When this flag is set, filter rules from ignore files found in parent directories are not respected. By default, ripgrep will ascend the parent directories of the current working directory to look for any applicable…",
+      "default": "",
+      "example": "rg --no-ignore-parent"
+    },
+    {
+      "name": "--no-ignore-vcs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When given, filter rules from source control ignore files (e.g., .gitignore) are not respected. By default, ripgrep respects git's ignore rules for automatic filtering. In some cases, it may not be desirable to…",
+      "default": "",
+      "example": "rg --no-ignore-vcs"
+    },
+    {
+      "name": "--no-require-git",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When this flag is given, source control ignore files such as .gitignore are respected even if no git repository is present. By default, ripgrep will only respect filter rules from source control ignore files when…",
+      "default": "",
+      "example": "rg --no-require-git"
+    },
+    {
+      "name": "--one-file-system",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When enabled, ripgrep will not cross file system boundaries relative to where the search started from. Note that this applies to each path argument given to ripgrep. For example, in the command rg --one-file-system…",
+      "default": "",
+      "example": "rg --one-file-system"
+    },
+    {
+      "name": "--type",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TYPE",
+      "required": false,
+      "description": "This flag limits ripgrep to searching files matching TYPE. Multiple -t/--type flags may be provided. This flag supports the special value all, which will behave as if -t/--type was provided for every file type…",
+      "default": "",
+      "example": "rg --type <type>"
+    },
+    {
+      "name": "--type-not",
+      "short": "-T",
+      "aliases": [],
+      "arg": "TYPE",
+      "required": false,
+      "description": "Do not search files matching TYPE. Multiple -T/--type-not flags may be provided. Use the --type-list flag to list all available types. This flag supports the special value all, which will behave as if -T/--type-not…",
+      "default": "",
+      "example": "rg --type-not <type>"
+    },
+    {
+      "name": "--type-add",
+      "short": "",
+      "aliases": [],
+      "arg": "TYPESPEC",
+      "required": false,
+      "description": "This flag adds a new glob for a particular file type. Only one glob can be added at a time. Multiple --type-add flags can be provided. Unless --type-clear is used, globs are added to any existing globs defined inside…",
+      "default": "",
+      "example": "rg --type-add <typespec>"
+    },
+    {
+      "name": "--type-clear",
+      "short": "",
+      "aliases": [],
+      "arg": "TYPE",
+      "required": false,
+      "description": "Clear the file type globs previously defined for TYPE. This clears any previously defined globs for the TYPE, but globs can be added after this flag. Note that this must be passed to every invocation of ripgrep. Type…",
+      "default": "",
+      "example": "rg --type-clear <type>"
+    },
+    {
+      "name": "--unrestricted",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag reduces the level of \"smart\" filtering. Repeated uses (up to 3) reduces the filtering even more. When repeated three times, ripgrep will search every file in a directory tree. A single -u/--unrestricted…",
+      "default": "",
+      "example": "rg --unrestricted"
+    },
+    {
+      "name": "--after-context",
+      "short": "-A",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Show NUM lines after each match. This overrides the --passthru flag and partially overrides the -C/--context flag.",
+      "default": "",
+      "example": "rg --after-context <num>"
+    },
+    {
+      "name": "--before-context",
+      "short": "-B",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Show NUM lines before each match. This overrides the --passthru flag and partially overrides the -C/--context flag.",
+      "default": "",
+      "example": "rg --before-context <num>"
+    },
+    {
+      "name": "--block-buffered",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When enabled, ripgrep will use block buffering. That is, whenever a matching line is found, it will be written to an in-memory buffer and will not be written to stdout until the buffer reaches a certain size. This is…",
+      "default": "",
+      "example": "rg --block-buffered"
+    },
+    {
+      "name": "--byte-offset",
+      "short": "-b",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print the 0-based byte offset within the input file before each line of output. If -o/--only-matching is specified, print the offset of the matched text itself. If ripgrep does transcoding, then the byte offset is in…",
+      "default": "",
+      "example": "rg --byte-offset"
+    },
+    {
+      "name": "--color",
+      "short": "",
+      "aliases": [],
+      "arg": "WHEN",
+      "required": false,
+      "description": "This flag controls when to use colors. The default setting is auto, which means ripgrep will try to guess when to use colors. For example, if ripgrep is printing to a tty, then it will use colors, but if it is…",
+      "default": "",
+      "example": "rg --color <when>"
+    },
+    {
+      "name": "--colors",
+      "short": "",
+      "aliases": [],
+      "arg": "COLOR_SPEC",
+      "required": false,
+      "description": "This flag specifies color settings for use in the output. This flag may be provided multiple times. Settings are applied iteratively. Pre-existing color labels are limited to one of eight choices: red, blue, green,…",
+      "default": "",
+      "example": "rg --colors <color_spec>"
+    },
+    {
+      "name": "--column",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show column numbers (1-based). This only shows the column numbers for the first match on each line. This does not try to account for Unicode. One byte is equal to one column. This implies -n/--line-number. When…",
+      "default": "",
+      "example": "rg --column"
+    },
+    {
+      "name": "--context",
+      "short": "-C",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Show NUM lines before and after each match. This is equivalent to providing both the -B/--before-context and -A/--after-context flags with the same value. This overrides the --passthru flag. The -A/--after-context…",
+      "default": "",
+      "example": "rg --context <num>"
+    },
+    {
+      "name": "--context-separator",
+      "short": "",
+      "aliases": [],
+      "arg": "SEPARATOR",
+      "required": false,
+      "description": "The string used to separate non-contiguous context lines in the output. This is only used when one of the context flags is used (that is, -A/--after-context, -B/--before-context or -C/--context). Escape sequences…",
+      "default": "",
+      "example": "rg --context-separator <separator>"
+    },
+    {
+      "name": "--field-context-separator",
+      "short": "",
+      "aliases": [],
+      "arg": "SEPARATOR",
+      "required": false,
+      "description": "Set the field context separator. This separator is only used when printing contextual lines. It is used to delimit file paths, line numbers, columns and the contextual line itself. The separator may be any number of…",
+      "default": "",
+      "example": "rg --field-context-separator <separator>"
+    },
+    {
+      "name": "--field-match-separator",
+      "short": "",
+      "aliases": [],
+      "arg": "SEPARATOR",
+      "required": false,
+      "description": "Set the field match separator. This separator is only used when printing matching lines. It is used to delimit file paths, line numbers, columns and the matching line itself. The separator may be any number of bytes,…",
+      "default": "",
+      "example": "rg --field-match-separator <separator>"
+    },
+    {
+      "name": "--heading",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag prints the file path above clusters of matches from each file instead of printing the file path as a prefix for each matched line. This is the default mode when printing to a tty. When stdout is not a tty,…",
+      "default": "",
+      "example": "rg --heading"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag prints the help output for ripgrep. Unlike most other flags, the behavior of the short flag, -h, and the long flag, --help, is different. The short flag will show a condensed help output while the long flag…",
+      "default": "",
+      "example": "rg --help"
+    },
+    {
+      "name": "--hostname-bin",
+      "short": "",
+      "aliases": [],
+      "arg": "COMMAND",
+      "required": false,
+      "description": "This flag controls how ripgrep determines this system's hostname. The flag's value should correspond to an executable (either a path or something that can be found via your system's PATH environment variable). When…",
+      "default": "",
+      "example": "rg --hostname-bin <command>"
+    },
+    {
+      "name": "--hyperlink-format",
+      "short": "",
+      "aliases": [],
+      "arg": "FORMAT",
+      "required": false,
+      "description": "Set the format of hyperlinks to use when printing results. Hyperlinks make certain elements of ripgrep's output, such as file paths, clickable. This generally only works in terminal emulators that support OSC-8…",
+      "default": "",
+      "example": "rg --hyperlink-format <format>"
+    },
+    {
+      "name": "--include-zero",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When used with -c/--count or --count-matches, this causes ripgrep to print the number of matches for each file even if there were zero matches. This is disabled by default but can be enabled to make ripgrep behave…",
+      "default": "",
+      "example": "rg --include-zero"
+    },
+    {
+      "name": "--line-buffered",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When enabled, ripgrep will always use line buffering. That is, whenever a matching line is found, it will be flushed to stdout immediately. This is the default when ripgrep's stdout is connected to a tty, but…",
+      "default": "",
+      "example": "rg --line-buffered"
+    },
+    {
+      "name": "--line-number",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show line numbers (1-based). This is enabled by default when stdout is connected to a tty. This flag can be disabled by -N/--no-line-number.",
+      "default": "",
+      "example": "rg --line-number"
+    },
+    {
+      "name": "--no-line-number",
+      "short": "-N",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Suppress line numbers. Line numbers are off by default when stdout is not connected to a tty. Line numbers can be forcefully turned on by -n/--line-number.",
+      "default": "",
+      "example": "rg --no-line-number"
+    },
+    {
+      "name": "--max-columns",
+      "short": "-M",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "When given, ripgrep will omit lines longer than this limit in bytes. Instead of printing long lines, only the number of matches in that line is printed. When this flag is omitted or is set to 0, then it has no effect.",
+      "default": "",
+      "example": "rg --max-columns <num>"
+    },
+    {
+      "name": "--max-columns-preview",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prints a preview for lines exceeding the configured max column limit. When the -M/--max-columns flag is used, ripgrep will by default completely replace any line that is too long with a message indicating that a…",
+      "default": "",
+      "example": "rg --max-columns-preview"
+    },
+    {
+      "name": "--null",
+      "short": "-0",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Whenever a file path is printed, follow it with a NUL byte. This includes printing file paths before matches, and when printing a list of matching files such as with -c/--count, -l/--files-with-matches and --files.…",
+      "default": "",
+      "example": "rg --null"
+    },
+    {
+      "name": "--only-matching",
+      "short": "-o",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print only the matched (non-empty) parts of a matching line, with each such part on a separate output line.",
+      "default": "",
+      "example": "rg --only-matching"
+    },
+    {
+      "name": "--path-separator",
+      "short": "",
+      "aliases": [],
+      "arg": "SEPARATOR",
+      "required": false,
+      "description": "Set the path separator to use when printing file paths. This defaults to your platform's path separator, which is / on Unix and \\ on Windows. This flag is intended for overriding the default when the environment…",
+      "default": "",
+      "example": "rg --path-separator <separator>"
+    },
+    {
+      "name": "--passthru",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print both matching and non-matching lines. Another way to achieve a similar effect is by modifying your pattern to match the empty string. For example, if you are searching using rg foo, then using rg '^|foo'…",
+      "default": "",
+      "example": "rg --passthru"
+    },
+    {
+      "name": "--pretty",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This is a convenience alias for --color=always --heading --line-number. This flag is useful when you still want pretty output even if you're piping ripgrep to another program or file. For example: rg -p foo | less -R.",
+      "default": "",
+      "example": "rg --pretty"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not print anything to stdout. If a match is found in a file, then ripgrep will stop searching. This is useful when ripgrep is used only for its exit code (which will be an error code if no matches are found). When…",
+      "default": "",
+      "example": "rg --quiet"
+    },
+    {
+      "name": "--replace",
+      "short": "-r",
+      "aliases": [],
+      "arg": "REPLACEMENT",
+      "required": false,
+      "description": "Replaces every match with the text given when printing results. Neither this flag nor any other ripgrep flag will modify your files. Capture group indices (e.g., $5) and names (e.g., $foo) are supported in the…",
+      "default": "",
+      "example": "rg --replace <replacement>"
+    },
+    {
+      "name": "--sort",
+      "short": "",
+      "aliases": [],
+      "arg": "SORTBY",
+      "required": false,
+      "description": "This flag enables sorting of results in ascending order. The possible values for this flag are: none (Default) Do not sort results. Fastest. Can be multi- threaded. path Sort by file path. Always single-threaded. The…",
+      "default": "ault",
+      "example": "rg --sort <sortby>"
+    },
+    {
+      "name": "--sortr",
+      "short": "",
+      "aliases": [],
+      "arg": "SORTBY",
+      "required": false,
+      "description": "This flag enables sorting of results in descending order. The possible values for this flag are: none (Default) Do not sort results. Fastest. Can be multi- threaded. path Sort by file path. Always single-threaded.…",
+      "default": "ault",
+      "example": "rg --sortr <sortby>"
+    },
+    {
+      "name": "--trim",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When set, all ASCII whitespace at the beginning of each line printed will be removed. This flag can be disabled with --no-trim.",
+      "default": "",
+      "example": "rg --trim"
+    },
+    {
+      "name": "--vimgrep",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag instructs ripgrep to print results with every match on its own line, including line numbers and column numbers. With this option, a line with more than one match will be printed in its entirety more than…",
+      "default": "",
+      "example": "rg --vimgrep"
+    },
+    {
+      "name": "--with-filename",
+      "short": "-H",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag instructs ripgrep to print the file path for each matching line. This is the default when more than one file is searched. If --heading is enabled (the default when printing to a tty), the file path will be…",
+      "default": "",
+      "example": "rg --with-filename"
+    },
+    {
+      "name": "--no-filename",
+      "short": "-I",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag instructs ripgrep to never print the file path with each matching line. This is the default when ripgrep is explicitly instructed to search one file or stdin. This flag overrides -H/--with-filename.",
+      "default": "",
+      "example": "rg --no-filename"
+    },
+    {
+      "name": "--sort-files",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DEPRECATED. Use --sort=path instead. This flag instructs ripgrep to sort search results by file path lexicographically in ascending order. Note that this currently disables all parallelism and runs search in a single…",
+      "default": "",
+      "example": "rg --sort-files"
+    },
+    {
+      "name": "--count",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag suppresses normal output and shows the number of lines that match the given patterns for each file searched. Each file containing a match has its path and count printed on each line. Note that unless…",
+      "default": "",
+      "example": "rg --count"
+    },
+    {
+      "name": "--count-matches",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag suppresses normal output and shows the number of individual matches of the given patterns for each file searched. Each file containing matches has its path and match count printed on each line. Note that…",
+      "default": "",
+      "example": "rg --count-matches"
+    },
+    {
+      "name": "--files-with-matches",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print only the paths with at least one match and suppress match contents. Note that it is possible for this flag to have results inconsistent with the output of -c/--count. Notably, by default, ripgrep tries to avoid…",
+      "default": "",
+      "example": "rg --files-with-matches"
+    },
+    {
+      "name": "--files-without-match",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print the paths that contain zero matches and suppress match contents. This overrides -l/--files-with-matches.",
+      "default": "",
+      "example": "rg --files-without-match"
+    },
+    {
+      "name": "--json",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable printing results in a JSON Lines format. When this flag is provided, ripgrep will emit a sequence of messages, each encoded as a JSON object, where there are five different message types: begin A message that…",
+      "default": "",
+      "example": "rg --json"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show debug messages. Please use this when filing a bug report. The --debug flag is generally useful for figuring out why ripgrep skipped searching a particular file. The debug messages should mention all files…",
+      "default": "",
+      "example": "rg --debug"
+    },
+    {
+      "name": "--no-ignore-messages",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When this flag is enabled, all error messages related to parsing ignore files are suppressed. By default, error messages are printed to stderr. In cases where these errors are expected, this flag can be used to avoid…",
+      "default": "",
+      "example": "rg --no-ignore-messages"
+    },
+    {
+      "name": "--no-messages",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag suppresses some error messages. Specifically, messages related to the failed opening and reading of files. Error messages related to the syntax of the pattern are still shown. This flag can be disabled with…",
+      "default": "",
+      "example": "rg --no-messages"
+    },
+    {
+      "name": "--stats",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When enabled, ripgrep will print aggregate statistics about the search. When this flag is present, ripgrep will print at least the following stats to stdout at the end of the search: number of matched lines, number…",
+      "default": "",
+      "example": "rg --stats"
+    },
+    {
+      "name": "--trace",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show trace messages. This shows even more detail than the --debug flag. Generally, one should only use this if --debug doesn't emit the information you're looking for. OTHER BEHAVIORS",
+      "default": "",
+      "example": "rg --trace"
+    },
+    {
+      "name": "--files",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print each file that would be searched without actually performing the search. This is useful to determine whether a particular file is being searched or not. This overrides --type-list.",
+      "default": "",
+      "example": "rg --files"
+    },
+    {
+      "name": "--generate",
+      "short": "",
+      "aliases": [],
+      "arg": "KIND",
+      "required": false,
+      "description": "This flag instructs ripgrep to generate some special kind of output identified by KIND and then quit without searching. KIND can be one of the following values: man Generates a manual page for ripgrep in the roff…",
+      "default": "",
+      "example": "rg --generate <kind>"
+    },
+    {
+      "name": "--no-config",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When set, ripgrep will never read configuration files. When this flag is present, ripgrep will not respect the RIPGREP_CONFIG_PATH environment variable. If ripgrep ever grows a feature to automatically read…",
+      "default": "",
+      "example": "rg --no-config"
+    },
+    {
+      "name": "--pcre2-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "When this flag is present, ripgrep will print the version of PCRE2 in use, along with other information, and then exit. If PCRE2 is not available, then ripgrep will print an error message and exit with an error code.",
+      "default": "",
+      "example": "rg --pcre2-version"
+    },
+    {
+      "name": "--type-list",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show all supported file types and their corresponding globs. This takes any --type-add and --type-clear flags given into account. Each type is printed on its own line, followed by a : and then a comma-delimited list…",
+      "default": "",
+      "example": "rg --type-list"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This flag prints ripgrep's version. This also may print other relevant information, such as the presence of target specific optimizations and the git revision that this build of ripgrep was compiled from.",
+      "default": "",
+      "example": "rg --version"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "rg <pattern>",
+      "explanation": "Recursively search current directory for a pattern (`regex`)",
+      "source": "tldr:rg"
+    },
+    {
+      "cmd": "rg <pattern> <path/to/file_or_directory>",
+      "explanation": "Recursively search for a pattern in a file or directory",
+      "source": "tldr:rg"
+    },
+    {
+      "cmd": "rg --fixed-strings -- <string>",
+      "explanation": "Search for a literal string pattern",
+      "source": "tldr:rg"
+    },
+    {
+      "cmd": "rg <pattern> --glob '<filename_glob_pattern>'",
+      "explanation": "Only search the files matching the `glob` pattern(s) (e.g. `README.*`, use `!filename_pattern` to exclude instead)",
+      "source": "tldr:rg"
+    },
+    {
+      "cmd": "rg --files-with-matches <pattern>",
+      "explanation": "Only list matched files (useful when piping to other commands)",
+      "source": "tldr:rg"
+    },
+    {
+      "cmd": "rg --invert-match <pattern>",
+      "explanation": "Show lines that do not match the pattern",
+      "source": "tldr:rg"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "captured-help",
+    "package-install",
+    "tldr:pages/common/rg.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

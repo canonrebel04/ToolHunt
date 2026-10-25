@@ -1,0 +1,46 @@
+{
+  "id": "pcapfix",
+  "name": "pcapfix",
+  "schema_version": 1,
+  "summary": "Tries to repair your broken pcap and pcapng files.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "pcapfix <path/to/file.pcapng>",
+      "explanation": "Repair a PCAP/PCapNG file (Note: For PCAP files, only the first 262144 bytes of each packet are scanned)",
+      "source": "tldr:pcapfix"
+    },
+    {
+      "cmd": "pcapfix --deep-scan <path/to/file.pcap>",
+      "explanation": "Repair an entire PCAP file",
+      "source": "tldr:pcapfix"
+    },
+    {
+      "cmd": "pcapfix --outfile <path/to/repaired.pcap> <path/to/file.pcap>",
+      "explanation": "Repair a PCAP/PcapNG file and write the repaired file to the specified location",
+      "source": "tldr:pcapfix"
+    },
+    {
+      "cmd": "pcapfix --pcapng <path/to/file.pcapng>",
+      "explanation": "Treat the specified file as a PcapNG file, ignoring automatic recognition",
+      "source": "tldr:pcapfix"
+    },
+    {
+      "cmd": "pcapfix --verbose <path/to/file.pcap>",
+      "explanation": "Repair a file and show the process in detail",
+      "source": "tldr:pcapfix"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/pcapfix.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

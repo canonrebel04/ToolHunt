@@ -1,0 +1,61 @@
+{
+  "id": "pyrit",
+  "name": "pyrit",
+  "schema_version": 1,
+  "summary": "The famous WPA precomputed cracker.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "pyrit benchmark",
+      "explanation": "Display system cracking speed",
+      "source": "tldr:pyrit"
+    },
+    {
+      "cmd": "pyrit list_cores",
+      "explanation": "List available cores",
+      "source": "tldr:pyrit"
+    },
+    {
+      "cmd": "pyrit -e \"<extended_ssid>\" create_essid",
+      "explanation": "Set [e]SSID",
+      "source": "tldr:pyrit"
+    },
+    {
+      "cmd": "pyrit -r <path/to/file.cap|path/to/file.pcap> analyze",
+      "explanation": "[r]ead and analyze a specific packet capture file",
+      "source": "tldr:pyrit"
+    },
+    {
+      "cmd": "pyrit -i <path/to/file> <import_unique_passwords|unique_passwords|import_passwords>",
+      "explanation": "Read and [i]mport passwords to the current database",
+      "source": "tldr:pyrit"
+    },
+    {
+      "cmd": "pyrit -o <path/to/file> export_passwords",
+      "explanation": "Exp[o]rt passwords from database to a specific file",
+      "source": "tldr:pyrit"
+    },
+    {
+      "cmd": "pyrit batch",
+      "explanation": "Translate passwords with Pired Master Keys",
+      "source": "tldr:pyrit"
+    },
+    {
+      "cmd": "pyrit -r <path/to/file> attack_db",
+      "explanation": "[r]ead the capture file and crack the password",
+      "source": "tldr:pyrit"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/linux/pyrit.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

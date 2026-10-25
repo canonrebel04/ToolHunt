@@ -1,0 +1,236 @@
+{
+  "id": "photon",
+  "name": "photon",
+  "schema_version": 1,
+  "summary": "Incredibly fast crawler which extracts urls, emails, files, website accounts and much more.",
+  "highlights": [
+    "-u — root url",
+    "-c — cookie",
+    "-r — regex pattern",
+    "-e — export format",
+    "-o — output directory",
+    "-l — levels to crawl",
+    "-t — number of threads",
+    "-d — delay between requests"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install photon"
+    }
+  ],
+  "usage": "photon.py [-h] [-u ROOT] [-c COOK] [-r REGEX] [-e {csv,json}]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "photon --help"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "ROOT",
+      "required": false,
+      "description": "root url",
+      "default": "",
+      "example": "photon --url <root>"
+    },
+    {
+      "name": "--cookie",
+      "short": "-c",
+      "aliases": [],
+      "arg": "COOK",
+      "required": false,
+      "description": "cookie",
+      "default": "",
+      "example": "photon --cookie <cook>"
+    },
+    {
+      "name": "--regex",
+      "short": "-r",
+      "aliases": [],
+      "arg": "REGEX",
+      "required": false,
+      "description": "regex pattern",
+      "default": "",
+      "example": "photon --regex <regex>"
+    },
+    {
+      "name": "--export",
+      "short": "-e",
+      "aliases": [],
+      "arg": "{csv,json}",
+      "required": false,
+      "description": "export format",
+      "default": "",
+      "example": "photon --export <csv,json>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "output directory",
+      "default": "",
+      "example": "photon --output <output>"
+    },
+    {
+      "name": "--level",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "levels to crawl",
+      "default": "",
+      "example": "photon --level <level>"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "THREADS",
+      "required": false,
+      "description": "number of threads",
+      "default": "",
+      "example": "photon --threads <threads>"
+    },
+    {
+      "name": "--delay",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "delay between requests",
+      "default": "",
+      "example": "photon --delay <delay>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose output",
+      "default": "",
+      "example": "photon --verbose"
+    },
+    {
+      "name": "--stdout",
+      "short": "",
+      "aliases": [],
+      "arg": "STD",
+      "required": false,
+      "description": "send variables to stdout",
+      "default": "",
+      "example": "photon --stdout <std>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "USER_AGENT",
+      "required": false,
+      "description": "custom user agent(s)",
+      "default": "",
+      "example": "photon --user-agent <user_agent>"
+    },
+    {
+      "name": "--exclude",
+      "short": "",
+      "aliases": [],
+      "arg": "EXCLUDE",
+      "required": false,
+      "description": "exclude URLs matching this regex",
+      "default": "",
+      "example": "photon --exclude <exclude>"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "http request timeout",
+      "default": "",
+      "example": "photon --timeout <timeout>"
+    },
+    {
+      "name": "--clone",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "clone the website locally",
+      "default": "",
+      "example": "photon --clone"
+    },
+    {
+      "name": "--headers",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "add headers",
+      "default": "",
+      "example": "photon --headers"
+    },
+    {
+      "name": "--dns",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enumerate subdomains and DNS data",
+      "default": "",
+      "example": "photon --dns"
+    },
+    {
+      "name": "--keys",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "find secret keys",
+      "default": "",
+      "example": "photon --keys"
+    },
+    {
+      "name": "--only-urls",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "only extract URLs",
+      "default": "",
+      "example": "photon --only-urls"
+    },
+    {
+      "name": "--wayback",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "fetch URLs from archive.org as seeds",
+      "default": "",
+      "example": "photon --wayback"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

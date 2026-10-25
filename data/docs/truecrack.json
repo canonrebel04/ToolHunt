@@ -1,0 +1,26 @@
+{
+  "id": "truecrack",
+  "name": "truecrack",
+  "schema_version": 1,
+  "summary": "Password cracking for truecrypt(c) volumes.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install truecrack"
+    }
+  ],
+  "usage": "for Dictionary attack:",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

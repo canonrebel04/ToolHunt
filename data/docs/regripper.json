@@ -1,0 +1,26 @@
+{
+  "id": "regripper",
+  "name": "regripper",
+  "schema_version": 1,
+  "summary": "Open source forensic software used as a Windows Registry data extraction command line or GUI tool.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install regripper"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

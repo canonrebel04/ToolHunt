@@ -1,0 +1,226 @@
+{
+  "id": "sctpscan",
+  "name": "sctpscan",
+  "schema_version": 1,
+  "summary": "A network scanner for discovery and security.",
+  "highlights": [
+    "-p — (default: 10000) port specifies the remote port number",
+    "-P — (default: 10000) port specifies the local port number",
+    "-l — (default: 127.0.0.1) loc_host specifies the local (bind) host for the SCTP stream with opt",
+    "-r — (default: 127.0.0.2) rem_host specifies the remote (sendto) address for the SCTP stream wi",
+    "-s — --scan -r aaa[.bbb[.ccc]] scan all machines within network",
+    "-m — --map map all SCTP ports from 0 to 65535 (portscan)",
+    "-F — --Frequent Portscans the frequently used SCTP ports Frequent SCTP ports: 1, 7, 9, 20, 21, ",
+    "-a — --autoportscan Portscans automatically any host with SCTP aware TCP/IP stack"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sctpscan"
+    }
+  ],
+  "usage": "sctpscan [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--port",
+      "short": "-p",
+      "aliases": [],
+      "arg": "<port>",
+      "required": false,
+      "description": "(default: 10000) port specifies the remote port number",
+      "default": "10000",
+      "example": "sctpscan --port <port>"
+    },
+    {
+      "name": "--loc_port",
+      "short": "-P",
+      "aliases": [],
+      "arg": "<port>",
+      "required": false,
+      "description": "(default: 10000) port specifies the local port number",
+      "default": "10000",
+      "example": "sctpscan --loc_port <port>"
+    },
+    {
+      "name": "--loc_host",
+      "short": "-l",
+      "aliases": [],
+      "arg": "<loc_host>",
+      "required": false,
+      "description": "(default: 127.0.0.1) loc_host specifies the local (bind) host for the SCTP stream with optional local port number",
+      "default": "127.0.0.1",
+      "example": "sctpscan --loc_host <loc_host>"
+    },
+    {
+      "name": "--rem_host",
+      "short": "-r",
+      "aliases": [],
+      "arg": "<rem_host>",
+      "required": false,
+      "description": "(default: 127.0.0.2) rem_host specifies the remote (sendto) address for the SCTP stream with optional remote port number",
+      "default": "127.0.0.2",
+      "example": "sctpscan --rem_host <rem_host>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--scan -r aaa[.bbb[.ccc]] scan all machines within network",
+      "default": "",
+      "example": "sctpscan -s"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--map map all SCTP ports from 0 to 65535 (portscan)",
+      "default": "",
+      "example": "sctpscan -m"
+    },
+    {
+      "name": "-F",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--Frequent Portscans the frequently used SCTP ports Frequent SCTP ports: 1, 7, 9, 20, 21, 22, 80, 100, 128, 179, 260, 250, 443, 1167, 1812, 2097, 2000, 2001, 2010, 2011, 2020, 2021, 2100, 2110, 2120, 2225, 2427, 2477, 2577, 2904, 2905, 2906, 2907, 2908, 2909, 2944, 2945, 3000, 3097, 3565, 3740, 3863, 3864, 3868, 4000, 4739, 4740, 5000, 5001, 5060, 5061, 5090, 5091, 5672, 5675, 6000, 6100, 6110, 6120, 6130, 6140, 6150, 6160, 6170, 6180, 6190, 6529, 6700, 6701, 6702, 6789, 6790, 7000, 7001, 7102, 7103, 7105, 7551, 7626, 7701, 7800, 8000, 8001, 8471, 8787, 9006, 9084, 9899, 9911, 9900, 9901, 9902, 10000, 10001, 11146, 11997, 11998, 11999, 12205, 12235, 13000, 13001, 14000, 14001, 20049, 29118, 29168, 30000, 32905, 32931, 32768",
+      "default": "",
+      "example": "sctpscan -F"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--autoportscan Portscans automatically any host with SCTP aware TCP/IP stack",
+      "default": "",
+      "example": "sctpscan -a"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--linein Receive IP to scan from stdin",
+      "default": "",
+      "example": "sctpscan -i"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--fuzz Fuzz test all the remote protocol stack",
+      "default": "",
+      "example": "sctpscan -f"
+    },
+    {
+      "name": "-B",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--bothpackets Send packets with INIT chunk for one, and SHUTDOWN_ACK for the other",
+      "default": "",
+      "example": "sctpscan -B"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--both_checksum Send both checksum: new crc32 and old legacy-driven adler32",
+      "default": "",
+      "example": "sctpscan -b"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--crc32 Calculate checksums with the new crc32",
+      "default": "",
+      "example": "sctpscan -C"
+    },
+    {
+      "name": "-A",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--adler32 Calculate checksums with the old adler32",
+      "default": "",
+      "example": "sctpscan -A"
+    },
+    {
+      "name": "-Z",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--zombie Does not collaborate to the SCTP Collaboration platform. No reporting.",
+      "default": "",
+      "example": "sctpscan -Z"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--dummyserver Starts a dummy SCTP server on port 10000. You can then try to scan it from another machine.",
+      "default": "",
+      "example": "sctpscan -d"
+    },
+    {
+      "name": "-E",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--exec <script_name> Executes <script_name> each time an open SCTP port is found. Execution arguments: <script_name> host_ip sctp_port",
+      "default": "",
+      "example": "sctpscan -E"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--tcpbridge <listen TCP port> Bridges all connection from <listen TCP port> to remote designated SCTP port.",
+      "default": "",
+      "example": "sctpscan -t"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--streams <number of streams> Tries to establish SCTP association with the specified <number of streams> to remote designated SCTP destination.",
+      "default": "",
+      "example": "sctpscan -S"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

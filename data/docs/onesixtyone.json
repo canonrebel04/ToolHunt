@@ -1,0 +1,105 @@
+{
+  "id": "onesixtyone",
+  "name": "onesixtyone",
+  "schema_version": 1,
+  "summary": "An SNMP scanner that sends multiple SNMP requests to multiple IP addresses",
+  "highlights": [
+    "-i — file with target hosts",
+    "-o — output log",
+    "-p — specify an alternate destination SNMP port",
+    "-d — debug mode, use twice for more information",
+    "-s — short mode, only print IP addresses",
+    "-w — wait n milliseconds (1/1000 of a second) between sending packets (default 10)",
+    "-q — quiet mode, do not print log to stdout, use with -o"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install onesixtyone"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<inputfile>",
+      "required": false,
+      "description": "file with target hosts",
+      "default": "",
+      "example": "onesixtyone -i <inputfile>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "<outputfile>",
+      "required": false,
+      "description": "output log",
+      "default": "",
+      "example": "onesixtyone -o <outputfile>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "specify an alternate destination SNMP port",
+      "default": "",
+      "example": "onesixtyone -p"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "debug mode, use twice for more information",
+      "default": "",
+      "example": "onesixtyone -d"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "short mode, only print IP addresses",
+      "default": "",
+      "example": "onesixtyone -s"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "n",
+      "required": false,
+      "description": "wait n milliseconds (1/1000 of a second) between sending packets (default 10)",
+      "default": "10",
+      "example": "onesixtyone -w <n>"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "quiet mode, do not print log to stdout, use with -o",
+      "default": "",
+      "example": "onesixtyone -q"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

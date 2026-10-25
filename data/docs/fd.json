@@ -1,0 +1,67 @@
+{
+  "id": "fd",
+  "name": "fd",
+  "schema_version": 1,
+  "summary": "Find entries in the filesystem.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "brew",
+      "cmd": "brew install fd"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "fd \"<regex>\"",
+      "explanation": "Recursively find files matching a specific pattern in the current directory",
+      "source": "tldr:fd"
+    },
+    {
+      "cmd": "fd \"<regex>\" <path/to/directory>",
+      "explanation": "Find files in a specific directory",
+      "source": "tldr:fd"
+    },
+    {
+      "cmd": "fd --extension <txt>",
+      "explanation": "Find files with a specific extension",
+      "source": "tldr:fd"
+    },
+    {
+      "cmd": "fd \"<regex>\" --type directory",
+      "explanation": "Find only directories matching a specific pattern",
+      "source": "tldr:fd"
+    },
+    {
+      "cmd": "fd \"<regex>\" --hidden --no-ignore",
+      "explanation": "Include ignored and hidden files in the search",
+      "source": "tldr:fd"
+    },
+    {
+      "cmd": "fd \"<regex>\" --exclude <glob>",
+      "explanation": "Exclude files that match a specific `glob` pattern",
+      "source": "tldr:fd"
+    },
+    {
+      "cmd": "fd \"<regex>\" --exec <command>",
+      "explanation": "Execute a command on each search result returned",
+      "source": "tldr:fd"
+    },
+    {
+      "cmd": "fd \"<regex>\" --max-depth 1",
+      "explanation": "Find files only in the current directory",
+      "source": "tldr:fd"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "package-install",
+    "tldr:pages/common/fd.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

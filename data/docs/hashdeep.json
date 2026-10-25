@@ -1,0 +1,178 @@
+{
+  "id": "hashdeep",
+  "name": "hashdeep",
+  "schema_version": 1,
+  "summary": "Cross-platform tools to message digests for any number of files.",
+  "highlights": [
+    "-r — - recursive mode. All subdirectories are traversed",
+    "-d — - output in DFXML (Digital Forensics XML)",
+    "-a — - audit mode. Validates FILES against known hashes. Requires -k",
+    "-m — - matching mode. Requires -k",
+    "-x — - negative matching mode. Requires -k",
+    "-w — - in -m mode, displays which known file was matched",
+    "-e — - compute estimated time remaining for each file",
+    "-s — - silent mode. Suppress all error messages"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hashdeep"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- recursive mode. All subdirectories are traversed",
+      "default": "",
+      "example": "hashdeep -r"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- output in DFXML (Digital Forensics XML)",
+      "default": "",
+      "example": "hashdeep -d"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- audit mode. Validates FILES against known hashes. Requires -k",
+      "default": "",
+      "example": "hashdeep -a"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- matching mode. Requires -k",
+      "default": "",
+      "example": "hashdeep -m"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- negative matching mode. Requires -k",
+      "default": "",
+      "example": "hashdeep -x"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- in -m mode, displays which known file was matched",
+      "default": "",
+      "example": "hashdeep -w"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- compute estimated time remaining for each file",
+      "default": "",
+      "example": "hashdeep -e"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- silent mode. Suppress all error messages",
+      "default": "",
+      "example": "hashdeep -s"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- prints only the bare name of files; all path information is omitted",
+      "default": "",
+      "example": "hashdeep -b"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- print relative paths for filenames",
+      "default": "",
+      "example": "hashdeep -l"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [
+        "-I"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "- only process files smaller than the given threshold",
+      "default": "",
+      "example": "hashdeep -i"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- only process certain types of files. See README/manpage",
+      "default": "",
+      "example": "hashdeep -o"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "- verbose mode. Use again to be more verbose",
+      "default": "",
+      "example": "hashdeep -v"
+    },
+    {
+      "name": "-j",
+      "short": "",
+      "aliases": [],
+      "arg": "<num>",
+      "required": false,
+      "description": "- use num threads (default 6)",
+      "default": "6",
+      "example": "hashdeep -j <num>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "id": "sqlninja",
+  "name": "sqlninja",
+  "schema_version": 1,
+  "summary": "A tool targeted to exploit SQL Injection vulnerabilities on a web application that uses Microsoft SQL Server as its back-end.",
+  "highlights": [
+    "-m — Required. Available modes are: t/test - test whether the injection is working f/fingerprin",
+    "-f — configuration file (default: sqlninja.conf)",
+    "-p — sa password",
+    "-w — wordlist to use in bruteforce mode (dictionary method only)",
+    "-g — generate debug script and exit (only valid in upload mode)",
+    "-d — activate debug 1 - print each injected command 2 - print each raw HTTP request 3 - print e"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sqlninja"
+    }
+  ],
+  "usage": "sqlninja [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "<mode>",
+      "required": false,
+      "description": "Required. Available modes are: t/test - test whether the injection is working f/fingerprint - fingerprint user, xp_cmdshell and more b/bruteforce - bruteforce sa account e/escalation - add user to sysadmin server role x/resurrectxp - try to recreate xp_cmdshell u/upload - upload a .scr file s/dirshell - start a direct shell k/backscan - look for an open outbound port r/revshell - start a reverse shell d/dnstunnel - attempt a dns tunneled shell i/icmpshell - start a reverse ICMP shell c/sqlcmd - issue a 'blind' OS command m/metasploit - wrapper to Metasploit stagers",
+      "default": "",
+      "example": "sqlninja -m <mode>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "configuration file (default: sqlninja.conf)",
+      "default": "sqlninja.conf",
+      "example": "sqlninja -f <file>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<password>",
+      "required": false,
+      "description": "sa password",
+      "default": "",
+      "example": "sqlninja -p <password>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<wordlist>",
+      "required": false,
+      "description": "wordlist to use in bruteforce mode (dictionary method only)",
+      "default": "",
+      "example": "sqlninja -w <wordlist>"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "generate debug script and exit (only valid in upload mode)",
+      "default": "",
+      "example": "sqlninja -g"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose output",
+      "default": "",
+      "example": "sqlninja -v"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "<mode>",
+      "required": false,
+      "description": "activate debug 1 - print each injected command 2 - print each raw HTTP request 3 - print each raw HTTP response all - all of the above",
+      "default": "",
+      "example": "sqlninja -d <mode>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

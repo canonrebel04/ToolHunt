@@ -1,0 +1,61 @@
+{
+  "id": "paros",
+  "name": "paros",
+  "schema_version": 1,
+  "summary": "Java-based HTTP/HTTPS proxy for assessing web app vulnerabilities. Supports editing/viewing HTTP messages on-the-fly, spiders, client certificates, proxy-chaining, intelligent scanning for XSS and SQLi, etc.",
+  "highlights": [
+    "-spider — run spider. See other parameters",
+    "-scan — Run vulnerability scan depending on previously saved policy.",
+    "-last_scan_report — Generate 'Last Scan Report' into the file_path provided."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install paros"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-spider",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "run spider. See other parameters",
+      "default": "",
+      "example": "paros -spider"
+    },
+    {
+      "name": "-scan",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run vulnerability scan depending on previously saved policy.",
+      "default": "",
+      "example": "paros -scan"
+    },
+    {
+      "name": "-last_scan_report",
+      "short": "",
+      "aliases": [],
+      "arg": "[file_path]",
+      "required": false,
+      "description": "Generate 'Last Scan Report' into the file_path provided.",
+      "default": "",
+      "example": "paros -last_scan_report <file_path>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

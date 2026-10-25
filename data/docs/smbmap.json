@@ -1,0 +1,403 @@
+{
+  "id": "smbmap",
+  "name": "smbmap",
+  "schema_version": 1,
+  "summary": "A handy SMB enumeration tool.",
+  "highlights": [
+    "--host-file — File containing a list of hosts",
+    "-u — Username, if omitted null session assumed",
+    "-p — Password or NTLM hash, format is LMHASH:NTHASH",
+    "--prompt — Prompt for a password",
+    "-s — Specify a share (default C$), ex 'C$'",
+    "-d — Domain name (default WORKGROUP)",
+    "-P — SMB port (default 445)",
+    "--signing — Check if host has SMB signing disabled, enabled, or required"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install smbmap"
+    }
+  ],
+  "usage": "smbmap [-h] (-H HOST | --host-file FILE) [-u USERNAME] [-p PASSWORD |",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "smbmap --help"
+    },
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "HOST",
+      "required": false,
+      "description": "IP or FQDN",
+      "default": "",
+      "example": "smbmap -H <host>"
+    },
+    {
+      "name": "--host-file",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "File containing a list of hosts",
+      "default": "",
+      "example": "smbmap --host-file <file>"
+    },
+    {
+      "name": "--username",
+      "short": "-u",
+      "aliases": [],
+      "arg": "USERNAME",
+      "required": false,
+      "description": "Username, if omitted null session assumed",
+      "default": "",
+      "example": "smbmap --username <username>"
+    },
+    {
+      "name": "--password",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PASSWORD",
+      "required": false,
+      "description": "Password or NTLM hash, format is LMHASH:NTHASH",
+      "default": "",
+      "example": "smbmap --password <password>"
+    },
+    {
+      "name": "--prompt",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prompt for a password",
+      "default": "",
+      "example": "smbmap --prompt"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "SHARE",
+      "required": false,
+      "description": "Specify a share (default C$), ex 'C$'",
+      "default": "C$",
+      "example": "smbmap -s <share>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Domain name (default WORKGROUP)",
+      "default": "WORKGROUP",
+      "example": "smbmap -d <domain>"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "SMB port (default 445)",
+      "default": "445",
+      "example": "smbmap -P <port>"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Return the OS version of the remote host",
+      "default": "",
+      "example": "smbmap --version"
+    },
+    {
+      "name": "--signing",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": true,
+      "description": "Check if host has SMB signing disabled, enabled, or required",
+      "default": "",
+      "example": "smbmap --signing"
+    },
+    {
+      "name": "--admin",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Just report if the user is an admin",
+      "default": "",
+      "example": "smbmap --admin"
+    },
+    {
+      "name": "--no-banner",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Removes the banner from the top of the output",
+      "default": "",
+      "example": "smbmap --no-banner"
+    },
+    {
+      "name": "--no-color",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Removes the color from output",
+      "default": "",
+      "example": "smbmap --no-color"
+    },
+    {
+      "name": "--no-update",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Removes the \"Working on it\" message",
+      "default": "",
+      "example": "smbmap --no-update"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "SCAN_TIMEOUT",
+      "required": false,
+      "description": "Set port scan socket timeout. Default is .5 seconds",
+      "default": "",
+      "example": "smbmap --timeout <scan_timeout>"
+    },
+    {
+      "name": "--kerberos",
+      "short": "-k",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Kerberos authentication",
+      "default": "",
+      "example": "smbmap --kerberos"
+    },
+    {
+      "name": "--no-pass",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use CCache file (export KRB5CCNAME='~/current.ccache')",
+      "default": "",
+      "example": "smbmap --no-pass"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "COMMAND",
+      "required": false,
+      "description": "Execute a command ex. 'ipconfig /all'",
+      "default": "",
+      "example": "smbmap -x <command>"
+    },
+    {
+      "name": "--mode",
+      "short": "",
+      "aliases": [],
+      "arg": "CMDMODE",
+      "required": false,
+      "description": "Set the execution method, wmi or psexec, default wmi",
+      "default": "",
+      "example": "smbmap --mode <cmdmode>"
+    },
+    {
+      "name": "-L",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List all drives on the specified host, requires ADMIN rights.",
+      "default": "",
+      "example": "smbmap -L"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "[PATH]",
+      "required": false,
+      "description": "Recursively list dirs and files (no share\\path lists the root of ALL shares), ex. 'email/backup'",
+      "default": "",
+      "example": "smbmap -r <path>"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Output to a file in a grep friendly format, used with -r (otherwise it outputs nothing), ex -g grep_out.txt",
+      "default": "",
+      "example": "smbmap -g <file>"
+    },
+    {
+      "name": "--csv",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Output to a CSV file, ex --csv shares.csv",
+      "default": "",
+      "example": "smbmap --csv <file>"
+    },
+    {
+      "name": "--dir-only",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List only directories, ommit files.",
+      "default": "",
+      "example": "smbmap --dir-only"
+    },
+    {
+      "name": "--no-write-check",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip check to see if drive grants WRITE access.",
+      "default": "",
+      "example": "smbmap --no-write-check"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Quiet verbose output. Only shows shares you have READ or WRITE on, and suppresses file listing when performing a search (-A).",
+      "default": "",
+      "example": "smbmap -q"
+    },
+    {
+      "name": "--depth",
+      "short": "",
+      "aliases": [],
+      "arg": "DEPTH",
+      "required": false,
+      "description": "Traverse a directory tree to a specific depth. Default is 1 (root node).",
+      "default": "",
+      "example": "smbmap --depth <depth>"
+    },
+    {
+      "name": "-A",
+      "short": "",
+      "aliases": [],
+      "arg": "PATTERN",
+      "required": false,
+      "description": "Define a file name pattern (regex) that auto downloads a file on a match (requires -r), not case sensitive, ex '(web|global).(asax|config)'",
+      "default": "",
+      "example": "smbmap -A <pattern>"
+    },
+    {
+      "name": "-F",
+      "short": "",
+      "aliases": [],
+      "arg": "PATTERN",
+      "required": false,
+      "description": "File content search, -F '[Pp]assword' (requires admin access to execute commands, and PowerShell on victim host)",
+      "default": "",
+      "example": "smbmap -F <pattern>"
+    },
+    {
+      "name": "--search-path",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Specify drive/path to search (used with -F, default C:\\Users), ex 'D:\\HR\\'",
+      "default": "",
+      "example": "smbmap --search-path <path>"
+    },
+    {
+      "name": "--search-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "Specifcy a timeout (in seconds) before the file search job gets killed. Default is 300 seconds.",
+      "default": "",
+      "example": "smbmap --search-timeout <timeout>"
+    },
+    {
+      "name": "--download",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Download a file from the remote system, ex.'C$\\temp\\passwords.txt'",
+      "default": "",
+      "example": "smbmap --download <path>"
+    },
+    {
+      "name": "--skip",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip delete file confirmation prompt",
+      "default": "",
+      "example": "smbmap --skip"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "smbmap --host-file <path/to/file>",
+      "explanation": "Enumerate hosts with NULL sessions enabled and open shares",
+      "source": "tldr:smbmap"
+    },
+    {
+      "cmd": "smbmap --username <username> --prompt -H <ip_address>",
+      "explanation": "Display SMB shares and permissions on a [H]ost, prompting for user's password or NTLM hash",
+      "source": "tldr:smbmap"
+    },
+    {
+      "cmd": "smbmap --username <username> --prompt -H <ip_address> -x <command>",
+      "explanation": "Execute a shell command on a remote system",
+      "source": "tldr:smbmap"
+    },
+    {
+      "cmd": "smbmap --host-file <path/to/file> --username <username> --password <password> -q",
+      "explanation": "Enumerate hosts and check SMB file permissions",
+      "source": "tldr:smbmap"
+    },
+    {
+      "cmd": "smbmap --username <username> --password <password> -d <domain> -H <ip_or_hostname>",
+      "explanation": "Connect to an ip or hostname through smb using a username and password",
+      "source": "tldr:smbmap"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/smbmap.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

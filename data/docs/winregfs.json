@@ -1,0 +1,26 @@
+{
+  "id": "winregfs",
+  "name": "winregfs",
+  "schema_version": 1,
+  "summary": "Windows Registry FUSE filesystem.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install winregfs"
+    }
+  ],
+  "usage": "fsck.winregfs [options] hivename",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

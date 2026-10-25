@@ -1,0 +1,68 @@
+{
+  "id": "set",
+  "name": "set",
+  "schema_version": 1,
+  "summary": "Social-engineer toolkit. Aimed at penetration testing around Social-Engineering.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install set"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "set",
+      "explanation": "Display the names and values of shell variables",
+      "source": "tldr:set"
+    },
+    {
+      "cmd": "set -a",
+      "explanation": "Export newly initialized variables to child processes",
+      "source": "tldr:set"
+    },
+    {
+      "cmd": "set -b",
+      "explanation": "Write formatted messages to `stderr` when jobs finish",
+      "source": "tldr:set"
+    },
+    {
+      "cmd": "set -o vi",
+      "explanation": "Write and edit text in the command-line with `vi`-like keybindings (e.g. `yy`)",
+      "source": "tldr:set"
+    },
+    {
+      "cmd": "set -o emacs",
+      "explanation": "Return to default (`emacs`) mode",
+      "source": "tldr:set"
+    },
+    {
+      "cmd": "set -o",
+      "explanation": "List all modes",
+      "source": "tldr:set"
+    },
+    {
+      "cmd": "set -e",
+      "explanation": "Exit the shell when (some) command fails",
+      "source": "tldr:set"
+    },
+    {
+      "cmd": "set -- <argument1 argument2 ...>",
+      "explanation": "Reset all shell parameters and assign new ones",
+      "source": "tldr:set"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/set.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

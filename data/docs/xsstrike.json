@@ -1,0 +1,266 @@
+{
+  "id": "xsstrike",
+  "name": "xsstrike",
+  "schema_version": 1,
+  "summary": "An advanced XSS detection and exploitation suite.",
+  "highlights": [
+    "-u — url",
+    "--data — post data",
+    "-e — encode payloads",
+    "--fuzzer — fuzzer",
+    "--update — update",
+    "--timeout — timeout",
+    "--proxy — use prox(y|ies)",
+    "--crawl — crawl"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install xsstrike"
+    }
+  ],
+  "usage": "xsstrike.py [-h] [-u TARGET] [--data PARAMDATA] [-e ENCODE] [--fuzzer]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "xsstrike --help"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "TARGET",
+      "required": false,
+      "description": "url",
+      "default": "",
+      "example": "xsstrike --url <target>"
+    },
+    {
+      "name": "--data",
+      "short": "",
+      "aliases": [],
+      "arg": "PARAMDATA",
+      "required": false,
+      "description": "post data",
+      "default": "",
+      "example": "xsstrike --data <paramdata>"
+    },
+    {
+      "name": "--encode",
+      "short": "-e",
+      "aliases": [],
+      "arg": "ENCODE",
+      "required": false,
+      "description": "encode payloads",
+      "default": "",
+      "example": "xsstrike --encode <encode>"
+    },
+    {
+      "name": "--fuzzer",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "fuzzer",
+      "default": "",
+      "example": "xsstrike --fuzzer"
+    },
+    {
+      "name": "--update",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "update",
+      "default": "",
+      "example": "xsstrike --update"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "timeout",
+      "default": "",
+      "example": "xsstrike --timeout <timeout>"
+    },
+    {
+      "name": "--proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use prox(y|ies)",
+      "default": "",
+      "example": "xsstrike --proxy"
+    },
+    {
+      "name": "--crawl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "crawl",
+      "default": "",
+      "example": "xsstrike --crawl"
+    },
+    {
+      "name": "--json",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "treat post data as json",
+      "default": "",
+      "example": "xsstrike --json"
+    },
+    {
+      "name": "--path",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "inject payloads in the path",
+      "default": "",
+      "example": "xsstrike --path"
+    },
+    {
+      "name": "--seeds",
+      "short": "",
+      "aliases": [],
+      "arg": "ARGS_SEEDS",
+      "required": false,
+      "description": "load crawling seeds from a file",
+      "default": "",
+      "example": "xsstrike --seeds <args_seeds>"
+    },
+    {
+      "name": "--file",
+      "short": "-f",
+      "aliases": [],
+      "arg": "ARGS_FILE",
+      "required": false,
+      "description": "load payloads from a file",
+      "default": "",
+      "example": "xsstrike --file <args_file>"
+    },
+    {
+      "name": "--level",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "level of crawling",
+      "default": "",
+      "example": "xsstrike --level <level>"
+    },
+    {
+      "name": "--headers",
+      "short": "",
+      "aliases": [],
+      "arg": "[ADD_HEADERS]",
+      "required": false,
+      "description": "add headers",
+      "default": "",
+      "example": "xsstrike --headers <add_headers>"
+    },
+    {
+      "name": "--threads",
+      "short": "-t",
+      "aliases": [],
+      "arg": "THREADCOUNT",
+      "required": false,
+      "description": "number of threads",
+      "default": "",
+      "example": "xsstrike --threads <threadcount>"
+    },
+    {
+      "name": "--delay",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DELAY",
+      "required": false,
+      "description": "delay between requests",
+      "default": "",
+      "example": "xsstrike --delay <delay>"
+    },
+    {
+      "name": "--skip",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't ask to continue",
+      "default": "",
+      "example": "xsstrike --skip"
+    },
+    {
+      "name": "--skip-dom",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "skip dom checking",
+      "default": "",
+      "example": "xsstrike --skip-dom"
+    },
+    {
+      "name": "--blind",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "inject blind XSS payload while crawling",
+      "default": "",
+      "example": "xsstrike --blind"
+    },
+    {
+      "name": "--console-log-level",
+      "short": "",
+      "aliases": [],
+      "arg": "{DEBUG,INFO,RUN,GOOD,WARNING,ERROR,CRITICAL,VULN}",
+      "required": false,
+      "description": "Console logging level",
+      "default": "",
+      "example": "xsstrike --console-log-level <debug,info,run,good,warning,error,critical,vuln>"
+    },
+    {
+      "name": "--file-log-level",
+      "short": "",
+      "aliases": [],
+      "arg": "{DEBUG,INFO,RUN,GOOD,WARNING,ERROR,CRITICAL,VULN}",
+      "required": false,
+      "description": "File logging level",
+      "default": "",
+      "example": "xsstrike --file-log-level <debug,info,run,good,warning,error,critical,vuln>"
+    },
+    {
+      "name": "--log-file",
+      "short": "",
+      "aliases": [],
+      "arg": "LOG_FILE",
+      "required": false,
+      "description": "Name of the file to log",
+      "default": "",
+      "example": "xsstrike --log-file <log_file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "irpas",
+  "name": "irpas",
+  "schema_version": 1,
+  "summary": "Internetwork Routing Protocol Attack Suite.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install irpas"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

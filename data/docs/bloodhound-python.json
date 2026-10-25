@@ -1,0 +1,46 @@
+{
+  "id": "bloodhound-python",
+  "name": "bloodhound-python",
+  "schema_version": 1,
+  "summary": "Python data collector for Bloodhound legcacy (v4)",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "bloodhound-python --username <username> --password <password> --domain <domain>",
+      "explanation": "Collect all data using default collection methods (includes groups, sessions, and trusts)",
+      "source": "tldr:bloodhound-python"
+    },
+    {
+      "cmd": "bloodhound-python --collectionmethod <All> --kerberos --domain <domain>",
+      "explanation": "Collect data using Kerberos authentication without requiring a plaintext password",
+      "source": "tldr:bloodhound-python"
+    },
+    {
+      "cmd": "bloodhound-python --collectionmethod <All> --username <username> --hashes <LM:NTLM> --domain <domain>",
+      "explanation": "Authenticate using NTLM hashes instead of a password",
+      "source": "tldr:bloodhound-python"
+    },
+    {
+      "cmd": "bloodhound-python --collectionmethod <All> --username <username> --password <password> --domain <domain> --nameserver <nameserver>",
+      "explanation": "Specify a custom name server for DNS queries",
+      "source": "tldr:bloodhound-python"
+    },
+    {
+      "cmd": "bloodhound-python --collectionmethod <All> --username <username> --password <password> --domain <domain> --zip",
+      "explanation": "Save the output files as a compressed ZIP archive",
+      "source": "tldr:bloodhound-python"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/bloodhound-python.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

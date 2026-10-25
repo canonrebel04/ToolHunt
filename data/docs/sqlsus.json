@@ -1,0 +1,25 @@
+{
+  "id": "sqlsus",
+  "name": "sqlsus",
+  "schema_version": 1,
+  "summary": "An open source MySQL injection and takeover tool.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sqlsus"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": false
+  }
+}

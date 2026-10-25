@@ -1,0 +1,46 @@
+{
+  "id": "mdbtools",
+  "name": "mdbtools",
+  "schema_version": 1,
+  "summary": "Utilities for viewing data and exporting schema from Microsoft Access Database files.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install mdbtools"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install mdbtools-dev"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install mdbtools-doc"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install odbc-mdbtools"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libmdb3t64"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libmdbsql3t64"
+    }
+  ],
+  "usage": "mdb-array <file> <table>",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

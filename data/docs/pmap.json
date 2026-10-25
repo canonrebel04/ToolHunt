@@ -1,0 +1,46 @@
+{
+  "id": "pmap",
+  "name": "pmap",
+  "schema_version": 1,
+  "summary": "Passively discover, scan, and fingerprint link-local peers by the background noise they generate (i.e. their broadcast and multicast traffic).",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "pmap <process_id>",
+      "explanation": "Print memory map for a specific process ID (PID)",
+      "source": "tldr:pmap"
+    },
+    {
+      "cmd": "pmap --extended <process_id>",
+      "explanation": "Show the extended format",
+      "source": "tldr:pmap"
+    },
+    {
+      "cmd": "pmap --device <process_id>",
+      "explanation": "Show the device format",
+      "source": "tldr:pmap"
+    },
+    {
+      "cmd": "pmap --range <low>,<high>",
+      "explanation": "Limit results to a memory address range specified by `low` and `high`",
+      "source": "tldr:pmap"
+    },
+    {
+      "cmd": "pmap <process_id1 process_id2 ...>",
+      "explanation": "Print memory maps for multiple processes",
+      "source": "tldr:pmap"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/linux/pmap.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

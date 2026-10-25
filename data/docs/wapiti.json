@@ -1,0 +1,676 @@
+{
+  "id": "wapiti",
+  "name": "wapiti",
+  "schema_version": 1,
+  "summary": "A vulnerability scanner for web applications.",
+  "highlights": [
+    "-u — The base URL used to define the scan scope (default scope is folder)",
+    "--swagger — Swagger file URI (path or URL) to target API endpoints",
+    "--scope — Set scan scope",
+    "-m — List of modules to load",
+    "--list-modules — List Wapiti attack modules and exit",
+    "-l — Set attack level",
+    "-p — Set the HTTP(S) proxy to use. Supported: http(s) and socks proxies",
+    "--tor — Use Tor listener (127.0.0.1:9050)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install wapiti"
+    }
+  ],
+  "usage": "wapiti [-h] (-u URL | --list-modules | --update) [--swagger URI]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "wapiti --help"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "The base URL used to define the scan scope (default scope is folder)",
+      "default": "scope is folder",
+      "example": "wapiti --url <url>"
+    },
+    {
+      "name": "--swagger",
+      "short": "",
+      "aliases": [],
+      "arg": "URI",
+      "required": false,
+      "description": "Swagger file URI (path or URL) to target API endpoints",
+      "default": "",
+      "example": "wapiti --swagger <uri>"
+    },
+    {
+      "name": "--scope",
+      "short": "",
+      "aliases": [],
+      "arg": "{url,page,folder,subdomain,domain,punk}",
+      "required": false,
+      "description": "Set scan scope",
+      "default": "",
+      "example": "wapiti --scope <url,page,folder,subdomain,domain,punk>"
+    },
+    {
+      "name": "--module",
+      "short": "-m",
+      "aliases": [],
+      "arg": "MODULES_LIST",
+      "required": false,
+      "description": "List of modules to load",
+      "default": "",
+      "example": "wapiti --module <modules_list>"
+    },
+    {
+      "name": "--list-modules",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List Wapiti attack modules and exit",
+      "default": "",
+      "example": "wapiti --list-modules"
+    },
+    {
+      "name": "--level",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Set attack level",
+      "default": "",
+      "example": "wapiti --level <level>"
+    },
+    {
+      "name": "--proxy",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PROXY_URL",
+      "required": false,
+      "description": "Set the HTTP(S) proxy to use. Supported: http(s) and socks proxies",
+      "default": "",
+      "example": "wapiti --proxy <proxy_url>"
+    },
+    {
+      "name": "--tor",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Tor listener (127.0.0.1:9050)",
+      "default": "",
+      "example": "wapiti --tor"
+    },
+    {
+      "name": "--mitm-port",
+      "short": "",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "Instead of crawling, launch an intercepting proxy on the given port",
+      "default": "",
+      "example": "wapiti --mitm-port <port>"
+    },
+    {
+      "name": "--headless",
+      "short": "",
+      "aliases": [],
+      "arg": "{no,hidden,visible}",
+      "required": false,
+      "description": "Use a Firefox headless crawler for browsing (slower)",
+      "default": "",
+      "example": "wapiti --headless <no,hidden,visible>"
+    },
+    {
+      "name": "--wait",
+      "short": "",
+      "aliases": [],
+      "arg": "TIME",
+      "required": false,
+      "description": "Wait the specified amount of seconds before analyzing a webpage (headless mode only)",
+      "default": "",
+      "example": "wapiti --wait <time>"
+    },
+    {
+      "name": "--auth-cred",
+      "short": "-a",
+      "aliases": [],
+      "arg": "CREDENTIALS",
+      "required": false,
+      "description": "(DEPRECATED) Set HTTP authentication credentials",
+      "default": "",
+      "example": "wapiti --auth-cred <credentials>"
+    },
+    {
+      "name": "--auth-user",
+      "short": "",
+      "aliases": [],
+      "arg": "USERNAME",
+      "required": false,
+      "description": "Set HTTP authentication username credentials",
+      "default": "",
+      "example": "wapiti --auth-user <username>"
+    },
+    {
+      "name": "--auth-password",
+      "short": "",
+      "aliases": [],
+      "arg": "PASSWORD",
+      "required": false,
+      "description": "Set HTTP authentication password credentials",
+      "default": "",
+      "example": "wapiti --auth-password <password>"
+    },
+    {
+      "name": "--auth-method",
+      "short": "",
+      "aliases": [],
+      "arg": "{basic,digest,ntlm}",
+      "required": false,
+      "description": "Set the HTTP authentication method to use",
+      "default": "",
+      "example": "wapiti --auth-method <basic,digest,ntlm>"
+    },
+    {
+      "name": "--form-cred",
+      "short": "",
+      "aliases": [],
+      "arg": "CREDENTIALS",
+      "required": false,
+      "description": "(DEPRECATED) Set login form credentials",
+      "default": "",
+      "example": "wapiti --form-cred <credentials>"
+    },
+    {
+      "name": "--form-user",
+      "short": "",
+      "aliases": [],
+      "arg": "USERNAME",
+      "required": false,
+      "description": "Set login form credentials",
+      "default": "",
+      "example": "wapiti --form-user <username>"
+    },
+    {
+      "name": "--form-password",
+      "short": "",
+      "aliases": [],
+      "arg": "PASSWORD",
+      "required": false,
+      "description": "Set password form credentials",
+      "default": "",
+      "example": "wapiti --form-password <password>"
+    },
+    {
+      "name": "--form-url",
+      "short": "",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Set login form URL",
+      "default": "",
+      "example": "wapiti --form-url <url>"
+    },
+    {
+      "name": "--form-data",
+      "short": "",
+      "aliases": [],
+      "arg": "DATA",
+      "required": false,
+      "description": "Set login form POST data",
+      "default": "",
+      "example": "wapiti --form-data <data>"
+    },
+    {
+      "name": "--form-enctype",
+      "short": "",
+      "aliases": [],
+      "arg": "DATA",
+      "required": false,
+      "description": "Set enctype to use to POST form data to form URL",
+      "default": "",
+      "example": "wapiti --form-enctype <data>"
+    },
+    {
+      "name": "--form-script",
+      "short": "",
+      "aliases": [],
+      "arg": "FILENAME",
+      "required": false,
+      "description": "Use a custom Python authentication plugin",
+      "default": "",
+      "example": "wapiti --form-script <filename>"
+    },
+    {
+      "name": "--cookie",
+      "short": "-c",
+      "aliases": [],
+      "arg": "COOKIE_FILE",
+      "required": false,
+      "description": "Set a JSON cookie file to use. You can also pass 'firefox' or 'chrome' to load cookies from your browser.",
+      "default": "",
+      "example": "wapiti --cookie <cookie_file>"
+    },
+    {
+      "name": "--side-file",
+      "short": "-sf",
+      "aliases": [],
+      "arg": "SIDE_FILE",
+      "required": false,
+      "description": "Use a .side file generated using Selenium IDE to perform an authenticated scan.",
+      "default": "",
+      "example": "wapiti --side-file <side_file>"
+    },
+    {
+      "name": "--cookie-value",
+      "short": "-C",
+      "aliases": [],
+      "arg": "COOKIE_VALUE",
+      "required": false,
+      "description": "Set a cookie to use for every request for authenticated scan. You can put multiple cookies separated by semicolons as a value",
+      "default": "",
+      "example": "wapiti --cookie-value <cookie_value>"
+    },
+    {
+      "name": "--drop-set-cookie",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore Set-Cookie header from HTTP responses",
+      "default": "",
+      "example": "wapiti --drop-set-cookie"
+    },
+    {
+      "name": "--skip-crawl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't resume the scanning process, attack URLs scanned during a previous session",
+      "default": "",
+      "example": "wapiti --skip-crawl"
+    },
+    {
+      "name": "--resume-crawl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Resume the scanning process (if stopped) even if some attacks were previously performed",
+      "default": "",
+      "example": "wapiti --resume-crawl"
+    },
+    {
+      "name": "--flush-attacks",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Flush attack history and vulnerabilities for the current session",
+      "default": "",
+      "example": "wapiti --flush-attacks"
+    },
+    {
+      "name": "--flush-session",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Flush everything that was previously found for this target (crawled URLs, vulns, etc)",
+      "default": "",
+      "example": "wapiti --flush-session"
+    },
+    {
+      "name": "--store-session",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Directory where to store attack history and session data.",
+      "default": "",
+      "example": "wapiti --store-session <path>"
+    },
+    {
+      "name": "--store-config",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Directory where to store configuration databases.",
+      "default": "",
+      "example": "wapiti --store-config <path>"
+    },
+    {
+      "name": "--start",
+      "short": "-s",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Adds a url to start scan with",
+      "default": "",
+      "example": "wapiti --start <url>"
+    },
+    {
+      "name": "--exclude",
+      "short": "-x",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Adds a url to exclude from the scan",
+      "default": "",
+      "example": "wapiti --exclude <url>"
+    },
+    {
+      "name": "--remove",
+      "short": "-r",
+      "aliases": [],
+      "arg": "PARAMETER",
+      "required": false,
+      "description": "Remove this parameter from urls",
+      "default": "",
+      "example": "wapiti --remove <parameter>"
+    },
+    {
+      "name": "--skip",
+      "short": "",
+      "aliases": [],
+      "arg": "PARAMETER",
+      "required": false,
+      "description": "Skip attacking given parameter(s)",
+      "default": "",
+      "example": "wapiti --skip <parameter>"
+    },
+    {
+      "name": "--depth",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DEPTH",
+      "required": false,
+      "description": "Set how deep the scanner should explore the website",
+      "default": "",
+      "example": "wapiti --depth <depth>"
+    },
+    {
+      "name": "--max-links-per-page",
+      "short": "",
+      "aliases": [],
+      "arg": "MAX",
+      "required": false,
+      "description": "Set how many (in-scope) links the scanner should extract for each page",
+      "default": "",
+      "example": "wapiti --max-links-per-page <max>"
+    },
+    {
+      "name": "--max-files-per-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "MAX",
+      "required": false,
+      "description": "Set how many pages the scanner should explore per directory",
+      "default": "",
+      "example": "wapiti --max-files-per-dir <max>"
+    },
+    {
+      "name": "--max-scan-time",
+      "short": "",
+      "aliases": [],
+      "arg": "SECONDS",
+      "required": false,
+      "description": "Set how many seconds you want the scan to last (floats accepted)",
+      "default": "",
+      "example": "wapiti --max-scan-time <seconds>"
+    },
+    {
+      "name": "--max-attack-time",
+      "short": "",
+      "aliases": [],
+      "arg": "SECONDS",
+      "required": false,
+      "description": "Set how many seconds you want each attack module to last (floats accepted)",
+      "default": "",
+      "example": "wapiti --max-attack-time <seconds>"
+    },
+    {
+      "name": "--max-parameters",
+      "short": "",
+      "aliases": [],
+      "arg": "MAX",
+      "required": false,
+      "description": "URLs and forms having more than MAX input parameters will be erased before attack.",
+      "default": "",
+      "example": "wapiti --max-parameters <max>"
+    },
+    {
+      "name": "--scan-force",
+      "short": "-S",
+      "aliases": [],
+      "arg": "FORCE",
+      "required": false,
+      "description": "Easy way to reduce the number of scanned and attacked URLs. Possible values: paranoid, sneaky, polite, normal, aggressive, insane",
+      "default": "",
+      "example": "wapiti --scan-force <force>"
+    },
+    {
+      "name": "--external-endpoint",
+      "short": "",
+      "aliases": [],
+      "arg": "EXTERNAL_ENDPOINT_URL",
+      "required": false,
+      "description": "Url serving as endpoint for target",
+      "default": "",
+      "example": "wapiti --external-endpoint <external_endpoint_url>"
+    },
+    {
+      "name": "--internal-endpoint",
+      "short": "",
+      "aliases": [],
+      "arg": "INTERNAL_ENDPOINT_URL",
+      "required": false,
+      "description": "Url serving as endpoint for attacker",
+      "default": "",
+      "example": "wapiti --internal-endpoint <internal_endpoint_url>"
+    },
+    {
+      "name": "--endpoint",
+      "short": "",
+      "aliases": [],
+      "arg": "ENDPOINT_URL",
+      "required": false,
+      "description": "Url serving as endpoint for both attacker and target",
+      "default": "",
+      "example": "wapiti --endpoint <endpoint_url>"
+    },
+    {
+      "name": "--dns-endpoint",
+      "short": "",
+      "aliases": [],
+      "arg": "DNS_ENDPOINT_DOMAIN",
+      "required": false,
+      "description": "Domain serving as DNS endpoint for Log4Shell attack",
+      "default": "",
+      "example": "wapiti --dns-endpoint <dns_endpoint_domain>"
+    },
+    {
+      "name": "--timeout",
+      "short": "-t",
+      "aliases": [],
+      "arg": "SECONDS",
+      "required": false,
+      "description": "Set timeout for requests",
+      "default": "",
+      "example": "wapiti --timeout <seconds>"
+    },
+    {
+      "name": "--header",
+      "short": "-H",
+      "aliases": [],
+      "arg": "HEADER",
+      "required": false,
+      "description": "Set a custom header to use for every requests",
+      "default": "",
+      "example": "wapiti --header <header>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "-A",
+      "aliases": [],
+      "arg": "AGENT",
+      "required": false,
+      "description": "Set a custom user-agent to use for every requests",
+      "default": "",
+      "example": "wapiti --user-agent <agent>"
+    },
+    {
+      "name": "--verify-ssl",
+      "short": "",
+      "aliases": [],
+      "arg": "{0,1}",
+      "required": false,
+      "description": "Set SSL check (default is no check)",
+      "default": "is no check",
+      "example": "wapiti --verify-ssl <0,1>"
+    },
+    {
+      "name": "--color",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Colorize output",
+      "default": "",
+      "example": "wapiti --color"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Set verbosity level (0: quiet, 1: normal, 2: verbose)",
+      "default": "",
+      "example": "wapiti --verbose <level>"
+    },
+    {
+      "name": "--log",
+      "short": "",
+      "aliases": [],
+      "arg": "OUTPUT_PATH",
+      "required": false,
+      "description": "Output log file",
+      "default": "",
+      "example": "wapiti --log <output_path>"
+    },
+    {
+      "name": "--format",
+      "short": "-f",
+      "aliases": [],
+      "arg": "FORMAT",
+      "required": false,
+      "description": "Set output format. Supported: csv, html, json, md, txt, xml. Default is html.",
+      "default": "",
+      "example": "wapiti --format <format>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT_PATH",
+      "required": false,
+      "description": "Output file or folder",
+      "default": "",
+      "example": "wapiti --output <output_path>"
+    },
+    {
+      "name": "--detailed-report",
+      "short": "-dr",
+      "aliases": [],
+      "arg": "DETAILED_REPORT_LEVEL",
+      "required": false,
+      "description": "level 1 : include only the HTTP requests, level 2 : include HTTP requests and responses",
+      "default": "",
+      "example": "wapiti --detailed-report <detailed_report_level>"
+    },
+    {
+      "name": "--no-bugreport",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't send automatic bug report when an attack module fails",
+      "default": "",
+      "example": "wapiti --no-bugreport"
+    },
+    {
+      "name": "--update",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Update Wapiti attack modules and exit",
+      "default": "",
+      "example": "wapiti --update"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show program's version number and exit",
+      "default": "",
+      "example": "wapiti --version"
+    },
+    {
+      "name": "--cms",
+      "short": "",
+      "aliases": [],
+      "arg": "CMS_LIST",
+      "required": false,
+      "description": "Choose the CMS to scan. Possible choices : drupal, joomla, prestashop, spip, wp",
+      "default": "",
+      "example": "wapiti --cms <cms_list>"
+    },
+    {
+      "name": "--wapp-url",
+      "short": "",
+      "aliases": [],
+      "arg": "WAPP_URL",
+      "required": false,
+      "description": "Provide a custom URL for updating Wappalyzer Database",
+      "default": "",
+      "example": "wapiti --wapp-url <wapp_url>"
+    },
+    {
+      "name": "--wapp-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "WAPP_DIR",
+      "required": false,
+      "description": "Provide a custom directory path for updating Wappalyzer Database",
+      "default": "",
+      "example": "wapiti --wapp-dir <wapp_dir>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

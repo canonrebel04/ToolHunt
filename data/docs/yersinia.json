@@ -1,0 +1,92 @@
+{
+  "id": "yersinia",
+  "name": "yersinia",
+  "schema_version": 1,
+  "summary": "A network tool designed to take advantage of some weakness in different network protocols.",
+  "highlights": [
+    "-G — Graphical mode (GTK).",
+    "-I — Interactive mode (ncurses).",
+    "-D — Daemon mode.",
+    "-d — Debug."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install yersinia"
+    }
+  ],
+  "usage": "yersinia [-hVGIDd] [-l logfile] [-c conffile] protocol [protocol_options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Program version.",
+      "default": "",
+      "example": "yersinia -V"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This help screen.",
+      "default": "",
+      "example": "yersinia -h"
+    },
+    {
+      "name": "-G",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Graphical mode (GTK).",
+      "default": "",
+      "example": "yersinia -G"
+    },
+    {
+      "name": "-I",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Interactive mode (ncurses).",
+      "default": "",
+      "example": "yersinia -I"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Daemon mode.",
+      "default": "",
+      "example": "yersinia -D"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Debug.",
+      "default": "",
+      "example": "yersinia -d"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

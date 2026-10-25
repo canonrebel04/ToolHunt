@@ -1,0 +1,114 @@
+{
+  "id": "undbx",
+  "name": "undbx",
+  "schema_version": 1,
+  "summary": "Extract e-mail messages from Outlook Express DBX files.",
+  "highlights": [
+    "-v — set verbosity level to N [default: 3]",
+    "-r — enable recovery mode",
+    "-s — generate locale-safe file names",
+    "-D — delete messages from the destination directory that were deleted from the dbx file [defaul",
+    "-i — ignore empty messages",
+    "-d — output debug messages"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install undbx"
+    }
+  ],
+  "usage": "undbx [<OPTION>] <DBX-FOLDER | DBX-FILE> [<OUTPUT-FOLDER>]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this message",
+      "default": "",
+      "example": "undbx --help"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show only version string",
+      "default": "",
+      "example": "undbx --version"
+    },
+    {
+      "name": "--verbosity",
+      "short": "-v",
+      "aliases": [],
+      "arg": "N",
+      "required": false,
+      "description": "set verbosity level to N [default: 3]",
+      "default": "3",
+      "example": "undbx --verbosity <n>"
+    },
+    {
+      "name": "--recover",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable recovery mode",
+      "default": "",
+      "example": "undbx --recover"
+    },
+    {
+      "name": "--safe-mode",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "generate locale-safe file names",
+      "default": "",
+      "example": "undbx --safe-mode"
+    },
+    {
+      "name": "--delete",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "delete messages from the destination directory that were deleted from the dbx file [default behavior is to move such messages to a sub-directory named 'deleted']",
+      "default": "behavior is to move such messages to a sub-directory named 'deleted",
+      "example": "undbx --delete"
+    },
+    {
+      "name": "--ignore0",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ignore empty messages",
+      "default": "",
+      "example": "undbx --ignore0"
+    },
+    {
+      "name": "--debug",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "output debug messages",
+      "default": "",
+      "example": "undbx --debug"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "hash-identifier",
+  "name": "hash-identifier",
+  "schema_version": 1,
+  "summary": "Software to identify the different types of hashes used to encrypt data and especially passwords.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hash-identifier"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

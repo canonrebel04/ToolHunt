@@ -1,0 +1,26 @@
+{
+  "id": "inviteflood",
+  "name": "inviteflood",
+  "schema_version": 1,
+  "summary": "Flood a device with INVITE requests",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install inviteflood"
+    }
+  ],
+  "usage": "Mandatory -",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "email2phonenumber",
+  "name": "email2phonenumber",
+  "schema_version": 1,
+  "summary": "A OSINT tool to obtain a target's phone number just by having his email address.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install email2phonenumber"
+    }
+  ],
+  "usage": "email2phonenumber.py [-h] {scrape,generate,bruteforce} ...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "email2phonenumber --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

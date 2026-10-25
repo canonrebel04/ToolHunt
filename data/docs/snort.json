@@ -1,0 +1,69 @@
+{
+  "id": "snort",
+  "name": "snort",
+  "schema_version": 1,
+  "summary": "A lightweight network intrusion detection system.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install snort"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install snort-common"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install snort-common-libraries"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install snort-doc"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install snort-rules-default"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "sudo snort -v -i <interface>",
+      "explanation": "Capture packets with verbose output",
+      "source": "tldr:snort"
+    },
+    {
+      "cmd": "sudo snort -vd -i <interface>",
+      "explanation": "Capture packets and dump application layer data with verbose output",
+      "source": "tldr:snort"
+    },
+    {
+      "cmd": "sudo snort -ve -i <interface>",
+      "explanation": "Capture packets and display link layer packet headers with verbose output",
+      "source": "tldr:snort"
+    },
+    {
+      "cmd": "sudo snort -i <interface> -l <path/to/directory>",
+      "explanation": "Capture packets and save them in the specified directory",
+      "source": "tldr:snort"
+    },
+    {
+      "cmd": "sudo snort -i <interface> -c <path/to/rules.conf> -l <path/to/directory>",
+      "explanation": "Capture packets according to rules and save offending packets along with alerts",
+      "source": "tldr:snort"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/snort.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

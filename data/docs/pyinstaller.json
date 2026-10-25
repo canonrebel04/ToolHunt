@@ -1,0 +1,587 @@
+{
+  "id": "pyinstaller",
+  "name": "pyinstaller",
+  "schema_version": 1,
+  "summary": "Bundles a Python application and all its dependencies into a single package.",
+  "highlights": [
+    "--distpath — Where to put the bundled app (default: ./dist)",
+    "--workpath — Where to put all the temporary work files, .log, .pyz and etc. (default: ./build)",
+    "-y — Replace output directory (default: SPECPATH/dist/SPECNAME) without asking for confirmation",
+    "--upx-dir — Path to UPX utility (default: search the execution path)",
+    "--clean — Clean PyInstaller cache and remove temporary files before building.",
+    "--log-level — Amount of detail in build-time console messages. LEVEL may be one of TRACE, DEBUG, INFO, W",
+    "-D — Create a one-folder bundle containing an executable (default)",
+    "-F — Create a one-file bundled executable."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pyinstaller"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install python3-pyinstaller"
+    }
+  ],
+  "usage": "pyinstaller [-h] [-v] [-D] [-F] [--specpath DIR] [-n NAME]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "pyinstaller --help"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show program version info and exit.",
+      "default": "",
+      "example": "pyinstaller --version"
+    },
+    {
+      "name": "--distpath",
+      "short": "",
+      "aliases": [],
+      "arg": "DIR",
+      "required": false,
+      "description": "Where to put the bundled app (default: ./dist)",
+      "default": "./dist",
+      "example": "pyinstaller --distpath <dir>"
+    },
+    {
+      "name": "--workpath",
+      "short": "",
+      "aliases": [],
+      "arg": "WORKPATH",
+      "required": false,
+      "description": "Where to put all the temporary work files, .log, .pyz and etc. (default: ./build)",
+      "default": "./build",
+      "example": "pyinstaller --workpath <workpath>"
+    },
+    {
+      "name": "--noconfirm",
+      "short": "-y",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Replace output directory (default: SPECPATH/dist/SPECNAME) without asking for confirmation",
+      "default": "SPECPATH/dist/SPECNAME",
+      "example": "pyinstaller --noconfirm"
+    },
+    {
+      "name": "--upx-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "UPX_DIR",
+      "required": false,
+      "description": "Path to UPX utility (default: search the execution path)",
+      "default": "search the execution path",
+      "example": "pyinstaller --upx-dir <upx_dir>"
+    },
+    {
+      "name": "--clean",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Clean PyInstaller cache and remove temporary files before building.",
+      "default": "",
+      "example": "pyinstaller --clean"
+    },
+    {
+      "name": "--log-level",
+      "short": "",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Amount of detail in build-time console messages. LEVEL may be one of TRACE, DEBUG, INFO, WARN, DEPRECATION, ERROR, FATAL (default: INFO). Also settable via and overrides the PYI_LOG_LEVEL environment variable.",
+      "default": "INFO",
+      "example": "pyinstaller --log-level <level>"
+    },
+    {
+      "name": "--onedir",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Create a one-folder bundle containing an executable (default)",
+      "default": "ault",
+      "example": "pyinstaller --onedir"
+    },
+    {
+      "name": "--onefile",
+      "short": "-F",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Create a one-file bundled executable.",
+      "default": "",
+      "example": "pyinstaller --onefile"
+    },
+    {
+      "name": "--specpath",
+      "short": "",
+      "aliases": [],
+      "arg": "DIR",
+      "required": false,
+      "description": "Folder to store the generated spec file (default: current directory)",
+      "default": "current directory",
+      "example": "pyinstaller --specpath <dir>"
+    },
+    {
+      "name": "--name",
+      "short": "-n",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "Name to assign to the bundled app and spec file (default: first script's basename)",
+      "default": "first script's basename",
+      "example": "pyinstaller --name <name>"
+    },
+    {
+      "name": "--contents-directory",
+      "short": "",
+      "aliases": [],
+      "arg": "CONTENTS_DIRECTORY",
+      "required": false,
+      "description": "For onedir builds only, specify the name of the directory in which all supporting files (i.e. everything except the executable itself) will be placed in. Use \".\" to re-enable old onedir layout without contents directory.",
+      "default": "",
+      "example": "pyinstaller --contents-directory <contents_directory>"
+    },
+    {
+      "name": "--paths",
+      "short": "-p",
+      "aliases": [],
+      "arg": "DIR",
+      "required": false,
+      "description": "A path to search for imports (like using PYTHONPATH). Multiple paths are allowed, separated by ``':'``, or use this option multiple times. Equivalent to supplying the ``pathex`` argument in the spec file.",
+      "default": "",
+      "example": "pyinstaller --paths <dir>"
+    },
+    {
+      "name": "--hidden-import",
+      "short": "",
+      "aliases": [
+        "--hiddenimport"
+      ],
+      "arg": "MODULENAME",
+      "required": false,
+      "description": "Name an import not visible in the code of the script(s). This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --hidden-import <modulename>"
+    },
+    {
+      "name": "--collect-submodules",
+      "short": "",
+      "aliases": [],
+      "arg": "MODULENAME",
+      "required": false,
+      "description": "Collect all submodules from the specified package or module. This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --collect-submodules <modulename>"
+    },
+    {
+      "name": "--collect-data",
+      "short": "",
+      "aliases": [
+        "--collect-datas"
+      ],
+      "arg": "MODULENAME",
+      "required": false,
+      "description": "Collect all data from the specified package or module. This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --collect-data <modulename>"
+    },
+    {
+      "name": "--collect-binaries",
+      "short": "",
+      "aliases": [],
+      "arg": "MODULENAME",
+      "required": false,
+      "description": "Collect all binaries from the specified package or module. This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --collect-binaries <modulename>"
+    },
+    {
+      "name": "--collect-all",
+      "short": "",
+      "aliases": [],
+      "arg": "MODULENAME",
+      "required": false,
+      "description": "Collect all submodules, data files, and binaries from the specified package or module. This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --collect-all <modulename>"
+    },
+    {
+      "name": "--copy-metadata",
+      "short": "",
+      "aliases": [],
+      "arg": "PACKAGENAME",
+      "required": false,
+      "description": "Copy metadata for the specified package. This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --copy-metadata <packagename>"
+    },
+    {
+      "name": "--recursive-copy-metadata",
+      "short": "",
+      "aliases": [],
+      "arg": "PACKAGENAME",
+      "required": false,
+      "description": "Copy metadata for the specified package and all its dependencies. This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --recursive-copy-metadata <packagename>"
+    },
+    {
+      "name": "--additional-hooks-dir",
+      "short": "",
+      "aliases": [],
+      "arg": "HOOKSPATH",
+      "required": false,
+      "description": "An additional path to search for hooks. This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --additional-hooks-dir <hookspath>"
+    },
+    {
+      "name": "--runtime-hook",
+      "short": "",
+      "aliases": [],
+      "arg": "RUNTIME_HOOKS",
+      "required": false,
+      "description": "Path to a custom runtime hook file. A runtime hook is code that is bundled with the executable and is executed before any other code or module to set up special features of the runtime environment. This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --runtime-hook <runtime_hooks>"
+    },
+    {
+      "name": "--exclude-module",
+      "short": "",
+      "aliases": [],
+      "arg": "EXCLUDES",
+      "required": false,
+      "description": "Optional module or package (the Python name, not the path name) that will be ignored (as though it was not found). This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --exclude-module <excludes>"
+    },
+    {
+      "name": "--splash",
+      "short": "",
+      "aliases": [],
+      "arg": "IMAGE_FILE",
+      "required": false,
+      "description": "(EXPERIMENTAL) Add an splash screen with the image IMAGE_FILE to the application. The splash screen can display progress updates while unpacking.",
+      "default": "",
+      "example": "pyinstaller --splash <image_file>"
+    },
+    {
+      "name": "--splash-center",
+      "short": "",
+      "aliases": [],
+      "arg": "{virtual,default,active,primary}",
+      "required": false,
+      "description": "Splash screen centering mode. See the splash screen documentation for details.",
+      "default": "",
+      "example": "pyinstaller --splash-center <virtual,default,active,primary>"
+    },
+    {
+      "name": "--debug",
+      "short": "-d",
+      "aliases": [],
+      "arg": "{all,imports,bootloader,noarchive}",
+      "required": false,
+      "description": "Provide assistance with debugging a frozen application. This argument may be provided multiple times to select several of the following options.",
+      "default": "",
+      "example": "pyinstaller --debug <all,imports,bootloader,noarchive>"
+    },
+    {
+      "name": "--optimize",
+      "short": "",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Bytecode optimization level used for collected python modules and scripts. For details, see the section “Bytecode Optimization Level” in PyInstaller manual.",
+      "default": "",
+      "example": "pyinstaller --optimize <level>"
+    },
+    {
+      "name": "--python-option",
+      "short": "",
+      "aliases": [],
+      "arg": "PYTHON_OPTION",
+      "required": false,
+      "description": "Specify a command-line option to pass to the Python interpreter at runtime. Currently supports \"v\" (equivalent to \"--debug imports\"), \"u\", \"W <warning control>\", \"X <xoption>\", and \"hash_seed=<value>\". For details, see the section \"Specifying Python Interpreter Options\" in PyInstaller manual.",
+      "default": "",
+      "example": "pyinstaller --python-option <python_option>"
+    },
+    {
+      "name": "--strip",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Apply a symbol-table strip to the executable and shared libs (not recommended for Windows)",
+      "default": "",
+      "example": "pyinstaller --strip"
+    },
+    {
+      "name": "--noupx",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not use UPX even if it is available (works differently between Windows and *nix)",
+      "default": "",
+      "example": "pyinstaller --noupx"
+    },
+    {
+      "name": "--upx-exclude",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Prevent a binary from being compressed when using upx. This is typically used if upx corrupts certain binaries during compression. FILE is the filename of the binary without path. This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --upx-exclude <file>"
+    },
+    {
+      "name": "--console",
+      "short": "-c",
+      "aliases": [
+        "--nowindowed"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Open a console window for standard i/o (default). On Windows this option has no effect if the first script is a '.pyw' file.",
+      "default": "ault",
+      "example": "pyinstaller --console"
+    },
+    {
+      "name": "--windowed",
+      "short": "-w",
+      "aliases": [
+        "--noconsole"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Windows and macOS: do not provide a console window for standard i/o. On macOS this also triggers building a macOS .app bundle. On Windows this option is automatically set if the first script is a '.pyw' file. This option is ignored on *NIX systems.",
+      "default": "",
+      "example": "pyinstaller --windowed"
+    },
+    {
+      "name": "--hide-console",
+      "short": "",
+      "aliases": [],
+      "arg": "{hide-early,hide-late,minimize-early,minimize-late}",
+      "required": false,
+      "description": "Windows only: in console-enabled executable, have bootloader automatically hide or minimize the console window if the program owns the console window (i.e., was not launched from an existing console window).",
+      "default": "",
+      "example": "pyinstaller --hide-console <hide-early,hide-late,minimize-early,minimize-late>"
+    },
+    {
+      "name": "--icon",
+      "short": "-i",
+      "aliases": [],
+      "arg": "<FILE.ico or FILE.exe,ID or FILE.icns or Image or \"NONE\">",
+      "required": false,
+      "description": "FILE.ico: apply the icon to a Windows executable. FILE.exe,ID: extract the icon with ID from an exe. FILE.icns: apply the icon to the .app bundle on macOS. If an image file is entered that isn't in the platform format (ico on Windows, icns on Mac), PyInstaller tries to use Pillow to translate the icon into the correct format (if Pillow is installed). Use \"NONE\" to not apply any icon, thereby making the OS show some default (default: apply PyInstaller's icon). This option can be used multiple times.",
+      "default": "apply PyInstaller's icon",
+      "example": "pyinstaller --icon <FILE.ico or FILE.exe,ID or FILE.icns or Image or \"NONE\">"
+    },
+    {
+      "name": "--disable-windowed-traceback",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable traceback dump of unhandled exception in windowed (noconsole) mode (Windows and macOS only), and instead display a message that this feature is disabled.",
+      "default": "",
+      "example": "pyinstaller --disable-windowed-traceback"
+    },
+    {
+      "name": "--version-file",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Add a version resource from FILE to the exe.",
+      "default": "",
+      "example": "pyinstaller --version-file <file>"
+    },
+    {
+      "name": "--manifest",
+      "short": "",
+      "aliases": [],
+      "arg": "<FILE or XML>",
+      "required": false,
+      "description": "Add manifest FILE or XML to the exe.",
+      "default": "",
+      "example": "pyinstaller --manifest <FILE or XML>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "<FILE or XML>",
+      "required": false,
+      "description": "Deprecated shorthand for --manifest.",
+      "default": "",
+      "example": "pyinstaller -m <FILE or XML>"
+    },
+    {
+      "name": "--resource",
+      "short": "-r",
+      "aliases": [],
+      "arg": "RESOURCE",
+      "required": false,
+      "description": "Add or update a resource to a Windows executable. The RESOURCE is one to four items, FILE[,TYPE[,NAME[,LANGUAGE]]]. FILE can be a data file or an exe/dll. For data files, at least TYPE and NAME must be specified. LANGUAGE defaults to 0 or may be specified as wildcard * to update all resources of the given TYPE and NAME. For exe/dll files, all resources from FILE will be added/updated to the final executable if TYPE, NAME and LANGUAGE are omitted or specified as wildcard *. This option can be used multiple times.",
+      "default": "",
+      "example": "pyinstaller --resource <resource>"
+    },
+    {
+      "name": "--uac-admin",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Using this option creates a Manifest that will request elevation upon application start.",
+      "default": "",
+      "example": "pyinstaller --uac-admin"
+    },
+    {
+      "name": "--uac-uiaccess",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Using this option allows an elevated application to work with Remote Desktop.",
+      "default": "",
+      "example": "pyinstaller --uac-uiaccess"
+    },
+    {
+      "name": "--argv-emulation",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable argv emulation for macOS app bundles. If enabled, the initial open document/URL event is processed by the bootloader and the passed file paths or URLs are appended to sys.argv.",
+      "default": "",
+      "example": "pyinstaller --argv-emulation"
+    },
+    {
+      "name": "--osx-bundle-identifier",
+      "short": "",
+      "aliases": [],
+      "arg": "BUNDLE_IDENTIFIER",
+      "required": false,
+      "description": "macOS .app bundle identifier is used as the default unique program name for code signing purposes. The usual form is a hierarchical name in reverse DNS notation. For example: com.mycompany.department.appname (default: first script's basename)",
+      "default": "first script's basename",
+      "example": "pyinstaller --osx-bundle-identifier <bundle_identifier>"
+    },
+    {
+      "name": "--target-architecture",
+      "short": "",
+      "aliases": [
+        "--target-arch"
+      ],
+      "arg": "ARCH",
+      "required": false,
+      "description": "Target architecture (macOS only; valid values: x86_64, arm64, universal2). Enables switching between universal2 and single-arch version of frozen application (provided python installation supports the target architecture). If not target architecture is not specified, the current running architecture is targeted.",
+      "default": "",
+      "example": "pyinstaller --target-architecture <arch>"
+    },
+    {
+      "name": "--codesign-identity",
+      "short": "",
+      "aliases": [],
+      "arg": "IDENTITY",
+      "required": false,
+      "description": "Code signing identity (macOS only). Use the provided identity to sign collected binaries and generated executable. If signing identity is not provided, ad- hoc signing is performed instead.",
+      "default": "",
+      "example": "pyinstaller --codesign-identity <identity>"
+    },
+    {
+      "name": "--osx-entitlements-file",
+      "short": "",
+      "aliases": [],
+      "arg": "FILENAME",
+      "required": false,
+      "description": "Entitlements file to use when code-signing the collected binaries (macOS only).",
+      "default": "",
+      "example": "pyinstaller --osx-entitlements-file <filename>"
+    },
+    {
+      "name": "--runtime-tmpdir",
+      "short": "",
+      "aliases": [],
+      "arg": "PATH",
+      "required": false,
+      "description": "Where to extract libraries and support files in `onefile` mode. If this option is given, the bootloader will ignore any temp-folder location defined by the run-time OS. The ``_MEIxxxxxx``-folder will be created here. Please use this option only if you know what you are doing. Note that on POSIX systems, PyInstaller's bootloader does NOT perform shell-style environment variable expansion on the given path string. Therefore, using environment variables (e.g., ``~`` or ``$HOME``) in path will NOT work.",
+      "default": "",
+      "example": "pyinstaller --runtime-tmpdir <path>"
+    },
+    {
+      "name": "--bootloader-ignore-signals",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Tell the bootloader to ignore signals rather than forwarding them to the child process. Useful in situations where for example a supervisor process signals both the bootloader and the child (e.g., via a process group) to avoid signalling the child twice.",
+      "default": "",
+      "example": "pyinstaller --bootloader-ignore-signals"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "pyinstaller <path/to/script.py>",
+      "explanation": "Bundle a Python script into a one-folder bundle (output goes to `dist/`)",
+      "source": "tldr:pyinstaller"
+    },
+    {
+      "cmd": "pyinstaller --onefile <path/to/script.py>",
+      "explanation": "Bundle a Python script into a single executable file",
+      "source": "tldr:pyinstaller"
+    },
+    {
+      "cmd": "pyinstaller --windowed <path/to/script.py>",
+      "explanation": "Bundle a GUI application without opening a console window",
+      "source": "tldr:pyinstaller"
+    },
+    {
+      "cmd": "pyinstaller --name <app_name> <path/to/script.py>",
+      "explanation": "Set the name of the bundled executable",
+      "source": "tldr:pyinstaller"
+    },
+    {
+      "cmd": "pyinstaller --icon <path/to/icon.ico> <path/to/script.py>",
+      "explanation": "Set a custom icon for the executable",
+      "source": "tldr:pyinstaller"
+    },
+    {
+      "cmd": "pyinstaller --help",
+      "explanation": "Display help",
+      "source": "tldr:pyinstaller"
+    },
+    {
+      "cmd": "pyinstaller --version",
+      "explanation": "Display version",
+      "source": "tldr:pyinstaller"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/pyinstaller.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

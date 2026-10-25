@@ -1,0 +1,56 @@
+{
+  "id": "xh",
+  "name": "xh",
+  "schema_version": 1,
+  "summary": "xh is a friendly and fast tool for sending HTTP requests. It reimplements as much as possible of HTTPie's excellent design.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "xh <https://postman-echo.com/get>",
+      "explanation": "Send a GET request (shows response headers and content)",
+      "source": "tldr:xh"
+    },
+    {
+      "cmd": "xh post <https://postman-echo.com/post> <name=john> <age=25>",
+      "explanation": "Send a POST request with a JSON body (key-value pairs are added to a top-level JSON object - e.g. `{\"name\": \"john\", \"age\": 25}`)",
+      "source": "tldr:xh"
+    },
+    {
+      "cmd": "xh get <https://postman-echo.com/response-headers> <foo1==bar1> <foo2==bar2>",
+      "explanation": "Send a GET request with query parameters (e.g. <https://postman-echo.com/response-headers?foo1=bar1&foo2=bar2>)",
+      "source": "tldr:xh"
+    },
+    {
+      "cmd": "xh get <https://postman-echo.com> <header-name:header-value>",
+      "explanation": "Send a GET request with a custom header",
+      "source": "tldr:xh"
+    },
+    {
+      "cmd": "xh --download <https://example.com> --output <path/to/file>",
+      "explanation": "Make a GET request and save the response body to a file",
+      "source": "tldr:xh"
+    },
+    {
+      "cmd": "xh --offline <get|delete|...> <https://example.com>",
+      "explanation": "Simulate sending a request without actually sending it",
+      "source": "tldr:xh"
+    },
+    {
+      "cmd": "xh --<curl|curl-long> <--follow --verbose get https://example.com user-agent:curl>",
+      "explanation": "Show equivalent `curl` command (this will not send any request)",
+      "source": "tldr:xh"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/xh.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

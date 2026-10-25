@@ -1,0 +1,256 @@
+{
+  "id": "padbuster",
+  "name": "padbuster",
+  "schema_version": 1,
+  "summary": "Automated script for performing Padding Oracle attacks.",
+  "highlights": [
+    "-auth — HTTP Basic Authentication",
+    "-bruteforce — Perform brute force against the first block",
+    "-ciphertext — CipherText for Intermediate Bytes (Hex-Encoded)",
+    "-cookies — Cookies (name1=value1; name2=value2)",
+    "-encoding — Encoding Format of Sample (Default 0) 0=Base64, 1=Lower HEX, 2=Upper HEX 3=.NET UrlToken, ",
+    "-encodedtext — Data to Encrypt (Encoded)",
+    "-error — Padding Error Message",
+    "-headers — Custom Headers (name1::value1;name2::value2)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install padbuster"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-auth",
+      "short": "",
+      "aliases": [],
+      "arg": "[username:password]",
+      "required": false,
+      "description": "HTTP Basic Authentication",
+      "default": "",
+      "example": "padbuster -auth <username:password>"
+    },
+    {
+      "name": "-bruteforce",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform brute force against the first block",
+      "default": "",
+      "example": "padbuster -bruteforce"
+    },
+    {
+      "name": "-ciphertext",
+      "short": "",
+      "aliases": [],
+      "arg": "[Bytes]",
+      "required": false,
+      "description": "CipherText for Intermediate Bytes (Hex-Encoded)",
+      "default": "",
+      "example": "padbuster -ciphertext <bytes>"
+    },
+    {
+      "name": "-cookies",
+      "short": "",
+      "aliases": [],
+      "arg": "[HTTP Cookies]",
+      "required": false,
+      "description": "Cookies (name1=value1; name2=value2)",
+      "default": "",
+      "example": "padbuster -cookies <http cookies>"
+    },
+    {
+      "name": "-encoding",
+      "short": "",
+      "aliases": [],
+      "arg": "[0-4]",
+      "required": false,
+      "description": "Encoding Format of Sample (Default 0) 0=Base64, 1=Lower HEX, 2=Upper HEX 3=.NET UrlToken, 4=WebSafe Base64",
+      "default": "0",
+      "example": "padbuster -encoding <0-4>"
+    },
+    {
+      "name": "-encodedtext",
+      "short": "",
+      "aliases": [],
+      "arg": "[Encoded String]",
+      "required": false,
+      "description": "Data to Encrypt (Encoded)",
+      "default": "",
+      "example": "padbuster -encodedtext <encoded string>"
+    },
+    {
+      "name": "-error",
+      "short": "",
+      "aliases": [],
+      "arg": "[Error String]",
+      "required": false,
+      "description": "Padding Error Message",
+      "default": "",
+      "example": "padbuster -error <error string>"
+    },
+    {
+      "name": "-headers",
+      "short": "",
+      "aliases": [],
+      "arg": "[HTTP Headers]",
+      "required": false,
+      "description": "Custom Headers (name1::value1;name2::value2)",
+      "default": "",
+      "example": "padbuster -headers <http headers>"
+    },
+    {
+      "name": "-interactive",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prompt for confirmation on decrypted bytes",
+      "default": "",
+      "example": "padbuster -interactive"
+    },
+    {
+      "name": "-intermediate",
+      "short": "",
+      "aliases": [],
+      "arg": "[Bytes]",
+      "required": false,
+      "description": "Intermediate Bytes for CipherText (Hex-Encoded)",
+      "default": "",
+      "example": "padbuster -intermediate <bytes>"
+    },
+    {
+      "name": "-log",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Generate log files (creates folder PadBuster.DDMMYY)",
+      "default": "",
+      "example": "padbuster -log"
+    },
+    {
+      "name": "-noencode",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not URL-encode the payload (encoded by default)",
+      "default": "",
+      "example": "padbuster -noencode"
+    },
+    {
+      "name": "-noiv",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Sample does not include IV (decrypt first block)",
+      "default": "",
+      "example": "padbuster -noiv"
+    },
+    {
+      "name": "-plaintext",
+      "short": "",
+      "aliases": [],
+      "arg": "[String]",
+      "required": false,
+      "description": "Plain-Text to Encrypt",
+      "default": "",
+      "example": "padbuster -plaintext <string>"
+    },
+    {
+      "name": "-post",
+      "short": "",
+      "aliases": [],
+      "arg": "[Post Data]",
+      "required": false,
+      "description": "HTTP Post Data String",
+      "default": "",
+      "example": "padbuster -post <post data>"
+    },
+    {
+      "name": "-prefix",
+      "short": "",
+      "aliases": [],
+      "arg": "[Prefix]",
+      "required": false,
+      "description": "Prefix bytes to append to each sample (Encoded)",
+      "default": "",
+      "example": "padbuster -prefix <prefix>"
+    },
+    {
+      "name": "-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "[address:port]",
+      "required": false,
+      "description": "Use HTTP/S Proxy",
+      "default": "",
+      "example": "padbuster -proxy <address:port>"
+    },
+    {
+      "name": "-proxyauth",
+      "short": "",
+      "aliases": [],
+      "arg": "[username:password]",
+      "required": false,
+      "description": "Proxy Authentication",
+      "default": "",
+      "example": "padbuster -proxyauth <username:password>"
+    },
+    {
+      "name": "-resume",
+      "short": "",
+      "aliases": [],
+      "arg": "[Block Number]",
+      "required": false,
+      "description": "Resume at this block number",
+      "default": "",
+      "example": "padbuster -resume <block number>"
+    },
+    {
+      "name": "-usebody",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use response body content for response analysis phase",
+      "default": "",
+      "example": "padbuster -usebody"
+    },
+    {
+      "name": "-verbose",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Be Verbose",
+      "default": "",
+      "example": "padbuster -verbose"
+    },
+    {
+      "name": "-veryverbose",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Be Very Verbose (Debug Only)",
+      "default": "",
+      "example": "padbuster -veryverbose"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

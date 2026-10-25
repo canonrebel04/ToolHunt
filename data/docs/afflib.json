@@ -1,0 +1,112 @@
+{
+  "id": "afflib",
+  "name": "afflib",
+  "schema_version": 1,
+  "summary": "An extensible open format for the storage of disk images and related forensic information.",
+  "highlights": [
+    "-q — --- quiet; don't print to STDERR if a page is skipped",
+    "-n — --- noisy; tell when pages are skipped.",
+    "-l — --- List all of the segment names",
+    "-L — --- List segment names, lengths, and args",
+    "-d — --- debug. Print the page numbers to stderr as data goes to stdout",
+    "-b — --- Output BADFALG for bad blocks (default is NULLs)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install afflib-tools"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libafflib-dev"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libafflib0t64"
+    }
+  ],
+  "usage": "affcat [options] infile [... more infiles]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--- quiet; don't print to STDERR if a page is skipped",
+      "default": "",
+      "example": "affcat -q"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--- noisy; tell when pages are skipped.",
+      "default": "",
+      "example": "affcat -n"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--- List all of the segment names",
+      "default": "",
+      "example": "affcat -l"
+    },
+    {
+      "name": "-L",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--- List segment names, lengths, and args",
+      "default": "",
+      "example": "affcat -L"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--- debug. Print the page numbers to stderr as data goes to stdout",
+      "default": "",
+      "example": "affcat -d"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--- Output BADFALG for bad blocks (default is NULLs)",
+      "default": "is NULLs",
+      "example": "affcat -b"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "--- Just print the version number and exit.",
+      "default": "",
+      "example": "affcat -v"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

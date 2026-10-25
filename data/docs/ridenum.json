@@ -1,0 +1,26 @@
+{
+  "id": "ridenum",
+  "name": "ridenum",
+  "schema_version": 1,
+  "summary": "A null session RID cycle attack for brute forcing domain controllers.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ridenum"
+    }
+  ],
+  "usage": "./ridenum.py <server_ip> <start_rid> <end_rid> <optional_username> <optional_password> <optional_password_file> <optional_username_filename>",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

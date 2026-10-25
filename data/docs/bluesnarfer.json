@@ -1,0 +1,94 @@
+{
+  "id": "bluesnarfer",
+  "name": "bluesnarfer",
+  "schema_version": 1,
+  "summary": "A bluetooth attacking tool.",
+  "highlights": [
+    "-c — : custom action",
+    "-r — : read phonebook entry N to M",
+    "-w — : delete phonebook entry N to M",
+    "-s — : select phonebook memory storage",
+    "-l — : list aviable phonebook memory storage",
+    "-i — : device info"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bluesnarfer"
+    }
+  ],
+  "usage": "bluesnarfer [options] [ATCMD] -b bt_addr",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "ATCMD",
+      "required": false,
+      "description": ": custom action",
+      "default": "",
+      "example": "bluesnarfer -c <atcmd>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "N-M",
+      "required": false,
+      "description": ": read phonebook entry N to M",
+      "default": "",
+      "example": "bluesnarfer -r <n-m>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "N-M",
+      "required": false,
+      "description": ": delete phonebook entry N to M",
+      "default": "",
+      "example": "bluesnarfer -w <n-m>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "TYPE",
+      "required": false,
+      "description": ": select phonebook memory storage",
+      "default": "",
+      "example": "bluesnarfer -s <type>"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": list aviable phonebook memory storage",
+      "default": "",
+      "example": "bluesnarfer -l"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": device info",
+      "default": "",
+      "example": "bluesnarfer -i"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

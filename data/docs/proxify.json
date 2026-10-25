@@ -1,0 +1,380 @@
+{
+  "id": "proxify",
+  "name": "proxify",
+  "schema_version": 1,
+  "summary": "Swiss Army knife Proxy tool for HTTP/HTTPS traffic capture, manipulation, and replay on the go.",
+  "highlights": [
+    "-o — Output Directory to store HTTP proxy logs (default \"logs\")",
+    "-dump-req — Dump only HTTP requests to output file",
+    "-dump-resp — Dump only HTTP responses to output file",
+    "-request-dsl — Request Filter DSL",
+    "-response-dsl — Response Filter DSL",
+    "-request-match-replace-dsl — Request Match-Replace DSL",
+    "-response-match-replace-dsl — Response Match-Replace DSL",
+    "-http-addr — Listening HTTP IP and Port address (ip:port) (default \"127.0.0.1:8888\")"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install proxify"
+    }
+  ],
+  "usage": "proxify [flags]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Output Directory to store HTTP proxy logs (default \"logs\")",
+      "default": "logs",
+      "example": "proxify -output <string>"
+    },
+    {
+      "name": "-dump-req",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Dump only HTTP requests to output file",
+      "default": "",
+      "example": "proxify -dump-req"
+    },
+    {
+      "name": "-dump-resp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Dump only HTTP responses to output file",
+      "default": "",
+      "example": "proxify -dump-resp"
+    },
+    {
+      "name": "-request-dsl",
+      "short": "",
+      "aliases": [
+        "-req-fd"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "Request Filter DSL",
+      "default": "",
+      "example": "proxify -request-dsl <string>"
+    },
+    {
+      "name": "-response-dsl",
+      "short": "",
+      "aliases": [
+        "-resp-fd"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "Response Filter DSL",
+      "default": "",
+      "example": "proxify -response-dsl <string>"
+    },
+    {
+      "name": "-request-match-replace-dsl",
+      "short": "",
+      "aliases": [
+        "-req-mrd"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "Request Match-Replace DSL",
+      "default": "",
+      "example": "proxify -request-match-replace-dsl <string>"
+    },
+    {
+      "name": "-response-match-replace-dsl",
+      "short": "",
+      "aliases": [
+        "-resp-mrd"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "Response Match-Replace DSL",
+      "default": "",
+      "example": "proxify -response-match-replace-dsl <string>"
+    },
+    {
+      "name": "-http-addr",
+      "short": "",
+      "aliases": [
+        "-ha"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "Listening HTTP IP and Port address (ip:port) (default \"127.0.0.1:8888\")",
+      "default": "127.0.0.1:8888",
+      "example": "proxify -http-addr <string>"
+    },
+    {
+      "name": "-socks-addr",
+      "short": "",
+      "aliases": [
+        "-sa"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "Listening SOCKS IP and Port address (ip:port) (default \"127.0.0.1:10080\")",
+      "default": "127.0.0.1:10080",
+      "example": "proxify -socks-addr <string>"
+    },
+    {
+      "name": "-dns-addr",
+      "short": "",
+      "aliases": [
+        "-da"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "Listening DNS IP and Port address (ip:port)",
+      "default": "",
+      "example": "proxify -dns-addr <string>"
+    },
+    {
+      "name": "-dns-mapping",
+      "short": "",
+      "aliases": [
+        "-dm"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "Domain to IP DNS mapping (eg domain:ip,domain:ip,..)",
+      "default": "",
+      "example": "proxify -dns-mapping <string>"
+    },
+    {
+      "name": "-resolver",
+      "short": "-r",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Custom DNS resolvers to use (ip:port)",
+      "default": "",
+      "example": "proxify -resolver <string>"
+    },
+    {
+      "name": "-http-proxy",
+      "short": "",
+      "aliases": [
+        "-hp"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "Upstream HTTP Proxies (eg http://proxy-ip:proxy-port",
+      "default": "",
+      "example": "proxify -http-proxy <string>"
+    },
+    {
+      "name": "-socks5-proxy",
+      "short": "",
+      "aliases": [
+        "-sp"
+      ],
+      "arg": "string",
+      "required": false,
+      "description": "Upstream SOCKS5 Proxies (eg socks5://proxy-ip:proxy-port)",
+      "default": "",
+      "example": "proxify -socks5-proxy <string>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Number of requests before switching to the next upstream proxy (default 1)",
+      "default": "1",
+      "example": "proxify -c <int>"
+    },
+    {
+      "name": "-elastic-address",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "elasticsearch address (ip:port)",
+      "default": "",
+      "example": "proxify -elastic-address <string>"
+    },
+    {
+      "name": "-elastic-ssl",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable elasticsearch ssl",
+      "default": "",
+      "example": "proxify -elastic-ssl"
+    },
+    {
+      "name": "-elastic-ssl-verification",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable elasticsearch ssl verification",
+      "default": "",
+      "example": "proxify -elastic-ssl-verification"
+    },
+    {
+      "name": "-elastic-username",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "elasticsearch username",
+      "default": "",
+      "example": "proxify -elastic-username <string>"
+    },
+    {
+      "name": "-elastic-password",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "elasticsearch password",
+      "default": "",
+      "example": "proxify -elastic-password <string>"
+    },
+    {
+      "name": "-elastic-index",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "elasticsearch index name (default \"proxify\")",
+      "default": "proxify",
+      "example": "proxify -elastic-index <string>"
+    },
+    {
+      "name": "-kafka-address",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "address of kafka broker (ip:port)",
+      "default": "",
+      "example": "proxify -kafka-address <string>"
+    },
+    {
+      "name": "-kafka-topic",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "kafka topic to publish messages on (default \"proxify\")",
+      "default": "proxify",
+      "example": "proxify -kafka-topic <string>"
+    },
+    {
+      "name": "-config",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Directory for storing program information (default \"/root/.config/proxify\")",
+      "default": "/root/.config/proxify",
+      "example": "proxify -config <string>"
+    },
+    {
+      "name": "-cert-cache-size",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "Number of certificates to cache (default 256)",
+      "default": "256",
+      "example": "proxify -cert-cache-size <int>"
+    },
+    {
+      "name": "-allow",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Allowed list of IP/CIDR's to be proxied",
+      "default": "",
+      "example": "proxify -allow <string>"
+    },
+    {
+      "name": "-deny",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Denied list of IP/CIDR's to be proxied",
+      "default": "",
+      "example": "proxify -deny <string>"
+    },
+    {
+      "name": "-silent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Silent",
+      "default": "",
+      "example": "proxify -silent"
+    },
+    {
+      "name": "-no-color",
+      "short": "",
+      "aliases": [
+        "-nc"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "No Color (default true)",
+      "default": "true",
+      "example": "proxify -no-color"
+    },
+    {
+      "name": "-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Version",
+      "default": "",
+      "example": "proxify -version"
+    },
+    {
+      "name": "-verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose",
+      "default": "",
+      "example": "proxify -verbose"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "proxify",
+      "explanation": "Start an HTTP proxy (on the loopback network interface `127.0.0.1` and port `8888`)",
+      "source": "tldr:proxify"
+    },
+    {
+      "cmd": "proxify -http-addr \"<ip_address>:<port_number>\"",
+      "explanation": "Start an HTTP proxy on a custom network interface and port (may require `sudo` for a port number lower than `1024`)",
+      "source": "tldr:proxify"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/proxify.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

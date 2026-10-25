@@ -1,0 +1,136 @@
+{
+  "id": "pspy",
+  "name": "pspy",
+  "schema_version": 1,
+  "summary": "Monitor linux processes without root permissions.",
+  "highlights": [
+    "-c — color the printed events (default true)",
+    "--debug — print detailed error messages",
+    "-d — watch these dirs",
+    "-f — print file system events to stdout",
+    "-i — scan every 'interval' milliseconds for new processes (default 100)",
+    "--ppid — record process ppids",
+    "-p — print new processes to stdout (default true)",
+    "-r — watch these dirs recursively (default [/usr,/tmp,/etc,/home,/var,/opt])"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pspy"
+    }
+  ],
+  "usage": "pspy [flags]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--color",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "color the printed events (default true)",
+      "default": "true",
+      "example": "pspy --color"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print detailed error messages",
+      "default": "",
+      "example": "pspy --debug"
+    },
+    {
+      "name": "--dirs",
+      "short": "-d",
+      "aliases": [],
+      "arg": "stringArray",
+      "required": false,
+      "description": "watch these dirs",
+      "default": "",
+      "example": "pspy --dirs <stringarray>"
+    },
+    {
+      "name": "--fsevents",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print file system events to stdout",
+      "default": "",
+      "example": "pspy --fsevents"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "help for pspy",
+      "default": "",
+      "example": "pspy --help"
+    },
+    {
+      "name": "--interval",
+      "short": "-i",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "scan every 'interval' milliseconds for new processes (default 100)",
+      "default": "100",
+      "example": "pspy --interval <int>"
+    },
+    {
+      "name": "--ppid",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "record process ppids",
+      "default": "",
+      "example": "pspy --ppid"
+    },
+    {
+      "name": "--procevents",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print new processes to stdout (default true)",
+      "default": "true",
+      "example": "pspy --procevents"
+    },
+    {
+      "name": "--recursive_dirs",
+      "short": "-r",
+      "aliases": [],
+      "arg": "stringArray",
+      "required": false,
+      "description": "watch these dirs recursively (default [/usr,/tmp,/etc,/home,/var,/opt])",
+      "default": "[/usr,/tmp,/etc,/home,/var,/opt",
+      "example": "pspy --recursive_dirs <stringarray>"
+    },
+    {
+      "name": "--truncate",
+      "short": "-t",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "truncate process cmds longer than this (default 2048)",
+      "default": "2048",
+      "example": "pspy --truncate <int>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

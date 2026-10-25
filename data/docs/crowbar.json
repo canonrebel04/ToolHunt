@@ -1,0 +1,216 @@
+{
+  "id": "crowbar",
+  "name": "crowbar",
+  "schema_version": 1,
+  "summary": "Brute forcing tool that can be used during penetration tests.",
+  "highlights": [
+    "-b — Target service",
+    "-s — Static target",
+    "-S — Multiple targets stored in a file",
+    "-U — Multiple names to login with, stored in a file",
+    "-n — Number of threads to be active at once",
+    "-l — Log file (only write attempts)",
+    "-o — Output file (write everything else)",
+    "-c — Static password to login with"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install crowbar"
+    }
+  ],
+  "usage": "Usage: use --help for further information",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "crowbar --help"
+    },
+    {
+      "name": "--brute",
+      "short": "-b",
+      "aliases": [],
+      "arg": "{openvpn,rdp,sshkey,vnckey}",
+      "required": false,
+      "description": "Target service",
+      "default": "",
+      "example": "crowbar --brute <openvpn,rdp,sshkey,vnckey>"
+    },
+    {
+      "name": "--server",
+      "short": "-s",
+      "aliases": [],
+      "arg": "SERVER",
+      "required": false,
+      "description": "Static target",
+      "default": "",
+      "example": "crowbar --server <server>"
+    },
+    {
+      "name": "--serverfile",
+      "short": "-S",
+      "aliases": [],
+      "arg": "SERVER_FILE",
+      "required": false,
+      "description": "Multiple targets stored in a file",
+      "default": "",
+      "example": "crowbar --serverfile <server_file>"
+    },
+    {
+      "name": "--usernamefile",
+      "short": "-U",
+      "aliases": [],
+      "arg": "USERNAME_FILE",
+      "required": false,
+      "description": "Multiple names to login with, stored in a file",
+      "default": "",
+      "example": "crowbar --usernamefile <username_file>"
+    },
+    {
+      "name": "--number",
+      "short": "-n",
+      "aliases": [],
+      "arg": "THREAD",
+      "required": false,
+      "description": "Number of threads to be active at once",
+      "default": "",
+      "example": "crowbar --number <thread>"
+    },
+    {
+      "name": "--log",
+      "short": "-l",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Log file (only write attempts)",
+      "default": "",
+      "example": "crowbar --log <file>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Output file (write everything else)",
+      "default": "",
+      "example": "crowbar --output <file>"
+    },
+    {
+      "name": "--passwd",
+      "short": "-c",
+      "aliases": [],
+      "arg": "PASSWD",
+      "required": false,
+      "description": "Static password to login with",
+      "default": "",
+      "example": "crowbar --passwd <passwd>"
+    },
+    {
+      "name": "--passwdfile",
+      "short": "-C",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Multiple passwords to login with, stored in a file",
+      "default": "",
+      "example": "crowbar --passwdfile <file>"
+    },
+    {
+      "name": "--timeout",
+      "short": "-t",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "[SSH] How long to wait for each thread (seconds)",
+      "default": "",
+      "example": "crowbar --timeout <timeout>"
+    },
+    {
+      "name": "--port",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "Alter the port if the service is not using the default value",
+      "default": "",
+      "example": "crowbar --port <port>"
+    },
+    {
+      "name": "--keyfile",
+      "short": "-k",
+      "aliases": [],
+      "arg": "KEY_FILE",
+      "required": false,
+      "description": "[SSH/VNC] (Private) Key file or folder containing multiple files",
+      "default": "",
+      "example": "crowbar --keyfile <key_file>"
+    },
+    {
+      "name": "--config",
+      "short": "-m",
+      "aliases": [],
+      "arg": "CONFIG",
+      "required": false,
+      "description": "[OpenVPN] Configuration file",
+      "default": "",
+      "example": "crowbar --config <config>"
+    },
+    {
+      "name": "--discover",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Port scan before attacking open ports",
+      "default": "",
+      "example": "crowbar --discover"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable verbose output (-vv for more)",
+      "default": "",
+      "example": "crowbar --verbose"
+    },
+    {
+      "name": "--debug",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable debug mode",
+      "default": "",
+      "example": "crowbar --debug"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only display successful logins",
+      "default": "",
+      "example": "crowbar --quiet"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

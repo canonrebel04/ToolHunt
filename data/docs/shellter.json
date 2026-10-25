@@ -1,0 +1,26 @@
+{
+  "id": "shellter",
+  "name": "shellter",
+  "schema_version": 1,
+  "summary": "A dynamic shellcode injection tool, and the first truly dynamic PE infector ever created.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install shellter"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

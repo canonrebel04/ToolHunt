@@ -1,0 +1,104 @@
+{
+  "id": "above",
+  "name": "above",
+  "schema_version": 1,
+  "summary": "Network Protocols Sniffer.",
+  "highlights": [
+    "--interface — Interface for traffic listening",
+    "--timer — Time in seconds to capture packets, default: not set",
+    "--output — File name where the traffic will be recorded, default: not set",
+    "--input — File name of the traffic dump",
+    "--passive-arp — Passive ARP (Host Discovery)",
+    "--search-vlan — VLAN Search"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install above"
+    }
+  ],
+  "usage": "above [-h] [--interface INTERFACE] [--timer TIMER] [--output OUTPUT]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "above --help"
+    },
+    {
+      "name": "--interface",
+      "short": "",
+      "aliases": [],
+      "arg": "INTERFACE",
+      "required": false,
+      "description": "Interface for traffic listening",
+      "default": "",
+      "example": "above --interface <interface>"
+    },
+    {
+      "name": "--timer",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMER",
+      "required": false,
+      "description": "Time in seconds to capture packets, default: not set",
+      "default": "",
+      "example": "above --timer <timer>"
+    },
+    {
+      "name": "--output",
+      "short": "",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "File name where the traffic will be recorded, default: not set",
+      "default": "",
+      "example": "above --output <output>"
+    },
+    {
+      "name": "--input",
+      "short": "",
+      "aliases": [],
+      "arg": "INPUT",
+      "required": false,
+      "description": "File name of the traffic dump",
+      "default": "",
+      "example": "above --input <input>"
+    },
+    {
+      "name": "--passive-arp",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Passive ARP (Host Discovery)",
+      "default": "",
+      "example": "above --passive-arp"
+    },
+    {
+      "name": "--search-vlan",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "VLAN Search",
+      "default": "",
+      "example": "above --search-vlan"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

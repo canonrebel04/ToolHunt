@@ -1,0 +1,270 @@
+{
+  "id": "ophcrack",
+  "name": "ophcrack",
+  "schema_version": 1,
+  "summary": "Windows password cracker based on rainbow tables.",
+  "highlights": [
+    "-a — disable audit mode (default)",
+    "-A — enable audit mode",
+    "-b — disable bruteforce",
+    "-B — enable bruteforce (default)",
+    "-D — display (lots of!) debugging information",
+    "-d — specify tables base directory",
+    "-e — do not display empty passwords",
+    "-f — load hashes from the specified file (pwdump or session)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ophcrack"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ophcrack-cli"
+    }
+  ],
+  "usage": "ophcrack [OPTIONS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable audit mode (default)",
+      "default": "ault",
+      "example": "ophcrack -a"
+    },
+    {
+      "name": "-A",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable audit mode",
+      "default": "",
+      "example": "ophcrack -A"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable bruteforce",
+      "default": "",
+      "example": "ophcrack -b"
+    },
+    {
+      "name": "-B",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable bruteforce (default)",
+      "default": "ault",
+      "example": "ophcrack -B"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display (lots of!) debugging information",
+      "default": "",
+      "example": "ophcrack -D"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "dir",
+      "required": false,
+      "description": "specify tables base directory",
+      "default": "",
+      "example": "ophcrack -d <dir>"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not display empty passwords",
+      "default": "",
+      "example": "ophcrack -e"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "load hashes from the specified file (pwdump or session)",
+      "default": "",
+      "example": "ophcrack -f <file>"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable GUI",
+      "default": "",
+      "example": "ophcrack -g"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display this information",
+      "default": "",
+      "example": "ophcrack -h"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "hide usernames",
+      "default": "",
+      "example": "ophcrack -i"
+    },
+    {
+      "name": "-I",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show usernames (default)",
+      "default": "ault",
+      "example": "ophcrack -I"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "log all output to the specified file",
+      "default": "",
+      "example": "ophcrack -l <file>"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "num",
+      "required": false,
+      "description": "specify the number of threads to use",
+      "default": "",
+      "example": "ophcrack -n <num>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "write cracking output to file in pwdump format",
+      "default": "",
+      "example": "ophcrack -o <file>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "num",
+      "required": false,
+      "description": "preload (0 none, 1 index, 2 index+end, 3 all default)",
+      "default": "",
+      "example": "ophcrack -p <num>"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "quiet mode",
+      "default": "",
+      "example": "ophcrack -q"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "launch the cracking when ophcrack starts (GUI only)",
+      "default": "",
+      "example": "ophcrack -r"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable session auto-saving",
+      "default": "",
+      "example": "ophcrack -s"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display statistics when cracking ends",
+      "default": "",
+      "example": "ophcrack -u"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose",
+      "default": "",
+      "example": "ophcrack -v"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "dir",
+      "required": false,
+      "description": "load hashes from encrypted SAM file in directory dir",
+      "default": "",
+      "example": "ophcrack -w <dir>"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "file",
+      "required": false,
+      "description": "export data in CSV format to file",
+      "default": "",
+      "example": "ophcrack -x <file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

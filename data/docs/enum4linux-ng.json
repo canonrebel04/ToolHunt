@@ -1,0 +1,336 @@
+{
+  "id": "enum4linux-ng",
+  "name": "enum4linux-ng",
+  "schema_version": 1,
+  "summary": "A next generation version of enum4linux.",
+  "highlights": [
+    "-A — Do all simple enumeration including nmblookup (-U -G -S -P -O -N -I -L). This option is en",
+    "-As — Do all simple short enumeration without NetBIOS names lookup (-U -G -S -P -O -I -L)",
+    "-U — Get users via RPC",
+    "-G — Get groups via RPC",
+    "-Gm — Get groups with group members via RPC",
+    "-S — Get shares via RPC",
+    "-C — Get services via RPC",
+    "-P — Get password policy information via RPC"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install enum4linux-ng"
+    }
+  ],
+  "usage": "enum4linux-ng [-h] [-A] [-As] [-U] [-G] [-Gm] [-S] [-C] [-P] [-O] [-L]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "enum4linux-ng --help"
+    },
+    {
+      "name": "-A",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do all simple enumeration including nmblookup (-U -G -S -P -O -N -I -L). This option is enabled if you don't provide any other option.",
+      "default": "",
+      "example": "enum4linux-ng -A"
+    },
+    {
+      "name": "-As",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do all simple short enumeration without NetBIOS names lookup (-U -G -S -P -O -I -L)",
+      "default": "",
+      "example": "enum4linux-ng -As"
+    },
+    {
+      "name": "-U",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get users via RPC",
+      "default": "",
+      "example": "enum4linux-ng -U"
+    },
+    {
+      "name": "-G",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get groups via RPC",
+      "default": "",
+      "example": "enum4linux-ng -G"
+    },
+    {
+      "name": "-Gm",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get groups with group members via RPC",
+      "default": "",
+      "example": "enum4linux-ng -Gm"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get shares via RPC",
+      "default": "",
+      "example": "enum4linux-ng -S"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get services via RPC",
+      "default": "",
+      "example": "enum4linux-ng -C"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get password policy information via RPC",
+      "default": "",
+      "example": "enum4linux-ng -P"
+    },
+    {
+      "name": "-O",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get OS information via RPC",
+      "default": "",
+      "example": "enum4linux-ng -O"
+    },
+    {
+      "name": "-L",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get additional domain info via LDAP/LDAPS (for DCs only)",
+      "default": "",
+      "example": "enum4linux-ng -L"
+    },
+    {
+      "name": "-I",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get printer information via RPC",
+      "default": "",
+      "example": "enum4linux-ng -I"
+    },
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "[BULK_SIZE]",
+      "required": false,
+      "description": "Enumerate users via RID cycling. Optionally specify the lookup request size (BULK_SIZE).",
+      "default": "",
+      "example": "enum4linux-ng -R <bulk_size>"
+    },
+    {
+      "name": "-N",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do an NetBIOS names lookup (similar to nbtstat) and try to retrieve workgroup from output",
+      "default": "",
+      "example": "enum4linux-ng -N"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Specify workgroup/domain manually (usually found automatically)",
+      "default": "",
+      "example": "enum4linux-ng -w <domain>"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "USER",
+      "required": false,
+      "description": "Specify username to use (default \"\")",
+      "default": "",
+      "example": "enum4linux-ng -u <user>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "PW",
+      "required": false,
+      "description": "Specify password to use (default \"\")",
+      "default": "",
+      "example": "enum4linux-ng -p <pw>"
+    },
+    {
+      "name": "-K",
+      "short": "",
+      "aliases": [],
+      "arg": "TICKET_FILE",
+      "required": false,
+      "description": "Try to authenticate with Kerberos, only useful in Active Directory environment (Note: DNS must be setup correctly for this option to work",
+      "default": "",
+      "example": "enum4linux-ng -K <ticket_file>"
+    },
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "NTHASH",
+      "required": false,
+      "description": "Try to authenticate with hash",
+      "default": "",
+      "example": "enum4linux-ng -H <nthash>"
+    },
+    {
+      "name": "--local-auth",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Authenticate locally to target",
+      "default": "",
+      "example": "enum4linux-ng --local-auth"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get detailed information for users and groups, applies to -U, -G and -R",
+      "default": "",
+      "example": "enum4linux-ng -d"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "USERS",
+      "required": false,
+      "description": "User(s) that exists on remote system (default: administrator,guest,krbtgt,domain admins,root,bin,none). Used to get sid with \"lookupsids\"",
+      "default": "administrator,guest,krbtgt,domain admins,root,bin,none",
+      "example": "enum4linux-ng -k <users>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "RANGES",
+      "required": false,
+      "description": "RID ranges to enumerate (default: 500-550,1000-1050)",
+      "default": "500-550,1000-1050",
+      "example": "enum4linux-ng -r <ranges>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "SHARES_FILE",
+      "required": false,
+      "description": "Brute force guessing for shares",
+      "default": "",
+      "example": "enum4linux-ng -s <shares_file>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "Sets connection timeout in seconds (default: 10s)",
+      "default": "10s",
+      "example": "enum4linux-ng -t <timeout>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose, show full samba tools commands being run (net, rpcclient, etc.)",
+      "default": "",
+      "example": "enum4linux-ng -v"
+    },
+    {
+      "name": "--keep",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't delete the Samba configuration file created during tool run after enumeration (useful with -v)",
+      "default": "",
+      "example": "enum4linux-ng --keep"
+    },
+    {
+      "name": "-oJ",
+      "short": "",
+      "aliases": [],
+      "arg": "OUT_JSON_FILE",
+      "required": false,
+      "description": "Writes output to JSON file (extension is added automatically)",
+      "default": "",
+      "example": "enum4linux-ng -oJ <out_json_file>"
+    },
+    {
+      "name": "-oY",
+      "short": "",
+      "aliases": [],
+      "arg": "OUT_YAML_FILE",
+      "required": false,
+      "description": "Writes output to YAML file (extension is added automatically)",
+      "default": "",
+      "example": "enum4linux-ng -oY <out_yaml_file>"
+    },
+    {
+      "name": "-oA",
+      "short": "",
+      "aliases": [],
+      "arg": "OUT_FILE",
+      "required": false,
+      "description": "Writes output to YAML and JSON file (extensions are added automatically)",
+      "default": "",
+      "example": "enum4linux-ng -oA <out_file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "id": "cisco7crack",
+  "name": "cisco7crack",
+  "schema_version": 1,
+  "summary": "Crypt and decrypt the cisco enable 7 passwords.",
+  "highlights": [
+    "-c — crypt <plaintext>",
+    "-a — display all the ways to crypt <plaintext>",
+    "-# — display the n-th way to crypt <plaintext>",
+    "-d — decrypt <ciphertext> (default option)",
+    "-q — cause cisco7crack to be really quiet"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install cisco7crack"
+    }
+  ],
+  "usage": "cisco7crack [-q] -c [-{a|#<0..15>}] <plaintext>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "crypt <plaintext>",
+      "default": "",
+      "example": "cisco7crack -c"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display all the ways to crypt <plaintext>",
+      "default": "",
+      "example": "cisco7crack -a"
+    },
+    {
+      "name": "-#",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "display the n-th way to crypt <plaintext>",
+      "default": "",
+      "example": "cisco7crack -# <n>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "decrypt <ciphertext> (default option)",
+      "default": "option",
+      "example": "cisco7crack -d"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "cause cisco7crack to be really quiet",
+      "default": "",
+      "example": "cisco7crack -q"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display this brief usage summary",
+      "default": "",
+      "example": "cisco7crack -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

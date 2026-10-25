@@ -1,0 +1,26 @@
+{
+  "id": "pasco",
+  "name": "pasco",
+  "schema_version": 1,
+  "summary": "Examines the contents of Internet Explorer's cache files for forensic purposes",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pasco"
+    }
+  ],
+  "usage": "pasco [options] <filename>",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

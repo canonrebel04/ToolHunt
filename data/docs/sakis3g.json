@@ -1,0 +1,26 @@
+{
+  "id": "sakis3g",
+  "name": "sakis3g",
+  "schema_version": 1,
+  "summary": "An all-in-one script for connecting with 3G.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sakis3g"
+    }
+  ],
+  "usage": "sakis3g [actors] [switches] [variables]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

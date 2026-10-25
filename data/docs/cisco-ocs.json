@@ -1,0 +1,26 @@
+{
+  "id": "cisco-ocs",
+  "name": "cisco-ocs",
+  "schema_version": 1,
+  "summary": "Cisco Router Default Password Scanner.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install cisco-ocs"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

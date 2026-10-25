@@ -1,0 +1,95 @@
+{
+  "id": "pipal",
+  "name": "pipal",
+  "schema_version": 1,
+  "summary": "A password analyser.",
+  "highlights": [
+    "-t — show the top X results (default 10)",
+    "-o — output to file",
+    "--gkey — to allow zip code lookups (optional)",
+    "--list-checkers — Show the available checkers and which are enabled",
+    "-v — Verbose"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pipal"
+    }
+  ],
+  "usage": "pipal [OPTION] ... FILENAME",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [
+        "-?"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "show help",
+      "default": "",
+      "example": "pipal --help"
+    },
+    {
+      "name": "--top",
+      "short": "-t",
+      "aliases": [],
+      "arg": "X",
+      "required": false,
+      "description": "show the top X results (default 10)",
+      "default": "10",
+      "example": "pipal --top <x>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "output to file",
+      "default": "",
+      "example": "pipal --output <filename>"
+    },
+    {
+      "name": "--gkey",
+      "short": "",
+      "aliases": [],
+      "arg": "<Google Maps API key>",
+      "required": false,
+      "description": "to allow zip code lookups (optional)",
+      "default": "",
+      "example": "pipal --gkey <Google Maps API key>"
+    },
+    {
+      "name": "--list-checkers",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show the available checkers and which are enabled",
+      "default": "",
+      "example": "pipal --list-checkers"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose",
+      "default": "",
+      "example": "pipal --verbose"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

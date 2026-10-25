@@ -1,0 +1,188 @@
+{
+  "id": "dnstracer",
+  "name": "dnstracer",
+  "schema_version": 1,
+  "summary": "Determines where a given DNS server gets its information from, and follows the chain of DNS servers",
+  "highlights": [
+    "-c — disable local caching, default enabled",
+    "-C — enable negative caching, default disabled",
+    "-e — disable EDNS0, default enabled",
+    "-E — set EDNS0 size, default 1500",
+    "-o — enable overview of received answers, default disabled",
+    "-q — query-type to use for the DNS requests, default A",
+    "-r — amount of retries for DNS requests, default 3",
+    "-s — use this server for the initial request, default localhost If . is specified, A.ROOT-SERVE"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dnstracer"
+    }
+  ],
+  "usage": "dnstracer [options] [host]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable local caching, default enabled",
+      "default": "",
+      "example": "dnstracer -c"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable negative caching, default disabled",
+      "default": "",
+      "example": "dnstracer -C"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable EDNS0, default enabled",
+      "default": "",
+      "example": "dnstracer -e"
+    },
+    {
+      "name": "-E",
+      "short": "",
+      "aliases": [],
+      "arg": "<size>",
+      "required": false,
+      "description": "set EDNS0 size, default 1500",
+      "default": "",
+      "example": "dnstracer -E <size>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable overview of received answers, default disabled",
+      "default": "",
+      "example": "dnstracer -o"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "<querytype>",
+      "required": false,
+      "description": "query-type to use for the DNS requests, default A",
+      "default": "",
+      "example": "dnstracer -q <querytype>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<retries>",
+      "required": false,
+      "description": "amount of retries for DNS requests, default 3",
+      "default": "",
+      "example": "dnstracer -r <retries>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "<server>",
+      "required": false,
+      "description": "use this server for the initial request, default localhost If . is specified, A.ROOT-SERVERS.NET will be used.",
+      "default": "",
+      "example": "dnstracer -s <server>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<maximum timeout>",
+      "required": false,
+      "description": "Limit time to wait per try",
+      "default": "",
+      "example": "dnstracer -t <maximum timeout>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose",
+      "default": "",
+      "example": "dnstracer -v"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "<ip address>",
+      "required": false,
+      "description": "use this source address.",
+      "default": "",
+      "example": "dnstracer -S <ip address>"
+    },
+    {
+      "name": "-4",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't query IPv6 servers",
+      "default": "",
+      "example": "dnstracer -4"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "dnstracer <www.example.com>",
+      "explanation": "Find out where your local DNS got the information on www.example.com",
+      "source": "tldr:dnstracer"
+    },
+    {
+      "cmd": "dnstracer -s <dns.example.org> <www.example.com>",
+      "explanation": "Start with a [s]pecific DNS that you already know",
+      "source": "tldr:dnstracer"
+    },
+    {
+      "cmd": "dnstracer -4 <www.example.com>",
+      "explanation": "Only query IPv[4] servers",
+      "source": "tldr:dnstracer"
+    },
+    {
+      "cmd": "dnstracer -r <5> <www.example.com>",
+      "explanation": "[r]etry each request 5 times on failure",
+      "source": "tldr:dnstracer"
+    },
+    {
+      "cmd": "dnstracer -v <www.example.com>",
+      "explanation": "Display all steps during execution",
+      "source": "tldr:dnstracer"
+    },
+    {
+      "cmd": "dnstracer -o <www.example.com>",
+      "explanation": "Display an [o]verview of all received answers after execution",
+      "source": "tldr:dnstracer"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/dnstracer.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

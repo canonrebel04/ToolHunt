@@ -1,0 +1,186 @@
+{
+  "id": "cmseek",
+  "name": "cmseek",
+  "schema_version": 1,
+  "summary": "CMS (Content Management Systems) Detection and Exploitation suite.",
+  "highlights": [
+    "-u — Target Url",
+    "-l — Path of the file containing list of sites for multi-site scan (comma separated)",
+    "--skip-scanned — Skips target if it's CMS was previously detected.",
+    "--light-scan — Skips Deep Scan. Does CMS and version detection only.",
+    "-o — Only detect CMS, ignore deep scan and version detection.",
+    "--follow-redirect — Follows all/any redirect(s)",
+    "--no-redirect — Skips all redirects and tests the input target(s)",
+    "-r — Use a random user agent"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install cmseek"
+    }
+  ],
+  "usage": "python3 cmseek.py (for guided scanning) OR",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Target Url",
+      "default": "",
+      "example": "cmseek --url <url>"
+    },
+    {
+      "name": "--list",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LIST",
+      "required": false,
+      "description": "Path of the file containing list of sites for multi-site scan (comma separated)",
+      "default": "",
+      "example": "cmseek --list <list>"
+    },
+    {
+      "name": "--skip-scanned",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skips target if it's CMS was previously detected.",
+      "default": "",
+      "example": "cmseek --skip-scanned"
+    },
+    {
+      "name": "--light-scan",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skips Deep Scan. Does CMS and version detection only.",
+      "default": "",
+      "example": "cmseek --light-scan"
+    },
+    {
+      "name": "--only-cms",
+      "short": "-o",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only detect CMS, ignore deep scan and version detection.",
+      "default": "",
+      "example": "cmseek --only-cms"
+    },
+    {
+      "name": "--follow-redirect",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Follows all/any redirect(s)",
+      "default": "",
+      "example": "cmseek --follow-redirect"
+    },
+    {
+      "name": "--no-redirect",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skips all redirects and tests the input target(s)",
+      "default": "",
+      "example": "cmseek --no-redirect"
+    },
+    {
+      "name": "--random-agent",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use a random user agent",
+      "default": "",
+      "example": "cmseek --random-agent"
+    },
+    {
+      "name": "--googlebot",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Google bot user agent",
+      "default": "",
+      "example": "cmseek --googlebot"
+    },
+    {
+      "name": "--user-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "USER_AGENT",
+      "required": false,
+      "description": "Specify a custom user agent",
+      "default": "",
+      "example": "cmseek --user-agent <user_agent>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Increase output verbosity",
+      "default": "",
+      "example": "cmseek --verbose"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show CMSeeK version and exit",
+      "default": "",
+      "example": "cmseek --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this help message and exit",
+      "default": "",
+      "example": "cmseek --help"
+    },
+    {
+      "name": "--clear-result",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Delete all the scan result",
+      "default": "",
+      "example": "cmseek --clear-result"
+    },
+    {
+      "name": "--batch",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Never ask you to press enter after every site in a list is scanned",
+      "default": "",
+      "example": "cmseek --batch"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

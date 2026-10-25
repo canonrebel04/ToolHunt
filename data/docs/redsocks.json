@@ -1,0 +1,72 @@
+{
+  "id": "redsocks",
+  "name": "redsocks",
+  "schema_version": 1,
+  "summary": "Transparent redirector of any TCP connection to proxy.",
+  "highlights": [
+    "-t — test config syntax",
+    "-p — write pid to pidfile"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install redsocks"
+    }
+  ],
+  "usage": "redsocks [-?hvt] [-c config] [-p pidfile]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [
+        "-?"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "this message",
+      "default": "",
+      "example": "redsocks -h"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print version",
+      "default": "",
+      "example": "redsocks -v"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "test config syntax",
+      "default": "",
+      "example": "redsocks -t"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "write pid to pidfile",
+      "default": "",
+      "example": "redsocks -p"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

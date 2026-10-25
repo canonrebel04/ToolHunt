@@ -1,0 +1,92 @@
+{
+  "id": "shed",
+  "name": "shed",
+  "schema_version": 1,
+  "summary": ".NET runtime inspector.",
+  "highlights": [
+    "-r — open FILE read only",
+    "-s — position cursor to offset",
+    "-H — start with hex offsets",
+    "-L — set length (for device files)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install shed"
+    }
+  ],
+  "usage": "shed [OPTIONS] [FILE]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--readonly",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "open FILE read only",
+      "default": "",
+      "example": "shed --readonly"
+    },
+    {
+      "name": "--start",
+      "short": "-s",
+      "aliases": [],
+      "arg": "OFFSET",
+      "required": false,
+      "description": "position cursor to offset",
+      "default": "",
+      "example": "shed --start <offset>"
+    },
+    {
+      "name": "--hex",
+      "short": "-H",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "start with hex offsets",
+      "default": "",
+      "example": "shed --hex"
+    },
+    {
+      "name": "--length",
+      "short": "-L",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set length (for device files)",
+      "default": "",
+      "example": "shed --length"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show help and exit",
+      "default": "",
+      "example": "shed --help"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show version and exit",
+      "default": "",
+      "example": "shed --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

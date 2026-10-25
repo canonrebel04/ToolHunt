@@ -1,0 +1,216 @@
+{
+  "id": "hostapd-wpe",
+  "name": "hostapd-wpe",
+  "schema_version": 1,
+  "summary": "Modified hostapd to facilitate AP impersonation attacks.",
+  "highlights": [
+    "-d — show more debug messages (-dd for even more)",
+    "-B — run daemon in the background",
+    "-e — entropy file",
+    "-g — global control interface path",
+    "-G — group for control interfaces",
+    "-P — PID file",
+    "-K — include key data in debug messages",
+    "-f — log output to debug file instead of stdout"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hostapd-wpe"
+    }
+  ],
+  "usage": "hostapd-wpe [-hdBKtvrkc] [-P <PID file>] [-e <entropy file>] \\",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this usage",
+      "default": "",
+      "example": "hostapd-wpe -h"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show more debug messages (-dd for even more)",
+      "default": "",
+      "example": "hostapd-wpe -d"
+    },
+    {
+      "name": "-B",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "run daemon in the background",
+      "default": "",
+      "example": "hostapd-wpe -B"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "entropy file",
+      "default": "",
+      "example": "hostapd-wpe -e"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "global control interface path",
+      "default": "",
+      "example": "hostapd-wpe -g"
+    },
+    {
+      "name": "-G",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "group for control interfaces",
+      "default": "",
+      "example": "hostapd-wpe -G"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "PID file",
+      "default": "",
+      "example": "hostapd-wpe -P"
+    },
+    {
+      "name": "-K",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "include key data in debug messages",
+      "default": "",
+      "example": "hostapd-wpe -K"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "log output to debug file instead of stdout",
+      "default": "",
+      "example": "hostapd-wpe -f"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "record to Linux tracing in addition to logging (records all messages regardless of debug verbosity)",
+      "default": "",
+      "example": "hostapd-wpe -T"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "list of interface names to use",
+      "default": "",
+      "example": "hostapd-wpe -i"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "log output to syslog instead of stdout",
+      "default": "",
+      "example": "hostapd-wpe -s"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "start all the interfaces synchronously",
+      "default": "",
+      "example": "hostapd-wpe -S"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "include timestamps in some debug messages",
+      "default": "",
+      "example": "hostapd-wpe -t"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show hostapd version",
+      "default": "",
+      "example": "hostapd-wpe -v"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Return Success where possible",
+      "default": "",
+      "example": "hostapd-wpe -r"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Cupid Mode (Heartbleed clients)",
+      "default": "",
+      "example": "hostapd-wpe -c"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Karma Mode (Respond to all probes)",
+      "default": "",
+      "example": "hostapd-wpe -k"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

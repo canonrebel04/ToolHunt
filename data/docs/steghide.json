@@ -1,0 +1,262 @@
+{
+  "id": "steghide",
+  "name": "steghide",
+  "schema_version": 1,
+  "summary": "Embeds a message in a file by replacing some of the least significant bits.",
+  "highlights": [
+    "-ef — select file to be embedded",
+    "-ef — embed the file <filename>",
+    "-cf — select cover-file",
+    "-cf — embed into the file <filename>",
+    "-p — specify passphrase",
+    "-p — use <passphrase> to embed data",
+    "-sf — select stego file",
+    "-sf — write result to <filename> instead of cover-file"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install steghide"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install steghide-doc"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--embedfile",
+      "short": "-ef",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "select file to be embedded",
+      "default": "",
+      "example": "steghide --embedfile"
+    },
+    {
+      "name": "-ef",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "embed the file <filename>",
+      "default": "",
+      "example": "steghide -ef <filename>"
+    },
+    {
+      "name": "--coverfile",
+      "short": "-cf",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "select cover-file",
+      "default": "",
+      "example": "steghide --coverfile"
+    },
+    {
+      "name": "-cf",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "embed into the file <filename>",
+      "default": "",
+      "example": "steghide -cf <filename>"
+    },
+    {
+      "name": "--passphrase",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "specify passphrase",
+      "default": "",
+      "example": "steghide --passphrase"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<passphrase>",
+      "required": false,
+      "description": "use <passphrase> to embed data",
+      "default": "",
+      "example": "steghide -p <passphrase>"
+    },
+    {
+      "name": "--stegofile",
+      "short": "-sf",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "select stego file",
+      "default": "",
+      "example": "steghide --stegofile"
+    },
+    {
+      "name": "-sf",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "write result to <filename> instead of cover-file",
+      "default": "",
+      "example": "steghide -sf <filename>"
+    },
+    {
+      "name": "--encryption",
+      "short": "-e",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "select encryption parameters -e <a>[<m>]|<m>[<a>] specify an encryption algorithm and/or mode -e none do not encrypt data before embedding",
+      "default": "",
+      "example": "steghide --encryption"
+    },
+    {
+      "name": "--compress",
+      "short": "-z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "compress data before embedding (default)",
+      "default": "ault",
+      "example": "steghide --compress"
+    },
+    {
+      "name": "-z",
+      "short": "",
+      "aliases": [],
+      "arg": "<l>",
+      "required": false,
+      "description": "using level <l> (1 best speed...9 best compression)",
+      "default": "",
+      "example": "steghide -z <l>"
+    },
+    {
+      "name": "--dontcompress",
+      "short": "-Z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not compress data before embedding",
+      "default": "",
+      "example": "steghide --dontcompress"
+    },
+    {
+      "name": "--nochecksum",
+      "short": "-K",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not embed crc32 checksum of embedded data",
+      "default": "",
+      "example": "steghide --nochecksum"
+    },
+    {
+      "name": "--dontembedname",
+      "short": "-N",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not embed the name of the original file",
+      "default": "",
+      "example": "steghide --dontembedname"
+    },
+    {
+      "name": "--force",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "overwrite existing files",
+      "default": "",
+      "example": "steghide --force"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "suppress information messages",
+      "default": "",
+      "example": "steghide --quiet"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "display detailed information",
+      "default": "",
+      "example": "steghide --verbose"
+    },
+    {
+      "name": "--extractfile",
+      "short": "-xf",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "select file name for extracted data",
+      "default": "",
+      "example": "steghide --extractfile"
+    },
+    {
+      "name": "-xf",
+      "short": "",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "write the extracted data to <filename>",
+      "default": "",
+      "example": "steghide -xf <filename>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "steghide embed --coverfile <path/to/image.png> --embedfile <path/to/data.txt>",
+      "explanation": "Embed data in a PNG, prompting for a passphrase",
+      "source": "tldr:steghide"
+    },
+    {
+      "cmd": "steghide extract --stegofile <path/to/sound.wav>",
+      "explanation": "Extract data from a WAV audio file",
+      "source": "tldr:steghide"
+    },
+    {
+      "cmd": "steghide info <path/to/file.jpg>",
+      "explanation": "Display file information, trying to detect an embedded file",
+      "source": "tldr:steghide"
+    },
+    {
+      "cmd": "steghide embed --coverfile <path/to/image.jpg> --embedfile <path/to/data.txt> --compress <9>",
+      "explanation": "Embed data in a JPEG image, using maximum compression",
+      "source": "tldr:steghide"
+    },
+    {
+      "cmd": "steghide encinfo",
+      "explanation": "Get the list of supported encryption algorithms and modes",
+      "source": "tldr:steghide"
+    },
+    {
+      "cmd": "steghide embed --coverfile <path/to/image.jpg> --embedfile <path/to/data.txt> --encryption <blowfish|...> <cbc|...>",
+      "explanation": "Embed encrypted data in a JPEG image, e.g. with Blowfish in CBC mode",
+      "source": "tldr:steghide"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/steghide.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

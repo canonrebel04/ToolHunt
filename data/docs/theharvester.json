@@ -1,0 +1,228 @@
+{
+  "id": "theharvester",
+  "name": "theharvester",
+  "schema_version": 1,
+  "summary": "Python tool for gathering e-mail accounts and subdomain names from different public sources (search engines, pgp key servers).",
+  "highlights": [
+    "-d — Company name or domain to search.",
+    "-l — Limit the number of search results, default=500.",
+    "-S — Start with result number X, default=0.",
+    "-p — Use proxies for requests, enter proxies in proxies.yaml.",
+    "-s — Use Shodan to query discovered hosts.",
+    "--screenshot — Take screenshots of resolved domains specify output directory: --screenshot output_directo",
+    "-e — DNS server to use for lookup.",
+    "-t — Check for takeovers."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install theharvester"
+    }
+  ],
+  "usage": "theHarvester [-h] -d DOMAIN [-l LIMIT] [-S START] [-p] [-s]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "theHarvester --help"
+    },
+    {
+      "name": "--domain",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Company name or domain to search.",
+      "default": "",
+      "example": "theHarvester --domain <domain>"
+    },
+    {
+      "name": "--limit",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LIMIT",
+      "required": false,
+      "description": "Limit the number of search results, default=500.",
+      "default": "",
+      "example": "theHarvester --limit <limit>"
+    },
+    {
+      "name": "--start",
+      "short": "-S",
+      "aliases": [],
+      "arg": "START",
+      "required": false,
+      "description": "Start with result number X, default=0.",
+      "default": "",
+      "example": "theHarvester --start <start>"
+    },
+    {
+      "name": "--proxies",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use proxies for requests, enter proxies in proxies.yaml.",
+      "default": "",
+      "example": "theHarvester --proxies"
+    },
+    {
+      "name": "--shodan",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Shodan to query discovered hosts.",
+      "default": "",
+      "example": "theHarvester --shodan"
+    },
+    {
+      "name": "--screenshot",
+      "short": "",
+      "aliases": [],
+      "arg": "SCREENSHOT",
+      "required": false,
+      "description": "Take screenshots of resolved domains specify output directory: --screenshot output_directory",
+      "default": "",
+      "example": "theHarvester --screenshot <screenshot>"
+    },
+    {
+      "name": "--dns-server",
+      "short": "-e",
+      "aliases": [],
+      "arg": "DNS_SERVER",
+      "required": false,
+      "description": "DNS server to use for lookup.",
+      "default": "",
+      "example": "theHarvester --dns-server <dns_server>"
+    },
+    {
+      "name": "--take-over",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check for takeovers.",
+      "default": "",
+      "example": "theHarvester --take-over"
+    },
+    {
+      "name": "--dns-resolve",
+      "short": "-r",
+      "aliases": [],
+      "arg": "[DNS_RESOLVE]",
+      "required": false,
+      "description": "Perform DNS resolution on subdomains with a resolver list or passed in resolvers, default False.",
+      "default": "",
+      "example": "theHarvester --dns-resolve <dns_resolve>"
+    },
+    {
+      "name": "--dns-lookup",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable DNS server lookup, default False.",
+      "default": "",
+      "example": "theHarvester --dns-lookup"
+    },
+    {
+      "name": "--dns-brute",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform a DNS brute force on the domain.",
+      "default": "",
+      "example": "theHarvester --dns-brute"
+    },
+    {
+      "name": "--filename",
+      "short": "-f",
+      "aliases": [],
+      "arg": "FILENAME",
+      "required": false,
+      "description": "Save the results to an XML and JSON file.",
+      "default": "",
+      "example": "theHarvester --filename <filename>"
+    },
+    {
+      "name": "--wordlist",
+      "short": "-w",
+      "aliases": [],
+      "arg": "WORDLIST",
+      "required": false,
+      "description": "Specify a wordlist for API endpoint scanning.",
+      "default": "",
+      "example": "theHarvester --wordlist <wordlist>"
+    },
+    {
+      "name": "--api-scan",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Scan for API endpoints.",
+      "default": "",
+      "example": "theHarvester --api-scan"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Suppress missing API key warnings and reading the api- keys file.",
+      "default": "",
+      "example": "theHarvester --quiet"
+    },
+    {
+      "name": "--source",
+      "short": "-b",
+      "aliases": [],
+      "arg": "SOURCE",
+      "required": false,
+      "description": "baidu, bevigil, bitbucket, brave, bufferoverun, builtwith, censys, certspotter, chaos, commoncrawl, criminalip, crtsh, dehashed, dnsdumpster, duckduckgo, dymo, fofa, fullhunt, github-code, gitlab, hackertarget, haveibeenpwned, hudsonrock, hunter, hunterhow, intelx, leakix, leaklookup, mojeek, netlas, onyphe, otx, pentesttools, projectdiscovery, rapiddns, robtex, rocketreach, securityscorecard, securityTrails, sherlockeye, shodan, shodanInternetDB, subdomaincenter, subdomainfinderc99, thc, threatcrowd, tomba, urlscan, venacus, virustotal, waybackarchive, whoisxml, windvane, yahoo, zoomeye",
+      "default": "",
+      "example": "theHarvester --source <source>"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "theHarvester --domain <domain_name> --source google",
+      "explanation": "Gather information on a domain using Google",
+      "source": "tldr:theHarvester"
+    },
+    {
+      "cmd": "theHarvester --domain <domain_name> --source <duckduckgo,bing,crtsh>",
+      "explanation": "Gather information on a domain using multiple sources",
+      "source": "tldr:theHarvester"
+    },
+    {
+      "cmd": "theHarvester --domain <domain_name> --source <google> --limit <200>",
+      "explanation": "Change the limit of results to work with",
+      "source": "tldr:theHarvester"
+    },
+    {
+      "cmd": "theHarvester --help",
+      "explanation": "Display help",
+      "source": "tldr:theHarvester"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/theharvester.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

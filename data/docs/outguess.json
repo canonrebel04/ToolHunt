@@ -1,0 +1,104 @@
+{
+  "id": "outguess",
+  "name": "outguess",
+  "schema_version": 1,
+  "summary": "A universal steganographic tool.",
+  "highlights": [
+    "-p — parameter passed to destination data handler",
+    "-r — retrieve message from data",
+    "-x — number of key derivations to be tried",
+    "-m — mark pixels that have been modified",
+    "-t — collect statistic information",
+    "-F[ — turns statistical steganalysis foiling on/off. The default is on."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install outguess"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print this usage help text and exit",
+      "default": "",
+      "example": "outguess -h"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<param>",
+      "required": false,
+      "description": "parameter passed to destination data handler",
+      "default": "",
+      "example": "outguess -p <param>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "retrieve message from data",
+      "default": "",
+      "example": "outguess -r"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "<n>",
+      "required": false,
+      "description": "number of key derivations to be tried",
+      "default": "",
+      "example": "outguess -x <n>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "mark pixels that have been modified",
+      "default": "",
+      "example": "outguess -m"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "collect statistic information",
+      "default": "",
+      "example": "outguess -t"
+    },
+    {
+      "name": "-F[",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "turns statistical steganalysis foiling on/off. The default is on.",
+      "default": "",
+      "example": "outguess -F["
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "id": "phpggc",
+  "name": "phpggc",
+  "schema_version": 1,
+  "summary": "A library of PHP unserialize() payloads along with a tool to generate them, from command line or programmatically.",
+  "highlights": [
+    "-i — Displays information about a gadget chain",
+    "-o — Outputs the payload to a file instead of standard output",
+    "-p — Creates a PHAR file of the given format",
+    "-pj — Creates a polyglot JPEG/PHAR file from given image",
+    "-pp — Sets the PHAR prefix as the contents of the given file. Generally used with -p phar to con",
+    "-pf — Defines the name of the file contained in the generated PHAR (default: test.txt)",
+    "-f — Applies the fast-destruct technique, so that the object is destroyed right after the unser",
+    "-a — Uses the 'S' serialization format instead of the standard 's' for non-printable chars. Thi"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install phpggc"
+    }
+  ],
+  "usage": "./phpggc [-h|-l|-i|...] <GadgetChain> [arguments]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--information",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Displays information about a gadget chain",
+      "default": "",
+      "example": "phpggc --information"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Outputs the payload to a file instead of standard output",
+      "default": "",
+      "example": "phpggc --output <file>"
+    },
+    {
+      "name": "--phar",
+      "short": "-p",
+      "aliases": [],
+      "arg": "<tar|zip|phar>",
+      "required": false,
+      "description": "Creates a PHAR file of the given format",
+      "default": "",
+      "example": "phpggc --phar <tar|zip|phar>"
+    },
+    {
+      "name": "--phar-jpeg",
+      "short": "-pj",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Creates a polyglot JPEG/PHAR file from given image",
+      "default": "",
+      "example": "phpggc --phar-jpeg <file>"
+    },
+    {
+      "name": "--phar-prefix",
+      "short": "-pp",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "Sets the PHAR prefix as the contents of the given file. Generally used with -p phar to control the beginning of the generated file.",
+      "default": "",
+      "example": "phpggc --phar-prefix <file>"
+    },
+    {
+      "name": "--phar-filename",
+      "short": "-pf",
+      "aliases": [],
+      "arg": "<filename>",
+      "required": false,
+      "description": "Defines the name of the file contained in the generated PHAR (default: test.txt)",
+      "default": "test.txt",
+      "example": "phpggc --phar-filename <filename>"
+    },
+    {
+      "name": "--fast-destruct",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Applies the fast-destruct technique, so that the object is destroyed right after the unserialize() call, as opposed to at the end of the script",
+      "default": "",
+      "example": "phpggc --fast-destruct"
+    },
+    {
+      "name": "--ascii-strings",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Uses the 'S' serialization format instead of the standard 's' for non-printable chars. This replaces every non-ASCII value to an hexadecimal representation: s:5:\"A<null_byte>B<cr><lf>\"; -> S:5:\"A\\00B\\09\\0D\"; This is experimental and it might not work in some cases.",
+      "default": "",
+      "example": "phpggc --ascii-strings"
+    },
+    {
+      "name": "--armor-strings",
+      "short": "-A",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Uses the 'S' serialization format instead of the standard 's' for every char. This replaces every character to an hexadecimal representation: s:5:\"A<null_byte>B<cr><lf>\"; -> S:5:\"\\41\\00\\42\\09\\0D\"; This is experimental and it might not work in some cases. Note: Since strings grow by a factor of 3 using this option, the payload can get really long.",
+      "default": "",
+      "example": "phpggc --armor-strings"
+    },
+    {
+      "name": "--plus-numbers",
+      "short": "-n",
+      "aliases": [],
+      "arg": "<types>",
+      "required": false,
+      "description": "Adds a + symbol in front of every number symbol of the given type. For instance, -n iO adds a + in front of every int and object name size: O:3:\"Abc\":1:{s:1:\"x\";i:3;} -> O:+3:\"Abc\":1:{s:1:\"x\";i:+3;} Note: Since PHP 7.2, only i and d (float) types can have a +",
+      "default": "",
+      "example": "phpggc --plus-numbers <types>"
+    },
+    {
+      "name": "--wrapper",
+      "short": "-w",
+      "aliases": [],
+      "arg": "<wrapper>",
+      "required": false,
+      "description": "Specifies a file containing at least one wrapper functions: - process_parameters(array $parameters): called right before object is created - process_object(object $object): called right before the payload is serialized - process_serialized(string $serialized): called right after the payload is serialized",
+      "default": "",
+      "example": "phpggc --wrapper <wrapper>"
+    },
+    {
+      "name": "--soft",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Soft URLencode",
+      "default": "",
+      "example": "phpggc --soft"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "URLencodes the payload",
+      "default": "",
+      "example": "phpggc --url"
+    },
+    {
+      "name": "--json",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Converts the output into json",
+      "default": "",
+      "example": "phpggc --json"
+    },
+    {
+      "name": "--test-payload",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Instead of displaying or storing the payload, includes vendor/autoload.php and unserializes the payload. The test script can only deserialize __destruct, __wakeup, __toString and PHAR payloads. Warning: This will run the payload on YOUR system !",
+      "default": "",
+      "example": "phpggc --test-payload"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

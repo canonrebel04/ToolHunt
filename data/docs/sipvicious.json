@@ -1,0 +1,306 @@
+{
+  "id": "sipvicious",
+  "name": "sipvicious",
+  "schema_version": 1,
+  "summary": "Tools for auditing SIP devices.",
+  "highlights": [
+    "-p — Destination port of the SIP device - eg -p 5060",
+    "-v — Increase verbosity",
+    "-q — Quiet mode",
+    "-P — Source port for our packets",
+    "-x — IP Address to use as the external ip. Specify this if you have multiple interfaces or if y",
+    "-b — By default we bind to all interfaces. This option overrides that and binds to the specifie",
+    "-t — This option allows you to trottle the speed at which packets are sent. Change this if you'",
+    "-R — Send the author an exception traceback. Currently sends the command line parameters and th"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sipvicious"
+    }
+  ],
+  "usage": "svcrack -u username [options] target",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show program's version number and exit",
+      "default": "",
+      "example": "svcrack --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "svcrack --help"
+    },
+    {
+      "name": "--port",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "Destination port of the SIP device - eg -p 5060",
+      "default": "",
+      "example": "svcrack --port <port>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Increase verbosity",
+      "default": "",
+      "example": "svcrack --verbose"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Quiet mode",
+      "default": "",
+      "example": "svcrack --quiet"
+    },
+    {
+      "name": "--localport",
+      "short": "-P",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "Source port for our packets",
+      "default": "",
+      "example": "svcrack --localport <port>"
+    },
+    {
+      "name": "--externalip",
+      "short": "-x",
+      "aliases": [],
+      "arg": "IP",
+      "required": false,
+      "description": "IP Address to use as the external ip. Specify this if you have multiple interfaces or if you are behind NAT",
+      "default": "",
+      "example": "svcrack --externalip <ip>"
+    },
+    {
+      "name": "--bindingip",
+      "short": "-b",
+      "aliases": [],
+      "arg": "BINDINGIP",
+      "required": false,
+      "description": "By default we bind to all interfaces. This option overrides that and binds to the specified ip address",
+      "default": "",
+      "example": "svcrack --bindingip <bindingip>"
+    },
+    {
+      "name": "--timeout",
+      "short": "-t",
+      "aliases": [],
+      "arg": "SELECTTIME",
+      "required": false,
+      "description": "This option allows you to trottle the speed at which packets are sent. Change this if you're losing packets. For example try 0.5.",
+      "default": "",
+      "example": "svcrack --timeout <selecttime>"
+    },
+    {
+      "name": "--reportback",
+      "short": "-R",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Send the author an exception traceback. Currently sends the command line parameters and the traceback",
+      "default": "",
+      "example": "svcrack --reportback"
+    },
+    {
+      "name": "--autogetip",
+      "short": "-A",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Automatically get the current IP address. This is useful when you are not getting any responses back due to SIPVicious not resolving your local IP.",
+      "default": "",
+      "example": "svcrack --autogetip"
+    },
+    {
+      "name": "--save",
+      "short": "-s",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "save the session. Has the benefit of allowing you to resume a previous scan and allows you to export scans",
+      "default": "",
+      "example": "svcrack --save <name>"
+    },
+    {
+      "name": "--resume",
+      "short": "",
+      "aliases": [],
+      "arg": "NAME",
+      "required": false,
+      "description": "resume a previous scan",
+      "default": "",
+      "example": "svcrack --resume <name>"
+    },
+    {
+      "name": "--enablecompact",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable compact mode. Makes packets smaller but possibly less compatible",
+      "default": "",
+      "example": "svcrack --enablecompact"
+    },
+    {
+      "name": "--username",
+      "short": "-u",
+      "aliases": [],
+      "arg": "USERNAME",
+      "required": false,
+      "description": "username to try crack",
+      "default": "",
+      "example": "svcrack --username <username>"
+    },
+    {
+      "name": "--dictionary",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DICTIONARY",
+      "required": false,
+      "description": "specify a dictionary file with passwords or - for stdin",
+      "default": "",
+      "example": "svcrack --dictionary <dictionary>"
+    },
+    {
+      "name": "--range",
+      "short": "-r",
+      "aliases": [],
+      "arg": "RANGE",
+      "required": false,
+      "description": "specify a range of numbers. example: 100-200,300-310,400",
+      "default": "",
+      "example": "svcrack --range <range>"
+    },
+    {
+      "name": "--extension",
+      "short": "-e",
+      "aliases": [],
+      "arg": "EXTENSION",
+      "required": false,
+      "description": "Extension to crack. Only specify this when the extension is different from the username.",
+      "default": "",
+      "example": "svcrack --extension <extension>"
+    },
+    {
+      "name": "--zeropadding",
+      "short": "-z",
+      "aliases": [],
+      "arg": "PADDING",
+      "required": false,
+      "description": "the number of zeros used to padd the password. the options \"-r 1-9999 -z 4\"would give 0001 0002 0003 ... 9999",
+      "default": "",
+      "example": "svcrack --zeropadding <padding>"
+    },
+    {
+      "name": "--reusenonce",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Reuse nonce. Some SIP devices don't mind you reusing the nonce (making them vulnerable to replay attacks). Speeds up the cracking.",
+      "default": "",
+      "example": "svcrack --reusenonce"
+    },
+    {
+      "name": "--template",
+      "short": "-T",
+      "aliases": [],
+      "arg": "TEMPLATE",
+      "required": false,
+      "description": "A format string which allows us to specify a template for the extensionsexample svwar.py -e 1-999 --template=\"123%#04i999\" would scan between 1230001999 to 1230999999\"",
+      "default": "",
+      "example": "svcrack --template <template>"
+    },
+    {
+      "name": "--maximumtime",
+      "short": "",
+      "aliases": [],
+      "arg": "MAXIMUMTIME",
+      "required": false,
+      "description": "Maximum time in seconds to keep sending requests without receiving a response back",
+      "default": "",
+      "example": "svcrack --maximumtime <maximumtime>"
+    },
+    {
+      "name": "--enabledefaults",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Scan for default / typical passwords such as1000,2000,3000 ... 1100, etc. This option is off by default.Use --enabledefaults to enable this functionality",
+      "default": "",
+      "example": "svcrack --enabledefaults"
+    },
+    {
+      "name": "--domain",
+      "short": "",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "force a specific domain name for the SIP message, eg. example.org",
+      "default": "",
+      "example": "svcrack --domain <domain>"
+    },
+    {
+      "name": "--requesturi",
+      "short": "",
+      "aliases": [],
+      "arg": "REQUESTURI",
+      "required": false,
+      "description": "force the first line URI to a specific value; e.g. sip:999@example.org",
+      "default": "",
+      "example": "svcrack --requesturi <requesturi>"
+    },
+    {
+      "name": "-6",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Scan an IPv6 address",
+      "default": "",
+      "example": "svcrack -6"
+    },
+    {
+      "name": "--method",
+      "short": "-m",
+      "aliases": [],
+      "arg": "METHOD",
+      "required": false,
+      "description": "Specify a SIP method to use",
+      "default": "",
+      "example": "svcrack --method <method>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

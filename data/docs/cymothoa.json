@@ -1,0 +1,276 @@
+{
+  "id": "cymothoa",
+  "name": "cymothoa",
+  "schema_version": 1,
+  "summary": "A stealth backdooring tool, that inject backdoor's shellcode into an existing process.",
+  "highlights": [
+    "-p — process pid",
+    "-s — shellcode number",
+    "-l — memory region name for shellcode injection (default /lib/ld) search for \"r-xp\" permissions",
+    "-m — memory region name for persistent memory (default /lib/ld) search for \"rw-p\" permissions, ",
+    "-S — list available shellcodes",
+    "-f — fork parent process",
+    "-F — don't fork parent process",
+    "-b — create payload thread (probably you need also -F)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install cymothoa"
+    }
+  ],
+  "usage": "cymothoa -p <pid> -s <shellcode_number> [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "process pid",
+      "default": "",
+      "example": "cymothoa -p"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "shellcode number",
+      "default": "",
+      "example": "cymothoa -s"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "memory region name for shellcode injection (default /lib/ld) search for \"r-xp\" permissions, see /proc/pid/maps...",
+      "default": "/lib/ld",
+      "example": "cymothoa -l"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "memory region name for persistent memory (default /lib/ld) search for \"rw-p\" permissions, see /proc/pid/maps...",
+      "default": "/lib/ld",
+      "example": "cymothoa -m"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print this help screen",
+      "default": "",
+      "example": "cymothoa -h"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "list available shellcodes",
+      "default": "",
+      "example": "cymothoa -S"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "fork parent process",
+      "default": "",
+      "example": "cymothoa -f"
+    },
+    {
+      "name": "-F",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't fork parent process",
+      "default": "",
+      "example": "cymothoa -F"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "create payload thread (probably you need also -F)",
+      "default": "",
+      "example": "cymothoa -b"
+    },
+    {
+      "name": "-B",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't create payload thread",
+      "default": "",
+      "example": "cymothoa -B"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "pass persistent memory address",
+      "default": "",
+      "example": "cymothoa -w"
+    },
+    {
+      "name": "-W",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't pass persistent memory address",
+      "default": "",
+      "example": "cymothoa -W"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use alarm scheduler",
+      "default": "",
+      "example": "cymothoa -a"
+    },
+    {
+      "name": "-A",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't use alarm scheduler",
+      "default": "",
+      "example": "cymothoa -A"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use setitimer scheduler",
+      "default": "",
+      "example": "cymothoa -t"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't use setitimer scheduler",
+      "default": "",
+      "example": "cymothoa -T"
+    },
+    {
+      "name": "-j",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set timer (seconds)",
+      "default": "",
+      "example": "cymothoa -j"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set timer (microseconds)",
+      "default": "",
+      "example": "cymothoa -k"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set the IP",
+      "default": "",
+      "example": "cymothoa -x"
+    },
+    {
+      "name": "-y",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set the port number",
+      "default": "",
+      "example": "cymothoa -y"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set the port number 2",
+      "default": "",
+      "example": "cymothoa -r"
+    },
+    {
+      "name": "-z",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set the username (4 bytes)",
+      "default": "",
+      "example": "cymothoa -z"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set the password (8 bytes)",
+      "default": "",
+      "example": "cymothoa -o"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "set the script code (ex: \"#!/bin/sh\\nls; exit 0\") escape codes will not be interpreted...",
+      "default": "",
+      "example": "cymothoa -c"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

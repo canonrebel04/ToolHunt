@@ -1,0 +1,51 @@
+{
+  "id": "ipscan",
+  "name": "ipscan",
+  "schema_version": 1,
+  "summary": "A very fast IP address and port scanner.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "ipscan <192.168.0.1>",
+      "explanation": "Scan a specific IP address",
+      "source": "tldr:ipscan"
+    },
+    {
+      "cmd": "ipscan <192.168.0.1-254>",
+      "explanation": "Scan a range of IP addresses",
+      "source": "tldr:ipscan"
+    },
+    {
+      "cmd": "ipscan <192.168.0.1-254> -o <path/to/output.txt>",
+      "explanation": "Scan a range of IP addresses and save the results to a file",
+      "source": "tldr:ipscan"
+    },
+    {
+      "cmd": "ipscan <192.168.0.1-254> -p <80,443,22>",
+      "explanation": "Scan IPs with a specific set of ports",
+      "source": "tldr:ipscan"
+    },
+    {
+      "cmd": "ipscan <192.168.0.1-254> -d <200>",
+      "explanation": "Scan with a delay between requests to avoid network congestion",
+      "source": "tldr:ipscan"
+    },
+    {
+      "cmd": "ipscan --help",
+      "explanation": "Display help",
+      "source": "tldr:ipscan"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/ipscan.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

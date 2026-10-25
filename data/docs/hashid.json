@@ -1,0 +1,124 @@
+{
+  "id": "hashid",
+  "name": "hashid",
+  "schema_version": 1,
+  "summary": "Software to identify the different types of hashes used to encrypt data.",
+  "highlights": [
+    "-e — list all possible hash algorithms including salted passwords",
+    "-m — show corresponding Hashcat mode in output",
+    "-j — show corresponding JohnTheRipper format in output",
+    "-o — write output to file"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hashid"
+    }
+  ],
+  "usage": "hashid.py [-h] [-e] [-m] [-j] [-o FILE] [--version] INPUT",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--extended",
+      "short": "-e",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "list all possible hash algorithms including salted passwords",
+      "default": "",
+      "example": "hashid --extended"
+    },
+    {
+      "name": "--mode",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show corresponding Hashcat mode in output",
+      "default": "",
+      "example": "hashid --mode"
+    },
+    {
+      "name": "--john",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show corresponding JohnTheRipper format in output",
+      "default": "",
+      "example": "hashid --john"
+    },
+    {
+      "name": "--outfile",
+      "short": "-o",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "write output to file",
+      "default": "",
+      "example": "hashid --outfile <file>"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "hashid --help"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show program's version number and exit",
+      "default": "",
+      "example": "hashid --version"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "hashid",
+      "explanation": "Identify hashes from `stdin` (through typing, copying and pasting, or piping the hash into the program)",
+      "source": "tldr:hashid"
+    },
+    {
+      "cmd": "hashid <hash1 hash2 ...>",
+      "explanation": "Identify one or more hashes",
+      "source": "tldr:hashid"
+    },
+    {
+      "cmd": "hashid <path/to/hashes.txt>",
+      "explanation": "Identify hashes on a file (one hash per line)",
+      "source": "tldr:hashid"
+    },
+    {
+      "cmd": "hashid --extended <hash>",
+      "explanation": "Show all possible hash types (including salted hashes)",
+      "source": "tldr:hashid"
+    },
+    {
+      "cmd": "hashid --mode --john <hash>",
+      "explanation": "Show `hashcat`'s mode number and `john`'s format string of the hash types",
+      "source": "tldr:hashid"
+    },
+    {
+      "cmd": "hashid --outfile <path/to/output.txt> <hash>",
+      "explanation": "Save output to a file instead of printing to `stdout`",
+      "source": "tldr:hashid"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/hashid.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

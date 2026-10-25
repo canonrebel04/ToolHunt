@@ -1,0 +1,301 @@
+{
+  "id": "hydra",
+  "name": "hydra",
+  "schema_version": 1,
+  "summary": "Very fast network logon cracker",
+  "highlights": [
+    "-R — restore a previous aborted/crashed session",
+    "-I — ignore an existing restore file (don't wait 10 seconds)",
+    "-S — perform an SSL connect",
+    "-s — if the service is on a different default port, define it here",
+    "-p — or -P FILE try password PASS, or load several passwords from FILE",
+    "-y — disable use of symbols in bruteforce, see above",
+    "-r — use a non-random shuffling method for option -x",
+    "-u — loop around users, not passwords (effective! implied with -x)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hydra"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install hydra-gtk"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "restore a previous aborted/crashed session",
+      "default": "",
+      "example": "hydra -R"
+    },
+    {
+      "name": "-I",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ignore an existing restore file (don't wait 10 seconds)",
+      "default": "",
+      "example": "hydra -I"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "perform an SSL connect",
+      "default": "",
+      "example": "hydra -S"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "if the service is on a different default port, define it here",
+      "default": "",
+      "example": "hydra -s <port>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "PASS",
+      "required": false,
+      "description": "or -P FILE try password PASS, or load several passwords from FILE",
+      "default": "",
+      "example": "hydra -p <pass>"
+    },
+    {
+      "name": "-y",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable use of symbols in bruteforce, see above",
+      "default": "",
+      "example": "hydra -y"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use a non-random shuffling method for option -x",
+      "default": "",
+      "example": "hydra -r"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "loop around users, not passwords (effective! implied with -x)",
+      "default": "",
+      "example": "hydra -u"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "colon separated \"login:pass\" format, instead of -L/-P options",
+      "default": "",
+      "example": "hydra -C <file>"
+    },
+    {
+      "name": "-M",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "list of servers to attack, one entry per line, ':' to specify port",
+      "default": "",
+      "example": "hydra -M <file>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "write found login/password pairs to FILE instead of stdout",
+      "default": "",
+      "example": "hydra -o <file>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [
+        "-F"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "exit when a login/pass pair is found (-M: -f per host, -F global)",
+      "default": "",
+      "example": "hydra -f"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "TASKS",
+      "required": false,
+      "description": "run TASKS number of connects in parallel per target (default: 16)",
+      "default": "16",
+      "example": "hydra -t <tasks>"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "TASKS",
+      "required": false,
+      "description": "run TASKS connects in parallel overall (for -M, default: 64)",
+      "default": "",
+      "example": "hydra -T <tasks>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [
+        "-W"
+      ],
+      "arg": "TIME",
+      "required": false,
+      "description": "wait time for a response (32) / between connects per thread (0)",
+      "default": "",
+      "example": "hydra -w <time>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "TIME",
+      "required": false,
+      "description": "wait time per login attempt over all threads (enforces -t 1)",
+      "default": "",
+      "example": "hydra -c <time>"
+    },
+    {
+      "name": "-4",
+      "short": "",
+      "aliases": [
+        "-6"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "use IPv4 (default) / IPv6 addresses (put always in [] also in -M)",
+      "default": "ault",
+      "example": "hydra -4"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [
+        "-V",
+        "-d"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "verbose mode / show login+pass for each attempt / debug mode",
+      "default": "",
+      "example": "hydra -v"
+    },
+    {
+      "name": "-O",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use old SSL v2 and v3",
+      "default": "",
+      "example": "hydra -O"
+    },
+    {
+      "name": "-K",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not redo failed attempts (good for -M mass scanning)",
+      "default": "",
+      "example": "hydra -K"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "do not print messages about connection errors",
+      "default": "",
+      "example": "hydra -q"
+    },
+    {
+      "name": "-U",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "service module usage details",
+      "default": "",
+      "example": "hydra -U"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "OPT",
+      "required": false,
+      "description": "options specific for a module, see -U output for information",
+      "default": "",
+      "example": "hydra -m <opt>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "more command line options (COMPLETE HELP)",
+      "default": "",
+      "example": "hydra -h"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "hydra-wizard",
+      "explanation": "Start Hydra's wizard",
+      "source": "tldr:hydra"
+    },
+    {
+      "cmd": "hydra -C <path/to/username_password_pairs.txt> <imap://host_range_cidr>",
+      "explanation": "Guess IMAP credentials on a range of hosts using a list of colon-separated username/password pairs",
+      "source": "tldr:hydra"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/hydra.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "id": "sherlock",
+  "name": "sherlock",
+  "schema_version": 1,
+  "summary": "Find usernames across social networks.",
+  "highlights": [
+    "-v — Display extra debugging information and metrics.",
+    "-fo — If using multiple usernames, the output of the results will be saved to this folder.",
+    "-o — If using single username, the output of the result will be saved to this file.",
+    "-t — Make requests over Tor; increases runtime; requires Tor to be installed and in system path",
+    "-u — Make requests over Tor with new Tor circuit after each request; increases runtime; require",
+    "--csv — Create Comma-Separated Values (CSV) File.",
+    "--xlsx — Create the standard file for the modern Microsoft Excel spreadsheet (xlsx).",
+    "--site — Limit analysis to just the listed sites. Add multiple options to specify more than one sit"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sherlock"
+    }
+  ],
+  "usage": "sherlock [-h] [--version] [--verbose] [--folderoutput FOLDEROUTPUT]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "sherlock --help"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display version information and dependencies.",
+      "default": "",
+      "example": "sherlock --version"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [
+        "--debug",
+        "-d"
+      ],
+      "arg": "",
+      "required": false,
+      "description": "Display extra debugging information and metrics.",
+      "default": "",
+      "example": "sherlock --verbose"
+    },
+    {
+      "name": "--folderoutput",
+      "short": "-fo",
+      "aliases": [],
+      "arg": "FOLDEROUTPUT",
+      "required": false,
+      "description": "If using multiple usernames, the output of the results will be saved to this folder.",
+      "default": "",
+      "example": "sherlock --folderoutput <folderoutput>"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT",
+      "required": false,
+      "description": "If using single username, the output of the result will be saved to this file.",
+      "default": "",
+      "example": "sherlock --output <output>"
+    },
+    {
+      "name": "--tor",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Make requests over Tor; increases runtime; requires Tor to be installed and in system path.",
+      "default": "",
+      "example": "sherlock --tor"
+    },
+    {
+      "name": "--unique-tor",
+      "short": "-u",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Make requests over Tor with new Tor circuit after each request; increases runtime; requires Tor to be installed and in system path.",
+      "default": "",
+      "example": "sherlock --unique-tor"
+    },
+    {
+      "name": "--csv",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Create Comma-Separated Values (CSV) File.",
+      "default": "",
+      "example": "sherlock --csv"
+    },
+    {
+      "name": "--xlsx",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Create the standard file for the modern Microsoft Excel spreadsheet (xlsx).",
+      "default": "",
+      "example": "sherlock --xlsx"
+    },
+    {
+      "name": "--site",
+      "short": "",
+      "aliases": [],
+      "arg": "SITE_NAME",
+      "required": false,
+      "description": "Limit analysis to just the listed sites. Add multiple options to specify more than one site.",
+      "default": "",
+      "example": "sherlock --site <site_name>"
+    },
+    {
+      "name": "--proxy",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PROXY_URL",
+      "required": false,
+      "description": "Make requests over a proxy. e.g. socks5://127.0.0.1:1080",
+      "default": "",
+      "example": "sherlock --proxy <proxy_url>"
+    },
+    {
+      "name": "--dump-response",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Dump the HTTP response to stdout for targeted debugging.",
+      "default": "",
+      "example": "sherlock --dump-response"
+    },
+    {
+      "name": "--json",
+      "short": "-j",
+      "aliases": [],
+      "arg": "JSON_FILE",
+      "required": false,
+      "description": "Load data from a JSON file or an online, valid, JSON file. Upstream PR numbers also accepted.",
+      "default": "",
+      "example": "sherlock --json <json_file>"
+    },
+    {
+      "name": "--timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "TIMEOUT",
+      "required": false,
+      "description": "Time (in seconds) to wait for response to requests (Default: 60)",
+      "default": "60",
+      "example": "sherlock --timeout <timeout>"
+    },
+    {
+      "name": "--print-all",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output sites where the username was not found.",
+      "default": "",
+      "example": "sherlock --print-all"
+    },
+    {
+      "name": "--print-found",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output sites where the username was found (also if exported as file).",
+      "default": "",
+      "example": "sherlock --print-found"
+    },
+    {
+      "name": "--no-color",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't color terminal output",
+      "default": "",
+      "example": "sherlock --no-color"
+    },
+    {
+      "name": "--browse",
+      "short": "-b",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Browse to all results on default browser.",
+      "default": "",
+      "example": "sherlock --browse"
+    },
+    {
+      "name": "--local",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use the local data.json file.",
+      "default": "",
+      "example": "sherlock --local"
+    },
+    {
+      "name": "--remote",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Fetch data.json from GitHub instead of the local file.",
+      "default": "",
+      "example": "sherlock --remote"
+    },
+    {
+      "name": "--nsfw",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Include checking of NSFW sites from default list.",
+      "default": "",
+      "example": "sherlock --nsfw"
+    },
+    {
+      "name": "--no-txt",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable creation of a txt file",
+      "default": "",
+      "example": "sherlock --no-txt"
+    },
+    {
+      "name": "--ignore-exclusions",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore upstream exclusions (may return more false positives)",
+      "default": "",
+      "example": "sherlock --ignore-exclusions"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "sherlock <username> --output <path/to/file>",
+      "explanation": "Search for a specific username on social networks saving the results to a file",
+      "source": "tldr:sherlock"
+    },
+    {
+      "cmd": "sherlock <username1 username2 ...> --folderoutput <path/to/directory>",
+      "explanation": "Search for specific usernames on social networks saving the results into a directory",
+      "source": "tldr:sherlock"
+    },
+    {
+      "cmd": "sherlock --tor <username>",
+      "explanation": "Search for a specific username on social networks using the Tor network",
+      "source": "tldr:sherlock"
+    },
+    {
+      "cmd": "sherlock --unique-tor <username>",
+      "explanation": "Make requests over Tor with a new Tor circuit after each request",
+      "source": "tldr:sherlock"
+    },
+    {
+      "cmd": "sherlock <username> --proxy <proxy_url>",
+      "explanation": "Search for a specific username on social networks using a proxy",
+      "source": "tldr:sherlock"
+    },
+    {
+      "cmd": "sherlock <username> --browse",
+      "explanation": "Search for a specific username on social networks and open results in the default web browser",
+      "source": "tldr:sherlock"
+    },
+    {
+      "cmd": "sherlock --help",
+      "explanation": "Display help",
+      "source": "tldr:sherlock"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/sherlock.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

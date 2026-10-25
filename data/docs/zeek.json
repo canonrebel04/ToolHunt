@@ -1,0 +1,51 @@
+{
+  "id": "zeek",
+  "name": "zeek",
+  "schema_version": 1,
+  "summary": "A powerful network analysis framework that is much different from the typical IDS you may know.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "sudo zeek --iface <interface>",
+      "explanation": "Analyze live traffic from a network interface",
+      "source": "tldr:zeek"
+    },
+    {
+      "cmd": "sudo zeek --iface <interface> <script1 script2 ...>",
+      "explanation": "Analyze live traffic from a network interface and load custom scripts",
+      "source": "tldr:zeek"
+    },
+    {
+      "cmd": "sudo zeek --bare-mode --iface <interface>",
+      "explanation": "Analyze live traffic from a network interface, without loading any scripts",
+      "source": "tldr:zeek"
+    },
+    {
+      "cmd": "sudo zeek --filter <path/to/filter> --iface <interface>",
+      "explanation": "Analyze live traffic from a network interface, applying a `tcpdump` filter",
+      "source": "tldr:zeek"
+    },
+    {
+      "cmd": "sudo zeek --watchdog --iface <interface>",
+      "explanation": "Analyze live traffic from a network interface using a watchdog timer",
+      "source": "tldr:zeek"
+    },
+    {
+      "cmd": "zeek --readfile <path/to/file.trace>",
+      "explanation": "Analyze traffic from a PCAP file",
+      "source": "tldr:zeek"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/zeek.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

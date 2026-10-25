@@ -1,0 +1,156 @@
+{
+  "id": "bopscrk",
+  "name": "bopscrk",
+  "schema_version": 1,
+  "summary": "Tool to generate smart wordlists, eg. based on lyrics.",
+  "highlights": [
+    "-i — interactive mode, the script will ask you about target",
+    "-w — words to combine comma-separated (will be combined with all words)",
+    "-m — min length for the words to generate (default: 4)",
+    "-M — max length for the words to generate (default: 12)",
+    "-c — enable case transformations",
+    "-l — enable leet transformations",
+    "-n — max amount of words to combine each time (default: 2)",
+    "-a — artists to search song lyrics (comma-separated)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bopscrk"
+    }
+  ],
+  "usage": "bopscrk [-h] [-i] [-w ] [-m ] [-M ] [-c] [-l] [-n ] [-a ] [-o ] [-C ]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "bopscrk --help"
+    },
+    {
+      "name": "--interactive",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "interactive mode, the script will ask you about target",
+      "default": "",
+      "example": "bopscrk --interactive"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "words to combine comma-separated (will be combined with all words)",
+      "default": "",
+      "example": "bopscrk -w"
+    },
+    {
+      "name": "--min",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "min length for the words to generate (default: 4)",
+      "default": "4",
+      "example": "bopscrk --min"
+    },
+    {
+      "name": "--max",
+      "short": "-M",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "max length for the words to generate (default: 12)",
+      "default": "12",
+      "example": "bopscrk --max"
+    },
+    {
+      "name": "--case",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable case transformations",
+      "default": "",
+      "example": "bopscrk --case"
+    },
+    {
+      "name": "--leet",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable leet transformations",
+      "default": "",
+      "example": "bopscrk --leet"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "max amount of words to combine each time (default: 2)",
+      "default": "2",
+      "example": "bopscrk -n"
+    },
+    {
+      "name": "--artists",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "artists to search song lyrics (comma-separated)",
+      "default": "",
+      "example": "bopscrk --artists"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "output file to save the wordlist (default: tmp.txt)",
+      "default": "tmp.txt",
+      "example": "bopscrk --output"
+    },
+    {
+      "name": "--config",
+      "short": "-C",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "specify config file to use (default: /usr/lib/python3/dist-packages/bopscrk/bopscrk.cfg)",
+      "default": "/usr/lib/python3/dist-packages/bopscrk/bopscrk.cfg",
+      "example": "bopscrk --config"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print version and exit",
+      "default": "",
+      "example": "bopscrk --version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

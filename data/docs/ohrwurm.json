@@ -1,0 +1,26 @@
+{
+  "id": "ohrwurm",
+  "name": "ohrwurm",
+  "schema_version": 1,
+  "summary": "A small and simple RTP fuzzer.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ohrwurm"
+    }
+  ],
+  "usage": "ohrwurm -a <IP target a> -b <IP target b> [-s <randomseed>] [-e <bit error ratio in %>] [-i <interface>] [-A <RTP port a> -B <RTP port b>]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

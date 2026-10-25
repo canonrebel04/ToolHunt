@@ -1,0 +1,51 @@
+{
+  "id": "expose",
+  "name": "expose",
+  "schema_version": 1,
+  "summary": "A Dynamic Symbolic Execution (DSE) engine for JavaScript",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "expose token <token>",
+      "explanation": "Register your authentication token",
+      "source": "tldr:expose"
+    },
+    {
+      "cmd": "expose",
+      "explanation": "Share the current working directory",
+      "source": "tldr:expose"
+    },
+    {
+      "cmd": "expose --subdomain=<subdomain>",
+      "explanation": "Share the current working directory with a specific subdomain",
+      "source": "tldr:expose"
+    },
+    {
+      "cmd": "expose share <url>",
+      "explanation": "Share a local URL",
+      "source": "tldr:expose"
+    },
+    {
+      "cmd": "expose serve",
+      "explanation": "Run the Expose server",
+      "source": "tldr:expose"
+    },
+    {
+      "cmd": "expose serve <hostname>",
+      "explanation": "Run the Expose server with a specific hostname",
+      "source": "tldr:expose"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/expose.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

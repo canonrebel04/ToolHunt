@@ -1,0 +1,71 @@
+{
+  "id": "dex2jar",
+  "name": "dex2jar",
+  "schema_version": 1,
+  "summary": "A tool for converting Android's .dex format to Java's .class format",
+  "highlights": [
+    "-f — force overwrite",
+    "-o — output .apk file, default is $current_dir/[apk-nam e]-signed.apk",
+    "-t — use tiny sign"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dex2jar"
+    }
+  ],
+  "usage": "d2j-apk-sign [options] <apk>",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--force",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "force overwrite",
+      "default": "",
+      "example": "d2j-apk-sign --force"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print this help message",
+      "default": "",
+      "example": "d2j-apk-sign --help"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "<out-apk-file>",
+      "required": false,
+      "description": "output .apk file, default is $current_dir/[apk-nam e]-signed.apk",
+      "default": "",
+      "example": "d2j-apk-sign --output <out-apk-file>"
+    },
+    {
+      "name": "--tiny",
+      "short": "-t",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use tiny sign",
+      "default": "",
+      "example": "d2j-apk-sign --tiny"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

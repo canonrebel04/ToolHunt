@@ -1,0 +1,46 @@
+{
+  "id": "glow",
+  "name": "glow",
+  "schema_version": 1,
+  "summary": "TUI that renders Markdown files, with keybindings similar to less and support for styles and cloud encrypted storing",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "glow",
+      "explanation": "Run glow and select a file to view",
+      "source": "tldr:glow"
+    },
+    {
+      "cmd": "glow <path/to/file>",
+      "explanation": "Render a Markdown file to the terminal",
+      "source": "tldr:glow"
+    },
+    {
+      "cmd": "glow --pager <path/to/file>",
+      "explanation": "View a Markdown file using a paginator",
+      "source": "tldr:glow"
+    },
+    {
+      "cmd": "glow <https://example.com/file.md>",
+      "explanation": "View a file from a URL",
+      "source": "tldr:glow"
+    },
+    {
+      "cmd": "glow <github.com/owner/repository>",
+      "explanation": "View a GitHub/GitLab README",
+      "source": "tldr:glow"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/glow.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

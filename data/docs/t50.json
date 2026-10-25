@@ -1,0 +1,2086 @@
+{
+  "id": "t50",
+  "name": "t50",
+  "schema_version": 1,
+  "summary": "Experimental Multi-protocol Packet Injector Tool.",
+  "highlights": [
+    "--threshold — Threshold of packets to send (default 1000)",
+    "--flood — This option supersedes the 'threshold'",
+    "--encapsulated — Encapsulated protocol (GRE) (default OFF)",
+    "-B — Bogus checksum (default OFF)",
+    "--shuffle — Shuffling for T50 protocol (default OFF)",
+    "-q — Disable INFOs",
+    "--turbo — Extend the performance (default OFF)",
+    "-l — List all available protocols"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install t50"
+    }
+  ],
+  "usage": "t50 <host[/cidr]> [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--threshold",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Threshold of packets to send (default 1000)",
+      "default": "1000",
+      "example": "t50 --threshold <num>"
+    },
+    {
+      "name": "--flood",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This option supersedes the 'threshold'",
+      "default": "",
+      "example": "t50 --flood"
+    },
+    {
+      "name": "--encapsulated",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Encapsulated protocol (GRE) (default OFF)",
+      "default": "OFF",
+      "example": "t50 --encapsulated"
+    },
+    {
+      "name": "--bogus-csum",
+      "short": "-B",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Bogus checksum (default OFF)",
+      "default": "OFF",
+      "example": "t50 --bogus-csum"
+    },
+    {
+      "name": "--shuffle",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Shuffling for T50 protocol (default OFF)",
+      "default": "OFF",
+      "example": "t50 --shuffle"
+    },
+    {
+      "name": "--quiet",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable INFOs",
+      "default": "",
+      "example": "t50 --quiet"
+    },
+    {
+      "name": "--turbo",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Extend the performance (default OFF)",
+      "default": "OFF",
+      "example": "t50 --turbo"
+    },
+    {
+      "name": "--list-protocols",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "List all available protocols",
+      "default": "",
+      "example": "t50 --list-protocols"
+    },
+    {
+      "name": "--version",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version and exit",
+      "default": "",
+      "example": "t50 --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display this help and exit",
+      "default": "",
+      "example": "t50 --help"
+    },
+    {
+      "name": "--gre-seq-present",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "GRE sequence # present (default OFF)",
+      "default": "OFF",
+      "example": "t50 --gre-seq-present"
+    },
+    {
+      "name": "--gre-key-present",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "GRE key present (default OFF)",
+      "default": "OFF",
+      "example": "t50 --gre-key-present"
+    },
+    {
+      "name": "--gre-sum-present",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "GRE checksum present (default OFF)",
+      "default": "OFF",
+      "example": "t50 --gre-sum-present"
+    },
+    {
+      "name": "--gre-key",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "GRE key (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --gre-key <num>"
+    },
+    {
+      "name": "--gre-sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "GRE sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --gre-sequence <num>"
+    },
+    {
+      "name": "--gre-saddr",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "GRE IP source IP address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --gre-saddr <addr>"
+    },
+    {
+      "name": "--gre-daddr",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "GRE IP destination IP address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --gre-daddr <addr>"
+    },
+    {
+      "name": "--sport",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP|TCP|UDP source port (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --sport <num>"
+    },
+    {
+      "name": "--dport",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP|TCP|UDP destination port (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --dport <num>"
+    },
+    {
+      "name": "--ack-seq",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "TCP ACK sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ack-seq <num>"
+    },
+    {
+      "name": "--sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "TCP SYN sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --sequence <num>"
+    },
+    {
+      "name": "--data-offset",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "TCP data offset (default 5)",
+      "default": "5",
+      "example": "t50 --data-offset <num>"
+    },
+    {
+      "name": "--fin",
+      "short": "-F",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP FIN flag (default OFF)",
+      "default": "OFF",
+      "example": "t50 --fin"
+    },
+    {
+      "name": "--syn",
+      "short": "-S",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP SYN flag (default OFF)",
+      "default": "OFF",
+      "example": "t50 --syn"
+    },
+    {
+      "name": "--rst",
+      "short": "-R",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP RST flag (default OFF)",
+      "default": "OFF",
+      "example": "t50 --rst"
+    },
+    {
+      "name": "--psh",
+      "short": "-P",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP PSH flag (default OFF)",
+      "default": "OFF",
+      "example": "t50 --psh"
+    },
+    {
+      "name": "--ack",
+      "short": "-A",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP ACK flag (default OFF)",
+      "default": "OFF",
+      "example": "t50 --ack"
+    },
+    {
+      "name": "--urg",
+      "short": "-U",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP URG flag (default OFF)",
+      "default": "OFF",
+      "example": "t50 --urg"
+    },
+    {
+      "name": "--ece",
+      "short": "-E",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP ECE flag (default OFF)",
+      "default": "OFF",
+      "example": "t50 --ece"
+    },
+    {
+      "name": "--cwr",
+      "short": "-C",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP CWR flag (default OFF)",
+      "default": "OFF",
+      "example": "t50 --cwr"
+    },
+    {
+      "name": "--window",
+      "short": "-W",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "TCP Window size (default NONE)",
+      "default": "NONE",
+      "example": "t50 --window <num>"
+    },
+    {
+      "name": "--urg-pointer",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "TCP URG pointer (default NONE)",
+      "default": "NONE",
+      "example": "t50 --urg-pointer <num>"
+    },
+    {
+      "name": "--mss",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "TCP Maximum Segment Size (default NONE)",
+      "default": "NONE",
+      "example": "t50 --mss <num>"
+    },
+    {
+      "name": "--wscale",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "TCP Window Scale (default NONE)",
+      "default": "NONE",
+      "example": "t50 --wscale <num>"
+    },
+    {
+      "name": "--sack-ok",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP SACK-Permitted (default OFF)",
+      "default": "OFF",
+      "example": "t50 --sack-ok"
+    },
+    {
+      "name": "--ttcp-cc",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "T/TCP Connection Count (CC) (default NONE)",
+      "default": "NONE",
+      "example": "t50 --ttcp-cc <num>"
+    },
+    {
+      "name": "--ccnew",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "T/TCP Connection Count (CC.NEW) (default NONE)",
+      "default": "NONE",
+      "example": "t50 --ccnew <num>"
+    },
+    {
+      "name": "--ccecho",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "T/TCP Connection Count (CC.ECHO) (default NONE)",
+      "default": "NONE",
+      "example": "t50 --ccecho <num>"
+    },
+    {
+      "name": "--md5-signature",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP MD5 signature included (default OFF)",
+      "default": "OFF",
+      "example": "t50 --md5-signature"
+    },
+    {
+      "name": "--authentication",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP-AO authentication included (default OFF)",
+      "default": "OFF",
+      "example": "t50 --authentication"
+    },
+    {
+      "name": "--auth-key-id",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "TCP-AO authentication key ID (default 1)",
+      "default": "1",
+      "example": "t50 --auth-key-id <num>"
+    },
+    {
+      "name": "--auth-next-key",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "TCP-AO authentication next key (default 1)",
+      "default": "1",
+      "example": "t50 --auth-next-key <num>"
+    },
+    {
+      "name": "--nop",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TCP No-Operation (default EOL)",
+      "default": "EOL",
+      "example": "t50 --nop"
+    },
+    {
+      "name": "--saddr",
+      "short": "-s",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "IP source IP address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --saddr <addr>"
+    },
+    {
+      "name": "--tos",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "IP type of service (default 0x40)",
+      "default": "0x40",
+      "example": "t50 --tos <num>"
+    },
+    {
+      "name": "--id",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "IP identification (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --id <num>"
+    },
+    {
+      "name": "--frag-offset",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "IP fragmentation offset (default 0)",
+      "default": "0",
+      "example": "t50 --frag-offset <num>"
+    },
+    {
+      "name": "--ttl",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "IP time to live (default 255)",
+      "default": "255",
+      "example": "t50 --ttl <num>"
+    },
+    {
+      "name": "--protocol",
+      "short": "",
+      "aliases": [],
+      "arg": "PROTO",
+      "required": false,
+      "description": "IP protocol (default TCP)",
+      "default": "TCP",
+      "example": "t50 --protocol <proto>"
+    },
+    {
+      "name": "--icmp-type",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "ICMP type (default 8)",
+      "default": "8",
+      "example": "t50 --icmp-type <num>"
+    },
+    {
+      "name": "--icmp-code",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "ICMP code (default 0)",
+      "default": "0",
+      "example": "t50 --icmp-code <num>"
+    },
+    {
+      "name": "--icmp-gateway",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "ICMP redirect gateway (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --icmp-gateway <addr>"
+    },
+    {
+      "name": "--icmp-id",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "ICMP identification (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --icmp-id <num>"
+    },
+    {
+      "name": "--icmp-sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "ICMP sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --icmp-sequence <num>"
+    },
+    {
+      "name": "--egp-type",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EGP type (default 3)",
+      "default": "3",
+      "example": "t50 --egp-type <num>"
+    },
+    {
+      "name": "--egp-code",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EGP code (default 3)",
+      "default": "3",
+      "example": "t50 --egp-code <num>"
+    },
+    {
+      "name": "--egp-status",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EGP status (default 1)",
+      "default": "1",
+      "example": "t50 --egp-status <num>"
+    },
+    {
+      "name": "--egp-as",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EGP autonomous system (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --egp-as <num>"
+    },
+    {
+      "name": "--egp-sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EGP sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --egp-sequence <num>"
+    },
+    {
+      "name": "--egp-hello",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EGP hello interval (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --egp-hello <num>"
+    },
+    {
+      "name": "--egp-poll",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EGP poll interval (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --egp-poll <num>"
+    },
+    {
+      "name": "--rip-command",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RIPv1/v2 command (default 2)",
+      "default": "2",
+      "example": "t50 --rip-command <num>"
+    },
+    {
+      "name": "--rip-family",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RIPv1/v2 address family (default 2)",
+      "default": "2",
+      "example": "t50 --rip-family <num>"
+    },
+    {
+      "name": "--rip-address",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "RIPv1/v2 router address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rip-address <addr>"
+    },
+    {
+      "name": "--rip-metric",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RIPv1/v2 router metric (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rip-metric <num>"
+    },
+    {
+      "name": "--rip-domain",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RIPv2 router domain (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rip-domain <num>"
+    },
+    {
+      "name": "--rip-tag",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RIPv2 router tag (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rip-tag <num>"
+    },
+    {
+      "name": "--rip-netmask",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "RIPv2 router subnet mask (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rip-netmask <addr>"
+    },
+    {
+      "name": "--rip-next-hop",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "RIPv2 router next hop (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rip-next-hop <addr>"
+    },
+    {
+      "name": "--rip-authentication",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "RIPv2 authentication included (default OFF)",
+      "default": "OFF",
+      "example": "t50 --rip-authentication"
+    },
+    {
+      "name": "--rip-auth-key-id",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RIPv2 authentication key ID (default 1)",
+      "default": "1",
+      "example": "t50 --rip-auth-key-id <num>"
+    },
+    {
+      "name": "--rip-auth-sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RIPv2 authentication sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rip-auth-sequence <num>"
+    },
+    {
+      "name": "--dccp-data-offset",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP data offset (default VARY)",
+      "default": "VARY",
+      "example": "t50 --dccp-data-offset <num>"
+    },
+    {
+      "name": "--dccp-cscov",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP checksum coverage (default 0)",
+      "default": "0",
+      "example": "t50 --dccp-cscov <num>"
+    },
+    {
+      "name": "--dccp-ccval",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP HC-Sender CCID (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --dccp-ccval <num>"
+    },
+    {
+      "name": "--dccp-type",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP type (default 0)",
+      "default": "0",
+      "example": "t50 --dccp-type <num>"
+    },
+    {
+      "name": "--dccp-extended",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "DCCP extend for sequence # (default OFF)",
+      "default": "OFF",
+      "example": "t50 --dccp-extended"
+    },
+    {
+      "name": "--dccp-sequence-1",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --dccp-sequence-1 <num>"
+    },
+    {
+      "name": "--dccp-sequence-2",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP extended sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --dccp-sequence-2 <num>"
+    },
+    {
+      "name": "--dccp-sequence-3",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP sequence # low (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --dccp-sequence-3 <num>"
+    },
+    {
+      "name": "--dccp-service",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP service code (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --dccp-service <num>"
+    },
+    {
+      "name": "--dccp-acknowledge-1",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP acknowledgment # high (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --dccp-acknowledge-1 <num>"
+    },
+    {
+      "name": "--dccp-acknowledge-2",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP acknowledgment # low (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --dccp-acknowledge-2 <num>"
+    },
+    {
+      "name": "--dccp-reset-code",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "DCCP reset code (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --dccp-reset-code <num>"
+    },
+    {
+      "name": "--rsvp-flags",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP flags (default 1)",
+      "default": "1",
+      "example": "t50 --rsvp-flags <num>"
+    },
+    {
+      "name": "--rsvp-type",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP message type (default 1)",
+      "default": "1",
+      "example": "t50 --rsvp-type <num>"
+    },
+    {
+      "name": "--rsvp-ttl",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP time to live (default 254)",
+      "default": "254",
+      "example": "t50 --rsvp-ttl <num>"
+    },
+    {
+      "name": "--rsvp-session-addr",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "RSVP SESSION destination address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-session-addr <addr>"
+    },
+    {
+      "name": "--rsvp-session-proto",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP SESSION protocol ID (default 1)",
+      "default": "1",
+      "example": "t50 --rsvp-session-proto <num>"
+    },
+    {
+      "name": "--rsvp-session-flags",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP SESSION flags (default 1)",
+      "default": "1",
+      "example": "t50 --rsvp-session-flags <num>"
+    },
+    {
+      "name": "--rsvp-session-port",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP SESSION destination port (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-session-port <num>"
+    },
+    {
+      "name": "--rsvp-hop-addr",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "RSVP HOP neighbor address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-hop-addr <addr>"
+    },
+    {
+      "name": "--rsvp-hop-iface",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP HOP logical interface (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-hop-iface <num>"
+    },
+    {
+      "name": "--rsvp-time-refresh",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP TIME refresh interval (default 360)",
+      "default": "360",
+      "example": "t50 --rsvp-time-refresh <num>"
+    },
+    {
+      "name": "--rsvp-error-addr",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "RSVP ERROR node address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-error-addr <addr>"
+    },
+    {
+      "name": "--rsvp-error-flags",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ERROR flags (default 2)",
+      "default": "2",
+      "example": "t50 --rsvp-error-flags <num>"
+    },
+    {
+      "name": "--rsvp-error-code",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ERROR code (default 2)",
+      "default": "2",
+      "example": "t50 --rsvp-error-code <num>"
+    },
+    {
+      "name": "--rsvp-error-value",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ERROR value (default 8)",
+      "default": "8",
+      "example": "t50 --rsvp-error-value <num>"
+    },
+    {
+      "name": "--rsvp-scope",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP SCOPE # of address(es) (default 1)",
+      "default": "1",
+      "example": "t50 --rsvp-scope <num>"
+    },
+    {
+      "name": "--rsvp-style-option",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP STYLE option vector (default 18)",
+      "default": "18",
+      "example": "t50 --rsvp-style-option <num>"
+    },
+    {
+      "name": "--rsvp-sender-addr",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "RSVP SENDER TEMPLATE address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-sender-addr <addr>"
+    },
+    {
+      "name": "--rsvp-sender-port",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP SENDER TEMPLATE port (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-sender-port <num>"
+    },
+    {
+      "name": "--rsvp-tspec-traffic",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "RSVP TSPEC service traffic (default OFF)",
+      "default": "OFF",
+      "example": "t50 --rsvp-tspec-traffic"
+    },
+    {
+      "name": "--rsvp-tspec-guaranteed",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "RSVP TSPEC service guaranteed (default OFF)",
+      "default": "OFF",
+      "example": "t50 --rsvp-tspec-guaranteed"
+    },
+    {
+      "name": "--rsvp-tspec-r",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP TSPEC token bucket rate (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-tspec-r <num>"
+    },
+    {
+      "name": "--rsvp-tspec-b",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP TSPEC token bucket size (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-tspec-b <num>"
+    },
+    {
+      "name": "--rsvp-tspec-p",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP TSPEC peak data rate (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-tspec-p <num>"
+    },
+    {
+      "name": "--rsvp-tspec-m",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP TSPEC minimum policed unit (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-tspec-m <num>"
+    },
+    {
+      "name": "--rsvp-tspec-M",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP TSPEC maximum packet size (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-tspec-M <num>"
+    },
+    {
+      "name": "--rsvp-adspec-ishop",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ADSPEC IS HOP count (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-adspec-ishop <num>"
+    },
+    {
+      "name": "--rsvp-adspec-path",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ADSPEC path b/w estimate (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-adspec-path <num>"
+    },
+    {
+      "name": "--rsvp-adspec-m",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ADSPEC minimum path latency (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-adspec-m <num>"
+    },
+    {
+      "name": "--rsvp-adspec-mtu",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ADSPEC composed MTU (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-adspec-mtu <num>"
+    },
+    {
+      "name": "--rsvp-adspec-guaranteed",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "RSVP ADSPEC service guaranteed (default OFF)",
+      "default": "OFF",
+      "example": "t50 --rsvp-adspec-guaranteed"
+    },
+    {
+      "name": "--rsvp-adspec-Ctot",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ADSPEC ETE composed value C (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-adspec-Ctot <num>"
+    },
+    {
+      "name": "--rsvp-adspec-Dtot",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ADSPEC ETE composed value D (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-adspec-Dtot <num>"
+    },
+    {
+      "name": "--rsvp-adspec-Csum",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ADSPEC SLR point composed C (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-adspec-Csum <num>"
+    },
+    {
+      "name": "--rsvp-adspec-Dsum",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "RSVP ADSPEC SLR point composed D (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-adspec-Dsum <num>"
+    },
+    {
+      "name": "--rsvp-adspec-controlled",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "RSVP ADSPEC service controlled (default OFF)",
+      "default": "OFF",
+      "example": "t50 --rsvp-adspec-controlled"
+    },
+    {
+      "name": "--rsvp-confirm-addr",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "RSVP CONFIRM receiver address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --rsvp-confirm-addr <addr>"
+    },
+    {
+      "name": "--ipsec-ah-length",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "IPSec AH header length (default NONE)",
+      "default": "NONE",
+      "example": "t50 --ipsec-ah-length <num>"
+    },
+    {
+      "name": "--ipsec-ah-spi",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "IPSec AH SPI (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ipsec-ah-spi <num>"
+    },
+    {
+      "name": "--ipsec-ah-sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "IPSec AH sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ipsec-ah-sequence <num>"
+    },
+    {
+      "name": "--ipsec-esp-spi",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "IPSec ESP SPI (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ipsec-esp-spi <num>"
+    },
+    {
+      "name": "--ipsec-esp-sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "IPSec ESP sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ipsec-esp-sequence <num>"
+    },
+    {
+      "name": "--eigrp-opcode",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP opcode (default 1)",
+      "default": "1",
+      "example": "t50 --eigrp-opcode <num>"
+    },
+    {
+      "name": "--eigrp-flags",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP flags (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-flags <num>"
+    },
+    {
+      "name": "--eigrp-sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-sequence <num>"
+    },
+    {
+      "name": "--eigrp-acknowledge",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP acknowledgment # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-acknowledge <num>"
+    },
+    {
+      "name": "--eigrp-as",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP autonomous system (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-as <num>"
+    },
+    {
+      "name": "--eigrp-type",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP type (default 258)",
+      "default": "258",
+      "example": "t50 --eigrp-type <num>"
+    },
+    {
+      "name": "--eigrp-length",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP length (default NONE)",
+      "default": "NONE",
+      "example": "t50 --eigrp-length <num>"
+    },
+    {
+      "name": "--eigrp-k1",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP parameter K1 value (default 1)",
+      "default": "1",
+      "example": "t50 --eigrp-k1 <num>"
+    },
+    {
+      "name": "--eigrp-k2",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP parameter K2 value (default 0)",
+      "default": "0",
+      "example": "t50 --eigrp-k2 <num>"
+    },
+    {
+      "name": "--eigrp-k3",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP parameter K3 value (default 1)",
+      "default": "1",
+      "example": "t50 --eigrp-k3 <num>"
+    },
+    {
+      "name": "--eigrp-k4",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP parameter K4 value (default 0)",
+      "default": "0",
+      "example": "t50 --eigrp-k4 <num>"
+    },
+    {
+      "name": "--eigrp-k5",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP parameter K5 value (default 0)",
+      "default": "0",
+      "example": "t50 --eigrp-k5 <num>"
+    },
+    {
+      "name": "--eigrp-hold",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP parameter hold time (default 360)",
+      "default": "360",
+      "example": "t50 --eigrp-hold <num>"
+    },
+    {
+      "name": "--eigrp-next-hop",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "EIGRP [in|ex]ternal next-hop (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-next-hop <addr>"
+    },
+    {
+      "name": "--eigrp-delay",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP [in|ex]ternal delay (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-delay <num>"
+    },
+    {
+      "name": "--eigrp-bandwidth",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP [in|ex]ternal bandwidth (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-bandwidth <num>"
+    },
+    {
+      "name": "--eigrp-mtu",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP [in|ex]ternal MTU (default 1500)",
+      "default": "1500",
+      "example": "t50 --eigrp-mtu <num>"
+    },
+    {
+      "name": "--eigrp-hop-count",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP [in|ex]ternal hop count (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-hop-count <num>"
+    },
+    {
+      "name": "--eigrp-load",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP [in|ex]ternal load (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-load <num>"
+    },
+    {
+      "name": "--eigrp-reliability",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP [in|ex]ternal reliability (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-reliability <num>"
+    },
+    {
+      "name": "--eigrp-src-router",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "EIGRP external source router (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-src-router <addr>"
+    },
+    {
+      "name": "--eigrp-src-as",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP external autonomous system (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-src-as <num>"
+    },
+    {
+      "name": "--eigrp-tag",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP external arbitrary tag (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-tag <num>"
+    },
+    {
+      "name": "--eigrp-proto-metric",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP external protocol metric (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-proto-metric <num>"
+    },
+    {
+      "name": "--eigrp-proto-id",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP external protocol ID (default 2)",
+      "default": "2",
+      "example": "t50 --eigrp-proto-id <num>"
+    },
+    {
+      "name": "--eigrp-ext-flags",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP external flags (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-ext-flags <num>"
+    },
+    {
+      "name": "--eigrp-address",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "EIGRP multicast sequence address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-address <addr>"
+    },
+    {
+      "name": "--eigrp-multicast",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP multicast sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --eigrp-multicast <num>"
+    },
+    {
+      "name": "--eigrp-authentication",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "EIGRP authentication included (default OFF)",
+      "default": "OFF",
+      "example": "t50 --eigrp-authentication"
+    },
+    {
+      "name": "--eigrp-auth-key-id",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "EIGRP authentication key ID (default 1)",
+      "default": "1",
+      "example": "t50 --eigrp-auth-key-id <num>"
+    },
+    {
+      "name": "--ospf-type",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF type (default 1)",
+      "default": "1",
+      "example": "t50 --ospf-type <num>"
+    },
+    {
+      "name": "--ospf-length",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF length (default NONE)",
+      "default": "NONE",
+      "example": "t50 --ospf-length <num>"
+    },
+    {
+      "name": "--ospf-router-id",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF router ID (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-router-id <addr>"
+    },
+    {
+      "name": "--ospf-area-id",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF area ID (default 0.0.0.0)",
+      "default": "0.0.0.0",
+      "example": "t50 --ospf-area-id <addr>"
+    },
+    {
+      "name": "--ospf-option-MT",
+      "short": "-1",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF multi-topology / TOS-based (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-option-MT"
+    },
+    {
+      "name": "--ospf-option-E",
+      "short": "-2",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF external routing capability (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-option-E"
+    },
+    {
+      "name": "--ospf-option-MC",
+      "short": "-3",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF multicast capable (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-option-MC"
+    },
+    {
+      "name": "--ospf-option-NP",
+      "short": "-4",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF NSSA supported (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-option-NP"
+    },
+    {
+      "name": "--ospf-option-L",
+      "short": "-5",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF LLS data block contained (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-option-L"
+    },
+    {
+      "name": "--ospf-option-DC",
+      "short": "-6",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF demand circuits supported (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-option-DC"
+    },
+    {
+      "name": "--ospf-option-O",
+      "short": "-7",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF Opaque-LSA (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-option-O"
+    },
+    {
+      "name": "--ospf-option-DN",
+      "short": "-8",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF DOWN bit (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-option-DN"
+    },
+    {
+      "name": "--ospf-netmask",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF router subnet mask (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-netmask <addr>"
+    },
+    {
+      "name": "--ospf-hello-dead",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF HELLO router dead interval (default 360)",
+      "default": "360",
+      "example": "t50 --ospf-hello-dead <num>"
+    },
+    {
+      "name": "--ospf-hello-design",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF HELLO designated router (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-hello-design <addr>"
+    },
+    {
+      "name": "--ospf-hello-backup",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF HELLO backup designated (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-hello-backup <addr>"
+    },
+    {
+      "name": "--ospf-neighbor",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF HELLO # of neighbor(s) (default NONE)",
+      "default": "NONE",
+      "example": "t50 --ospf-neighbor <num>"
+    },
+    {
+      "name": "--ospf-dd-mtu",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF DD MTU (default 1500)",
+      "default": "1500",
+      "example": "t50 --ospf-dd-mtu <num>"
+    },
+    {
+      "name": "--ospf-dd-dbdesc-MS",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF DD master/slave bit option (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-dd-dbdesc-MS"
+    },
+    {
+      "name": "--ospf-dd-dbdesc-M",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF DD more bit option (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-dd-dbdesc-M"
+    },
+    {
+      "name": "--ospf-dd-dbdesc-I",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF DD init bit option (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-dd-dbdesc-I"
+    },
+    {
+      "name": "--ospf-dd-dbdesc-R",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF DD out-of-band resync (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-dd-dbdesc-R"
+    },
+    {
+      "name": "--ospf-dd-sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF DD sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-dd-sequence <num>"
+    },
+    {
+      "name": "--ospf-dd-include-lsa",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF DD include LSA header (default OFF)",
+      "default": "OFF",
+      "example": "t50 --ospf-dd-include-lsa"
+    },
+    {
+      "name": "--ospf-lsa-age",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF LSA age (default 360)",
+      "default": "360",
+      "example": "t50 --ospf-lsa-age <num>"
+    },
+    {
+      "name": "--ospf-lsa-do-not-age",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF LSA do not age (default OFF)",
+      "default": "OFF",
+      "example": "t50 --ospf-lsa-do-not-age"
+    },
+    {
+      "name": "--ospf-lsa-type",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF LSA type (default 1)",
+      "default": "1",
+      "example": "t50 --ospf-lsa-type <num>"
+    },
+    {
+      "name": "--ospf-lsa-id",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF LSA ID address (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-id <addr>"
+    },
+    {
+      "name": "--ospf-lsa-router",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF LSA advertising router (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-router <addr>"
+    },
+    {
+      "name": "--ospf-lsa-sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF LSA sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-sequence <num>"
+    },
+    {
+      "name": "--ospf-lsa-metric",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF LSA metric (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-metric <num>"
+    },
+    {
+      "name": "--ospf-lsa-flag-B",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF Router-LSA border router (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-flag-B"
+    },
+    {
+      "name": "--ospf-lsa-flag-E",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF Router-LSA external router (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-flag-E"
+    },
+    {
+      "name": "--ospf-lsa-flag-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF Router-LSA virtual router (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-flag-V"
+    },
+    {
+      "name": "--ospf-lsa-flag-W",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF Router-LSA wild router (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-flag-W"
+    },
+    {
+      "name": "--ospf-lsa-flag-NT",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF Router-LSA NSSA translation (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-flag-NT"
+    },
+    {
+      "name": "--ospf-lsa-link-id",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF Router-LSA link ID (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-link-id <addr>"
+    },
+    {
+      "name": "--ospf-lsa-link-type",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF Router-LSA link type (default 1)",
+      "default": "1",
+      "example": "t50 --ospf-lsa-link-type <num>"
+    },
+    {
+      "name": "--ospf-lsa-attached",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF Network-LSA attached router (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-attached <addr>"
+    },
+    {
+      "name": "--ospf-lsa-larger",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF ASBR/NSSA-LSA ext. larger (default OFF)",
+      "default": "OFF",
+      "example": "t50 --ospf-lsa-larger"
+    },
+    {
+      "name": "--ospf-lsa-forward",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF ASBR/NSSA-LSA forward (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-forward <addr>"
+    },
+    {
+      "name": "--ospf-lsa-external",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF ASBR/NSSA-LSA external (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-lsa-external <addr>"
+    },
+    {
+      "name": "--ospf-vertex-router",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF Group-LSA type router (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-vertex-router"
+    },
+    {
+      "name": "--ospf-vertex-network",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF Group-LSA type network (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-vertex-network"
+    },
+    {
+      "name": "--ospf-vertex-id",
+      "short": "",
+      "aliases": [],
+      "arg": "ADDR",
+      "required": false,
+      "description": "OSPF Group-LSA vertex ID (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-vertex-id <addr>"
+    },
+    {
+      "name": "--ospf-lls-extended-LR",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF LLS Extended option LR (default OFF)",
+      "default": "OFF",
+      "example": "t50 --ospf-lls-extended-LR"
+    },
+    {
+      "name": "--ospf-lls-extended-RS",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF LLS Extended option RS (default OFF)",
+      "default": "OFF",
+      "example": "t50 --ospf-lls-extended-RS"
+    },
+    {
+      "name": "--ospf-authentication",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "OSPF authentication included (default OFF)",
+      "default": "OFF",
+      "example": "t50 --ospf-authentication"
+    },
+    {
+      "name": "--ospf-auth-key-id",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF authentication key ID (default 1)",
+      "default": "1",
+      "example": "t50 --ospf-auth-key-id <num>"
+    },
+    {
+      "name": "--ospf-auth-sequence",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "OSPF authentication sequence # (default RANDOM)",
+      "default": "RANDOM",
+      "example": "t50 --ospf-auth-sequence <num>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

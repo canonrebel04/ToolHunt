@@ -1,0 +1,93 @@
+{
+  "id": "exiflooter",
+  "name": "exiflooter",
+  "schema_version": 1,
+  "summary": "Find geolocation on all image urls and directories also integrates with OpenStreetMap.",
+  "highlights": [
+    "-d — Specify a directory for Analyzing",
+    "-i — Specify a image for Analyzing",
+    "-m — Get Open Street Map Link",
+    "-p — Pipe with other scripts",
+    "-r — Remove metadata from Image"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install exiflooter"
+    }
+  ],
+  "usage": "exifLooter [flags]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--directory",
+      "short": "-d",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Specify a directory for Analyzing",
+      "default": "",
+      "example": "exiflooter --directory <string>"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "help for exifLooter",
+      "default": "",
+      "example": "exiflooter --help"
+    },
+    {
+      "name": "--image",
+      "short": "-i",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "Specify a image for Analyzing",
+      "default": "",
+      "example": "exiflooter --image <string>"
+    },
+    {
+      "name": "--open-street-map",
+      "short": "-m",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Get Open Street Map Link",
+      "default": "",
+      "example": "exiflooter --open-street-map"
+    },
+    {
+      "name": "--pipe",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Pipe with other scripts",
+      "default": "",
+      "example": "exiflooter --pipe"
+    },
+    {
+      "name": "--remove",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Remove metadata from Image",
+      "default": "",
+      "example": "exiflooter --remove"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

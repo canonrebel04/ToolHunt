@@ -1,0 +1,49 @@
+{
+  "id": "memdump",
+  "name": "memdump",
+  "schema_version": 1,
+  "summary": "Dumps system memory to stdout, skipping over holes in memory maps.",
+  "highlights": [
+    "-k — (dump kernel memory instead of physical memory)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install memdump"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "(dump kernel memory instead of physical memory)",
+      "default": "",
+      "example": "memdump -k"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "(verbose mode for debugging)",
+      "default": "",
+      "example": "memdump -v"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

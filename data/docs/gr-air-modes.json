@@ -1,0 +1,210 @@
+{
+  "id": "gr-air-modes",
+  "name": "gr-air-modes",
+  "schema_version": 1,
+  "summary": "Gnuradio tools for receiving Mode S transponder signals, including ADS-B.",
+  "highlights": [
+    "-l — GPS coordinates of receiving station in format xx.xxxxx,xx.xxxxx",
+    "-a — specify additional servers from which to take data in format tcp://x.x.x.x:y,tcp://....",
+    "-n — disable printing decoded packets to stdout",
+    "-K — filename for Google Earth KML output",
+    "-P — open an SBS-1-compatible server on port 30003",
+    "-m — FlightGear server to send aircraft data, in format host:port",
+    "-s — Choose source: uhd, osmocom, <filename>, or <ip:port> [default=uhd]",
+    "-t — Open a TCP server on this port to publish reports"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install gr-air-modes"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install libgnuradio-air-modes1t64"
+    }
+  ],
+  "usage": "modes_rx: [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "modes_rx --help"
+    },
+    {
+      "name": "--location",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LOCATION",
+      "required": false,
+      "description": "GPS coordinates of receiving station in format xx.xxxxx,xx.xxxxx",
+      "default": "",
+      "example": "modes_rx --location <location>"
+    },
+    {
+      "name": "--remote",
+      "short": "-a",
+      "aliases": [],
+      "arg": "REMOTE",
+      "required": false,
+      "description": "specify additional servers from which to take data in format tcp://x.x.x.x:y,tcp://....",
+      "default": "",
+      "example": "modes_rx --remote <remote>"
+    },
+    {
+      "name": "--no-print",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable printing decoded packets to stdout",
+      "default": "",
+      "example": "modes_rx --no-print"
+    },
+    {
+      "name": "--kml",
+      "short": "-K",
+      "aliases": [],
+      "arg": "KML",
+      "required": false,
+      "description": "filename for Google Earth KML output",
+      "default": "",
+      "example": "modes_rx --kml <kml>"
+    },
+    {
+      "name": "--sbs1",
+      "short": "-P",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "open an SBS-1-compatible server on port 30003",
+      "default": "",
+      "example": "modes_rx --sbs1"
+    },
+    {
+      "name": "--multiplayer",
+      "short": "-m",
+      "aliases": [],
+      "arg": "MULTIPLAYER",
+      "required": false,
+      "description": "FlightGear server to send aircraft data, in format host:port",
+      "default": "",
+      "example": "modes_rx --multiplayer <multiplayer>"
+    },
+    {
+      "name": "--source",
+      "short": "-s",
+      "aliases": [],
+      "arg": "SOURCE",
+      "required": false,
+      "description": "Choose source: uhd, osmocom, <filename>, or <ip:port> [default=uhd]",
+      "default": "uhd",
+      "example": "modes_rx --source <source>"
+    },
+    {
+      "name": "--tcp",
+      "short": "-t",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "Open a TCP server on this port to publish reports",
+      "default": "",
+      "example": "modes_rx --tcp <port>"
+    },
+    {
+      "name": "--subdev",
+      "short": "-R",
+      "aliases": [],
+      "arg": "SUBDEV",
+      "required": false,
+      "description": "select USRP Rx side A or B",
+      "default": "",
+      "example": "modes_rx --subdev <subdev>"
+    },
+    {
+      "name": "--antenna",
+      "short": "-A",
+      "aliases": [],
+      "arg": "ANTENNA",
+      "required": false,
+      "description": "select which antenna to use on daughterboard",
+      "default": "",
+      "example": "modes_rx --antenna <antenna>"
+    },
+    {
+      "name": "--args",
+      "short": "-D",
+      "aliases": [],
+      "arg": "ARGS",
+      "required": false,
+      "description": "arguments to pass to radio constructor",
+      "default": "",
+      "example": "modes_rx --args <args>"
+    },
+    {
+      "name": "--freq",
+      "short": "-f",
+      "aliases": [],
+      "arg": "FREQ",
+      "required": false,
+      "description": "set receive frequency in Hz [default=1090000000.0]",
+      "default": "1090000000.0",
+      "example": "modes_rx --freq <freq>"
+    },
+    {
+      "name": "--rate",
+      "short": "-r",
+      "aliases": [],
+      "arg": "RATE",
+      "required": false,
+      "description": "set sample rate [default=4000000.0]",
+      "default": "4000000.0",
+      "example": "modes_rx --rate <rate>"
+    },
+    {
+      "name": "--threshold",
+      "short": "-T",
+      "aliases": [],
+      "arg": "THRESHOLD",
+      "required": false,
+      "description": "set pulse detection threshold above noise in dB [default=7.0]",
+      "default": "7.0",
+      "example": "modes_rx --threshold <threshold>"
+    },
+    {
+      "name": "--pmf",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use pulse matched filtering [default=True]",
+      "default": "True",
+      "example": "modes_rx --pmf"
+    },
+    {
+      "name": "--dcblock",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use a DC blocking filter (best for HackRF Jawbreaker) [default=False]",
+      "default": "False",
+      "example": "modes_rx --dcblock"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

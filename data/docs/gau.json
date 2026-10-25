@@ -1,0 +1,56 @@
+{
+  "id": "gau",
+  "name": "gau",
+  "schema_version": 1,
+  "summary": "Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "gau <example.com>",
+      "explanation": "Fetch all URLs of a domain from AlienVault's Open Threat Exchange, the Wayback Machine, Common Crawl, and URLScan",
+      "source": "tldr:gau"
+    },
+    {
+      "cmd": "gau <domain1 domain2 ...>",
+      "explanation": "Fetch URLs of multiple domains",
+      "source": "tldr:gau"
+    },
+    {
+      "cmd": "gau < <path/to/domains.txt> --threads <4>",
+      "explanation": "Fetch all URLs of several domains from an input file, running multiple threads",
+      "source": "tldr:gau"
+    },
+    {
+      "cmd": "gau <example.com> --o <path/to/found_urls.txt>",
+      "explanation": "Write [o]utput results to a file",
+      "source": "tldr:gau"
+    },
+    {
+      "cmd": "gau --providers <wayback|commoncrawl|otx|urlscan> <example.com>",
+      "explanation": "Search for URLs from only one specific provider",
+      "source": "tldr:gau"
+    },
+    {
+      "cmd": "gau --providers <wayback,otx,...> <example.com>",
+      "explanation": "Search for URLs from multiple providers",
+      "source": "tldr:gau"
+    },
+    {
+      "cmd": "gau --from <YYYYMM> --to <YYYYMM> <example.com>",
+      "explanation": "Search for URLs within specific date range",
+      "source": "tldr:gau"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/gau.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

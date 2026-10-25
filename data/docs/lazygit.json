@@ -1,0 +1,56 @@
+{
+  "id": "lazygit",
+  "name": "Lazygit",
+  "schema_version": 1,
+  "summary": "A simple terminal UI for git commands that simplify the execution of many operations making them interactive.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "lazygit",
+      "explanation": "Open Lazygit in the current repository",
+      "source": "tldr:lazygit"
+    },
+    {
+      "cmd": "lazygit --path <path/to/repository>",
+      "explanation": "Open Lazygit for a specific Git repository",
+      "source": "tldr:lazygit"
+    },
+    {
+      "cmd": "lazygit <status|branch|log|stash|...>",
+      "explanation": "Start Lazygit with focus on a specific panel",
+      "source": "tldr:lazygit"
+    },
+    {
+      "cmd": "lazygit --config",
+      "explanation": "Print the default Lazygit configuration",
+      "source": "tldr:lazygit"
+    },
+    {
+      "cmd": "lazygit --logs",
+      "explanation": "Tail the Lazygit logs (useful with debug mode in another terminal)",
+      "source": "tldr:lazygit"
+    },
+    {
+      "cmd": "lazygit --debug",
+      "explanation": "Run Lazygit in debug mode",
+      "source": "tldr:lazygit"
+    },
+    {
+      "cmd": "lazygit --print-config-dir",
+      "explanation": "Print the configuration directory",
+      "source": "tldr:lazygit"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/lazygit.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "pev",
+  "name": "pev",
+  "schema_version": 1,
+  "summary": "Command line based tool for PE32/PE32+ file analysis.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install pev"
+    }
+  ],
+  "usage": "ofs2rva <offset> FILE",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show version.",
+      "default": "",
+      "example": "ofs2rva --version"
+    },
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show this help.",
+      "default": "",
+      "example": "ofs2rva --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

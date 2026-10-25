@@ -1,0 +1,67 @@
+{
+  "id": "htop",
+  "name": "htop",
+  "schema_version": 1,
+  "summary": "Display dynamic real-time information about running processes. An enhanced version of `top`.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "brew",
+      "cmd": "brew install htop"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "htop",
+      "explanation": "Start `htop`",
+      "source": "tldr:htop"
+    },
+    {
+      "cmd": "htop --user <username>",
+      "explanation": "Start `htop` displaying processes owned by a specific user",
+      "source": "tldr:htop"
+    },
+    {
+      "cmd": "htop --tree",
+      "explanation": "Display processes hierarchically in a tree view to show the parent-child relationships",
+      "source": "tldr:htop"
+    },
+    {
+      "cmd": "htop --sort <sort_item>",
+      "explanation": "Sort processes by a specified `sort_item` (use `htop --sort help` for available options)",
+      "source": "tldr:htop"
+    },
+    {
+      "cmd": "htop --delay <50>",
+      "explanation": "Start `htop` with the specified delay between updates, in tenths of a second (i.e. 50 = 5 seconds)",
+      "source": "tldr:htop"
+    },
+    {
+      "cmd": "htop --readonly",
+      "explanation": "Disable all system and process changing features",
+      "source": "tldr:htop"
+    },
+    {
+      "cmd": "<<F1>|<?>>",
+      "explanation": "See interactive commands while running `htop`",
+      "source": "tldr:htop"
+    },
+    {
+      "cmd": "<Tab>",
+      "explanation": "Switch to a different tab",
+      "source": "tldr:htop"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "package-install",
+    "tldr:pages/common/htop.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "tcpick",
+  "name": "tcpick",
+  "schema_version": 1,
+  "summary": "TCP stream sniffer and connection tracker",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install tcpick"
+    }
+  ],
+  "usage": "tcpick [ -a ] [ -n ] [ -C ]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "sudo tcpick --interface <interface> --colors -h <host> -p <port>",
+      "explanation": "Capture traffic on a specific interface, port, and host",
+      "source": "tldr:tcpick"
+    },
+    {
+      "cmd": "sudo tcpick --interface <eth0> --colors -h <192.168.1.100> -p <80>",
+      "explanation": "Capture traffic on port 80 (HTTP) of a specific host",
+      "source": "tldr:tcpick"
+    },
+    {
+      "cmd": "tcpick --help",
+      "explanation": "Display help",
+      "source": "tldr:tcpick"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/tcpick.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

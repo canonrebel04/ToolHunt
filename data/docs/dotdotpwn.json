@@ -1,0 +1,266 @@
+{
+  "id": "dotdotpwn",
+  "name": "dotdotpwn",
+  "schema_version": 1,
+  "summary": "The Transversal Directory Fuzzer.",
+  "highlights": [
+    "-m — Module [http | http-url | ftp | tftp | payload | stdout]",
+    "-O — Operating System detection for intelligent fuzzing (nmap)",
+    "-o — Operating System type if known (\"windows\", \"unix\" or \"generic\")",
+    "-s — Service version detection (banner grabber)",
+    "-d — Depth of traversals (e.g. deepness 3 equals to ../../../; default: 6)",
+    "-f — Specific filename (e.g. /etc/motd; default: according to OS detected, defaults in Traversa",
+    "-E — Add @Extra_files in TraversalEngine.pm (e.g. web.config, httpd.conf, etc.)",
+    "-S — Use SSL for HTTP and Payload module (not needed for http-url, use a https:// url instead)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dotdotpwn"
+    }
+  ],
+  "usage": "./dotdotpwn.pl -m <module> -h <host> [OPTIONS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Module [http | http-url | ftp | tftp | payload | stdout]",
+      "default": "",
+      "example": "dotdotpwn -m"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Hostname",
+      "default": "",
+      "example": "dotdotpwn -h"
+    },
+    {
+      "name": "-O",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Operating System detection for intelligent fuzzing (nmap)",
+      "default": "",
+      "example": "dotdotpwn -O"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Operating System type if known (\"windows\", \"unix\" or \"generic\")",
+      "default": "",
+      "example": "dotdotpwn -o"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Service version detection (banner grabber)",
+      "default": "",
+      "example": "dotdotpwn -s"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Depth of traversals (e.g. deepness 3 equals to ../../../; default: 6)",
+      "default": "",
+      "example": "dotdotpwn -d"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Specific filename (e.g. /etc/motd; default: according to OS detected, defaults in TraversalEngine.pm)",
+      "default": "",
+      "example": "dotdotpwn -f"
+    },
+    {
+      "name": "-E",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Add @Extra_files in TraversalEngine.pm (e.g. web.config, httpd.conf, etc.)",
+      "default": "",
+      "example": "dotdotpwn -E"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use SSL for HTTP and Payload module (not needed for http-url, use a https:// url instead)",
+      "default": "",
+      "example": "dotdotpwn -S"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "URL with the part to be fuzzed marked as TRAVERSAL (e.g. http://foo:8080/id.php?x=TRAVERSAL&y=31337)",
+      "default": "",
+      "example": "dotdotpwn -u"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Text pattern to match in the response (http-url & payload modules - e.g. \"root:\" if trying /etc/passwd)",
+      "default": "",
+      "example": "dotdotpwn -k"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Filename with the payload to be sent and the part to be fuzzed marked with the TRAVERSAL keyword",
+      "default": "",
+      "example": "dotdotpwn -p"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Port to connect (default: HTTP=80; FTP=21; TFTP=69)",
+      "default": "HTTP=80; FTP=21; TFTP=69",
+      "example": "dotdotpwn -x"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Time in milliseconds between each test (default: 300 (.3 second))",
+      "default": "300 (.3 second",
+      "example": "dotdotpwn -t"
+    },
+    {
+      "name": "-X",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use the Bisection Algorithm to detect the exact deepness once a vulnerability has been found",
+      "default": "",
+      "example": "dotdotpwn -X"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "File extension appended at the end of each fuzz string (e.g. \".php\", \".jpg\", \".inc\")",
+      "default": "",
+      "example": "dotdotpwn -e"
+    },
+    {
+      "name": "-U",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Username (default: 'anonymous')",
+      "default": "anonymous",
+      "example": "dotdotpwn -U"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Password (default: 'dot@dot.pwn')",
+      "default": "dot@dot.pwn",
+      "example": "dotdotpwn -P"
+    },
+    {
+      "name": "-M",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "HTTP Method to use when using the 'http' module [GET | POST | HEAD | COPY | MOVE] (default: GET)",
+      "default": "GET",
+      "example": "dotdotpwn -M"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Report filename (default: 'HOST_MM-DD-YYYY_HOUR-MIN.txt')",
+      "default": "HOST_MM-DD-YYYY_HOUR-MIN.txt",
+      "example": "dotdotpwn -r"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Break after the first vulnerability is found",
+      "default": "",
+      "example": "dotdotpwn -b"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Quiet mode (doesn't print each attempt)",
+      "default": "",
+      "example": "dotdotpwn -q"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Continue if no data was received from host",
+      "default": "",
+      "example": "dotdotpwn -C"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "rr",
+  "name": "rr",
+  "schema_version": 1,
+  "summary": "A Record and Replay Framework.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "rr record <path/to/binary --arg1 --arg2>",
+      "explanation": "Record an application",
+      "source": "tldr:rr"
+    },
+    {
+      "cmd": "rr replay",
+      "explanation": "Replay latest recorded execution",
+      "source": "tldr:rr"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/rr.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

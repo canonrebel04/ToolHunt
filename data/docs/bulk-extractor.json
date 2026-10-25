@@ -1,0 +1,156 @@
+{
+  "id": "bulk-extractor",
+  "name": "bulk-extractor",
+  "schema_version": 1,
+  "summary": "Bulk Email and URL extraction tool.",
+  "highlights": [
+    "-D — help on debugging",
+    "-J — read and process data in the primary thread",
+    "--notify_main_thread — Display notifications in the main thread after phase1 completes. Useful for running with T",
+    "--notify_async — Display notificaitons asynchronously (default)",
+    "-q — no status or performance output",
+    "-R — treat image file as a directory to recursively explore",
+    "-Z — wipe the output directory (recursively) before starting",
+    "-0 — disable real-time notification"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install bulk-extractor"
+    }
+  ],
+  "usage": "bulk_extractor [OPTION...] image_name",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--debug_help",
+      "short": "-D",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "help on debugging",
+      "default": "",
+      "example": "bulk_extractor --debug_help"
+    },
+    {
+      "name": "--no_threads",
+      "short": "-J",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "read and process data in the primary thread",
+      "default": "",
+      "example": "bulk_extractor --no_threads"
+    },
+    {
+      "name": "--notify_main_thread",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display notifications in the main thread after phase1 completes. Useful for running with ThreadSanitizer",
+      "default": "",
+      "example": "bulk_extractor --notify_main_thread"
+    },
+    {
+      "name": "--notify_async",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display notificaitons asynchronously (default)",
+      "default": "ault",
+      "example": "bulk_extractor --notify_async"
+    },
+    {
+      "name": "--quit",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "no status or performance output",
+      "default": "",
+      "example": "bulk_extractor --quit"
+    },
+    {
+      "name": "--recurse",
+      "short": "-R",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "treat image file as a directory to recursively explore",
+      "default": "",
+      "example": "bulk_extractor --recurse"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display PACKAGE_VERSION (currently) 2.1.1",
+      "default": "",
+      "example": "bulk_extractor --version"
+    },
+    {
+      "name": "--zap",
+      "short": "-Z",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "wipe the output directory (recursively) before starting",
+      "default": "",
+      "example": "bulk_extractor --zap"
+    },
+    {
+      "name": "--no_notify",
+      "short": "-0",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "disable real-time notification",
+      "default": "",
+      "example": "bulk_extractor --no_notify"
+    },
+    {
+      "name": "--version1",
+      "short": "-1",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "version 1.0 notification (console-output)",
+      "default": "",
+      "example": "bulk_extractor --version1"
+    },
+    {
+      "name": "--info_scanners",
+      "short": "-H",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "report information about each scanner",
+      "default": "",
+      "example": "bulk_extractor --info_scanners"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "print help screen",
+      "default": "",
+      "example": "bulk_extractor --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

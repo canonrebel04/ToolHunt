@@ -1,0 +1,166 @@
+{
+  "id": "ligolo-ng",
+  "name": "ligolo-ng",
+  "schema_version": 1,
+  "summary": "An advanced, yet simple, tunneling tool that uses a TUN interface.",
+  "highlights": [
+    "-accept-fingerprint — accept certificates matching the following SHA256 fingerprint (hex format)",
+    "-bind — bind to ip:port",
+    "-connect — connect to proxy (domain:port)",
+    "-ignore-cert — ignore TLS certificate validation (dangerous), only for debug purposes",
+    "-proxy — proxy URL address (http://admin:secret@127.0.0.1:8080) or socks://admin:secret@127.0.0.1:8",
+    "-reconnect — auto-reconnect after established connection is lost (default true)",
+    "-reconnect-delay — reconnection delay in seconds (default: 20) (default 20)",
+    "-reconnect-timeout — total reconnection timeout in seconds (default: 300 = 5 minutes) (default 300)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ligolo-ng"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-accept-fingerprint",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "accept certificates matching the following SHA256 fingerprint (hex format)",
+      "default": "",
+      "example": "ligolo-agent -accept-fingerprint <string>"
+    },
+    {
+      "name": "-bind",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "bind to ip:port",
+      "default": "",
+      "example": "ligolo-agent -bind <string>"
+    },
+    {
+      "name": "-connect",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "connect to proxy (domain:port)",
+      "default": "",
+      "example": "ligolo-agent -connect <string>"
+    },
+    {
+      "name": "-ignore-cert",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ignore TLS certificate validation (dangerous), only for debug purposes",
+      "default": "",
+      "example": "ligolo-agent -ignore-cert"
+    },
+    {
+      "name": "-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "proxy URL address (http://admin:secret@127.0.0.1:8080) or socks://admin:secret@127.0.0.1:8080",
+      "default": "",
+      "example": "ligolo-agent -proxy <string>"
+    },
+    {
+      "name": "-reconnect",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "auto-reconnect after established connection is lost (default true)",
+      "default": "true",
+      "example": "ligolo-agent -reconnect"
+    },
+    {
+      "name": "-reconnect-delay",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "reconnection delay in seconds (default: 20) (default 20)",
+      "default": "20",
+      "example": "ligolo-agent -reconnect-delay <int>"
+    },
+    {
+      "name": "-reconnect-timeout",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "total reconnection timeout in seconds (default: 300 = 5 minutes) (default 300)",
+      "default": "300 = 5 minutes",
+      "example": "ligolo-agent -reconnect-timeout <int>"
+    },
+    {
+      "name": "-retry",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "auto-retry on initial connection error",
+      "default": "",
+      "example": "ligolo-agent -retry"
+    },
+    {
+      "name": "-retry-delay",
+      "short": "",
+      "aliases": [],
+      "arg": "int",
+      "required": false,
+      "description": "retry delay in seconds for initial connection (default: 5) (default 5)",
+      "default": "5",
+      "example": "ligolo-agent -retry-delay <int>"
+    },
+    {
+      "name": "-ua",
+      "short": "",
+      "aliases": [],
+      "arg": "string",
+      "required": false,
+      "description": "HTTP User-Agent (default \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36\")",
+      "default": "Mozilla/5.0 (Windows NT 10.0; Win64; x64",
+      "example": "ligolo-agent -ua <string>"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "enable verbose mode",
+      "default": "",
+      "example": "ligolo-agent -v"
+    },
+    {
+      "name": "-version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show the current version",
+      "default": "",
+      "example": "ligolo-agent -version"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

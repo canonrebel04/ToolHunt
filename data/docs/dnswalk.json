@@ -1,0 +1,68 @@
+{
+  "id": "dnswalk",
+  "name": "dnswalk",
+  "schema_version": 1,
+  "summary": "A DNS debugger and zone-transfer utility.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install dnswalk"
+    }
+  ],
+  "usage": "dnswalk [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "dnswalk <domain>.",
+      "explanation": "Debug a DNS pathway for a Fully Qualified Domain Name (FQDN)",
+      "source": "tldr:dnswalk"
+    },
+    {
+      "cmd": "dnswalk -r <domain>.",
+      "explanation": "Process sub-domains [r]ecursively",
+      "source": "tldr:dnswalk"
+    },
+    {
+      "cmd": "dnswalk -m <domain>.",
+      "explanation": "Only perform a `dnswalk` if the zone has been [m]odified since the last run",
+      "source": "tldr:dnswalk"
+    },
+    {
+      "cmd": "dnswalk -d <domain>.",
+      "explanation": "Print [d]ebugging and status information to `stderr` instead of `stdout`",
+      "source": "tldr:dnswalk"
+    },
+    {
+      "cmd": "dnswalk -i <domain>.",
+      "explanation": "Suppress the check for [i]nvalid characters in the domain name",
+      "source": "tldr:dnswalk"
+    },
+    {
+      "cmd": "dnswalk -a <domain>.",
+      "explanation": "Enable duplicate A record warnings",
+      "source": "tldr:dnswalk"
+    },
+    {
+      "cmd": "dnswalk -F <domain>.",
+      "explanation": "Enable \"[F]ascist checking\" to compare the A record PTR name with the forward name and report mismatches",
+      "source": "tldr:dnswalk"
+    },
+    {
+      "cmd": "dnswalk -l <domain>.",
+      "explanation": "Enable \"[l]ame delegation\" to test whether the listed host is returning authoritative answers",
+      "source": "tldr:dnswalk"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/dnswalk.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

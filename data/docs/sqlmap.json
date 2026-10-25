@@ -1,0 +1,403 @@
+{
+  "id": "sqlmap",
+  "name": "SQLMap",
+  "schema_version": 1,
+  "summary": "An open-source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over database servers.",
+  "highlights": [
+    "-hh — Show advanced help message and exit",
+    "-u — Target URL (e.g. \"http://www.site.com/vuln.php?id=1\")",
+    "-g — Process Google dork results as target URLs",
+    "--data — Data string to be sent through POST (e.g. \"id=1\")",
+    "--cookie — HTTP Cookie header value (e.g. \"PHPSESSID=a8d127e..\")",
+    "--random-agent — Use randomly selected HTTP User-Agent header value",
+    "--proxy — Use a proxy to connect to the target URL",
+    "--tor — Use Tor anonymity network"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sqlmap"
+    }
+  ],
+  "usage": "python3 sqlmap [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show basic help message and exit",
+      "default": "",
+      "example": "sqlmap --help"
+    },
+    {
+      "name": "-hh",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show advanced help message and exit",
+      "default": "",
+      "example": "sqlmap -hh"
+    },
+    {
+      "name": "--version",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show program's version number and exit",
+      "default": "",
+      "example": "sqlmap --version"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "VERBOSE",
+      "required": false,
+      "description": "Verbosity level: 0-6 (default 1)",
+      "default": "1",
+      "example": "sqlmap -v <verbose>"
+    },
+    {
+      "name": "--url",
+      "short": "-u",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Target URL (e.g. \"http://www.site.com/vuln.php?id=1\")",
+      "default": "",
+      "example": "sqlmap --url <url>"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "GOOGLEDORK",
+      "required": false,
+      "description": "Process Google dork results as target URLs",
+      "default": "",
+      "example": "sqlmap -g <googledork>"
+    },
+    {
+      "name": "--data",
+      "short": "",
+      "aliases": [],
+      "arg": "DATA",
+      "required": false,
+      "description": "Data string to be sent through POST (e.g. \"id=1\")",
+      "default": "",
+      "example": "sqlmap --data <data>"
+    },
+    {
+      "name": "--cookie",
+      "short": "",
+      "aliases": [],
+      "arg": "COOKIE",
+      "required": false,
+      "description": "HTTP Cookie header value (e.g. \"PHPSESSID=a8d127e..\")",
+      "default": "",
+      "example": "sqlmap --cookie <cookie>"
+    },
+    {
+      "name": "--random-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use randomly selected HTTP User-Agent header value",
+      "default": "",
+      "example": "sqlmap --random-agent"
+    },
+    {
+      "name": "--proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "PROXY",
+      "required": false,
+      "description": "Use a proxy to connect to the target URL",
+      "default": "",
+      "example": "sqlmap --proxy <proxy>"
+    },
+    {
+      "name": "--tor",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use Tor anonymity network",
+      "default": "",
+      "example": "sqlmap --tor"
+    },
+    {
+      "name": "--check-tor",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Check to see if Tor is used properly",
+      "default": "",
+      "example": "sqlmap --check-tor"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "TESTPARAMETER",
+      "required": false,
+      "description": "Testable parameter(s)",
+      "default": "",
+      "example": "sqlmap -p <testparameter>"
+    },
+    {
+      "name": "--dbms",
+      "short": "",
+      "aliases": [],
+      "arg": "DBMS",
+      "required": false,
+      "description": "Force back-end DBMS to provided value",
+      "default": "",
+      "example": "sqlmap --dbms <dbms>"
+    },
+    {
+      "name": "--level",
+      "short": "",
+      "aliases": [],
+      "arg": "LEVEL",
+      "required": false,
+      "description": "Level of tests to perform (1-5, default 1)",
+      "default": "",
+      "example": "sqlmap --level <level>"
+    },
+    {
+      "name": "--risk",
+      "short": "",
+      "aliases": [],
+      "arg": "RISK",
+      "required": false,
+      "description": "Risk of tests to perform (1-3, default 1)",
+      "default": "",
+      "example": "sqlmap --risk <risk>"
+    },
+    {
+      "name": "--all",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve everything",
+      "default": "",
+      "example": "sqlmap --all"
+    },
+    {
+      "name": "--banner",
+      "short": "-b",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve DBMS banner",
+      "default": "",
+      "example": "sqlmap --banner"
+    },
+    {
+      "name": "--current-user",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve DBMS current user",
+      "default": "",
+      "example": "sqlmap --current-user"
+    },
+    {
+      "name": "--current-db",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Retrieve DBMS current database",
+      "default": "",
+      "example": "sqlmap --current-db"
+    },
+    {
+      "name": "--passwords",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enumerate DBMS users password hashes",
+      "default": "",
+      "example": "sqlmap --passwords"
+    },
+    {
+      "name": "--dbs",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enumerate DBMS databases",
+      "default": "",
+      "example": "sqlmap --dbs"
+    },
+    {
+      "name": "--tables",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enumerate DBMS database tables",
+      "default": "",
+      "example": "sqlmap --tables"
+    },
+    {
+      "name": "--columns",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enumerate DBMS database table columns",
+      "default": "",
+      "example": "sqlmap --columns"
+    },
+    {
+      "name": "--schema",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enumerate DBMS schema",
+      "default": "",
+      "example": "sqlmap --schema"
+    },
+    {
+      "name": "--dump",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Dump DBMS database table entries",
+      "default": "",
+      "example": "sqlmap --dump"
+    },
+    {
+      "name": "--dump-all",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Dump entries of all DBMS database tables",
+      "default": "",
+      "example": "sqlmap --dump-all"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "DB",
+      "required": false,
+      "description": "DBMS database to enumerate",
+      "default": "",
+      "example": "sqlmap -D <db>"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "TBL",
+      "required": false,
+      "description": "DBMS database table(s) to enumerate",
+      "default": "",
+      "example": "sqlmap -T <tbl>"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "COL",
+      "required": false,
+      "description": "DBMS database table column(s) to enumerate",
+      "default": "",
+      "example": "sqlmap -C <col>"
+    },
+    {
+      "name": "--os-shell",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prompt for an interactive operating system shell",
+      "default": "",
+      "example": "sqlmap --os-shell"
+    },
+    {
+      "name": "--os-pwn",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prompt for an OOB shell, Meterpreter or VNC",
+      "default": "",
+      "example": "sqlmap --os-pwn"
+    },
+    {
+      "name": "--batch",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Never ask for user input, use the default behavior",
+      "default": "",
+      "example": "sqlmap --batch"
+    },
+    {
+      "name": "--flush-session",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Flush session files for current target",
+      "default": "",
+      "example": "sqlmap --flush-session"
+    },
+    {
+      "name": "--wizard",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Simple wizard interface for beginner users",
+      "default": "",
+      "example": "sqlmap --wizard"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "python sqlmap.py --url \"<http://www.example.com/vuln.php?id=1>\"",
+      "explanation": "Run sqlmap against a single target URL",
+      "source": "tldr:sqlmap"
+    },
+    {
+      "cmd": "python sqlmap.py --url \"<http://www.example.com/vuln.php>\" --data=\"<id=1>\"",
+      "explanation": "Send data in a POST request (`--data` implies POST request)",
+      "source": "tldr:sqlmap"
+    },
+    {
+      "cmd": "python sqlmap.py --url \"<http://www.example.com/vuln.php>\" --random-agent",
+      "explanation": "Select a random `User-Agent` from `./txt/user-agents.txt` and use it",
+      "source": "tldr:sqlmap"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/sqlmap.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

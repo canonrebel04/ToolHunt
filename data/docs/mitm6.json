@@ -1,0 +1,193 @@
+{
+  "id": "mitm6",
+  "name": "mitm6",
+  "schema_version": 1,
+  "summary": "Pwning IPv4 via IPv6.",
+  "highlights": [
+    "-i — Interface to use (default: autodetect)",
+    "-l — Domain name to use as DNS search domain (default: use first DNS domain)",
+    "-4 — IPv4 address to send packets from (default: autodetect)",
+    "-6 — IPv6 link-local address to send packets from (default: autodetect)",
+    "-m — Custom mac address - probably breaks stuff (default: mac of selected interface)",
+    "-a — Do not advertise ourselves (useful for networks which detect rogue Router Advertisements)",
+    "-r — Authentication relay target, will be used as fake DNS server hostname to trigger Kerberos ",
+    "-v — Show verbose information"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install mitm6"
+    }
+  ],
+  "usage": "mitm6 [-h] [-i INTERFACE] [-l LOCALDOMAIN] [-4 ADDRESS] [-6 ADDRESS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "mitm6 --help"
+    },
+    {
+      "name": "--interface",
+      "short": "-i",
+      "aliases": [],
+      "arg": "INTERFACE",
+      "required": false,
+      "description": "Interface to use (default: autodetect)",
+      "default": "autodetect",
+      "example": "mitm6 --interface <interface>"
+    },
+    {
+      "name": "--localdomain",
+      "short": "-l",
+      "aliases": [],
+      "arg": "LOCALDOMAIN",
+      "required": false,
+      "description": "Domain name to use as DNS search domain (default: use first DNS domain)",
+      "default": "use first DNS domain",
+      "example": "mitm6 --localdomain <localdomain>"
+    },
+    {
+      "name": "--ipv4",
+      "short": "-4",
+      "aliases": [],
+      "arg": "ADDRESS",
+      "required": false,
+      "description": "IPv4 address to send packets from (default: autodetect)",
+      "default": "autodetect",
+      "example": "mitm6 --ipv4 <address>"
+    },
+    {
+      "name": "--ipv6",
+      "short": "-6",
+      "aliases": [],
+      "arg": "ADDRESS",
+      "required": false,
+      "description": "IPv6 link-local address to send packets from (default: autodetect)",
+      "default": "autodetect",
+      "example": "mitm6 --ipv6 <address>"
+    },
+    {
+      "name": "--mac",
+      "short": "-m",
+      "aliases": [],
+      "arg": "ADDRESS",
+      "required": false,
+      "description": "Custom mac address - probably breaks stuff (default: mac of selected interface)",
+      "default": "mac of selected interface",
+      "example": "mitm6 --mac <address>"
+    },
+    {
+      "name": "--no-ra",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not advertise ourselves (useful for networks which detect rogue Router Advertisements)",
+      "default": "",
+      "example": "mitm6 --no-ra"
+    },
+    {
+      "name": "--relay",
+      "short": "-r",
+      "aliases": [],
+      "arg": "TARGET",
+      "required": false,
+      "description": "Authentication relay target, will be used as fake DNS server hostname to trigger Kerberos auth",
+      "default": "",
+      "example": "mitm6 --relay <target>"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show verbose information",
+      "default": "",
+      "example": "mitm6 --verbose"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show debug information",
+      "default": "",
+      "example": "mitm6 --debug"
+    },
+    {
+      "name": "--domain",
+      "short": "-d",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Domain name to filter DNS queries on (Allowlist principle, multiple can be specified.)",
+      "default": "",
+      "example": "mitm6 --domain <domain>"
+    },
+    {
+      "name": "--blocklist",
+      "short": "-b",
+      "aliases": [
+        "--blacklist"
+      ],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Domain name to filter DNS queries on (Blocklist principle, multiple can be specified.)",
+      "default": "",
+      "example": "mitm6 --blocklist <domain>"
+    },
+    {
+      "name": "--host-allowlist",
+      "short": "-hw",
+      "aliases": [
+        "--host-whitelist",
+        "-ha"
+      ],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Hostname (FQDN) to filter DHCPv6 queries on (Allowlist principle, multiple can be specified.)",
+      "default": "",
+      "example": "mitm6 --host-allowlist <domain>"
+    },
+    {
+      "name": "--host-blocklist",
+      "short": "-hb",
+      "aliases": [
+        "--host-blacklist"
+      ],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Hostname (FQDN) to filter DHCPv6 queries on (Blocklist principle, multiple can be specified.)",
+      "default": "",
+      "example": "mitm6 --host-blocklist <domain>"
+    },
+    {
+      "name": "--ignore-nofqdn",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Ignore DHCPv6 queries that do not contain the Fully Qualified Domain Name (FQDN) option.",
+      "default": "",
+      "example": "mitm6 --ignore-nofqdn"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

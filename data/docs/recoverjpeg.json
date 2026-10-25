@@ -1,0 +1,69 @@
+{
+  "id": "recoverjpeg",
+  "name": "recoverjpeg",
+  "schema_version": 1,
+  "summary": "Recover jpegs from damaged devices.",
+  "highlights": [
+    "-q — Be quiet"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install recoverjpeg"
+    }
+  ],
+  "usage": "recoverjpeg [options] file|device",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This help message",
+      "default": "",
+      "example": "recoverjpeg -h"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Be quiet",
+      "default": "",
+      "example": "recoverjpeg -q"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Be verbose",
+      "default": "",
+      "example": "recoverjpeg -v"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display version and exit",
+      "default": "",
+      "example": "recoverjpeg -V"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

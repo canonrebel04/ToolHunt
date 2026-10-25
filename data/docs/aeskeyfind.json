@@ -1,0 +1,70 @@
+{
+  "id": "aeskeyfind",
+  "name": "aeskeyfind",
+  "schema_version": 1,
+  "summary": "A tool to find AES key in RAM.",
+  "highlights": [
+    "-q — don't display a progress bar",
+    "-t — sets the maximum number of bit errors allowed in a candidate key schedule (default = 10)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install aeskeyfind"
+    }
+  ],
+  "usage": "aeskeyfind [OPTION]... MEMORY-IMAGE",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "verbose output -- prints the extended keys and the constraints on the rows of the key schedule",
+      "default": "",
+      "example": "aeskeyfind -v"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "don't display a progress bar",
+      "default": "",
+      "example": "aeskeyfind -q"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "THRESHOLD",
+      "required": false,
+      "description": "sets the maximum number of bit errors allowed in a candidate key schedule (default = 10)",
+      "default": "10",
+      "example": "aeskeyfind -t <threshold>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "displays this help message",
+      "default": "",
+      "example": "aeskeyfind -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

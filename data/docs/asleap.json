@@ -1,0 +1,146 @@
+{
+  "id": "asleap",
+  "name": "asleap",
+  "schema_version": 1,
+  "summary": "Actively recover LEAP/PPTP passwords.",
+  "highlights": [
+    "-r — Read from a libpcap file",
+    "-i — Interface to capture on",
+    "-f — Dictionary file with NT hashes",
+    "-n — Index file for NT hashes",
+    "-s — Skip the check to make sure authentication was successful",
+    "-C — Challenge value in colon-delimited bytes",
+    "-R — Response value in colon-delimited bytes",
+    "-W — ASCII dictionary file (special purpose)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install asleap"
+    }
+  ],
+  "usage": "asleap [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read from a libpcap file",
+      "default": "",
+      "example": "asleap -r"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Interface to capture on",
+      "default": "",
+      "example": "asleap -i"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Dictionary file with NT hashes",
+      "default": "",
+      "example": "asleap -f"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Index file for NT hashes",
+      "default": "",
+      "example": "asleap -n"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip the check to make sure authentication was successful",
+      "default": "",
+      "example": "asleap -s"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Output this help information and exit",
+      "default": "",
+      "example": "asleap -h"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print verbose information (more -v for more verbosity)",
+      "default": "",
+      "example": "asleap -v"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print program version and exit",
+      "default": "",
+      "example": "asleap -V"
+    },
+    {
+      "name": "-C",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Challenge value in colon-delimited bytes",
+      "default": "",
+      "example": "asleap -C"
+    },
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Response value in colon-delimited bytes",
+      "default": "",
+      "example": "asleap -R"
+    },
+    {
+      "name": "-W",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ASCII dictionary file (special purpose)",
+      "default": "",
+      "example": "asleap -W"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

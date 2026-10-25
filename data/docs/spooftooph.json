@@ -1,0 +1,176 @@
+{
+  "id": "spooftooph",
+  "name": "spooftooph",
+  "schema_version": 1,
+  "summary": "Designed to automate spoofing or cloning Bluetooth device Name, Class, and Address. Cloning this information effectively allows Bluetooth device to hide in plain sight.",
+  "highlights": [
+    "-a — : Specify new BD_ADDR",
+    "-b — : Number of Bluetooth profiles to display per page",
+    "-B — : Disable banner for smaller screens (like phones)",
+    "-c — : Specify new CLASS",
+    "-i — : Specify interface",
+    "-m — : Specify multiple interfaces during selection",
+    "-n — : Specify new NAME",
+    "-r — : Read in CSV logfile"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install spooftooph"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "<address>",
+      "required": false,
+      "description": ": Specify new BD_ADDR",
+      "default": "",
+      "example": "spooftooph -a <address>"
+    },
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "<num_lines>",
+      "required": false,
+      "description": ": Number of Bluetooth profiles to display per page",
+      "default": "",
+      "example": "spooftooph -b <num_lines>"
+    },
+    {
+      "name": "-B",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Disable banner for smaller screens (like phones)",
+      "default": "",
+      "example": "spooftooph -B"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "<class>",
+      "required": false,
+      "description": ": Specify new CLASS",
+      "default": "",
+      "example": "spooftooph -c <class>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Help",
+      "default": "",
+      "example": "spooftooph -h"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "<dev>",
+      "required": false,
+      "description": ": Specify interface",
+      "default": "",
+      "example": "spooftooph -i <dev>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Specify multiple interfaces during selection",
+      "default": "",
+      "example": "spooftooph -m"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "<name>",
+      "required": false,
+      "description": ": Specify new NAME",
+      "default": "",
+      "example": "spooftooph -n <name>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": ": Read in CSV logfile",
+      "default": "",
+      "example": "spooftooph -r <file>"
+    },
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Assign random NAME, CLASS, and ADDR",
+      "default": "",
+      "example": "spooftooph -R"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": Scan for devices in local area",
+      "default": "",
+      "example": "spooftooph -s"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<time>",
+      "required": false,
+      "description": ": Time interval to clone device in range",
+      "default": "",
+      "example": "spooftooph -t <time>"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": ": USB delay. Interactive delay for reinitializing interface",
+      "default": "",
+      "example": "spooftooph -u"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": ": Write to CSV logfile (Useful in Virtualized environment when USB must be passed through.)",
+      "default": "",
+      "example": "spooftooph -w <file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

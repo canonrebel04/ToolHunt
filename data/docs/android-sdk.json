@@ -1,0 +1,39 @@
+{
+  "id": "android-sdk",
+  "name": "android-sdk",
+  "schema_version": 1,
+  "summary": "Google Android SDK",
+  "highlights": [
+    "--clear-cache — Clear the SDK Manager repository manifest cache."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install android-sdk"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--clear-cache",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Clear the SDK Manager repository manifest cache.",
+      "default": "",
+      "example": "android --clear-cache"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

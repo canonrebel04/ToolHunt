@@ -1,0 +1,46 @@
+{
+  "id": "ngrok",
+  "name": "ngrok",
+  "schema_version": 1,
+  "summary": "A tunneling, reverse proxy for developing and understanding networked, HTTP services.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "ngrok http <80>",
+      "explanation": "Expose a local HTTP service on a given port",
+      "source": "tldr:ngrok"
+    },
+    {
+      "cmd": "ngrok http <example.com>:<80>",
+      "explanation": "Expose a local HTTP service on a specific host",
+      "source": "tldr:ngrok"
+    },
+    {
+      "cmd": "ngrok http https://localhost",
+      "explanation": "Expose a local HTTPS server",
+      "source": "tldr:ngrok"
+    },
+    {
+      "cmd": "ngrok tcp <22>",
+      "explanation": "Expose TCP traffic on a given port",
+      "source": "tldr:ngrok"
+    },
+    {
+      "cmd": "ngrok tls -hostname=<example.com> <443>",
+      "explanation": "Expose TLS traffic for a specific host and port",
+      "source": "tldr:ngrok"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/ngrok.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

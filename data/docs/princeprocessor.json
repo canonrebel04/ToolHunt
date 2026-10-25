@@ -1,0 +1,186 @@
+{
+  "id": "princeprocessor",
+  "name": "princeprocessor",
+  "schema_version": 1,
+  "summary": "Standalone password candidate generator using the PRINCE algorithm.",
+  "highlights": [
+    "--keyspace — Calculate number of combinations",
+    "--pw-min — Print candidate if length is greater than NUM",
+    "--pw-max — Print candidate if length is smaller than NUM",
+    "--elem-cnt-min — Minimum number of elements per chain",
+    "--elem-cnt-max — Maximum number of elements per chain",
+    "--wl-dist-len — Calculate output length distribution from wordlist",
+    "--wl-max — Load only NUM words from input wordlist or use 0 to disable",
+    "-c — Disable dupes check for faster initial load"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install princeprocessor"
+    }
+  ],
+  "usage": "princeprocessor [options] [<] wordlist",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print version",
+      "default": "",
+      "example": "princeprocessor --version"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print help",
+      "default": "",
+      "example": "princeprocessor --help"
+    },
+    {
+      "name": "--keyspace",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Calculate number of combinations",
+      "default": "",
+      "example": "princeprocessor --keyspace"
+    },
+    {
+      "name": "--pw-min",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Print candidate if length is greater than NUM",
+      "default": "",
+      "example": "princeprocessor --pw-min <num>"
+    },
+    {
+      "name": "--pw-max",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Print candidate if length is smaller than NUM",
+      "default": "",
+      "example": "princeprocessor --pw-max <num>"
+    },
+    {
+      "name": "--elem-cnt-min",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Minimum number of elements per chain",
+      "default": "",
+      "example": "princeprocessor --elem-cnt-min <num>"
+    },
+    {
+      "name": "--elem-cnt-max",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Maximum number of elements per chain",
+      "default": "",
+      "example": "princeprocessor --elem-cnt-max <num>"
+    },
+    {
+      "name": "--wl-dist-len",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Calculate output length distribution from wordlist",
+      "default": "",
+      "example": "princeprocessor --wl-dist-len"
+    },
+    {
+      "name": "--wl-max",
+      "short": "",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Load only NUM words from input wordlist or use 0 to disable",
+      "default": "",
+      "example": "princeprocessor --wl-max <num>"
+    },
+    {
+      "name": "--dupe-check-disable",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable dupes check for faster initial load",
+      "default": "",
+      "example": "princeprocessor --dupe-check-disable"
+    },
+    {
+      "name": "--save-pos-disable",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Save the position for later resume with -s",
+      "default": "",
+      "example": "princeprocessor --save-pos-disable"
+    },
+    {
+      "name": "--skip",
+      "short": "-s",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Skip NUM passwords from start (for distributed)",
+      "default": "",
+      "example": "princeprocessor --skip <num>"
+    },
+    {
+      "name": "--limit",
+      "short": "-l",
+      "aliases": [],
+      "arg": "NUM",
+      "required": false,
+      "description": "Limit output to NUM passwords (for distributed)",
+      "default": "",
+      "example": "princeprocessor --limit <num>"
+    },
+    {
+      "name": "--output-file",
+      "short": "-o",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Output-file",
+      "default": "",
+      "example": "princeprocessor --output-file <file>"
+    },
+    {
+      "name": "--case-permute",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "For each word in the wordlist that begins with a letter generate a word with the opposite case of the first letter",
+      "default": "",
+      "example": "princeprocessor --case-permute"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "imhex",
+  "name": "imhex",
+  "schema_version": 1,
+  "summary": "A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install imhex"
+    }
+  ],
+  "usage": "updater <version-type>",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "imhex <path/to/file>",
+      "explanation": "Open a file in ImHex",
+      "source": "tldr:imhex"
+    },
+    {
+      "cmd": "imhex --new",
+      "explanation": "Create a new empty file",
+      "source": "tldr:imhex"
+    },
+    {
+      "cmd": "imhex --open <path/to/file> --select <0xstart_offset> <0xend_offset>",
+      "explanation": "Open a file in the currently running ImHex instance and select a range of bytes (offsets in hexadecimal)",
+      "source": "tldr:imhex"
+    },
+    {
+      "cmd": "imhex --file-info <path/to/file>",
+      "explanation": "Display information about a file",
+      "source": "tldr:imhex"
+    },
+    {
+      "cmd": "imhex --hash <md5|sha1|sha224|sha256|sha384|sha512> <path/to/file>",
+      "explanation": "Calculate the hash of a file using a specific algorithm",
+      "source": "tldr:imhex"
+    },
+    {
+      "cmd": "imhex --hexdump <path/to/file>",
+      "explanation": "Generate a hex dump of a file",
+      "source": "tldr:imhex"
+    },
+    {
+      "cmd": "imhex --version",
+      "explanation": "Display version",
+      "source": "tldr:imhex"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/imhex.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "id": "scalpel",
+  "name": "scalpel",
+  "schema_version": 1,
+  "summary": "A frugal, high performance file carver.",
+  "highlights": [
+    "-b — Carve files even if defined footers aren't discovered within maximum carve size for file t",
+    "-c — Choose configuration file.",
+    "-d — Generate header/footer database; will bypass certain optimizations and discover all footer",
+    "-i — Read names of disk images from specified file.",
+    "-m — Generate/update carve coverage blockmap file. The first 32bit unsigned int in the file ide",
+    "-n — Don't add extensions to extracted files.",
+    "-o — Set output directory for carved files.",
+    "-O — Don't organize carved files by type. Default is to organize carved files into subdirectori"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install scalpel"
+    }
+  ],
+  "usage": "scalpel [-b] [-c <config file>] [-d] [-h|V] [-i <file>]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-b",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Carve files even if defined footers aren't discovered within maximum carve size for file type [foremost 0.69 compat mode].",
+      "default": "",
+      "example": "scalpel -b"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Choose configuration file.",
+      "default": "",
+      "example": "scalpel -c"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Generate header/footer database; will bypass certain optimizations and discover all footers, so performance suffers. Doesn't affect the set of files carved. **EXPERIMENTAL**",
+      "default": "",
+      "example": "scalpel -d"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print this help message and exit.",
+      "default": "",
+      "example": "scalpel -h"
+    },
+    {
+      "name": "-i",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read names of disk images from specified file.",
+      "default": "",
+      "example": "scalpel -i"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Generate/update carve coverage blockmap file. The first 32bit unsigned int in the file identifies the block size. Thereafter each 32bit unsigned int entry in the blockmap file corresponds to one block in the image file. Each entry counts how many carved files contain this block. Requires more memory and disk. **EXPERIMENTAL**",
+      "default": "",
+      "example": "scalpel -m"
+    },
+    {
+      "name": "-n",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't add extensions to extracted files.",
+      "default": "",
+      "example": "scalpel -n"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set output directory for carved files.",
+      "default": "",
+      "example": "scalpel -o"
+    },
+    {
+      "name": "-O",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Don't organize carved files by type. Default is to organize carved files into subdirectories.",
+      "default": "",
+      "example": "scalpel -O"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Perform image file preview; audit log indicates which files would have been carved, but no files are actually carved.",
+      "default": "",
+      "example": "scalpel -p"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Carve only when header is cluster-aligned.",
+      "default": "",
+      "example": "scalpel -q"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Find only first of overlapping headers/footers [foremost 0.69 compat mode].",
+      "default": "",
+      "example": "scalpel -r"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skip n bytes in each disk image before carving.",
+      "default": "",
+      "example": "scalpel -s"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Set directory for coverage blockmap. **EXPERIMENTAL**",
+      "default": "",
+      "example": "scalpel -t"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Use carve coverage blockmap when carving. Carve only sections of the image whose entries in the blockmap are 0. These areas are treated as contiguous regions. **EXPERIMENTAL**",
+      "default": "",
+      "example": "scalpel -u"
+    },
+    {
+      "name": "-V",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print copyright information and exit.",
+      "default": "",
+      "example": "scalpel -V"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose mode.",
+      "default": "",
+      "example": "scalpel -v"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "scalpel -c <path/to/scalpel.conf> -o <path/to/output_directory> <path/to/disk_image.dd>",
+      "explanation": "Carve files from a disk image using a specific configuration file",
+      "source": "tldr:scalpel"
+    },
+    {
+      "cmd": "scalpel -p -c <path/to/scalpel.conf> -o <path/to/output_directory> <path/to/disk_image.dd>",
+      "explanation": "Preview which files would be carved, without actually carving them",
+      "source": "tldr:scalpel"
+    },
+    {
+      "cmd": "scalpel -s <number> -c <path/to/scalpel.conf> -o <path/to/output_directory> <path/to/disk_image.dd>",
+      "explanation": "Skip the first N bytes of the disk image before carving",
+      "source": "tldr:scalpel"
+    },
+    {
+      "cmd": "scalpel -O -c <path/to/scalpel.conf> -o <path/to/output_directory> <path/to/disk_image.dd>",
+      "explanation": "Carve files without organizing them into subdirectories by type",
+      "source": "tldr:scalpel"
+    },
+    {
+      "cmd": "scalpel -h",
+      "explanation": "Display help",
+      "source": "tldr:scalpel"
+    },
+    {
+      "cmd": "scalpel -V",
+      "explanation": "Display version",
+      "source": "tldr:scalpel"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/linux/scalpel.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

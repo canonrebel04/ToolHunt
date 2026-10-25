@@ -1,0 +1,278 @@
+{
+  "id": "evil-winrm",
+  "name": "evil-winrm",
+  "schema_version": 1,
+  "summary": "The ultimate WinRM shell for hacking/pentesting.",
+  "highlights": [
+    "-S — Enable ssl",
+    "-c — Local path to public key certificate",
+    "-k — Local path to private key certificate",
+    "-r — Kerberos auth, it has to be set also in /etc/krb5.conf file using this format -> CONTOSO.C",
+    "-s — Powershell scripts local path",
+    "--spn — SPN prefix for Kerberos auth (default HTTP)",
+    "-K — Path to Kerberos ticket file (ccache or kirbi format, auto-detected)",
+    "-e — C# executables local path"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install evil-winrm"
+    }
+  ],
+  "usage": "evil-winrm -i IP -u USER [-s SCRIPTS_PATH] [-e EXES_PATH] [-P PORT] [-a USERAGENT] [-p PASS] [-H HASH] [-U URL] [-S] [-c PUBLIC_KEY_PATH ] [-k PRIVATE_KEY_PATH ] [-r REALM] [-K TICKET_FILE] [--spn SPN_PREFIX] [-l]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--ssl",
+      "short": "-S",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable ssl",
+      "default": "",
+      "example": "evil-winrm --ssl"
+    },
+    {
+      "name": "--pub-key",
+      "short": "-c",
+      "aliases": [],
+      "arg": "PUBLIC_KEY_PATH",
+      "required": false,
+      "description": "Local path to public key certificate",
+      "default": "",
+      "example": "evil-winrm --pub-key <public_key_path>"
+    },
+    {
+      "name": "--priv-key",
+      "short": "-k",
+      "aliases": [],
+      "arg": "PRIVATE_KEY_PATH",
+      "required": false,
+      "description": "Local path to private key certificate",
+      "default": "",
+      "example": "evil-winrm --priv-key <private_key_path>"
+    },
+    {
+      "name": "--realm",
+      "short": "-r",
+      "aliases": [],
+      "arg": "DOMAIN",
+      "required": false,
+      "description": "Kerberos auth, it has to be set also in /etc/krb5.conf file using this format -> CONTOSO.COM = { kdc = fooserver.contoso.com }",
+      "default": "",
+      "example": "evil-winrm --realm <domain>"
+    },
+    {
+      "name": "--scripts",
+      "short": "-s",
+      "aliases": [],
+      "arg": "PS_SCRIPTS_PATH",
+      "required": false,
+      "description": "Powershell scripts local path",
+      "default": "",
+      "example": "evil-winrm --scripts <ps_scripts_path>"
+    },
+    {
+      "name": "--spn",
+      "short": "",
+      "aliases": [],
+      "arg": "SPN_PREFIX",
+      "required": false,
+      "description": "SPN prefix for Kerberos auth (default HTTP)",
+      "default": "HTTP",
+      "example": "evil-winrm --spn <spn_prefix>"
+    },
+    {
+      "name": "--ccache",
+      "short": "-K",
+      "aliases": [],
+      "arg": "TICKET_FILE",
+      "required": false,
+      "description": "Path to Kerberos ticket file (ccache or kirbi format, auto-detected)",
+      "default": "",
+      "example": "evil-winrm --ccache <ticket_file>"
+    },
+    {
+      "name": "--executables",
+      "short": "-e",
+      "aliases": [],
+      "arg": "EXES_PATH",
+      "required": false,
+      "description": "C# executables local path",
+      "default": "",
+      "example": "evil-winrm --executables <exes_path>"
+    },
+    {
+      "name": "--ip",
+      "short": "-i",
+      "aliases": [],
+      "arg": "IP",
+      "required": true,
+      "description": "Remote host IP or hostname. FQDN for Kerberos auth (required)",
+      "default": "",
+      "example": "evil-winrm --ip <ip>"
+    },
+    {
+      "name": "--url",
+      "short": "-U",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Remote url endpoint (default /wsman)",
+      "default": "/wsman",
+      "example": "evil-winrm --url <url>"
+    },
+    {
+      "name": "--user",
+      "short": "-u",
+      "aliases": [],
+      "arg": "USER",
+      "required": false,
+      "description": "Username (required if not using kerberos)",
+      "default": "",
+      "example": "evil-winrm --user <user>"
+    },
+    {
+      "name": "--password",
+      "short": "-p",
+      "aliases": [],
+      "arg": "PASS",
+      "required": false,
+      "description": "Password",
+      "default": "",
+      "example": "evil-winrm --password <pass>"
+    },
+    {
+      "name": "--hash",
+      "short": "-H",
+      "aliases": [],
+      "arg": "HASH",
+      "required": false,
+      "description": "NTHash",
+      "default": "",
+      "example": "evil-winrm --hash <hash>"
+    },
+    {
+      "name": "--port",
+      "short": "-P",
+      "aliases": [],
+      "arg": "PORT",
+      "required": false,
+      "description": "Remote host port (default 5985)",
+      "default": "5985",
+      "example": "evil-winrm --port <port>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "-a",
+      "aliases": [],
+      "arg": "USERAGENT",
+      "required": false,
+      "description": "Specify connection user-agent (default Microsoft WinRM Client)",
+      "default": "Microsoft WinRM Client",
+      "example": "evil-winrm --user-agent <useragent>"
+    },
+    {
+      "name": "--version",
+      "short": "-V",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show version",
+      "default": "",
+      "example": "evil-winrm --version"
+    },
+    {
+      "name": "--no-colors",
+      "short": "-n",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable colors",
+      "default": "",
+      "example": "evil-winrm --no-colors"
+    },
+    {
+      "name": "--no-rpath-completion",
+      "short": "-N",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Disable remote path completion",
+      "default": "",
+      "example": "evil-winrm --no-rpath-completion"
+    },
+    {
+      "name": "--log",
+      "short": "-l",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Log the WinRM session",
+      "default": "",
+      "example": "evil-winrm --log"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Display this help message",
+      "default": "",
+      "example": "evil-winrm --help"
+    }
+  ],
+  "examples": [
+    {
+      "cmd": "evil-winrm --ip <ip_address> --user <user> --password <password>",
+      "explanation": "Connect to a host and start an interactive session",
+      "source": "tldr:evil-winrm"
+    },
+    {
+      "cmd": "evil-winrm --ip <ip_address> --user <user> --hash <nt_hash>",
+      "explanation": "Connect to a host using pass-the-hash authentication instead of a password",
+      "source": "tldr:evil-winrm"
+    },
+    {
+      "cmd": "evil-winrm --ip <ip_address> --user <user> --password <password> --scripts <path/to/scripts> --executables <path/to/executables>",
+      "explanation": "Connect to a host, specifying directories for PowerShell scripts and executables",
+      "source": "tldr:evil-winrm"
+    },
+    {
+      "cmd": "evil-winrm --ip <ip_address> --user <user> --password <password> --ssl --pub-key <path/to/pubkey> --priv-key <path/to/privkey>",
+      "explanation": "Connect to a host, using SSL",
+      "source": "tldr:evil-winrm"
+    },
+    {
+      "cmd": "upload <path/to/local_file> <path/to/remote_file>",
+      "explanation": "[Interactive] Upload a file to the host",
+      "source": "tldr:evil-winrm"
+    },
+    {
+      "cmd": "menu",
+      "explanation": "[Interactive] List all loaded PowerShell functions",
+      "source": "tldr:evil-winrm"
+    },
+    {
+      "cmd": "<script.ps1>",
+      "explanation": "[Interactive] Load a PowerShell script from the `--scripts` directory",
+      "source": "tldr:evil-winrm"
+    },
+    {
+      "cmd": "Invoke-Binary <binary.exe>",
+      "explanation": "[Interactive] Invoke a binary on the host from the `--executables` directory",
+      "source": "tldr:evil-winrm"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install",
+    "tldr:pages/common/evil-winrm.md"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": true
+  }
+}

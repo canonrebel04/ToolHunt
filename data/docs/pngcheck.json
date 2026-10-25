@@ -1,0 +1,51 @@
+{
+  "id": "pngcheck",
+  "name": "pngcheck",
+  "schema_version": 1,
+  "summary": "Verifies the integrity of PNG, JNG and MNG files by checking the CRCs and decompressing the image data.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "pngcheck <path/to/image.png>",
+      "explanation": "Verify the integrity of an image file (width, height, and color depth)",
+      "source": "tldr:pngcheck"
+    },
+    {
+      "cmd": "pngcheck -c <path/to/image.png>",
+      "explanation": "Print information for an image with [c]olorized output",
+      "source": "tldr:pngcheck"
+    },
+    {
+      "cmd": "pngcheck -cvt <path/to/image.png>",
+      "explanation": "Print [v]erbose information for an image",
+      "source": "tldr:pngcheck"
+    },
+    {
+      "cmd": "cat <path/to/image.png> | pngcheck -cvt",
+      "explanation": "Receive an image from `stdin` and display detailed information",
+      "source": "tldr:pngcheck"
+    },
+    {
+      "cmd": "pngcheck -s <path/to/image.png>",
+      "explanation": "[s]earch for PNGs within a specific file and display information about them",
+      "source": "tldr:pngcheck"
+    },
+    {
+      "cmd": "pngcheck -x <path/to/image.png>",
+      "explanation": "Search for PNGs within another file and e[x]tract them",
+      "source": "tldr:pngcheck"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/pngcheck.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "id": "rfcat",
+  "name": "rfcat",
+  "schema_version": 1,
+  "summary": "Swiss-army knife of ISM band radio.",
+  "highlights": [
+    "-r — Interactive Python and the \"d\" instance to talk to your dongle. melikey longtime.",
+    "-s — start spectrum analyzer",
+    "--bootloader — trigger the bootloader (use in order to flash the dongle)",
+    "--force — use this to make sure you want to set bootloader mode (you *must* flash after setting --bo",
+    "-S — TROUBLESHOOTING ONLY, used with -r"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install rfcat"
+    }
+  ],
+  "usage": "rfcat [-h] [-r] [-i INDEX] [-s] [-f CENTFREQ] [-c INC] [-n SPECCHANS]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "rfcat --help"
+    },
+    {
+      "name": "--research",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Interactive Python and the \"d\" instance to talk to your dongle. melikey longtime.",
+      "default": "",
+      "example": "rfcat --research"
+    },
+    {
+      "name": "--index",
+      "short": "-i",
+      "aliases": [],
+      "arg": "INDEX",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "rfcat --index <index>"
+    },
+    {
+      "name": "--specan",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "start spectrum analyzer",
+      "default": "",
+      "example": "rfcat --specan"
+    },
+    {
+      "name": "--centfreq",
+      "short": "-f",
+      "aliases": [],
+      "arg": "CENTFREQ",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "rfcat --centfreq <centfreq>"
+    },
+    {
+      "name": "--inc",
+      "short": "-c",
+      "aliases": [],
+      "arg": "INC",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "rfcat --inc <inc>"
+    },
+    {
+      "name": "--specchans",
+      "short": "-n",
+      "aliases": [],
+      "arg": "SPECCHANS",
+      "required": false,
+      "description": "",
+      "default": "",
+      "example": "rfcat --specchans <specchans>"
+    },
+    {
+      "name": "--bootloader",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "trigger the bootloader (use in order to flash the dongle)",
+      "default": "",
+      "example": "rfcat --bootloader"
+    },
+    {
+      "name": "--force",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "use this to make sure you want to set bootloader mode (you *must* flash after setting --bootloader)",
+      "default": "",
+      "example": "rfcat --force"
+    },
+    {
+      "name": "--safemode",
+      "short": "-S",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "TROUBLESHOOTING ONLY, used with -r",
+      "default": "",
+      "example": "rfcat --safemode"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

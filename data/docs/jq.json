@@ -1,0 +1,67 @@
+{
+  "id": "jq",
+  "name": "jq",
+  "schema_version": 1,
+  "summary": "A JSON processor that uses a domain-specific language (DSL).",
+  "highlights": [],
+  "install": [
+    {
+      "method": "brew",
+      "cmd": "brew install jq"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "jq '.' <path/to/file.json>",
+      "explanation": "Execute a specific expression only using the `jq` binary (print a colored and formatted JSON output)",
+      "source": "tldr:jq"
+    },
+    {
+      "cmd": "<cat path/to/file.json> | jq --from-file <path/to/script.jq>",
+      "explanation": "Execute a specific script",
+      "source": "tldr:jq"
+    },
+    {
+      "cmd": "<cat path/to/file.json> | jq <--arg \"name1\" \"value1\" --arg \"name2\" \"value2\" ...> '<. + $ARGS.named>'",
+      "explanation": "Pass specific arguments",
+      "source": "tldr:jq"
+    },
+    {
+      "cmd": "<cat path/to/multiple_json_file_*.json> | jq '<{newKey1: .key1, newKey2: .key2.nestedKey, ...>}'",
+      "explanation": "Create new JSON object via old JSON objects from multiple files",
+      "source": "tldr:jq"
+    },
+    {
+      "cmd": "<cat path/to/file.json> | jq '<.[index1], .[index2], ...>'",
+      "explanation": "Print specific array items",
+      "source": "tldr:jq"
+    },
+    {
+      "cmd": "<cat path/to/file.json> | jq '.[]'",
+      "explanation": "Print all array/object values",
+      "source": "tldr:jq"
+    },
+    {
+      "cmd": "<cat path/to/file.json> | jq '.[] | select((.key1==\"value1\") and .key2==\"value2\")'",
+      "explanation": "Print objects with 2-condition filter in array",
+      "source": "tldr:jq"
+    },
+    {
+      "cmd": "<cat path/to/file.json> | jq '. <+|-> <{\"key1\": \"value1\", \"key2\": \"value2\", ...>}'",
+      "explanation": "Add/remove specific keys",
+      "source": "tldr:jq"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "package-install",
+    "tldr:pages/common/jq.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

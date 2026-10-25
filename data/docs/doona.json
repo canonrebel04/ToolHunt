@@ -1,0 +1,136 @@
+{
+  "id": "doona",
+  "name": "doona",
+  "schema_version": 1,
+  "summary": "A fork of the Bruteforce Exploit Detector Tool (BED).",
+  "highlights": [
+    "-m — = DICT/FINGER/FTP/HTTP/HTTP_MORE/HTTP_SP/HTTP_WEBDAV/IMAP/IRC/LPD/NNTP/PJL/POP/PROXY/RTSP/",
+    "-c — = Execute a health check after every <int> fuzz cases",
+    "-t — = Host to check (default: localhost)",
+    "-p — = Port to connect to (default: module specific standard port)",
+    "-o — = seconds to wait after each test (default: 2 seconds)",
+    "-r — = Resumes fuzzing at test case index",
+    "-k — = Keep trying until server passes a health check",
+    "-d — = Dump test case to stdout (use in combination with -r)"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install doona"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "<module>",
+      "required": false,
+      "description": "= DICT/FINGER/FTP/HTTP/HTTP_MORE/HTTP_SP/HTTP_WEBDAV/IMAP/IRC/LPD/NNTP/PJL/POP/PROXY/RTSP/SMTP/SOCKS4/SOCKS5/TFTP/WHOIS",
+      "default": "",
+      "example": "doona -m <module>"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "<int>",
+      "required": false,
+      "description": "= Execute a health check after every <int> fuzz cases",
+      "default": "",
+      "example": "doona -c <int>"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "<target>",
+      "required": false,
+      "description": "= Host to check (default: localhost)",
+      "default": "localhost",
+      "example": "doona -t <target>"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "<port>",
+      "required": false,
+      "description": "= Port to connect to (default: module specific standard port)",
+      "default": "module specific standard port",
+      "example": "doona -p <port>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "<timeout>",
+      "required": false,
+      "description": "= seconds to wait after each test (default: 2 seconds)",
+      "default": "2 seconds",
+      "example": "doona -o <timeout>"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "<index>",
+      "required": false,
+      "description": "= Resumes fuzzing at test case index",
+      "default": "",
+      "example": "doona -r <index>"
+    },
+    {
+      "name": "-k",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "= Keep trying until server passes a health check",
+      "default": "",
+      "example": "doona -k"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "= Dump test case to stdout (use in combination with -r)",
+      "default": "",
+      "example": "doona -d"
+    },
+    {
+      "name": "-M",
+      "short": "",
+      "aliases": [],
+      "arg": "<num>",
+      "required": false,
+      "description": "= Exit after executing <num> number of fuzz cases",
+      "default": "",
+      "example": "doona -M <num>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "= Help (this text)",
+      "default": "",
+      "example": "doona -h"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

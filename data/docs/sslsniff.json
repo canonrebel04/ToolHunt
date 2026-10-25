@@ -1,0 +1,166 @@
+{
+  "id": "sslsniff",
+  "name": "sslsniff",
+  "schema_version": 1,
+  "summary": "A tool to MITM all SSL connections on a LAN and dynamically generate certs for the domains that are being accessed on the fly",
+  "highlights": [
+    "-a — Authority mode. Specify a certificate that will act as a CA.",
+    "-t — Targeted mode. Specify a directory full of certificates to target.",
+    "-c — File containing CA cert/key (authority mode) or directory containing a collection of certs",
+    "-s — Port to listen on for SSL interception.",
+    "-w — File to log to",
+    "-u — Loction of any Firefox XML update files.",
+    "-m — Location of any intermediary certificates.",
+    "-f — Only intercept requests from the specified browser(s)."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install sslsniff"
+    }
+  ],
+  "usage": "sslsniff [options]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Authority mode. Specify a certificate that will act as a CA.",
+      "default": "",
+      "example": "sslsniff -a"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Targeted mode. Specify a directory full of certificates to target.",
+      "default": "",
+      "example": "sslsniff -t"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "<file|directory>",
+      "required": false,
+      "description": "File containing CA cert/key (authority mode) or directory containing a collection of certs/keys (targeted mode)",
+      "default": "",
+      "example": "sslsniff -c <file|directory>"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "<port>",
+      "required": false,
+      "description": "Port to listen on for SSL interception.",
+      "default": "",
+      "example": "sslsniff -s <port>"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "<file>",
+      "required": false,
+      "description": "File to log to",
+      "default": "",
+      "example": "sslsniff -w <file>"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "<updateLocation>",
+      "required": false,
+      "description": "Loction of any Firefox XML update files.",
+      "default": "",
+      "example": "sslsniff -u <updateLocation>"
+    },
+    {
+      "name": "-m",
+      "short": "",
+      "aliases": [],
+      "arg": "<certificateChain>",
+      "required": false,
+      "description": "Location of any intermediary certificates.",
+      "default": "",
+      "example": "sslsniff -m <certificateChain>"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "<port>",
+      "required": false,
+      "description": "Port to listen on for HTTP interception (required for fingerprinting).",
+      "default": "",
+      "example": "sslsniff -h <port>"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "<ff,ie,safari,opera,ios>",
+      "required": false,
+      "description": "Only intercept requests from the specified browser(s).",
+      "default": "",
+      "example": "sslsniff -f <ff,ie,safari,opera,ios>"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Deny OCSP requests for our certificates.",
+      "default": "",
+      "example": "sslsniff -d"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only log HTTP POSTs",
+      "default": "",
+      "example": "sslsniff -p"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "<url>",
+      "required": false,
+      "description": "Intercept Mozilla Addon Updates",
+      "default": "",
+      "example": "sslsniff -e <url>"
+    },
+    {
+      "name": "-j",
+      "short": "",
+      "aliases": [],
+      "arg": "<sha256>",
+      "required": false,
+      "description": "The sha256sum value of the addon to inject",
+      "default": "",
+      "example": "sslsniff -j <sha256>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

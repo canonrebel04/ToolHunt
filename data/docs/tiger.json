@@ -1,0 +1,128 @@
+{
+  "id": "tiger",
+  "name": "tiger",
+  "schema_version": 1,
+  "summary": "A security scanner, that checks computer for known problems. Can also use tripwire, aide and chkrootkit.",
+  "highlights": [
+    "-t — Run in test mode.",
+    "-q — Supress messages to be as quiet as possible, only security messages will be shown.",
+    "-e — This option will cause explanations to be inserted into the security report following each",
+    "-E — This option indicates that a separate explanation report should be created, with explanati",
+    "-G — Generate the signatures (MD5 hashes and file permissions) for system binary files.",
+    "-S — This option indicates that a surface level check of the configuration files of any diskles"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install tiger"
+    },
+    {
+      "method": "apt",
+      "cmd": "sudo apt install tiger-otheros"
+    }
+  ],
+  "usage": "./tiger [-vthqGSH]  [-B dir] [-l dir|@host] [-w dir] [-b dir] [-e|-E] [-c config] [-A arch] [-O os] [-R release]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show the Tiger version.",
+      "default": "",
+      "example": "tiger -v"
+    },
+    {
+      "name": "-t",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run in test mode.",
+      "default": "",
+      "example": "tiger -t"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show usage (this help).",
+      "default": "",
+      "example": "tiger -h"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Supress messages to be as quiet as possible, only security messages will be shown.",
+      "default": "",
+      "example": "tiger -q"
+    },
+    {
+      "name": "-e",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This option will cause explanations to be inserted into the security report following each message. This can greatly increase the size of the report, as explanations may appear repeatedly.",
+      "default": "",
+      "example": "tiger -e"
+    },
+    {
+      "name": "-E",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This option indicates that a separate explanation report should be created, with explanations for each type of message only appearing once. The filename of the explanation report will be of the form 'explain.report.hostname.date.time.'",
+      "default": "",
+      "example": "tiger -E"
+    },
+    {
+      "name": "-G",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Generate the signatures (MD5 hashes and file permissions) for system binary files.",
+      "default": "",
+      "example": "tiger -G"
+    },
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This option will format the report into HTML creat- ing local links to the problem descriptions.",
+      "default": "",
+      "example": "tiger -H"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "This option indicates that a surface level check of the configuration files of any diskless clients served by this machine should be checked at the same time. The checks will not be as in depth as they would be if run on the client itself.",
+      "default": "",
+      "example": "tiger -S"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

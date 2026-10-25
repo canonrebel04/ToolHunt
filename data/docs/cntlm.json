@@ -1,0 +1,356 @@
+{
+  "id": "cntlm",
+  "name": "cntlm",
+  "schema_version": 1,
+  "summary": "An NTLM, NTLM2SR, and NTLMv2 authenticating HTTP proxy.",
+  "highlights": [
+    "-A — <address>[/<net>] ACL allow rule. IP or hostname, net must be a number (CIDR notation)",
+    "-a — ntlm | nt | lm | gss Authentication type - combined NTLM, just LM, just NT, or GSS. Defaul",
+    "-B — Enable NTLM-to-basic authentication.",
+    "-c — <config_file> Configuration file. Other arguments can be used as well, overriding config f",
+    "-D — <address>[/<net>] ACL deny rule. Syntax same as -A.",
+    "-d — <domain> Domain/workgroup can be set separately.",
+    "-F — <flags> NTLM authentication flags.",
+    "-f — Run in foreground, do not fork into daemon mode."
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install cntlm"
+    }
+  ],
+  "usage": "cntlm [-AaBcDdFfGgHhILlMNOPpqRrSsTUuvwXx] <proxy_host>[:]<proxy_port> ...",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-A",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<address>[/<net>] ACL allow rule. IP or hostname, net must be a number (CIDR notation)",
+      "default": "",
+      "example": "cntlm -A"
+    },
+    {
+      "name": "-a",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "ntlm | nt | lm | gss Authentication type - combined NTLM, just LM, just NT, or GSS. Default NTLM. GSS activates kerberos auth: you need a cached credential. NTLM is the most versatile setting and likely to work for you.",
+      "default": "",
+      "example": "cntlm -a"
+    },
+    {
+      "name": "-B",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Enable NTLM-to-basic authentication.",
+      "default": "",
+      "example": "cntlm -B"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<config_file> Configuration file. Other arguments can be used as well, overriding config file settings.",
+      "default": "",
+      "example": "cntlm -c"
+    },
+    {
+      "name": "-D",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<address>[/<net>] ACL deny rule. Syntax same as -A.",
+      "default": "",
+      "example": "cntlm -D"
+    },
+    {
+      "name": "-d",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<domain> Domain/workgroup can be set separately.",
+      "default": "",
+      "example": "cntlm -d"
+    },
+    {
+      "name": "-F",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<flags> NTLM authentication flags.",
+      "default": "",
+      "example": "cntlm -F"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Run in foreground, do not fork into daemon mode.",
+      "default": "",
+      "example": "cntlm -f"
+    },
+    {
+      "name": "-G",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<pattern> User-Agent matching for the trans-isa-scan plugin.",
+      "default": "",
+      "example": "cntlm -G"
+    },
+    {
+      "name": "-g",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Gateway mode - listen on all interfaces, not only loopback.",
+      "default": "",
+      "example": "cntlm -g"
+    },
+    {
+      "name": "-H",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print password hashes for use in config file (NTLMv2 needs -u and -d).",
+      "default": "",
+      "example": "cntlm -H"
+    },
+    {
+      "name": "-h",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print this help info along with version number.",
+      "default": "",
+      "example": "cntlm -h"
+    },
+    {
+      "name": "-I",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Prompt for the password interactively.",
+      "default": "",
+      "example": "cntlm -I"
+    },
+    {
+      "name": "-L",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "[<saddr>:]<lport>:<rhost>:<rport> Forwarding/tunneling a la OpenSSH. Same syntax - listen on lport and forward all connections through the proxy to rhost:rport. Can be used for direct tunneling without corkscrew, etc.",
+      "default": "",
+      "example": "cntlm -L"
+    },
+    {
+      "name": "-l",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "[<saddr>:]<lport> Main listening port for the NTLM proxy.",
+      "default": "",
+      "example": "cntlm -l"
+    },
+    {
+      "name": "-M",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<testurl> Magic autodetection of proxy's NTLM dialect.",
+      "default": "",
+      "example": "cntlm -M"
+    },
+    {
+      "name": "-N",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "\"<hostname_wildcard1>[, <hostname_wildcardN>\" List of URL's to serve directly as stand-alone proxy (e.g. '*.local')",
+      "default": "",
+      "example": "cntlm -N"
+    },
+    {
+      "name": "-O",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "[<saddr>:]<lport> Enable SOCKS5 proxy on port lport (binding to address saddr)",
+      "default": "",
+      "example": "cntlm -O"
+    },
+    {
+      "name": "-P",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<pidfile> Create a PID file upon successful start.",
+      "default": "",
+      "example": "cntlm -P"
+    },
+    {
+      "name": "-p",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<password> Account password. Will not be visible in \"ps\", /proc, etc.",
+      "default": "",
+      "example": "cntlm -p"
+    },
+    {
+      "name": "-q",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Sets the Syslog logging level to DEBUG (default level is INFO).",
+      "default": "level is INFO",
+      "example": "cntlm -q"
+    },
+    {
+      "name": "-R",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<username>:<password> Enable authorization for SOCKS5 proxy, when enabled. It can be used several times, to create a whole list of accounts.",
+      "default": "",
+      "example": "cntlm -R"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "\"HeaderName: value\" Add a header substitution. All such headers will be added/replaced in the client's requests.",
+      "default": "",
+      "example": "cntlm -r"
+    },
+    {
+      "name": "-S",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<size_in_kb> Enable automation of GFI WebMonitor ISA scanner for files < size_in_kb.",
+      "default": "",
+      "example": "cntlm -S"
+    },
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Do not use threads, serialize all requests - for debugging only.",
+      "default": "",
+      "example": "cntlm -s"
+    },
+    {
+      "name": "-T",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<file.log> Redirect all debug information into a trace file for support upload. MUST be the first argument on the command line, implies -v.",
+      "default": "",
+      "example": "cntlm -T"
+    },
+    {
+      "name": "-U",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<uid> Run as uid. It is an important security measure not to run as root.",
+      "default": "",
+      "example": "cntlm -U"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<user>[@<domain] Domain/workgroup can be set separately.",
+      "default": "",
+      "example": "cntlm -u"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print debugging information.",
+      "default": "",
+      "example": "cntlm -v"
+    },
+    {
+      "name": "-w",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<workstation> Some proxies require correct NetBIOS hostname.",
+      "default": "",
+      "example": "cntlm -w"
+    },
+    {
+      "name": "-x",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<PAC_file> Specify a PAC file to load.",
+      "default": "",
+      "example": "cntlm -x"
+    },
+    {
+      "name": "-X",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "<sspi_handle_type> Use SSPI with specified handle type. Works only under Windows. Default is negotiate.",
+      "default": "",
+      "example": "cntlm -X"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

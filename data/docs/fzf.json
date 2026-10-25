@@ -1,0 +1,57 @@
+{
+  "id": "fzf",
+  "name": "fzf",
+  "schema_version": 1,
+  "summary": "Fuzzy finder.",
+  "highlights": [],
+  "install": [
+    {
+      "method": "brew",
+      "cmd": "brew install fzf"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "find <path/to/directory> -type f | fzf",
+      "explanation": "Start `fzf` on all files in the specified directory",
+      "source": "tldr:fzf"
+    },
+    {
+      "cmd": "ps aux | fzf",
+      "explanation": "Start `fzf` for running processes",
+      "source": "tldr:fzf"
+    },
+    {
+      "cmd": "find <path/to/directory> -type f | fzf --multi > <path/to/file>",
+      "explanation": "Select multiple files with `<Shift Tab>` and write to a file",
+      "source": "tldr:fzf"
+    },
+    {
+      "cmd": "fzf --query \"<query>\"",
+      "explanation": "Start `fzf` with a specified query",
+      "source": "tldr:fzf"
+    },
+    {
+      "cmd": "fzf --query \"^core go$ | rb$ | py$\"",
+      "explanation": "Start `fzf` on entries that start with `core` and end with either `go`, `rb`, or `py`",
+      "source": "tldr:fzf"
+    },
+    {
+      "cmd": "fzf --query '!pyc travis'",
+      "explanation": "Start `fzf` on entries that do not match `pyc` and contain `travis`",
+      "source": "tldr:fzf"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "package-install",
+    "tldr:pages/common/fzf.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

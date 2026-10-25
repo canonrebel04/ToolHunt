@@ -1,0 +1,166 @@
+{
+  "id": "h8mail",
+  "name": "h8mail",
+  "schema_version": 1,
+  "summary": "Email OSINT and password breach hunting.",
+  "highlights": [
+    "-q — Perform a custom query. Supports username, password, ip, hash, domain. Performs an implici",
+    "--loose — Allow loose search by disabling email pattern recognition. Use spaces as pattern seperator",
+    "-o — File to write CSV output",
+    "-j — File to write JSON output",
+    "-bc — Path to the breachcompilation torrent folder. Uses the query.sh script included in the tor",
+    "-sk — Skips Scylla and HunterIO check. Ideal for local scans",
+    "-sf — If breach contains big cleartext or tar.gz files, set this flag to view the progress bar. ",
+    "-ch — Add related emails from hunter.io to ongoing target list. Define number of emails per targ"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install h8mail"
+    }
+  ],
+  "usage": "h8mail [-h] [-t USER_TARGETS [USER_TARGETS ...]]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "h8mail --help"
+    },
+    {
+      "name": "--custom-query",
+      "short": "-q",
+      "aliases": [],
+      "arg": "USER_QUERY",
+      "required": false,
+      "description": "Perform a custom query. Supports username, password, ip, hash, domain. Performs an implicit \"loose\" search when searching locally",
+      "default": "",
+      "example": "h8mail --custom-query <user_query>"
+    },
+    {
+      "name": "--loose",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Allow loose search by disabling email pattern recognition. Use spaces as pattern seperators",
+      "default": "",
+      "example": "h8mail --loose"
+    },
+    {
+      "name": "--output",
+      "short": "-o",
+      "aliases": [],
+      "arg": "OUTPUT_FILE",
+      "required": false,
+      "description": "File to write CSV output",
+      "default": "",
+      "example": "h8mail --output <output_file>"
+    },
+    {
+      "name": "--json",
+      "short": "-j",
+      "aliases": [],
+      "arg": "OUTPUT_JSON",
+      "required": false,
+      "description": "File to write JSON output",
+      "default": "",
+      "example": "h8mail --json <output_json>"
+    },
+    {
+      "name": "--breachcomp",
+      "short": "-bc",
+      "aliases": [],
+      "arg": "BC_PATH",
+      "required": false,
+      "description": "Path to the breachcompilation torrent folder. Uses the query.sh script included in the torrent",
+      "default": "",
+      "example": "h8mail --breachcomp <bc_path>"
+    },
+    {
+      "name": "--skip-defaults",
+      "short": "-sk",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Skips Scylla and HunterIO check. Ideal for local scans",
+      "default": "",
+      "example": "h8mail --skip-defaults"
+    },
+    {
+      "name": "--single-file",
+      "short": "-sf",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "If breach contains big cleartext or tar.gz files, set this flag to view the progress bar. Disables concurrent file searching for stability",
+      "default": "",
+      "example": "h8mail --single-file"
+    },
+    {
+      "name": "--chase",
+      "short": "-ch",
+      "aliases": [],
+      "arg": "[CHASE_LIMIT]",
+      "required": false,
+      "description": "Add related emails from hunter.io to ongoing target list. Define number of emails per target to chase. Requires hunter.io private API key if used without power-chase",
+      "default": "",
+      "example": "h8mail --chase <chase_limit>"
+    },
+    {
+      "name": "--power-chase",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Add related emails from ALL API services to ongoing target list. Use with --chase",
+      "default": "",
+      "example": "h8mail --power-chase"
+    },
+    {
+      "name": "--hide",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Only shows the first 4 characters of found passwords to output. Ideal for demonstrations",
+      "default": "",
+      "example": "h8mail --hide"
+    },
+    {
+      "name": "--debug",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print request debug information",
+      "default": "",
+      "example": "h8mail --debug"
+    },
+    {
+      "name": "--gen-config",
+      "short": "-g",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Generates a configuration file template in the current working directory & exits. Will overwrite existing h8mail_config.ini file",
+      "default": "",
+      "example": "h8mail --gen-config"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

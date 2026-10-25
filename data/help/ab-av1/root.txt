@@ -1,0 +1,14 @@
+Usage: ab-av1 <COMMAND>
+
+Commands:
+  auto-encode    Automatically find the best CRF for --min-vmaf and encode
+  crf-search     Find the best CRF delivering --min-vmaf
+  sample-encode  Encode short samples to predict VMAF / size / time
+  encode         Encode with a given CRF & preset
+  vmaf           Full VMAF score (reference vs distorted)
+  xpsnr          Full XPSNR score (reference vs distorted)
+  help           Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version

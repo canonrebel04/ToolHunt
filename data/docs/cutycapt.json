@@ -1,0 +1,306 @@
+{
+  "id": "cutycapt",
+  "name": "cutycapt",
+  "schema_version": 1,
+  "summary": "A Qt and WebKit based command-line utility that captures WebKit's rendering of a web page.",
+  "highlights": [
+    "--url — The URL to capture (http:...|file:...|...)",
+    "--out — The target file (.png|pdf|ps|svg|jpeg|...)",
+    "--out-format — Like extension in --out, overrides heuristic",
+    "--min-width — Minimal width for the image (default: 800)",
+    "--min-height — Minimal height for the image (default: 600)",
+    "--max-wait — Don't wait more than (default: 90000, infinite: 0)",
+    "--delay — After successful load, wait (default: 0)",
+    "--user-style-path — Location of user style sheet file, if any"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install cutycapt"
+    }
+  ],
+  "usage": "",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show summary of options.",
+      "default": "",
+      "example": "man --help"
+    },
+    {
+      "name": "--url",
+      "short": "",
+      "aliases": [],
+      "arg": "<url>",
+      "required": false,
+      "description": "The URL to capture (http:...|file:...|...)",
+      "default": "",
+      "example": "man --url <url>"
+    },
+    {
+      "name": "--out",
+      "short": "",
+      "aliases": [],
+      "arg": "<path>",
+      "required": false,
+      "description": "The target file (.png|pdf|ps|svg|jpeg|...)",
+      "default": "",
+      "example": "man --out <path>"
+    },
+    {
+      "name": "--out-format",
+      "short": "",
+      "aliases": [],
+      "arg": "<f>",
+      "required": false,
+      "description": "Like extension in --out, overrides heuristic",
+      "default": "",
+      "example": "man --out-format <f>"
+    },
+    {
+      "name": "--min-width",
+      "short": "",
+      "aliases": [],
+      "arg": "<int>",
+      "required": false,
+      "description": "Minimal width for the image (default: 800)",
+      "default": "800",
+      "example": "man --min-width <int>"
+    },
+    {
+      "name": "--min-height",
+      "short": "",
+      "aliases": [],
+      "arg": "<int>",
+      "required": false,
+      "description": "Minimal height for the image (default: 600)",
+      "default": "600",
+      "example": "man --min-height <int>"
+    },
+    {
+      "name": "--max-wait",
+      "short": "",
+      "aliases": [],
+      "arg": "<ms>",
+      "required": false,
+      "description": "Don't wait more than (default: 90000, infinite: 0)",
+      "default": "90000, infinite: 0",
+      "example": "man --max-wait <ms>"
+    },
+    {
+      "name": "--delay",
+      "short": "",
+      "aliases": [],
+      "arg": "<ms>",
+      "required": false,
+      "description": "After successful load, wait (default: 0)",
+      "default": "0",
+      "example": "man --delay <ms>"
+    },
+    {
+      "name": "--user-style-path",
+      "short": "",
+      "aliases": [],
+      "arg": "<path>",
+      "required": false,
+      "description": "Location of user style sheet file, if any",
+      "default": "",
+      "example": "man --user-style-path <path>"
+    },
+    {
+      "name": "--user-style-string",
+      "short": "",
+      "aliases": [],
+      "arg": "<css>",
+      "required": false,
+      "description": "User style rules specified as text",
+      "default": "",
+      "example": "man --user-style-string <css>"
+    },
+    {
+      "name": "--method",
+      "short": "",
+      "aliases": [],
+      "arg": "<get|post|put>",
+      "required": false,
+      "description": "Specifies the request method (default: get)",
+      "default": "get",
+      "example": "man --method <get|post|put>"
+    },
+    {
+      "name": "--body-string",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "Unencoded request body (default: none)",
+      "default": "none",
+      "example": "man --body-string <string>"
+    },
+    {
+      "name": "--body-base64",
+      "short": "",
+      "aliases": [],
+      "arg": "<base64>",
+      "required": false,
+      "description": "Base64-encoded request body (default: none)",
+      "default": "none",
+      "example": "man --body-base64 <base64>"
+    },
+    {
+      "name": "--app-name",
+      "short": "",
+      "aliases": [],
+      "arg": "<name>",
+      "required": false,
+      "description": "Application name used in User-Agent; default is none",
+      "default": "",
+      "example": "man --app-name <name>"
+    },
+    {
+      "name": "--app-version",
+      "short": "",
+      "aliases": [],
+      "arg": "<version>",
+      "required": false,
+      "description": "Application version used in User-Agent; default is none",
+      "default": "",
+      "example": "man --app-version <version>"
+    },
+    {
+      "name": "--user-agent",
+      "short": "",
+      "aliases": [],
+      "arg": "<string>",
+      "required": false,
+      "description": "Override the User-Agent header Qt would set",
+      "default": "",
+      "example": "man --user-agent <string>"
+    },
+    {
+      "name": "--javascript",
+      "short": "",
+      "aliases": [],
+      "arg": "<on|off>",
+      "required": false,
+      "description": "JavaScript execution (default: on)",
+      "default": "on",
+      "example": "man --javascript <on|off>"
+    },
+    {
+      "name": "--java",
+      "short": "",
+      "aliases": [],
+      "arg": "<on|off>",
+      "required": false,
+      "description": "Java execution (default: unknown)",
+      "default": "unknown",
+      "example": "man --java <on|off>"
+    },
+    {
+      "name": "--plugins",
+      "short": "",
+      "aliases": [],
+      "arg": "<on|off>",
+      "required": false,
+      "description": "Plugin execution (default: unknown)",
+      "default": "unknown",
+      "example": "man --plugins <on|off>"
+    },
+    {
+      "name": "--private-browsing",
+      "short": "",
+      "aliases": [],
+      "arg": "<on|off>",
+      "required": false,
+      "description": "Private browsing (default: unknown)",
+      "default": "unknown",
+      "example": "man --private-browsing <on|off>"
+    },
+    {
+      "name": "--auto-load-images",
+      "short": "",
+      "aliases": [],
+      "arg": "<on|off>",
+      "required": false,
+      "description": "Automatic image loading (default: on)",
+      "default": "on",
+      "example": "man --auto-load-images <on|off>"
+    },
+    {
+      "name": "--js-can-open-windows",
+      "short": "",
+      "aliases": [],
+      "arg": "<on|off>",
+      "required": false,
+      "description": "Script can open windows? (default: unknown)",
+      "default": "unknown",
+      "example": "man --js-can-open-windows <on|off>"
+    },
+    {
+      "name": "--js-can-access-clipboard",
+      "short": "",
+      "aliases": [],
+      "arg": "<on|off>",
+      "required": false,
+      "description": "Script clipboard privs (default: unknown)",
+      "default": "unknown",
+      "example": "man --js-can-access-clipboard <on|off>"
+    },
+    {
+      "name": "--print-backgrounds",
+      "short": "",
+      "aliases": [],
+      "arg": "<on|off>",
+      "required": false,
+      "description": "Backgrounds in PDF/PS output (default: off)",
+      "default": "off",
+      "example": "man --print-backgrounds <on|off>"
+    },
+    {
+      "name": "--zoom-factor",
+      "short": "",
+      "aliases": [],
+      "arg": "<float>",
+      "required": false,
+      "description": "Page zoom factor (default: no zooming)",
+      "default": "no zooming",
+      "example": "man --zoom-factor <float>"
+    },
+    {
+      "name": "--zoom-text-only",
+      "short": "",
+      "aliases": [],
+      "arg": "<on|off>",
+      "required": false,
+      "description": "Whether to zoom only the text (default: off)",
+      "default": "off",
+      "example": "man --zoom-text-only <on|off>"
+    },
+    {
+      "name": "--http-proxy",
+      "short": "",
+      "aliases": [],
+      "arg": "<url>",
+      "required": false,
+      "description": "Address for HTTP proxy server (default: none)",
+      "default": "none",
+      "example": "man --http-proxy <url>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

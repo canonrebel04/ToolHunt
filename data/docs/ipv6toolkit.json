@@ -1,0 +1,286 @@
+{
+  "id": "ipv6toolkit",
+  "name": "ipv6toolkit",
+  "schema_version": 1,
+  "summary": "SI6 Networks' IPv6 Toolkit.",
+  "highlights": [
+    "-a — IPv6 address to be decoded",
+    "-A — Generate a randmized address for the specified prefix",
+    "-i — Read IPv6 addresses from stdin (standard input)",
+    "-f — Print addresses in expanded/fixed format",
+    "-c — Print IPv6 addresses in canonic form",
+    "-r — Print reversed IPv6 address",
+    "-d — Decode IPv6 addresses",
+    "-s — Print statistics about IPv6 addresses"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install ipv6toolkit"
+    }
+  ],
+  "usage": "addr6 (-i | -a) [-c | -d | -r | -s | -q] [-v] [-h]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--address",
+      "short": "-a",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "IPv6 address to be decoded",
+      "default": "",
+      "example": "addr6 --address"
+    },
+    {
+      "name": "--gen-addr",
+      "short": "-A",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Generate a randmized address for the specified prefix",
+      "default": "",
+      "example": "addr6 --gen-addr"
+    },
+    {
+      "name": "--stdin",
+      "short": "-i",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Read IPv6 addresses from stdin (standard input)",
+      "default": "",
+      "example": "addr6 --stdin"
+    },
+    {
+      "name": "--print-fixed",
+      "short": "-f",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print addresses in expanded/fixed format",
+      "default": "",
+      "example": "addr6 --print-fixed"
+    },
+    {
+      "name": "--print-canonic",
+      "short": "-c",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print IPv6 addresses in canonic form",
+      "default": "",
+      "example": "addr6 --print-canonic"
+    },
+    {
+      "name": "--print-reverse",
+      "short": "-r",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print reversed IPv6 address",
+      "default": "",
+      "example": "addr6 --print-reverse"
+    },
+    {
+      "name": "--print-decode",
+      "short": "-d",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Decode IPv6 addresses",
+      "default": "",
+      "example": "addr6 --print-decode"
+    },
+    {
+      "name": "--print-stats",
+      "short": "-s",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print statistics about IPv6 addresses",
+      "default": "",
+      "example": "addr6 --print-stats"
+    },
+    {
+      "name": "--print-response",
+      "short": "-R",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print result of address filters",
+      "default": "",
+      "example": "addr6 --print-response"
+    },
+    {
+      "name": "--print-pattern",
+      "short": "-x",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Analyze addresses pattern",
+      "default": "",
+      "example": "addr6 --print-pattern"
+    },
+    {
+      "name": "--print-uni-preflen",
+      "short": "-P",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print unique prefixes of a specified length",
+      "default": "",
+      "example": "addr6 --print-uni-preflen"
+    },
+    {
+      "name": "--block-dup",
+      "short": "-q",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Discard duplicate IPv6 addresses",
+      "default": "",
+      "example": "addr6 --block-dup"
+    },
+    {
+      "name": "--block-dup-preflen",
+      "short": "-p",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Discard duplicate prefixes of specified length",
+      "default": "",
+      "example": "addr6 --block-dup-preflen"
+    },
+    {
+      "name": "--accept",
+      "short": "-j",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Accept IPv6 addresses from specified IPv6 prefix",
+      "default": "",
+      "example": "addr6 --accept"
+    },
+    {
+      "name": "--accept-type",
+      "short": "-b",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Accept IPv6 addresses of specified type",
+      "default": "",
+      "example": "addr6 --accept-type"
+    },
+    {
+      "name": "--accept-scope",
+      "short": "-k",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Accept IPv6 addresses of specified scope",
+      "default": "",
+      "example": "addr6 --accept-scope"
+    },
+    {
+      "name": "--accept-utype",
+      "short": "-w",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Accept IPv6 unicast addresses of specified type",
+      "default": "",
+      "example": "addr6 --accept-utype"
+    },
+    {
+      "name": "--accept-iid",
+      "short": "-g",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Accept IPv6 addresses with IIDs of specified type",
+      "default": "",
+      "example": "addr6 --accept-iid"
+    },
+    {
+      "name": "--block",
+      "short": "-J",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Block IPv6 addresses from specified IPv6 prefix",
+      "default": "",
+      "example": "addr6 --block"
+    },
+    {
+      "name": "--block-type",
+      "short": "-B",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Block IPv6 addresses of specified type",
+      "default": "",
+      "example": "addr6 --block-type"
+    },
+    {
+      "name": "--block-scope",
+      "short": "-K",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Block IPv6 addresses of specified scope",
+      "default": "",
+      "example": "addr6 --block-scope"
+    },
+    {
+      "name": "--block-utype",
+      "short": "-W",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Block IPv6 unicast addresses of specified type",
+      "default": "",
+      "example": "addr6 --block-utype"
+    },
+    {
+      "name": "--block-iid",
+      "short": "-G",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Block IPv6 addresses with IIDs of specified type",
+      "default": "",
+      "example": "addr6 --block-iid"
+    },
+    {
+      "name": "--verbose",
+      "short": "-v",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Be verbose",
+      "default": "",
+      "example": "addr6 --verbose"
+    },
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Print help for the addr6 tool",
+      "default": "",
+      "example": "addr6 --help"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

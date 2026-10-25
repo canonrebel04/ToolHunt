@@ -1,0 +1,71 @@
+{
+  "id": "udptunnel",
+  "name": "udptunnel",
+  "schema_version": 1,
+  "summary": "Tunnels TCP over UDP packets.",
+  "highlights": [
+    "-s — Server mode. Wait for TCP connections on the port.",
+    "-c — Client mode. Connect to the given address.",
+    "-r — RTP mode. Connect/listen on ports N and N+1 for both UDP and TCP. Port numbers must be eve"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install udptunnel"
+    }
+  ],
+  "usage": "udptunnel -s TCP-port [-r] [-v] UDP-addr/UDP-port[/ttl]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "-s",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Server mode. Wait for TCP connections on the port.",
+      "default": "",
+      "example": "udptunnel -s"
+    },
+    {
+      "name": "-c",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Client mode. Connect to the given address.",
+      "default": "",
+      "example": "udptunnel -c"
+    },
+    {
+      "name": "-r",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "RTP mode. Connect/listen on ports N and N+1 for both UDP and TCP. Port numbers must be even.",
+      "default": "",
+      "example": "udptunnel -r"
+    },
+    {
+      "name": "-v",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Verbose mode. Specify -v multiple times for increased verbosity.",
+      "default": "",
+      "example": "udptunnel -v"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

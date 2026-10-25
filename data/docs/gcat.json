@@ -1,0 +1,26 @@
+{
+  "id": "gcat",
+  "name": "gcat",
+  "schema_version": 1,
+  "summary": "A fully featured backdoor that uses Gmail as a C&C server.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "tldr --platform linux cat",
+      "explanation": "View documentation for the original command",
+      "source": "tldr:gcat"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/osx/gcat.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}

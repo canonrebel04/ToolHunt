@@ -1,0 +1,82 @@
+{
+  "id": "parsero",
+  "name": "parsero",
+  "schema_version": 1,
+  "summary": "A robots.txt audit tool.",
+  "highlights": [
+    "-u — Type the URL which will be analyzed",
+    "-o — Show only the \"HTTP 200\" status code",
+    "-sb — Search in Bing indexed Disallows",
+    "-f — Scan a list of domains from a list"
+  ],
+  "install": [
+    {
+      "method": "apt",
+      "cmd": "sudo apt install parsero"
+    }
+  ],
+  "usage": "parsero [-h] [-u URL] [-o] [-sb] [-f FILE]",
+  "subcommands": [],
+  "flags": [
+    {
+      "name": "--help",
+      "short": "-h",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "show this help message and exit",
+      "default": "",
+      "example": "parsero --help"
+    },
+    {
+      "name": "-u",
+      "short": "",
+      "aliases": [],
+      "arg": "URL",
+      "required": false,
+      "description": "Type the URL which will be analyzed",
+      "default": "",
+      "example": "parsero -u <url>"
+    },
+    {
+      "name": "-o",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Show only the \"HTTP 200\" status code",
+      "default": "",
+      "example": "parsero -o"
+    },
+    {
+      "name": "-sb",
+      "short": "",
+      "aliases": [],
+      "arg": "",
+      "required": false,
+      "description": "Search in Bing indexed Disallows",
+      "default": "",
+      "example": "parsero -sb"
+    },
+    {
+      "name": "-f",
+      "short": "",
+      "aliases": [],
+      "arg": "FILE",
+      "required": false,
+      "description": "Scan a list of domains from a list",
+      "default": "",
+      "example": "parsero -f <file>"
+    }
+  ],
+  "examples": [],
+  "see_also": [],
+  "sources": [
+    "kali-help",
+    "package-install"
+  ],
+  "verified": {
+    "flags_from_help": true,
+    "examples_from_tldr": false
+  }
+}

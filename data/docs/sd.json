@@ -1,0 +1,41 @@
+{
+  "id": "sd",
+  "name": "sd",
+  "schema_version": 1,
+  "summary": "s[earch] & d[isplace] - An intuitive find & replace CLI a possible replacement for sed.",
+  "highlights": [],
+  "install": [],
+  "usage": "",
+  "subcommands": [],
+  "flags": [],
+  "examples": [
+    {
+      "cmd": "<echo 'lorem ipsum 23   '> | sd '\\s+$' ''",
+      "explanation": "Trim some whitespace using a `regex` (output stream: `stdout`)",
+      "source": "tldr:sd"
+    },
+    {
+      "cmd": "<echo 'cargo +nightly watch'> | sd '(\\w+)\\s+\\+(\\w+)\\s+(\\w+)' 'cmd: $1, channel: $2, subcmd: $3'",
+      "explanation": "Replace words using capture groups (output stream: `stdout`)",
+      "source": "tldr:sd"
+    },
+    {
+      "cmd": "sd --preview '<window.fetch>' '<fetch>' <path/to/file.js>",
+      "explanation": "Find and replace in a specific file (output stream: `stdout`)",
+      "source": "tldr:sd"
+    },
+    {
+      "cmd": "find . -type f -exec sd '<from \"react\">' '<from \"preact\">' {} \\;",
+      "explanation": "Find and replace in all files in the current project",
+      "source": "tldr:sd"
+    }
+  ],
+  "see_also": [],
+  "sources": [
+    "tldr:pages/common/sd.md"
+  ],
+  "verified": {
+    "flags_from_help": false,
+    "examples_from_tldr": true
+  }
+}
