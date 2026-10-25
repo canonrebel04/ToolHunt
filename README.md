@@ -188,7 +188,44 @@ curl -s localhost:5000/api/tools/nmap/docs | jq '.flags | length'
 python -m docgen.run --kali-cache /tmp/kali.tgz --tldr-cache /tmp/tldr.zip
 ```
 
-AI enrichment (Tier 2) is a later phase; it will only rewrite descriptions/examples and must validate every flag against this Tier 1 parse.
+AI enrichment (Tier 2) is optional — see below.
+
+## 🤖 AI docs (Tier 2)
+
+Pluggable LLM enrichment on top of Tier 1. **Flags are never invented** — the model may only rewrite summaries, highlights, flag descriptions, and examples; every example is checked against the Tier-1 flag set before it is saved.
+
+### Providers
+
+| Provider | `TOOLHUNT_LLM_PROVIDER` | API key env / GitHub secret | Default base URL |
+|---|---|---|---|
+| OpenAI | `openai` | `OPENAI_API_KEY` or `TOOLHUNT_LLM_API_KEY` | `https://api.openai.com/v1` |
+| xAI (Grok) | `xai` | `XAI_API_KEY` | `https://api.x.ai/v1` |
+| Google Gemini | `gemini` | `GEMINI_API_KEY` or `GOOGLE_API_KEY` | Gemini `generateContent` |
+| DeepSeek | `deepseek` | `DEEPSEEK_API_KEY` | `https://api.deepseek.com/v1` |
+| Anthropic | `anthropic` | `ANTHROPIC_API_KEY` | Messages API |
+| OpenRouter | `openrouter` | `OPENROUTER_API_KEY` | `https://openrouter.ai/api/v1` |
+| Groq / Together / Fireworks | `groq` / `together` / `fireworks` | matching `*_API_KEY` | OpenAI-compatible |
+| Local (Ollama / vLLM / llama.cpp) | `ollama` or `local` | optional | `http://127.0.0.1:11434/v1` |
+| Custom OpenAI-compatible | `custom` | `TOOLHUNT_LLM_API_KEY` | set `TOOLHUNT_LLM_BASE_URL` |
+
+Common overrides: `TOOLHUNT_LLM_MODEL`, `TOOLHUNT_LLM_BASE_URL`, `TOOLHUNT_LLM_TIMEOUT`.
+
+### What you add (repo secrets / local env)
+
+In the GitHub repo → **Settings → Secrets and variables → Actions**, add **one** key for the provider you want (plus optional `TOOLHUNT_LLM_MODEL`). Locally, export the same names before running the CLI. No key is committed; enrichment is manual / opt-in.
+
+```bash
+# local OpenAI-compatible (Ollama)
+TOOLHUNT_LLM_PROVIDER=ollama TOOLHUNT_LLM_MODEL=llama3.2 \
+  python -m docgen.enrich --tool nmap --dry-run
+
+# hosted
+TOOLHUNT_LLM_PROVIDER=xai XAI_API_KEY=... TOOLHUNT_LLM_MODEL=grok-4-fast-non-reasoning \
+  python -m docgen.enrich --limit 5
+```
+
+GitHub Action: **Actions → Docs enrich (Tier 2 LLM) → Run workflow** (skips cleanly if no secret is set).
+
 
 
 ## 🖥️ Tool detail UI
