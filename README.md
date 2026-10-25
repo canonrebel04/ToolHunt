@@ -190,6 +190,12 @@ python -m docgen.run --kali-cache /tmp/kali.tgz --tldr-cache /tmp/tldr.zip
 
 AI enrichment (Tier 2) is a later phase; it will only rewrite descriptions/examples and must validate every flag against this Tier 1 parse.
 
+
+## 🖥️ Tool detail UI
+
+Every tool has a shareable page at `/tool/<id>` (works without JavaScript) and a Docs button on search result cards that opens a slide-over panel. Both show install tabs, examples, a filterable flags table, and an explainshell-style command annotator backed by verified help JSON (`POST /api/tools/<id>/explain`).
+
+
 ## 🔭 Automatic discovery
 
 A weekly GitHub Action (`.github/workflows/discovery.yml`, Mondays 06:17 UTC, or run it by hand from the Actions tab) collects tools from:

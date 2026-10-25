@@ -454,6 +454,249 @@ function updateResultsCount() {
 }
 
 // Display Results (initial or refreshed)
+
+// ── Docs slide-over panel ────────────────────────────────────────────
+
+function buildToolCardHtml(tool) {
+    const categoryClass = getCategoryClass(tool.subcategory);
+    const id = escapeHtml(tool.id || '');
+    const link = sanitizeUrl(tool.link || '#');
+    const hasLink = !!tool.link;
+    return `
+            <div class="card-header">
+                <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
+                ${categoryBadges(tool, categoryClass)}
+            </div>
+            <div class="card-body">
+                <p>${escapeHtml(tool.description || 'No description available')}</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-actions">
+                    <button type="button" class="docs-btn" data-tool-id="${id}" ${id ? '' : 'disabled'}>
+                        <i class="fas fa-book" aria-hidden="true"></i> Docs
+                    </button>
+                    <a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" class="tool-link compact" ${!hasLink ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="Tool link is currently unavailable"' : ''}>
+                        <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${hasLink ? 'Open' : 'No Link'}
+                        <span class="visually-hidden">(opens in a new tab)</span>
+                    </a>
+                </div>
+            </div>
+        `;
+}
+
+function wireDocsButtons(root) {
+    (root || document).querySelectorAll('.docs-btn[data-tool-id]').forEach((btn) => {
+        if (btn.dataset.wired) return;
+        btn.dataset.wired = '1';
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openDocsPanel(btn.dataset.toolId);
+        });
+    });
+}
+
+function closeDocsPanel() {
+    const panel = document.getElementById('docsPanel');
+    const backdrop = document.getElementById('docsBackdrop');
+    if (panel) {
+        panel.classList.remove('open');
+        panel.setAttribute('hidden', '');
+    }
+    if (backdrop) {
+        backdrop.classList.remove('open');
+        backdrop.setAttribute('hidden', '');
+    }
+    document.body.classList.remove('docs-panel-open');
+}
+
+async function openDocsPanel(toolId) {
+    if (!toolId) return;
+    const panel = document.getElementById('docsPanel');
+    const backdrop = document.getElementById('docsBackdrop');
+    const body = document.getElementById('docsPanelBody');
+    const title = document.getElementById('docsPanelTitle');
+    if (!panel || !body) {
+        window.location.href = `/tool/${encodeURIComponent(toolId)}`;
+        return;
+    }
+    body.innerHTML = '<p class="muted">Loading docs…</p>';
+    if (title) title.textContent = toolId;
+    panel.removeAttribute('hidden');
+    backdrop && backdrop.removeAttribute('hidden');
+    requestAnimationFrame(() => {
+        panel.classList.add('open');
+        backdrop && backdrop.classList.add('open');
+    });
+    document.body.classList.add('docs-panel-open');
+
+    let tool = null;
+    let doc = null;
+    try {
+        const [tr, dr] = await Promise.all([
+            fetch(`/api/tools/${encodeURIComponent(toolId)}`),
+            fetch(`/api/tools/${encodeURIComponent(toolId)}/docs`),
+        ]);
+        if (tr.ok) tool = await tr.json();
+        if (dr.ok) doc = await dr.json();
+        else if (dr.status === 404) doc = null;
+    } catch (_) {
+        body.innerHTML = '<p class="muted">Failed to load docs.</p>';
+        return;
+    }
+    if (!tool) {
+        body.innerHTML = '<p class="muted">Tool not found.</p>';
+        return;
+    }
+    if (title) title.textContent = tool.name || toolId;
+    body.innerHTML = renderDocsPanel(tool, doc);
+    wirePanelInteractions(body, tool.id || toolId, doc);
+}
+
+function renderDocsPanel(tool, doc) {
+    doc = doc || {};
+    const summary = escapeHtml(doc.summary || tool.description || 'No summary yet.');
+    const cat = escapeHtml(tool.category || '');
+    const sub = escapeHtml(tool.subcategory || '');
+    let html = `
+        <p class="detail-summary">${summary}</p>
+        <div class="badges" style="margin-bottom:12px;">
+            ${cat ? `<span class="category ${cat}">${cat}</span>` : ''}
+            ${sub ? `<span class="category subcategory">${sub}</span>` : ''}
+        </div>
+        <p><a class="full-page-link" href="/tool/${encodeURIComponent(tool.id || '')}"><i class="fas fa-expand" aria-hidden="true"></i> Open full page</a></p>
+    `;
+
+    const install = doc.install || [];
+    if (install.length) {
+        html += `<section class="detail-section"><h2><i class="fas fa-download" aria-hidden="true"></i> Install</h2>`;
+        html += `<div class="install-tabs" role="tablist">`;
+        install.forEach((item, i) => {
+            html += `<button type="button" class="install-tab${i === 0 ? ' active' : ''}" data-panel="p-install-${i}">${escapeHtml(item.method || 'cmd')}</button>`;
+        });
+        html += `</div>`;
+        install.forEach((item, i) => {
+            html += `<div class="install-panel${i === 0 ? ' active' : ''}" id="p-install-${i}">
+                <pre class="code-block"><code>${escapeHtml(item.cmd || '')}</code></pre>
+                <button type="button" class="copy-btn" data-copy="${escapeHtml(item.cmd || '')}"><i class="fas fa-copy" aria-hidden="true"></i> Copy</button>
+            </div>`;
+        });
+        html += `</section>`;
+    }
+
+    if (doc.usage || (doc.examples || []).length) {
+        html += `<section class="detail-section"><h2><i class="fas fa-bolt" aria-hidden="true"></i> Quick start</h2>`;
+        if (doc.usage) html += `<pre class="code-block"><code>${escapeHtml(doc.usage)}</code></pre>`;
+        (doc.examples || []).slice(0, 3).forEach((ex) => {
+            html += `<div class="example-row">
+                <pre class="code-block"><code>${escapeHtml(ex.cmd || '')}</code></pre>
+                ${ex.explanation ? `<p class="example-note">${escapeHtml(ex.explanation)}</p>` : ''}
+                <button type="button" class="copy-btn" data-copy="${escapeHtml(ex.cmd || '')}"><i class="fas fa-copy" aria-hidden="true"></i> Copy</button>
+            </div>`;
+        });
+        html += `</section>`;
+    }
+
+    if ((doc.subcommands || []).length) {
+        html += `<section class="detail-section"><h2>Subcommands</h2><ul class="subcommand-list">`;
+        doc.subcommands.forEach((s) => {
+            const name = typeof s === 'object' ? s.name : s;
+            const desc = typeof s === 'object' ? (s.description || '') : '';
+            html += `<li><code>${escapeHtml(name || '')}</code><span>${escapeHtml(desc)}</span></li>`;
+        });
+        html += `</ul></section>`;
+    }
+
+    if ((doc.flags || []).length) {
+        html += `<section class="detail-section">
+            <h2>Flags <span class="muted">(${doc.flags.length})</span></h2>
+            <input type="search" class="flag-filter" id="panelFlagFilter" placeholder="Filter flags…" autocomplete="off">
+            <div class="flags-table-wrap"><table class="flags-table" id="panelFlagsTable"><thead><tr><th>Flag</th><th>Description</th></tr></thead><tbody>`;
+        doc.flags.forEach((f) => {
+            const search = escapeHtml(`${f.name || ''} ${f.short || ''} ${f.description || ''} ${f.section || ''}`);
+            html += `<tr data-flag-search="${search}">
+                <td class="flag-names">${f.short ? `<code>${escapeHtml(f.short)}</code>` : ''}${f.name ? `<code>${escapeHtml(f.name)}</code>` : ''}${f.arg ? `<span class="flag-arg">${escapeHtml(f.arg)}</span>` : ''}</td>
+                <td>${escapeHtml(f.description || '')}</td>
+            </tr>`;
+        });
+        html += `</tbody></table></div></section>`;
+    } else if (!doc.id) {
+        html += `<section class="detail-section"><p class="muted">No structured docs yet for this tool. Tier 1 coverage is rolling out.</p></section>`;
+    }
+
+    html += `<section class="detail-section">
+        <h2><i class="fas fa-magic" aria-hidden="true"></i> Command explainer</h2>
+        <form class="explain-form" id="panelExplainForm" data-tool-id="${escapeHtml(tool.id || '')}">
+            <input type="text" id="panelExplainInput" placeholder="Paste a command…" autocomplete="off" spellcheck="false">
+            <button type="submit">Explain</button>
+        </form>
+        <div id="panelExplainResult" class="explain-result" hidden></div>
+    </section>`;
+
+    if ((doc.sources || []).length) {
+        html += `<section class="detail-section"><h2>Sources</h2><ul class="source-list">${doc.sources.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}</ul></section>`;
+    }
+    return html;
+}
+
+function wirePanelInteractions(root, toolId, doc) {
+    root.querySelectorAll('.copy-btn').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(btn.dataset.copy || '');
+                const prev = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>';
+                setTimeout(() => { btn.innerHTML = prev; }, 1200);
+            } catch (_) { /* ignore */ }
+        });
+    });
+    const tabs = root.querySelectorAll('.install-tab');
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            tabs.forEach((t) => t.classList.remove('active'));
+            root.querySelectorAll('.install-panel').forEach((p) => p.classList.remove('active'));
+            tab.classList.add('active');
+            const panel = root.querySelector('#' + tab.dataset.panel) || document.getElementById(tab.dataset.panel);
+            if (panel) panel.classList.add('active');
+        });
+    });
+    const filter = root.querySelector('#panelFlagFilter');
+    const table = root.querySelector('#panelFlagsTable');
+    if (filter && table) {
+        filter.addEventListener('input', () => {
+            const q = filter.value.trim().toLowerCase();
+            table.querySelectorAll('tbody tr').forEach((row) => {
+                const hay = (row.dataset.flagSearch || '').toLowerCase();
+                row.hidden = q !== '' && !hay.includes(q);
+            });
+        });
+    }
+    const form = root.querySelector('#panelExplainForm');
+    const result = root.querySelector('#panelExplainResult');
+    if (form && result) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const command = (root.querySelector('#panelExplainInput') || {}).value || '';
+            result.hidden = false;
+            result.textContent = 'Explaining…';
+            try {
+                const resp = await fetch(`/api/tools/${encodeURIComponent(toolId)}/explain`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command }),
+                });
+                const data = await resp.json();
+                if (!resp.ok) { result.textContent = data.error || 'Explain failed'; return; }
+                result.innerHTML = (data.tokens || []).map((t) =>
+                    `<div class="explain-token kind-${escapeHtml(t.kind || '')}"><code>${escapeHtml(t.token || '')}</code><span>${escapeHtml(t.note || '')}</span></div>`
+                ).join('');
+            } catch (_) {
+                result.textContent = 'Network error';
+            }
+        });
+    }
+}
+
+
 function displayResults(tools, reset = true) {
     // Ensure tools is an array
     if (!Array.isArray(tools)) {
@@ -500,24 +743,7 @@ function displayResults(tools, reset = true) {
         const toolCard = document.createElement('div');
         toolCard.className = 'tool-card';
 
-        // Determine category class for styling
-        const categoryClass = getCategoryClass(tool.subcategory);
-
-        toolCard.innerHTML = `
-            <div class="card-header">
-                <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
-                ${categoryBadges(tool, categoryClass)}
-            </div>
-            <div class="card-body">
-                <p>${escapeHtml(tool.description || 'No description available')}</p>
-            </div>
-            <div class="card-footer">
-                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" rel="noopener noreferrer" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="Tool link is currently unavailable"' : ''}>
-                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
-                    <span class="visually-hidden">(opens in a new tab)</span>
-                </a>
-            </div>
-        `;
+        toolCard.innerHTML = buildToolCardHtml(tool);
 
         // Add staggered animation
         toolCard.style.animationDelay = `${index * 0.1}s`;
@@ -527,6 +753,7 @@ function displayResults(tools, reset = true) {
         fragment.appendChild(toolCard);
     });
     toolsGrid.appendChild(fragment);
+    wireDocsButtons(toolsGrid);
 
     // Handle load more button
     updateLoadMoreButton();
@@ -549,23 +776,7 @@ function appendResults(tools) {
         const toolCard = document.createElement('div');
         toolCard.className = 'tool-card';
 
-        const categoryClass = getCategoryClass(tool.subcategory);
-
-        toolCard.innerHTML = `
-            <div class="card-header">
-                <h3>${escapeHtml(tool.name || 'Unknown Tool')}</h3>
-                ${categoryBadges(tool, categoryClass)}
-            </div>
-            <div class="card-body">
-                <p>${escapeHtml(tool.description || 'No description available')}</p>
-            </div>
-            <div class="card-footer">
-                <a href="${escapeHtml(sanitizeUrl(tool.link || '#'))}" target="_blank" rel="noopener noreferrer" class="tool-link" ${!tool.link ? 'style="opacity: 0.5; cursor: not-allowed;" aria-disabled="true" tabindex="-1" onclick="return false;" title="Tool link is currently unavailable"' : ''}>
-                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> ${tool.link ? 'Access Tool' : 'No Link Available'}
-                    <span class="visually-hidden">(opens in a new tab)</span>
-                </a>
-            </div>
-        `;
+        toolCard.innerHTML = buildToolCardHtml(tool);
 
         toolCard.style.animationDelay = `${(existingCards + index) * 0.1}s`;
         toolCard.style.animation = 'fadeInUp 0.6s ease forwards';
@@ -580,6 +791,7 @@ function appendResults(tools) {
         fragment.appendChild(toolCard);
     });
     toolsGrid.appendChild(fragment);
+    wireDocsButtons(toolsGrid);
 
     // Focus the first newly appended item for accessibility
     if (sortedTools.length > 0) {
@@ -740,6 +952,15 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+
+    const docsClose = document.getElementById('docsPanelClose');
+    const docsBackdrop = document.getElementById('docsBackdrop');
+    if (docsClose) docsClose.addEventListener('click', closeDocsPanel);
+    if (docsBackdrop) docsBackdrop.addEventListener('click', closeDocsPanel);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeDocsPanel();
+    });
 
     // Optionally check backend health silently on page load
     checkBackendHealth().then(healthy => {
