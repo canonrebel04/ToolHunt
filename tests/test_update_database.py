@@ -1,4 +1,7 @@
 import sqlite3
+import subprocess
+import sys
+from pathlib import Path
 
 import pytest
 
@@ -96,3 +99,20 @@ def test_update_sql_db_bypasses_duplicate_check(db_updater):
         count = cursor.fetchone()[0]
 
     assert count == 2
+
+
+def test_import_has_no_side_effects(tmp_path):
+    """Importing update_database must not create/modify the DB or delete the FAISS index.
+
+    Runs the import in a fresh interpreter with cwd=tmp_path, so the module's
+    relative default paths would resolve inside tmp_path (never the real repo
+    data) if a module-level side effect ever comes back.
+    """
+    repo_root = Path(__file__).resolve().parent.parent
+    subprocess.run(
+        [sys.executable, "-c", "import update_database"],
+        cwd=tmp_path,
+        env={"PYTHONPATH": str(repo_root)},
+        check=True,
+    )
+    assert not (tmp_path / "backend").exists()

@@ -215,20 +215,24 @@ class DatabaseUpdater:
             raise
 
 
+def main() -> None:
+    """Add the ToolHunt entry to the real database (run as a script only)."""
+    updater = DatabaseUpdater()
+    try:
+        added = updater.update_db(
+            name="ToolHunt",
+            description="ToolHunt is an advanced search engine that helps you quickly find the right cybersecurity tool from a database of over 3,000 options. Just describe what you need in plain language, and its smart, elastic search will return the best matches for security pros, pentesters, and researchers.",
+            url="https://github.com/cyberytti/ToolHunt",
+            check_duplicate=True,
+            invalidate_faiss=True
+        )
+        if added:
+            print("Tool added successfully.")
+        else:
+            print("Tool was a duplicate and skipped.")
+    except (sqlite3.Error, OSError, ValueError) as e:
+        print(f"Update failed: {e}")
 
 
-updater = DatabaseUpdater()
-try:
-    added = updater.update_db(
-        name="ToolHunt",
-        description="ToolHunt is an advanced search engine that helps you quickly find the right cybersecurity tool from a database of over 3,000 options. Just describe what you need in plain language, and its smart, elastic search will return the best matches for security pros, pentesters, and researchers.",
-        url="https://github.com/cyberytti/ToolHunt",
-        check_duplicate=True,
-        invalidate_faiss=True
-    )
-    if added:
-        print("Tool added successfully.")
-    else:
-        print("Tool was a duplicate and skipped.")
-except (sqlite3.Error, OSError, ValueError) as e:
-    print(f"Update failed: {e}")
+if __name__ == "__main__":
+    main()
