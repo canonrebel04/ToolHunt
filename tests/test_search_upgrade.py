@@ -6,7 +6,6 @@ import pytest
 
 from backend import indexing
 
-
 EVAL_PATH = Path(__file__).resolve().parent.parent / "data" / "eval" / "search_queries.json"
 
 
