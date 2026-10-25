@@ -14,7 +14,7 @@
         <i class="fas fa-lock"></i>
     </div>
 
-    <div class="container">
+    <main class="container">
         <header>
             <h1><i class="fas fa-search" aria-hidden="true"></i> ToolHunt</h1>
             <p>Advanced Cybersecurity Arsenal Discovery Platform</p>
@@ -24,16 +24,16 @@
         </header>
 
         <div class="search-container" role="search">
-            <div class="search-box">
+            <form id="searchForm" class="search-box">
                 <div class="input-wrapper">
                     <label for="searchInput" class="visually-hidden">Search for cybersecurity tools</label>
                     <input type="search" id="searchInput" placeholder="Search tools... e.g. 'sql injection' (Press '/' to focus)">
                     <kbd class="shortcut-hint" id="shortcutHint" aria-hidden="true">/</kbd>
                 </div>
-                <button id="searchButton" aria-label="Hunt Tools">
+                <button type="submit" id="searchButton" aria-label="Hunt Tools">
                     <i class="fas fa-crosshairs" aria-hidden="true"></i> Hunt Tools
                 </button>
-            </div>
+            </form>
             <div class="examples">
                 <button type="button" class="example-tag"><i class="fas fa-network-wired" aria-hidden="true"></i> network scanner</button>
                 <button type="button" class="example-tag"><i class="fas fa-key" aria-hidden="true"></i> password cracker</button>
@@ -65,16 +65,16 @@
                 <!-- Results will be populated here -->
             </div>
         </div>
-    </div>
+    </main>
 
-    <div class="status-bar">
+    <footer class="status-bar">
         <div class="status-left">
             <i class="fas fa-terminal" aria-hidden="true"></i> ToolHunt v2.0 - Cybersecurity Arsenal
         </div>
         <div class="status-right">
             <i class="fas fa-shield-alt" aria-hidden="true"></i> Secure • <i class="fas fa-clock" aria-hidden="true"></i> <span id="currentTime"></span>
         </div>
-    </div>
+    </footer>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>

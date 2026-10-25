@@ -22,6 +22,7 @@ function sanitizeUrl(url) {
 // DOM Elements
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
+const searchForm = document.getElementById('searchForm');
 const resultsContainer = document.getElementById('resultsContainer');
 const toolsGrid = document.getElementById('toolsGrid');
 const resultsCount = document.getElementById('resultsCount');
@@ -94,12 +95,10 @@ updateTime();
 setInterval(updateTime, 1000);
 
 // Event Listeners
-if (searchButton) {
-    searchButton.addEventListener('click', performSearch);
-}
-if (searchInput) {
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') performSearch();
+if (searchForm) {
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        performSearch();
     });
 }
 
