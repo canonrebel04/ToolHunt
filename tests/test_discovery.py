@@ -156,9 +156,91 @@ def test_graphql_query_and_parse():
      {"stars": 1, "archived": True, "last_commit": "2010-01-01"}, None),  # curated lists are trusted
     ({"description": "A long enough description", "sources": ["cli-apps"], "category": "general"},
      {"stars": 200, "last_commit": "2026-01-01"}, None),
+    # blocked libraries / platforms / generics
+    ({"name": "tqdm", "description": "A Fast Extensible Progress Bar for Python and CLI",
+      "sources": ["github:cli"], "category": "general"},
+     {"stars": 30000, "last_commit": "2026-01-01"}, "blocked-name"),
+    ({"name": "n8n", "description": "Fair-code workflow automation platform with native AI",
+      "sources": ["github:cli"], "category": "general"},
+     {"stars": 200000, "last_commit": "2026-01-01"}, "blocked-name"),
+    ({"name": "terminal", "description": "The new Windows Terminal and console host",
+      "sources": ["github:terminal"], "category": "general"},
+     {"stars": 100000, "last_commit": "2026-01-01"}, "blocked-name"),
+    ({"name": "modern-unix", "description": "A collection of modern alternatives to unix commands",
+      "sources": ["github:cli"], "category": "general"},
+     {"stars": 33000, "last_commit": "2026-01-01"}, "blocked-name"),
+    ({"name": "ratatui", "description": "A Rust crate for cooking up terminal user interfaces",
+      "sources": ["github:cli"], "category": "general"},
+     {"stars": 23000, "last_commit": "2026-01-01"}, "blocked-name"),
+    # github-topic-only without CLI signal
+    ({"name": "ohmyzsh", "description": "A delightful community-driven framework for managing zsh",
+      "sources": ["github:cli", "github:terminal"], "category": "general"},
+     {"stars": 190000, "last_commit": "2026-01-01"}, "library-or-framework"),
+    ({"name": "gods-eye-view", "description": "A spy satellite simulator in your browser with real data",
+      "sources": ["github:osint"], "category": "security"},
+     {"stars": 60000, "last_commit": "2026-01-01"}, "github-unconfirmed"),
+    ({"name": "some-notes", "description": "Curated list of pentest resources and write-ups",
+      "sources": ["github:pentesting"], "category": "security"},
+     {"stars": 5000, "last_commit": "2026-01-01"}, "list-or-notes"),
+    # github-only but strong CLI / security-tool signal → keep
+    ({"name": "reconftw", "description": "A tool designed to perform automated recon on a target domain",
+      "sources": ["github:reconnaissance"], "category": "security"},
+     {"stars": 8000, "last_commit": "2026-01-01"}, None),
+    ({"name": "ani-cli", "description": "A cli tool to browse and play anime from the terminal",
+      "sources": ["github:cli"], "category": "general"},
+     {"stars": 14000, "last_commit": "2026-01-01"}, None),
+    # package confirmation bypasses github-unconfirmed even with weak desc
+    ({"name": "fx", "description": "Terminal JSON viewer and processor",
+      "sources": ["cli-apps", "github:cli"], "category": "general"},
+     {"stars": 20000, "last_commit": "2026-01-01"}, None),
 ])
 def test_quality_gate(cand, meta, why):
     assert quality.reject_reason(cand, meta, today=date(2026, 10, 24)) == why
+
+
+def test_github_search_drops_blocked_and_libraries():
+    items = [
+        {"name": "tqdm", "description": "A Fast Progress Bar for Python and CLI",
+         "html_url": "https://github.com/tqdm/tqdm", "stargazers_count": 30000,
+         "pushed_at": "2026-01-01T00:00:00Z"},
+        {"name": "modern-unix", "description": "A collection of modern unix tools",
+         "html_url": "https://github.com/x/modern-unix", "stargazers_count": 33000,
+         "pushed_at": "2026-01-01T00:00:00Z"},
+        {"name": "embacli", "description": "Command-line firmware security analyzer",
+         "html_url": "https://github.com/e/embacli", "stargazers_count": 4000,
+         "pushed_at": "2026-10-01T00:00:00Z", "license": {"spdx_id": "MIT"}, "topics": ["security"]},
+    ]
+    got = list(sources.parse_github_search(items, "general", "cli"))
+    assert [t["name"] for t in got] == ["embacli"]
+
+
+def test_purge_removes_github_junk(tmp_path):
+    conn = db.connect(tmp_path / "t.db")
+    db.upsert_tool(conn, {"name": "tqdm", "description": "Progress bar for Python and CLI",
+                          "category": "general", "sources": ["github:cli"], "stars": 30000})
+    db.upsert_tool(conn, {"name": "nmap", "description": "Network scanner", "category": "security",
+                          "sources": ["kali", "blackarch"]})
+    db.upsert_tool(conn, {"name": "reconftw", "description": "A tool designed to perform automated recon",
+                          "category": "security", "sources": ["github:reconnaissance"], "stars": 8000,
+                          "last_commit": "2026-01-01"})
+    db.upsert_tool(conn, {"name": "ohmyzsh", "description": "A delightful community-driven framework for zsh",
+                          "category": "general", "sources": ["github:cli"], "stars": 190000,
+                          "last_commit": "2026-01-01"})
+    db.upsert_tool(conn, {"name": "gods-eye-view",
+                          "description": "A spy satellite simulator in your browser with real data",
+                          "category": "security", "sources": ["github:osint"], "stars": 60000,
+                          "last_commit": "2026-01-01"})
+    conn.commit()
+    removed = run.purge_rejected(conn, log=lambda *a: None)
+    conn.commit()
+    ids = {r[0] for r in conn.execute("SELECT id FROM tools")}
+    assert "nmap" in ids and "reconftw" in ids
+    assert "tqdm" not in ids and "ohmyzsh" not in ids and "gods-eye-view" not in ids
+    reasons = {i: w for i, _, w in removed}
+    assert reasons["tqdm"] == "blocked-name"
+    assert reasons["ohmyzsh"] == "library-or-framework"
+    assert reasons["gods-eye-view"] == "github-unconfirmed"
+    conn.close()
 
 
 def test_merge_candidates_security_wins():

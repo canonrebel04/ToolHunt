@@ -117,6 +117,17 @@ def run(source_names, conn, *, max_new: int = 1500, log=print) -> dict:
 
 def report_md(stats: dict) -> str:
     lines = ["## Weekly tool discovery", ""]
+    purged = stats.get("purged") or []
+    if purged:
+        lines.append(f"**Purged {len(purged)}** tools that failed the tightened filter.")
+        by_why = Counter(w for _, _, w in purged)
+        lines.append("Purge reasons: " + ", ".join(f"{k} {v}" for k, v in by_why.most_common()))
+        lines += ["", "<details><summary>Purged tools (sample)</summary>", "",
+                  "| Tool | Reason |", "|---|---|"]
+        lines += [f"| {n.replace('|', '/')} | {w} |" for _, n, w in purged[:80]]
+        if len(purged) > 80:
+            lines.append(f"| … {len(purged) - 80} more | |")
+        lines += ["", "</details>", ""]
     lines.append(f"**{len(stats['new'])} new tools**, {stats['updated']} existing tools refreshed "
                  f"(stars / last commit / archived), {stats.get('enriched', 0)} GitHub repos checked.")
     lines.append(f"Total now: {stats['total']} ({', '.join(f'{k}: {v}' for k, v in sorted(stats['by_category'].items()))}).")
@@ -140,6 +151,21 @@ def report_md(stats: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+def purge_rejected(conn, *, log=print) -> list[tuple[str, str, str]]:
+    """Delete existing tools that fail the tightened filter. Returns [(id, name, why)]."""
+    removed = []
+    rows = conn.execute("SELECT * FROM tools").fetchall()
+    for row in rows:
+        tool = dict(row)
+        why = quality.should_purge_existing(tool)
+        if why:
+            db.delete_tool(conn, tool["id"])
+            removed.append((tool["id"], tool["name"], why))
+    log(f"purged {len(removed)} tools")
+    return removed
+
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--sources", default=",".join(sources.COLLECTORS))
@@ -147,6 +173,10 @@ def main(argv=None) -> int:
     ap.add_argument("--report", default=None, help="write Markdown summary here")
     ap.add_argument("--max-new", type=int, default=1500)
     ap.add_argument("--dry-run", action="store_true", help="roll back instead of committing")
+    ap.add_argument("--purge-rejected", action="store_true",
+                    help="delete existing tools that fail the tightened quality filter")
+    ap.add_argument("--purge-only", action="store_true",
+                    help="only run --purge-rejected (skip source collection)")
     args = ap.parse_args(argv)
     names = [s.strip() for s in args.sources.split(",") if s.strip()]
     unknown = set(names) - set(sources.COLLECTORS)
@@ -155,10 +185,24 @@ def main(argv=None) -> int:
 
     conn = db.connect(args.db)
     try:
-        stats = run(names, conn, max_new=args.max_new)
-        if len(stats["errors"]) == len(names):
-            print("all sources failed", file=sys.stderr)
-            return 2
+        purged = []
+        if args.purge_rejected or args.purge_only:
+            purged = purge_rejected(conn)
+        if args.purge_only:
+            stats = {
+                "per_source": {}, "errors": {}, "rejected": Counter(), "new": [],
+                "updated": 0, "enriched": 0,
+                "total": conn.execute("SELECT count(*) FROM tools").fetchone()[0],
+                "by_category": dict(conn.execute(
+                    "SELECT category, count(*) FROM tools GROUP BY category").fetchall()),
+                "purged": purged,
+            }
+        else:
+            stats = run(names, conn, max_new=args.max_new)
+            stats["purged"] = purged
+            if len(stats["errors"]) == len(names):
+                print("all sources failed", file=sys.stderr)
+                return 2
         if args.dry_run:
             conn.rollback()
         else:

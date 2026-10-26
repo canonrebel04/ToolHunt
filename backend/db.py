@@ -259,3 +259,10 @@ def _add_aliases(conn: sqlite3.Connection, tool_id: str, aliases) -> None:
         a = slugify(a)
         if a and a != tool_id:
             conn.execute("INSERT OR IGNORE INTO tool_aliases(alias, tool_id) VALUES (?, ?)", (a, tool_id))
+
+def delete_tool(conn: sqlite3.Connection, tool_id: str) -> bool:
+    """Remove a tool and its aliases. Returns True if a row was deleted."""
+    conn.execute("DELETE FROM tool_aliases WHERE tool_id = ?", (tool_id,))
+    cur = conn.execute("DELETE FROM tools WHERE id = ?", (tool_id,))
+    return cur.rowcount > 0
+
