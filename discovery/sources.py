@@ -13,6 +13,14 @@ import tarfile
 import time
 
 from .http import fetch, fetch_json, fetch_text, github_headers
+from .quality import (
+    BLOCKED_NAMES,
+    GENERIC_NAMES,
+    LIBRARY_RE,
+    LISTY_DESC,
+    LISTY_NAME,
+    PLATFORM_RE,
+)
 
 BLACKARCH_URL = "https://raw.githubusercontent.com/BlackArch/blackarch-site/master/data/tools"
 KALI_ARCHIVE_URL = "https://gitlab.com/kalilinux/documentation/kali-tools/-/archive/main/kali-tools-main.tar.gz"
@@ -218,15 +226,18 @@ def collect_homebrew(top_n: int = 600):
 
 
 # ── GitHub topic search ───────────────────────────────────────────────
-_LISTY = re.compile(r"(^awesome|cheat-?sheet|interview|roadmap|resources?$|-list$|writeups?|notes$|course)", re.IGNORECASE)
-_LISTY_DESC = re.compile(r"\b(curated list|collection of (resources|links|tools)|awesome list|cheat ?sheet|"
-                         r"roadmap|interview questions|tutorials?|write-?ups?|books?)\b", re.IGNORECASE)
-
-
 def parse_github_search(items: list, category: str, topic: str):
     for r in items:
         name, desc = r.get("name") or "", r.get("description") or ""
-        if r.get("fork") or r.get("archived") or not desc or _LISTY.search(name) or _LISTY_DESC.search(desc):
+        lname = name.strip().lower()
+        if r.get("fork") or r.get("archived") or not desc:
+            continue
+        if lname in BLOCKED_NAMES or lname in GENERIC_NAMES:
+            continue
+        if LISTY_NAME.search(name) or LISTY_DESC.search(desc):
+            continue
+        blob = f"{name} {desc}"
+        if LIBRARY_RE.search(blob) or PLATFORM_RE.search(blob):
             continue
         yield {
             "name": name, "description": _clean(desc), "url": r.get("html_url") or "",
