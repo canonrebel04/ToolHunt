@@ -29,7 +29,7 @@ def add_security_headers(response):
 
 @main_bp.before_request
 def check_rate_limit():
-    if request.endpoint == 'main.search_tools':
+    if request.endpoint in ('main.search_tools', 'main.tool_explain'):
         ip = request.remote_addr or 'unknown'
         if not rate_limiter.is_allowed(ip):
             from flask import jsonify
