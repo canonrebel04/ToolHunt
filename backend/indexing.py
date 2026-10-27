@@ -87,8 +87,8 @@ def index_text(tool, doc: dict | None = None) -> str:
         str(tool.get("category") or ""),
         str(tool.get("subcategory") or ""),
     ]
-    for tag in _as_list(tool.get("tags")):
-        parts.append(str(tag))
+    # ⚡ Bolt: Replace for-loops with .extend() and list comprehensions for faster list building
+    parts.extend([str(tag) for tag in _as_list(tool.get("tags"))])
 
     if doc is None:
         docs = load_docs_map()
@@ -96,26 +96,22 @@ def index_text(tool, doc: dict | None = None) -> str:
 
     if doc:
         parts.append(str(doc.get("summary") or ""))
-        for h in doc.get("highlights") or []:
-            parts.append(str(h))
+        parts.extend([str(h) for h in doc.get("highlights") or []])
         for sc in doc.get("subcommands") or []:
             if isinstance(sc, dict):
-                parts.append(str(sc.get("name") or ""))
-                parts.append(str(sc.get("description") or ""))
+                parts.extend([str(sc.get("name") or ""), str(sc.get("description") or "")])
             else:
                 parts.append(str(sc))
         # Flag names (helps BM25 on --thorough / -sV) + top descriptions
         for i, f in enumerate(doc.get("flags") or []):
             if not isinstance(f, dict):
                 continue
-            parts.append(str(f.get("name") or ""))
-            parts.append(str(f.get("short") or ""))
+            parts.extend([str(f.get("name") or ""), str(f.get("short") or "")])
             if i < 40:
                 parts.append(str(f.get("description") or ""))
         for ex in (doc.get("examples") or [])[:6]:
             if isinstance(ex, dict):
-                parts.append(str(ex.get("cmd") or ""))
-                parts.append(str(ex.get("explanation") or ""))
+                parts.extend([str(ex.get("cmd") or ""), str(ex.get("explanation") or "")])
 
     return _truncate(" ".join(p for p in parts if p).lower())
 
