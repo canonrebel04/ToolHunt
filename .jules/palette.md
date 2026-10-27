@@ -34,3 +34,6 @@
 ## 2026-10-25 - Form Elements for Search Inputs
 **Learning:** Wrapping search inputs and buttons in a `<form>` element automatically triggers the native 'Search' action key on mobile virtual keyboards and correctly activates forms mode for screen readers, providing a significantly better cross-device experience than standalone input/button pairs.
 **Action:** Always wrap search input and button combinations in a `<form>` tag and listen to the `submit` event rather than click/keypress events.
+## 2024-05-15 - [Dynamic Inputs Missing ARIA Labels]
+**Learning:** Found that dynamically injected form inputs (like in the slide-over docs panel) were missing `<label>` tags or `aria-label` attributes, making them inaccessible to screen readers.
+**Action:** Always ensure dynamically injected inputs have explicitly associated `<label>` tags or descriptive `aria-label` attributes to maintain accessibility.

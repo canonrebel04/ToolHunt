@@ -609,7 +609,7 @@ function renderDocsPanel(tool, doc) {
     if ((doc.flags || []).length) {
         html += `<section class="detail-section">
             <h2>Flags <span class="muted">(${doc.flags.length})</span></h2>
-            <input type="search" class="flag-filter" id="panelFlagFilter" placeholder="Filter flags…" autocomplete="off">
+            <input type="search" class="flag-filter" id="panelFlagFilter" aria-label="Filter flags" placeholder="Filter flags…" autocomplete="off">
             <div class="flags-table-wrap"><table class="flags-table" id="panelFlagsTable"><thead><tr><th>Flag</th><th>Description</th></tr></thead><tbody>`;
         doc.flags.forEach((f) => {
             const search = escapeHtml(`${f.name || ''} ${f.short || ''} ${f.description || ''} ${f.section || ''}`);
@@ -626,7 +626,7 @@ function renderDocsPanel(tool, doc) {
     html += `<section class="detail-section">
         <h2><i class="fas fa-magic" aria-hidden="true"></i> Command explainer</h2>
         <form class="explain-form" id="panelExplainForm" data-tool-id="${escapeHtml(tool.id || '')}">
-            <input type="text" id="panelExplainInput" placeholder="Paste a command…" autocomplete="off" spellcheck="false">
+            <input type="text" id="panelExplainInput" aria-label="Command to explain" placeholder="Paste a command…" autocomplete="off" spellcheck="false">
             <button type="submit">Explain</button>
         </form>
         <div id="panelExplainResult" class="explain-result" hidden></div>
