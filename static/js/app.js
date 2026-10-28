@@ -571,11 +571,11 @@ function renderDocsPanel(tool, doc) {
         html += `<section class="detail-section"><h2><i class="fas fa-download" aria-hidden="true"></i> Install</h2>`;
         html += `<div class="install-tabs" role="tablist">`;
         install.forEach((item, i) => {
-            html += `<button type="button" class="install-tab${i === 0 ? ' active' : ''}" data-panel="p-install-${i}">${escapeHtml(item.method || 'cmd')}</button>`;
+            html += `<button type="button" role="tab" aria-selected="${i === 0 ? 'true' : 'false'}" aria-controls="p-install-${i}" id="tab-install-${i}" class="install-tab${i === 0 ? ' active' : ''}" data-panel="p-install-${i}">${escapeHtml(item.method || 'cmd')}</button>`;
         });
         html += `</div>`;
         install.forEach((item, i) => {
-            html += `<div class="install-panel${i === 0 ? ' active' : ''}" id="p-install-${i}">
+            html += `<div role="tabpanel" aria-labelledby="tab-install-${i}" class="install-panel${i === 0 ? ' active' : ''}" id="p-install-${i}" ${i !== 0 ? 'hidden' : ''}>
                 <pre class="code-block"><code>${escapeHtml(item.cmd || '')}</code></pre>
                 <button type="button" class="copy-btn" data-copy="${escapeHtml(item.cmd || '')}"><i class="fas fa-copy" aria-hidden="true"></i> Copy</button>
             </div>`;
@@ -652,11 +652,21 @@ function wirePanelInteractions(root, toolId, doc) {
     const tabs = root.querySelectorAll('.install-tab');
     tabs.forEach((tab) => {
         tab.addEventListener('click', () => {
-            tabs.forEach((t) => t.classList.remove('active'));
-            root.querySelectorAll('.install-panel').forEach((p) => p.classList.remove('active'));
+            tabs.forEach((t) => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
+            root.querySelectorAll('.install-panel').forEach((p) => {
+                p.classList.remove('active');
+                p.setAttribute('hidden', '');
+            });
             tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
             const panel = root.querySelector('#' + tab.dataset.panel) || document.getElementById(tab.dataset.panel);
-            if (panel) panel.classList.add('active');
+            if (panel) {
+                panel.classList.add('active');
+                panel.removeAttribute('hidden');
+            }
         });
     });
     const filter = root.querySelector('#panelFlagFilter');
