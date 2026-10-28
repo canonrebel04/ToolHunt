@@ -37,3 +37,6 @@
 ## 2024-05-15 - [Dynamic Inputs Missing ARIA Labels]
 **Learning:** Found that dynamically injected form inputs (like in the slide-over docs panel) were missing `<label>` tags or `aria-label` attributes, making them inaccessible to screen readers.
 **Action:** Always ensure dynamically injected inputs have explicitly associated `<label>` tags or descriptive `aria-label` attributes to maintain accessibility.
+## 2026-10-26 - [Accessible Tab Components]
+**Learning:** Found that the dynamic installation tab list used `role="tablist"` but lacked the corresponding `role="tab"`, `role="tabpanel"`, `aria-selected`, and `hidden` attributes, rendering the tab structure meaningless to screen readers.
+**Action:** Always pair `role="tablist"` with fully structured `role="tab"` buttons and `role="tabpanel"` containers, dynamically updating `aria-selected` and `hidden` attributes to communicate state changes to assistive technologies.
